@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "justenoughbreeding",
+  "version": "${version}",
+  "name": "Fast Entity Transfer",
+  "description": "JEI plugin that shows breeding information",
+  "authors": [
+    "Christofmeg"
+  ],
+  "contributors": [
+  ],
+  "contact": {
+    "homepage": "https://github.com/Christofmeg/JustEnoughBreeding",
+    "sources": "https://github.com/Christofmeg/JustEnoughBreeding",
+    "issues": "https://github.com/Christofmeg/JustEnoughBreeding/issues"
+  },
+  "license": "The MIT License (MIT)",
+  "icon": "icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.christofmeg.justenoughbreeding.JustEnoughBreeding"
+    ],
+    "client": [
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.14",
+    "fabric": "*",
+    "minecraft": "1.19.x",
+    "java": ">=17",
+    "jei": ">=11.4.0.287",
+    "forgeconfigapiport": ">=4.2",
+    "com_electronwill_night-config_core": "*",
+    "com_electronwill_night-config_toml": "*"
+  }
+}
