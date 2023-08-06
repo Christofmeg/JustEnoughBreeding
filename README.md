@@ -1,3 +1,3 @@
 # JustEnoughBreeding 
 
-JEI plugin to show breeding information
+JEI plugin that displays breeding information

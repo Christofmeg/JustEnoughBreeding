@@ -10,7 +10,7 @@ displayURL="https://github.com/Christofmeg/JustEnoughBreeding" #optional
 logoFile="icon.png"
 authors="Christofmeg"
 #credits=""
-description="JEI plugin that shows breeding information"
+description="JEI plugin that displays breeding information"
 [[dependencies.justenoughbreeding]]
     modId="forge"
     mandatory=true

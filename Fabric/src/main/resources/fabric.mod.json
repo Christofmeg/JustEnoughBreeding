@@ -3,7 +3,7 @@
   "id": "justenoughbreeding",
   "version": "${version}",
   "name": "Fast Entity Transfer",
-  "description": "JEI plugin that shows breeding information",
+  "description": "JEI plugin that displays breeding information",
   "authors": [
     "Christofmeg"
   ],
