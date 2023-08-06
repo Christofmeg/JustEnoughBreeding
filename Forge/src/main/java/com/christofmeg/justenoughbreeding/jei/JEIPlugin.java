@@ -2,7 +2,6 @@ package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
-import com.christofmeg.justenoughbreeding.jei.category.BreedingCategory;
 import com.christofmeg.justenoughbreeding.utils.ForgeUtils;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -39,7 +38,7 @@ public class JEIPlugin implements IModPlugin {
     public void registerCategories(IRecipeCategoryRegistration registration) {
         IGuiHelper helper = registration.getJeiHelpers().getGuiHelper();
         registration.addRecipeCategories(
-                new com.christofmeg.justenoughbreeding.jei.category.BreedingCategory(helper, Items.WHEAT)
+                new BreedingCategory(helper, Items.WHEAT)
         );
     }
 
@@ -73,7 +72,7 @@ public class JEIPlugin implements IModPlugin {
                 Boolean needsToBeTamed = animalTamedConfigs.get(mobName);
                 BreedingCategory.BreedingRecipe breedingRecipe = createBreedingRecipe(entityType, combinedIngredient, spawnEggItem, needsToBeTamed, combinedResultIngredient);
 
-                registration.addRecipes(com.christofmeg.justenoughbreeding.jei.category.BreedingCategory.TYPE, Collections.singletonList(breedingRecipe));
+                registration.addRecipes(BreedingCategory.TYPE, Collections.singletonList(breedingRecipe));
             }
         }
     }

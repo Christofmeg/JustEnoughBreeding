@@ -1,4 +1,4 @@
-package com.christofmeg.justenoughbreeding.jei.category;
+package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -61,7 +61,7 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
     }
 
     @Override
-    public @NotNull RecipeType<BreedingCategory.BreedingRecipe> getRecipeType() {
+    public @NotNull RecipeType<BreedingRecipe> getRecipeType() {
         return TYPE;
     }
 
@@ -81,7 +81,7 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
     }
 
     @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, BreedingCategory.BreedingRecipe recipe, @NotNull IFocusGroup focuses) {
+    public void setRecipe(IRecipeLayoutBuilder builder, BreedingRecipe recipe, @NotNull IFocusGroup focuses) {
         builder.addSlot(RecipeIngredientRole.INPUT, 149, 1).addItemStack((recipe.spawnEgg()));
         builder.addSlot(RecipeIngredientRole.INPUT, breedableFoodSlotX, breedableFoodSlotY).addIngredients((recipe.breedingCatalyst()));
         if(recipe.resultItemStack() != null) {

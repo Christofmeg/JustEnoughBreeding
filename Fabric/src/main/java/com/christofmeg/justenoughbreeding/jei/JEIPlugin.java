@@ -2,7 +2,6 @@ package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
-import com.christofmeg.justenoughbreeding.jei.category.BreedingCategory;
 import com.christofmeg.justenoughbreeding.utils.FabricUtils;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
