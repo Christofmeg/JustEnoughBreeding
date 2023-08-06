@@ -25,7 +25,7 @@ description="JEI plugin that displays breeding information"
     side="BOTH"
 [[dependencies.justenoughbreeding]]
     modId="jei"
-    mandatory=true
+    mandatory=false
     versionRange="[11.4.0.287,)"
     ordering="NONE"
     side="BOTH"
