@@ -25,7 +25,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-@SuppressWarnings("unused")
 @JeiPlugin
 public class JEIPlugin implements IModPlugin {
 
@@ -44,7 +43,6 @@ public class JEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipes(@NotNull IRecipeRegistration registration) {
-        // Process mob breeding recipes
         registerMobBreedingRecipes(registration);
     }
 
@@ -63,20 +61,26 @@ public class JEIPlugin implements IModPlugin {
             int mobMinResultCount = JustEnoughBreeding.eggMinAmountConfigs.get(mobName) != null ? JustEnoughBreeding.eggMinAmountConfigs.get(mobName).get() : 1;
             int mobMaxResultCount = JustEnoughBreeding.eggMaxAmountConfigs.get(mobName) != null ? JustEnoughBreeding.eggMaxAmountConfigs.get(mobName).get() : 1;
 
-            List<Ingredient>  combinedIngredient = createCombinedIngredient(mobIngredients);
+            Ingredient combinedIngredient = createCombinedIngredient(mobIngredients);
             List<Ingredient> combinedResultIngredient = createCombinedResultIngredients(mobResultItem, mobMinResultCount, mobMaxResultCount);
             Item spawnEggItem = FabricUtils.getItemFromLoaderRegistries(new ResourceLocation(mobSpawnEgg.trim()));
 
             if (spawnEggItem instanceof SpawnEggItem spawnEgg) {
                 EntityType<?> entityType = spawnEgg.getType(null);
                 Boolean needsToBeTamed = animalTamedConfigs.get(mobName);
-                BreedingCategory.BreedingRecipe breedingRecipe = createBreedingRecipe(entityType, combinedIngredient, spawnEggItem, needsToBeTamed, combinedResultIngredient);
 
-                registration.addRecipes(BreedingCategory.TYPE, Collections.singletonList(breedingRecipe));
+                List<ItemStack> mergedResultItemStacks = new ArrayList<>();
+                for (Ingredient resultItemStack : combinedResultIngredient) {
+                    ItemStack[] stacks = resultItemStack.getItems();
+                    mergedResultItemStacks.addAll(Arrays.asList(stacks));
+                }
+
+                registration.addRecipes(BreedingCategory.TYPE,
+                        List.of( //TODO needsToBeTamed does not work
+                                new BreedingCategory.BreedingRecipe(entityType, combinedIngredient, spawnEggItem.getDefaultInstance(), needsToBeTamed,
+                                        Ingredient.of(mergedResultItemStacks.toArray(new ItemStack[0])), null)
+                        ));
             }
-            System.out.println("Debug: mobName = " + mobName);
-            System.out.println("Debug: mobIngredients = " + mobIngredients);
-            System.out.println("Debug: mobSpawnEgg = " + mobSpawnEgg);
         }
     }
 
@@ -97,28 +101,7 @@ public class JEIPlugin implements IModPlugin {
         return resultIngredients;
     }
 
-    
-    private List<Ingredient> createCombinedIngredient(String mobIngredients) {
-        String[] ingredientIds = mobIngredients.split(",");
-        List<Ingredient> combinedIngredients = new ArrayList<>();
-
-        List<Ingredient> combinedItemStacks = new ArrayList<>();
-        
-        for (String ingredientId : ingredientIds) {
-            if (ingredientId.trim().startsWith("#")) {
-                combinedIngredients.add(createTagIngredient(ingredientId));
-            } else {
-                Item ingredientItem = FabricUtils.getItemFromLoaderRegistries(new ResourceLocation(ingredientId.trim()));
-                combinedItemStacks.add(Ingredient.of(new ItemStack(ingredientItem)));
-            }
-        }
-
-        combinedIngredients.add(Ingredient.of(combinedItemStacks.toArray(new ItemStack[0])));
-        return combinedIngredients;
-    }
-     
-
-    private List<Ingredient> createCombinedIngredient2(String mobIngredients) {
+    private Ingredient createCombinedIngredient(String mobIngredients) {
         String[] ingredientIds = mobIngredients.split(",");
         List<Ingredient> combinedIngredients = new ArrayList<>();
 
@@ -131,7 +114,15 @@ public class JEIPlugin implements IModPlugin {
             }
         }
 
-        return combinedIngredients;
+//TODO        return Ingredient.merge(combinedIngredients);
+        return mergeIngredients(combinedIngredients);
+    }
+
+    private static Ingredient mergeIngredients(List<Ingredient> ingredients) {
+        return Ingredient.of(Arrays.stream(ingredients.toArray(Ingredient[]::new))
+                .flatMap(ingredient -> Arrays.stream(ingredient.getItems()))
+                .distinct()
+                .toArray(ItemStack[]::new));
     }
 
     private Ingredient createTagIngredient(String tagId) {
@@ -139,34 +130,5 @@ public class JEIPlugin implements IModPlugin {
         ResourceLocation tagLocation = new ResourceLocation(tagLocationStr);
         return Ingredient.of(TagKey.create(Registry.ITEM_REGISTRY, tagLocation));
     }
-
-    private BreedingCategory.BreedingRecipe createBreedingRecipe(EntityType<?> entityType, List<Ingredient> combinedIngredient, Item spawnEggItem, Boolean needsToBeTamed, List<Ingredient> resultItemStacks) {
-
-        List<ItemStack> mergedIngredientItemStacks = new ArrayList<>();
-
-        for (Ingredient resultItemStack : combinedIngredient) {
-            ItemStack[] stacks = resultItemStack.getItems();
-            mergedIngredientItemStacks.addAll(Arrays.asList(stacks));
-        }
-
-        List<ItemStack> mergedResultItemStacks = new ArrayList<>();
-        
-        for (Ingredient resultItemStack : resultItemStacks) {
-            ItemStack[] stacks = resultItemStack.getItems();
-            mergedResultItemStacks.addAll(Arrays.asList(stacks));
-        }
-
-        return new BreedingCategory.BreedingRecipe(
-                entityType,
-                Ingredient.of(mergedResultItemStacks.toArray(new ItemStack[0])),
-                new ItemStack(spawnEggItem),
-                needsToBeTamed,
-                Ingredient.of(mergedResultItemStacks.toArray(new ItemStack[0])),
-                null
-        );
-    }
-
-
-
 
 }

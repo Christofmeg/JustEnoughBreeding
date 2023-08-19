@@ -3,8 +3,6 @@ subprojects {
     apply plugin: 'java'
     
     java.toolchain.languageVersion = JavaLanguageVersion.of(17)
-    java.withSourcesJar()
-    java.withJavadocJar()
         
     jar {
         manifest {
@@ -38,6 +36,7 @@ subprojects {
         }
 
         repositories {
+            /*
             maven {
                 // location of the maven that hosts JEI files
                 name = "Progwml6 maven"
@@ -46,6 +45,7 @@ subprojects {
                     includeGroup "mezz.jei"
                 }
             }
+             */
             maven {
                 // location of a maven mirror for JEI files, as a fallback
                 name = "ModMaven"

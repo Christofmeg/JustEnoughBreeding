@@ -88,7 +88,7 @@ public class JEBConfig {
                 JustEnoughBreeding.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);
                 JustEnoughBreeding.spawnEggConfigs.put(MOD + "_" + animal, animalSpawnEgg);
                 if(needsToBeTamed.get(animal) != null) {
-                    CommonConstants.animalTamedConfigs.put(animal, true);
+                    CommonConstants.animalTamedConfigs.put(MOD + "_" + animal, true);
                 }
                 if(resultEggs.get(animal) != null && eggsAmountMin.get(animal) != null && eggsAmountMax.get(animal) != null) {
                     ForgeConfigSpec.ConfigValue<String> animalEggResult = builder

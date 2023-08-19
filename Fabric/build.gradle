@@ -4,10 +4,10 @@ plugins {
     id 'idea'
 }
 
-archivesBaseName = "${mod_id}-fabric-${supported_versions}"
+archivesBaseName = "${mod_id}-fabric-${fabric_supported_versions}"
 
 dependencies {
-    minecraft "com.mojang:minecraft:${minecraft_version}"
+    minecraft "com.mojang:minecraft:${fabric_minecraft_version}"
     mappings loom.officialMojangMappings()
     modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
@@ -23,17 +23,22 @@ dependencies {
 
     // JEI
     if (project.hasProperty('jei_version')) {
-        modCompileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
-        modCompileOnly("mezz.jei:jei-${minecraft_version}-fabric-api:${jei_version}")
-        modRuntimeOnly("mezz.jei:jei-${minecraft_version}-fabric:${jei_version}")
+        modCompileOnly("mezz.jei:jei-${fabric_minecraft_version}-common-api:${jei_version}")
+        modCompileOnly("mezz.jei:jei-${fabric_minecraft_version}-fabric-api:${jei_version}")
+        modRuntimeOnly("mezz.jei:jei-${fabric_minecraft_version}-fabric:${jei_version}")
     }
+
     // CONFIGURED
     if (project.hasProperty('fabric_configured_version')) {
-        modImplementation "curse.maven:configured-fabric-667378:4010582"
+        modImplementation "curse.maven:configured-fabric-667378:${fabric_configured_version}"
     }
+
     // CATALOGUE
     if (project.hasProperty('fabric_catalogue_version')) {
         modImplementation("curse.maven:catalogue-667377:${fabric_catalogue_version}")
+        if (project.hasProperty('fabric_menulogue_version')) {
+            modImplementation "curse.maven:menulogue-682371:${fabric_menulogue_version}"
+        }
     }
 
 
