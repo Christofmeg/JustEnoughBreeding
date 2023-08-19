@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "justenoughbreeding",
   "version": "${version}",
-  "name": "Fast Entity Transfer",
+  "name": "Just Enough Breeding",
   "description": "JEI plugin that displays breeding information",
   "authors": [
     "Christofmeg"
