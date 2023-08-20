@@ -1,15 +1,13 @@
 package com.christofmeg.justenoughbreeding.config.integration;
 
-import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
+import com.christofmeg.justenoughbreeding.CommonConstants;
 import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.fml.common.Mod;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Mod.EventBusSubscriber(modid = "JustEnoughBreeding", bus = Mod.EventBusSubscriber.Bus.MOD)
 public class AppleCowsIntegration {
 
     private static final String MOD = "apple_cows";
@@ -35,8 +33,8 @@ public class AppleCowsIntegration {
                 ForgeConfigSpec.ConfigValue<String> animalIngredients = builder.push(animal)
                         .comment("Ingredients required for " + animal + " breeding")
                         .define(animal + "Ingredients", ingredients.get(animal));
-                JustEnoughBreeding.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);
-                JustEnoughBreeding.spawnEggConfigs.put(MOD + "_" + animal, animalSpawnEgg);
+                CommonConstants.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);
+                CommonConstants.spawnEggConfigs.put(MOD + "_" + animal, animalSpawnEgg);
 
                 builder.pop();
             }
@@ -49,7 +47,5 @@ public class AppleCowsIntegration {
             ingredients.put(name, ingredient);
         }
     }
-
-
 
 }

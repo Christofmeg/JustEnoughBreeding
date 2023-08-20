@@ -145,6 +145,7 @@ dependencies {
 
     //TODO NEEDS MORE REWORK TO BE ADDED
     // CHOCOCRAFT           //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/chococraft
+
 //    implementation fg.deobf("curse.maven:chococraft-225280:4656794")
 //        implementation fg.deobf("curse.maven:architectury-api-419699:4555749")
 //        implementation fg.deobf("curse.maven:patchouli-306770:4031402")
@@ -156,8 +157,9 @@ dependencies {
 //    implementation fg.deobf("curse.maven:naturalist-627986:4660377")
 //        implementation fg.deobf("curse.maven:geckolib-388172:4407241")
 
-
 }
+
+
 
 tasks.withType(JavaCompile) {
     source(project(":Common").sourceSets.main.allSource)

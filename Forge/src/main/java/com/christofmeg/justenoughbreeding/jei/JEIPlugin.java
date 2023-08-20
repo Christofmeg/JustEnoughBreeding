@@ -1,7 +1,6 @@
 package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
-import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.utils.ForgeUtils;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -51,17 +50,17 @@ public class JEIPlugin implements IModPlugin {
     private void registerMobBreedingRecipes(IRecipeRegistration registration) {
         Map<String, Boolean> animalTamedConfigs = CommonConstants.animalTamedConfigs;
 
-        List<String> sortedMobNames = new ArrayList<>(JustEnoughBreeding.ingredientConfigs.keySet());
+        List<String> sortedMobNames = new ArrayList<>(CommonConstants.ingredientConfigs.keySet());
         Collections.sort(sortedMobNames);
 
         for (String mobName : sortedMobNames) {
-            String mobIngredients = JustEnoughBreeding.ingredientConfigs.get(mobName).get();
-            String mobSpawnEgg = JustEnoughBreeding.spawnEggConfigs.get(mobName).get();
+            String mobIngredients = CommonConstants.ingredientConfigs.get(mobName).get();
+            String mobSpawnEgg = CommonConstants.spawnEggConfigs.get(mobName).get();
 
             // Check if the mob has an associated result item configuration
-            String mobResultItem = JustEnoughBreeding.eggResultConfigs.get(mobName) != null ? JustEnoughBreeding.eggResultConfigs.get(mobName).get() : "";
-            int mobMinResultCount = JustEnoughBreeding.eggMinAmountConfigs.get(mobName) != null ? JustEnoughBreeding.eggMinAmountConfigs.get(mobName).get() : 1;
-            int mobMaxResultCount = JustEnoughBreeding.eggMaxAmountConfigs.get(mobName) != null ? JustEnoughBreeding.eggMaxAmountConfigs.get(mobName).get() : 1;
+            String mobResultItem = CommonConstants.eggResultConfigs.get(mobName) != null ? CommonConstants.eggResultConfigs.get(mobName).get() : "";
+            int mobMinResultCount = CommonConstants.eggMinAmountConfigs.get(mobName) != null ? CommonConstants.eggMinAmountConfigs.get(mobName).get() : 1;
+            int mobMaxResultCount = CommonConstants.eggMaxAmountConfigs.get(mobName) != null ? CommonConstants.eggMaxAmountConfigs.get(mobName).get() : 1;
 
             Ingredient combinedIngredient = createCombinedIngredient(mobIngredients);
             List<Ingredient> combinedResultIngredient = createCombinedResultIngredients(mobResultItem, mobMinResultCount, mobMaxResultCount);

@@ -1,6 +1,6 @@
 package com.christofmeg.justenoughbreeding.config.integration;
 
-import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
+import com.christofmeg.justenoughbreeding.CommonConstants;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 import java.util.ArrayList;
@@ -42,8 +42,8 @@ public class ChocoCraftIntegration {
                 ForgeConfigSpec.ConfigValue<String> animalIngredients = builder.push(animal)
                         .comment("Ingredients required for " + animal + " breeding")
                         .define(animal + "Ingredients", ingredients.get(animal));
-                JustEnoughBreeding.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);
-                JustEnoughBreeding.spawnEggConfigs.put(MOD + "_" + animal, animalSpawnEgg);
+                CommonConstants.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);
+                CommonConstants.spawnEggConfigs.put(MOD + "_" + animal, animalSpawnEgg);
 
                 if(resultEggs.get(animal) != null && eggsAmountMin.get(animal) != null && eggsAmountMax.get(animal) != null) {
                     ForgeConfigSpec.ConfigValue<String> animalEggResult = builder
@@ -55,9 +55,9 @@ public class ChocoCraftIntegration {
                     ForgeConfigSpec.ConfigValue<Integer> animalMaxEggAmount = builder
                             .comment("Max amount of eggs that " + animal + " lays after breeding")
                             .defineInRange(animal + "EggMaxAmount", eggsAmountMax.get(animal), 1, 64);
-                    JustEnoughBreeding.eggResultConfigs.put(MOD + "_" + animal, animalEggResult);
-                    JustEnoughBreeding.eggMinAmountConfigs.put(MOD + "_" + animal, animalMinEggAmount);
-                    JustEnoughBreeding.eggMaxAmountConfigs.put(MOD + "_" + animal, animalMaxEggAmount);
+                    CommonConstants.eggResultConfigs.put(MOD + "_" + animal, animalEggResult);
+                    CommonConstants.eggMinAmountConfigs.put(MOD + "_" + animal, animalMinEggAmount);
+                    CommonConstants.eggMaxAmountConfigs.put(MOD + "_" + animal, animalMaxEggAmount);
                 }
 
                 builder.pop();
@@ -77,7 +77,6 @@ public class ChocoCraftIntegration {
             eggsAmountMin.put(name, eggAmountMin);
             eggsAmountMax.put(name, eggAmountMax);
         }
-
     }
 
 }

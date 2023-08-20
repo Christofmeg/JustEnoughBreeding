@@ -1,6 +1,6 @@
 package com.christofmeg.justenoughbreeding.config.integration;
 
-import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
+import com.christofmeg.justenoughbreeding.CommonConstants;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 import java.util.ArrayList;
@@ -51,8 +51,8 @@ public class LilWingsIntegration {
                 ForgeConfigSpec.ConfigValue<String> animalIngredients = builder.push(animal)
                         .comment("Ingredients required for " + animal + " breeding")
                         .define(animal + "Ingredients", ingredients.get(animal));
-                JustEnoughBreeding.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);
-                JustEnoughBreeding.spawnEggConfigs.put(MOD + "_" + animal, animalSpawnEgg);
+                CommonConstants.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);
+                CommonConstants.spawnEggConfigs.put(MOD + "_" + animal, animalSpawnEgg);
 
                 builder.pop();
             }

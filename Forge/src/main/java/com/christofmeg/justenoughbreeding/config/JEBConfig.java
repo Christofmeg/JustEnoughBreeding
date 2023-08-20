@@ -1,19 +1,16 @@
 package com.christofmeg.justenoughbreeding.config;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
-import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.config.integration.*;
 import com.christofmeg.justenoughbreeding.utils.ForgeUtils;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.common.Mod;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Mod.EventBusSubscriber(modid = "JustEnoughBreeding", bus = Mod.EventBusSubscriber.Bus.MOD)
 public class JEBConfig {
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
 
@@ -26,7 +23,7 @@ public class JEBConfig {
         private static final String TROPICAL_FISH_BUCKET = "minecraft:tropical_fish_bucket";
         private static final String FLOWERS = "#minecraft:flowers";
         private static final String COD_SALMON = "minecraft:cod, minecraft:salmon";
-        private static final String CACTUS = "minecraft:cactus";
+// 1.20        private static final String CACTUS = "minecraft:cactus";
         private static final String SEEDS = "minecraft:wheat_seeds, minecraft:pumpkin_seeds, minecraft:melon_seeds, minecraft:beetroot_seeds, minecraft:torchflower_seeds, minecraft:pitcher_pod";
         private static final String WHEAT = "minecraft:wheat";
         private static final String GOLDEN_APPLE_CARROT = "minecraft:golden_apple, minecraft:enchanted_golden_apple, minecraft:golden_carrot";
@@ -37,7 +34,7 @@ public class JEBConfig {
         private static final String BAMBOO = "minecraft:bamboo";
         private static final String VEGETABLES = "minecraft:carrot, minecraft:potato, minecraft:beetroot";
         private static final String DANDELION_CARROTS = "minecraft:dandelion, minecraft:carrot, minecraft:golden_carrot";
-        private static final String TORCHFLOWERS_SEEDS = "minecraft:torchflower_seeds";
+// 1.20        private static final String TORCHFLOWERS_SEEDS = "minecraft:torchflower_seeds";
         private static final String WARPED_FUNGUS = "minecraft:warped_fungus";
         private static final String SEAGRASS = "minecraft:seagrass";
         private static final String MEAT = ForgeUtils.getEdibleMeatItemNames(true); //TODO Foodproperties.isMeat() to other mods
@@ -57,7 +54,7 @@ public class JEBConfig {
             addAnimal("axolotl", TROPICAL_FISH_BUCKET);
             addAnimal("bee", FLOWERS);
             addAnimalTamed("cat", COD_SALMON);
-            addAnimal("camel", CACTUS);
+// 1.20            addAnimal("camel", CACTUS);
             addAnimal("chicken", SEEDS);
             addAnimal("cow", WHEAT);
             addAnimalTamed("donkey", GOLDEN_APPLE_CARROT);
@@ -73,7 +70,7 @@ public class JEBConfig {
             addAnimal("pig", VEGETABLES);
             addAnimal("rabbit", DANDELION_CARROTS);
             addAnimal("sheep", WHEAT);
-            addAnimal("sniffer", TORCHFLOWERS_SEEDS);
+// 1.20            addAnimal("sniffer", TORCHFLOWERS_SEEDS);
             addAnimal("strider", WARPED_FUNGUS);
             addAnimal("trader_llama", HAY_BLOCK);
             addEggLayingAnimal("turtle", SEAGRASS, "minecraft:turtle_egg", 1, 4);
@@ -85,8 +82,8 @@ public class JEBConfig {
                         .comment("Ingredients required for " + animal + " breeding")
                         .define(animal + "Ingredients", ingredients.get(animal));
                 builder.pop();
-                JustEnoughBreeding.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);
-                JustEnoughBreeding.spawnEggConfigs.put(MOD + "_" + animal, animalSpawnEgg);
+                CommonConstants.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);
+                CommonConstants.spawnEggConfigs.put(MOD + "_" + animal, animalSpawnEgg);
                 if(needsToBeTamed.get(animal) != null) {
                     CommonConstants.animalTamedConfigs.put(MOD + "_" + animal, true);
                 }
@@ -100,9 +97,9 @@ public class JEBConfig {
                     ForgeConfigSpec.ConfigValue<Integer> animalMaxEggAmount = builder
                             .comment("Max amount of eggs that " + animal + " lays after breeding")
                             .defineInRange(animal + "EggMaxAmount", eggsAmountMax.get(animal), 1, 64);
-                    JustEnoughBreeding.eggResultConfigs.put(MOD + "_" + animal, animalEggResult);
-                    JustEnoughBreeding.eggMinAmountConfigs.put(MOD + "_" + animal, animalMinEggAmount);
-                    JustEnoughBreeding.eggMaxAmountConfigs.put(MOD + "_" + animal, animalMaxEggAmount);
+                    CommonConstants.eggResultConfigs.put(MOD + "_" + animal, animalEggResult);
+                    CommonConstants.eggMinAmountConfigs.put(MOD + "_" + animal, animalMinEggAmount);
+                    CommonConstants.eggMaxAmountConfigs.put(MOD + "_" + animal, animalMaxEggAmount);
                 }
             }
 
@@ -210,8 +207,6 @@ public class JEBConfig {
                 @SuppressWarnings("unused")
                 final NaturalistIntegration.General CONFIG = new NaturalistIntegration.General(BUILDER);
             }
-
-
 
         }
         private void addAnimal(String name, String ingredient) {

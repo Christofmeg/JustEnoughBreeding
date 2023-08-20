@@ -11,14 +11,14 @@ import java.util.List;
 
 public class ForgeUtils {
 
-    public static String getEdibleMeatItemNames(boolean includRottenFlesh) {
+    public static String getEdibleMeatItemNames(boolean includeRottenFlesh) {
         List<String> edibleMeatItemNames = new ArrayList<>();
 
         for (ResourceLocation key : ForgeRegistries.ITEMS.getKeys()) {
             Item item = ForgeRegistries.ITEMS.getValue(key);
             if (item != null) {
                 FoodProperties foodProperties = item.getFoodProperties();
-                if(includRottenFlesh) {
+                if(includeRottenFlesh) {
                     if (foodProperties != null && item.isEdible() && foodProperties.isMeat()) {
                         edibleMeatItemNames.add(key.toString());
                     }

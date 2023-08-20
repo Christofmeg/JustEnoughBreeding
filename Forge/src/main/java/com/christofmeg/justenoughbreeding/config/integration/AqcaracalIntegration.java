@@ -1,22 +1,19 @@
 package com.christofmeg.justenoughbreeding.config.integration;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
-import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.fml.common.Mod;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Mod.EventBusSubscriber(modid = "JustEnoughBreeding", bus = Mod.EventBusSubscriber.Bus.MOD)
 public class AqcaracalIntegration {
 
     private static final String MOD = "aqcaracal";
 
     public static class General {
-        private static final String FOOD = "minecraft:chicken, minecraft:cod, minecraft:rabbit, , minecraft:salmon";
+        private static final String FOOD = "minecraft:chicken, minecraft:cod, minecraft:rabbit, minecraft:salmon";
 
         private final List<String> animalNames = new ArrayList<>();
         private final Map<String, String> ingredients = new HashMap<>();
@@ -33,8 +30,8 @@ public class AqcaracalIntegration {
                 ForgeConfigSpec.ConfigValue<String> animalIngredients = builder.push(animal)
                         .comment("Ingredients required for " + animal + " breeding")
                         .define(animal + "Ingredients", ingredients.get(animal));
-                JustEnoughBreeding.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);
-                JustEnoughBreeding.spawnEggConfigs.put(MOD + "_" + animal, animalSpawnEgg);
+                CommonConstants.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);
+                CommonConstants.spawnEggConfigs.put(MOD + "_" + animal, animalSpawnEgg);
                 if(needsToBeTamed.get(animal) != null) {
                     CommonConstants.animalTamedConfigs.put(MOD + "_" + animal, true);
                 }

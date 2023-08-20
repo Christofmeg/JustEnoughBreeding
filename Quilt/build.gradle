@@ -4,7 +4,7 @@ plugins {
     id 'idea'
 }
 
-archivesBaseName = "${mod_id}-fabric-${fabric_supported_versions}"
+archivesBaseName = "${mod_id}-quilt-${quilt_supported_versions}"
 
 dependencies {
     minecraft "com.mojang:minecraft:${fabric_minecraft_version}"
@@ -95,13 +95,13 @@ loom {
     runs {
         client {
             client()
-            setConfigName("Fabric Client")
+            setConfigName("Quilt Client")
             ideConfigGenerated(true)
             runDir("run")
         }
         server {
             server()
-            setConfigName("Fabric Server")
+            setConfigName("Quilt Server")
             ideConfigGenerated(true)
             runDir("run")
         }

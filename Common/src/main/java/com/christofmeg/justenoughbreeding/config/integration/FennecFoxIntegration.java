@@ -1,7 +1,6 @@
 package com.christofmeg.justenoughbreeding.config.integration;
 
-import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
-import net.minecraft.tags.ItemTags;
+import com.christofmeg.justenoughbreeding.CommonConstants;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 import java.util.ArrayList;
@@ -9,13 +8,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FrozenUpIntegration {
+public class FennecFoxIntegration {
 
-    private static final String MOD = "frozenup";
+    private static final String MOD = "fennecfox";
 
     public static class General {
-        private static final String CHILLOO_BREED_ITEMS_TAG = "#" + MOD + ":" + "chilloo_breed_items";
-        private static final String FISHES_TAG = "#" + ItemTags.FISHES.location();
+        private static final String FOOD = "minecraft:glow_berries, minecraft:rabbit_foot, minecraft:sweet_berries";
 
         private final List<String> animalNames = new ArrayList<>();
         private final Map<String, String> ingredients = new HashMap<>();
@@ -24,16 +22,15 @@ public class FrozenUpIntegration {
             builder.push("integration");
             builder.push(MOD);
 
-            addAnimal("chilloo", CHILLOO_BREED_ITEMS_TAG);
-            addAnimal("penguin", FISHES_TAG);
+            addAnimal("fennecfox", FOOD);
 
             for (String animal : animalNames) {
                 ForgeConfigSpec.ConfigValue<String> animalSpawnEgg = builder.define(animal + "SpawnEgg", MOD + ":" + animal + "_spawn_egg");
                 ForgeConfigSpec.ConfigValue<String> animalIngredients = builder.push(animal)
                         .comment("Ingredients required for " + animal + " breeding")
                         .define(animal + "Ingredients", ingredients.get(animal));
-                JustEnoughBreeding.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);
-                JustEnoughBreeding.spawnEggConfigs.put(MOD + "_" + animal, animalSpawnEgg);
+                CommonConstants.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);
+                CommonConstants.spawnEggConfigs.put(MOD + "_" + animal, animalSpawnEgg);
 
                 builder.pop();
             }

@@ -1,15 +1,13 @@
 package com.christofmeg.justenoughbreeding.config.integration;
 
-import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
+import com.christofmeg.justenoughbreeding.CommonConstants;
 import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.fml.common.Mod;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Mod.EventBusSubscriber(modid = "JustEnoughBreeding", bus = Mod.EventBusSubscriber.Bus.MOD)
 public class StevesVanillaIntegration {
 
     private static final String MOD = "steves_vanilla";
@@ -36,8 +34,8 @@ public class StevesVanillaIntegration {
                 ForgeConfigSpec.ConfigValue<String> animalIngredients = builder.push(animal)
                         .comment("Ingredients required for " + animal + " breeding")
                         .define(animal + "Ingredients", ingredients.get(animal));
-                JustEnoughBreeding.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);
-                JustEnoughBreeding.spawnEggConfigs.put(MOD + "_" + animal, animalSpawnEgg);
+                CommonConstants.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);
+                CommonConstants.spawnEggConfigs.put(MOD + "_" + animal, animalSpawnEgg);
                 if(resultEggs.get(animal) != null && eggsAmountMin.get(animal) != null && eggsAmountMax.get(animal) != null) {
                     ForgeConfigSpec.ConfigValue<String> animalEggResult = builder
                             .comment("Egg that " + animal + " lays after breeding")
@@ -48,9 +46,9 @@ public class StevesVanillaIntegration {
                     ForgeConfigSpec.ConfigValue<Integer> animalMaxEggAmount = builder
                             .comment("Max amount of eggs that " + animal + " lays after breeding")
                             .defineInRange(animal + "EggMaxAmount", eggsAmountMax.get(animal), 1, 64);
-                    JustEnoughBreeding.eggResultConfigs.put(MOD + "_" + animal, animalEggResult);
-                    JustEnoughBreeding.eggMinAmountConfigs.put(MOD + "_" + animal, animalMinEggAmount);
-                    JustEnoughBreeding.eggMaxAmountConfigs.put(MOD + "_" + animal, animalMaxEggAmount);
+                    CommonConstants.eggResultConfigs.put(MOD + "_" + animal, animalEggResult);
+                    CommonConstants.eggMinAmountConfigs.put(MOD + "_" + animal, animalMinEggAmount);
+                    CommonConstants.eggMaxAmountConfigs.put(MOD + "_" + animal, animalMaxEggAmount);
                 }
 
                 builder.pop();
