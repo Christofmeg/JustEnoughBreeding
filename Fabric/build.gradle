@@ -88,6 +88,7 @@ dependencies {
 //    modImplementation "curse.maven:naturalist-627986:4660373"
 //        modImplementation "curse.maven:geckolib-388172:4407239"  // https://www.curseforge.com/minecraft/mc-mods/geckolib
 
+    modImplementation "curse.maven:more-mob-variants-695107:4581457"
 
 }
 

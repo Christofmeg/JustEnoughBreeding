@@ -2,7 +2,6 @@ package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -15,6 +14,7 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.network.chat.Component;
@@ -94,7 +94,7 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
 
     @Override
     @SuppressWarnings("deprecated")
-    public void draw(@NotNull BreedingRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull PoseStack stack, double mouseX, double mouseY) {
+    public void draw(@NotNull BreedingRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics stack, double mouseX, double mouseY) {
 
         // Draw the recipe slots at specific positions
         slot.draw(stack, 148, 0);
@@ -128,7 +128,7 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
 
             if (!entityNameString.isEmpty()) {
                 Component abbreviatedEntityName = Component.nullToEmpty(entityNameString);
-                font.draw(stack, abbreviatedEntityName, 0.0F, 0.0F, DyeColor.BLACK.getTextColor());
+                stack.drawString(font, abbreviatedEntityName, 0, 0, DyeColor.BLACK.getTextColor(), false);
             }
 
             if (Minecraft.getInstance().level != null) {
@@ -143,36 +143,36 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
                     float entityPitch = 180.0F; // Set the pitch (horizontal rotation) angle to 0.0F
                     float partialTicks = 0; // Set to 0 to ensure rendering is done without interpolation or animation
 
-                    stack.pushPose(); // Pushes the current transformation matrix onto the matrix stack
+                    stack.pose().pushPose(); // Pushes the current transformation matrix onto the matrix stack
 
                     // Translate the matrix to the center position specified by entityPosX and entityPosY
-                    stack.translate(entityPosX, entityPosY, 0);
+                    stack.pose().translate(entityPosX, entityPosY, 0);
 
                     // Calculate the scaling factor based on the longest dimension of the entity's bounding box
                     AABB boundingBox = livingEntity.getBoundingBox();
                     double longestDimension = Math.max(boundingBox.getXsize(), Math.max(boundingBox.getYsize(), boundingBox.getZsize()));
                     float scalingFactor = targetSize / (float) longestDimension;
-                    stack.scale(scalingFactor, scalingFactor, scalingFactor); // Apply the scaling transformation
+                    stack.pose().scale(scalingFactor, scalingFactor, scalingFactor); // Apply the scaling transformation
 
                     // Calculate the rotation angle based on the cursor's position
                     double dx = mouseX - entityPosX;
                     double dz = mouseY - entityPosY;
                     double angle = Math.atan2(dz, dx) * (180.0 / Math.PI) - 90.0;
 
-                    stack.mulPose(Axis.YP.rotationDegrees(entityYaw)); // Apply the yaw rotation
-                    stack.mulPose(Axis.XP.rotationDegrees(entityPitch)); // Apply the pitch rotation
-                    stack.mulPose(Axis.YP.rotationDegrees((float) angle)); // Applies a rotation transformation around the Y-axis by the specified angle in degrees.
+                    stack.pose().mulPose(Axis.YP.rotationDegrees(entityYaw)); // Apply the yaw rotation
+                    stack.pose().mulPose(Axis.XP.rotationDegrees(entityPitch)); // Apply the pitch rotation
+                    stack.pose().mulPose(Axis.YP.rotationDegrees((float) angle)); // Applies a rotation transformation around the Y-axis by the specified angle in degrees.
 
                     EntityRenderDispatcher entityRenderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher(); // Get the entity render dispatcher from the Minecraft instance.
                     entityRenderDispatcher.setRenderShadow(false); // Disable rendering of shadows for the entity.
                     MultiBufferSource.BufferSource bufferSource = Minecraft.getInstance().renderBuffers().bufferSource(); // Get the buffer source for rendering.
 
                     // Render the livingEntity using the entityRenderDispatcher
-                    RenderSystem.runAsFancy(() -> entityRenderDispatcher.render(livingEntity, 0.0D, 0.0D, 0.0D, 0.0F, partialTicks, stack, bufferSource, 15728880));
+                    RenderSystem.runAsFancy(() -> entityRenderDispatcher.render(livingEntity, 0.0D, 0.0D, 0.0D, 0.0F, partialTicks, stack.pose(), bufferSource, 15728880));
 
                     bufferSource.endBatch(); // End the batch for the buffer source.
                     entityRenderDispatcher.setRenderShadow(true); // Enable rendering of shadows for the entity.
-                    stack.popPose(); // Pop the current pose from the stack.
+                    stack.pose().popPose(); // Pop the current pose from the stack.
                     RenderSystem.applyModelViewMatrix(); // Apply the model view matrix.
                 }
             }

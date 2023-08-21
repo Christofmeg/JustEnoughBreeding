@@ -13,4 +13,6 @@ public class JustEnoughBreeding {
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, JEBConfig.spec);
     }
 
+    //TODO Config reloading
+
 }
