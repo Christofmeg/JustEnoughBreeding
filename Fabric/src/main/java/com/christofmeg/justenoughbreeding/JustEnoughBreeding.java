@@ -7,6 +7,7 @@ import net.minecraftforge.fml.config.ModConfig;
 
 public class JustEnoughBreeding implements ClientModInitializer {
 
+    @SuppressWarnings("removal")
     @Override
     public void onInitializeClient() {
         ModLoadingContext.registerConfig(CommonConstants.MOD_ID, ModConfig.Type.CLIENT, JEBConfig.spec);

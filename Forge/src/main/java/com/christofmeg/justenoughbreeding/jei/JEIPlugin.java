@@ -7,7 +7,7 @@ import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
@@ -116,7 +116,7 @@ public class JEIPlugin implements IModPlugin {
     private Ingredient createTagIngredient(String tagId) {
         String tagLocationStr = tagId.trim().substring(1);
         ResourceLocation tagLocation = new ResourceLocation(tagLocationStr);
-        return Ingredient.of(TagKey.create(Registry.ITEM_REGISTRY, tagLocation));
+        return Ingredient.of(TagKey.create(Registries.ITEM, tagLocation));
     }
 
     private BreedingCategory.BreedingRecipe createBreedingRecipe(EntityType<?> entityType, Ingredient combinedIngredient, Item spawnEggItem, Boolean needsToBeTamed, List<Ingredient> resultItemStacks) {

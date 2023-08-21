@@ -3,7 +3,7 @@ package com.christofmeg.justenoughbreeding.jei;
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -35,13 +35,13 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
             new ResourceLocation(CommonConstants.MOD_ID, "breeding"), BreedingRecipe.class);
 
     public static final ResourceLocation slotVanilla = new ResourceLocation("jei",
-            "textures/gui/slot.png");
+            "textures/jei/atlas/gui/slot.png");
 
     public static final ResourceLocation breedingSlot = new ResourceLocation("justenoughbreeding",
             "textures/gui/breeding.png");
 
     public static final ResourceLocation eggSlot = new ResourceLocation("jei",
-            "textures/gui/gui_vanilla.png");
+            "textures/jei/gui/gui_vanilla.png");
 
     public static IDrawable background;
     public static IDrawable icon;
@@ -159,9 +159,9 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
                     double dz = mouseY - entityPosY;
                     double angle = Math.atan2(dz, dx) * (180.0 / Math.PI) - 90.0;
 
-                    stack.mulPose(Vector3f.YP.rotationDegrees(entityYaw)); // Apply the yaw rotation
-                    stack.mulPose(Vector3f.XP.rotationDegrees(entityPitch)); // Apply the pitch rotation
-                    stack.mulPose(Vector3f.YP.rotationDegrees((float) angle)); // Applies a rotation transformation around the Y-axis by the specified angle in degrees.
+                    stack.mulPose(Axis.YP.rotationDegrees(entityYaw)); // Apply the yaw rotation
+                    stack.mulPose(Axis.XP.rotationDegrees(entityPitch)); // Apply the pitch rotation
+                    stack.mulPose(Axis.YP.rotationDegrees((float) angle)); // Applies a rotation transformation around the Y-axis by the specified angle in degrees.
 
                     EntityRenderDispatcher entityRenderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher(); // Get the entity render dispatcher from the Minecraft instance.
                     entityRenderDispatcher.setRenderShadow(false); // Disable rendering of shadows for the entity.
