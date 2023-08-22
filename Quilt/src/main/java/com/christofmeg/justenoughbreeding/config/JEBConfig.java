@@ -70,7 +70,7 @@ public class JEBConfig {
             addAnimal("pig", VEGETABLES);
             addAnimal("rabbit", DANDELION_CARROTS);
             addAnimal("sheep", WHEAT);
-            addAnimal("sniffer", TORCHFLOWERS_SEEDS);
+            addEggLayingAnimal("sniffer", TORCHFLOWERS_SEEDS, "minecraft:sniffer_egg", 1, 1);
             addAnimal("strider", WARPED_FUNGUS);
             addAnimal("trader_llama", HAY_BLOCK);
             addEggLayingAnimal("turtle", SEAGRASS, "minecraft:turtle_egg", 1, 4);
