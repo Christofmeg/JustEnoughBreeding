@@ -157,6 +157,10 @@ dependencies {
 //    implementation fg.deobf("curse.maven:naturalist-627986:4660377")
 //        implementation fg.deobf("curse.maven:geckolib-388172:4407241")
 
+    // QUARK
+    implementation fg.deobf("curse.maven:quark-243121:4706592")
+        implementation fg.deobf("curse.maven:autoreglib-250363:4100299")
+
 }
 
 
