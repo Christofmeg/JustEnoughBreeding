@@ -23,7 +23,6 @@ public class JEBConfig {
         private static final String TROPICAL_FISH_BUCKET = "minecraft:tropical_fish_bucket";
         private static final String FLOWERS = "#minecraft:flowers";
         private static final String COD_SALMON = "minecraft:cod, minecraft:salmon";
-// 1.20        private static final String CACTUS = "minecraft:cactus";
         private static final String SEEDS = "minecraft:wheat_seeds, minecraft:pumpkin_seeds, minecraft:melon_seeds, minecraft:beetroot_seeds, minecraft:torchflower_seeds, minecraft:pitcher_pod";
         private static final String WHEAT = "minecraft:wheat";
         private static final String GOLDEN_APPLE_CARROT = "minecraft:golden_apple, minecraft:enchanted_golden_apple, minecraft:golden_carrot";
@@ -34,7 +33,6 @@ public class JEBConfig {
         private static final String BAMBOO = "minecraft:bamboo";
         private static final String VEGETABLES = "minecraft:carrot, minecraft:potato, minecraft:beetroot";
         private static final String DANDELION_CARROTS = "minecraft:dandelion, minecraft:carrot, minecraft:golden_carrot";
-// 1.20        private static final String TORCHFLOWERS_SEEDS = "minecraft:torchflower_seeds";
         private static final String WARPED_FUNGUS = "minecraft:warped_fungus";
         private static final String SEAGRASS = "minecraft:seagrass";
         private static final String MEAT = CommonUtils.getEdibleMeatItemNames(true); //TODO Foodproperties.isMeat() to other mods
@@ -54,7 +52,6 @@ public class JEBConfig {
             addAnimal("axolotl", TROPICAL_FISH_BUCKET);
             addAnimal("bee", FLOWERS);
             addAnimalTamed("cat", COD_SALMON);
-// 1.20            addAnimal("camel", CACTUS);
             addAnimal("chicken", SEEDS);
             addAnimal("cow", WHEAT);
             addAnimalTamed("donkey", GOLDEN_APPLE_CARROT);
@@ -70,7 +67,6 @@ public class JEBConfig {
             addAnimal("pig", VEGETABLES);
             addAnimal("rabbit", DANDELION_CARROTS);
             addAnimal("sheep", WHEAT);
-// 1.20            addAnimal("sniffer", TORCHFLOWERS_SEEDS);
             addAnimal("strider", WARPED_FUNGUS);
             addAnimal("trader_llama", HAY_BLOCK);
             addEggLayingAnimal("turtle", SEAGRASS, "minecraft:turtle_egg", 1, 4);
