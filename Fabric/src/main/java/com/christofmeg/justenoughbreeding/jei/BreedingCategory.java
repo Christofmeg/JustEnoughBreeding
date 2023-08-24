@@ -1,8 +1,8 @@
 package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Quaternion;
 import com.mojang.math.Vector3f;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -25,11 +25,16 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class BreedingCategory implements IRecipeCategory<BreedingCategory.BreedingRecipe> {
+
+    private static final int ENTITY_CREATION_INTERVAL = 3000;
+    private static final int ENTITY_RENDER_DISTANCE = 15728880;
+
+    private LivingEntity currentLivingEntity = null;
+    private long lastEntityCreationTime = 0;
 
     public static final RecipeType<BreedingRecipe> TYPE = new RecipeType<>(
             new ResourceLocation(CommonConstants.MOD_ID, "breeding"), BreedingRecipe.class);
@@ -93,7 +98,6 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
     }
 
     @Override
-    @SuppressWarnings("deprecated")
     public void draw(@NotNull BreedingRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull PoseStack stack, double mouseX, double mouseY) {
 
         // Draw the recipe slots at specific positions
@@ -132,51 +136,71 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
             }
 
             if (Minecraft.getInstance().level != null) {
-                // Create a LivingEntity from the recipe's entity type
+
                 LivingEntity livingEntity = (LivingEntity) recipe.entityType().create(Minecraft.getInstance().level);
+                long currentTime = System.currentTimeMillis();
 
-                if (livingEntity != null) {
-                    int entityPosX = 31; // Adjust the X position as desired
-                    int entityPosY = 89; // Adjust the Y position as desired
-                    float targetSize = 30.0F; // Adjust the desired size of the entities
-                    float entityYaw = 0.0F; // Update the yaw (vertical rotation) angle based on the cursor's position
-                    float entityPitch = 180.0F; // Set the pitch (horizontal rotation) angle to 0.0F
-                    float partialTicks = 0; // Set to 0 to ensure rendering is done without interpolation or animation
+                if (currentLivingEntity != null && currentLivingEntity.getType() != recipe.entityType()) {
+                    currentLivingEntity = (LivingEntity) recipe.entityType().create(Minecraft.getInstance().level);
+                }
 
-                    stack.pushPose(); // Pushes the current transformation matrix onto the matrix stack
+                if (shouldCreateNewEntity(currentTime)) {
+                    currentLivingEntity = (LivingEntity) recipe.entityType().create(Minecraft.getInstance().level);
+                    lastEntityCreationTime = currentTime;
+                }
 
-                    // Translate the matrix to the center position specified by entityPosX and entityPosY
-                    stack.translate(entityPosX, entityPosY, 0);
-
-                    // Calculate the scaling factor based on the longest dimension of the entity's bounding box
-                    AABB boundingBox = livingEntity.getBoundingBox();
-                    double longestDimension = Math.max(boundingBox.getXsize(), Math.max(boundingBox.getYsize(), boundingBox.getZsize()));
-                    float scalingFactor = targetSize / (float) longestDimension;
-                    stack.scale(scalingFactor, scalingFactor, scalingFactor); // Apply the scaling transformation
-
-                    // Calculate the rotation angle based on the cursor's position
-                    double dx = mouseX - entityPosX;
-                    double dz = mouseY - entityPosY;
-                    double angle = Math.atan2(dz, dx) * (180.0 / Math.PI) - 90.0;
-
-                    stack.mulPose(Vector3f.YP.rotationDegrees(entityYaw)); // Apply the yaw rotation
-                    stack.mulPose(Vector3f.XP.rotationDegrees(entityPitch)); // Apply the pitch rotation
-                    stack.mulPose(Vector3f.YP.rotationDegrees((float) angle)); // Applies a rotation transformation around the Y-axis by the specified angle in degrees.
-
-                    EntityRenderDispatcher entityRenderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher(); // Get the entity render dispatcher from the Minecraft instance.
-                    entityRenderDispatcher.setRenderShadow(false); // Disable rendering of shadows for the entity.
-                    MultiBufferSource.BufferSource bufferSource = Minecraft.getInstance().renderBuffers().bufferSource(); // Get the buffer source for rendering.
-
-                    // Render the livingEntity using the entityRenderDispatcher
-                    RenderSystem.runAsFancy(() -> entityRenderDispatcher.render(livingEntity, 0.0D, 0.0D, 0.0D, 0.0F, partialTicks, stack, bufferSource, 15728880));
-
-                    bufferSource.endBatch(); // End the batch for the buffer source.
-                    entityRenderDispatcher.setRenderShadow(true); // Enable rendering of shadows for the entity.
-                    stack.popPose(); // Pop the current pose from the stack.
-                    RenderSystem.applyModelViewMatrix(); // Apply the model view matrix.
+                if (shouldRenderEntity(livingEntity)) {
+                    renderEntity(stack, mouseX, currentLivingEntity);
                 }
             }
         }
+    }
+
+    private boolean shouldCreateNewEntity(long currentTime) {
+        return currentLivingEntity == null || currentTime - lastEntityCreationTime >= ENTITY_CREATION_INTERVAL;
+    }
+
+    private boolean shouldRenderEntity(LivingEntity livingEntity) {
+        return currentLivingEntity != null && currentLivingEntity != livingEntity;
+    }
+
+    private static void renderEntity(@NotNull PoseStack stack, double mouseX, LivingEntity currentLivingEntity) {
+        // Set the desired position of the entity on the screen
+        int entityPosX = 31;
+        int entityPosY = 89;
+
+        float targetSize = 30.0F; // Set the desired size of the entity
+        float yaw = (float) (60 - mouseX); // Calculate the yaw based on the mouse position
+
+        stack.pushPose(); // Push the current pose onto the stack
+        stack.translate((float) entityPosX, (float) entityPosY, 50f); // Translate the entity's position
+        stack.scale(targetSize, targetSize, targetSize); // Scale the entity to the desired size
+        stack.mulPose(Vector3f.ZP.rotationDegrees(180.0F)); // Rotate the entity to face a certain direction
+
+        float yawRadians = -(yaw / 40.F) * 20.0F; // Calculate the yaw angle in radians for the entity's rotation
+
+        // Apply the calculated yaw angle to the entity's rotation properties
+        currentLivingEntity.yBodyRot = yawRadians;
+        currentLivingEntity.setYRot(yawRadians);
+        currentLivingEntity.yHeadRot = yawRadians;
+        currentLivingEntity.yHeadRotO = yawRadians;
+
+        stack.translate(0.0F, currentLivingEntity.getMyRidingOffset(), 0.0F); // Translate the entity vertically to adjust its position
+
+        EntityRenderDispatcher entityRenderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher(); // Get the entity rendering dispatcher
+        entityRenderDispatcher.overrideCameraOrientation(Quaternion.ONE); // Override the camera orientation for rendering
+        entityRenderDispatcher.setRenderShadow(false); // Disable rendering shadows for the entity
+
+        // Get the buffer source for rendering
+        final MultiBufferSource.BufferSource bufferSource = Minecraft.getInstance().renderBuffers().bufferSource();
+
+        // Render the currentLivingEntity using the entityRenderDispatcher
+        entityRenderDispatcher.render(currentLivingEntity, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, stack, bufferSource, ENTITY_RENDER_DISTANCE);
+
+        bufferSource.endBatch(); // End the rendering batch
+        entityRenderDispatcher.setRenderShadow(true); // Re-enable rendering shadows
+
+        stack.popPose(); // Pop the pose from the stack to revert transformations
     }
 
     public record BreedingRecipe(EntityType<?> entityType, Ingredient breedingCatalyst, ItemStack spawnEgg, @Nullable Boolean needsToBeTamed, Ingredient resultItemStack, @Nullable ItemStack extraInputStack) {
