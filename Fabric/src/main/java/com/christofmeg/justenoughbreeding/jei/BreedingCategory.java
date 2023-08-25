@@ -1,7 +1,6 @@
 package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import mezz.jei.api.constants.VanillaTypes;
@@ -21,33 +20,49 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.animal.Cat;
+import net.minecraft.world.entity.animal.Fox;
+import net.minecraft.world.entity.animal.Ocelot;
+import net.minecraft.world.entity.animal.Panda;
+import net.minecraft.world.entity.animal.Pig;
+import net.minecraft.world.entity.animal.Turtle;
+import net.minecraft.world.entity.animal.Wolf;
+import net.minecraft.world.entity.animal.axolotl.Axolotl;
+import net.minecraft.world.entity.animal.frog.Frog;
+import net.minecraft.world.entity.animal.horse.Horse;
+import net.minecraft.world.entity.monster.hoglin.Hoglin;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Quaternionf;
 
 public class BreedingCategory implements IRecipeCategory<BreedingCategory.BreedingRecipe> {
+
+    static final int ENTITY_CREATION_INTERVAL = 3000;
+    static final int ENTITY_RENDER_DISTANCE = 15728880;
 
     public static final RecipeType<BreedingRecipe> TYPE = new RecipeType<>(
             new ResourceLocation(CommonConstants.MOD_ID, "breeding"), BreedingRecipe.class);
 
-    public static final ResourceLocation slotVanilla = new ResourceLocation("jei",
+    final ResourceLocation slotVanilla = new ResourceLocation("jei",
             "textures/jei/atlas/gui/slot.png");
 
-    public static final ResourceLocation breedingSlot = new ResourceLocation("justenoughbreeding",
+    final ResourceLocation breedingSlot = new ResourceLocation("justenoughbreeding",
             "textures/gui/breeding.png");
 
-    public static final ResourceLocation eggSlot = new ResourceLocation("jei",
+    final ResourceLocation eggSlot = new ResourceLocation("jei",
             "textures/jei/gui/gui_vanilla.png");
 
-    public static IDrawable background;
-    public static IDrawable icon;
-    public static IDrawable slot;
-    public static IDrawable mobRenderSlot;
-    public static IDrawable outputSlot;
+    private final IDrawable background;
+    private final IDrawable icon;
+    private final IDrawable slot;
+    private final IDrawable mobRenderSlot;
+    private final IDrawable outputSlot;
 
     private final int breedableFoodSlotX = 69; //The hover slot
     private final int breedableFoodSlotY = 58; //The hover slot
@@ -82,18 +97,17 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, BreedingRecipe recipe, @NotNull IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.INPUT, 149, 1).addItemStack((recipe.spawnEgg()));
-        builder.addSlot(RecipeIngredientRole.INPUT, breedableFoodSlotX, breedableFoodSlotY).addIngredients((recipe.breedingCatalyst()));
-        if(recipe.resultItemStack() != null) {
-            builder.addSlot(RecipeIngredientRole.OUTPUT, 130, 48).addIngredients(recipe.resultItemStack());
+        builder.addSlot(RecipeIngredientRole.INPUT, 149, 1).addItemStack((recipe.spawnEgg));
+        builder.addSlot(RecipeIngredientRole.INPUT, breedableFoodSlotX, breedableFoodSlotY).addIngredients((recipe.breedingCatalyst));
+        if(recipe.resultItemStack != null) {
+            builder.addSlot(RecipeIngredientRole.OUTPUT, 130, 48).addIngredients(recipe.resultItemStack);
         }
-        if(recipe.extraInputStack() != null) {
-            builder.addSlot(RecipeIngredientRole.CATALYST, 69, 39).addItemStack(recipe.extraInputStack());
+        if(recipe.extraInputStack != null) {
+            builder.addSlot(RecipeIngredientRole.CATALYST, 69, 39).addItemStack(recipe.extraInputStack);
         }
     }
 
     @Override
-    @SuppressWarnings("deprecated")
     public void draw(@NotNull BreedingRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull PoseStack stack, double mouseX, double mouseY) {
 
         // Draw the recipe slots at specific positions
@@ -105,15 +119,16 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
 
         // output slot
         outputSlot.draw(stack, 94, 43);
-
         mobRenderSlot.draw(stack, 0, 10);
 
-        if(recipe.entityType() != null) {
-            Font font = Minecraft.getInstance().font;
-            Component entityName = Component.translatable(recipe.entityType().getDescriptionId());
+        EntityType<?> entityType = recipe.entityType;
+        if(entityType != null) {
+            Minecraft instance = Minecraft.getInstance();
+            Font font = instance.font;
+            Component entityName = Component.translatable(entityType.getDescriptionId());
 
             String entityNameString = entityName.getString(); // Convert Component to String
-            if(recipe.needsToBeTamed() != null) {
+            if(recipe.needsToBeTamed != null) {
                 entityNameString += " (Tamed)";
             }
 
@@ -131,55 +146,119 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
                 font.draw(stack, abbreviatedEntityName, 0.0F, 0.0F, DyeColor.BLACK.getTextColor());
             }
 
-            if (Minecraft.getInstance().level != null) {
-                // Create a LivingEntity from the recipe's entity type
-                LivingEntity livingEntity = (LivingEntity) recipe.entityType().create(Minecraft.getInstance().level);
+            recipe.doRendering(stack, mouseX);
 
-                if (livingEntity != null) {
-                    int entityPosX = 31; // Adjust the X position as desired
-                    int entityPosY = 89; // Adjust the Y position as desired
-                    float targetSize = 30.0F; // Adjust the desired size of the entities
-                    float entityYaw = 0.0F; // Update the yaw (vertical rotation) angle based on the cursor's position
-                    float entityPitch = 180.0F; // Set the pitch (horizontal rotation) angle to 0.0F
-                    float partialTicks = 0; // Set to 0 to ensure rendering is done without interpolation or animation
-
-                    stack.pushPose(); // Pushes the current transformation matrix onto the matrix stack
-
-                    // Translate the matrix to the center position specified by entityPosX and entityPosY
-                    stack.translate(entityPosX, entityPosY, 0);
-
-                    // Calculate the scaling factor based on the longest dimension of the entity's bounding box
-                    AABB boundingBox = livingEntity.getBoundingBox();
-                    double longestDimension = Math.max(boundingBox.getXsize(), Math.max(boundingBox.getYsize(), boundingBox.getZsize()));
-                    float scalingFactor = targetSize / (float) longestDimension;
-                    stack.scale(scalingFactor, scalingFactor, scalingFactor); // Apply the scaling transformation
-
-                    // Calculate the rotation angle based on the cursor's position
-                    double dx = mouseX - entityPosX;
-                    double dz = mouseY - entityPosY;
-                    double angle = Math.atan2(dz, dx) * (180.0 / Math.PI) - 90.0;
-
-                    stack.mulPose(Axis.YP.rotationDegrees(entityYaw)); // Apply the yaw rotation
-                    stack.mulPose(Axis.XP.rotationDegrees(entityPitch)); // Apply the pitch rotation
-                    stack.mulPose(Axis.YP.rotationDegrees((float) angle)); // Applies a rotation transformation around the Y-axis by the specified angle in degrees.
-
-                    EntityRenderDispatcher entityRenderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher(); // Get the entity render dispatcher from the Minecraft instance.
-                    entityRenderDispatcher.setRenderShadow(false); // Disable rendering of shadows for the entity.
-                    MultiBufferSource.BufferSource bufferSource = Minecraft.getInstance().renderBuffers().bufferSource(); // Get the buffer source for rendering.
-
-                    // Render the livingEntity using the entityRenderDispatcher
-                    RenderSystem.runAsFancy(() -> entityRenderDispatcher.render(livingEntity, 0.0D, 0.0D, 0.0D, 0.0F, partialTicks, stack, bufferSource, 15728880));
-
-                    bufferSource.endBatch(); // End the batch for the buffer source.
-                    entityRenderDispatcher.setRenderShadow(true); // Enable rendering of shadows for the entity.
-                    stack.popPose(); // Pop the current pose from the stack.
-                    RenderSystem.applyModelViewMatrix(); // Apply the model view matrix.
-                }
-            }
         }
     }
 
-    public record BreedingRecipe(EntityType<?> entityType, Ingredient breedingCatalyst, ItemStack spawnEgg, @Nullable Boolean needsToBeTamed, Ingredient resultItemStack, @Nullable ItemStack extraInputStack) {
+    private static void renderEntity(@NotNull PoseStack stack, double mouseX, LivingEntity currentLivingEntity) {
+        // Set the desired position of the entity on the screen
+        int entityPosX = 31;
+        int entityPosY = 89;
+
+        float yaw = (float) (60 - mouseX); // Calculate the yaw based on the mouse position
+
+        stack.pushPose(); // Push the current pose onto the stack
+        stack.translate((float) entityPosX, (float) entityPosY, 50f); // Translate the entity's position
+
+        // Calculate the scaling factor based on the bounding box's largest dimension
+        AABB boundingBox = currentLivingEntity.getBoundingBox();
+        double largestDimension = Math.max(boundingBox.getXsize(), Math.max(boundingBox.getYsize(), boundingBox.getZsize()));
+
+        float desiredWidth = 30.0F;
+        float desiredHeight = 40.0F;
+
+        // Calculate the scaling factors for width and height
+        float scaleX = desiredWidth / (float) largestDimension;
+        float scaleY = desiredHeight / (float) largestDimension;
+
+        // Use the smaller of the two scaling factors to ensure the entity fits within the area
+        float scalingFactor = Math.min(scaleX, scaleY);
+
+        if (currentLivingEntity instanceof Frog) {
+            scalingFactor = 50;
+        }
+
+        if (currentLivingEntity instanceof Axolotl || currentLivingEntity instanceof Cat ||
+                currentLivingEntity instanceof Pig || currentLivingEntity instanceof Wolf) {
+            scalingFactor = 25;
+        }
+
+        if (currentLivingEntity instanceof Ocelot || currentLivingEntity instanceof Fox
+                || currentLivingEntity instanceof Turtle) {
+            scalingFactor = 20;
+        }
+
+        if (currentLivingEntity instanceof Hoglin || currentLivingEntity instanceof Horse
+                || currentLivingEntity instanceof Panda) {
+            scalingFactor = 15;
+        }
+
+        stack.scale(scalingFactor, scalingFactor, scalingFactor); // Scale the entity to fit within the desired area
+        stack.mulPose(Axis.ZP.rotationDegrees(180.0F)); // Rotate the entity to face a certain direction
+
+        float yawRadians = -(yaw / 40.F) * 20.0F; // Calculate the yaw angle in radians for the entity's rotation
+
+        // Apply the calculated yaw angle to the entity's rotation properties
+        currentLivingEntity.yBodyRot = yawRadians;
+        currentLivingEntity.setYRot(yawRadians);
+        currentLivingEntity.yHeadRot = yawRadians;
+        currentLivingEntity.yHeadRotO = yawRadians;
+
+        stack.translate(0.0F, currentLivingEntity.getMyRidingOffset(), 0.0F); // Translate the entity vertically to adjust its position
+
+        Minecraft instance = Minecraft.getInstance();
+        EntityRenderDispatcher entityRenderDispatcher = instance.getEntityRenderDispatcher(); // Get the entity rendering dispatcher
+        entityRenderDispatcher.overrideCameraOrientation(new Quaternionf(0.0F, 0.0F, 0.0F, 1.0F)); // Override the camera orientation for rendering
+        entityRenderDispatcher.setRenderShadow(false); // Disable rendering shadows for the entity
+
+        // Get the buffer source for rendering
+        final MultiBufferSource.BufferSource bufferSource = instance.renderBuffers().bufferSource();
+
+        // Render the currentLivingEntity using the entityRenderDispatcher
+        entityRenderDispatcher.render(currentLivingEntity, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, stack, bufferSource, ENTITY_RENDER_DISTANCE);
+
+        bufferSource.endBatch(); // End the rendering batch
+        entityRenderDispatcher.setRenderShadow(true); // Re-enable rendering shadows
+
+        stack.popPose(); // Pop the pose from the stack to revert transformations
+    }
+
+    public static class BreedingRecipe {
+        private LivingEntity currentLivingEntity = null;
+        private long lastEntityCreationTime = 0;
+
+        private final EntityType<?> entityType;
+        private final Ingredient breedingCatalyst;
+        private final ItemStack spawnEgg;
+        @Nullable
+        private final Boolean needsToBeTamed;
+        private final Ingredient resultItemStack;
+        @Nullable
+        private final ItemStack extraInputStack;
+
+        public BreedingRecipe(EntityType<?> entityType, Ingredient breedingCatalyst, ItemStack spawnEgg, @Nullable Boolean needsToBeTamed, Ingredient resultItemStack, @Nullable ItemStack extraInputStack) {
+            this.entityType = entityType;
+            this.breedingCatalyst = breedingCatalyst;
+            this.spawnEgg = spawnEgg;
+            this.needsToBeTamed = needsToBeTamed;
+            this.resultItemStack = resultItemStack;
+            this.extraInputStack = extraInputStack;
+        }
+
+        private void doRendering(PoseStack stack, double mouseX) {
+            long currentTime = System.currentTimeMillis();
+            Level level = Minecraft.getInstance().level;
+
+            if (level != null && (currentLivingEntity == null || currentTime - lastEntityCreationTime >= ENTITY_CREATION_INTERVAL)) {
+                currentLivingEntity = (LivingEntity) entityType.create(level);
+                lastEntityCreationTime = currentTime;
+            }
+
+            if (currentLivingEntity != null) {
+                renderEntity(stack, mouseX, currentLivingEntity);
+            }
+        }
     }
 
     //TODO https://www.curseforge.com/minecraft/mc-mods/deeperdarker
@@ -210,11 +289,5 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
     //TODO https://www.curseforge.com/minecraft/mc-mods/roost-ultimate
     //TODO https://www.curseforge.com/minecraft/mc-mods/ender-zoology
     //TODO https://www.curseforge.com/minecraft/mc-mods/primal-reservation
-
-
-
-
-
-
 
 }
