@@ -18,6 +18,7 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -29,7 +30,6 @@ import net.minecraft.world.entity.animal.Pig;
 import net.minecraft.world.entity.animal.Turtle;
 import net.minecraft.world.entity.animal.Wolf;
 import net.minecraft.world.entity.animal.axolotl.Axolotl;
-import net.minecraft.world.entity.animal.frog.Frog;
 import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.entity.monster.hoglin.Hoglin;
 import net.minecraft.world.item.DyeColor;
@@ -82,7 +82,7 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
 
     @Override
     public @NotNull Component getTitle() {
-        return Component.translatable("translation.justenoughbreeding.breeding");
+        return new TranslatableComponent("translation.justenoughbreeding.breeding");
     }
 
     @Override
@@ -125,7 +125,7 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
         if(entityType != null) {
             Minecraft instance = Minecraft.getInstance();
             Font font = instance.font;
-            Component entityName = Component.translatable(entityType.getDescriptionId());
+            Component entityName = new TranslatableComponent(entityType.getDescriptionId());
 
             String entityNameString = entityName.getString(); // Convert Component to String
             if(recipe.needsToBeTamed != null) {
@@ -151,6 +151,18 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
         }
     }
 
+    @SuppressWarnings("removal")
+    @Override
+    public @NotNull ResourceLocation getUid() {
+        return TYPE.getUid();
+    }
+
+    @SuppressWarnings("removal")
+    @Override
+    public @NotNull Class<? extends BreedingRecipe> getRecipeClass() {
+        return TYPE.getRecipeClass();
+    }
+
     private static void renderEntity(@NotNull PoseStack stack, double mouseX, LivingEntity currentLivingEntity) {
         // Set the desired position of the entity on the screen
         int entityPosX = 31;
@@ -174,10 +186,6 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
 
         // Use the smaller of the two scaling factors to ensure the entity fits within the area
         float scalingFactor = Math.min(scaleX, scaleY);
-
-        if (currentLivingEntity instanceof Frog) {
-            scalingFactor = 50;
-        }
 
         if (currentLivingEntity instanceof Axolotl || currentLivingEntity instanceof Cat ||
                 currentLivingEntity instanceof Pig || currentLivingEntity instanceof Wolf) {

@@ -18,8 +18,6 @@ dependencies {
         compileOnly("mezz.jei:jei-${minecraft_version}-common:${jei_version}")
         compileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
         compileOnly("mezz.jei:jei-${minecraft_version}-core:${jei_version}")
-        compileOnly("mezz.jei:jei-${minecraft_version}-gui:${jei_version}")
-        compileOnly("mezz.jei:jei-${minecraft_version}-lib:${jei_version}")
     }
 
     // FORGE CONFIG API PORT FABRIC

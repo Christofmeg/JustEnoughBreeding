@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[41,)"
+loaderVersion="[40,)"
 issueTrackerURL="https://github.com/Christofmeg/JustEnoughBreeding/issues" #optional
 license="The MIT License (MIT)"
 [[mods]]
@@ -14,19 +14,19 @@ description="JEI plugin that displays breeding information"
 [[dependencies.justenoughbreeding]]
     modId="forge"
     mandatory=true
-    versionRange="[41,)"
+    versionRange="[40,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.justenoughbreeding]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.19,1.20)"
+    versionRange="[1.18,1.19)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.justenoughbreeding]]
     modId="jei"
     mandatory=false
-    versionRange="[11.4.0.287,)"
+    versionRange="[10,)"
     ordering="NONE"
     side="BOTH"
 [modproperties.justenoughbreeding]
