@@ -21,10 +21,23 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.animal.Cat;
+import net.minecraft.world.entity.animal.Fox;
+import net.minecraft.world.entity.animal.Ocelot;
+import net.minecraft.world.entity.animal.Panda;
+import net.minecraft.world.entity.animal.Pig;
+import net.minecraft.world.entity.animal.Turtle;
+import net.minecraft.world.entity.animal.Wolf;
+import net.minecraft.world.entity.animal.axolotl.Axolotl;
+import net.minecraft.world.entity.animal.frog.Frog;
+import net.minecraft.world.entity.animal.horse.Horse;
+import net.minecraft.world.entity.monster.hoglin.Hoglin;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -33,8 +46,8 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
     private static final int ENTITY_CREATION_INTERVAL = 3000;
     private static final int ENTITY_RENDER_DISTANCE = 15728880;
 
-    private LivingEntity currentLivingEntity = null;
-    private long lastEntityCreationTime = 0;
+    private static LivingEntity currentLivingEntity = null;
+    private static long lastEntityCreationTime = 0;
 
     public static final RecipeType<BreedingRecipe> TYPE = new RecipeType<>(
             new ResourceLocation(CommonConstants.MOD_ID, "breeding"), BreedingRecipe.class);
@@ -109,12 +122,13 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
 
         // output slot
         outputSlot.draw(stack, 94, 43);
-
         mobRenderSlot.draw(stack, 0, 10);
 
-        if(recipe.entityType() != null) {
-            Font font = Minecraft.getInstance().font;
-            Component entityName = Component.translatable(recipe.entityType().getDescriptionId());
+        EntityType<?> entityType = recipe.entityType();
+        if(entityType != null) {
+            Minecraft instance = Minecraft.getInstance();
+            Font font = instance.font;
+            Component entityName = Component.translatable(entityType.getDescriptionId());
 
             String entityNameString = entityName.getString(); // Convert Component to String
             if(recipe.needsToBeTamed() != null) {
@@ -135,33 +149,27 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
                 font.draw(stack, abbreviatedEntityName, 0.0F, 0.0F, DyeColor.BLACK.getTextColor());
             }
 
-            if (Minecraft.getInstance().level != null) {
+            Level level = instance.level;
+            if (level != null) {
 
-                LivingEntity livingEntity = (LivingEntity) recipe.entityType().create(Minecraft.getInstance().level);
+                LivingEntity livingEntity = (LivingEntity) entityType.create(level);
                 long currentTime = System.currentTimeMillis();
 
-                if (currentLivingEntity != null && currentLivingEntity.getType() != recipe.entityType()) {
-                    currentLivingEntity = (LivingEntity) recipe.entityType().create(Minecraft.getInstance().level);
+                if (currentLivingEntity != null && currentLivingEntity.getType() != entityType) {
+                    currentLivingEntity = (LivingEntity) entityType.create(level);
                 }
 
-                if (shouldCreateNewEntity(currentTime)) {
-                    currentLivingEntity = (LivingEntity) recipe.entityType().create(Minecraft.getInstance().level);
+                if (currentLivingEntity == null || currentTime - lastEntityCreationTime >= ENTITY_CREATION_INTERVAL) {
+                    currentLivingEntity = (LivingEntity) entityType.create(level);
                     lastEntityCreationTime = currentTime;
                 }
 
-                if (shouldRenderEntity(livingEntity)) {
+                if (currentLivingEntity != null && currentLivingEntity != livingEntity) {
                     renderEntity(stack, mouseX, currentLivingEntity);
                 }
             }
+
         }
-    }
-
-    private boolean shouldCreateNewEntity(long currentTime) {
-        return currentLivingEntity == null || currentTime - lastEntityCreationTime >= ENTITY_CREATION_INTERVAL;
-    }
-
-    private boolean shouldRenderEntity(LivingEntity livingEntity) {
-        return currentLivingEntity != null && currentLivingEntity != livingEntity;
     }
 
     private static void renderEntity(@NotNull PoseStack stack, double mouseX, LivingEntity currentLivingEntity) {
@@ -169,12 +177,45 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
         int entityPosX = 31;
         int entityPosY = 89;
 
-        float targetSize = 30.0F; // Set the desired size of the entity
         float yaw = (float) (60 - mouseX); // Calculate the yaw based on the mouse position
 
         stack.pushPose(); // Push the current pose onto the stack
         stack.translate((float) entityPosX, (float) entityPosY, 50f); // Translate the entity's position
-        stack.scale(targetSize, targetSize, targetSize); // Scale the entity to the desired size
+
+        // Calculate the scaling factor based on the bounding box's largest dimension
+        AABB boundingBox = currentLivingEntity.getBoundingBox();
+        double largestDimension = Math.max(boundingBox.getXsize(), Math.max(boundingBox.getYsize(), boundingBox.getZsize()));
+
+        float desiredWidth = 30.0F;
+        float desiredHeight = 40.0F;
+
+        // Calculate the scaling factors for width and height
+        float scaleX = desiredWidth / (float) largestDimension;
+        float scaleY = desiredHeight / (float) largestDimension;
+
+        // Use the smaller of the two scaling factors to ensure the entity fits within the area
+        float scalingFactor = Math.min(scaleX, scaleY);
+
+        if (currentLivingEntity instanceof Frog) {
+            scalingFactor = 50;
+        }
+
+        if (currentLivingEntity instanceof Axolotl || currentLivingEntity instanceof Cat ||
+                currentLivingEntity instanceof Pig || currentLivingEntity instanceof Wolf) {
+            scalingFactor = 25;
+        }
+
+        if (currentLivingEntity instanceof Ocelot || currentLivingEntity instanceof Fox
+                || currentLivingEntity instanceof Turtle) {
+            scalingFactor = 20;
+        }
+
+        if (currentLivingEntity instanceof Hoglin || currentLivingEntity instanceof Horse
+                || currentLivingEntity instanceof Panda) {
+            scalingFactor = 15;
+        }
+
+        stack.scale(scalingFactor, scalingFactor, scalingFactor); // Scale the entity to fit within the desired area
         stack.mulPose(Vector3f.ZP.rotationDegrees(180.0F)); // Rotate the entity to face a certain direction
 
         float yawRadians = -(yaw / 40.F) * 20.0F; // Calculate the yaw angle in radians for the entity's rotation
@@ -187,12 +228,13 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
 
         stack.translate(0.0F, currentLivingEntity.getMyRidingOffset(), 0.0F); // Translate the entity vertically to adjust its position
 
-        EntityRenderDispatcher entityRenderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher(); // Get the entity rendering dispatcher
+        Minecraft instance = Minecraft.getInstance();
+        EntityRenderDispatcher entityRenderDispatcher = instance.getEntityRenderDispatcher(); // Get the entity rendering dispatcher
         entityRenderDispatcher.overrideCameraOrientation(Quaternion.ONE); // Override the camera orientation for rendering
         entityRenderDispatcher.setRenderShadow(false); // Disable rendering shadows for the entity
 
         // Get the buffer source for rendering
-        final MultiBufferSource.BufferSource bufferSource = Minecraft.getInstance().renderBuffers().bufferSource();
+        final MultiBufferSource.BufferSource bufferSource = instance.renderBuffers().bufferSource();
 
         // Render the currentLivingEntity using the entityRenderDispatcher
         entityRenderDispatcher.render(currentLivingEntity, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, stack, bufferSource, ENTITY_RENDER_DISTANCE);
@@ -204,6 +246,8 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
     }
 
     public record BreedingRecipe(EntityType<?> entityType, Ingredient breedingCatalyst, ItemStack spawnEgg, @Nullable Boolean needsToBeTamed, Ingredient resultItemStack, @Nullable ItemStack extraInputStack) {
+        //TODO fix flickering when multiple entities are rendered on the same page, due to GUI scale
+
     }
 
     //TODO https://www.curseforge.com/minecraft/mc-mods/deeperdarker
