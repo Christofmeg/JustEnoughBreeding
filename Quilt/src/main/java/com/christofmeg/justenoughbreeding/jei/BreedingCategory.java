@@ -35,6 +35,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -42,27 +43,26 @@ import org.joml.Quaternionf;
 
 public class BreedingCategory implements IRecipeCategory<BreedingCategory.BreedingRecipe> {
 
-    private static final int ENTITY_CREATION_INTERVAL = 3000;
-    private static final int ENTITY_RENDER_DISTANCE = 15728880;
-
-    private LivingEntity currentLivingEntity = null;
-    private long lastEntityCreationTime = 0;
+    static final int ENTITY_CREATION_INTERVAL = 3000;
+    static final int ENTITY_RENDER_DISTANCE = 15728880;
 
     public static final RecipeType<BreedingRecipe> TYPE = new RecipeType<>(
             new ResourceLocation(CommonConstants.MOD_ID, "breeding"), BreedingRecipe.class);
 
-    public static final ResourceLocation slotVanilla = new ResourceLocation("jei",
+    final ResourceLocation slotVanilla = new ResourceLocation("jei",
             "textures/jei/atlas/gui/slot.png");
-    public static final ResourceLocation breedingSlot = new ResourceLocation("justenoughbreeding",
+
+    final ResourceLocation breedingSlot = new ResourceLocation("justenoughbreeding",
             "textures/gui/breeding.png");
-    public static final ResourceLocation eggSlot = new ResourceLocation("jei",
+
+    final ResourceLocation eggSlot = new ResourceLocation("jei",
             "textures/jei/gui/gui_vanilla.png");
 
-    public static IDrawable background;
-    public static IDrawable icon;
-    public static IDrawable slot;
-    public static IDrawable mobRenderSlot;
-    public static IDrawable outputSlot;
+    private final IDrawable background;
+    private final IDrawable icon;
+    private final IDrawable slot;
+    private final IDrawable mobRenderSlot;
+    private final IDrawable outputSlot;
 
     private final int breedableFoodSlotX = 69; //The hover slot
     private final int breedableFoodSlotY = 58; //The hover slot
@@ -97,13 +97,13 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, BreedingRecipe recipe, @NotNull IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.INPUT, 149, 1).addItemStack((recipe.spawnEgg()));
-        builder.addSlot(RecipeIngredientRole.INPUT, breedableFoodSlotX, breedableFoodSlotY).addIngredients((recipe.breedingCatalyst()));
-        if(recipe.resultItemStack() != null) {
-            builder.addSlot(RecipeIngredientRole.OUTPUT, 130, 48).addIngredients(recipe.resultItemStack());
+        builder.addSlot(RecipeIngredientRole.INPUT, 149, 1).addItemStack((recipe.spawnEgg));
+        builder.addSlot(RecipeIngredientRole.INPUT, breedableFoodSlotX, breedableFoodSlotY).addIngredients((recipe.breedingCatalyst));
+        if(recipe.resultItemStack != null) {
+            builder.addSlot(RecipeIngredientRole.OUTPUT, 130, 48).addIngredients(recipe.resultItemStack);
         }
-        if(recipe.extraInputStack() != null) {
-            builder.addSlot(RecipeIngredientRole.CATALYST, 69, 39).addItemStack(recipe.extraInputStack());
+        if(recipe.extraInputStack != null) {
+            builder.addSlot(RecipeIngredientRole.CATALYST, 69, 39).addItemStack(recipe.extraInputStack);
         }
     }
 
@@ -119,15 +119,16 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
 
         // output slot
         outputSlot.draw(stack, 94, 43);
-
         mobRenderSlot.draw(stack, 0, 10);
 
-        if(recipe.entityType() != null) {
-            Font font = Minecraft.getInstance().font;
-            Component entityName = Component.translatable(recipe.entityType().getDescriptionId());
+        EntityType<?> entityType = recipe.entityType;
+        if(entityType != null) {
+            Minecraft instance = Minecraft.getInstance();
+            Font font = instance.font;
+            Component entityName = Component.translatable(entityType.getDescriptionId());
 
             String entityNameString = entityName.getString(); // Convert Component to String
-            if(recipe.needsToBeTamed() != null) {
+            if(recipe.needsToBeTamed != null) {
                 entityNameString += " (Tamed)";
             }
 
@@ -145,33 +146,9 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
                 font.draw(stack, abbreviatedEntityName, 0.0F, 0.0F, DyeColor.BLACK.getTextColor());
             }
 
-            if (Minecraft.getInstance().level != null) {
+            recipe.doRendering(stack, mouseX);
 
-                LivingEntity livingEntity = (LivingEntity) recipe.entityType().create(Minecraft.getInstance().level);
-                long currentTime = System.currentTimeMillis();
-
-                if (currentLivingEntity != null && currentLivingEntity.getType() != recipe.entityType()) {
-                    currentLivingEntity = (LivingEntity) recipe.entityType().create(Minecraft.getInstance().level);
-                }
-
-                if (shouldCreateNewEntity(currentTime)) {
-                    currentLivingEntity = (LivingEntity) recipe.entityType().create(Minecraft.getInstance().level);
-                    lastEntityCreationTime = currentTime;
-                }
-
-                if (shouldRenderEntity(livingEntity)) {
-                    renderEntity(stack, mouseX, currentLivingEntity);
-                }
-            }
         }
-    }
-
-    private boolean shouldCreateNewEntity(long currentTime) {
-        return currentLivingEntity == null || currentTime - lastEntityCreationTime >= ENTITY_CREATION_INTERVAL;
-    }
-
-    private boolean shouldRenderEntity(LivingEntity livingEntity) {
-        return currentLivingEntity != null && currentLivingEntity != livingEntity;
     }
 
     private static void renderEntity(@NotNull PoseStack stack, double mouseX, LivingEntity currentLivingEntity) {
@@ -230,12 +207,13 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
 
         stack.translate(0.0F, currentLivingEntity.getMyRidingOffset(), 0.0F); // Translate the entity vertically to adjust its position
 
-        EntityRenderDispatcher entityRenderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher(); // Get the entity rendering dispatcher
+        Minecraft instance = Minecraft.getInstance();
+        EntityRenderDispatcher entityRenderDispatcher = instance.getEntityRenderDispatcher(); // Get the entity rendering dispatcher
         entityRenderDispatcher.overrideCameraOrientation(new Quaternionf(0.0F, 0.0F, 0.0F, 1.0F)); // Override the camera orientation for rendering
         entityRenderDispatcher.setRenderShadow(false); // Disable rendering shadows for the entity
 
         // Get the buffer source for rendering
-        final MultiBufferSource.BufferSource bufferSource = Minecraft.getInstance().renderBuffers().bufferSource();
+        final MultiBufferSource.BufferSource bufferSource = instance.renderBuffers().bufferSource();
 
         // Render the currentLivingEntity using the entityRenderDispatcher
         entityRenderDispatcher.render(currentLivingEntity, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, stack, bufferSource, ENTITY_RENDER_DISTANCE);
@@ -246,7 +224,41 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
         stack.popPose(); // Pop the pose from the stack to revert transformations
     }
 
-    public record BreedingRecipe(EntityType<?> entityType, Ingredient breedingCatalyst, ItemStack spawnEgg, @Nullable Boolean needsToBeTamed, Ingredient resultItemStack, @Nullable ItemStack extraInputStack) {
+    public static class BreedingRecipe {
+        private LivingEntity currentLivingEntity = null;
+        private long lastEntityCreationTime = 0;
+
+        private final EntityType<?> entityType;
+        private final Ingredient breedingCatalyst;
+        private final ItemStack spawnEgg;
+        @Nullable
+        private final Boolean needsToBeTamed;
+        private final Ingredient resultItemStack;
+        @Nullable
+        private final ItemStack extraInputStack;
+
+        public BreedingRecipe(EntityType<?> entityType, Ingredient breedingCatalyst, ItemStack spawnEgg, @Nullable Boolean needsToBeTamed, Ingredient resultItemStack, @Nullable ItemStack extraInputStack) {
+            this.entityType = entityType;
+            this.breedingCatalyst = breedingCatalyst;
+            this.spawnEgg = spawnEgg;
+            this.needsToBeTamed = needsToBeTamed;
+            this.resultItemStack = resultItemStack;
+            this.extraInputStack = extraInputStack;
+        }
+
+        private void doRendering(PoseStack stack, double mouseX) {
+            long currentTime = System.currentTimeMillis();
+            Level level = Minecraft.getInstance().level;
+
+            if (level != null && (currentLivingEntity == null || currentTime - lastEntityCreationTime >= ENTITY_CREATION_INTERVAL)) {
+                currentLivingEntity = (LivingEntity) entityType.create(level);
+                lastEntityCreationTime = currentTime;
+            }
+
+            if (currentLivingEntity != null) {
+                renderEntity(stack, mouseX, currentLivingEntity);
+            }
+        }
     }
 
     //TODO https://www.curseforge.com/minecraft/mc-mods/deeperdarker
@@ -277,11 +289,5 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
     //TODO https://www.curseforge.com/minecraft/mc-mods/roost-ultimate
     //TODO https://www.curseforge.com/minecraft/mc-mods/ender-zoology
     //TODO https://www.curseforge.com/minecraft/mc-mods/primal-reservation
-
-
-
-
-
-
 
 }
