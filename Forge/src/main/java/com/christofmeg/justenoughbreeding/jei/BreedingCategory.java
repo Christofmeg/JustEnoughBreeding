@@ -4,6 +4,7 @@ import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Quaternion;
 import com.mojang.math.Vector3f;
+import mezz.jei.api.MethodsReturnNonnullByDefault;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -35,15 +36,17 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class BreedingCategory implements IRecipeCategory<BreedingCategory.BreedingRecipe> {
 
     static final int ENTITY_CREATION_INTERVAL = 3000;
@@ -78,22 +81,22 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
     }
 
     @Override
-    public @NotNull Component getTitle() {
+    public Component getTitle() {
         return new TranslatableComponent("translation.justenoughbreeding.breeding");
     }
 
     @Override
-    public @NotNull IDrawable getBackground() {
+    public IDrawable getBackground() {
         return background;
     }
 
     @Override
-    public @NotNull IDrawable getIcon() {
+    public IDrawable getIcon() {
         return icon;
     }
 
     @Override
-    public void setIngredients(BreedingRecipe recipe, @NotNull IIngredients ingredients) {
+    public void setIngredients(BreedingRecipe recipe, IIngredients ingredients) {
         List<ItemStack> spawnEggList = Collections.singletonList(recipe.spawnEgg);
 
         // Get the list of matching stacks from the breeding catalyst ingredient
@@ -144,7 +147,7 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
     }
 
     @Override
-    public void draw(@NotNull BreedingRecipe recipe, @NotNull PoseStack stack, double mouseX, double mouseY) {
+    public void draw(BreedingRecipe recipe, PoseStack stack, double mouseX, double mouseY) {
 
         // Draw the recipe slots at specific positions
         slot.draw(stack, 148, 0);
@@ -188,16 +191,16 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
     }
 
     @Override
-    public @NotNull ResourceLocation getUid() {
+    public ResourceLocation getUid() {
         return TYPE;
     }
 
     @Override
-    public @NotNull Class<? extends BreedingRecipe> getRecipeClass() {
+    public Class<? extends BreedingRecipe> getRecipeClass() {
         return BreedingCategory.BreedingRecipe.class;
     }
 
-    private static void renderEntity(@NotNull PoseStack stack, double mouseX, LivingEntity currentLivingEntity) {
+    private static void renderEntity(PoseStack stack, double mouseX, LivingEntity currentLivingEntity) {
         // Set the desired position of the entity on the screen
         int entityPosX = 31;
         int entityPosY = 89;
@@ -273,13 +276,12 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
         private final EntityType<?> entityType;
         private final Ingredient breedingCatalyst;
         private final ItemStack spawnEgg;
-        @Nullable
+
         private final Boolean needsToBeTamed;
         private final Ingredient resultItemStack;
-        @Nullable
         private final ItemStack extraInputStack;
 
-        public BreedingRecipe(EntityType<?> entityType, Ingredient breedingCatalyst, ItemStack spawnEgg, @Nullable Boolean needsToBeTamed, Ingredient resultItemStack, @Nullable ItemStack extraInputStack) {
+        public BreedingRecipe(EntityType<?> entityType, Ingredient breedingCatalyst, ItemStack spawnEgg, Boolean needsToBeTamed, Ingredient resultItemStack, @Nullable ItemStack extraInputStack) {
             this.entityType = entityType;
             this.breedingCatalyst = breedingCatalyst;
             this.spawnEgg = spawnEgg;
