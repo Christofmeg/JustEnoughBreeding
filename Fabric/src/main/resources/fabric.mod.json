@@ -30,9 +30,6 @@
     "fabric": "*",
     "minecraft": ">=1.20",
     "java": ">=17",
-    "jei": ">=14",
-    "forgeconfigapiport": ">=7.0.0",
-    "com_electronwill_night-config_core": "*",
-    "com_electronwill_night-config_toml": "*"
+    "forgeconfigapiport": ">=7.0.0"
   }
 }
