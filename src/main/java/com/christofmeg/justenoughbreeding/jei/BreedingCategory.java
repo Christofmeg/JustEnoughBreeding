@@ -1,9 +1,7 @@
 package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Quaternion;
-import com.mojang.math.Vector3f;
+import com.mojang.blaze3d.matrix.MatrixStack;
 import mezz.jei.api.MethodsReturnNonnullByDefault;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;
@@ -12,30 +10,30 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.animal.Cat;
-import net.minecraft.world.entity.animal.Fox;
-import net.minecraft.world.entity.animal.Ocelot;
-import net.minecraft.world.entity.animal.Panda;
-import net.minecraft.world.entity.animal.Pig;
-import net.minecraft.world.entity.animal.Turtle;
-import net.minecraft.world.entity.animal.Wolf;
-import net.minecraft.world.entity.animal.axolotl.Axolotl;
-import net.minecraft.world.entity.animal.horse.Horse;
-import net.minecraft.world.entity.monster.hoglin.Hoglin;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.AABB;
+import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.renderer.IRenderTypeBuffer;
+import net.minecraft.client.renderer.entity.EntityRendererManager;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.monster.HoglinEntity;
+import net.minecraft.entity.passive.CatEntity;
+import net.minecraft.entity.passive.FoxEntity;
+import net.minecraft.entity.passive.OcelotEntity;
+import net.minecraft.entity.passive.PandaEntity;
+import net.minecraft.entity.passive.PigEntity;
+import net.minecraft.entity.passive.TurtleEntity;
+import net.minecraft.entity.passive.WolfEntity;
+import net.minecraft.entity.passive.horse.HorseEntity;
+import net.minecraft.item.DyeColor;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.vector.Quaternion;
+import net.minecraft.util.math.vector.Vector3f;
+import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -72,7 +70,7 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
     private final int breedableFoodSlotX = 68; //The hover slot
     private final int breedableFoodSlotY = 57; //The hover slot
 
-    public BreedingCategory(IGuiHelper helper, ItemLike itemStack) {
+    public BreedingCategory(IGuiHelper helper, Item itemStack) {
         background = helper.createBlankDrawable(166, 91);
         icon = helper.createDrawableIngredient(new ItemStack(itemStack));
         slot = helper.drawableBuilder(slotVanilla, 0, 0, 18, 18).setTextureSize(18, 18).build();
@@ -81,8 +79,8 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
     }
 
     @Override
-    public Component getTitle() {
-        return new TranslatableComponent("translation.justenoughbreeding.breeding");
+    public String getTitle() {
+        return I18n.get("translation.justenoughbreeding.breeding");
     }
 
     @Override
@@ -100,7 +98,7 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
         List<ItemStack> spawnEggList = Collections.singletonList(recipe.spawnEgg);
 
         // Get the list of matching stacks from the breeding catalyst ingredient
-        List<ItemStack> breedingCatalystStacks = Arrays.stream(recipe.breedingCatalyst.getItems()).toList();
+        List<ItemStack> breedingCatalystStacks = Arrays.asList(recipe.breedingCatalyst.getItems());
 
         List<List<ItemStack>> inputList = new ArrayList<>();
         inputList.add(spawnEggList);
@@ -111,7 +109,7 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
 
         // Check if there is a result item stack
         if (recipe.resultItemStack != null) {
-            List<ItemStack> resultItemStacks = Arrays.stream(recipe.resultItemStack.getItems()).toList();
+            List<ItemStack> resultItemStacks = Arrays.asList(recipe.resultItemStack.getItems());
             outputList.add(resultItemStacks);
         }
 
@@ -134,11 +132,11 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
         builder.getItemStacks().set(0, recipe.spawnEgg);
 
         builder.getItemStacks().init(1, true, breedableFoodSlotX, breedableFoodSlotY);
-        builder.getItemStacks().set(1, List.of(recipe.breedingCatalyst.getItems()));
+        builder.getItemStacks().set(1, Arrays.asList(recipe.breedingCatalyst.getItems()));
 
         if (recipe.resultItemStack != null) {
             builder.getItemStacks().init(2, false, 128, 46);
-            builder.getItemStacks().set(2, List.of(recipe.resultItemStack.getItems()));
+            builder.getItemStacks().set(2, Arrays.asList(recipe.resultItemStack.getItems()));
         }
         if (recipe.extraInputStack != null) {
             builder.getItemStacks().init(3, true, 68, 39);
@@ -147,7 +145,7 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
     }
 
     @Override
-    public void draw(BreedingRecipe recipe, PoseStack stack, double mouseX, double mouseY) {
+    public void draw(BreedingRecipe recipe, MatrixStack stack, double mouseX, double mouseY) {
 
         // Draw the recipe slots at specific positions
         slot.draw(stack, 148, 0);
@@ -163,10 +161,9 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
         EntityType<?> entityType = recipe.entityType;
         if(entityType != null) {
             Minecraft instance = Minecraft.getInstance();
-            Font font = instance.font;
-            Component entityName = new TranslatableComponent(entityType.getDescriptionId());
+            FontRenderer font = instance.font;
+            String entityNameString = I18n.get(entityType.getDescriptionId());
 
-            String entityNameString = entityName.getString(); // Convert Component to String
             if(recipe.needsToBeTamed != null) {
                 entityNameString += " (Tamed)";
             }
@@ -181,7 +178,7 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
             }
 
             if (!entityNameString.isEmpty()) {
-                Component abbreviatedEntityName = Component.nullToEmpty(entityNameString);
+                String abbreviatedEntityName = I18n.get(entityNameString);
                 font.draw(stack, abbreviatedEntityName, 0.0F, 0.0F, DyeColor.BLACK.getTextColor());
             }
 
@@ -200,7 +197,7 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
         return BreedingCategory.BreedingRecipe.class;
     }
 
-    private static void renderEntity(PoseStack stack, double mouseX, LivingEntity currentLivingEntity) {
+    private static void renderEntity(MatrixStack stack, double mouseX, LivingEntity currentLivingEntity) {
         // Set the desired position of the entity on the screen
         int entityPosX = 31;
         int entityPosY = 89;
@@ -211,7 +208,7 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
         stack.translate((float) entityPosX, (float) entityPosY, 50f); // Translate the entity's position
 
         // Calculate the scaling factor based on the bounding box's largest dimension
-        AABB boundingBox = currentLivingEntity.getBoundingBox();
+        AxisAlignedBB boundingBox = currentLivingEntity.getBoundingBox();
         double largestDimension = Math.max(boundingBox.getXsize(), Math.max(boundingBox.getYsize(), boundingBox.getZsize()));
 
         float desiredWidth = 30.0F;
@@ -224,18 +221,18 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
         // Use the smaller of the two scaling factors to ensure the entity fits within the area
         float scalingFactor = Math.min(scaleX, scaleY);
 
-        if (currentLivingEntity instanceof Axolotl || currentLivingEntity instanceof Cat ||
-                currentLivingEntity instanceof Pig || currentLivingEntity instanceof Wolf) {
+        if (currentLivingEntity instanceof CatEntity ||
+                currentLivingEntity instanceof PigEntity || currentLivingEntity instanceof WolfEntity) {
             scalingFactor = 25;
         }
 
-        if (currentLivingEntity instanceof Ocelot || currentLivingEntity instanceof Fox
-                || currentLivingEntity instanceof Turtle) {
+        if (currentLivingEntity instanceof OcelotEntity || currentLivingEntity instanceof FoxEntity
+                || currentLivingEntity instanceof TurtleEntity) {
             scalingFactor = 20;
         }
 
-        if (currentLivingEntity instanceof Hoglin || currentLivingEntity instanceof Horse
-                || currentLivingEntity instanceof Panda) {
+        if (currentLivingEntity instanceof HoglinEntity || currentLivingEntity instanceof HorseEntity
+                || currentLivingEntity instanceof PandaEntity) {
             scalingFactor = 15;
         }
 
@@ -246,19 +243,19 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
 
         // Apply the calculated yaw angle to the entity's rotation properties
         currentLivingEntity.yBodyRot = yawRadians;
-        currentLivingEntity.setYRot(yawRadians);
+//        currentLivingEntity.setYRot(yawRadians);
         currentLivingEntity.yHeadRot = yawRadians;
         currentLivingEntity.yHeadRotO = yawRadians;
 
         stack.translate(0.0F, currentLivingEntity.getMyRidingOffset(), 0.0F); // Translate the entity vertically to adjust its position
 
         Minecraft instance = Minecraft.getInstance();
-        EntityRenderDispatcher entityRenderDispatcher = instance.getEntityRenderDispatcher(); // Get the entity rendering dispatcher
+        EntityRendererManager entityRenderDispatcher = instance.getEntityRenderDispatcher(); // Get the entity rendering dispatcher
         entityRenderDispatcher.overrideCameraOrientation(Quaternion.ONE); // Override the camera orientation for rendering
         entityRenderDispatcher.setRenderShadow(false); // Disable rendering shadows for the entity
 
         // Get the buffer source for rendering
-        final MultiBufferSource.BufferSource bufferSource = instance.renderBuffers().bufferSource();
+        IRenderTypeBuffer.Impl bufferSource = instance.renderBuffers().bufferSource();
 
         // Render the currentLivingEntity using the entityRenderDispatcher
         entityRenderDispatcher.render(currentLivingEntity, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, stack, bufferSource, ENTITY_RENDER_DISTANCE);
@@ -290,9 +287,9 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
             this.extraInputStack = extraInputStack;
         }
 
-        private void doRendering(PoseStack stack, double mouseX) {
+        private void doRendering(MatrixStack stack, double mouseX) {
             long currentTime = System.currentTimeMillis();
-            Level level = Minecraft.getInstance().level;
+            World level = Minecraft.getInstance().level;
 
             if (level != null && (currentLivingEntity == null || currentTime - lastEntityCreationTime >= ENTITY_CREATION_INTERVAL)) {
                 currentLivingEntity = (LivingEntity) entityType.create(level);

@@ -8,15 +8,15 @@ import mezz.jei.api.MethodsReturnNonnullByDefault;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.entity.EntityType;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.item.SpawnEggItem;
+import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.Tag;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.SpawnEggItem;
-import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
@@ -70,7 +70,8 @@ public class JEIPlugin implements IModPlugin {
             List<Ingredient> combinedResultIngredient = createCombinedResultIngredients(mobResultItem, mobMinResultCount, mobMaxResultCount);
             Item spawnEggItem = ForgeUtils.getItemFromLoaderRegistries(new ResourceLocation(mobSpawnEgg.trim()));
 
-            if (spawnEggItem instanceof SpawnEggItem spawnEgg) {
+            if (spawnEggItem instanceof SpawnEggItem) {
+                SpawnEggItem spawnEgg = (SpawnEggItem) spawnEggItem;
                 EntityType<?> entityType = spawnEgg.getType(null);
                 Boolean needsToBeTamed = animalTamedConfigs.get(mobName);
                 BreedingCategory.BreedingRecipe breedingRecipe = createBreedingRecipe(entityType, combinedIngredient, spawnEggItem, needsToBeTamed, combinedResultIngredient);
@@ -121,7 +122,7 @@ public class JEIPlugin implements IModPlugin {
         String tagLocationStr = tagId.trim().substring(1);
         ResourceLocation tagLocation = new ResourceLocation(tagLocationStr);
 
-        Tag<Item> tag = ItemTags.getAllTags().getTag(tagLocation);
+        ITag<Item> tag = ItemTags.getAllTags().getTag(tagLocation);
 
         ItemStack[] itemStacks = Objects.requireNonNull(tag).getValues().stream().map(ItemStack::new).toArray(ItemStack[]::new);
 

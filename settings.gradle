@@ -18,4 +18,3 @@ pluginManagement {
 }
 
 rootProject.name = 'JustEnoughBreeding'
-include("Common", "Forge")

@@ -1,9 +1,9 @@
 package com.christofmeg.justenoughbreeding.utils;
 
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
+import net.minecraft.item.Food;
+import net.minecraft.item.Item;
+import net.minecraft.item.Items;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public class ForgeUtils {
         for (ResourceLocation key : ForgeRegistries.ITEMS.getKeys()) {
             Item item = ForgeRegistries.ITEMS.getValue(key);
             if (item != null) {
-                FoodProperties foodProperties = item.getFoodProperties();
+                Food foodProperties = item.getFoodProperties();
                 if(includeRottenFlesh) {
                     if (foodProperties != null && item.isEdible() && foodProperties.isMeat()) {
                         edibleMeatItemNames.add(key.toString());

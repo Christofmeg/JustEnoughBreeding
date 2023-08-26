@@ -20,14 +20,12 @@ public class JEBConfig {
     private static final String MOD = "minecraft";
 
     public static class General {
-        private static final String TROPICAL_FISH_BUCKET = "minecraft:tropical_fish_bucket";
         private static final String FLOWERS = "#minecraft:flowers";
         private static final String COD_SALMON = "minecraft:cod, minecraft:salmon";
         private static final String SEEDS = "minecraft:wheat_seeds, minecraft:pumpkin_seeds, minecraft:melon_seeds, minecraft:beetroot_seeds, minecraft:torchflower_seeds, minecraft:pitcher_pod";
         private static final String WHEAT = "minecraft:wheat";
         private static final String GOLDEN_APPLE_CARROT = "minecraft:golden_apple, minecraft:enchanted_golden_apple, minecraft:golden_carrot";
         private static final String BERRIES = "minecraft:sweet_berries, minecraft:glow_berries";
-        private static final String SLIME_BALL = "minecraft:slime_ball";
         private static final String CRIMSON_FUNGUS = "minecraft:crimson_fungus";
         private static final String HAY_BLOCK = "minecraft:hay_block";
         private static final String BAMBOO = "minecraft:bamboo";
@@ -49,14 +47,12 @@ public class JEBConfig {
 
             builder.push("vanilla");
 
-            addAnimal("axolotl", TROPICAL_FISH_BUCKET);
             addAnimal("bee", FLOWERS);
             addAnimalTamed("cat", COD_SALMON);
             addAnimal("chicken", SEEDS);
             addAnimal("cow", WHEAT);
             addAnimalTamed("donkey", GOLDEN_APPLE_CARROT);
             addAnimal("fox", BERRIES);
-            addEggLayingAnimal("frog", SLIME_BALL, "minecraft:frogspawn", 1, 1);
             addAnimal("goat", WHEAT);
             addAnimal("hoglin", CRIMSON_FUNGUS);
             addAnimalTamed("horse", GOLDEN_APPLE_CARROT);
