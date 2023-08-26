@@ -5,12 +5,10 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Quaternion;
 import com.mojang.math.Vector3f;
 import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.gui.drawable.IDrawable;
-import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
-import mezz.jei.api.recipe.IFocusGroup;
-import mezz.jei.api.recipe.RecipeIngredientRole;
+import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
@@ -40,6 +38,12 @@ import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class BreedingCategory implements IRecipeCategory<BreedingCategory.BreedingRecipe> {
 
     static final int ENTITY_CREATION_INTERVAL = 3000;
@@ -62,12 +66,12 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
     private final IDrawable mobRenderSlot;
     private final IDrawable outputSlot;
 
-    private final int breedableFoodSlotX = 69; //The hover slot
-    private final int breedableFoodSlotY = 58; //The hover slot
+    private final int breedableFoodSlotX = 68; //The hover slot
+    private final int breedableFoodSlotY = 57; //The hover slot
 
     public BreedingCategory(IGuiHelper helper, ItemLike itemStack) {
         background = helper.createBlankDrawable(166, 91);
-        icon = helper.createDrawableIngredient(VanillaTypes.ITEM, new ItemStack(itemStack));
+        icon = helper.createDrawableIngredient(new ItemStack(itemStack));
         slot = helper.drawableBuilder(slotVanilla, 0, 0, 18, 18).setTextureSize(18, 18).build();
         mobRenderSlot = helper.drawableBuilder(breedingSlot, 1, 13, 61, 81).setTextureSize(256,256).build();
         outputSlot = helper.drawableBuilder(eggSlot, 25, 224, 57, 26).setTextureSize(256,256).build();
@@ -89,23 +93,62 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
     }
 
     @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, BreedingRecipe recipe, @NotNull IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.INPUT, 149, 1).addItemStack((recipe.spawnEgg));
-        builder.addSlot(RecipeIngredientRole.INPUT, breedableFoodSlotX, breedableFoodSlotY).addIngredients((recipe.breedingCatalyst));
-        if(recipe.resultItemStack != null) {
-            builder.addSlot(RecipeIngredientRole.OUTPUT, 130, 48).addIngredients(recipe.resultItemStack);
+    public void setIngredients(BreedingRecipe recipe, @NotNull IIngredients ingredients) {
+        List<ItemStack> spawnEggList = Collections.singletonList(recipe.spawnEgg);
+
+        // Get the list of matching stacks from the breeding catalyst ingredient
+        List<ItemStack> breedingCatalystStacks = Arrays.stream(recipe.breedingCatalyst.getItems()).toList();
+
+        List<List<ItemStack>> inputList = new ArrayList<>();
+        inputList.add(spawnEggList);
+        inputList.add(breedingCatalystStacks);
+
+        List<List<ItemStack>> outputList = new ArrayList<>();
+        outputList.add(spawnEggList);
+
+        // Check if there is a result item stack
+        if (recipe.resultItemStack != null) {
+            List<ItemStack> resultItemStacks = Arrays.stream(recipe.resultItemStack.getItems()).toList();
+            outputList.add(resultItemStacks);
         }
-        if(recipe.extraInputStack != null) {
-            builder.addSlot(RecipeIngredientRole.CATALYST, 69, 39).addItemStack(recipe.extraInputStack);
+
+        if (recipe.extraInputStack != null) {
+            List<ItemStack> extraInputList = Collections.singletonList(recipe.extraInputStack);
+            inputList.add(extraInputList);
+        }
+
+        // Add the matching stacks from the breeding catalyst ingredient
+        ingredients.setInputLists(VanillaTypes.ITEM, inputList);
+
+        // Add the matching stacks from the result item stack ingredient
+        ingredients.setOutputLists(VanillaTypes.ITEM, outputList);
+
+    }
+
+    @Override
+    public void setRecipe(IRecipeLayout builder, BreedingCategory.BreedingRecipe recipe, @Nonnull IIngredients ingredients) {
+        builder.getItemStacks().init(0, false, 148, 0);
+        builder.getItemStacks().set(0, recipe.spawnEgg);
+
+        builder.getItemStacks().init(1, true, breedableFoodSlotX, breedableFoodSlotY);
+        builder.getItemStacks().set(1, List.of(recipe.breedingCatalyst.getItems()));
+
+        if (recipe.resultItemStack != null) {
+            builder.getItemStacks().init(2, false, 128, 46);
+            builder.getItemStacks().set(2, List.of(recipe.resultItemStack.getItems()));
+        }
+        if (recipe.extraInputStack != null) {
+            builder.getItemStacks().init(3, true, 68, 39);
+            builder.getItemStacks().set(3, recipe.extraInputStack);
         }
     }
 
     @Override
-    public void draw(@NotNull BreedingRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull PoseStack stack, double mouseX, double mouseY) {
+    public void draw(@NotNull BreedingRecipe recipe, @NotNull PoseStack stack, double mouseX, double mouseY) {
 
         // Draw the recipe slots at specific positions
         slot.draw(stack, 148, 0);
-        slot.draw(stack, breedableFoodSlotX - 1, breedableFoodSlotY - 1);
+        slot.draw(stack, breedableFoodSlotX, breedableFoodSlotY);
 
         // 2nd ingredient
         slot.draw(stack, 68, 38);
