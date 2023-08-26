@@ -8,12 +8,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DucklingIntegration {
+public class FennecFoxIntegration {
 
-    private static final String MOD = "duckling";
+    private static final String MOD = "fennecfox";
 
     public static class General {
-        private static final String BREAD = "minecraft:bread";
+        private static final String FOOD = "minecraft:glow_berries, minecraft:rabbit_foot, minecraft:sweet_berries";
 
         private final List<String> animalNames = new ArrayList<>();
         private final Map<String, String> ingredients = new HashMap<>();
@@ -22,11 +22,11 @@ public class DucklingIntegration {
             builder.push("integration");
             builder.push(MOD);
 
-            addAnimal("duck", BREAD);
+            addAnimal("fennecfox", FOOD);
 
             for (String animal : animalNames) {
                 ForgeConfigSpec.ConfigValue<String> animalSpawnEgg = builder.define(animal + "SpawnEgg", MOD + ":" + animal + "_spawn_egg");
-                ForgeConfigSpec.ConfigValue<String> animalIngredients = builder.push(animal)
+                net.minecraftforge.common.ForgeConfigSpec.ConfigValue<String> animalIngredients = builder.push(animal)
                         .comment("Ingredients required for " + animal + " breeding")
                         .define(animal + "Ingredients", ingredients.get(animal));
                 CommonConstants.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);

@@ -44,7 +44,7 @@ public class NaturalistIntegration {
 
             for (String animal : animalNames) {
                 ForgeConfigSpec.ConfigValue<String> animalSpawnEgg = builder.define(animal + "SpawnEgg", MOD + ":" + animal + "_spawn_egg");
-                ForgeConfigSpec.ConfigValue<String> animalIngredients = builder.push(animal)
+                net.minecraftforge.common.ForgeConfigSpec.ConfigValue<String> animalIngredients = builder.push(animal)
                         .comment("Ingredients required for " + animal + " breeding")
                         .define(animal + "Ingredients", ingredients.get(animal));
                 CommonConstants.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);

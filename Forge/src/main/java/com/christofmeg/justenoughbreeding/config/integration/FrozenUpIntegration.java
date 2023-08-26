@@ -15,7 +15,7 @@ public class FrozenUpIntegration {
 
     public static class General {
         private static final String CHILLOO_BREED_ITEMS_TAG = "#" + MOD + ":" + "chilloo_breed_items";
-        private static final String FISHES_TAG = "#" + ItemTags.FISHES.location();
+        private static final String FISHES_TAG = "#" + ItemTags.FISHES.getName();
 
         private final List<String> animalNames = new ArrayList<>();
         private final Map<String, String> ingredients = new HashMap<>();
@@ -29,7 +29,7 @@ public class FrozenUpIntegration {
 
             for (String animal : animalNames) {
                 ForgeConfigSpec.ConfigValue<String> animalSpawnEgg = builder.define(animal + "SpawnEgg", MOD + ":" + animal + "_spawn_egg");
-                ForgeConfigSpec.ConfigValue<String> animalIngredients = builder.push(animal)
+                net.minecraftforge.common.ForgeConfigSpec.ConfigValue<String> animalIngredients = builder.push(animal)
                         .comment("Ingredients required for " + animal + " breeding")
                         .define(animal + "Ingredients", ingredients.get(animal));
                 CommonConstants.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);

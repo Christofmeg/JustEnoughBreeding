@@ -8,12 +8,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AqcaracalIntegration {
+public class EcologicsIntegration {
 
-    private static final String MOD = "aqupd";
+    private static final String MOD = "ecologics";
 
     public static class General {
-        private static final String FOOD = "minecraft:chicken, minecraft:cod, minecraft:rabbit, minecraft:salmon";
+        private static final String PRICKLY_PEAR = "ecologics:prickly_pear";
+        private static final String COD_SALMON = "minecraft:cod, minecraft:salmon";
+        private static final String HONEYCOMB = "minecraft:honeycomb";
 
         private final List<String> animalNames = new ArrayList<>();
         private final Map<String, String> ingredients = new HashMap<>();
@@ -23,11 +25,14 @@ public class AqcaracalIntegration {
             builder.push("integration");
             builder.push(MOD);
 
-            addAnimalTamed("caracal", FOOD);
+            addAnimalTamed("camel", PRICKLY_PEAR);
+            addAnimal("penguin", COD_SALMON);
+            addAnimal("squirrel", HONEYCOMB);
+
 
             for (String animal : animalNames) {
                 ForgeConfigSpec.ConfigValue<String> animalSpawnEgg = builder.define(animal + "SpawnEgg", MOD + ":" + animal + "_spawn_egg");
-                ForgeConfigSpec.ConfigValue<String> animalIngredients = builder.push(animal)
+                net.minecraftforge.common.ForgeConfigSpec.ConfigValue<String> animalIngredients = builder.push(animal)
                         .comment("Ingredients required for " + animal + " breeding")
                         .define(animal + "Ingredients", ingredients.get(animal));
                 CommonConstants.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);

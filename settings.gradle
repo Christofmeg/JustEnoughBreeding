@@ -18,5 +18,4 @@ pluginManagement {
 }
 
 rootProject.name = 'JustEnoughBreeding'
-include("Common", "Fabric", "Forge")
-include("Quilt")
+include("Common", "Forge")

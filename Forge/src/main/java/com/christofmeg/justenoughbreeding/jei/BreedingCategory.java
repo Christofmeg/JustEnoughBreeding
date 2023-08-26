@@ -11,7 +11,6 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
-import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
@@ -46,8 +45,7 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
     static final int ENTITY_CREATION_INTERVAL = 3000;
     static final int ENTITY_RENDER_DISTANCE = 15728880;
 
-    public static final RecipeType<BreedingRecipe> TYPE = new RecipeType<>(
-            new ResourceLocation(CommonConstants.MOD_ID, "breeding"), BreedingRecipe.class);
+    public static final ResourceLocation TYPE = new ResourceLocation(CommonConstants.MOD_ID, "breeding");
 
     final ResourceLocation slotVanilla = new ResourceLocation("jei",
             "textures/gui/slot.png");
@@ -69,15 +67,10 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
 
     public BreedingCategory(IGuiHelper helper, ItemLike itemStack) {
         background = helper.createBlankDrawable(166, 91);
-        icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(itemStack));
+        icon = helper.createDrawableIngredient(VanillaTypes.ITEM, new ItemStack(itemStack));
         slot = helper.drawableBuilder(slotVanilla, 0, 0, 18, 18).setTextureSize(18, 18).build();
         mobRenderSlot = helper.drawableBuilder(breedingSlot, 1, 13, 61, 81).setTextureSize(256,256).build();
         outputSlot = helper.drawableBuilder(eggSlot, 25, 224, 57, 26).setTextureSize(256,256).build();
-    }
-
-    @Override
-    public @NotNull RecipeType<BreedingRecipe> getRecipeType() {
-        return TYPE;
     }
 
     @Override
@@ -151,16 +144,14 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
         }
     }
 
-    @SuppressWarnings("removal")
     @Override
     public @NotNull ResourceLocation getUid() {
-        return TYPE.getUid();
+        return TYPE;
     }
 
-    @SuppressWarnings("removal")
     @Override
     public @NotNull Class<? extends BreedingRecipe> getRecipeClass() {
-        return TYPE.getRecipeClass();
+        return BreedingCategory.BreedingRecipe.class;
     }
 
     private static void renderEntity(@NotNull PoseStack stack, double mouseX, LivingEntity currentLivingEntity) {

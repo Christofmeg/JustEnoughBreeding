@@ -13,19 +13,6 @@ dependencies {
      compileOnly group:'org.spongepowered', name:'mixin', version:'0.8.5'
      implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
 
-    // JEI
-    if (project.hasProperty('jei_version')) {
-        compileOnly("mezz.jei:jei-${minecraft_version}-common:${jei_version}")
-        compileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
-        compileOnly("mezz.jei:jei-${minecraft_version}-core:${jei_version}")
-    }
-
-    // FORGE CONFIG API PORT FABRIC
-    if (project.hasProperty('forge_config_api_version')) {
-        implementation "curse.maven:forge-config-api-port-fabric-547434:${forge_config_api_version}"
-        implementation 'com.electronwill.night-config:core:3.6.5'
-        implementation 'com.electronwill.night-config:toml:3.6.5'
-    }
 }
 
 processResources {

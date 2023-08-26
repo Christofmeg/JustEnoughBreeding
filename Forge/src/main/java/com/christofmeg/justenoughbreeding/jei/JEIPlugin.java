@@ -7,9 +7,9 @@ import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
-import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.Tag;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -23,6 +23,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 @SuppressWarnings("unused")
 @JeiPlugin
@@ -71,7 +72,7 @@ public class JEIPlugin implements IModPlugin {
                 Boolean needsToBeTamed = animalTamedConfigs.get(mobName);
                 BreedingCategory.BreedingRecipe breedingRecipe = createBreedingRecipe(entityType, combinedIngredient, spawnEggItem, needsToBeTamed, combinedResultIngredient);
 
-                registration.addRecipes(BreedingCategory.TYPE, Collections.singletonList(breedingRecipe));
+                registration.addRecipes(Collections.singletonList(breedingRecipe), BreedingCategory.TYPE);
             }
         }
     }
@@ -116,7 +117,12 @@ public class JEIPlugin implements IModPlugin {
     private Ingredient createTagIngredient(String tagId) {
         String tagLocationStr = tagId.trim().substring(1);
         ResourceLocation tagLocation = new ResourceLocation(tagLocationStr);
-        return Ingredient.of(TagKey.create(Registry.ITEM_REGISTRY, tagLocation));
+
+        Tag<Item> tag = ItemTags.getAllTags().getTag(tagLocation);
+
+        ItemStack[] itemStacks = Objects.requireNonNull(tag).getValues().stream().map(ItemStack::new).toArray(ItemStack[]::new);
+
+        return Ingredient.of(itemStacks);
     }
 
     private BreedingCategory.BreedingRecipe createBreedingRecipe(EntityType<?> entityType, Ingredient combinedIngredient, Item spawnEggItem, Boolean needsToBeTamed, List<Ingredient> resultItemStacks) {

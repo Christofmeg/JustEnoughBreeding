@@ -55,9 +55,8 @@ dependencies {
 
     // JEI
     if (project.hasProperty('jei_version')) {
-        compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"))
-        compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
-        runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))
+        compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}:api"))
+        runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}"))
     }
     // CONFIGURED
     if (project.hasProperty('configured_version')) {
@@ -156,10 +155,6 @@ dependencies {
     // NATURALIST           //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/naturalist
 //    implementation fg.deobf("curse.maven:naturalist-627986:4660377")
 //        implementation fg.deobf("curse.maven:geckolib-388172:4407241")
-
-    // QUARK
-    implementation fg.deobf("curse.maven:quark-243121:3840125")
-        implementation fg.deobf("curse.maven:autoreglib-250363:3642382")
 
 }
 

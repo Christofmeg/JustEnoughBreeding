@@ -8,12 +8,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GlareIntegration {
+public class RedPandaIntegration {
 
-    private static final String MOD = "glare";
+    private static final String MOD = "ydms_redpanda";
 
     public static class General {
-        private static final String GLOW_BERRIES = "minecraft:glow_berries";
+        private static final String BAMBOO = "minecraft:bamboo";
 
         private final List<String> animalNames = new ArrayList<>();
         private final Map<String, String> ingredients = new HashMap<>();
@@ -23,11 +23,11 @@ public class GlareIntegration {
             builder.push("integration");
             builder.push(MOD);
 
-            addAnimalTamed("glare", GLOW_BERRIES);
+            addAnimalTamed("redpanda", BAMBOO);
 
             for (String animal : animalNames) {
                 ForgeConfigSpec.ConfigValue<String> animalSpawnEgg = builder.define(animal + "SpawnEgg", MOD + ":" + animal + "_spawn_egg");
-                ForgeConfigSpec.ConfigValue<String> animalIngredients = builder.push(animal)
+                net.minecraftforge.common.ForgeConfigSpec.ConfigValue<String> animalIngredients = builder.push(animal)
                         .comment("Ingredients required for " + animal + " breeding")
                         .define(animal + "Ingredients", ingredients.get(animal));
                 CommonConstants.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);
@@ -46,6 +46,7 @@ public class GlareIntegration {
             animalNames.add(name);
             ingredients.put(name, ingredient);
         }
+
         private void addAnimalTamed(String name, String ingredient) {
             addAnimal(name, ingredient);
             needsToBeTamed.put(name, true);
