@@ -26,12 +26,10 @@ public class JEBConfig {
         private static final String WHEAT = "minecraft:wheat";
         private static final String GOLDEN_APPLE_CARROT = "minecraft:golden_apple, minecraft:enchanted_golden_apple, minecraft:golden_carrot";
         private static final String BERRIES = "minecraft:sweet_berries, minecraft:glow_berries";
-        private static final String CRIMSON_FUNGUS = "minecraft:crimson_fungus";
         private static final String HAY_BLOCK = "minecraft:hay_block";
         private static final String BAMBOO = "minecraft:bamboo";
         private static final String VEGETABLES = "minecraft:carrot, minecraft:potato, minecraft:beetroot";
         private static final String DANDELION_CARROTS = "minecraft:dandelion, minecraft:carrot, minecraft:golden_carrot";
-        private static final String WARPED_FUNGUS = "minecraft:warped_fungus";
         private static final String SEAGRASS = "minecraft:seagrass";
         private static final String MEAT = ForgeUtils.getEdibleMeatItemNames(true); //TODO Foodproperties.isMeat() to other mods
 
@@ -54,7 +52,6 @@ public class JEBConfig {
             addAnimalTamed("donkey", GOLDEN_APPLE_CARROT);
             addAnimal("fox", BERRIES);
             addAnimal("goat", WHEAT);
-            addAnimal("hoglin", CRIMSON_FUNGUS);
             addAnimalTamed("horse", GOLDEN_APPLE_CARROT);
             addAnimal("llama", HAY_BLOCK);
             addAnimal("mooshroom", WHEAT);
@@ -63,7 +60,6 @@ public class JEBConfig {
             addAnimal("pig", VEGETABLES);
             addAnimal("rabbit", DANDELION_CARROTS);
             addAnimal("sheep", WHEAT);
-            addAnimal("strider", WARPED_FUNGUS);
             addAnimal("trader_llama", HAY_BLOCK);
             addEggLayingAnimal("turtle", SEAGRASS, "minecraft:turtle_egg", 1, 4);
             addAnimalTamed("wolf", MEAT);

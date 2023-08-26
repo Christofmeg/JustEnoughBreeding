@@ -12,11 +12,12 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
+import net.minecraft.client.renderer.Quaternion;
+import net.minecraft.client.renderer.Vector3f;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.monster.HoglinEntity;
 import net.minecraft.entity.passive.CatEntity;
 import net.minecraft.entity.passive.FoxEntity;
 import net.minecraft.entity.passive.OcelotEntity;
@@ -31,8 +32,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.vector.Quaternion;
-import net.minecraft.util.math.vector.Vector3f;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
@@ -145,18 +144,18 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
     }
 
     @Override
-    public void draw(BreedingRecipe recipe, MatrixStack stack, double mouseX, double mouseY) {
+    public void draw(BreedingRecipe recipe, double mouseX, double mouseY) {
 
         // Draw the recipe slots at specific positions
-        slot.draw(stack, 148, 0);
-        slot.draw(stack, breedableFoodSlotX, breedableFoodSlotY);
+        slot.draw(148, 0);
+        slot.draw(breedableFoodSlotX, breedableFoodSlotY);
 
         // 2nd ingredient
-        slot.draw(stack, 68, 38);
+        slot.draw(68, 38);
 
         // output slot
-        outputSlot.draw(stack, 94, 43);
-        mobRenderSlot.draw(stack, 0, 10);
+        outputSlot.draw(94, 43);
+        mobRenderSlot.draw(0, 10);
 
         EntityType<?> entityType = recipe.entityType;
         if(entityType != null) {
@@ -179,10 +178,10 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
 
             if (!entityNameString.isEmpty()) {
                 String abbreviatedEntityName = I18n.get(entityNameString);
-                font.draw(stack, abbreviatedEntityName, 0.0F, 0.0F, DyeColor.BLACK.getTextColor());
+                font.draw(abbreviatedEntityName, 0.0F, 0.0F, DyeColor.BLACK.getTextColor());
             }
 
-            recipe.doRendering(stack, mouseX);
+            recipe.doRendering(mouseX);
 
         }
     }
@@ -197,13 +196,14 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
         return BreedingCategory.BreedingRecipe.class;
     }
 
-    private static void renderEntity(MatrixStack stack, double mouseX, LivingEntity currentLivingEntity) {
+    private static void renderEntity(double mouseX, LivingEntity currentLivingEntity) {
         // Set the desired position of the entity on the screen
         int entityPosX = 31;
         int entityPosY = 89;
 
         float yaw = (float) (60 - mouseX); // Calculate the yaw based on the mouse position
 
+        MatrixStack stack = new MatrixStack();
         stack.pushPose(); // Push the current pose onto the stack
         stack.translate((float) entityPosX, (float) entityPosY, 50f); // Translate the entity's position
 
@@ -231,7 +231,7 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
             scalingFactor = 20;
         }
 
-        if (currentLivingEntity instanceof HoglinEntity || currentLivingEntity instanceof HorseEntity
+        if (currentLivingEntity instanceof HorseEntity
                 || currentLivingEntity instanceof PandaEntity) {
             scalingFactor = 15;
         }
@@ -247,7 +247,7 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
         currentLivingEntity.yHeadRot = yawRadians;
         currentLivingEntity.yHeadRotO = yawRadians;
 
-        stack.translate(0.0F, currentLivingEntity.getMyRidingOffset(), 0.0F); // Translate the entity vertically to adjust its position
+//        stack.translate(0.0F, currentLivingEntity.getMyRidingOffset(), 0.0F); // Translate the entity vertically to adjust its position
 
         Minecraft instance = Minecraft.getInstance();
         EntityRendererManager entityRenderDispatcher = instance.getEntityRenderDispatcher(); // Get the entity rendering dispatcher
@@ -287,7 +287,7 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
             this.extraInputStack = extraInputStack;
         }
 
-        private void doRendering(MatrixStack stack, double mouseX) {
+        private void doRendering(double mouseX) {
             long currentTime = System.currentTimeMillis();
             World level = Minecraft.getInstance().level;
 
@@ -297,7 +297,7 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
             }
 
             if (currentLivingEntity != null) {
-                renderEntity(stack, mouseX, currentLivingEntity);
+                renderEntity(mouseX, currentLivingEntity);
             }
         }
     }

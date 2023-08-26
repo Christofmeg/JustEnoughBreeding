@@ -14,8 +14,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.SpawnEggItem;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.Tag;
 import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -122,7 +122,7 @@ public class JEIPlugin implements IModPlugin {
         String tagLocationStr = tagId.trim().substring(1);
         ResourceLocation tagLocation = new ResourceLocation(tagLocationStr);
 
-        ITag<Item> tag = ItemTags.getAllTags().getTag(tagLocation);
+        Tag<Item> tag = ItemTags.getAllTags().getTag(tagLocation);
 
         ItemStack[] itemStacks = Objects.requireNonNull(tag).getValues().stream().map(ItemStack::new).toArray(ItemStack[]::new);
 

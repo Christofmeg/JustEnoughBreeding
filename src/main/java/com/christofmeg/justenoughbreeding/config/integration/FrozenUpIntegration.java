@@ -15,7 +15,7 @@ public class FrozenUpIntegration {
 
     public static class General {
         private static final String CHILLOO_BREED_ITEMS_TAG = "#" + MOD + ":" + "chilloo_breed_items";
-        private static final String FISHES_TAG = "#" + ItemTags.FISHES.getName();
+        private static final String FISHES_TAG = "#" + ItemTags.FISHES.getId();
 
         private final List<String> animalNames = new ArrayList<>();
         private final Map<String, String> ingredients = new HashMap<>();
