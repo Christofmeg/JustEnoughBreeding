@@ -68,11 +68,16 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
     private final IDrawable mobRenderSlotTopCorner;
     private final IDrawable mobRenderSlotTopCenter;
 
-    private final int breedableFoodSlotX = 69; //The hover slot
-    private final int breedableFoodSlotY = 58; //The hover slot
+    final int inputSlotX = 68;
+    final int inputSlot1Y = 51;
+    final int inputSlot2Y = 32;
+
+    final int outputSlotFrameX = 94;
+    final int outputSlotFrameY = 38;
+
 
     public BreedingCategory(IGuiHelper helper, ItemLike itemStack) {
-        background = helper.createBlankDrawable(166, 91);
+        background = helper.createBlankDrawable(151, 91);
         icon = helper.createDrawableIngredient(new ItemStack(itemStack));
         slot = helper.drawableBuilder(slotVanilla, 0, 0, 18, 18).setTextureSize(18, 18).build();
         outputSlot = helper.drawableBuilder(guiVanilla, 25, 224, 57, 26).setTextureSize(256,256).build();
@@ -114,12 +119,12 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
         outputList.add(spawnEggList);
 
         // Check if there is a result item stack
-        if (recipe.resultItemStack != null) {
+        if (recipe.resultItemStack != null && !recipe.resultItemStack.isEmpty()) {
             List<ItemStack> resultItemStacks = Arrays.stream(recipe.resultItemStack.getItems()).toList();
             outputList.add(resultItemStacks);
         }
 
-        if (recipe.extraInputStack != null) {
+        if (recipe.extraInputStack != null && !recipe.extraInputStack.isEmpty()) {
             List<ItemStack> extraInputList = Collections.singletonList(recipe.extraInputStack);
             inputList.add(extraInputList);
         }
@@ -133,19 +138,22 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
     }
 
     @Override
-    public void setRecipe(IRecipeLayout builder, BreedingCategory.BreedingRecipe recipe, @Nonnull IIngredients ingredients) {
-        builder.getItemStacks().init(0, false, 148, 0);
+    public void setRecipe(IRecipeLayout builder, BreedingRecipe recipe, @Nonnull IIngredients ingredients) {
+        builder.getItemStacks().init(0, false, 133, 0);
         builder.getItemStacks().set(0, recipe.spawnEgg);
 
-        builder.getItemStacks().init(1, true, breedableFoodSlotX, breedableFoodSlotY);
+        builder.getItemStacks().init(1, true, inputSlotX, inputSlot1Y);
         builder.getItemStacks().set(1, List.of(recipe.breedingCatalyst.getItems()));
 
-        if (recipe.resultItemStack != null) {
-            builder.getItemStacks().init(2, false, 128, 46);
+        final int outputSlotItemX = 129;
+        final int outputSlotItemY = 42;
+
+        if (recipe.resultItemStack != null && !recipe.resultItemStack.isEmpty()) {
+            builder.getItemStacks().init(2, false, outputSlotItemX, outputSlotItemY);
             builder.getItemStacks().set(2, List.of(recipe.resultItemStack.getItems()));
         }
-        if (recipe.extraInputStack != null) {
-            builder.getItemStacks().init(3, true, 68, 39);
+        if (recipe.extraInputStack != null && !recipe.extraInputStack.isEmpty()) {
+            builder.getItemStacks().init(3, true, inputSlotX, inputSlot2Y);
             builder.getItemStacks().set(3, recipe.extraInputStack);
         }
     }
@@ -153,15 +161,17 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
     @Override
     public void draw(@NotNull BreedingRecipe recipe, @NotNull PoseStack stack, double mouseX, double mouseY) {
 
-        // Draw the recipe slots at specific positions
-        slot.draw(stack, 148, 0);
-        slot.draw(stack, breedableFoodSlotX, breedableFoodSlotY);
+        // Spawn Egg Slot
+        slot.draw(stack, 133, 0);
 
-        // 2nd ingredient
-        slot.draw(stack, 68, 38);
+        // Input Slot
+        slot.draw(stack, inputSlotX, inputSlot1Y);
 
-        // output slot
-        outputSlot.draw(stack, 94, 43);
+        // Extra Input Slot
+        slot.draw(stack, inputSlotX, inputSlot2Y);
+
+        // Output Slot
+        outputSlot.draw(stack, outputSlotFrameX, outputSlotFrameY);
 
         mobRenderSlotTop.draw(stack, 0, 10);
         mobRenderSlotTop.draw(stack, 25, 10);
@@ -319,7 +329,7 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
         @Nullable
         private final ItemStack extraInputStack;
 
-        public BreedingRecipe(EntityType<?> entityType, Ingredient breedingCatalyst, ItemStack spawnEgg, @Nullable Boolean needsToBeTamed, Ingredient resultItemStack, @Nullable ItemStack extraInputStack) {
+        public BreedingRecipe(EntityType<?> entityType, Ingredient breedingCatalyst, ItemStack spawnEgg, @Nullable Boolean needsToBeTamed, @Nullable Ingredient resultItemStack, @Nullable ItemStack extraInputStack) {
             this.entityType = entityType;
             this.breedingCatalyst = breedingCatalyst;
             this.spawnEgg = spawnEgg;
