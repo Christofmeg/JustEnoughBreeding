@@ -66,11 +66,18 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
     private final IDrawable mobRenderSlotTopCorner;
     private final IDrawable mobRenderSlotTopCenter;
 
-    private final int breedableFoodSlotX = 69; //The hover slot
-    private final int breedableFoodSlotY = 58; //The hover slot
+    final int inputSlotItemX = 69;
+    final int inputSlotFrameX = 68;
+    final int inputSlot1ItemY = 52;
+    final int inputSlot1FrameY = 51;
+    final int inputSlot2FrameY = 32;
+
+    final int outputSlotFrameX = 94;
+    final int outputSlotFrameY = 38;
+
 
     public BreedingCategory(IGuiHelper helper, ItemLike itemStack) {
-        background = helper.createBlankDrawable(166, 91);
+        background = helper.createBlankDrawable(151, 91);
         icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(itemStack));
         slot = helper.drawableBuilder(slotVanilla, 0, 0, 18, 18).setTextureSize(18, 18).build();
         outputSlot = helper.drawableBuilder(guiVanilla, 25, 224, 57, 26).setTextureSize(256,256).build();
@@ -104,28 +111,36 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, BreedingRecipe recipe, @NotNull IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.INPUT, 149, 1).addItemStack((recipe.spawnEgg));
-        builder.addSlot(RecipeIngredientRole.INPUT, breedableFoodSlotX, breedableFoodSlotY).addIngredients((recipe.breedingCatalyst));
-        if(recipe.resultItemStack != null) {
-            builder.addSlot(RecipeIngredientRole.OUTPUT, 130, 48).addIngredients(recipe.resultItemStack);
+        builder.addSlot(RecipeIngredientRole.INPUT, 134, 1).addItemStack((recipe.spawnEgg));
+        builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).addItemStack(recipe.spawnEgg);
+        builder.addSlot(RecipeIngredientRole.INPUT, inputSlotItemX, inputSlot1ItemY).addIngredients((recipe.breedingCatalyst));
+
+        final int outputSlotItemX = 130;
+        final int outputSlotItemY = 43;
+        final int inputSlot2ItemY = 33;
+
+        if (recipe.resultItemStack != null && !recipe.resultItemStack.isEmpty()) {
+            builder.addSlot(RecipeIngredientRole.OUTPUT, outputSlotItemX, outputSlotItemY).addIngredients(recipe.resultItemStack);
         }
-        if(recipe.extraInputStack != null) {
-            builder.addSlot(RecipeIngredientRole.CATALYST, 69, 39).addItemStack(recipe.extraInputStack);
+        if (recipe.extraInputStack != null  && !recipe.extraInputStack.isEmpty()) {
+            builder.addSlot(RecipeIngredientRole.INPUT, 69, inputSlot2ItemY).addItemStack(recipe.extraInputStack);
         }
     }
 
     @Override
     public void draw(@NotNull BreedingRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull PoseStack stack, double mouseX, double mouseY) {
 
-        // Draw the recipe slots at specific positions
-        slot.draw(stack, 148, 0);
-        slot.draw(stack, breedableFoodSlotX - 1, breedableFoodSlotY - 1);
+        // Spawn Egg Slot
+        slot.draw(stack, 133, 0);
 
-        // 2nd ingredient
-        slot.draw(stack, 68, 38);
+        // Input Slot
+        slot.draw(stack, inputSlotFrameX, inputSlot1FrameY);
 
-        // output slot
-        outputSlot.draw(stack, 94, 43);
+        // Extra Input Slot
+        slot.draw(stack, inputSlotFrameX, inputSlot2FrameY);
+
+        // Output Slot
+        outputSlot.draw(stack, outputSlotFrameX, outputSlotFrameY);
 
         mobRenderSlotTop.draw(stack, 0, 10);
         mobRenderSlotTop.draw(stack, 25, 10);
@@ -277,7 +292,7 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
         @Nullable
         private final ItemStack extraInputStack;
 
-        public BreedingRecipe(EntityType<?> entityType, Ingredient breedingCatalyst, ItemStack spawnEgg, @Nullable Boolean needsToBeTamed, Ingredient resultItemStack, @Nullable ItemStack extraInputStack) {
+        public BreedingRecipe(EntityType<?> entityType, Ingredient breedingCatalyst, ItemStack spawnEgg, @Nullable Boolean needsToBeTamed, @Nullable Ingredient resultItemStack, @Nullable ItemStack extraInputStack) {
             this.entityType = entityType;
             this.breedingCatalyst = breedingCatalyst;
             this.spawnEgg = spawnEgg;
@@ -299,6 +314,7 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
                 renderEntity(stack, mouseX, currentLivingEntity);
             }
         }
+
     }
 
     //TODO https://www.curseforge.com/minecraft/mc-mods/deeperdarker
