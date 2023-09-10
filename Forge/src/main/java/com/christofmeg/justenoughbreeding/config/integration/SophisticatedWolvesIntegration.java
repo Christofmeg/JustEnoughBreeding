@@ -12,45 +12,43 @@ public class SophisticatedWolvesIntegration {
 
     private static final String MOD = "sophisticated_wolves";
 
-    public static class General {
-        private static final String DOG_TREAT = "sophisticated_wolves:dog_treat";
+    private static final String DOG_TREAT = "sophisticated_wolves:dog_treat";
 
-        private final List<String> animalNames = new ArrayList<>();
-        private final Map<String, String> ingredients = new HashMap<>();
-        private final Map<String, Boolean> needsToBeTamed = new HashMap<>();
+    private final List<String> animalNames = new ArrayList<>();
+    private final Map<String, String> ingredients = new HashMap<>();
+    private final Map<String, Boolean> needsToBeTamed = new HashMap<>();
 
-        public General(ForgeConfigSpec.Builder builder) {
-            builder.push("integration");
-            builder.push(MOD);
+    public SophisticatedWolvesIntegration(ForgeConfigSpec.Builder builder) {
+        builder.push("integration");
+        builder.push(MOD);
 
-            addAnimalTamed("sophisticated_wolf", DOG_TREAT);
+        addAnimalTamed("sophisticated_wolf", DOG_TREAT);
 
-            for (String animal : animalNames) {
-                ForgeConfigSpec.ConfigValue<String> animalSpawnEgg = builder.define(animal + "SpawnEgg", MOD + ":" + "dog_egg");
-                ForgeConfigSpec.ConfigValue<String> animalIngredients = builder.push(animal)
-                        .comment("Ingredients required for " + animal + " breeding")
-                        .define(animal + "Ingredients", ingredients.get(animal));
-                CommonConstants.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);
-                CommonConstants.spawnEggConfigs.put(MOD + "_" + animal, animalSpawnEgg);
-                if(needsToBeTamed.get(animal) != null) {
-                    CommonConstants.animalTamedConfigs.put(MOD + "_" + animal, true);
-                }
-
-                builder.pop();
+        for (String animal : animalNames) {
+            ForgeConfigSpec.ConfigValue<String> animalIngredients = builder.push(animal)
+                    .comment("Ingredients required for " + animal + " breeding")
+                    .define(animal + "Ingredients", ingredients.get(animal));
+            ForgeConfigSpec.ConfigValue<String> animalSpawnEgg = builder.define(animal + "SpawnEgg", MOD + ":" + "dog_egg");
+            CommonConstants.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);
+            CommonConstants.spawnEggConfigs.put(MOD + "_" + animal, animalSpawnEgg);
+            if(needsToBeTamed.get(animal) != null) {
+                CommonConstants.animalTamedConfigs.put(MOD + "_" + animal, true);
             }
 
-            builder.pop(2);
-
-        }
-        private void addAnimal(String name, String ingredient) {
-            animalNames.add(name);
-            ingredients.put(name, ingredient);
+            builder.pop();
         }
 
-        private void addAnimalTamed(String name, String ingredient) {
-            addAnimal(name, ingredient);
-            needsToBeTamed.put(name, true);
-        }
+        builder.pop(2);
+
+    }
+    private void addAnimal(String name, String ingredient) {
+        animalNames.add(name);
+        ingredients.put(name, ingredient);
+    }
+
+    private void addAnimalTamed(String name, String ingredient) {
+        addAnimal(name, ingredient);
+        needsToBeTamed.put(name, true);
     }
 
 }

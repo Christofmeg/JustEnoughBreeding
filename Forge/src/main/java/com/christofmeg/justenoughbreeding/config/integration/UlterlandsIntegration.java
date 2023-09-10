@@ -1,6 +1,7 @@
 package com.christofmeg.justenoughbreeding.config.integration;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
+import com.christofmeg.justenoughbreeding.CommonStrings;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 import java.util.ArrayList;
@@ -10,38 +11,38 @@ import java.util.Map;
 
 public class UlterlandsIntegration {
 
-    private static final String MOD = "ulterlands";
+    final String MOD = "ulterlands"; //TODO BREEDING TEMPER TAMING TRUSTING
 
-    public static class General {
-        private static final String VEGETABLES = "minecraft:beetroot, minecraft:carrot, minecraft:potato";
+    final List<String> animalNames = new ArrayList<>();
+    final Map<String, String> ingredients = new HashMap<>();
+    final Map<String, Integer> breedingCooldown = new HashMap<>();
 
-        private final List<String> animalNames = new ArrayList<>();
-        private final Map<String, String> ingredients = new HashMap<>();
+    public UlterlandsIntegration(ForgeConfigSpec.Builder builder) {
+        builder.push("integration");
+        builder.push(MOD);
 
-        public General(ForgeConfigSpec.Builder builder) {
-            builder.push("integration");
-            builder.push(MOD);
+        addAnimal("mushogg", CommonStrings.VEGETABLES);
 
-            addAnimal("mushogg", VEGETABLES);
-
-            for (String animal : animalNames) {
-                ForgeConfigSpec.ConfigValue<String> animalSpawnEgg = builder.define(animal + "SpawnEgg", MOD + ":" + animal + "_spawn_egg");
-                ForgeConfigSpec.ConfigValue<String> animalIngredients = builder.push(animal)
-                        .comment("Ingredients required for " + animal + " breeding")
-                        .define(animal + "Ingredients", ingredients.get(animal));
-                CommonConstants.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);
-                CommonConstants.spawnEggConfigs.put(MOD + "_" + animal, animalSpawnEgg);
-
-                builder.pop();
+        for (String animal : animalNames) {
+            ForgeConfigSpec.ConfigValue<String> animalIngredients = builder.push(animal)
+                    .comment("Ingredients required for " + animal + " breeding")
+                    .define(animal + "Ingredients", ingredients.get(animal));
+            ForgeConfigSpec.ConfigValue<String> animalSpawnEgg = builder.define(animal + "SpawnEgg", MOD + ":" + animal + "_spawn_egg");
+            CommonConstants.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);
+            CommonConstants.spawnEggConfigs.put(MOD + "_" + animal, animalSpawnEgg);
+            if(breedingCooldown.get(animal) != null) {
+                ForgeConfigSpec.ConfigValue<Integer> animalBreedingCooldown = builder.define(animal + "BreedingCooldown", breedingCooldown.get(animal));
+                CommonConstants.breedingCooldown.put(MOD + "_" + animal, animalBreedingCooldown);
             }
-
-            builder.pop(2);
-
+            builder.pop();
         }
-        private void addAnimal(String name, String ingredient) {
-            animalNames.add(name);
-            ingredients.put(name, ingredient);
-        }
+        builder.pop(2);
+    }
+
+    private void addAnimal(String name, String ingredient) {
+        animalNames.add(name);
+        ingredients.put(name, ingredient);
+        breedingCooldown.put(name, 6000);
     }
 
 }
