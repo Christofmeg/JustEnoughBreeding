@@ -41,6 +41,15 @@ dependencies {
         }
     }
 
+    // SNUFFLES             //Fabric edition        https://www.curseforge.com/minecraft/mc-mods/snuffles-fabric
+    modImplementation "curse.maven:snuffles-fabric-856764:4515085"
+        modImplementation "curse.maven:yacl-667299:4361292"
+
+    // SNOW PIG             //Fabric edition        https://www.curseforge.com/minecraft/mc-mods/snow-pig-fabric
+//    modImplementation "curse.maven:snow-pig-fabric-469594:4321991"
+//        modImplementation "curse.maven:porting-lib-696251:4681839"
+
+
 
     // CARACAL MOB           //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/caracal-mod
 //    modImplementation "curse.maven:caracal-mod-486505:3952705"
@@ -71,10 +80,9 @@ dependencies {
 //        modImplementation "curse.maven:geckolib-388172:4407239"  // https://www.curseforge.com/minecraft/mc-mods/geckolib
 
     // TWILIGHT FOREST      //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/the-twilight-forest
-//    modImplementation "curse.maven:the-twilight-forest-227639:4490392"    //TODO wait for source and stable build
+//    modImplementation "curse.maven:the-twilight-forest-227639:4490392"
 //        implementation files('libs/Manningham.Mills-2.0.jar')
 
-    //TODO NEEDS MORE REWORK TO BE ADDED
     // CHOCOCRAFT           //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/chococraft
 //    implementation fg.deobf("curse.maven:chococraft-225280:4656794")
 //        implementation fg.deobf("curse.maven:architectury-api-419699:4555749")
