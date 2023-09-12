@@ -16,6 +16,15 @@ public class CommonConstants {
 	public static Map<String, ForgeConfigSpec.ConfigValue<Integer>> eggMinAmountConfigs = new HashMap<>();
 	public static Map<String, ForgeConfigSpec.ConfigValue<Integer>> eggMaxAmountConfigs = new HashMap<>();
 
-	public static Map<String, Boolean> animalTamedConfigs = new HashMap<>();
+	public static Map<String, ForgeConfigSpec.ConfigValue<Integer>> breedingCooldown = new HashMap<>();
 
+	public static Map<String, Boolean> animalTamedConfigs = new HashMap<>();
+	public static Map<String, Boolean> animalTrustingConfigs = new HashMap<>();
+
+	public static Map<String, ForgeConfigSpec.ConfigValue<String>> tamingIngredientConfigs = new HashMap<>();
+	public static Map<String, ForgeConfigSpec.ConfigValue<Integer>> tamingChanceConfigs = new HashMap<>();
+	public static Map<String, ForgeConfigSpec.ConfigValue<String>> temperIngredientConfigs = new HashMap<>();
+	public static Map<String, ForgeConfigSpec.ConfigValue<String>> temperValueConfigs = new HashMap<>();
+	public static Map<String, ForgeConfigSpec.ConfigValue<String>> trustingIngredientConfigs = new HashMap<>();
+	public static Map<String, ForgeConfigSpec.ConfigValue<Integer>> trustingChanceConfigs = new HashMap<>();
 }
