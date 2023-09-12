@@ -9,24 +9,25 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class UlterlandsIntegration {
+public class AutumnityIntegration {
 
-    final String MOD = "ulterlands"; //TODO BREEDING TEMPER TAMING TRUSTING
+    final String MOD = "autumnity"; //TODO BREEDING TEMPER TAMING TRUSTING
 
     final List<String> animalNames = new ArrayList<>();
     final Map<String, String> ingredients = new HashMap<>();
     final Map<String, Integer> breedingCooldown = new HashMap<>();
 
-    public UlterlandsIntegration(ForgeConfigSpec.Builder builder) {
+    public AutumnityIntegration(ForgeConfigSpec.Builder builder) {
         builder.push("integration");
         builder.push(MOD);
 
-        addAnimal("mushogg", CommonStrings.VEGETABLES);
+        addAnimal("snail", CommonStrings.MUSHROOM_STEW);
+        addAnimal("turkey", CommonStrings.FOUL_BERRIES);
 
         for (String animal : animalNames) {
             ForgeConfigSpec.ConfigValue<String> animalIngredients = builder.push(animal)
-                    .comment("Ingredients required for " + animal + " breeding")
-                    .define(animal + "Ingredients", ingredients.get(animal));
+                .comment("Ingredients required for " + animal + " breeding")
+                .define(animal + "Ingredients", ingredients.get(animal));
             ForgeConfigSpec.ConfigValue<String> animalSpawnEgg = builder.define(animal + "SpawnEgg", MOD + ":" + animal + "_spawn_egg");
             CommonConstants.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);
             CommonConstants.spawnEggConfigs.put(MOD + "_" + animal, animalSpawnEgg);
