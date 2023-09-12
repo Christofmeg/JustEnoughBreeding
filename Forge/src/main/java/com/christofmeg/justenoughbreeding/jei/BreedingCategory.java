@@ -19,6 +19,7 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.animal.Cat;
 import net.minecraft.world.entity.animal.Fox;
 import net.minecraft.world.entity.animal.Ocelot;
@@ -215,7 +216,11 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
 
             String entityNameString = entityName.getString(); // Convert Component to String
             if(recipe.needsToBeTamed != null) {
-                entityNameString += " (Tamed)";
+                Component tamed = new TranslatableComponent("translation.justenoughbreeding.tamed");
+                entityNameString += " (" + tamed.getString() + ")";
+            } else if(recipe.animalTrusting != null) {
+                Component trusting = new TranslatableComponent("translation.justenoughbreeding.trusting");
+                entityNameString += " (" + trusting.getString() + ")";
             }
 
             int stringWidth = font.width(entityNameString); // Measure the width of the string in pixels
@@ -328,14 +333,17 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
         private final Ingredient resultItemStack;
         @Nullable
         private final ItemStack extraInputStack;
+        @Nullable
+        private final Boolean animalTrusting;
 
-        public BreedingRecipe(EntityType<?> entityType, Ingredient breedingCatalyst, ItemStack spawnEgg, @Nullable Boolean needsToBeTamed, @Nullable Ingredient resultItemStack, @Nullable ItemStack extraInputStack) {
+        public BreedingRecipe(EntityType<?> entityType, Ingredient breedingCatalyst, ItemStack spawnEgg, @Nullable Boolean needsToBeTamed, @Nullable Ingredient resultItemStack, @Nullable ItemStack extraInputStack, @Nullable Boolean animalTrusting) {
             this.entityType = entityType;
             this.breedingCatalyst = breedingCatalyst;
             this.spawnEgg = spawnEgg;
             this.needsToBeTamed = needsToBeTamed;
             this.resultItemStack = resultItemStack;
             this.extraInputStack = extraInputStack;
+            this.animalTrusting = animalTrusting;
         }
 
         private void doRendering(PoseStack stack, double mouseX) {
@@ -348,20 +356,19 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
             }
 
             if (currentLivingEntity != null) {
+                if (currentLivingEntity instanceof TamableAnimal tamableAnimal) {
+                    tamableAnimal.setTame(true);
+                }
                 renderEntity(stack, mouseX, currentLivingEntity);
             }
         }
+
     }
 
-    //TODO https://www.curseforge.com/minecraft/mc-mods/deeperdarker
-    //TODO https://www.curseforge.com/minecraft/mc-mods/spirit
     //TODO https://www.curseforge.com/minecraft/mc-mods/betteranimalsplus
     //TODO https://www.curseforge.com/minecraft/mc-mods/upgrade-aquatic
     //TODO https://www.curseforge.com/minecraft/mc-mods/galosphere
-    //TODO https://www.curseforge.com/minecraft/mc-mods/earth-mobs
     //TODO https://www.curseforge.com/minecraft/mc-mods/buzzier-bees
-    //TODO https://www.curseforge.com/minecraft/mc-mods/environmental
-    //TODO https://www.curseforge.com/minecraft/mc-mods/autumnity
     //TODO https://www.curseforge.com/minecraft/mc-mods/exotic-birds
     //TODO https://www.curseforge.com/minecraft/mc-mods/creatures-and-beasts
     //TODO https://www.curseforge.com/minecraft/mc-mods/extended-mushrooms
@@ -375,11 +382,14 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
     //TODO https://www.curseforge.com/minecraft/mc-mods/fins-and-tails
     //TODO https://www.curseforge.com/minecraft/mc-mods/realistic-horse-genetics
     //TODO https://www.curseforge.com/minecraft/mc-mods/critters-and-companions
-    //TODO https://www.curseforge.com/minecraft/mc-mods/friends-and-foes-forge
     //TODO https://www.curseforge.com/minecraft/mc-mods/the-undergarden
     //TODO https://www.curseforge.com/minecraft/mc-mods/productivebees
     //TODO https://www.curseforge.com/minecraft/mc-mods/roost-ultimate
     //TODO https://www.curseforge.com/minecraft/mc-mods/ender-zoology
     //TODO https://www.curseforge.com/minecraft/mc-mods/primal-reservation
+    //TODO https://www.curseforge.com/minecraft/mc-mods/baby-fat
+    //TODO https://www.curseforge.com/minecraft/mc-mods/fins-and-tails
+    //TODO https://www.curseforge.com/minecraft/mc-mods/minecraft-earth-mod
+
 
 }

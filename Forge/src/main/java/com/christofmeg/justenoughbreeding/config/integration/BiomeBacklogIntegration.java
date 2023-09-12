@@ -9,38 +9,35 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class NaturalistIntegration {
+public class BiomeBacklogIntegration {
 
-    final String MOD = "naturalist"; //TODO BREEDING TEMPER TAMING TRUSTING
+    final String MOD = "biome_backlog"; //TODO BREEDING TEMPER TAMING TRUSTING
 
-    private final List<String> animalNames = new ArrayList<>();
-    private final Map<String, String> ingredients = new HashMap<>();
-    private final Map<String, String> resultEggs = new HashMap<>();
-    private final Map<String, Integer> eggsAmountMin = new HashMap<>();
-    private final Map<String, Integer> eggsAmountMax = new HashMap<>();
+    final List<String> animalNames = new ArrayList<>();
+    final List<String> tamableOnly = new ArrayList<>();
+    final Map<String, String> ingredients = new HashMap<>();
+    final Map<String, String> resultEggs = new HashMap<>();
+    final Map<String, Integer> eggsAmountMin = new HashMap<>();
+    final Map<String, Integer> eggsAmountMax = new HashMap<>();
     final Map<String, Integer> breedingCooldown = new HashMap<>();
+    final Map<String, String> tamingIngredients = new HashMap<>();
+    final Map<String, Integer> tamingChance = new HashMap<>();
 
-    public NaturalistIntegration(ForgeConfigSpec.Builder builder) {
+    public BiomeBacklogIntegration(ForgeConfigSpec.Builder builder) {
         builder.push("integration");
         builder.push(MOD);
 
-        addEggLayingAnimal("alligator", CommonStrings.ALLIGATOR_FOOD_ITEMS_TAG, "naturalist:alligator_egg", 1, 4);
-        addAnimal("bear", CommonStrings.BEAR_TEMPT_ITEMS_TAG);
-        addAnimal("boar", CommonStrings.BOAR_FOOD_ITEMS_TAG);
-        addAnimal("butterfly", CommonStrings.FLOWERS_TAG);
-        addAnimal("deer", CommonStrings.APPLE);
-        addAnimal("duck", CommonStrings.DUCK_FOOD_ITEMS_TAG);
-        addAnimal("giraffe", CommonStrings.HAY_BLOCK);
-        addEggLayingAnimal("tortoise", CommonStrings.TORTOISE_TEMPT_ITEMS_TAG, "naturalist:tortoise_egg", 1, 4);
+        addEggLayingAnimal("ostrich", CommonStrings.WHEAT, "biome_backlog:ostrich_egg", 1);
+        addTamableOnly("vulture", CommonStrings.FLESH);
 
         for (String animal : animalNames) {
             ForgeConfigSpec.ConfigValue<String> animalIngredients = builder.push(animal)
-                    .comment("Ingredients required for " + animal + " breeding")
-                    .define(animal + "Ingredients", ingredients.get(animal));
+                .comment("Ingredients required for " + animal + " breeding")
+                .define(animal + "Ingredients", ingredients.get(animal));
             ForgeConfigSpec.ConfigValue<String> animalSpawnEgg = builder.define(animal + "SpawnEgg", MOD + ":" + animal + "_spawn_egg");
             CommonConstants.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);
             CommonConstants.spawnEggConfigs.put(MOD + "_" + animal, animalSpawnEgg);
-            if(resultEggs.get(animal) != null && eggsAmountMin.get(animal) != null && eggsAmountMax.get(animal) != null) {
+            if (resultEggs.get(animal) != null && eggsAmountMin.get(animal) != null && eggsAmountMax.get(animal) != null) {
                 ForgeConfigSpec.ConfigValue<String> animalEggResult = builder
                         .comment("Egg that " + animal + " lays after breeding")
                         .define(animal + "eggResult", resultEggs.get(animal));
@@ -60,6 +57,20 @@ public class NaturalistIntegration {
             }
             builder.pop();
         }
+
+        for (String tamable : tamableOnly) {
+            if(tamingIngredients.get(tamable) != null && tamingChance.get(tamable) != null) {
+                ForgeConfigSpec.ConfigValue<String> animalTamingIngredients = builder.push(tamable)
+                        .comment("Ingredients required for " + tamable + " taming")
+                        .define(tamable + "TamingIngredients", tamingIngredients.get(tamable));
+                ForgeConfigSpec.ConfigValue<Integer> animalTamingChance = builder.defineInRange(tamable + "TamingChance", tamingChance.get(tamable), 0, 100);
+                CommonConstants.tamingIngredientConfigs.put(MOD + "_" + tamable, animalTamingIngredients);
+                CommonConstants.tamingChanceConfigs.put(MOD + "_" + tamable, animalTamingChance);
+            }
+            ForgeConfigSpec.ConfigValue<String> animalSpawnEgg = builder.define(tamable + "SpawnEgg", MOD + ":" + tamable + "_spawn_egg");
+            CommonConstants.spawnEggConfigs.put(MOD + "_" + tamable, animalSpawnEgg);
+            builder.pop();
+        }
         builder.pop(2);
     }
 
@@ -69,11 +80,17 @@ public class NaturalistIntegration {
         breedingCooldown.put(name, 6000);
     }
 
-    private void addEggLayingAnimal(String name, String ingredient, String resultEgg, int eggAmountMin, int eggAmountMax) {
+    private void addEggLayingAnimal(String name, String ingredient, String resultEgg, int eggAmountMax) {
         addAnimal(name, ingredient);
         resultEggs.put(name, resultEgg);
-        eggsAmountMin.put(name, eggAmountMin);
+        eggsAmountMin.put(name, 1);
         eggsAmountMax.put(name, eggAmountMax);
+    }
+
+    private void addTamableOnly(String name, String tamingIngredient) {
+        tamableOnly.add(name);
+        tamingIngredients.put(name, tamingIngredient);
+        tamingChance.put(name, 33);
     }
 
 }
