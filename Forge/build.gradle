@@ -69,8 +69,8 @@ dependencies {
 
 
     // ALEXSMOBS    //Forge only        https://www.curseforge.com/minecraft/mc-mods/alexs-mobs //TODO WIP
-//    implementation fg.deobf("curse.maven:alexs-mobs-426558:4159154")
-//        implementation fg.deobf("curse.maven:citadel-331936:4473243")
+    implementation fg.deobf("curse.maven:alexs-mobs-426558:3547887")
+        implementation fg.deobf("curse.maven:citadel-331936:3537054")
 
     // SNUFFLES             //Forge                 https://www.curseforge.com/minecraft/mc-mods/snuffles
     //Fabric                https://www.curseforge.com/minecraft/mc-mods/snuffles-fabric
