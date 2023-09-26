@@ -271,7 +271,7 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
         currentLivingEntity.yHeadRot = yawRadians;
         currentLivingEntity.yHeadRotO = yawRadians;
 
-        stack.translate(0.0F, currentLivingEntity.getMyRidingOffset(), 0.0F); // Translate the entity vertically to adjust its position
+        stack.translate(0.0F, currentLivingEntity.getMyRidingOffset(currentLivingEntity), 0.0F); // Translate the entity vertically to adjust its position
 
         Minecraft instance = Minecraft.getInstance();
         EntityRenderDispatcher entityRenderDispatcher = instance.getEntityRenderDispatcher(); // Get the entity rendering dispatcher
