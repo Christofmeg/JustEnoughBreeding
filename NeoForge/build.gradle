@@ -1,9 +1,9 @@
 plugins {
-    id 'net.minecraftforge.gradle' version '6.+'
+    id 'net.neoforged.gradle' version '[6.0.13,6.2)'
     id 'idea'
 }
 
-archivesBaseName = "${mod_id}-forge-${supported_versions}"
+archivesBaseName = "${mod_id}-neoforge-${neo_supported_versions}"
 
 minecraft {
     mappings channel: 'official', version: minecraft_version
@@ -41,7 +41,7 @@ minecraft {
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    minecraft "net.neoforged:forge:${neo_minecraft_version}-${neoforge_version}"
     compileOnly project(":Common")
 
     // JEI
@@ -136,7 +136,6 @@ dependencies {
 
     //TODO NEEDS MORE REWORK TO BE ADDED
     // CHOCOCRAFT           //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/chococraft
-
 //    implementation fg.deobf("curse.maven:chococraft-225280:4656794")
 //        implementation fg.deobf("curse.maven:architectury-api-419699:4555749")
 //        implementation fg.deobf("curse.maven:patchouli-306770:4031402")
@@ -148,7 +147,6 @@ dependencies {
 //    implementation fg.deobf("curse.maven:naturalist-627986:4660377")
 //        implementation fg.deobf("curse.maven:geckolib-388172:4407241")
 
-    implementation fg.deobf("curse.maven:more-mob-variants-695107:4631175")
 
 }
 
@@ -161,4 +159,3 @@ processResources {
 }
 
 jar.finalizedBy('reobfJar')
-
