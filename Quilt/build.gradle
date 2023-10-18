@@ -1,16 +1,20 @@
 plugins {
-    id 'fabric-loom' version '0.12-SNAPSHOT'
-    id 'maven-publish'
+    id 'org.quiltmc.loom' version '1.3.+'
     id 'idea'
 }
 
 archivesBaseName = "${mod_id}-quilt-${quilt_supported_versions}"
 
+project.configurations.configureEach {
+    exclude(group: "net.fabricmc", module: "fabric-loader")
+    exclude(group: "net.fabricmc.fabric-api")
+}
+
 dependencies {
-    minecraft "com.mojang:minecraft:${fabric_minecraft_version}"
+    minecraft "com.mojang:minecraft:${quilt_minecraft_version}"
     mappings loom.officialMojangMappings()
-    modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
+    modImplementation "org.quiltmc:quilt-loader:${quilt_loader_version}"
+    modImplementation "org.quiltmc.quilted-fabric-api:quilted-fabric-api:${quilt_version}-${minecraft_version}"
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
     implementation project(":Common")
 
@@ -25,7 +29,7 @@ dependencies {
     if (project.hasProperty('jei_version')) {
         modCompileOnly("mezz.jei:jei-${fabric_minecraft_version}-common-api:${jei_version}")
         modCompileOnly("mezz.jei:jei-${fabric_minecraft_version}-fabric-api:${jei_version}")
-        modRuntimeOnly("mezz.jei:jei-${fabric_minecraft_version}-fabric:${jei_version}")
+//        modRuntimeOnly("mezz.jei:jei-${fabric_minecraft_version}-fabric:${jei_version}")
     }
 
     // CONFIGURED
@@ -40,55 +44,6 @@ dependencies {
             modImplementation "curse.maven:menulogue-682371:${fabric_menulogue_version}"
         }
     }
-
-
-    // CARACAL MOB           //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/caracal-mod
-//    modImplementation "curse.maven:caracal-mod-486505:3952705"
-//        modImplementation "curse.maven:geckolib-388172:4407239"  // https://www.curseforge.com/minecraft/mc-mods/geckolib
-
-    // THE DUCKS             //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/ydms-ducks-mod
-//    modImplementation "curse.maven:ydms-ducks-mod-576073:4016490"
-
-    // FENNECFOX            //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/ydms-fennec-fox
-//    modImplementation "curse.maven:ydms-fennec-fox-694325:4125141"
-
-    // YDMS REDPANDA        //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/ydms-red-panda/
-//    modImplementation "curse.maven:ydms-red-panda-623035:4029825"
-
-    // FROZENUP             //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/frozen-up
-//    modImplementation "curse.maven:frozen-up-430652:4139740"
-
-    // YDMS GLARE           //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/ydms-glare
-//    modImplementation "curse.maven:ydms-glare-589268:4016323"
-
-    // LIL WINGS             //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/lil-wings
-//    modImplementation "curse.maven:lil-wings-561277:4325684"
-//        modImplementation "curse.maven:geckolib-388172:4407239"  // https://www.curseforge.com/minecraft/mc-mods/geckolib
-//        modImplementation(include("io.github.tropheusj:milk-lib:1.0.48"))
-
-    // DUCKLING             //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/duckling
-//    modImplementation "curse.maven:duckling-597248:4127030"
-//        modImplementation "curse.maven:geckolib-388172:4407239"  // https://www.curseforge.com/minecraft/mc-mods/geckolib
-
-    // TWILIGHT FOREST      //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/the-twilight-forest
-//    modImplementation "curse.maven:the-twilight-forest-227639:4490392"    //TODO wait for source and stable build
-//        implementation files('libs/Manningham.Mills-2.0.jar')
-
-    //TODO NEEDS MORE REWORK TO BE ADDED
-    // CHOCOCRAFT           //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/chococraft
-//    implementation fg.deobf("curse.maven:chococraft-225280:4656794")
-//        implementation fg.deobf("curse.maven:architectury-api-419699:4555749")
-//        implementation fg.deobf("curse.maven:patchouli-306770:4031402")
-
-    // ECOLOGICS            //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/ecologics
-//    modImplementation "curse.maven:ecologics-570463:4171284"
-//        modImplementation "curse.maven:cloth-config-348521:4633414"  //https://www.curseforge.com/minecraft/mc-mods/cloth-config
-
-    // NATURALIST           //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/naturalist
-//    modImplementation "curse.maven:naturalist-627986:4660373"
-//        modImplementation "curse.maven:geckolib-388172:4407239"  // https://www.curseforge.com/minecraft/mc-mods/geckolib
-
-
 }
 
 loom {
@@ -117,23 +72,12 @@ processResources {
     }
 }
 
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
     source(project(":Common").sourceSets.main.allSource)
 }
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            groupId project.group
-            artifactId project.archivesBaseName
-            version project.version
-            from components.java
-        }
-    }
-
-    repositories {
-        maven {
-            url "file://" + System.getenv("local_maven")
-        }
-    }
+java {
+    // Still required by IDEs such as Eclipse and Visual Studio Code
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
