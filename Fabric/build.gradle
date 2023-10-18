@@ -1,7 +1,9 @@
+import net.darkhax.curseforgegradle.TaskPublishCurseForge
+
 plugins {
     id 'fabric-loom' version '0.12-SNAPSHOT'
-    id 'maven-publish'
     id 'idea'
+    id 'net.darkhax.curseforgegradle' version '1.+'
 }
 
 archivesBaseName = "${mod_id}-fabric-${fabric_supported_versions}"
@@ -88,7 +90,7 @@ dependencies {
 //    modImplementation "curse.maven:naturalist-627986:4660373"
 //        modImplementation "curse.maven:geckolib-388172:4407239"  // https://www.curseforge.com/minecraft/mc-mods/geckolib
 
-    modImplementation "curse.maven:more-mob-variants-695107:4581457"
+//    modImplementation "curse.maven:more-mob-variants-695107:4581457"
 
 }
 
@@ -118,23 +120,41 @@ processResources {
     }
 }
 
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
     source(project(":Common").sourceSets.main.allSource)
 }
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            groupId project.group
-            artifactId project.archivesBaseName
-            version project.version
-            from components.java
-        }
+tasks.register('publishCurseForge', TaskPublishCurseForge) {
+    apiToken = file('../../API Tokens/justenoughbreeding.md')
+    def projectId = "${cf_id}".toString()
+    def mainFile = upload(projectId, file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar"))
+    mainFile.changelogType = 'markdown'
+    mainFile.changelog = file('changelog.md')
+    mainFile.addGameVersion('Client', 'Server')
+    mainFile.releaseType = "${release_type}"
+    "${fabric_release_versions}".split(',').each {
+        mainFile.addGameVersion("${it}")
     }
-
-    repositories {
-        maven {
-            url "file://" + System.getenv("local_maven")
-        }
-    }
+    mainFile.addRequirement("fabric-api")
+    mainFile.addRequirement("forge-config-api-port-fabric")
+    mainFile.addOptional("catalogue-fabric")
+    mainFile.addOptional("configured-fabric")
+    mainFile.addOptional("friends-and-foes")
+    mainFile.addOptional("kiwi-boi")
+    mainFile.addOptional("menulogue")
+    mainFile.addOptional("snow-pig-fabric")
+    mainFile.addOptional("snuffles-fabric")
+    mainFile.addOptional("steves-vanilla")
+    mainFile.addOptional("the-twilight-forest")
+    mainFile.addOptional("jei")
+    mainFile.addOptional("frozen-up")
+    mainFile.addOptional("caracal-mod")
+    mainFile.addOptional("lil-wings")
+    mainFile.addOptional("ecologics")
+    mainFile.addOptional("ydms-ducks-mod")
+    mainFile.addOptional("ydms-glare")
+    mainFile.addOptional("duckling")
+    mainFile.addOptional("ydms-red-panda")
+    mainFile.addOptional("naturalist")
+    mainFile.addOptional("ydms-fennec-fox")
 }
