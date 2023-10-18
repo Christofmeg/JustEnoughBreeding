@@ -4,6 +4,7 @@ plugins {
     id 'net.minecraftforge.gradle' version '6.+'
     id 'idea'
     id 'net.darkhax.curseforgegradle' version '1.+'
+    id 'com.modrinth.minotaur' version '2.+'
 }
 
 archivesBaseName = "${mod_id}-forge-${supported_versions}"
@@ -213,4 +214,36 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("ydms-fennec-fox")
     mainFile.addOptional("recrafted-creatures")
     mainFile.addOptional("earth-mobs")
+}
+
+modrinth {
+    token = file('../../API Tokens/modrinth.md').text
+    projectId = "${modrinth_id}"
+    versionName = getArchivesBaseName() + "-" + getVersion()
+    versionType = "${release_type}"
+    changelog = file('changelog.md').text
+    uploadFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")
+    gameVersions = "${forge_release_versions}".split(",") as List<String>
+    dependencies {
+        optional.project "jei"
+        optional.project "quark"
+        optional.project "rei"
+        optional.project "blue-skies"
+        optional.project "snowpig"
+        optional.project "caracal_mob"
+        optional.project "roughly-enough-items-hacks"
+        optional.project "kiwi-boi"
+        optional.project "snuffles"
+        optional.project "lil-wings"
+        optional.project "ecologics"
+        optional.project "the-ducks"
+        optional.project "ydms-glare"
+        optional.project "duckling"
+        optional.project "friends-and-foes-forge"
+        optional.project "ydms-red-panda"
+        optional.project "naturalist"
+        optional.project "ydms-ostrich"
+        optional.project "ydms-fennec-fox"
+        optional.project "earthmobs"
+    }
 }

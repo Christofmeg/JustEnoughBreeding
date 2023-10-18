@@ -4,6 +4,7 @@ plugins {
     id 'org.quiltmc.loom' version '1.3.+'
     id 'idea'
     id 'net.darkhax.curseforgegradle' version '1.+'
+    id 'com.modrinth.minotaur' version '2.+'
 }
 
 archivesBaseName = "${mod_id}-quilt-${quilt_supported_versions}"
@@ -117,4 +118,32 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("ydms-red-panda")
     mainFile.addOptional("naturalist")
     mainFile.addOptional("ydms-fennec-fox")
+}
+
+modrinth {
+    token = file('../../API Tokens/modrinth.md').text
+    projectId = "${modrinth_id}"
+    versionName = getArchivesBaseName() + "-" + getVersion()
+    versionType = "${release_type}"
+    changelog = file('changelog.md').text
+    uploadFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")
+    gameVersions = "${quilt_release_versions}".split(",") as List<String>
+    dependencies {
+        required.project "qsl"
+        required.project "forge-config-api-port"
+        optional.project "naturalist"
+        optional.project "ydms-glare"
+        optional.project "friends-and-foes-quilt"
+        optional.project "snowpig-fabric"
+        optional.project "duckling"
+        optional.project "jei"
+        optional.project "ydms-fennec-fox"
+        optional.project "ydms-red-panda"
+        optional.project "caracal_mob"
+        optional.project "kiwi-boi"
+        optional.project "ecologics"
+        optional.project "snuffles-fabric"
+        optional.project "lil-wings"
+        optional.project "the-ducks"
+    }
 }
