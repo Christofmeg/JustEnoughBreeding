@@ -1,7 +1,8 @@
 package com.christofmeg.justenoughbreeding;
 
 import com.christofmeg.justenoughbreeding.config.JEBConfig;
-import net.fabricmc.api.ClientModInitializer;
+import org.quiltmc.loader.api.ModContainer;
+import org.quiltmc.qsl.base.api.entrypoint.client.ClientModInitializer;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -17,7 +18,7 @@ public class JustEnoughBreeding implements ClientModInitializer {
 
     @SuppressWarnings("removal")
     @Override
-    public void onInitializeClient() {
+    public void onInitializeClient(ModContainer mod) {
         ModLoadingContext.registerConfig(CommonConstants.MOD_ID, ModConfig.Type.CLIENT, BUILDER.build());
     }
 

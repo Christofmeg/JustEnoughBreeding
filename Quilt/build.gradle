@@ -1,16 +1,20 @@
 plugins {
-    id 'fabric-loom' version '0.12-SNAPSHOT'
-    id 'maven-publish'
+    id 'org.quiltmc.loom' version '1.1.+'
     id 'idea'
 }
 
 archivesBaseName = "${mod_id}-quilt-${quilt_supported_versions}"
 
+project.configurations.configureEach {
+    exclude(group: "net.fabricmc", module: "fabric-loader")
+    exclude(group: "net.fabricmc.fabric-api")
+}
+
 dependencies {
-    minecraft "com.mojang:minecraft:${fabric_minecraft_version}"
+    minecraft "com.mojang:minecraft:${quilt_minecraft_version}"
     mappings loom.officialMojangMappings()
-    modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
+    modImplementation "org.quiltmc:quilt-loader:${quilt_loader_version}"
+    modImplementation "org.quiltmc.quilted-fabric-api:quilted-fabric-api:${quilt_version}-${minecraft_version}"
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
     implementation project(":Common")
 
@@ -25,7 +29,7 @@ dependencies {
     if (project.hasProperty('jei_version')) {
         modCompileOnly("mezz.jei:jei-${fabric_minecraft_version}-common-api:${jei_version}")
         modCompileOnly("mezz.jei:jei-${fabric_minecraft_version}-fabric-api:${jei_version}")
-        modRuntimeOnly("mezz.jei:jei-${fabric_minecraft_version}-fabric:${jei_version}")
+//        modRuntimeOnly("mezz.jei:jei-${fabric_minecraft_version}-fabric:${jei_version}")
     }
 
     // CONFIGURED
@@ -117,23 +121,13 @@ processResources {
     }
 }
 
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
     source(project(":Common").sourceSets.main.allSource)
 }
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            groupId project.group
-            artifactId project.archivesBaseName
-            version project.version
-            from components.java
-        }
-    }
-
-    repositories {
-        maven {
-            url "file://" + System.getenv("local_maven")
-        }
-    }
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
+
+
