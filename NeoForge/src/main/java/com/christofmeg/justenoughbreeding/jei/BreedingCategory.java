@@ -334,4 +334,31 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
 
     }
 
+    //TODO https://www.curseforge.com/minecraft/mc-mods/betteranimalsplus
+    //TODO https://www.curseforge.com/minecraft/mc-mods/upgrade-aquatic
+    //TODO https://www.curseforge.com/minecraft/mc-mods/galosphere
+    //TODO https://www.curseforge.com/minecraft/mc-mods/buzzier-bees
+    //TODO https://www.curseforge.com/minecraft/mc-mods/exotic-birds
+    //TODO https://www.curseforge.com/minecraft/mc-mods/creatures-and-beasts
+    //TODO https://www.curseforge.com/minecraft/mc-mods/extended-mushrooms
+    //TODO https://www.curseforge.com/minecraft/mc-mods/more-babies
+    //TODO https://www.curseforge.com/minecraft/mc-mods/goodall
+    //TODO https://www.curseforge.com/minecraft/mc-mods/energeticsheep
+    //TODO https://www.curseforge.com/minecraft/mc-mods/feywild
+    //TODO https://www.curseforge.com/minecraft/mc-mods/earth2java
+    //TODO https://www.curseforge.com/minecraft/mc-mods/unusual-end
+    //TODO https://www.curseforge.com/minecraft/mc-mods/vanilla-degus
+    //TODO https://www.curseforge.com/minecraft/mc-mods/fins-and-tails
+    //TODO https://www.curseforge.com/minecraft/mc-mods/realistic-horse-genetics
+    //TODO https://www.curseforge.com/minecraft/mc-mods/critters-and-companions
+    //TODO https://www.curseforge.com/minecraft/mc-mods/the-undergarden
+    //TODO https://www.curseforge.com/minecraft/mc-mods/productivebees
+    //TODO https://www.curseforge.com/minecraft/mc-mods/roost-ultimate
+    //TODO https://www.curseforge.com/minecraft/mc-mods/ender-zoology
+    //TODO https://www.curseforge.com/minecraft/mc-mods/primal-reservation
+    //TODO https://www.curseforge.com/minecraft/mc-mods/baby-fat
+    //TODO https://www.curseforge.com/minecraft/mc-mods/fins-and-tails
+    //TODO https://www.curseforge.com/minecraft/mc-mods/minecraft-earth-mod
+
+
 }
