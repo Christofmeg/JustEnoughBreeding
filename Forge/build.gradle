@@ -1,17 +1,11 @@
-buildscript {
-    repositories {
-        maven { url = 'https://maven.minecraftforge.net' }
-        mavenCentral()
-    }
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
-    }
-}
-apply plugin: 'java'
-apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'eclipse'
-apply plugin: 'maven-publish'
+import net.darkhax.curseforgegradle.TaskPublishCurseForge
 
+plugins {
+    id 'net.minecraftforge.gradle' version '5.1.+'
+    id 'idea'
+    id 'net.darkhax.curseforgegradle' version '1.+'
+    id 'com.modrinth.minotaur' version '2.+'
+}
 archivesBaseName = "${mod_id}-forge-${supported_versions}"
 
 minecraft {
@@ -158,9 +152,7 @@ dependencies {
 
 }
 
-
-
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
     source(project(":Common").sourceSets.main.allSource)
 }
 
@@ -168,21 +160,86 @@ processResources {
     from project(":Common").sourceSets.main.resources
 }
 
-
 jar.finalizedBy('reobfJar')
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            groupId project.group
-            artifactId project.archivesBaseName
-            version project.version
-            artifact jar
-        }
+tasks.register('publishCurseForge', TaskPublishCurseForge) {
+    apiToken = file('../../API Tokens/justenoughbreeding.md')
+    def projectId = "${cf_id}".toString()
+    def mainFile = upload(projectId, file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")) as Object
+    mainFile.changelogType = 'markdown'
+    mainFile.changelog = file('changelog.md')
+    mainFile.addGameVersion('Client', 'Server')
+    mainFile.releaseType = "${release_type}"
+    "${forge_release_versions}".split(',').each {
+        mainFile.addGameVersion("${it}")
     }
-    repositories {
-        maven {
-            url "file://" + System.getenv("local_maven")
-        }
+    mainFile.addOptional("aquaculture")
+    mainFile.addOptional("sophisticated-wolves")
+    mainFile.addOptional("the-twilight-forest")
+    mainFile.addOptional("jei")
+    mainFile.addOptional("quark")
+    mainFile.addOptional("waddles")
+    mainFile.addOptional("roughly-enough-items")
+    mainFile.addOptional("blue-skies")
+    mainFile.addOptional("chileancraft")
+    mainFile.addOptional("autumnity")
+    mainFile.addOptional("apple-cows")
+    mainFile.addOptional("snow-pig")
+    mainFile.addOptional("greek-fantasy")
+    mainFile.addOptional("frozen-up")
+    mainFile.addOptional("configured")
+    mainFile.addOptional("catalogue")
+    mainFile.addOptional("frostrealm")
+    mainFile.addOptional("caracal-mod")
+    mainFile.addOptional("roughly-enough-items-hacks")
+    mainFile.addOptional("kiwi-boi")
+    mainFile.addOptional("steves-vanilla")
+    mainFile.addOptional("snuffles")
+    mainFile.addOptional("lil-wings")
+    mainFile.addOptional("ecologics")
+    mainFile.addOptional("ydms-ducks-mod")
+    mainFile.addOptional("ydms-glare")
+    mainFile.addOptional("duckling")
+    mainFile.addOptional("friends-and-foes-forge")
+    mainFile.addOptional("ydms-red-panda")
+    mainFile.addOptional("naturalist")
+    mainFile.addOptional("the-ulterlands")
+    mainFile.addOptional("biome-backlog")
+    mainFile.addOptional("marine-iguana")
+    mainFile.addOptional("ydms-ostrich")
+    mainFile.addOptional("ydms-fennec-fox")
+    mainFile.addOptional("recrafted-creatures")
+    mainFile.addOptional("earth-mobs")
+}
+
+modrinth {
+    token = file('../../API Tokens/modrinth.md').text
+    projectId = "${modrinth_id}"
+    versionName = getArchivesBaseName() + "-" + getVersion()
+    versionType = "${release_type}"
+    changelog = file('changelog.md').text
+    uploadFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")
+    gameVersions = "${forge_release_versions}".split(",") as List<String>
+    dependencies {
+        optional.project "jei"
+        optional.project "quark"
+        optional.project "rei"
+        optional.project "blue-skies"
+        optional.project "snowpig"
+        optional.project "caracal_mob"
+        optional.project "roughly-enough-items-hacks"
+        optional.project "kiwi-boi"
+        optional.project "snuffles"
+        optional.project "lil-wings"
+        optional.project "ecologics"
+        optional.project "the-ducks"
+        optional.project "ydms-glare"
+        optional.project "duckling"
+        optional.project "friends-and-foes-forge"
+        optional.project "ydms-red-panda"
+        optional.project "naturalist"
+        optional.project "ydms-ostrich"
+        optional.project "ydms-fennec-fox"
+        optional.project "earthmobs"
     }
 }
