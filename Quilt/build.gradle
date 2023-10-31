@@ -95,6 +95,9 @@ dependencies {
 //    modImplementation "curse.maven:naturalist-627986:4660373"
 //        modImplementation "curse.maven:geckolib-388172:4407239"  // https://www.curseforge.com/minecraft/mc-mods/geckolib
 
+    // BIOME MAKEOVER       // Fabric           https://www.curseforge.com/minecraft/mc-mods/biome-makeover
+    modImplementation "curse.maven:biome-makeover-412182:4467754"
+        modImplementation "curse.maven:architectury-api-419699:4555748"
 
 }
 
@@ -166,6 +169,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("ydms-red-panda")
     mainFile.addOptional("naturalist")
     mainFile.addOptional("ydms-fennec-fox")
+    mainFile.addOptional("biome-makeover")
 }
 
 modrinth {
@@ -193,5 +197,6 @@ modrinth {
         optional.project "snuffles-fabric"
         optional.project "lil-wings"
         optional.project "the-ducks"
+        optional.project "biome-makeover"
     }
 }

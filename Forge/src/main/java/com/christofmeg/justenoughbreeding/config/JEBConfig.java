@@ -116,6 +116,9 @@ public class JEBConfig {
         if (ModList.get().isLoaded("biome_backlog")) {
             final BiomeBacklogIntegration CONFIG = new BiomeBacklogIntegration(builder);
         }
+        if (ModList.get().isLoaded("biomemakeover")) {
+            final BiomeMakeoverIntegration CONFIG = new BiomeMakeoverIntegration(builder);
+        }
 
     }
 }

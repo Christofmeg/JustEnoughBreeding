@@ -81,6 +81,7 @@ public class CommonStrings {
     public static final String CRESCENT_FRUIT = "blue_skies:crescent_fruit";
     public static final String WHEAT_HAY = "minecraft:wheat, minecraft:hay_block";
     public static final String COAL = "minecraft:coal";
+    public static final String PINK_PETALS = "biomemakeover:pink_petals";
+    public static final String SPIDER_EYE = "minecraft:spider_eye";
 
-    
 }
