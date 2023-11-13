@@ -13,6 +13,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,19 +45,6 @@ public class Utils {
         return String.join(", ", edibleMeatItemNames);
     }
 
-    public static String getAllItems() {
-        List<String> allItems = new ArrayList<>();
-
-        for (ResourceLocation key : ForgeRegistries.ITEMS.getKeys()) {
-            Item item = ForgeRegistries.ITEMS.getValue(key);
-            if (item != null) {
-                allItems.add(key.toString());
-            }
-        }
-
-        return String.join(", ", allItems);
-    }
-
     public static void registerMobBreedingRecipes(IRecipeRegistration registration) {
         List<String> sortedMobNames = new ArrayList<>(CommonConstants.ingredientConfigs.keySet());
         Collections.sort(sortedMobNames);
@@ -80,9 +68,22 @@ public class Utils {
                                 EntityType<?> entityType = spawnEgg.getType(null);
                                 Boolean needsToBeTamed = CommonConstants.animalTamedConfigs.get(mobName);
                                 Boolean animalTrusting = CommonConstants.animalTrustingConfigs.get(mobName);
-                                BreedingCategory.BreedingRecipe breedingRecipe = createBreedingRecipe(entityType, combinedIngredient, spawnEggItem, needsToBeTamed, combinedResultIngredient, animalTrusting);
+                                BreedingCategory.BreedingRecipe breedingRecipe;
 
+                                Ingredient combinedExtraIngredient = null;
+
+                                if (CommonConstants.extraBreedingIngredientConfigs != null) {
+                                    if (CommonConstants.extraBreedingIngredientConfigs.get(mobName) != null) {
+                                        String mobExtraIngredients = CommonConstants.extraBreedingIngredientConfigs.get(mobName).get();
+                                        if (mobExtraIngredients != null) {
+                                            combinedExtraIngredient = createCombinedIngredient(mobExtraIngredients);
+                                        }
+                                    }
+                                }
+
+                                breedingRecipe = createBreedingRecipe(entityType, combinedIngredient, spawnEggItem, needsToBeTamed, combinedResultIngredient, animalTrusting, combinedExtraIngredient);
                                 registration.addRecipes(BreedingCategory.TYPE, Collections.singletonList(breedingRecipe));
+
                             }
                         }
                     }
@@ -110,7 +111,7 @@ public class Utils {
         return resultIngredients;
     }
 
-    private static BreedingCategory.BreedingRecipe createBreedingRecipe(EntityType<?> entityType, Ingredient combinedIngredient, Item spawnEggItem, Boolean needsToBeTamed, List<Ingredient> resultItemStacks, Boolean animalTrusting) {
+    private static BreedingCategory.BreedingRecipe createBreedingRecipe(EntityType<?> entityType, Ingredient combinedIngredient, Item spawnEggItem, Boolean needsToBeTamed, List<Ingredient> resultItemStacks, Boolean animalTrusting, @Nullable Ingredient combinedExtraIngredient) {
         List<ItemStack> mergedResultItemStacks = new ArrayList<>();
 
         for (Ingredient resultItemStack : resultItemStacks) {
@@ -124,7 +125,7 @@ public class Utils {
                 new ItemStack(spawnEggItem),
                 needsToBeTamed,
                 Ingredient.of(mergedResultItemStacks.toArray(new ItemStack[0])),
-                null,
+                combinedExtraIngredient,
                 animalTrusting
         );
     }

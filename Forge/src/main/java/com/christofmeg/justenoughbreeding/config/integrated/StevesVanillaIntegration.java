@@ -25,10 +25,10 @@ public class StevesVanillaIntegration {
         builder.push(MOD);
 
         CommonUtils.addAnimal("boggord", CommonStrings.MOUNTAIN_BUDS, animalNames, ingredients, breedingCooldown);
-        CommonUtils.addEggLayingAnimal("chest_toad", CommonStrings.SLIME_BALL, "steves_vanilla:chest_toad_eggs",
+        CommonUtils.addAnimalEggLaying("chest_toad", CommonStrings.SLIME_BALL, "steves_vanilla:chest_toad_eggs",
                 1, animalNames, ingredients, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
 
-        CommonUtils.addAnimalNamesWithResult(animalNames, builder, ingredients, MOD, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
+        CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
 
         builder.pop(2);
 

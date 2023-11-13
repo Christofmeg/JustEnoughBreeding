@@ -10,6 +10,8 @@ public class CommonConstants {
 	public static final String MOD_ID = "justenoughbreeding";
 
 	public static Map<String, ForgeConfigSpec.ConfigValue<String>> ingredientConfigs = new HashMap<>();
+	public static Map<String, ForgeConfigSpec.ConfigValue<String>> extraBreedingIngredientConfigs = new HashMap<>();
+	public static Map<String, ForgeConfigSpec.ConfigValue<String>> extraTamingIngredientConfigs = new HashMap<>();
 	public static Map<String, ForgeConfigSpec.ConfigValue<String>> spawnEggConfigs = new HashMap<>();
 	public static Map<String, ForgeConfigSpec.ConfigValue<Integer>> ingredientAmountConfigs = new HashMap<>();
 	public static Map<String, ForgeConfigSpec.ConfigValue<String>> eggResultConfigs = new HashMap<>();

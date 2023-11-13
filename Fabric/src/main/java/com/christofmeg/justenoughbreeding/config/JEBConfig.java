@@ -1,6 +1,7 @@
 package com.christofmeg.justenoughbreeding.config;
 
 import com.christofmeg.justenoughbreeding.config.integrated.AqcaracalIntegration;
+import com.christofmeg.justenoughbreeding.config.integrated.BiomeMakeoverIntegration;
 import com.christofmeg.justenoughbreeding.config.integrated.DucklingIntegration;
 import com.christofmeg.justenoughbreeding.config.integrated.FennecFoxIntegration;
 import com.christofmeg.justenoughbreeding.config.integrated.FriendsAndFoesIntegration;
@@ -69,6 +70,8 @@ public class JEBConfig {
         if (FabricLoader.getInstance().isModLoaded("friendsandfoes")) {
             final FriendsAndFoesIntegration CONFIG = new FriendsAndFoesIntegration(builder);
         }
-
+        if (FabricLoader.getInstance().isModLoaded("biomemakeover")) {
+            final BiomeMakeoverIntegration CONFIG = new BiomeMakeoverIntegration(builder);
+        }
     }
 }

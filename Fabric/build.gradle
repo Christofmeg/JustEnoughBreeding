@@ -93,6 +93,10 @@ dependencies {
 
 //    modImplementation "curse.maven:more-mob-variants-695107:4581457"
 
+    // BIOME MAKEOVER       // Fabric           https://www.curseforge.com/minecraft/mc-mods/biome-makeover
+ //   modImplementation "curse.maven:biome-makeover-412182:4815823"
+ //       modImplementation "curse.maven:architectury-api-419699:4663009"
+
 }
 
 loom {
@@ -158,6 +162,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("ydms-red-panda")
     mainFile.addOptional("naturalist")
     mainFile.addOptional("ydms-fennec-fox")
+    mainFile.addOptional("biome-makeover")
 }
 
 modrinth {
@@ -185,5 +190,6 @@ modrinth {
         optional.project "snuffles-fabric"
         optional.project "lil-wings"
         optional.project "the-ducks"
+        optional.project "biome-makeover"
     }
 }

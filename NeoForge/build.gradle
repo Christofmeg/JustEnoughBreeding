@@ -151,6 +151,9 @@ dependencies {
 //    implementation fg.deobf("curse.maven:naturalist-627986:4660377")
 //        implementation fg.deobf("curse.maven:geckolib-388172:4407241")
 
+    // BIOME MAKEOVER       //Forge             https://www.curseforge.com/minecraft/mc-mods/biome-makeover-forge
+//    implementation fg.deobf("curse.maven:biome-makeover-forge-567709:4815822")
+//        implementation fg.deobf("curse.maven:architectury-api-419699:4663010")
 
 }
 
@@ -212,6 +215,9 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("ydms-fennec-fox")
     mainFile.addOptional("recrafted-creatures")
     mainFile.addOptional("earth-mobs")
+    mainFile.addOptional("biome-makeover-forge")
+    mainFile.addOptional("alexs-caves")
+    mainFile.addOptional("untamedwilds")
 }
 
 modrinth {
@@ -243,5 +249,6 @@ modrinth {
         optional.project "ydms-ostrich"
         optional.project "ydms-fennec-fox"
         optional.project "earthmobs"
+        optional.project "biome-makeover"
     }
 }

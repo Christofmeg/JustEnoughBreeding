@@ -31,7 +31,7 @@ public class BlueSkiesIntegration {
         CommonUtils.addAnimalWithTamedTag("reindeer", CommonStrings.PINE_FRUIT, animalNames, ingredients, breedingCooldown, needsToBeTamed);
         CommonUtils.addAnimal("shade_monitor", CommonStrings.FISHES_TAG, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("stardust_ram", CommonStrings.PINE_FRUIT, animalNames, ingredients, breedingCooldown);
-        CommonUtils.addAnimalNamesWithTamedTag(animalNames, builder, ingredients, MOD, breedingCooldown, needsToBeTamed);
+        CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, needsToBeTamed);
 
         CommonUtils.addTamableOnly("crystal_camel", CommonStrings.SCALEFRUIT, tamableOnly, tamingIngredients, tamingChance);
         CommonUtils.addTamableOnly("cosmic_fox", CommonStrings.CRESCENT_FRUIT, tamableOnly, tamingIngredients, tamingChance);

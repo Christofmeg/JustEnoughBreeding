@@ -48,6 +48,7 @@ dependencies {
             modImplementation "curse.maven:menulogue-682371:${fabric_menulogue_version}"
         }
     }
+
 }
 
 loom {
@@ -118,6 +119,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("ydms-red-panda")
     mainFile.addOptional("naturalist")
     mainFile.addOptional("ydms-fennec-fox")
+    mainFile.addOptional("biome-makeover")
 }
 
 modrinth {
@@ -145,5 +147,6 @@ modrinth {
         optional.project "snuffles-fabric"
         optional.project "lil-wings"
         optional.project "the-ducks"
+        optional.project "biome-makeover"
     }
 }

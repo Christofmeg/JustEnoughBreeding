@@ -57,7 +57,7 @@ public class MinecraftIntegration {
 
         CommonUtils.addAnimal("fox", CommonStrings.BERRIES, animalNames, ingredients, breedingCooldown);
         CommonUtils.addTrustingOnly("fox", CommonStrings.BERRIES, trustableOnly, trustingIngredients, trustingChance);
-        CommonUtils.addEggLayingAnimal("frog", CommonStrings.SLIME_BALL, "minecraft:frogspawn", 1,
+        CommonUtils.addAnimalEggLaying("frog", CommonStrings.SLIME_BALL, "minecraft:frogspawn", 1,
                 animalNames, ingredients, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
         CommonUtils.addAnimal("goat", CommonStrings.WHEAT, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("hoglin", CommonStrings.CRIMSON_FUNGUS, animalNames, ingredients, breedingCooldown);
@@ -99,7 +99,7 @@ public class MinecraftIntegration {
         CommonUtils.addAnimal("rabbit", CommonStrings.DANDELION_CARROTS, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("sheep", CommonStrings.WHEAT, animalNames, ingredients, breedingCooldown);
 
-        CommonUtils.addEggLayingAnimal("sniffer", CommonStrings.TORCHFLOWERS_SEEDS, "minecraft:sniffer_egg", 1,
+        CommonUtils.addAnimalEggLaying("sniffer", CommonStrings.TORCHFLOWERS_SEEDS, "minecraft:sniffer_egg", 1,
                 animalNames, ingredients, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
 
         CommonUtils.addAnimal("strider", CommonStrings.WARPED_FUNGUS, animalNames, ingredients, breedingCooldown);
@@ -111,13 +111,13 @@ public class MinecraftIntegration {
                 CommonStrings.HAY_BLOCK
         }, new int[]{3, 6}, temperDataMap);
 
-        CommonUtils.addEggLayingAnimal("turtle", CommonStrings.SEAGRASS, "minecraft:turtle_egg", 4,
+        CommonUtils.addAnimalEggLaying("turtle", CommonStrings.SEAGRASS, "minecraft:turtle_egg", 4,
                 animalNames, ingredients, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
 
         CommonUtils.addAnimalWithTamedTag("wolf", MEAT, animalNames, ingredients, breedingCooldown, needsToBeTamed);
         CommonUtils.addTamableOnly("wolf", CommonStrings.BONE, tamableOnly, tamingIngredients, tamingChance);
 
-        CommonUtils.addAnimalNamesWithTamedTag(animalNames, builder, ingredients, MOD, breedingCooldown, needsToBeTamed);
+        CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, needsToBeTamed);
 
         CommonUtils.addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, builder, MOD);
 
@@ -125,7 +125,7 @@ public class MinecraftIntegration {
 
         CommonUtils.addAnimalTempers(temperDataMap, builder, MOD);
 
-        CommonUtils.addAnimalNamesWithResult(animalNames, builder, ingredients, MOD, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
+        CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
 
         builder.pop();
     }

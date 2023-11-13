@@ -26,7 +26,7 @@ public class AqcaracalIntegration {
         builder.push(MOD);
 
         CommonUtils.addAnimalWithTamedTag("caracal", CommonStrings.CARACAL_FOOD, animalNames, ingredients, breedingCooldown, needsToBeTamed);
-        CommonUtils.addAnimalNamesWithTamedTag(animalNames, builder, ingredients, MOD, breedingCooldown, needsToBeTamed);
+        CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, needsToBeTamed);
 
         CommonUtils.addTamableOnly("caracal", CommonStrings.CARACAL_FOOD, tamableOnly, tamingIngredients, tamingChance);
         CommonUtils.addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, builder, MOD);

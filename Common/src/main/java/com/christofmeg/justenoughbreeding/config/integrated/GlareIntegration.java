@@ -26,7 +26,7 @@ public class GlareIntegration {
         builder.push(MOD);
 
         CommonUtils.addAnimalWithTamedTag("glare", CommonStrings.GLOW_BERRIES, animalNames, ingredients, breedingCooldown, needsToBeTamed);
-        CommonUtils.addAnimalNamesWithTamedTag(animalNames, builder, ingredients, MOD, breedingCooldown, needsToBeTamed);
+        CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, needsToBeTamed);
 
         CommonUtils.addTamableOnly("glare", CommonStrings.GLOW_BERRIES, tamableOnly, tamingIngredients, tamingChance);
         CommonUtils.addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, builder, MOD);
