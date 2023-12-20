@@ -83,6 +83,17 @@ public class CommonStrings {
     public static final String COAL = "minecraft:coal";
     public static final String TORCHFLOWERS_SEEDS = "minecraft:torchflower_seeds";
     public static final String CACTUS = "minecraft:cactus";
-
-    
+    public static final String PINK_PETALS = "biomemakeover:pink_petals";
+    public static final String SPIDER_EYE = "minecraft:spider_eye";
+    public static final String RADGILL = "alexscaves:radgill";
+    public static final String TREE_STAR = "alexscaves:tree_star";
+    public static final String COD_RAW_AND_COOKED = "minecraft:cod, minecraft:cooked_cod";
+    public static final String TREMORSAURUS_FOOD = "alexscaves:cooked_dinosaur_chop, alexscaves:dinosaur_chop";
+    public static final String DINOSAUR_NUGGET = "alexscaves:dinosaur_nugget";
+    public static final String SERENE_SALAD = "alexscaves:serene_salad";
+    public static final String PRIMITIVE_CLUB = "alexscaves:primitive_club";
+    public static final String BEETROOT = "minecraft:beetroot";
+    public static final String MELON = "minecraft:melon";
+    public static final String LIZARD_TEMPT_ITEMS_TAG = "#naturalist:lizard_tempt_items";
+    public static final String BIRD_FOOD_ITEMS_TAG = "#naturalist:bird_food_items";
 }

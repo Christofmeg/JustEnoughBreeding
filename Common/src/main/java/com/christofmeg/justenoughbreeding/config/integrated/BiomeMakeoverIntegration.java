@@ -9,9 +9,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AqcaracalIntegration {
+public class BiomeMakeoverIntegration {
 
-    final String MOD = "aqupd";
+    final String MOD = "biomemakeover";
 
     final List<String> animalNames = new ArrayList<>();
     final List<String> tamableOnly = new ArrayList<>();
@@ -21,14 +21,19 @@ public class AqcaracalIntegration {
     final Map<String, String> tamingIngredients = new HashMap<>();
     final Map<String, Integer> tamingChance = new HashMap<>();
 
-    public AqcaracalIntegration(ForgeConfigSpec.Builder builder) {
+    public BiomeMakeoverIntegration(ForgeConfigSpec.Builder builder) {
         builder.push("integration");
         builder.push(MOD);
 
-        CommonUtils.addAnimalWithTamedTag("caracal", CommonStrings.CARACAL_FOOD, animalNames, ingredients, breedingCooldown, needsToBeTamed);
+        CommonUtils.addAnimal("helmit_crab", CommonStrings.FISHES_TAG, animalNames, ingredients, breedingCooldown);
+        CommonUtils.addAnimal("scuttler", CommonStrings.PINK_PETALS, animalNames, ingredients, breedingCooldown); //TODO 33% chance to breed
+        CommonUtils.addAnimal("toad", CommonStrings.SPIDER_EYE, animalNames, ingredients, breedingCooldown);
+        CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown);
+
+        CommonUtils.addAnimalWithTamedTag("owl", CommonUtils.getEdibleMeatItemNames(true), animalNames, ingredients, breedingCooldown, needsToBeTamed);
         CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, needsToBeTamed);
 
-        CommonUtils.addTamableOnly("caracal", CommonStrings.CARACAL_FOOD, tamableOnly, tamingIngredients, tamingChance);
+        CommonUtils.addTamableOnly("owl", CommonUtils.getEdibleMeatItemNames(true), tamableOnly, tamingIngredients, tamingChance);
         CommonUtils.addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, builder, MOD);
 
         builder.pop(2);

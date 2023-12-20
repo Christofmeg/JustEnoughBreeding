@@ -26,7 +26,7 @@ public class RedPandaIntegration {
         builder.push(MOD);
 
         CommonUtils.addAnimalWithTamedTag("redpanda", CommonStrings.BAMBOO, animalNames, ingredients, breedingCooldown, needsToBeTamed);
-        CommonUtils.addAnimalNamesWithTamedTag(animalNames, builder, ingredients, MOD, breedingCooldown, needsToBeTamed);
+        CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, needsToBeTamed);
 
         CommonUtils.addTamableOnly("redpanda", CommonStrings.SWEET_BERRIES, tamableOnly, tamingIngredients, tamingChance);
         CommonUtils.addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, builder, MOD);

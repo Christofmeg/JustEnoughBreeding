@@ -31,7 +31,7 @@ public class QuarkIntegration {
         CommonUtils.addAnimal("crab", CommonStrings.CRABFOOD, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimalWithTamedTag("foxhound", MEAT, animalNames, ingredients, breedingCooldown, needsToBeTamed);
         CommonUtils.addAnimalWithTamedTag("shiba", MEAT, animalNames, ingredients, breedingCooldown, needsToBeTamed);
-        CommonUtils.addAnimalNamesWithTamedTag(animalNames, builder, ingredients, MOD, breedingCooldown, needsToBeTamed);
+        CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, needsToBeTamed);
 
         CommonUtils.addTamableOnly("foxhound", CommonStrings.COAL, tamableOnly, tamingIngredients, tamingChance);
         CommonUtils.addTamableOnly("shiba", CommonStrings.BONE, tamableOnly, tamingIngredients, tamingChance);

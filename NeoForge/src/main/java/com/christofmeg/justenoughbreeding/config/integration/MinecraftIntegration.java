@@ -47,34 +47,33 @@ public class MinecraftIntegration {
         CommonUtils.addAnimal("cow", CommonStrings.WHEAT, animalNames, ingredients, breedingCooldown);
 
         CommonUtils.addAnimalWithTamedTag("donkey", CommonStrings.GOLDEN_APPLE_CARROT, animalNames, ingredients, breedingCooldown, needsToBeTamed);
-//        CommonUtils.addTamableOnly("donkey", CommonStrings.GOLDEN_APPLE_CARROT, tamableOnly, tamingIngredients, tamingChance);
         CommonUtils.addTemperAnimal("donkey", new String[]{
                 CommonStrings.SUGAR,
                 CommonStrings.WHEAT,
                 CommonStrings.APPLE,
                 CommonStrings.GOLDEN_CARROT,
-                CommonStrings.GOLDEN_APPLE
-        }, new int[]{3, 3, 3, 5, 10}, temperDataMap);
+                CommonStrings.GOLDEN_APPLE,
+                CommonStrings.ENCHANTED_GOLDEN_APPLE
+        }, new int[]{3, 3, 3, 5, 10, 10}, temperDataMap);
 
         CommonUtils.addAnimal("fox", CommonStrings.BERRIES, animalNames, ingredients, breedingCooldown);
         CommonUtils.addTrustingOnly("fox", CommonStrings.BERRIES, trustableOnly, trustingIngredients, trustingChance);
-        CommonUtils.addEggLayingAnimal("frog", CommonStrings.SLIME_BALL, "minecraft:frogspawn", 1,
+        CommonUtils.addAnimalEggLaying("frog", CommonStrings.SLIME_BALL, "minecraft:frogspawn", 1,
                 animalNames, ingredients, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
         CommonUtils.addAnimal("goat", CommonStrings.WHEAT, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("hoglin", CommonStrings.CRIMSON_FUNGUS, animalNames, ingredients, breedingCooldown);
 
         CommonUtils.addAnimalWithTamedTag("horse", CommonStrings.GOLDEN_APPLE_CARROT, animalNames, ingredients, breedingCooldown, needsToBeTamed);
-//        CommonUtils.addTamableOnly("horse", CommonStrings.GOLDEN_APPLE_CARROT, tamableOnly, tamingIngredients, tamingChance);
         CommonUtils.addTemperAnimal("horse", new String[]{
                 CommonStrings.SUGAR,
                 CommonStrings.WHEAT,
                 CommonStrings.APPLE,
                 CommonStrings.GOLDEN_CARROT,
-                CommonStrings.GOLDEN_APPLE
-        }, new int[]{3, 3, 3, 5, 10}, temperDataMap);
+                CommonStrings.GOLDEN_APPLE,
+                CommonStrings.ENCHANTED_GOLDEN_APPLE
+        }, new int[]{3, 3, 3, 5, 10, 10}, temperDataMap);
 
         CommonUtils.addAnimalWithTamedTag("llama", CommonStrings.WHEAT_HAY, animalNames, ingredients, breedingCooldown, needsToBeTamed);
-//        CommonUtils.addTamableOnly("llama", CommonStrings.WHEAT_HAY, tamableOnly, tamingIngredients, tamingChance);
         CommonUtils.addTemperAnimal("llama", new String[]{
                 CommonStrings.WHEAT,
                 CommonStrings.HAY_BLOCK
@@ -83,13 +82,14 @@ public class MinecraftIntegration {
         CommonUtils.addAnimal("mooshroom", CommonStrings.WHEAT, animalNames, ingredients, breedingCooldown);
 
         CommonUtils.addTamableOnly("mule", CommonStrings.WHEAT_HAY, tamableOnly, tamingIngredients, tamingChance);
-            CommonUtils.addTemperAnimal("mule", new String[]{
-                    CommonStrings.SUGAR,
-                    CommonStrings.WHEAT,
-                    CommonStrings.APPLE,
-                    CommonStrings.GOLDEN_CARROT,
-                    CommonStrings.GOLDEN_APPLE
-            }, new int[]{3, 3, 3, 5, 10}, temperDataMap);
+        CommonUtils.addTemperAnimal("mule", new String[]{
+                CommonStrings.SUGAR,
+                CommonStrings.WHEAT,
+                CommonStrings.APPLE,
+                CommonStrings.GOLDEN_CARROT,
+                CommonStrings.GOLDEN_APPLE,
+                CommonStrings.ENCHANTED_GOLDEN_APPLE
+        }, new int[]{3, 3, 3, 5, 10, 10}, temperDataMap);
 
         CommonUtils.addAnimal("ocelot", CommonStrings.COD_SALMON, animalNames, ingredients, breedingCooldown);
         CommonUtils.addTrustingOnly("ocelot", CommonStrings.COD_SALMON, trustableOnly, trustingIngredients, trustingChance);
@@ -100,25 +100,24 @@ public class MinecraftIntegration {
         CommonUtils.addAnimal("rabbit", CommonStrings.DANDELION_CARROTS, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("sheep", CommonStrings.WHEAT, animalNames, ingredients, breedingCooldown);
 
-        CommonUtils.addEggLayingAnimal("sniffer", CommonStrings.TORCHFLOWERS_SEEDS, "minecraft:sniffer_egg", 1,
+        CommonUtils.addAnimalEggLaying("sniffer", CommonStrings.TORCHFLOWERS_SEEDS, "minecraft:sniffer_egg", 1,
                 animalNames, ingredients, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
 
         CommonUtils.addAnimal("strider", CommonStrings.WARPED_FUNGUS, animalNames, ingredients, breedingCooldown);
 
         CommonUtils.addAnimalWithTamedTag("trader_llama", CommonStrings.WHEAT_HAY, animalNames, ingredients, breedingCooldown, needsToBeTamed);
-//        CommonUtils.addTamableOnly("trader_llama", CommonStrings.WHEAT_HAY, tamableOnly, tamingIngredients, tamingChance);
         CommonUtils.addTemperAnimal("trader_llama", new String[]{
                 CommonStrings.WHEAT,
                 CommonStrings.HAY_BLOCK
         }, new int[]{3, 6}, temperDataMap);
 
-        CommonUtils.addEggLayingAnimal("turtle", CommonStrings.SEAGRASS, "minecraft:turtle_egg", 4,
+        CommonUtils.addAnimalEggLaying("turtle", CommonStrings.SEAGRASS, "minecraft:turtle_egg", 4,
                 animalNames, ingredients, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
 
         CommonUtils.addAnimalWithTamedTag("wolf", MEAT, animalNames, ingredients, breedingCooldown, needsToBeTamed);
         CommonUtils.addTamableOnly("wolf", CommonStrings.BONE, tamableOnly, tamingIngredients, tamingChance);
 
-        CommonUtils.addAnimalNamesWithTamedTag(animalNames, builder, ingredients, MOD, breedingCooldown, needsToBeTamed);
+        CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, needsToBeTamed);
 
         CommonUtils.addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, builder, MOD);
 
@@ -126,7 +125,7 @@ public class MinecraftIntegration {
 
         CommonUtils.addAnimalTempers(temperDataMap, builder, MOD);
 
-        CommonUtils.addAnimalNamesWithResult(animalNames, builder, ingredients, MOD, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
+        CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
 
         builder.pop();
     }

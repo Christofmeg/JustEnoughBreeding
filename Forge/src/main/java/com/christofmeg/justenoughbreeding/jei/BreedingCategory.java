@@ -126,7 +126,7 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
             builder.addSlot(RecipeIngredientRole.OUTPUT, outputSlotItemX, outputSlotItemY).addIngredients(recipe.resultItemStack);
         }
         if (recipe.extraInputStack != null  && !recipe.extraInputStack.isEmpty()) {
-            builder.addSlot(RecipeIngredientRole.INPUT, 69, inputSlot2ItemY).addItemStack(recipe.extraInputStack);
+            builder.addSlot(RecipeIngredientRole.INPUT, 69, inputSlot2ItemY).addIngredients(recipe.extraInputStack);
         }
     }
 
@@ -301,11 +301,11 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
         private final Boolean needsToBeTamed;
         private final Ingredient resultItemStack;
         @Nullable
-        private final ItemStack extraInputStack;
+        private final Ingredient extraInputStack;
         @Nullable
         private final Boolean animalTrusting;
 
-        public BreedingRecipe(EntityType<?> entityType, Ingredient breedingCatalyst, ItemStack spawnEgg, @Nullable Boolean needsToBeTamed, @Nullable Ingredient resultItemStack, @Nullable ItemStack extraInputStack, @Nullable Boolean animalTrusting) {
+        public BreedingRecipe(EntityType<?> entityType, Ingredient breedingCatalyst, ItemStack spawnEgg, @Nullable Boolean needsToBeTamed, @Nullable Ingredient resultItemStack, @Nullable Ingredient extraInputStack, @Nullable Boolean animalTrusting) {
             this.entityType = entityType;
             this.breedingCatalyst = breedingCatalyst;
             this.spawnEgg = spawnEgg;
