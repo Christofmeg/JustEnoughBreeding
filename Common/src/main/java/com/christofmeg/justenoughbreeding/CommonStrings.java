@@ -92,5 +92,8 @@ public class CommonStrings {
     public static final String DINOSAUR_NUGGET = "alexscaves:dinosaur_nugget";
     public static final String SERENE_SALAD = "alexscaves:serene_salad";
     public static final String PRIMITIVE_CLUB = "alexscaves:primitive_club";
-    
+    public static final String BEETROOT = "minecraft:beetroot";
+    public static final String MELON = "minecraft:melon";
+    public static final String LIZARD_TEMPT_ITEMS_TAG = "#naturalist:lizard_tempt_items";
+    public static final String BIRD_FOOD_ITEMS_TAG = "#naturalist:bird_food_items";
 }

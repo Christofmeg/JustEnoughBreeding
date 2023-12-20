@@ -47,14 +47,14 @@ public class MinecraftIntegration {
         CommonUtils.addAnimal("cow", CommonStrings.WHEAT, animalNames, ingredients, breedingCooldown);
 
         CommonUtils.addAnimalWithTamedTag("donkey", CommonStrings.GOLDEN_APPLE_CARROT, animalNames, ingredients, breedingCooldown, needsToBeTamed);
-//        CommonUtils.addTamableOnly("donkey", CommonStrings.GOLDEN_APPLE_CARROT, tamableOnly, tamingIngredients, tamingChance);
         CommonUtils.addTemperAnimal("donkey", new String[]{
                 CommonStrings.SUGAR,
                 CommonStrings.WHEAT,
                 CommonStrings.APPLE,
                 CommonStrings.GOLDEN_CARROT,
-                CommonStrings.GOLDEN_APPLE
-        }, new int[]{3, 3, 3, 5, 10}, temperDataMap);
+                CommonStrings.GOLDEN_APPLE,
+                CommonStrings.ENCHANTED_GOLDEN_APPLE
+        }, new int[]{3, 3, 3, 5, 10, 10}, temperDataMap);
 
         CommonUtils.addAnimal("fox", CommonStrings.BERRIES, animalNames, ingredients, breedingCooldown);
         CommonUtils.addTrustingOnly("fox", CommonStrings.BERRIES, trustableOnly, trustingIngredients, trustingChance);
@@ -64,17 +64,16 @@ public class MinecraftIntegration {
         CommonUtils.addAnimal("hoglin", CommonStrings.CRIMSON_FUNGUS, animalNames, ingredients, breedingCooldown);
 
         CommonUtils.addAnimalWithTamedTag("horse", CommonStrings.GOLDEN_APPLE_CARROT, animalNames, ingredients, breedingCooldown, needsToBeTamed);
-//        CommonUtils.addTamableOnly("horse", CommonStrings.GOLDEN_APPLE_CARROT, tamableOnly, tamingIngredients, tamingChance);
         CommonUtils.addTemperAnimal("horse", new String[]{
                 CommonStrings.SUGAR,
                 CommonStrings.WHEAT,
                 CommonStrings.APPLE,
                 CommonStrings.GOLDEN_CARROT,
-                CommonStrings.GOLDEN_APPLE
-        }, new int[]{3, 3, 3, 5, 10}, temperDataMap);
+                CommonStrings.GOLDEN_APPLE,
+                CommonStrings.ENCHANTED_GOLDEN_APPLE
+        }, new int[]{3, 3, 3, 5, 10, 10}, temperDataMap);
 
         CommonUtils.addAnimalWithTamedTag("llama", CommonStrings.WHEAT_HAY, animalNames, ingredients, breedingCooldown, needsToBeTamed);
-//        CommonUtils.addTamableOnly("llama", CommonStrings.WHEAT_HAY, tamableOnly, tamingIngredients, tamingChance);
         CommonUtils.addTemperAnimal("llama", new String[]{
                 CommonStrings.WHEAT,
                 CommonStrings.HAY_BLOCK
@@ -83,13 +82,14 @@ public class MinecraftIntegration {
         CommonUtils.addAnimal("mooshroom", CommonStrings.WHEAT, animalNames, ingredients, breedingCooldown);
 
         CommonUtils.addTamableOnly("mule", CommonStrings.WHEAT_HAY, tamableOnly, tamingIngredients, tamingChance);
-            CommonUtils.addTemperAnimal("mule", new String[]{
-                    CommonStrings.SUGAR,
-                    CommonStrings.WHEAT,
-                    CommonStrings.APPLE,
-                    CommonStrings.GOLDEN_CARROT,
-                    CommonStrings.GOLDEN_APPLE
-            }, new int[]{3, 3, 3, 5, 10}, temperDataMap);
+        CommonUtils.addTemperAnimal("mule", new String[]{
+                CommonStrings.SUGAR,
+                CommonStrings.WHEAT,
+                CommonStrings.APPLE,
+                CommonStrings.GOLDEN_CARROT,
+                CommonStrings.GOLDEN_APPLE,
+                CommonStrings.ENCHANTED_GOLDEN_APPLE
+        }, new int[]{3, 3, 3, 5, 10, 10}, temperDataMap);
 
         CommonUtils.addAnimal("ocelot", CommonStrings.COD_SALMON, animalNames, ingredients, breedingCooldown);
         CommonUtils.addTrustingOnly("ocelot", CommonStrings.COD_SALMON, trustableOnly, trustingIngredients, trustingChance);
@@ -106,7 +106,6 @@ public class MinecraftIntegration {
         CommonUtils.addAnimal("strider", CommonStrings.WARPED_FUNGUS, animalNames, ingredients, breedingCooldown);
 
         CommonUtils.addAnimalWithTamedTag("trader_llama", CommonStrings.WHEAT_HAY, animalNames, ingredients, breedingCooldown, needsToBeTamed);
-//        CommonUtils.addTamableOnly("trader_llama", CommonStrings.WHEAT_HAY, tamableOnly, tamingIngredients, tamingChance);
         CommonUtils.addTemperAnimal("trader_llama", new String[]{
                 CommonStrings.WHEAT,
                 CommonStrings.HAY_BLOCK

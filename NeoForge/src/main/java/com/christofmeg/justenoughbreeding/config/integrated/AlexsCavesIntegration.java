@@ -39,7 +39,7 @@ public class AlexsCavesIntegration {
         CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, needsToBeTamed, "spawn_egg_", true);
 
         CommonUtils.addTamableOnly("raycat", CommonStrings.RADGILL, tamableOnly, tamingIngredients, tamingChance);
-        CommonUtils.addTamableOnly("tremorsaurus", CommonStrings.SERENE_SALAD, tamableOnly, tamingIngredients, tamingChance, "alexscaves:primitive_club", extraTamingIngredients);
+        CommonUtils.addTamableOnly("tremorsaurus", CommonStrings.SERENE_SALAD, tamableOnly, tamingIngredients, tamingChance, CommonStrings.PRIMITIVE_CLUB, extraTamingIngredients);
         CommonUtils.addTamableOnly("vallumraptor", CommonStrings.SERENE_SALAD, tamableOnly, tamingIngredients, tamingChance);
         CommonUtils.addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, builder, MOD, "spawn_egg_", true, extraTamingIngredients);
 

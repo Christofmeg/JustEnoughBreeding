@@ -14,7 +14,7 @@ import com.christofmeg.justenoughbreeding.config.integrated.SnufflesIntegration;
 import com.christofmeg.justenoughbreeding.config.integrated.TheDucksModIntegration;
 import com.christofmeg.justenoughbreeding.config.integration.EcologicsIntegration;
 import com.christofmeg.justenoughbreeding.config.integration.MinecraftIntegration;
-import com.christofmeg.justenoughbreeding.config.integration.NaturalistIntegration;
+import com.christofmeg.justenoughbreeding.config.integrated.NaturalistIntegration;
 import com.christofmeg.justenoughbreeding.config.integration.TwilightForestIntegration;
 import net.minecraftforge.common.ForgeConfigSpec;
 import org.quiltmc.loader.api.QuiltLoader;

@@ -8,6 +8,7 @@ import com.christofmeg.justenoughbreeding.config.integrated.FriendsAndFoesIntegr
 import com.christofmeg.justenoughbreeding.config.integrated.FrozenUpIntegration;
 import com.christofmeg.justenoughbreeding.config.integrated.GlareIntegration;
 import com.christofmeg.justenoughbreeding.config.integrated.LilWingsIntegration;
+import com.christofmeg.justenoughbreeding.config.integrated.NaturalistIntegration;
 import com.christofmeg.justenoughbreeding.config.integrated.RedPandaIntegration;
 import com.christofmeg.justenoughbreeding.config.integrated.SnowPigIntegration;
 import com.christofmeg.justenoughbreeding.config.integrated.SnufflesIntegration;

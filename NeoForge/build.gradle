@@ -49,10 +49,10 @@ dependencies {
     compileOnly project(":Common")
 
     // JEI
-    if (project.hasProperty('jei_version')) {
-        compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"))
-        compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
-        runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))
+    if (project.hasProperty('neo_jei_version')) {
+        compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${neo_jei_version}"))
+        compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${neo_jei_version}"))
+        runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${neo_jei_version}"))
     }
     // CONFIGURED
     if (project.hasProperty('configured_version')) {

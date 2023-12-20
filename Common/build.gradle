@@ -23,8 +23,8 @@ dependencies {
     }
 
     // FORGE CONFIG API PORT FABRIC
-    if (project.hasProperty('forge_config_api_version')) {
-        implementation "curse.maven:forge-config-api-port-fabric-547434:${forge_config_api_version}"
+    if (project.hasProperty('forge_config_api_version_for_common')) {
+        implementation "curse.maven:forge-config-api-port-fabric-547434:${forge_config_api_version_for_common}"
         implementation 'com.electronwill.night-config:core:3.6.5'
         implementation 'com.electronwill.night-config:toml:3.6.5'
     }

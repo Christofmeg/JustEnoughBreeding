@@ -18,21 +18,21 @@ dependencies {
     minecraft "com.mojang:minecraft:${quilt_minecraft_version}"
     mappings loom.officialMojangMappings()
     modImplementation "org.quiltmc:quilt-loader:${quilt_loader_version}"
-    modImplementation "org.quiltmc.quilted-fabric-api:quilted-fabric-api:${quilt_version}-${minecraft_version}"
+    modImplementation "org.quiltmc.quilted-fabric-api:quilted-fabric-api:${quilt_version}-${quilt_minecraft_version}"
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
     implementation project(":Common")
 
     // FORGE CONFIG API PORT FABRIC
-    if (project.hasProperty('forge_config_api_version')) {
-        modImplementation "curse.maven:forge-config-api-port-fabric-547434:${forge_config_api_version}"
+    if (project.hasProperty('forge_config_api_version_for_quilt')) {
+        modImplementation "curse.maven:forge-config-api-port-fabric-547434:${forge_config_api_version_for_quilt}"
         implementation 'com.electronwill.night-config:core:3.6.5'
         implementation 'com.electronwill.night-config:toml:3.6.5'
     }
 
     // JEI
-    if (project.hasProperty('jei_version')) {
-        modCompileOnly("mezz.jei:jei-${fabric_minecraft_version}-common-api:${jei_version}")
-        modCompileOnly("mezz.jei:jei-${fabric_minecraft_version}-fabric-api:${jei_version}")
+    if (project.hasProperty('quilt_jei_version')) {
+        modCompileOnly("mezz.jei:jei-${quilt_minecraft_version}-common-api:${quilt_jei_version}")
+        modCompileOnly("mezz.jei:jei-${quilt_minecraft_version}-fabric-api:${quilt_jei_version}")
 //        modRuntimeOnly("mezz.jei:jei-${fabric_minecraft_version}-fabric:${jei_version}")
     }
 
