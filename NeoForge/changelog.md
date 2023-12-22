@@ -1,3 +1,3 @@
-1.0.11:
-- Added some missing entries to Naturalist integration
-- Did more background work with integrations
+1.0.12:
+- Integration to Alex's Mobs
+- More background work on integrations

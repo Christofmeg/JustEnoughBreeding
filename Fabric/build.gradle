@@ -74,7 +74,7 @@ dependencies {
 //        modImplementation "curse.maven:geckolib-388172:4407239"  // https://www.curseforge.com/minecraft/mc-mods/geckolib
 
     // TWILIGHT FOREST      //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/the-twilight-forest
-//    modImplementation "curse.maven:the-twilight-forest-227639:4490392"    //TODO wait for source and stable build
+//    modImplementation "curse.maven:the-twilight-forest-227639:4490392"
 //        implementation files('libs/Manningham.Mills-2.0.jar')
 
     //TODO NEEDS MORE REWORK TO BE ADDED

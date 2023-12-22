@@ -1,3 +1,2 @@
-1.0.11:
-- Added some missing entries to Naturalist integration
-- Did more background work with integrations
+1.0.12:
+- More background work on integrations

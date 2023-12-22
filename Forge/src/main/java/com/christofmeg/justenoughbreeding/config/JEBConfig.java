@@ -1,7 +1,10 @@
 package com.christofmeg.justenoughbreeding.config;
 
 import com.christofmeg.justenoughbreeding.config.integrated.*;
-import com.christofmeg.justenoughbreeding.config.integration.*;
+import com.christofmeg.justenoughbreeding.config.integrated.FrostRealmIntegration;
+import com.christofmeg.justenoughbreeding.config.integration.GreekFantasyIntegration;
+import com.christofmeg.justenoughbreeding.config.integration.SophisticatedWolvesIntegration;
+import com.christofmeg.justenoughbreeding.config.integration.UlterlandsIntegration;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.ModList;
 
@@ -63,11 +66,9 @@ public class JEBConfig {
         if (ModList.get().isLoaded("twilightforest")) {
             final TwilightForestIntegration CONFIG = new TwilightForestIntegration(builder);
         }
-/*
-        if (ModList.get().isLoaded("chococraft")) {
-            final ChocoCraftIntegration CONFIG = new ChocoCraftIntegration(builder);
-        }
-*/
+//        if (ModList.get().isLoaded("chococraft")) {
+//            final ChocoCraftIntegration CONFIG = new ChocoCraftIntegration(builder);
+//        }
         if (ModList.get().isLoaded("waddles")) {
             final WaddlesIntegration CONFIG = new WaddlesIntegration(builder);
         }

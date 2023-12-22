@@ -27,6 +27,6 @@ public class CommonConstants {
 	public static Map<String, ForgeConfigSpec.ConfigValue<Integer>> tamingChanceConfigs = new HashMap<>();
 	public static Map<String, ForgeConfigSpec.ConfigValue<String>> temperIngredientConfigs = new HashMap<>();
 	public static Map<String, ForgeConfigSpec.ConfigValue<String>> temperValueConfigs = new HashMap<>();
-	public static Map<String, ForgeConfigSpec.ConfigValue<String>> trustingIngredientConfigs = new HashMap<>();
+	public static Map<String, ForgeConfigSpec.ConfigValue<String>> trustingIngredientConfigs = new HashMap<>(); //TODO add ALL items from registries if "*" is the item. Needed in minecraft:allay and Trusting
 	public static Map<String, ForgeConfigSpec.ConfigValue<Integer>> trustingChanceConfigs = new HashMap<>();
 }

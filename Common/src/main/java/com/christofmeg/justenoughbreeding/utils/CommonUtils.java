@@ -19,8 +19,8 @@ import java.util.stream.Collectors;
 
 public class CommonUtils {
 
-    /*-----------------------------------------------------------------------------------------*/
-    // SINGLE INGREDIENT
+/*-----------------------------------------------------------------------------------------*/
+// SINGLE INGREDIENT
     public static void addAnimal(String name, String ingredient, List<String> animalNames, Map<String, String> ingredients, Map<String, Integer> breedingCooldown) {
         animalNames.add(name);
         ingredients.put(name, ingredient);
@@ -43,10 +43,22 @@ public class CommonUtils {
     public static void addAnimalNames(List<String> animalNames, ForgeConfigSpec.Builder builder, Map<String, String> ingredients, String MOD, Map<String, Integer> breedingCooldown, String spawnEggString, boolean addStringBeforeAnimalName) {
         addAnimalNames(animalNames, builder, ingredients, null, MOD, breedingCooldown, null, spawnEggString, addStringBeforeAnimalName);
     }
-    /*-----------------------------------------------------------------------------------------*/
 
-    /*-----------------------------------------------------------------------------------------*/
-    // EXTRA INGREDIENT
+    public static void addAnimalNames(List<String> animalNames, ForgeConfigSpec.Builder builder, Map<String, String> ingredients, String MOD, Map<String, Integer> breedingCooldown, Map<String, Boolean> needsToBeTamed, String spawnEggString, boolean addStringBeforeAnimalName) {
+        addAnimalNames(animalNames, builder, ingredients, null, MOD, breedingCooldown, needsToBeTamed, spawnEggString, addStringBeforeAnimalName);
+    }
+
+    // CUSTOM SPAWN EGG STRING
+    public static void addAnimalNames(List<String> animalNames, ForgeConfigSpec.Builder builder, Map<String, String> ingredients, String MOD, Map<String, Integer> breedingCooldown, String customSpawnEggString) {
+        addAnimalNames(animalNames, builder, ingredients, null, MOD, breedingCooldown, null, customSpawnEggString);
+    }
+    public static void addAnimalNames(List<String> animalNames, ForgeConfigSpec.Builder builder, Map<String, String> ingredients, String MOD, Map<String, Integer> breedingCooldown, Map<String, Boolean> needsToBeTamed, String customSpawnEggString) {
+        addAnimalNames(animalNames, builder, ingredients, null, MOD, breedingCooldown, needsToBeTamed, customSpawnEggString);
+    }
+/*-----------------------------------------------------------------------------------------*/
+
+/*-----------------------------------------------------------------------------------------*/
+// EXTRA INGREDIENT
 
     public static void addAnimal(String name, String ingredient, String extraIngredient, List<String> animalNames, Map<String, String> ingredients, Map<String, @Nullable String> extraIngredients, Map<String, Integer> breedingCooldown) {
         addAnimal(name, ingredient, animalNames, ingredients, breedingCooldown);
@@ -69,11 +81,12 @@ public class CommonUtils {
     public static void addAnimalNames(List<String> animalNames, ForgeConfigSpec.Builder builder, Map<String, String> ingredients, Map<String, @Nullable String> extraIngredients, String MOD, Map<String, Integer> breedingCooldown, String spawnEggString, boolean addStringBeforeAnimalName) {
         addAnimalNames(animalNames, builder, ingredients, extraIngredients, MOD, breedingCooldown, null, spawnEggString, addStringBeforeAnimalName);
     }
-    /*-----------------------------------------------------------------------------------------*/
 
-    public static void addAnimalNames(List<String> animalNames, ForgeConfigSpec.Builder builder, Map<String, String> ingredients, String MOD, Map<String, Integer> breedingCooldown, Map<String, Boolean> needsToBeTamed, String spawnEggString, boolean addStringBeforeAnimalName) {
-        addAnimalNames(animalNames, builder, ingredients, null, MOD, breedingCooldown, needsToBeTamed, spawnEggString, addStringBeforeAnimalName);
+    // CUSTOM SPAWN EGG STRING
+    public static void addAnimalNames(List<String> animalNames, ForgeConfigSpec.Builder builder, Map<String, String> ingredients, Map<String, @Nullable String> extraIngredients, String MOD, Map<String, Integer> breedingCooldown, String customSpawnEggString) {
+        addAnimalNames(animalNames, builder, ingredients, extraIngredients, MOD, breedingCooldown, null, customSpawnEggString);
     }
+/*-----------------------------------------------------------------------------------------*/
 
     public static void addAnimalNames(
             List<String> animalNames,
@@ -125,6 +138,53 @@ public class CommonUtils {
         }
     }
 
+    // CUSTOM SPAWN EGG STRING
+    public static void addAnimalNames(
+            List<String> animalNames,
+            ForgeConfigSpec.Builder builder,
+            Map<String, String> ingredients,
+            Map<String, @Nullable String> extraIngredients,
+            String MOD,
+            Map<String, Integer> breedingCooldown,
+            @Nullable Map<String, Boolean> needsToBeTamed,
+            @Nullable String customSpawnEggString
+    ) {
+        for (String animal : animalNames) {
+            ForgeConfigSpec.ConfigValue<String> animalIngredients = builder.push(animal)
+                    .comment("Ingredients required for " + animal + " breeding")
+                    .define(animal + "Ingredients", ingredients.get(animal));
+
+            String spawnEggName = MOD + ":" + customSpawnEggString;
+
+            ForgeConfigSpec.ConfigValue<String> animalSpawnEgg = builder.define(animal + "SpawnEgg", spawnEggName);
+
+            CommonConstants.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);
+            CommonConstants.spawnEggConfigs.put(MOD + "_" + animal, animalSpawnEgg);
+
+            if (needsToBeTamed != null && needsToBeTamed.get(animal) != null) {
+                CommonConstants.animalTamedConfigs.put(MOD + "_" + animal, true);
+            }
+
+            if (breedingCooldown.get(animal) != null) {
+                ForgeConfigSpec.ConfigValue<Integer> animalBreedingCooldown = builder.define(animal + "BreedingCooldown", breedingCooldown.get(animal));
+                CommonConstants.breedingCooldown.put(MOD + "_" + animal, animalBreedingCooldown);
+            }
+
+            if (extraIngredients != null) {
+                if (extraIngredients.get(animal) != null) {
+                    ForgeConfigSpec.ConfigValue<String> animalExtraBreedingIngredients = builder
+                            .comment("Extra ingredients required for " + animal + " breeding")
+                            .define(animal + "ExtraBreedingIngredients", extraIngredients.get(animal));
+                    CommonConstants.extraBreedingIngredientConfigs.put(MOD + "_" + animal, animalExtraBreedingIngredients);
+                }
+            }
+
+
+            builder.pop();
+        }
+    }
+
+
 /*
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  */
@@ -166,31 +226,23 @@ public class CommonUtils {
         eggsAmountMax.put(name, eggAmountMax);
     }
 
-    public static void addAnimalNames(List<String> animalNames, ForgeConfigSpec.Builder builder, Map<String, String> ingredients, String MOD, Map<String, Integer> breedingCooldown, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
+    public static void addAnimalNames(List<String> animalNames, ForgeConfigSpec.Builder builder, Map<String, String> ingredients, String MOD, Map<String, Integer> breedingCooldown, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin,
+                                      Map<String, Integer> eggsAmountMax) {
         addAnimalNames(animalNames, builder, ingredients, null, MOD, breedingCooldown, null,null, false, resultEggs, eggsAmountMin, eggsAmountMax);
     }
 
-    public static void addAnimalNames(List<String> animalNames, ForgeConfigSpec.Builder builder, Map<String, String> ingredients, String MOD, Map<String, Integer> breedingCooldown, @Nullable Map<String, Boolean> needsToBeTamed, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
+    public static void addAnimalNames(List<String> animalNames, ForgeConfigSpec.Builder builder, Map<String, String> ingredients, String MOD, Map<String, Integer> breedingCooldown, @Nullable Map<String, Boolean> needsToBeTamed, Map<String, String> resultEggs,
+                                      Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
         addAnimalNames(animalNames, builder, ingredients, null, MOD, breedingCooldown, needsToBeTamed, null, false, resultEggs, eggsAmountMin, eggsAmountMax);
     }
 
-    public static void addAnimalNames(List<String> animalNames, ForgeConfigSpec.Builder builder, Map<String, String> ingredients, String MOD, Map<String, Integer> breedingCooldown, String spawnEggString, boolean addStringBeforeAnimalName, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
+    public static void addAnimalNames(List<String> animalNames, ForgeConfigSpec.Builder builder, Map<String, String> ingredients, String MOD, Map<String, Integer> breedingCooldown, String spawnEggString, boolean addStringBeforeAnimalName,
+                                      Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
         addAnimalNames(animalNames, builder, ingredients, null, MOD, breedingCooldown, null, spawnEggString, addStringBeforeAnimalName, resultEggs, eggsAmountMin, eggsAmountMax);
     }
 
-    public static void addAnimalNames(
-            List<String> animalNames,
-            ForgeConfigSpec.Builder builder,
-            Map<String, String> ingredients,
-            String MOD,
-            Map<String, Integer> breedingCooldown,
-            @Nullable Map<String, Boolean> needsToBeTamed,
-            @Nullable String spawnEggString,
-            boolean addStringBeforeAnimalName,
-            Map<String, String> resultEggs,
-            Map<String, Integer> eggsAmountMin,
-            Map<String, Integer> eggsAmountMax
-    ) {
+    public static void addAnimalNames(List<String> animalNames, ForgeConfigSpec.Builder builder, Map<String, String> ingredients, String MOD, Map<String, Integer> breedingCooldown, @Nullable Map<String, Boolean> needsToBeTamed, @Nullable String spawnEggString,
+                                      boolean addStringBeforeAnimalName, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
         addAnimalNames(animalNames, builder, ingredients, null, MOD, breedingCooldown, needsToBeTamed, spawnEggString, addStringBeforeAnimalName, resultEggs, eggsAmountMin, eggsAmountMax);
     }
 
@@ -223,36 +275,13 @@ public class CommonUtils {
         addAnimalNames(animalNames, builder, ingredients, extraIngredients, MOD, breedingCooldown, needsToBeTamed, null, false, resultEggs, eggsAmountMin, eggsAmountMax);
     }
 
-    public static void addAnimalNames(
-            List<String> animalNames,
-            ForgeConfigSpec.Builder builder,
-            Map<String, String> ingredients,
-            Map<String, @Nullable String> extraIngredients,
-            String MOD,
-            Map<String, Integer> breedingCooldown,
-            String spawnEggString,
-            boolean addStringBeforeAnimalName,
-            Map<String, String> resultEggs,
-            Map<String, Integer> eggsAmountMin,
-            Map<String, Integer> eggsAmountMax
-    ) {
+    public static void addAnimalNames(List<String> animalNames, ForgeConfigSpec.Builder builder, Map<String, String> ingredients, Map<String, @Nullable String> extraIngredients, String MOD, Map<String, Integer> breedingCooldown, String spawnEggString,
+                                      boolean addStringBeforeAnimalName, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
         addAnimalNames(animalNames, builder, ingredients, extraIngredients, MOD, breedingCooldown, null, spawnEggString, addStringBeforeAnimalName, resultEggs, eggsAmountMin, eggsAmountMax);
     }
 
-    public static void addAnimalNames(
-            List<String> animalNames,
-            ForgeConfigSpec.Builder builder,
-            Map<String, String> ingredients,
-            Map<String, @Nullable String> extraIngredients,
-            String MOD,
-            Map<String, Integer> breedingCooldown,
-            @Nullable Map<String, Boolean> needsToBeTamed,
-            @Nullable String spawnEggString,
-            boolean addStringBeforeAnimalName,
-            Map<String, String> resultEggs,
-            Map<String, Integer> eggsAmountMin,
-            Map<String, Integer> eggsAmountMax
-    ) {
+    public static void addAnimalNames(List<String> animalNames, ForgeConfigSpec.Builder builder, Map<String, String> ingredients, Map<String, @Nullable String> extraIngredients, String MOD, Map<String, Integer> breedingCooldown,
+                                      @Nullable Map<String, Boolean> needsToBeTamed, @Nullable String spawnEggString, boolean addStringBeforeAnimalName, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
         addAnimalNames(animalNames, builder, ingredients, extraIngredients, MOD, breedingCooldown, needsToBeTamed, spawnEggString, addStringBeforeAnimalName);
 
         for (String animal : animalNames) {
@@ -338,8 +367,8 @@ public class CommonUtils {
         addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, builder, MOD, null, false, extraIngredients);
     }
 
-    public static void addTamableAnimalNames(List<String> tamableOnly, Map<String, String> tamingIngredients, Map<String, Integer> tamingChance, ForgeConfigSpec.Builder builder, String MOD, @Nullable String spawnEggString) {
-        addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, builder, MOD, spawnEggString, false, null);
+    public static void addTamableAnimalNames(List<String> tamableOnly, Map<String, String> tamingIngredients, Map<String, Integer> tamingChance, ForgeConfigSpec.Builder builder, String MOD, @Nullable String spawnEggString, boolean addStringBeforeAnimalName) {
+        addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, builder, MOD, spawnEggString, addStringBeforeAnimalName, null);
     }
 
     public static void addTamableAnimalNames(List<String> tamableOnly, Map<String, String> tamingIngredients, Map<String, Integer> tamingChance, ForgeConfigSpec.Builder builder, String MOD, @Nullable String spawnEggString, boolean addStringBeforeAnimalName, Map<String, @Nullable String> extraIngredients) {
@@ -387,7 +416,7 @@ public class CommonUtils {
 
     public static void addTrustingAnimalNames(List<String> trustingOnly, Map<String, String> trustingIngredients, Map<String, Integer> trustingChance, ForgeConfigSpec.Builder builder, String MOD) {
         for (String trusting : trustingOnly) {
-            if(trustingIngredients.get(trusting) != null && trustingChance.get(trusting) != null) {
+            if (trustingIngredients.get(trusting) != null && trustingChance.get(trusting) != null) {
                 ForgeConfigSpec.ConfigValue<String> animalTrustingIngredients = builder.push(trusting)
                         .comment("Ingredients required for " + trusting + " trusting")
                         .define(trusting + "TrustingIngredients", trustingIngredients.get(trusting));

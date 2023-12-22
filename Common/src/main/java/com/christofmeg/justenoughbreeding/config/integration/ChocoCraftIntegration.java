@@ -1,7 +1,7 @@
 package com.christofmeg.justenoughbreeding.config.integration;
 
-import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.CommonStrings;
+import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 import java.util.ArrayList;
@@ -11,73 +11,53 @@ import java.util.Map;
 
 public class ChocoCraftIntegration {
 
-    final String MOD = "chococraft"; //TODO BREEDING TEMPER TAMING TRUSTING
+    final String MOD = "chococraft";
 
     final List<String> animalNames = new ArrayList<>();
+    final List<String> tamableOnly = new ArrayList<>();
     final Map<String, String> ingredients = new HashMap<>();
-    final Map<String, String> resultEggs = new HashMap<>();
-    final Map<String, Integer> eggsAmountMin = new HashMap<>();
-    final Map<String, Integer> eggsAmountMax = new HashMap<>();
     final Map<String, Integer> breedingCooldown = new HashMap<>();
+    final Map<String, String> tamingIngredients = new HashMap<>();
+    final Map<String, Integer> tamingChance = new HashMap<>();
 
-    public ChocoCraftIntegration(ForgeConfigSpec.Builder builder) {   //TODO look at chococraft:chocobo with spawn eggs
+    public ChocoCraftIntegration(ForgeConfigSpec.Builder builder) {
         builder.push("integration");
         builder.push(MOD);
 
-        addAnimal("yellow_chocobo", CommonStrings.GYSAHL);
-        addAnimal("green_chocobo", CommonStrings.GYSAHL);
-        addAnimal("blue_chocobo", CommonStrings.GYSAHL);
-        addAnimal("white_chocobo", CommonStrings.GYSAHL);
-        addAnimal("black_chocobo", CommonStrings.GYSAHL);
-        addAnimal("gold_chocobo", CommonStrings.GYSAHL);
-        addAnimal("pink_chocobo", CommonStrings.GYSAHL);
-        addAnimal("red_chocobo",CommonStrings. GYSAHL);
-        addEggLayingAnimal("purple_chocobo", CommonStrings.GYSAHL, "chococraft:purple_chocobo_spawn_egg", 1, 1); //As Item
-        addAnimal("flame_chocobo", CommonStrings.GYSAHL);
+        /*
+        TODO rework how spawnEggs gets entities from SpawnEgg
+         * Split getting entity from "spawnEgg" into
+         * SpawnEgg: "chococraft:black_chocobo_spawn_egg"
+         * Entity:   "chococraft:chocobo"
+        */
 
-        for (String animal : animalNames) {
-            ForgeConfigSpec.ConfigValue<String> animalIngredients = builder.push(animal)
-                    .comment("Ingredients required for " + animal + " breeding")
-                    .define(animal + "Ingredients", ingredients.get(animal));
-            ForgeConfigSpec.ConfigValue<String> animalSpawnEgg = builder.define(animal + "SpawnEgg", MOD + ":" + animal + "_spawn_egg");
-            CommonConstants.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);
-            CommonConstants.spawnEggConfigs.put(MOD + "_" + animal, animalSpawnEgg);
+        //CommonUtils.addAnimal("chocobo", CommonStrings.GYSAHL, animalNames, ingredients, breedingCooldown);
+        //CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, "black_chocobo_spawn_egg");
+        //CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, "blue_chocobo_spawn_egg");
+        //CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, "flame_chocobo_spawn_egg");
+        //CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, "green_chocobo_spawn_egg");
+        //CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, "gold_chocobo_spawn_egg");
+        //CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, "pink_chocobo_spawn_egg");
+        //CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, "purple_chocobo_spawn_egg");
+        //CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, "red_chocobo_spawn_egg");
+        //CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, "white_chocobo_spawn_egg");
+        //CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, "yellow_chocobo_spawn_egg");
 
-            if(resultEggs.get(animal) != null && eggsAmountMin.get(animal) != null && eggsAmountMax.get(animal) != null) {
-                ForgeConfigSpec.ConfigValue<String> animalEggResult = builder
-                        .comment("Egg that " + animal + " lays after breeding")
-                        .define(animal + "eggResult", resultEggs.get(animal));
-                ForgeConfigSpec.ConfigValue<Integer> animalMinEggAmount = builder
-                        .comment("Min amount of eggs that " + animal + " lays after breeding")
-                        .defineInRange(animal + "EggMinAmount", eggsAmountMin.get(animal), 1, 64);
-                ForgeConfigSpec.ConfigValue<Integer> animalMaxEggAmount = builder
-                        .comment("Max amount of eggs that " + animal + " lays after breeding")
-                        .defineInRange(animal + "EggMaxAmount", eggsAmountMax.get(animal), 1, 64);
-                CommonConstants.eggResultConfigs.put(MOD + "_" + animal, animalEggResult);
-                CommonConstants.eggMinAmountConfigs.put(MOD + "_" + animal, animalMinEggAmount);
-                CommonConstants.eggMaxAmountConfigs.put(MOD + "_" + animal, animalMaxEggAmount);
-            }
-            if(breedingCooldown.get(animal) != null) {
-                ForgeConfigSpec.ConfigValue<Integer> animalBreedingCooldown = builder.define(animal + "BreedingCooldown", breedingCooldown.get(animal));
-                CommonConstants.breedingCooldown.put(MOD + "_" + animal, animalBreedingCooldown);
-            }
-            builder.pop();
-        }
+        /*
+        CommonUtils.addTamableOnly("black_chocobo", CommonStrings.GYSAHL_GREEN, tamableOnly, tamingIngredients, tamingChance);
+        CommonUtils.addTamableOnly("blue_chocobo", CommonStrings.GYSAHL_GREEN, tamableOnly, tamingIngredients, tamingChance);
+        CommonUtils.addTamableOnly("flame_chocobo", CommonStrings.GYSAHL_GREEN, tamableOnly, tamingIngredients, tamingChance);
+        CommonUtils.addTamableOnly("green_chocobo", CommonStrings.GYSAHL_GREEN, tamableOnly, tamingIngredients, tamingChance);
+        CommonUtils.addTamableOnly("gold_chocobo", CommonStrings.GYSAHL_GREEN, tamableOnly, tamingIngredients, tamingChance);
+        CommonUtils.addTamableOnly("pink_chocobo", CommonStrings.GYSAHL_GREEN, tamableOnly, tamingIngredients, tamingChance);
+        CommonUtils.addTamableOnly("purple_chocobo", CommonStrings.GYSAHL_GREEN, tamableOnly, tamingIngredients, tamingChance);
+        CommonUtils.addTamableOnly("red_chocobo", CommonStrings.GYSAHL_GREEN, tamableOnly, tamingIngredients, tamingChance);
+        CommonUtils.addTamableOnly("white_chocobo", CommonStrings.GYSAHL_GREEN, tamableOnly, tamingIngredients, tamingChance);
+        CommonUtils.addTamableOnly("yellow_chocobo", CommonStrings.GYSAHL_GREEN, tamableOnly, tamingIngredients, tamingChance);
+        CommonUtils.addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, builder, MOD);
+         */
 
         builder.pop(2);
-
-    }
-    private void addAnimal(String name, String ingredient) {
-        animalNames.add(name);
-        ingredients.put(name, ingredient);
-        breedingCooldown.put(name, 6000);
-    }
-
-    private void addEggLayingAnimal(String name, String ingredient, String resultEgg, int eggAmountMin, int eggAmountMax) {
-        addAnimal(name, ingredient);
-        resultEggs.put(name, resultEgg);
-        eggsAmountMin.put(name, eggAmountMin);
-        eggsAmountMax.put(name, eggAmountMax);
     }
 
 }

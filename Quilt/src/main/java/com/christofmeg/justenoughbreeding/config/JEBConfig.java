@@ -12,10 +12,10 @@ import com.christofmeg.justenoughbreeding.config.integrated.RedPandaIntegration;
 import com.christofmeg.justenoughbreeding.config.integrated.SnowPigIntegration;
 import com.christofmeg.justenoughbreeding.config.integrated.SnufflesIntegration;
 import com.christofmeg.justenoughbreeding.config.integrated.TheDucksModIntegration;
-import com.christofmeg.justenoughbreeding.config.integration.EcologicsIntegration;
-import com.christofmeg.justenoughbreeding.config.integration.MinecraftIntegration;
+import com.christofmeg.justenoughbreeding.config.integrated.EcologicsIntegration;
+import com.christofmeg.justenoughbreeding.config.integrated.MinecraftIntegration;
 import com.christofmeg.justenoughbreeding.config.integrated.NaturalistIntegration;
-import com.christofmeg.justenoughbreeding.config.integration.TwilightForestIntegration;
+import com.christofmeg.justenoughbreeding.config.integrated.TwilightForestIntegration;
 import net.minecraftforge.common.ForgeConfigSpec;
 import org.quiltmc.loader.api.QuiltLoader;
 
@@ -59,11 +59,9 @@ public class JEBConfig {
         if (QuiltLoader.isModLoaded("twilightforest")) {
             final TwilightForestIntegration CONFIG = new TwilightForestIntegration(builder);
         }
-/*
-            if (QuiltLoader.isModLoaded("chococraft")) {
-                final ChocoCraftIntegration CONFIG = new ChocoCraftIntegration(builder);
-            }
-*/
+//        if (QuiltLoader.isModLoaded("chococraft")) {
+//            final ChocoCraftIntegration CONFIG = new ChocoCraftIntegration(builder);
+//        }
         if (QuiltLoader.isModLoaded("ecologics")) {
             final EcologicsIntegration CONFIG = new EcologicsIntegration(builder);
         }
@@ -76,6 +74,5 @@ public class JEBConfig {
         if (QuiltLoader.isModLoaded("biomemakeover")) {
             final BiomeMakeoverIntegration CONFIG = new BiomeMakeoverIntegration(builder);
         }
-
     }
 }

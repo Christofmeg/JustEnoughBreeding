@@ -218,6 +218,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("biome-makeover-forge")
     mainFile.addOptional("alexs-caves")
     mainFile.addOptional("untamedwilds")
+    mainFile.addOptional("alexs-mobs")
 }
 
 modrinth {
@@ -250,5 +251,7 @@ modrinth {
         optional.project "ydms-fennec-fox"
         optional.project "earthmobs"
         optional.project "biome-makeover"
+        optional.project "alexs-caves"
+        optional.project "alexs-mobs"
     }
 }
