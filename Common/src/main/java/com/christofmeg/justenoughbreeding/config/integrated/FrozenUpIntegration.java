@@ -25,6 +25,7 @@ public class FrozenUpIntegration {
 
         CommonUtils.addAnimal("chilloo", CommonStrings.CHILLOO_BREED_ITEMS_TAG, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("penguin", CommonStrings.FISHES_TAG, animalNames, ingredients, breedingCooldown);
+        CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown);
 
         CommonUtils.addTemperAnimal("reindeer", new String[]{
                 CommonStrings.WHEAT,
@@ -36,8 +37,6 @@ public class FrozenUpIntegration {
                 CommonStrings.GOLDEN_APPLE,
                 CommonStrings.ENCHANTED_GOLDEN_APPLE
         }, new int[]{2, 3, 1, 15, 3, 6, 10, 10}, temperDataMap);
-
-        CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown);
         CommonUtils.addAnimalTempers(temperDataMap, builder, MOD);
 
         builder.pop(2);

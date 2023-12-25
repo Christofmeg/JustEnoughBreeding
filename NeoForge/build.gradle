@@ -64,7 +64,7 @@ dependencies {
     }
 
 
-    // ALEXSMOBS    //Forge only        https://www.curseforge.com/minecraft/mc-mods/alexs-mobs //TODO WIP
+    // ALEXSMOBS    //Forge only        https://www.curseforge.com/minecraft/mc-mods/alexs-mobs
 //    implementation fg.deobf("curse.maven:alexs-mobs-426558:4159154")
 //        implementation fg.deobf("curse.maven:citadel-331936:4473243")
 
@@ -138,7 +138,6 @@ dependencies {
     // TWILIGHT FOREST      //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/the-twilight-forest
 //    implementation fg.deobf("curse.maven:the-twilight-forest-227639:4389567")
 
-    //TODO NEEDS MORE REWORK TO BE ADDED
     // CHOCOCRAFT           //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/chococraft
 //    implementation fg.deobf("curse.maven:chococraft-225280:4656794")
 //        implementation fg.deobf("curse.maven:architectury-api-419699:4555749")

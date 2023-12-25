@@ -22,7 +22,6 @@ public class WaddlesIntegration {
         builder.push(MOD);
 
         CommonUtils.addAnimal("adelie_penguin", CommonStrings.COD_SALMON, animalNames, ingredients, breedingCooldown);
-
         CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown);
 
         builder.pop(2);

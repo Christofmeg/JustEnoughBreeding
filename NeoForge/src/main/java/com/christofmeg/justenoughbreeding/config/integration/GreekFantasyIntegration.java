@@ -24,6 +24,17 @@ public class GreekFantasyIntegration {
 
         addAnimalTamed("orthus", CommonStrings.ORTHUS_FOOD_TAG);
 
+
+        /*
+        greek fantasy:
+tamableOnly		cerastes		#greekfantasy:cerastes_food
+         */
+
+        //TODO move to mob creation/transformation category
+        // arion    gold_ram
+        // CommonUtils.addAnimal("makhai", "minecraft:horse_spawn_egg", "minecraft:enchanted_golden_apple", animalNames, ingredients, extraIngredients, breedingCooldown);
+
+
         for (String animal : animalNames) {
             ForgeConfigSpec.ConfigValue<String> animalIngredients = builder.push(animal)
                     .comment("Ingredients required for " + animal + " breeding")

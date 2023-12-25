@@ -2,8 +2,8 @@ package com.christofmeg.justenoughbreeding.config;
 
 import com.christofmeg.justenoughbreeding.config.integrated.*;
 import com.christofmeg.justenoughbreeding.config.integration.GreekFantasyIntegration;
-import com.christofmeg.justenoughbreeding.config.integration.SophisticatedWolvesIntegration;
-import com.christofmeg.justenoughbreeding.config.integration.UlterlandsIntegration;
+import com.christofmeg.justenoughbreeding.config.integrated.SophisticatedWolvesIntegration;
+import com.christofmeg.justenoughbreeding.config.integrated.UlterlandsIntegration;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.ModList;
 

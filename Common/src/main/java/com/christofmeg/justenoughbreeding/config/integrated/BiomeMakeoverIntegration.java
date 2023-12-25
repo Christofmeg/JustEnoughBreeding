@@ -26,11 +26,9 @@ public class BiomeMakeoverIntegration {
         builder.push(MOD);
 
         CommonUtils.addAnimal("helmit_crab", CommonStrings.FISHES_TAG, animalNames, ingredients, breedingCooldown);
+        CommonUtils.addAnimalWithTamedTag("owl", CommonUtils.getEdibleMeatItemNames(true), animalNames, ingredients, breedingCooldown, needsToBeTamed);
         CommonUtils.addAnimal("scuttler", CommonStrings.PINK_PETALS, animalNames, ingredients, breedingCooldown); //TODO 33% chance to breed
         CommonUtils.addAnimal("toad", CommonStrings.SPIDER_EYE, animalNames, ingredients, breedingCooldown);
-        CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown);
-
-        CommonUtils.addAnimalWithTamedTag("owl", CommonUtils.getEdibleMeatItemNames(true), animalNames, ingredients, breedingCooldown, needsToBeTamed);
         CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, needsToBeTamed);
 
         CommonUtils.addTamableOnly("owl", CommonUtils.getEdibleMeatItemNames(true), tamableOnly, tamingIngredients, tamingChance);

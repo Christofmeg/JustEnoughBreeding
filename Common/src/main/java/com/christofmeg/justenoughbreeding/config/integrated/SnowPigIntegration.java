@@ -22,7 +22,6 @@ public class SnowPigIntegration {
         builder.push(MOD);
 
         CommonUtils.addAnimal("snow_pig", CommonStrings.VEGETABLES, animalNames, ingredients, breedingCooldown);
-
         CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown);
 
         builder.pop(2);

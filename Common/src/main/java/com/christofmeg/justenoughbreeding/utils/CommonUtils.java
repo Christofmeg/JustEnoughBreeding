@@ -367,8 +367,41 @@ public class CommonUtils {
         addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, builder, MOD, null, false, extraIngredients);
     }
 
+    public static void addTamableAnimalNames(List<String> tamableOnly, Map<String, String> tamingIngredients, Map<String, Integer> tamingChance, ForgeConfigSpec.Builder builder, String MOD, String customSpawnEggString) {
+        addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, builder, MOD, customSpawnEggString, null);
+    }
+
     public static void addTamableAnimalNames(List<String> tamableOnly, Map<String, String> tamingIngredients, Map<String, Integer> tamingChance, ForgeConfigSpec.Builder builder, String MOD, @Nullable String spawnEggString, boolean addStringBeforeAnimalName) {
         addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, builder, MOD, spawnEggString, addStringBeforeAnimalName, null);
+    }
+
+    public static void addTamableAnimalNames(List<String> tamableOnly, Map<String, String> tamingIngredients, Map<String, Integer> tamingChance, ForgeConfigSpec.Builder builder, String MOD, String customSpawnEggString, Map<String, @Nullable String> extraIngredients) {
+        for (String tamable : tamableOnly) {
+            if (tamingIngredients.get(tamable) != null && tamingChance.get(tamable) != null) {
+                ForgeConfigSpec.ConfigValue<String> animalTamingIngredients = builder.push(tamable)
+                        .comment("Ingredients required for " + tamable + " taming")
+                        .define(tamable + "TamingIngredients", tamingIngredients.get(tamable));
+                ForgeConfigSpec.ConfigValue<Integer> animalTamingChance = builder.defineInRange(tamable + "TamingChance", tamingChance.get(tamable), 0, 100);
+                CommonConstants.tamingIngredientConfigs.put(MOD + "_" + tamable, animalTamingIngredients);
+                CommonConstants.tamingChanceConfigs.put(MOD + "_" + tamable, animalTamingChance);
+
+                String spawnEggName = MOD + ":" + customSpawnEggString;
+
+                ForgeConfigSpec.ConfigValue<String> animalSpawnEgg = builder.define(tamable + "SpawnEgg", spawnEggName);
+                CommonConstants.spawnEggConfigs.put(MOD + "_" + tamable, animalSpawnEgg);
+
+                if (extraIngredients != null) {
+                    if (extraIngredients.get(tamable) != null) {
+                        ForgeConfigSpec.ConfigValue<String> animalExtraTamingIngredients = builder
+                                .comment("Extra ingredients required for " + tamable + " taming")
+                                .define(tamable + "ExtraTamingIngredients", extraIngredients.get(tamable));
+                        CommonConstants.extraTamingIngredientConfigs.put(MOD + "_" + tamable, animalExtraTamingIngredients);
+                    }
+                }
+
+            }
+            builder.pop();
+        }
     }
 
     public static void addTamableAnimalNames(List<String> tamableOnly, Map<String, String> tamingIngredients, Map<String, Integer> tamingChance, ForgeConfigSpec.Builder builder, String MOD, @Nullable String spawnEggString, boolean addStringBeforeAnimalName, Map<String, @Nullable String> extraIngredients) {

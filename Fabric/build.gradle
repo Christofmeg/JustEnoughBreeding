@@ -77,7 +77,6 @@ dependencies {
 //    modImplementation "curse.maven:the-twilight-forest-227639:4490392"
 //        implementation files('libs/Manningham.Mills-2.0.jar')
 
-    //TODO NEEDS MORE REWORK TO BE ADDED
     // CHOCOCRAFT           //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/chococraft
 //    implementation fg.deobf("curse.maven:chococraft-225280:4656794")
 //        implementation fg.deobf("curse.maven:architectury-api-419699:4555749")

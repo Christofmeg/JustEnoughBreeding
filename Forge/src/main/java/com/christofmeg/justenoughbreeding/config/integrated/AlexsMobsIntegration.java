@@ -40,7 +40,7 @@ public class AlexsMobsIntegration {
         CommonUtils.addAnimal("banana_slug", CommonStrings.BROWN_MUSHROOM, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("bison", CommonStrings.WHEAT, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("blue_jay", CommonStrings.INSECTS_TAG, animalNames, ingredients, breedingCooldown);
-        CommonUtils.addAnimal("bunfungus", "minecraft:rabbit_spawn_egg", CommonStrings.MUNGAL, animalNames, ingredients, extraIngredients, breedingCooldown);
+        CommonUtils.addAnimal("bunfungus", "minecraft:rabbit_spawn_egg", CommonStrings.MUNGAL, animalNames, ingredients, extraIngredients, breedingCooldown); //TODO move to mob creation/transformation category
         CommonUtils.addAnimalEggLaying("caiman", CommonStrings.CATFISH, "alexmobs:caiman_egg", 4, animalNames, ingredients, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
         CommonUtils.addAnimalWithTamedTag("capuchin_monkey", CommonStrings.INSECTS_TAG, animalNames, ingredients, breedingCooldown, needsToBeTamed);
         CommonUtils.addAnimal("cockroach", CommonStrings.SUGAR, animalNames, ingredients, breedingCooldown);

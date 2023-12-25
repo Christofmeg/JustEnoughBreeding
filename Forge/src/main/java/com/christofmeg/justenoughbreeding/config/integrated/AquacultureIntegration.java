@@ -24,7 +24,6 @@ public class AquacultureIntegration {
         CommonUtils.addAnimal("arrau_turtle", CommonStrings.TURTLE_EDIBLE_TAG, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("box_turtle", CommonStrings.TURTLE_EDIBLE_TAG, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("starshell_turtle", CommonStrings.TURTLE_EDIBLE_TAG, animalNames, ingredients, breedingCooldown);
-
         CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown);
 
         builder.pop(2);

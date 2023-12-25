@@ -24,7 +24,6 @@ public class TheDucksModIntegration {
         CommonUtils.addAnimal("mallard_duck", CommonStrings.SEAGRASS, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("pekin_duck", CommonStrings.SEAGRASS, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("duck", CommonStrings.SEAGRASS, animalNames, ingredients, breedingCooldown);
-
         CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown);
 
         builder.pop(2);

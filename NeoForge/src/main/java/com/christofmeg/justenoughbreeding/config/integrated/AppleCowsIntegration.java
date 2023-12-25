@@ -24,7 +24,6 @@ public class AppleCowsIntegration {
         CommonUtils.addAnimal("apple_cow", CommonStrings.WHEAT, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("golden_apple_cow", CommonStrings.GOLDEN_WHEAT, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("enchanted_golden_apple_cow", CommonStrings.ENCHANTED_GOLDEN_WHEAT, animalNames, ingredients, breedingCooldown);
-
         CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown);
 
         builder.pop(2);

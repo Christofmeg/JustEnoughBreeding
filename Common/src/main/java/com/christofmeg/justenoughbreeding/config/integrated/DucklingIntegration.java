@@ -22,7 +22,6 @@ public class DucklingIntegration {
         builder.push(MOD);
 
         CommonUtils.addAnimal("duck", CommonStrings.BREAD, animalNames, ingredients, breedingCooldown);
-
         CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown);
 
         builder.pop(2);

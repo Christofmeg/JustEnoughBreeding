@@ -22,7 +22,6 @@ public class SnufflesIntegration {
         builder.push(MOD);
 
         CommonUtils.addAnimal("snuffle", CommonStrings.BAKED_POTATO, animalNames, ingredients, breedingCooldown);
-
         CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown);
 
         builder.pop(2);

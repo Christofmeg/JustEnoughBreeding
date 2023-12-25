@@ -33,7 +33,6 @@ public class LilWingsIntegration {
         CommonUtils.addAnimal("aponi", CommonStrings.BROWN_MUSHROOM, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("red_applefly", CommonStrings.APPLE, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("grayling", CommonStrings.MOSS_BLOCK, animalNames, ingredients, breedingCooldown);
-
         CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, "_egg", false);
 
         builder.pop(2);

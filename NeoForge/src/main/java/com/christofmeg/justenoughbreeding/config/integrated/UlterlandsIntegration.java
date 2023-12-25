@@ -9,19 +9,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FennecFoxIntegration {
+public class UlterlandsIntegration {
 
-    final String MOD = "fennecfox";
+    final String MOD = "ulterlands";
 
     final List<String> animalNames = new ArrayList<>();
     final Map<String, String> ingredients = new HashMap<>();
     final Map<String, Integer> breedingCooldown = new HashMap<>();
 
-    public FennecFoxIntegration(ForgeConfigSpec.Builder builder) {
+    public UlterlandsIntegration(ForgeConfigSpec.Builder builder) {
         builder.push("integration");
         builder.push(MOD);
 
-        CommonUtils.addAnimal("fennecfox", CommonStrings.FENNECFOX_FOOD, animalNames, ingredients, breedingCooldown);
+        CommonUtils.addAnimal("mushogg", CommonStrings.VEGETABLES, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown);
 
         builder.pop(2);

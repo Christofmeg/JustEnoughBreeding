@@ -22,7 +22,6 @@ public class KiwiBoiIntegration {
         builder.push(MOD);
 
         CommonUtils.addAnimal("kiwi", CommonStrings.KIWI_CAKE, animalNames, ingredients, breedingCooldown);
-
         CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown);
 
         builder.pop(2);

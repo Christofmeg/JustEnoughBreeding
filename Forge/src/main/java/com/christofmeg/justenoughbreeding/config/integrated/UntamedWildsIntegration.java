@@ -58,7 +58,6 @@ public class UntamedWildsIntegration {
         CommonUtils.addAnimal("triggerfish", "untamedwilds:chum", animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("whale_shark", "untamedwilds:chum", animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("wildebeest", "minecraft:grass", animalNames, ingredients, breedingCooldown);
-
         CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown);
 
         builder.pop(2);

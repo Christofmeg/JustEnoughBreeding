@@ -132,4 +132,5 @@ public class CommonStrings {
     public static final String FERMENTED_SPIDER_EYE = "minecraft:fermented_spider_eye";
     public static final String SNOWPILE_QUAIL_FOOD = "minecraft:seeds, minecraft:melon_seeds, minecraft:pumpkin_seeds, minecraft:beetroot_seeds, frostrealm:sugarbeet_seeds";
     public static final String PRICKLY_PEAR = "ecologics:prickly_pear";
+    public static final String DOG_TREAT = "sophisticated_wolves:dog_treat";
 }

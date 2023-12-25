@@ -30,13 +30,11 @@ public class AlexsCavesIntegration {
         builder.push(MOD);
 
         CommonUtils.addAnimalEggLaying("relicheirus", CommonStrings.TREE_STAR, "alexscaves:relicheirus_egg", 1, animalNames, ingredients, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
+        CommonUtils.addAnimalWithTamedTag("raycat", CommonStrings.RADGILL, animalNames, ingredients, breedingCooldown, needsToBeTamed);
         CommonUtils.addAnimalEggLaying("subterranodon", CommonStrings.COD_RAW_AND_COOKED, "alexscaves:subterranodon_egg", 4, animalNames, ingredients, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
         CommonUtils.addAnimalEggLayingWithTamedTag("tremorsaurus", CommonStrings.TREMORSAURUS_FOOD, "alexscaves:tremorsaurus_egg", 1, animalNames, ingredients, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax, needsToBeTamed);
         CommonUtils.addAnimalEggLayingWithTamedTag("vallumraptor", CommonStrings.DINOSAUR_NUGGET, "alexscaves:vallumraptor_egg", 4, animalNames, ingredients, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax, needsToBeTamed);
         CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, needsToBeTamed, "spawn_egg_", true, resultEggs, eggsAmountMin, eggsAmountMax);
-
-        CommonUtils.addAnimalWithTamedTag("raycat", CommonStrings.RADGILL, animalNames, ingredients, breedingCooldown, needsToBeTamed);
-        CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, needsToBeTamed, "spawn_egg_", true);
 
         CommonUtils.addTamableOnly("raycat", CommonStrings.RADGILL, tamableOnly, tamingIngredients, tamingChance);
         CommonUtils.addTamableOnly("tremorsaurus", CommonStrings.SERENE_SALAD, tamableOnly, tamingIngredients, tamingChance, CommonStrings.PRIMITIVE_CLUB, extraTamingIngredients);
