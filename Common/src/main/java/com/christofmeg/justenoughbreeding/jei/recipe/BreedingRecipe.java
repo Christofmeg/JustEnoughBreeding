@@ -1,5 +1,6 @@
-package com.christofmeg.justenoughbreeding.jei;
+package com.christofmeg.justenoughbreeding.jei.recipe;
 
+import com.christofmeg.justenoughbreeding.jei.BreedingCategory;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.EntityType;
@@ -14,15 +15,15 @@ public class BreedingRecipe {
     private LivingEntity currentLivingEntity = null;
     private long lastEntityCreationTime = 0;
 
-    final EntityType<?> entityType;
-    final Ingredient breedingCatalyst;
-    final ItemStack spawnEgg;
+    public final EntityType<?> entityType;
+    public final Ingredient breedingCatalyst;
+    public final ItemStack spawnEgg;
     @Nullable
-    final Boolean needsToBeTamed;
-    final Ingredient resultItemStack;
-    final @Nullable Ingredient extraInputStack;
+    public final Boolean needsToBeTamed;
+    public final Ingredient resultItemStack;
+    public final @Nullable Ingredient extraInputStack;
     @Nullable
-    final Boolean animalTrusting;
+    public final Boolean animalTrusting;
 
     public BreedingRecipe(EntityType<?> entityType, Ingredient breedingCatalyst, ItemStack spawnEgg, @Nullable Boolean needsToBeTamed, @Nullable Ingredient resultItemStack, @Nullable Ingredient extraInputStack, @Nullable Boolean animalTrusting) {
         this.entityType = entityType;
@@ -34,7 +35,7 @@ public class BreedingRecipe {
         this.animalTrusting = animalTrusting;
     }
 
-    void doRendering(PoseStack stack, double mouseX) {
+    public void doRendering(PoseStack stack, double mouseX) {
         long currentTime = System.currentTimeMillis();
         Level level = Minecraft.getInstance().level;
 

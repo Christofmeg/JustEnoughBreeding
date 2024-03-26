@@ -1,6 +1,7 @@
 package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
+import com.christofmeg.justenoughbreeding.jei.recipe.BreedingRecipe;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import mezz.jei.api.constants.VanillaTypes;
@@ -42,7 +43,7 @@ import org.joml.Quaternionf;
 
 public class BreedingCategory implements IRecipeCategory<BreedingRecipe> {
 
-    static final int ENTITY_CREATION_INTERVAL = 3000;
+    public static final int ENTITY_CREATION_INTERVAL = 3000;
     static final int ENTITY_RENDER_DISTANCE = 15728880;
 
     public static final RecipeType<BreedingRecipe> TYPE = new RecipeType<>(
@@ -209,7 +210,7 @@ public class BreedingCategory implements IRecipeCategory<BreedingRecipe> {
         }
     }
 
-    static void renderEntity(@NotNull PoseStack stack, double mouseX, LivingEntity currentLivingEntity) {
+    public static void renderEntity(@NotNull PoseStack stack, double mouseX, LivingEntity currentLivingEntity) {
         // Set the desired position of the entity on the screen
         int entityPosX = 31;
         int entityPosY = 89;

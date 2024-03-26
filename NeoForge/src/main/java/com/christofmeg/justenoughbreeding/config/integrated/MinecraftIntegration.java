@@ -2,7 +2,7 @@ package com.christofmeg.justenoughbreeding.config.integrated;
 
 import com.christofmeg.justenoughbreeding.CommonStrings;
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;
-import com.christofmeg.justenoughbreeding.recipe.TemperRecipe;
+import com.christofmeg.justenoughbreeding.jei.recipe.TemperRecipe;
 import com.christofmeg.justenoughbreeding.utils.Utils;
 
 import java.util.ArrayList;

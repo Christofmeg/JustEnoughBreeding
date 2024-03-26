@@ -1,7 +1,5 @@
 package com.christofmeg.justenoughbreeding;
 
-//import net.minecraftforge.common.ForgeConfigSpec;
-
 import java.util.HashMap;
 import java.util.Map;
 

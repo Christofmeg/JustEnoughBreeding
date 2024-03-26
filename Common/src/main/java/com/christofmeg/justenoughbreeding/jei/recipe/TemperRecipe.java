@@ -1,3 +1,3 @@
-package com.christofmeg.justenoughbreeding.recipe;
+package com.christofmeg.justenoughbreeding.jei.recipe;
 
 public record TemperRecipe(String temperIngredient, int temperValue) {}
