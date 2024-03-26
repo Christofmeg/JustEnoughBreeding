@@ -115,7 +115,7 @@ modrinth {
         required.project "qsl"
         optional.project "naturalist"
         optional.project "ydms-glare"
-        optional.project "friends-and-foes-quilt"
+        optional.project "friends-and-foes"
         optional.project "snowpig-fabric"
         optional.project "duckling"
         optional.project "jei"
