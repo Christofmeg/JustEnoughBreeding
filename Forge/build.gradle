@@ -113,9 +113,9 @@ dependencies {
 //        implementation fg.deobf("curse.maven:structure-gel-api-378802:4489756")
 
     // ALEXSMOBS            //Forge only        https://www.curseforge.com/minecraft/mc-mods/alexs-mobs
-//    implementation fg.deobf("curse.maven:alexs-mobs-426558:4959531")
+    implementation fg.deobf("curse.maven:alexs-mobs-426558:4959531")
 // CITADEL          https://www.curseforge.com/minecraft/mc-mods/citadel
-//        implementation fg.deobf("curse.maven:citadel-331936:4813387")
+        implementation fg.deobf("curse.maven:citadel-331936:4813387")
 
     // UNTAMED WILDS        //Forge only          https://www.curseforge.com/minecraft/mc-mods/untamedwilds/files
 //    implementation fg.deobf("curse.maven:untamedwilds-457252:4779746")
