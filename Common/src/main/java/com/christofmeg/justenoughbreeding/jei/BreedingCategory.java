@@ -21,7 +21,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.animal.Cat;
 import net.minecraft.world.entity.animal.Fox;
 import net.minecraft.world.entity.animal.Ocelot;
@@ -36,15 +35,12 @@ import net.minecraft.world.entity.animal.sniffer.Sniffer;
 import net.minecraft.world.entity.monster.hoglin.Hoglin;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.joml.Quaternionf;
 
-public class BreedingCategory implements IRecipeCategory<BreedingCategory.BreedingRecipe> {
+public class BreedingCategory implements IRecipeCategory<BreedingRecipe> {
 
     static final int ENTITY_CREATION_INTERVAL = 3000;
     static final int ENTITY_RENDER_DISTANCE = 15728880;
@@ -213,7 +209,7 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
         }
     }
 
-    private static void renderEntity(@NotNull PoseStack stack, double mouseX, LivingEntity currentLivingEntity) {
+    static void renderEntity(@NotNull PoseStack stack, double mouseX, LivingEntity currentLivingEntity) {
         // Set the desired position of the entity on the screen
         int entityPosX = 31;
         int entityPosY = 89;
@@ -288,49 +284,6 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
         entityRenderDispatcher.setRenderShadow(true); // Re-enable rendering shadows
 
         stack.popPose(); // Pop the pose from the stack to revert transformations
-    }
-
-    public static class BreedingRecipe {
-        private LivingEntity currentLivingEntity = null;
-        private long lastEntityCreationTime = 0;
-
-        private final EntityType<?> entityType;
-        private final Ingredient breedingCatalyst;
-        private final ItemStack spawnEgg;
-        @Nullable
-        private final Boolean needsToBeTamed;
-        private final Ingredient resultItemStack;
-        private final @Nullable Ingredient extraInputStack;
-        @Nullable
-        private final Boolean animalTrusting;
-
-        public BreedingRecipe(EntityType<?> entityType, Ingredient breedingCatalyst, ItemStack spawnEgg, @Nullable Boolean needsToBeTamed, @Nullable Ingredient resultItemStack, @Nullable Ingredient extraInputStack, @Nullable Boolean animalTrusting) {
-            this.entityType = entityType;
-            this.breedingCatalyst = breedingCatalyst;
-            this.spawnEgg = spawnEgg;
-            this.needsToBeTamed = needsToBeTamed;
-            this.resultItemStack = resultItemStack;
-            this.extraInputStack = extraInputStack;
-            this.animalTrusting = animalTrusting;
-        }
-
-        private void doRendering(PoseStack stack, double mouseX) {
-            long currentTime = System.currentTimeMillis();
-            Level level = Minecraft.getInstance().level;
-
-            if (level != null && (currentLivingEntity == null || currentTime - lastEntityCreationTime >= ENTITY_CREATION_INTERVAL)) {
-                currentLivingEntity = (LivingEntity) entityType.create(level);
-                lastEntityCreationTime = currentTime;
-            }
-
-            if (currentLivingEntity != null) {
-                if (currentLivingEntity instanceof TamableAnimal tamableAnimal) {
-                    tamableAnimal.setTame(true);
-                }
-                renderEntity(stack, mouseX, currentLivingEntity);
-            }
-        }
-
     }
 
 }

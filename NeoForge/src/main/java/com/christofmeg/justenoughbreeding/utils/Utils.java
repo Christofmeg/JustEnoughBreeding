@@ -3,6 +3,7 @@ package com.christofmeg.justenoughbreeding.utils;
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.jei.BreedingCategory;
+import com.christofmeg.justenoughbreeding.jei.BreedingRecipe;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -68,7 +69,7 @@ public class Utils {
                                 EntityType<?> entityType = spawnEgg.getType(null);
                                 Boolean needsToBeTamed = CommonConstants.animalTamedConfigs.get(mobName);
                                 Boolean animalTrusting = CommonConstants.animalTrustingConfigs.get(mobName);
-                                BreedingCategory.BreedingRecipe breedingRecipe;
+                                BreedingRecipe breedingRecipe;
 
                                 Ingredient combinedExtraIngredient = null;
 
@@ -111,7 +112,7 @@ public class Utils {
         return resultIngredients;
     }
 
-    private static BreedingCategory.BreedingRecipe createBreedingRecipe(EntityType<?> entityType, Ingredient combinedIngredient, Item spawnEggItem, Boolean needsToBeTamed, List<Ingredient> resultItemStacks, Boolean animalTrusting, @Nullable Ingredient combinedExtraIngredient) {
+    private static BreedingRecipe createBreedingRecipe(EntityType<?> entityType, Ingredient combinedIngredient, Item spawnEggItem, Boolean needsToBeTamed, List<Ingredient> resultItemStacks, Boolean animalTrusting, @Nullable Ingredient combinedExtraIngredient) {
         List<ItemStack> mergedResultItemStacks = new ArrayList<>();
 
         for (Ingredient resultItemStack : resultItemStacks) {
@@ -119,7 +120,7 @@ public class Utils {
             mergedResultItemStacks.addAll(Arrays.asList(stacks));
         }
 
-        return new BreedingCategory.BreedingRecipe(
+        return new BreedingRecipe(
                 entityType,
                 combinedIngredient,
                 new ItemStack(spawnEggItem),
