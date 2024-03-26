@@ -54,132 +54,20 @@ dependencies {
         compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
         runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))
     }
-    // CONFIGURED
-    if (project.hasProperty('configured_version')) {
-        implementation fg.deobf("curse.maven:configured-457570:${configured_version}")
-    }
     // CATALOGUE
     if (project.hasProperty('catalogue_version')) {
         implementation fg.deobf("curse.maven:catalogue-459701:${catalogue_version}")
     }
-
     // JADE                                         https://www.curseforge.com/minecraft/mc-mods/jade/files
     implementation fg.deobf("curse.maven:jade-324717:4801177")
-
-    // SNUFFLES             //Forge edition         https://www.curseforge.com/minecraft/mc-mods/snuffles
-//    implementation fg.deobf("curse.maven:snuffles-556372:4513912")
-
-    // SNOW PIG              //Forge edition        https://www.curseforge.com/minecraft/mc-mods/snow-pig
-//    implementation fg.deobf("curse.maven:snow-pig-410500:4065342")
-
-    // APPLECOWS            //Forge only            https://www.curseforge.com/minecraft/mc-mods/apple-cows
-//    implementation fg.deobf("curse.maven:apple-cows-399492:4226751")
 
     // GREEK FANTASY        //Forge only            https://www.curseforge.com/minecraft/mc-mods/greek-fantasy
 //    implementation fg.deobf("curse.maven:greek-fantasy-413724:4066828")
 
-    // SOPHISTICATED WOLVES //Forge only            https://www.curseforge.com/minecraft/mc-mods/sophisticated-wolves
-//    implementation fg.deobf("curse.maven:sophisticated-wolves-220495:4627162")
-
-    // STEVES VANILLA       //Forge only            https://www.curseforge.com/minecraft/mc-mods/steves-vanilla
-//    implementation fg.deobf("curse.maven:steves-vanilla-531442:4120701")
-
-    // Ulterlands: Worlds Apart  //Forge only       https://www.curseforge.com/minecraft/mc-mods/the-ulterlands
-//    implementation fg.deobf("curse.maven:the-ulterlands-650094:4421381")
-
-    // WADDLES              //Forge only            https://www.curseforge.com/minecraft/mc-mods/waddles
-//    implementation fg.deobf("curse.maven:waddles-251767:3875922")
-
-    // AQUACULTURE          //Forge only            https://www.curseforge.com/minecraft/mc-mods/aquaculture
-//    implementation fg.deobf("curse.maven:aquaculture-60028:4074684")
-
-    // OSTRICH              //Forge only            https://www.curseforge.com/minecraft/mc-mods/ydms-ostrich/files/
-//    implementation fg.deobf("curse.maven:ydms-ostrich-689562:4619151")
-
-    // MARINE IGUANA        //Forge only                 https://www.curseforge.com/minecraft/mc-mods/marine-iguana
-//    implementation fg.deobf("curse.maven:marine-iguana-688475:4603143")
-
-    // BLUE SKIES           //Forge only               https://www.curseforge.com/minecraft/mc-mods/blue-skies
-//    implementation fg.deobf("curse.maven:blue-skies-312918:3966273")
-
-    // ALEX'S CAVES         //Forge only                https://www.curseforge.com/minecraft/mc-mods/alexs-caves
-//    implementation fg.deobf("curse.maven:alexs-caves-924854:4818198")
-    // CITADEL          https://www.curseforge.com/minecraft/mc-mods/citadel
-//        implementation fg.deobf("curse.maven:citadel-331936:4813387")
-
-    // BIOME MAKEOVER       //Forge only            https://www.curseforge.com/minecraft/mc-mods/biome-makeover-forge
-//    implementation fg.deobf("curse.maven:biome-makeover-forge-567709:4815822")
-//        implementation fg.deobf("curse.maven:architectury-api-419699:4663010")
-//        implementation fg.deobf("curse.maven:structure-gel-api-378802:4489756")
-
-    // ALEXSMOBS            //Forge only        https://www.curseforge.com/minecraft/mc-mods/alexs-mobs
-    implementation fg.deobf("curse.maven:alexs-mobs-426558:4959531")
-// CITADEL          https://www.curseforge.com/minecraft/mc-mods/citadel
-        implementation fg.deobf("curse.maven:citadel-331936:4813387")
-
-    // UNTAMED WILDS        //Forge only          https://www.curseforge.com/minecraft/mc-mods/untamedwilds/files
-//    implementation fg.deobf("curse.maven:untamedwilds-457252:4779746")
-    // CITADEL          https://www.curseforge.com/minecraft/mc-mods/citadel
-//        implementation fg.deobf("curse.maven:citadel-331936:4813387")
-
-    // RECRAFTED CREATURES  //Forge only            https://www.curseforge.com/minecraft/mc-mods/recrafted-creatures/files
-//    implementation fg.deobf("curse.maven:recrafted-creatures-835564:4972188")
-//        implementation fg.deobf("curse.maven:duclib-823186:4890764")        // https://www.curseforge.com/minecraft/mc-mods/duclib/files/
-
-    // BIOME BACKLOG        //Forge only              https://www.curseforge.com/minecraft/mc-mods/biome-backlog/files
-//    implementation fg.deobf("curse.maven:biome-backlog-665450:4863851")
-
-    // EARTH MOBS           //Forge only            https://www.curseforge.com/minecraft/mc-mods/earth-mobs/files
-//    implementation fg.deobf("curse.maven:earth-mobs-913527:4873693")
-//        implementation fg.deobf("curse.maven:bagus-lib-866533:4921180") //https://www.curseforge.com/minecraft/mc-mods/bagus-lib/files
-
-    // CHILEANCRAFT           //Forge only            https://www.curseforge.com/minecraft/mc-mods/chileancraft/files
-//    implementation fg.deobf("curse.maven:chileancraft-344102:4752975")
-
-    // FROST REALM          //Forge only               https://www.curseforge.com/minecraft/mc-mods/frostrealm/files
-//    implementation fg.deobf("curse.maven:frostrealm-479086:4801495")
-//        implementation fg.deobf("curse.maven:bagus-lib-866533:4921180") //https://www.curseforge.com/minecraft/mc-mods/bagus-lib/files
-
-    // CARACAL MOB           //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/caracal-mod
-//    implementation fg.deobf("curse.maven:caracal-mod-486505:3953520")
-
-    // THE DUCKS             //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/ydms-ducks-mod
-//    implementation fg.deobf("curse.maven:ydms-ducks-mod-576073:3884042")
-
-    // FENNECFOX            //Forge and Fabric      https://legacy.curseforge.com/minecraft/mc-mods/ydms-fennec-fox
-//    implementation fg.deobf("curse.maven:ydms-fennec-fox-694325:4053896")
-
-    // YDMS REDPANDA        //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/ydms-red-panda/
-//    implementation fg.deobf("curse.maven:ydms-red-panda-623035:4029471")
-
-    // FROZENUP             //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/frozen-up
-//    implementation fg.deobf("curse.maven:frozen-up-430652:4365451")
-
-    // YDMS GLARE           //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/ydms-glare
-//    implementation fg.deobf("curse.maven:ydms-glare-589268:3884007")
-
-    // LIL WINGS             //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/lil-wings
-//    implementation fg.deobf("curse.maven:lil-wings-561277:4325685")
-//        implementation fg.deobf("curse.maven:geckolib-388172:4407241")
-
-    // DUCKLING             //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/duckling
-//    implementation fg.deobf("curse.maven:duckling-597248:4127032")
-//        implementation fg.deobf("curse.maven:geckolib-388172:4407241")
-
-    // TWILIGHT FOREST      //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/the-twilight-forest
-//    implementation fg.deobf("curse.maven:the-twilight-forest-227639:4865711")
-
-    // CHOCOCRAFT           //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/chococraft
-//    implementation fg.deobf("curse.maven:chococraft-225280:4656792")
-//        implementation fg.deobf("curse.maven:architectury-api-419699:4663010") //https://www.curseforge.com/minecraft/mc-mods/architectury-api/files
-
-    // ECOLOGICS            //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/ecologics
-//    implementation fg.deobf("curse.maven:ecologics-570463:4857272")
-
-    // NATURALIST           //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/naturalist
-//    implementation fg.deobf("curse.maven:naturalist-627986:4847009")
-//        implementation fg.deobf("curse.maven:geckolib-388172:4822252")
-
+    // QUARK https://www.curseforge.com/minecraft/mc-mods/quark
+    implementation fg.deobf("curse.maven:quark-243121:5206769")
+        //ZETA https://www.curseforge.com/minecraft/mc-mods/zeta
+        implementation fg.deobf("curse.maven:zeta-968868:5151582")
 
 }
 

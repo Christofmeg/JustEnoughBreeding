@@ -23,12 +23,10 @@ dependencies {
         modCompileOnly("mezz.jei:jei-${fabric_minecraft_version}-fabric-api:${fabric_jei_version}")
         modRuntimeOnly("mezz.jei:jei-${fabric_minecraft_version}-fabric:${fabric_jei_version}")
     }
-
     // CATALOGUE
     if (project.hasProperty('fabric_catalogue_version')) {
         modImplementation("curse.maven:catalogue-667377:${fabric_catalogue_version}")
     }
-
 
     // CARACAL MOB           //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/caracal-mod
 //    modImplementation "curse.maven:caracal-mod-486505:3952705"

@@ -54,105 +54,10 @@ dependencies {
         compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${neo_jei_version}"))
         runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${neo_jei_version}"))
     }
-    // CONFIGURED
-    if (project.hasProperty('configured_version')) {
-        implementation fg.deobf("curse.maven:configured-457570:${configured_version}")
-    }
     // CATALOGUE
     if (project.hasProperty('catalogue_version')) {
         implementation fg.deobf("curse.maven:catalogue-459701:${catalogue_version}")
     }
-
-
-    // ALEXSMOBS    //Forge only        https://www.curseforge.com/minecraft/mc-mods/alexs-mobs
-//    implementation fg.deobf("curse.maven:alexs-mobs-426558:4159154")
-//        implementation fg.deobf("curse.maven:citadel-331936:4473243")
-
-    // SNUFFLES             //Forge                 https://www.curseforge.com/minecraft/mc-mods/snuffles
-    //Fabric                https://www.curseforge.com/minecraft/mc-mods/snuffles-fabric
-//    implementation fg.deobf("curse.maven:snuffles-556372:4513912")
-
-    // SNOW PIG              //Forge                 https://www.curseforge.com/minecraft/mc-mods/snow-pig
-    //Fabric                https://legacy.curseforge.com/minecraft/mc-mods/snow-pig-fabric
-//    implementation fg.deobf("curse.maven:snow-pig-410500:4065342")
-
-    // APPLECOWS            //Forge only            https://www.curseforge.com/minecraft/mc-mods/apple-cows
-//    implementation fg.deobf("curse.maven:apple-cows-399492:4226751")
-
-    // GREEK FANTASY        //Forge only            https://www.curseforge.com/minecraft/mc-mods/greek-fantasy
-//    implementation fg.deobf("curse.maven:greek-fantasy-413724:4066828")
-
-    // SOPHISTICATED WOLVES //Forge only            https://www.curseforge.com/minecraft/mc-mods/sophisticated-wolves
-//    implementation fg.deobf("curse.maven:sophisticated-wolves-220495:4627162")
-
-    // STEVES VANILLA       //Forge only            https://www.curseforge.com/minecraft/mc-mods/steves-vanilla
-//    implementation fg.deobf("curse.maven:steves-vanilla-531442:4120701")
-
-    // Ulterlands: Worlds Apart  //Forge only       https://www.curseforge.com/minecraft/mc-mods/the-ulterlands
-//    implementation fg.deobf("curse.maven:the-ulterlands-650094:4421381")
-
-    // WADDLES              //Forge only            https://www.curseforge.com/minecraft/mc-mods/waddles
-//    implementation fg.deobf("curse.maven:waddles-251767:3875922")
-
-    // AQUACULTURE          //Forge only            https://www.curseforge.com/minecraft/mc-mods/aquaculture
-//    implementation fg.deobf("curse.maven:aquaculture-60028:4074684")
-
-    // OSTRICH              //Forge only            https://legacy.curseforge.com/minecraft/mc-mods/ydms-ostrich
-//    implementation fg.deobf("curse.maven:ydms-ostrich-689562:4032662")
-
-    // MARINE IGUANA        //Forge only            https://www.curseforge.com/minecraft/mc-mods/marine-iguana
-//    implementation fg.deobf("curse.maven:marine-iguana-688475:4028499")
-
-    // BLUE SKIES        //Forge only               https://www.curseforge.com/minecraft/mc-mods/blue-skies
-//    implementation fg.deobf("curse.maven:blue-skies-312918:3966273")
-//        implementation fg.deobf("curse.maven:structure-gel-api-378802:4489756")
-
-
-
-    // CARACAL MOB           //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/caracal-mod
-//    implementation fg.deobf("curse.maven:caracal-mod-486505:3953520")
-
-    // THE DUCKS             //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/ydms-ducks-mod
-//    implementation fg.deobf("curse.maven:ydms-ducks-mod-576073:3884042")
-
-    // FENNECFOX            //Forge and Fabric      https://legacy.curseforge.com/minecraft/mc-mods/ydms-fennec-fox
-//    implementation fg.deobf("curse.maven:ydms-fennec-fox-694325:4053896")
-
-    // YDMS REDPANDA        //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/ydms-red-panda/
-//    implementation fg.deobf("curse.maven:ydms-red-panda-623035:4029471")
-
-    // FROZENUP             //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/frozen-up
-//    implementation fg.deobf("curse.maven:frozen-up-430652:4365451")
-
-    // YDMS GLARE           //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/ydms-glare
-//    implementation fg.deobf("curse.maven:ydms-glare-589268:3884007")
-
-    // LIL WINGS             //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/lil-wings
-//    implementation fg.deobf("curse.maven:lil-wings-561277:4325685")
-//        implementation fg.deobf("curse.maven:geckolib-388172:4407241")
-
-    // DUCKLING             //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/duckling
-//    implementation fg.deobf("curse.maven:duckling-597248:4127032")
-//        implementation fg.deobf("curse.maven:geckolib-388172:4407241")
-
-    // TWILIGHT FOREST      //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/the-twilight-forest
-//    implementation fg.deobf("curse.maven:the-twilight-forest-227639:4389567")
-
-    // CHOCOCRAFT           //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/chococraft
-//    implementation fg.deobf("curse.maven:chococraft-225280:4656794")
-//        implementation fg.deobf("curse.maven:architectury-api-419699:4555749")
-//        implementation fg.deobf("curse.maven:patchouli-306770:4031402")
-
-    // ECOLOGICS            //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/ecologics
-//    implementation fg.deobf("curse.maven:ecologics-570463:4171285")
-
-    // NATURALIST           //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/naturalist
-//    implementation fg.deobf("curse.maven:naturalist-627986:4660377")
-//        implementation fg.deobf("curse.maven:geckolib-388172:4407241")
-
-    // BIOME MAKEOVER       //Forge             https://www.curseforge.com/minecraft/mc-mods/biome-makeover-forge
-//    implementation fg.deobf("curse.maven:biome-makeover-forge-567709:4815822")
-//        implementation fg.deobf("curse.maven:architectury-api-419699:4663010")
 
 }
 

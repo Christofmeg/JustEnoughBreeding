@@ -28,7 +28,6 @@ dependencies {
         modCompileOnly("mezz.jei:jei-${quilt_minecraft_version}-fabric-api:${quilt_jei_version}")
 //        modRuntimeOnly("mezz.jei:jei-${fabric_minecraft_version}-fabric:${jei_version}")
     }
-
     // CATALOGUE
     if (project.hasProperty('fabric_catalogue_version')) {
         modImplementation("curse.maven:catalogue-667377:${fabric_catalogue_version}")
