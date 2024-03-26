@@ -101,13 +101,11 @@ public class CommonUtils {
         for (String animal : animalNames) {
             String animalIngredients = ingredients.get(animal);
 
-            String spawnEggName = spawnEggString != null ?
+            String animalSpawnEgg = spawnEggString != null ?
                     (addStringBeforeAnimalName ?
                             MOD + ":" + spawnEggString + animal :
                             MOD + ":" + animal + spawnEggString) :
                     MOD + ":" + animal + "_spawn_egg";
-
-            String animalSpawnEgg = spawnEggName;
 
             CommonConstants.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);
             CommonConstants.spawnEggConfigs.put(MOD + "_" + animal, animalSpawnEgg);
@@ -143,9 +141,7 @@ public class CommonUtils {
         for (String animal : animalNames) {
             String animalIngredients = ingredients.get(animal);
 
-            String spawnEggName = MOD + ":" + customSpawnEggString;
-
-            String animalSpawnEgg = spawnEggName;
+            String animalSpawnEgg = MOD + ":" + customSpawnEggString;
 
             CommonConstants.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);
             CommonConstants.spawnEggConfigs.put(MOD + "_" + animal, animalSpawnEgg);
@@ -306,11 +302,8 @@ public class CommonUtils {
                     .map(Object::toString)
                     .collect(Collectors.joining(", "));
 
-            String animalTemperIngredients = temperIngredientsString;
-            String animalTemperValues = temperValuesString;
-
-            CommonConstants.temperIngredientConfigs.put(MOD + "_" + temperAnimal, animalTemperIngredients);
-            CommonConstants.temperValueConfigs.put(MOD + "_" + temperAnimal, animalTemperValues);
+            CommonConstants.temperIngredientConfigs.put(MOD + "_" + temperAnimal, temperIngredientsString);
+            CommonConstants.temperValueConfigs.put(MOD + "_" + temperAnimal, temperValuesString);
         }
     }
 
@@ -353,9 +346,7 @@ public class CommonUtils {
                 CommonConstants.tamingIngredientConfigs.put(MOD + "_" + tamable, animalTamingIngredients);
                 CommonConstants.tamingChanceConfigs.put(MOD + "_" + tamable, animalTamingChance);
 
-                String spawnEggName = MOD + ":" + customSpawnEggString;
-
-                String animalSpawnEgg = spawnEggName;
+                String animalSpawnEgg = MOD + ":" + customSpawnEggString;
                 CommonConstants.spawnEggConfigs.put(MOD + "_" + tamable, animalSpawnEgg);
 
                 if (extraIngredients != null) {
@@ -377,13 +368,11 @@ public class CommonUtils {
                 CommonConstants.tamingIngredientConfigs.put(MOD + "_" + tamable, animalTamingIngredients);
                 CommonConstants.tamingChanceConfigs.put(MOD + "_" + tamable, animalTamingChance);
 
-                String spawnEggName = spawnEggString != null ?
+                String animalSpawnEgg = spawnEggString != null ?
                         (addStringBeforeAnimalName ?
                                 MOD + ":" + spawnEggString + tamable :
                                 MOD + ":" + tamable + spawnEggString) :
                         MOD + ":" + tamable + "_spawn_egg";
-
-                String animalSpawnEgg = spawnEggName;
                 CommonConstants.spawnEggConfigs.put(MOD + "_" + tamable, animalSpawnEgg);
 
                 if (extraIngredients != null) {

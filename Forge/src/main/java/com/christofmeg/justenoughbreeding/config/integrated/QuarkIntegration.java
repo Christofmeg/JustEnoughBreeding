@@ -21,6 +21,8 @@ public class QuarkIntegration {
     static final Map<String, String> tamingIngredients = new HashMap<>();
     static final Map<String, Integer> tamingChance = new HashMap<>();
 
+    //TODO colored parrot eggs
+
     static final String MEAT = Utils.getEdibleMeatItemNames(true);
 
     public static void init() {
