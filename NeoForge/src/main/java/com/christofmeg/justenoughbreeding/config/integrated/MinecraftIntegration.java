@@ -2,9 +2,8 @@ package com.christofmeg.justenoughbreeding.config.integrated;
 
 import com.christofmeg.justenoughbreeding.CommonStrings;
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;
+import com.christofmeg.justenoughbreeding.recipe.TemperRecipe;
 import com.christofmeg.justenoughbreeding.utils.Utils;
-import com.christofmeg.justenoughbreeding.utils.TemperRecipe;
-import net.minecraftforge.common.ForgeConfigSpec;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,28 +12,26 @@ import java.util.Map;
 
 public class MinecraftIntegration {
 
-    final String MOD = "minecraft";
+    static final String MOD = "minecraft";
 
-    final List<String> animalNames = new ArrayList<>();
-    final List<String> tamableOnly = new ArrayList<>();
-    final List<String> trustableOnly = new ArrayList<>();
-    final Map<String, String> ingredients = new HashMap<>();
-    final Map<String, Boolean> needsToBeTamed = new HashMap<>();
-    final Map<String, String> resultEggs = new HashMap<>();
-    final Map<String, Integer> eggsAmountMin = new HashMap<>();
-    final Map<String, Integer> eggsAmountMax = new HashMap<>();
-    final Map<String, Integer> breedingCooldown = new HashMap<>();
-    final Map<String, String> tamingIngredients = new HashMap<>();
-    final Map<String, Integer> tamingChance = new HashMap<>();
-    final Map<String, List<TemperRecipe>> temperDataMap = new HashMap<>();
-    final Map<String, String> trustingIngredients = new HashMap<>();
-    final Map<String, Integer> trustingChance = new HashMap<>();
+    static final List<String> animalNames = new ArrayList<>();
+    static final List<String> tamableOnly = new ArrayList<>();
+    static final List<String> trustableOnly = new ArrayList<>();
+    static final Map<String, String> ingredients = new HashMap<>();
+    static final Map<String, Boolean> needsToBeTamed = new HashMap<>();
+    static final Map<String, String> resultEggs = new HashMap<>();
+    static final Map<String, Integer> eggsAmountMin = new HashMap<>();
+    static final Map<String, Integer> eggsAmountMax = new HashMap<>();
+    static final Map<String, Integer> breedingCooldown = new HashMap<>();
+    static final Map<String, String> tamingIngredients = new HashMap<>();
+    static final Map<String, Integer> tamingChance = new HashMap<>();
+    static final Map<String, List<TemperRecipe>> temperDataMap = new HashMap<>();
+    static final Map<String, String> trustingIngredients = new HashMap<>();
+    static final Map<String, Integer> trustingChance = new HashMap<>();
 
-    final String MEAT = Utils.getEdibleMeatItemNames(true);
+    static final String MEAT = Utils.getEdibleMeatItemNames(true);
 
-    public MinecraftIntegration(ForgeConfigSpec.Builder builder) {
-        builder.push("vanilla");
-
+    public static void init() {
         CommonUtils.addTrustingOnly("allay", "*", trustableOnly, trustingIngredients, trustingChance);
         CommonUtils.addAnimal("axolotl", CommonStrings.TROPICAL_FISH_BUCKET, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("bee", CommonStrings.FLOWERS_TAG, animalNames, ingredients, breedingCooldown);
@@ -108,13 +105,11 @@ public class MinecraftIntegration {
         CommonUtils.addAnimalWithTamedTag("wolf", MEAT, animalNames, ingredients, breedingCooldown, needsToBeTamed);
         CommonUtils.addTamableOnly("wolf", CommonStrings.BONE, tamableOnly, tamingIngredients, tamingChance);
 
-        CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, needsToBeTamed);
-        CommonUtils.addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, builder, MOD);
-        CommonUtils.addTrustingAnimalNames(trustableOnly, trustingIngredients, trustingChance, builder, MOD);
-        CommonUtils.addAnimalTempers(temperDataMap, builder, MOD);
-        CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
-
-        builder.pop();
+        CommonUtils.addAnimalNames(animalNames, ingredients, MOD, breedingCooldown, needsToBeTamed);
+        CommonUtils.addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, MOD);
+        CommonUtils.addTrustingAnimalNames(trustableOnly, trustingIngredients, trustingChance, MOD);
+        CommonUtils.addAnimalTempers(temperDataMap, MOD);
+        CommonUtils.addAnimalNames(animalNames, ingredients, MOD, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
     }
 
 }

@@ -2,8 +2,7 @@ package com.christofmeg.justenoughbreeding.config.integrated;
 
 import com.christofmeg.justenoughbreeding.CommonStrings;
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;
-import com.christofmeg.justenoughbreeding.utils.TemperRecipe;
-import net.minecraftforge.common.ForgeConfigSpec;
+import com.christofmeg.justenoughbreeding.recipe.TemperRecipe;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,21 +11,18 @@ import java.util.Map;
 
 public class EarthMobsIntegration {
 
-    final String MOD = "earthmobsmod";
+    static final String MOD = "earthmobsmod";
 
-    final List<String> animalNames = new ArrayList<>();
-    final List<String> tamableOnly = new ArrayList<>();
-    final Map<String, String> ingredients = new HashMap<>();
-    final Map<String, Boolean> needsToBeTamed = new HashMap<>();
-    final Map<String, Integer> breedingCooldown = new HashMap<>();
-    final Map<String, String> tamingIngredients = new HashMap<>();
-    final Map<String, Integer> tamingChance = new HashMap<>();
-    final Map<String, List<TemperRecipe>> temperDataMap = new HashMap<>();
+    static final List<String> animalNames = new ArrayList<>();
+    static final List<String> tamableOnly = new ArrayList<>();
+    static final Map<String, String> ingredients = new HashMap<>();
+    static final Map<String, Boolean> needsToBeTamed = new HashMap<>();
+    static final Map<String, Integer> breedingCooldown = new HashMap<>();
+    static final Map<String, String> tamingIngredients = new HashMap<>();
+    static final Map<String, Integer> tamingChance = new HashMap<>();
+    static final Map<String, List<TemperRecipe>> temperDataMap = new HashMap<>();
 
-    public EarthMobsIntegration(ForgeConfigSpec.Builder builder) {
-        builder.push("integration");
-        builder.push(MOD);
-
+    public static void init() {
         CommonUtils.addAnimal("albino_cow", CommonStrings.WHEAT, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("cluck_shroom", CommonStrings.SEEDS, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("cream_cow", CommonStrings.WHEAT, animalNames, ingredients, breedingCooldown);
@@ -44,20 +40,18 @@ public class EarthMobsIntegration {
         CommonUtils.addAnimal("wooly_cow", CommonStrings.WHEAT, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("zombified_pig", CommonStrings.VEGETABLES, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("zombified_rabbit", CommonStrings.DANDELION_CARROTS, animalNames, ingredients, breedingCooldown);
-        CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, needsToBeTamed);
+        CommonUtils.addAnimalNames(animalNames, ingredients, MOD, breedingCooldown, needsToBeTamed);
 
         CommonUtils.addTamableOnly("baby_ghast", CommonStrings.CRIMSON_NYLIUM_FUNGUS, tamableOnly, tamingIngredients, tamingChance);
         CommonUtils.addTamableOnly("skelton_wolf", CommonStrings.BONE_FLESH, tamableOnly, tamingIngredients, tamingChance);
         CommonUtils.addTamableOnly("wither_skelton_wolf", CommonStrings.BONE_FLESH, tamableOnly, tamingIngredients, tamingChance);
-        CommonUtils.addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, builder, MOD);
+        CommonUtils.addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, MOD);
 
         CommonUtils.addTemperAnimal("jolly_llama", new String[]{
                 CommonStrings.WHEAT,
                 CommonStrings.HAY_BLOCK
         }, new int[]{3, 6}, temperDataMap);
-        CommonUtils.addAnimalTempers(temperDataMap, builder, MOD);
-
-        builder.pop(2);
+        CommonUtils.addAnimalTempers(temperDataMap, MOD);
     }
 
 }

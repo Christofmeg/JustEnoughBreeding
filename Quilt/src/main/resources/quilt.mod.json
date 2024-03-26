@@ -21,10 +21,6 @@
 			{
 				"id": "quilt_base",
 				"version": "*"
-			},
-			{
-				"id": "forgeconfigapiport",
-				"version": ">=7.0.0"
 			}
         ],
         "metadata": {

@@ -22,13 +22,6 @@ dependencies {
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
     implementation project(":Common")
 
-    // FORGE CONFIG API PORT FABRIC
-    if (project.hasProperty('forge_config_api_version_for_quilt')) {
-        modImplementation "curse.maven:forge-config-api-port-fabric-547434:${forge_config_api_version_for_quilt}"
-        implementation 'com.electronwill.night-config:core:3.6.5'
-        implementation 'com.electronwill.night-config:toml:3.6.5'
-    }
-
     // JEI
     if (project.hasProperty('quilt_jei_version')) {
         modCompileOnly("mezz.jei:jei-${quilt_minecraft_version}-common-api:${quilt_jei_version}")
@@ -36,17 +29,9 @@ dependencies {
 //        modRuntimeOnly("mezz.jei:jei-${fabric_minecraft_version}-fabric:${jei_version}")
     }
 
-    // CONFIGURED
-    if (project.hasProperty('fabric_configured_version')) {
-        modImplementation "curse.maven:configured-fabric-667378:${fabric_configured_version}"
-    }
-
     // CATALOGUE
     if (project.hasProperty('fabric_catalogue_version')) {
         modImplementation("curse.maven:catalogue-667377:${fabric_catalogue_version}")
-        if (project.hasProperty('fabric_menulogue_version')) {
-            modImplementation "curse.maven:menulogue-682371:${fabric_menulogue_version}"
-        }
     }
 
 }
@@ -98,12 +83,9 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
         mainFile.addGameVersion("${it}")
     }
     mainFile.addRequirement("qsl")
-    mainFile.addRequirement("forge-config-api-port-fabric")
     mainFile.addOptional("catalogue-fabric")
-    mainFile.addOptional("configured-fabric")
     mainFile.addOptional("friends-and-foes")
     mainFile.addOptional("kiwi-boi")
-    mainFile.addOptional("menulogue")
     mainFile.addOptional("snow-pig-fabric")
     mainFile.addOptional("snuffles-fabric")
     mainFile.addOptional("steves-vanilla")
@@ -132,7 +114,6 @@ modrinth {
     gameVersions = "${quilt_release_versions}".split(",") as List<String>
     dependencies {
         required.project "qsl"
-        required.project "forge-config-api-port"
         optional.project "naturalist"
         optional.project "ydms-glare"
         optional.project "friends-and-foes-quilt"

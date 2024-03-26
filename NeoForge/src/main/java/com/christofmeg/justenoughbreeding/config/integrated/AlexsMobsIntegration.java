@@ -3,7 +3,6 @@ package com.christofmeg.justenoughbreeding.config.integrated;
 import com.christofmeg.justenoughbreeding.CommonStrings;
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import com.christofmeg.justenoughbreeding.utils.Utils;
-import net.minecraftforge.common.ForgeConfigSpec;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,27 +11,24 @@ import java.util.Map;
 
 public class AlexsMobsIntegration {
 
-    final String MOD = "alexsmobs";
+    static final String MOD = "alexsmobs";
 
-    final List<String> animalNames = new ArrayList<>();
-    final List<String> tamableOnly = new ArrayList<>();
-    final Map<String, String> ingredients = new HashMap<>();
-    final Map<String, String> extraIngredients = new HashMap<>();
-    final Map<String, Boolean> needsToBeTamed = new HashMap<>();
-    final Map<String, String> resultEggs = new HashMap<>();
-    final Map<String, Integer> eggsAmountMin = new HashMap<>();
-    final Map<String, Integer> eggsAmountMax = new HashMap<>();
-    final Map<String, Integer> breedingCooldown = new HashMap<>();
-    final Map<String, String> tamingIngredients = new HashMap<>();
-    final Map<String, Integer> tamingChance = new HashMap<>();
+    static final List<String> animalNames = new ArrayList<>();
+    static final List<String> tamableOnly = new ArrayList<>();
+    static final Map<String, String> ingredients = new HashMap<>();
+    static final Map<String, String> extraIngredients = new HashMap<>();
+    static final Map<String, Boolean> needsToBeTamed = new HashMap<>();
+    static final Map<String, String> resultEggs = new HashMap<>();
+    static final Map<String, Integer> eggsAmountMin = new HashMap<>();
+    static final Map<String, Integer> eggsAmountMax = new HashMap<>();
+    static final Map<String, Integer> breedingCooldown = new HashMap<>();
+    static final Map<String, String> tamingIngredients = new HashMap<>();
+    static final Map<String, Integer> tamingChance = new HashMap<>();
 
-    final String MEAT = Utils.getEdibleMeatItemNames(true);
-    final String MEAT_WITHOUT_FLESH = Utils.getEdibleMeatItemNames(false);
+    static final String MEAT = Utils.getEdibleMeatItemNames(true);
+    static final String MEAT_WITHOUT_FLESH = Utils.getEdibleMeatItemNames(false);
 
-    public AlexsMobsIntegration(ForgeConfigSpec.Builder builder) {
-        builder.push("integration");
-        builder.push(MOD);
-
+    public static void init() {
         CommonUtils.addAnimal("alligator_snapping_turtle", CommonStrings.COD, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("anaconda", CommonStrings.CHICKEN, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("anteater", CommonStrings.LEAFCUTTER, animalNames, ingredients, breedingCooldown);
@@ -89,7 +85,7 @@ public class AlexsMobsIntegration {
         CommonUtils.addAnimal("toucan", CommonStrings.EGG, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("tusklin", CommonStrings.RED_MUSHROOM, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimalWithTamedTag("warped_toad", CommonStrings.LARVA, animalNames, ingredients, breedingCooldown, needsToBeTamed);
-        CommonUtils.addAnimalNames(animalNames, builder, ingredients, extraIngredients, MOD, breedingCooldown, needsToBeTamed, "spawn_egg_", true, resultEggs, eggsAmountMin, eggsAmountMax);
+        CommonUtils.addAnimalNames(animalNames, ingredients, extraIngredients, MOD, breedingCooldown, needsToBeTamed, "spawn_egg_", true, resultEggs, eggsAmountMin, eggsAmountMax);
 
         CommonUtils.addTamableOnly("bald_eagle", CommonStrings.BALD_EAGLE_TAMEABLES_TAG, tamableOnly, tamingIngredients, tamingChance);
         CommonUtils.addTamableOnly("capuchin_monkey", CommonStrings.BANANAS_TAG, tamableOnly, tamingIngredients, tamingChance);
@@ -104,9 +100,7 @@ public class AlexsMobsIntegration {
         CommonUtils.addTamableOnly("mimic_octopus", CommonStrings.LOBSTER, tamableOnly, tamingIngredients, tamingChance, CommonStrings.SALMON, extraIngredients);
         CommonUtils.addTamableOnly("raccoon", CommonStrings.EGG, tamableOnly, tamingIngredients, tamingChance, CommonStrings.SALMON, extraIngredients);
         CommonUtils.addTamableOnly("warped_toad", CommonStrings.LARVA, tamableOnly, tamingIngredients, tamingChance, CommonStrings.SALMON, extraIngredients);
-        CommonUtils.addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, builder, MOD, "spawn_egg_", true, extraIngredients);
-
-        builder.pop(2);
+        CommonUtils.addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, MOD, "spawn_egg_", true, extraIngredients);
     }
 
 }

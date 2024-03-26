@@ -1,7 +1,6 @@
 package com.christofmeg.justenoughbreeding.config.integrated;
 
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;
-import net.minecraftforge.common.ForgeConfigSpec;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,19 +9,15 @@ import java.util.Map;
 
 public class UntamedWildsIntegration {
 
-    final String MOD = "untamedwilds";
+    static final String MOD = "untamedwilds";
 
     //TODO check if playerBreeding is enabled
 
-    final List<String> animalNames = new ArrayList<>();
-    final Map<String, String> ingredients = new HashMap<>();
-    final Map<String, Integer> breedingCooldown = new HashMap<>();
+    static final List<String> animalNames = new ArrayList<>();
+    static final Map<String, String> ingredients = new HashMap<>();
+    static final Map<String, Integer> breedingCooldown = new HashMap<>();
 
-    public UntamedWildsIntegration(ForgeConfigSpec.Builder builder) {
-
-        builder.push("integration");
-        builder.push(MOD);
-
+    public static void init() {
         CommonUtils.addAnimal("aardvark", "untamedwilds:aardvark_cucumber", animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("arowana", "untamedwilds:chum", animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("baleen_whale", "untamedwilds:chum", animalNames, ingredients, breedingCooldown);
@@ -58,10 +53,7 @@ public class UntamedWildsIntegration {
         CommonUtils.addAnimal("triggerfish", "untamedwilds:chum", animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("whale_shark", "untamedwilds:chum", animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("wildebeest", "minecraft:grass", animalNames, ingredients, breedingCooldown);
-        CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown);
-
-        builder.pop(2);
-
+        CommonUtils.addAnimalNames(animalNames, ingredients, MOD, breedingCooldown);
     }
 
 }

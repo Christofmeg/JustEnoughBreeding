@@ -2,7 +2,6 @@ package com.christofmeg.justenoughbreeding.config.integrated;
 
 import com.christofmeg.justenoughbreeding.CommonStrings;
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;
-import net.minecraftforge.common.ForgeConfigSpec;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,20 +10,15 @@ import java.util.Map;
 
 public class UlterlandsIntegration {
 
-    final String MOD = "ulterlands";
+    static final String MOD = "ulterlands";
 
-    final List<String> animalNames = new ArrayList<>();
-    final Map<String, String> ingredients = new HashMap<>();
-    final Map<String, Integer> breedingCooldown = new HashMap<>();
+    static final List<String> animalNames = new ArrayList<>();
+    static final Map<String, String> ingredients = new HashMap<>();
+    static final Map<String, Integer> breedingCooldown = new HashMap<>();
 
-    public UlterlandsIntegration(ForgeConfigSpec.Builder builder) {
-        builder.push("integration");
-        builder.push(MOD);
-
+    public static void init() {
         CommonUtils.addAnimal("mushogg", CommonStrings.VEGETABLES, animalNames, ingredients, breedingCooldown);
-        CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown);
-
-        builder.pop(2);
+        CommonUtils.addAnimalNames(animalNames, ingredients, MOD, breedingCooldown);
     }
 
 }

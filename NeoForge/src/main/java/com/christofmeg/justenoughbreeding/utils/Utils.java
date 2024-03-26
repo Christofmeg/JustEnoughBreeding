@@ -65,11 +65,11 @@ public class Utils {
             if (mobName != null) {
                 if (CommonConstants.ingredientConfigs != null && CommonConstants.spawnEggConfigs != null) {
                     if (CommonConstants.spawnEggConfigs.get(mobName) != null) {
-                        String mobIngredients = CommonConstants.ingredientConfigs.get(mobName).get();
-                        String mobSpawnEgg = CommonConstants.spawnEggConfigs.get(mobName).get();
-                        String mobResultItem = CommonConstants.eggResultConfigs.get(mobName) != null ? CommonConstants.eggResultConfigs.get(mobName).get() : "";
-                        int mobMinResultCount = CommonConstants.eggMinAmountConfigs.get(mobName) != null ? CommonConstants.eggMinAmountConfigs.get(mobName).get() : 1;
-                        int mobMaxResultCount = CommonConstants.eggMaxAmountConfigs.get(mobName) != null ? CommonConstants.eggMaxAmountConfigs.get(mobName).get() : 1;
+                        String mobIngredients = CommonConstants.ingredientConfigs.get(mobName);
+                        String mobSpawnEgg = CommonConstants.spawnEggConfigs.get(mobName);
+                        String mobResultItem = CommonConstants.eggResultConfigs.get(mobName) != null ? CommonConstants.eggResultConfigs.get(mobName) : "";
+                        int mobMinResultCount = CommonConstants.eggMinAmountConfigs.get(mobName) != null ? CommonConstants.eggMinAmountConfigs.get(mobName) : 1;
+                        int mobMaxResultCount = CommonConstants.eggMaxAmountConfigs.get(mobName) != null ? CommonConstants.eggMaxAmountConfigs.get(mobName) : 1;
 
                         if (mobIngredients != null && mobSpawnEgg != null) {
                             Ingredient combinedIngredient = createCombinedIngredient(mobIngredients);

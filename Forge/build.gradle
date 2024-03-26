@@ -218,7 +218,6 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("snow-pig")
     mainFile.addOptional("greek-fantasy")
     mainFile.addOptional("frozen-up")
-    mainFile.addOptional("configured")
     mainFile.addOptional("catalogue")
     mainFile.addOptional("frostrealm")
     mainFile.addOptional("caracal-mod")

@@ -1,3 +1,4 @@
-1.0.12:
-- Integration to Alex's Mobs
-- More background work on integrations
+1.0.13:
+- Added ja_jp.json by [EndilCrafter](https://github.com/EndilCrafter)
+- Move away from using config file.
+- Removed dependency to Forge Config API Port
