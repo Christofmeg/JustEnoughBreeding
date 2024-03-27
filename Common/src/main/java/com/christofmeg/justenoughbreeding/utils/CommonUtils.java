@@ -20,16 +20,73 @@ import java.util.stream.Collectors;
 public class CommonUtils {
 
 /*-----------------------------------------------------------------------------------------*/
-// SINGLE INGREDIENT
     public static void addAnimal(String name, String ingredient, List<String> animalNames, Map<String, String> ingredients, Map<String, Integer> breedingCooldown) {
         animalNames.add(name);
         ingredients.put(name, ingredient);
         breedingCooldown.put(name, 6000);
     }
 
+    public static void addAnimal(String name, String ingredient, String extraIngredient, List<String> animalNames, Map<String, String> ingredients, Map<String, String> extraIngredients, Map<String, Integer> breedingCooldown) {
+        addAnimal(name, ingredient, animalNames, ingredients, breedingCooldown);
+        extraIngredients.put(name, extraIngredient);
+    }
+
+    public static void addAnimal(String name, String spawnEggItem, String entityFromName, String ingredient, List<String> animalNames, Map<String, String> ingredients, Map<String, Integer> breedingCooldown, Map<String, String> spawnEggItems, Map<String, String> entitiesFromNames) {
+        addAnimal(name, ingredient, animalNames, ingredients, breedingCooldown);
+        spawnEggItems.put(name, spawnEggItem);
+        entitiesFromNames.put(name, entityFromName);
+    }
+
+    public static void addAnimal(String name, String spawnEggItem, String entityFromName, String ingredient, String extraIngredient, List<String> animalNames, Map<String, String> ingredients, Map<String, String> extraIngredients, Map<String, Integer> breedingCooldown, Map<String, String> spawnEggItems, Map<String, String> entitiesFromNames) {
+        addAnimal(name, spawnEggItem, entityFromName, ingredient, animalNames, ingredients, breedingCooldown, spawnEggItems, entitiesFromNames);
+        extraIngredients.put(name, extraIngredient);
+    }
+
     public static void addAnimalWithTamedTag(String name, String ingredient, List<String> animalNames, Map<String, String> ingredients, Map<String, Integer> breedingCooldown, Map<String, Boolean> needsToBeTamed) {
         addAnimal(name, ingredient, animalNames, ingredients, breedingCooldown);
         needsToBeTamed.put(name, true);
+    }
+
+    public static void addAnimalWithTamedTag(String name, String spawnEggItem, String entityFromName, String ingredient, List<String> animalNames, Map<String, String> ingredients, Map<String, Integer> breedingCooldown, Map<String, Boolean> needsToBeTamed, Map<String, String> spawnEggItems, Map<String, String> entitiesFromNames) {
+        addAnimalWithTamedTag(name, ingredient, animalNames, ingredients, breedingCooldown, needsToBeTamed);
+        spawnEggItems.put(name, spawnEggItem);
+        entitiesFromNames.put(name, entityFromName);
+    }
+
+    public static void addAnimalWithTamedTag(String name, String ingredient, String extraIngredient, List<String> animalNames, Map<String, String> ingredients, Map<String, String> extraIngredients, Map<String, Integer> breedingCooldown, Map<String, Boolean> needsToBeTamed) {
+        addAnimalWithTamedTag(name, ingredient, animalNames, ingredients, breedingCooldown, needsToBeTamed);
+        extraIngredients.put(name, extraIngredient);
+    }
+
+    public static void addAnimalWithTamedTag(String name, String spawnEggItem, String entityFromName, String ingredient, String extraIngredient, List<String> animalNames, Map<String, String> ingredients, Map<String, String> extraIngredients, Map<String, Integer> breedingCooldown, Map<String, Boolean> needsToBeTamed, Map<String, String> spawnEggItems, Map<String, String> entitiesFromNames) {
+        addAnimalWithTamedTag(name, ingredient, extraIngredient, animalNames, ingredients, extraIngredients, breedingCooldown, needsToBeTamed);
+        spawnEggItems.put(name, spawnEggItem);
+        entitiesFromNames.put(name, entityFromName);
+    }
+
+    public static void addAnimalEggLaying(String name, String ingredient, String resultEgg, int eggAmountMax, List<String> animalNames, Map<String, String> ingredients, Map<String, Integer> breedingCooldown, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
+        addAnimal(name, ingredient, animalNames, ingredients, breedingCooldown);
+        resultEggs.put(name, resultEgg);
+        eggsAmountMin.put(name, 1);
+        eggsAmountMax.put(name, eggAmountMax);
+    }
+
+    public static void addAnimalEggLaying(String name, String spawnEggItem, String entityFromName, String ingredient, String resultEgg, int eggAmountMax, List<String> animalNames, Map<String, String> ingredients, Map<String, Integer> breedingCooldown, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax, Map<String, String> spawnEggItems, Map<String, String> entitiesFromNames) {
+        addAnimalEggLaying(name, ingredient, resultEgg, eggAmountMax, animalNames, ingredients, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
+        spawnEggItems.put(name, spawnEggItem);
+        entitiesFromNames.put(name, entityFromName);
+    }
+
+    public static void addAnimalEggLayingWithTamedTag(String name, String ingredient, String resultEgg, int eggAmountMax, List<String> animalNames, Map<String, String> ingredients, Map<String, Integer> breedingCooldown, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax, Map<String, Boolean> needsToBeTamed) {
+        addAnimalEggLaying(name, ingredient, resultEgg, eggAmountMax, animalNames, ingredients, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
+        needsToBeTamed.put(name, true);
+    }
+
+    @SuppressWarnings("unused")
+    public static void addAnimalEggLayingWithTamedTag(String name, String spawnEggItem, String entityFromName, String ingredient, String resultEgg, int eggAmountMax, List<String> animalNames, Map<String, String> ingredients, Map<String, Integer> breedingCooldown, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax, Map<String, Boolean> needsToBeTamed, Map<String, String> spawnEggItems, Map<String, String> entitiesFromNames) {
+        addAnimalEggLayingWithTamedTag(name, ingredient, resultEgg, eggAmountMax, animalNames, ingredients, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax, needsToBeTamed);
+        spawnEggItems.put(name, spawnEggItem);
+        entitiesFromNames.put(name, entityFromName);
     }
 
     public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, String MOD, Map<String, Integer> breedingCooldown) {
@@ -48,220 +105,60 @@ public class CommonUtils {
         addAnimalNames(animalNames, ingredients, null, MOD, breedingCooldown, needsToBeTamed, spawnEggString, addStringBeforeAnimalName);
     }
 
-    // CUSTOM SPAWN EGG STRING
     public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, String MOD, Map<String, Integer> breedingCooldown, String customSpawnEggString) {
         addAnimalNames(animalNames, ingredients, null, MOD, breedingCooldown, null, customSpawnEggString);
     }
+
     public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, String MOD, Map<String, Integer> breedingCooldown, Map<String, Boolean> needsToBeTamed, String customSpawnEggString) {
         addAnimalNames(animalNames, ingredients, null, MOD, breedingCooldown, needsToBeTamed, customSpawnEggString);
     }
-/*-----------------------------------------------------------------------------------------*/
 
-/*-----------------------------------------------------------------------------------------*/
-// EXTRA INGREDIENT
-
-    public static void addAnimal(String name, String ingredient, String extraIngredient, List<String> animalNames, Map<String, String> ingredients, Map<String, @Nullable String> extraIngredients, Map<String, Integer> breedingCooldown) {
-        addAnimal(name, ingredient, animalNames, ingredients, breedingCooldown);
-        extraIngredients.put(name, extraIngredient);
-    }
-
-    public static void addAnimalWithTamedTag(String name, String ingredient, String extraIngredient, List<String> animalNames, Map<String, String> ingredients, Map<String, @Nullable String> extraIngredients, Map<String, Integer> breedingCooldown, Map<String, Boolean> needsToBeTamed) {
-        addAnimal(name, ingredient, extraIngredient, animalNames, ingredients, extraIngredients, breedingCooldown);
-        needsToBeTamed.put(name, true);
-    }
-
-    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, Map<String, @Nullable String> extraIngredients, String MOD, Map<String, Integer> breedingCooldown) {
+    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, Map<String, String> extraIngredients, String MOD, Map<String, Integer> breedingCooldown) {
         addAnimalNames(animalNames, ingredients, extraIngredients, MOD, breedingCooldown, null, null, false);
     }
 
-    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, Map<String, @Nullable String> extraIngredients, String MOD, Map<String, Integer> breedingCooldown, Map<String, Boolean> needsToBeTamed) {
+    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, Map<String, String> extraIngredients, String MOD, Map<String, Integer> breedingCooldown, Map<String, Boolean> needsToBeTamed) {
         addAnimalNames(animalNames, ingredients, extraIngredients, MOD, breedingCooldown, needsToBeTamed, null, false);
     }
 
-    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, Map<String, @Nullable String> extraIngredients, String MOD, Map<String, Integer> breedingCooldown, String spawnEggString, boolean addStringBeforeAnimalName) {
+    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, Map<String, String> extraIngredients, String MOD, Map<String, Integer> breedingCooldown, String spawnEggString, boolean addStringBeforeAnimalName) {
         addAnimalNames(animalNames, ingredients, extraIngredients, MOD, breedingCooldown, null, spawnEggString, addStringBeforeAnimalName);
     }
 
-    // CUSTOM SPAWN EGG STRING
-    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, Map<String, @Nullable String> extraIngredients, String MOD, Map<String, Integer> breedingCooldown, String customSpawnEggString) {
+    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, Map<String, String> extraIngredients, String MOD, Map<String, Integer> breedingCooldown, String customSpawnEggString) {
         addAnimalNames(animalNames, ingredients, extraIngredients, MOD, breedingCooldown, null, customSpawnEggString);
     }
-/*-----------------------------------------------------------------------------------------*/
 
-    public static void addAnimalNames(
-            List<String> animalNames,
-            Map<String, String> ingredients,
-            Map<String, @Nullable String> extraIngredients,
-            String MOD,
-            Map<String, Integer> breedingCooldown,
-            @Nullable Map<String, Boolean> needsToBeTamed,
-            @Nullable String spawnEggString,
-            boolean addStringBeforeAnimalName
-    ) {
-        for (String animal : animalNames) {
-            String animalIngredients = ingredients.get(animal);
-
-            String animalSpawnEgg = spawnEggString != null ?
-                    (addStringBeforeAnimalName ?
-                            MOD + ":" + spawnEggString + animal :
-                            MOD + ":" + animal + spawnEggString) :
-                    MOD + ":" + animal + "_spawn_egg";
-
-            CommonConstants.breedingIngredients.put(MOD + "_" + animal, animalIngredients);
-            CommonConstants.sharedGetSpawnEggFromEntity.put(MOD + "_" + animal, animalSpawnEgg);
-
-            if (needsToBeTamed != null && needsToBeTamed.get(animal) != null) {
-                CommonConstants.breedingNeedsToBeTamed.put(MOD + "_" + animal, true);
-            }
-
-            if (breedingCooldown.get(animal) != null) {
-                int animalBreedingCooldown = breedingCooldown.get(animal);
-                CommonConstants.breedingCooldown.put(MOD + "_" + animal, animalBreedingCooldown);
-            }
-
-            if (extraIngredients != null) {
-                if (extraIngredients.get(animal) != null) {
-                    String animalExtraBreedingIngredients = extraIngredients.get(animal);
-                    CommonConstants.breedingExtraIngredients.put(MOD + "_" + animal, animalExtraBreedingIngredients);
-                }
-            }
-        }
-    }
-
-    // CUSTOM SPAWN EGG STRING
-    public static void addAnimalNames(
-            List<String> animalNames,
-            Map<String, String> ingredients,
-            Map<String, @Nullable String> extraIngredients,
-            String MOD,
-            Map<String, Integer> breedingCooldown,
-            @Nullable Map<String, Boolean> needsToBeTamed,
-            @Nullable String customSpawnEggString
-    ) {
-        for (String animal : animalNames) {
-            String animalIngredients = ingredients.get(animal);
-
-            String animalSpawnEgg = MOD + ":" + customSpawnEggString;
-
-            CommonConstants.breedingIngredients.put(MOD + "_" + animal, animalIngredients);
-            CommonConstants.sharedGetSpawnEggFromEntity.put(MOD + "_" + animal, animalSpawnEgg);
-
-            if (needsToBeTamed != null && needsToBeTamed.get(animal) != null) {
-                CommonConstants.breedingNeedsToBeTamed.put(MOD + "_" + animal, true);
-            }
-
-            if (breedingCooldown.get(animal) != null) {
-                int animalBreedingCooldown = breedingCooldown.get(animal);
-                CommonConstants.breedingCooldown.put(MOD + "_" + animal, animalBreedingCooldown);
-            }
-
-            if (extraIngredients != null) {
-                if (extraIngredients.get(animal) != null) {
-                    String animalExtraBreedingIngredients = extraIngredients.get(animal);
-                    CommonConstants.breedingExtraIngredients.put(MOD + "_" + animal, animalExtraBreedingIngredients);
-                }
-            }
-        }
-    }
-
-
-/*
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- */
-
-    public static void addAnimalEggLaying(
-            String name,
-            String ingredient,
-            String resultEgg,
-            int eggAmountMax,
-            List<String> animalNames,
-            Map<String, String> ingredients,
-            Map<String, Integer> breedingCooldown,
-            Map<String, String> resultEggs,
-            Map<String, Integer> eggsAmountMin,
-            Map<String, Integer> eggsAmountMax
-    ) {
-        addAnimal(name, ingredient, animalNames, ingredients, breedingCooldown);
-        resultEggs.put(name, resultEgg);
-        eggsAmountMin.put(name, 1);
-        eggsAmountMax.put(name, eggAmountMax);
-    }
-
-    public static void addAnimalEggLayingWithTamedTag(
-            String name,
-            String ingredient,
-            String resultEgg,
-            int eggAmountMax,
-            List<String> animalNames,
-            Map<String, String> ingredients,
-            Map<String, Integer> breedingCooldown,
-            Map<String, String> resultEggs,
-            Map<String, Integer> eggsAmountMin,
-            Map<String, Integer> eggsAmountMax,
-            Map<String, Boolean> needsToBeTamed
-    ) {
-        addAnimalWithTamedTag(name, ingredient, animalNames, ingredients, breedingCooldown, needsToBeTamed);
-        resultEggs.put(name, resultEgg);
-        eggsAmountMin.put(name, 1);
-        eggsAmountMax.put(name, eggAmountMax);
-    }
-
-    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, String MOD, Map<String, Integer> breedingCooldown, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin,
-                                      Map<String, Integer> eggsAmountMax) {
+    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, String MOD, Map<String, Integer> breedingCooldown, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
         addAnimalNames(animalNames, ingredients, null, MOD, breedingCooldown, null,null, false, resultEggs, eggsAmountMin, eggsAmountMax);
     }
 
-    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, String MOD, Map<String, Integer> breedingCooldown, @Nullable Map<String, Boolean> needsToBeTamed, Map<String, String> resultEggs,
-                                      Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
+    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, String MOD, Map<String, Integer> breedingCooldown, @Nullable Map<String, Boolean> needsToBeTamed, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
         addAnimalNames(animalNames, ingredients, null, MOD, breedingCooldown, needsToBeTamed, null, false, resultEggs, eggsAmountMin, eggsAmountMax);
     }
 
-    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, String MOD, Map<String, Integer> breedingCooldown, String spawnEggString, boolean addStringBeforeAnimalName,
-                                      Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
+    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, String MOD, Map<String, Integer> breedingCooldown, String spawnEggString, boolean addStringBeforeAnimalName, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
         addAnimalNames(animalNames, ingredients, null, MOD, breedingCooldown, null, spawnEggString, addStringBeforeAnimalName, resultEggs, eggsAmountMin, eggsAmountMax);
     }
 
-    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, String MOD, Map<String, Integer> breedingCooldown, @Nullable Map<String, Boolean> needsToBeTamed, @Nullable String spawnEggString,
-                                      boolean addStringBeforeAnimalName, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
+    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, String MOD, Map<String, Integer> breedingCooldown, @Nullable Map<String, Boolean> needsToBeTamed, @Nullable String spawnEggString, boolean addStringBeforeAnimalName, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
         addAnimalNames(animalNames, ingredients, null, MOD, breedingCooldown, needsToBeTamed, spawnEggString, addStringBeforeAnimalName, resultEggs, eggsAmountMin, eggsAmountMax);
     }
 
-    public static void addAnimalNames(
-            List<String> animalNames,
-            Map<String, String> ingredients,
-            Map<String, @Nullable String> extraIngredients,
-            String MOD,
-            Map<String, Integer> breedingCooldown,
-            Map<String, String> resultEggs,
-            Map<String, Integer> eggsAmountMin,
-            Map<String, Integer> eggsAmountMax
-    ) {
+    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, Map<String, @Nullable String> extraIngredients, String MOD, Map<String, Integer> breedingCooldown, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
         addAnimalNames(animalNames, ingredients, extraIngredients, MOD, breedingCooldown, null,null, false, resultEggs, eggsAmountMin, eggsAmountMax);
     }
 
-    public static void addAnimalNames(
-            List<String> animalNames,
-            Map<String, String> ingredients,
-            Map<String, @Nullable String> extraIngredients,
-            String MOD,
-            Map<String, Integer> breedingCooldown,
-            @Nullable Map<String, Boolean> needsToBeTamed,
-            Map<String, String> resultEggs,
-            Map<String, Integer> eggsAmountMin,
-            Map<String, Integer> eggsAmountMax
-    ) {
+    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, Map<String, @Nullable String> extraIngredients, String MOD, Map<String, Integer> breedingCooldown, @Nullable Map<String, Boolean> needsToBeTamed, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
         addAnimalNames(animalNames, ingredients, extraIngredients, MOD, breedingCooldown, needsToBeTamed, null, false, resultEggs, eggsAmountMin, eggsAmountMax);
     }
 
-    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, Map<String, @Nullable String> extraIngredients, String MOD, Map<String, Integer> breedingCooldown, String spawnEggString,
-                                      boolean addStringBeforeAnimalName, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
+    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, Map<String, @Nullable String> extraIngredients, String MOD, Map<String, Integer> breedingCooldown, String spawnEggString, boolean addStringBeforeAnimalName, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
         addAnimalNames(animalNames, ingredients, extraIngredients, MOD, breedingCooldown, null, spawnEggString, addStringBeforeAnimalName, resultEggs, eggsAmountMin, eggsAmountMax);
     }
 
-    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, Map<String, @Nullable String> extraIngredients, String MOD, Map<String, Integer> breedingCooldown,
-                                      @Nullable Map<String, Boolean> needsToBeTamed, @Nullable String spawnEggString, boolean addStringBeforeAnimalName, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
+    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, Map<String, @Nullable String> extraIngredients, String MOD, Map<String, Integer> breedingCooldown, @Nullable Map<String, Boolean> needsToBeTamed, @Nullable String spawnEggString, boolean addStringBeforeAnimalName, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
         addAnimalNames(animalNames, ingredients, extraIngredients, MOD, breedingCooldown, needsToBeTamed, spawnEggString, addStringBeforeAnimalName);
-
         for (String animal : animalNames) {
             if(resultEggs.get(animal) != null && eggsAmountMin.get(animal) != null && eggsAmountMax.get(animal) != null) {
                 String animalEggResult = resultEggs.get(animal);
@@ -270,6 +167,99 @@ public class CommonUtils {
                 CommonConstants.breedingEggResult.put(MOD + "_" + animal, animalEggResult);
                 CommonConstants.breedingEggResultMinAmount.put(MOD + "_" + animal, animalMinEggAmount);
                 CommonConstants.breedingEggResultMaxAmount.put(MOD + "_" + animal, animalMaxEggAmount);
+            }
+        }
+    }
+
+    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, @Nullable Map<String, String> spawnEggItems, @Nullable Map<String, String> entitiesFromNames, String MOD, Map<String, Integer> breedingCooldown, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
+        addAnimalNames(animalNames, ingredients, null, spawnEggItems, entitiesFromNames, MOD, breedingCooldown, null, resultEggs, eggsAmountMin, eggsAmountMax);
+    }
+
+    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, @Nullable Map<String, String> spawnEggItems, @Nullable Map<String, String> entitiesFromNames, String MOD, Map<String, Integer> breedingCooldown, @Nullable Map<String, Boolean> needsToBeTamed, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
+        addAnimalNames(animalNames, ingredients, null, spawnEggItems, entitiesFromNames, MOD, breedingCooldown, needsToBeTamed, resultEggs, eggsAmountMin, eggsAmountMax);
+    }
+
+    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, Map<String, @Nullable String> extraIngredients, @Nullable Map<String, String> spawnEggItems, @Nullable Map<String, String> entitiesFromNames, String MOD, Map<String, Integer> breedingCooldown, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
+        addAnimalNames(animalNames, ingredients, extraIngredients, spawnEggItems, entitiesFromNames, MOD, breedingCooldown, null, resultEggs, eggsAmountMin, eggsAmountMax);
+    }
+
+    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, Map<String, @Nullable String> extraIngredients, @Nullable Map<String, String> spawnEggItems, @Nullable Map<String, String> entitiesFromNames, String MOD, Map<String, Integer> breedingCooldown, @Nullable Map<String, Boolean> needsToBeTamed, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
+        addAnimalNames(animalNames, ingredients, extraIngredients, spawnEggItems, entitiesFromNames, MOD, breedingCooldown, needsToBeTamed);
+        for (String animal : animalNames) {
+            if(resultEggs.get(animal) != null && eggsAmountMin.get(animal) != null && eggsAmountMax.get(animal) != null) {
+                String animalEggResult = resultEggs.get(animal);
+                int animalMinEggAmount = eggsAmountMin.get(animal);
+                int animalMaxEggAmount = eggsAmountMax.get(animal);
+                CommonConstants.breedingEggResult.put(MOD + "_" + animal, animalEggResult);
+                CommonConstants.breedingEggResultMinAmount.put(MOD + "_" + animal, animalMinEggAmount);
+                CommonConstants.breedingEggResultMaxAmount.put(MOD + "_" + animal, animalMaxEggAmount);
+            }
+        }
+    }
+
+    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, Map<String, String> extraIngredients, String MOD, Map<String, Integer> breedingCooldown, @Nullable Map<String, Boolean> needsToBeTamed, @Nullable String spawnEggString, boolean addStringBeforeAnimalName) {
+        addAnimalNames(animalNames, ingredients, extraIngredients, null, null, MOD, breedingCooldown, needsToBeTamed, null, spawnEggString, addStringBeforeAnimalName);
+    }
+
+    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, Map<String, String> extraIngredients, String MOD, Map<String, Integer> breedingCooldown, @Nullable Map<String, Boolean> needsToBeTamed, @Nullable String customSpawnEggString) {
+        addAnimalNames(animalNames, ingredients, extraIngredients, null, null, MOD, breedingCooldown, needsToBeTamed, customSpawnEggString, null, false);
+    }
+
+    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, Map<String, String> spawnEggItems, Map<String, String> entitiesFromNames, String MOD, Map<String, Integer> breedingCooldown) {
+        addAnimalNames(animalNames, ingredients, spawnEggItems, entitiesFromNames, MOD, breedingCooldown, null);
+    }
+
+    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, Map<String, String> spawnEggItems, Map<String, String> entitiesFromNames, String MOD, Map<String, Integer> breedingCooldown, Map<String, Boolean> needsToBeTamed) {
+        addAnimalNames(animalNames, ingredients, null, spawnEggItems, entitiesFromNames, MOD, breedingCooldown, needsToBeTamed);
+    }
+
+    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, Map<String, String> extraIngredients, Map<String, String> spawnEggItems, Map<String, String> entitiesFromNames, String MOD, Map<String, Integer> breedingCooldown) {
+        addAnimalNames(animalNames, ingredients, extraIngredients, spawnEggItems, entitiesFromNames, MOD, breedingCooldown, null);
+    }
+
+    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, @Nullable Map<String, String> extraIngredients, @Nullable Map<String, String> spawnEggItems, @Nullable Map<String, String> entitiesFromNames, String MOD, Map<String, Integer> breedingCooldown, @Nullable Map<String, Boolean> needsToBeTamed) {
+        addAnimalNames(animalNames, ingredients, extraIngredients, spawnEggItems, entitiesFromNames, MOD, breedingCooldown, needsToBeTamed, null, null, false);
+    }
+
+    public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, @Nullable Map<String, String> extraIngredients, @Nullable Map<String, String> spawnEggItems, @Nullable Map<String, String> entitiesFromNames, String MOD, Map<String, Integer> breedingCooldown, @Nullable Map<String, Boolean> needsToBeTamed, @Nullable String customSpawnEggString, @Nullable String spawnEggString, boolean addStringBeforeAnimalName) {
+        for (String animal : animalNames) {
+            String animalIngredients = ingredients.get(animal);
+            CommonConstants.breedingIngredients.put(MOD + "_" + animal, animalIngredients);
+
+            if (spawnEggItems != null && entitiesFromNames != null) {
+                if (spawnEggItems.get(animal) != null && entitiesFromNames.get(animal) != null) {
+                    CommonConstants.breedingGetSpawnEggFromItem.put(MOD + "_" + animal, spawnEggItems.get(animal));
+                    CommonConstants.breedingGetMobFromString.put(MOD + "_" + animal, entitiesFromNames.get(animal));
+                }
+            } else {
+                if (customSpawnEggString != null) {
+                    String animalSpawnEgg = MOD + ":" + customSpawnEggString;
+                    CommonConstants.sharedGetSpawnEggFromEntity.put(MOD + "_" + animal, animalSpawnEgg);
+                } else if (spawnEggString != null) {
+                    String animalSpawnEgg = (addStringBeforeAnimalName ?
+                            MOD + ":" + spawnEggString + animal :
+                            MOD + ":" + animal + spawnEggString);
+                    CommonConstants.sharedGetSpawnEggFromEntity.put(MOD + "_" + animal, animalSpawnEgg);
+                } else {
+                    String animalSpawnEgg = MOD + ":" + animal + "_spawn_egg";
+                    CommonConstants.sharedGetSpawnEggFromEntity.put(MOD + "_" + animal, animalSpawnEgg);
+                }
+            }
+
+            if (needsToBeTamed != null && needsToBeTamed.get(animal) != null) {
+                CommonConstants.breedingNeedsToBeTamed.put(MOD + "_" + animal, true);
+            }
+
+            if (breedingCooldown.get(animal) != null) {
+                int animalBreedingCooldown = breedingCooldown.get(animal);
+                CommonConstants.breedingCooldown.put(MOD + "_" + animal, animalBreedingCooldown);
+            }
+
+            if (extraIngredients != null) {
+                if (extraIngredients.get(animal) != null) {
+                    String animalExtraBreedingIngredients = extraIngredients.get(animal);
+                    CommonConstants.breedingExtraIngredients.put(MOD + "_" + animal, animalExtraBreedingIngredients);
+                }
             }
         }
     }

@@ -133,4 +133,10 @@ public class CommonStrings {
     public static final String SNOWPILE_QUAIL_FOOD = "minecraft:seeds, minecraft:melon_seeds, minecraft:pumpkin_seeds, minecraft:beetroot_seeds, frostrealm:sugarbeet_seeds";
     public static final String PRICKLY_PEAR = "ecologics:prickly_pear";
     public static final String DOG_TREAT = "sophisticated_wolves:dog_treat";
+    public static final String RED_PARROT_EGG = "quark:egg_parrot_red_blue";
+    public static final String BLUE_PARROT_EGG = "quark:egg_parrot_blue";
+    public static final String GREEN_PARROT_EGG = "quark:egg_parrot_green";
+    public static final String CYAN_PARROT_EGG = "quark:egg_parrot_yellow_blue";
+    public static final String GREY_PARROT_EGG = "quark:egg_parrot_grey";
+    public static final String BEETROOT_SEEDS = "minecraft:beetroot_seeds";
 }

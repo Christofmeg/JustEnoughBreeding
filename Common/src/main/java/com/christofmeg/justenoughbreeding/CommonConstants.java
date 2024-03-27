@@ -37,8 +37,6 @@ public class CommonConstants {
 
 
 	/*TODO
-	https://www.curseforge.com/minecraft/mc-mods/quark #Parrots alteast
-	https://www.curseforge.com/minecraft/mc-mods/quark-oddities
 	https://www.curseforge.com/minecraft/mc-mods/ice-and-fire-dragons
 	https://www.curseforge.com/minecraft/mc-mods/aether
 	https://www.curseforge.com/minecraft/mc-mods/aether-redux

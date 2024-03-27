@@ -23,6 +23,14 @@ public class QuarkIntegration {
 
     static final String MEAT = Utils.getEdibleMeatItemNames(true);
 
+    static final List<String> vanillaAnimalNames = new ArrayList<>();
+    static final Map<String, String> vanillaIngredients = new HashMap<>();
+    static final Map<String, Integer> vanillaBreedingCooldown = new HashMap<>();
+    static final Map<String, Boolean> vanillaNeedsToBeTamed = new HashMap<>();
+    static final Map<String, String> vanillaResultEggs = new HashMap<>();
+    static final Map<String, Integer> vanillaEggsAmountMin = new HashMap<>();
+    static final Map<String, Integer> vanillaEggsAmountMax = new HashMap<>();
+
     public static void init() {
         CommonUtils.addAnimal("crab", CommonStrings.CRABFOOD, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimalWithTamedTag("foxhound", MEAT, animalNames, ingredients, breedingCooldown, needsToBeTamed);
@@ -32,6 +40,15 @@ public class QuarkIntegration {
         CommonUtils.addTamableOnly("foxhound", CommonStrings.COAL, tamableOnly, tamingIngredients, tamingChance);
         CommonUtils.addTamableOnly("shiba", CommonStrings.BONE, tamableOnly, tamingIngredients, tamingChance);
         CommonUtils.addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, MOD);
+
+        CommonUtils.addAnimalEggLayingWithTamedTag("parrot", CommonStrings.BEETROOT_SEEDS,
+                CommonStrings.RED_PARROT_EGG + "," +
+                        CommonStrings.BLUE_PARROT_EGG + "," +
+                        CommonStrings.GREEN_PARROT_EGG + "," +
+                        CommonStrings.CYAN_PARROT_EGG + "," +
+                        CommonStrings.GREY_PARROT_EGG,
+                1, vanillaAnimalNames, vanillaIngredients, vanillaBreedingCooldown, vanillaResultEggs, vanillaEggsAmountMin, vanillaEggsAmountMax, vanillaNeedsToBeTamed);
+        CommonUtils.addAnimalNames(vanillaAnimalNames, vanillaIngredients, "minecraft", vanillaBreedingCooldown, vanillaNeedsToBeTamed, vanillaResultEggs, vanillaEggsAmountMin, vanillaEggsAmountMax);
     }
 
 }
