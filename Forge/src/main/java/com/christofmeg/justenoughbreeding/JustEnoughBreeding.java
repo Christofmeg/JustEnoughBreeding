@@ -1,7 +1,9 @@
 package com.christofmeg.justenoughbreeding;
 
 import com.christofmeg.justenoughbreeding.config.JEBIntegration;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -16,6 +18,10 @@ public class JustEnoughBreeding {
 
     public static Item getItemFromLoaderRegistries(ResourceLocation resourceLocation) {
         return ForgeRegistries.ITEMS.getValue(resourceLocation);
+    }
+
+    public static EntityType<?> getEntityFromLoaderRegistries(ResourceLocation resourceLocation) {
+        return ForgeRegistries.ENTITY_TYPES.getValue(resourceLocation);
     }
 
 }

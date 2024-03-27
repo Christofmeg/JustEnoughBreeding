@@ -107,11 +107,11 @@ public class CommonUtils {
                             MOD + ":" + animal + spawnEggString) :
                     MOD + ":" + animal + "_spawn_egg";
 
-            CommonConstants.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);
-            CommonConstants.spawnEggConfigs.put(MOD + "_" + animal, animalSpawnEgg);
+            CommonConstants.breedingIngredients.put(MOD + "_" + animal, animalIngredients);
+            CommonConstants.sharedGetSpawnEggFromEntity.put(MOD + "_" + animal, animalSpawnEgg);
 
             if (needsToBeTamed != null && needsToBeTamed.get(animal) != null) {
-                CommonConstants.animalTamedConfigs.put(MOD + "_" + animal, true);
+                CommonConstants.breedingNeedsToBeTamed.put(MOD + "_" + animal, true);
             }
 
             if (breedingCooldown.get(animal) != null) {
@@ -122,7 +122,7 @@ public class CommonUtils {
             if (extraIngredients != null) {
                 if (extraIngredients.get(animal) != null) {
                     String animalExtraBreedingIngredients = extraIngredients.get(animal);
-                    CommonConstants.extraBreedingIngredientConfigs.put(MOD + "_" + animal, animalExtraBreedingIngredients);
+                    CommonConstants.breedingExtraIngredients.put(MOD + "_" + animal, animalExtraBreedingIngredients);
                 }
             }
         }
@@ -143,11 +143,11 @@ public class CommonUtils {
 
             String animalSpawnEgg = MOD + ":" + customSpawnEggString;
 
-            CommonConstants.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);
-            CommonConstants.spawnEggConfigs.put(MOD + "_" + animal, animalSpawnEgg);
+            CommonConstants.breedingIngredients.put(MOD + "_" + animal, animalIngredients);
+            CommonConstants.sharedGetSpawnEggFromEntity.put(MOD + "_" + animal, animalSpawnEgg);
 
             if (needsToBeTamed != null && needsToBeTamed.get(animal) != null) {
-                CommonConstants.animalTamedConfigs.put(MOD + "_" + animal, true);
+                CommonConstants.breedingNeedsToBeTamed.put(MOD + "_" + animal, true);
             }
 
             if (breedingCooldown.get(animal) != null) {
@@ -158,7 +158,7 @@ public class CommonUtils {
             if (extraIngredients != null) {
                 if (extraIngredients.get(animal) != null) {
                     String animalExtraBreedingIngredients = extraIngredients.get(animal);
-                    CommonConstants.extraBreedingIngredientConfigs.put(MOD + "_" + animal, animalExtraBreedingIngredients);
+                    CommonConstants.breedingExtraIngredients.put(MOD + "_" + animal, animalExtraBreedingIngredients);
                 }
             }
         }
@@ -267,9 +267,9 @@ public class CommonUtils {
                 String animalEggResult = resultEggs.get(animal);
                 int animalMinEggAmount = eggsAmountMin.get(animal);
                 int animalMaxEggAmount = eggsAmountMax.get(animal);
-                CommonConstants.eggResultConfigs.put(MOD + "_" + animal, animalEggResult);
-                CommonConstants.eggMinAmountConfigs.put(MOD + "_" + animal, animalMinEggAmount);
-                CommonConstants.eggMaxAmountConfigs.put(MOD + "_" + animal, animalMaxEggAmount);
+                CommonConstants.breedingEggResult.put(MOD + "_" + animal, animalEggResult);
+                CommonConstants.breedingEggResultMinAmount.put(MOD + "_" + animal, animalMinEggAmount);
+                CommonConstants.breedingEggResultMaxAmount.put(MOD + "_" + animal, animalMaxEggAmount);
             }
         }
     }
@@ -302,8 +302,8 @@ public class CommonUtils {
                     .map(Object::toString)
                     .collect(Collectors.joining(", "));
 
-            CommonConstants.temperIngredientConfigs.put(MOD + "_" + temperAnimal, temperIngredientsString);
-            CommonConstants.temperValueConfigs.put(MOD + "_" + temperAnimal, temperValuesString);
+            CommonConstants.temperIngredients.put(MOD + "_" + temperAnimal, temperIngredientsString);
+            CommonConstants.temperValueIngredientsAdd.put(MOD + "_" + temperAnimal, temperValuesString);
         }
     }
 
@@ -322,6 +322,12 @@ public class CommonUtils {
         extraIngredients.put(name, extraIngredient);
     }
 
+    public static void addTamableOnly(String name, String spawnEggItem, String entityFromName, String tamingIngredient, List<String> tamableOnly, Map<String, String> tamingIngredients, Map<String, Integer> tamingChance, String extraIngredient, Map<String, String> extraIngredients, Map<String, String> spawnEggItems, Map<String, String> entitiesFromNames) {
+        addTamableOnly(name, tamingIngredient, tamableOnly, tamingIngredients, tamingChance, extraIngredient, extraIngredients);
+        spawnEggItems.put(name, spawnEggItem);
+        entitiesFromNames.put(name, entityFromName);
+    }
+
     public static void addTamableAnimalNames(List<String> tamableOnly, Map<String, String> tamingIngredients, Map<String, Integer> tamingChance, String MOD) {
         addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, MOD, null, false, null);
     }
@@ -338,47 +344,54 @@ public class CommonUtils {
         addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, MOD, spawnEggString, addStringBeforeAnimalName, null);
     }
 
-    public static void addTamableAnimalNames(List<String> tamableOnly, Map<String, String> tamingIngredients, Map<String, Integer> tamingChance, String MOD, String customSpawnEggString, Map<String, @Nullable String> extraIngredients) {
+    public static void addTamableAnimalNames(List<String> tamableOnly, Map<String, String> tamingIngredients, Map<String, Integer> tamingChance, String MOD, String customSpawnEggString, @Nullable Map<String, String> extraIngredients) {
+        addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, MOD, customSpawnEggString, null, false, extraIngredients, null, null);
+    }
+
+    public static void addTamableAnimalNames(List<String> tamableOnly, Map<String, String> tamingIngredients, Map<String, Integer> tamingChance, String MOD, @Nullable String spawnEggString, boolean addStringBeforeAnimalName, @Nullable Map<String, String> extraIngredients) {
+        addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, MOD, null, spawnEggString, addStringBeforeAnimalName, extraIngredients, null, null);
+    }
+
+    public static void addTamableAnimalNames(List<String> tamableOnly, Map<String, String> tamingIngredients, Map<String, Integer> tamingChance, String MOD, @Nullable Map<String, String> spawnEggItems, @Nullable Map<String, String> entitiesFromNames) {
+        addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, MOD, null, spawnEggItems, entitiesFromNames);
+    }
+
+    public static void addTamableAnimalNames(List<String> tamableOnly, Map<String, String> tamingIngredients, Map<String, Integer> tamingChance, String MOD, @Nullable Map<String, String> extraIngredients, @Nullable Map<String, String> spawnEggItems, @Nullable Map<String, String> entitiesFromNames) {
+        addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, MOD, null, null, false, extraIngredients, spawnEggItems, entitiesFromNames);
+    }
+
+    public static void addTamableAnimalNames(List<String> tamableOnly, Map<String, String> tamingIngredients, Map<String, Integer> tamingChance, String MOD, @Nullable String customSpawnEggString, @Nullable String spawnEggString, boolean addStringBeforeAnimalName, Map<String, @Nullable String> extraIngredients, @Nullable Map<String, String> spawnEggItems, @Nullable Map<String, String> entitiesFromNames) {
         for (String tamable : tamableOnly) {
             if (tamingIngredients.get(tamable) != null && tamingChance.get(tamable) != null) {
                 String animalTamingIngredients = tamingIngredients.get(tamable);
                 int animalTamingChance = tamingChance.get(tamable);
-                CommonConstants.tamingIngredientConfigs.put(MOD + "_" + tamable, animalTamingIngredients);
-                CommonConstants.tamingChanceConfigs.put(MOD + "_" + tamable, animalTamingChance);
+                CommonConstants.tamingIngredients.put(MOD + "_" + tamable, animalTamingIngredients);
+                CommonConstants.tamingChance.put(MOD + "_" + tamable, animalTamingChance);
 
-                String animalSpawnEgg = MOD + ":" + customSpawnEggString;
-                CommonConstants.spawnEggConfigs.put(MOD + "_" + tamable, animalSpawnEgg);
-
-                if (extraIngredients != null) {
-                    if (extraIngredients.get(tamable) != null) {
-                        String animalExtraTamingIngredients = extraIngredients.get(tamable);
-                        CommonConstants.extraTamingIngredientConfigs.put(MOD + "_" + tamable, animalExtraTamingIngredients);
+                if (spawnEggItems != null && entitiesFromNames != null) {
+                    if (spawnEggItems.get(tamable) != null && entitiesFromNames.get(tamable) != null) {
+                        CommonConstants.breedingGetSpawnEggFromItem.put(MOD + "_" + tamable, spawnEggItems.get(tamable));
+                        CommonConstants.breedingGetMobFromString.put(MOD + "_" + tamable, entitiesFromNames.get(tamable));
+                    }
+                } else {
+                    if (customSpawnEggString != null) {
+                        String animalSpawnEgg = MOD + ":" + customSpawnEggString;
+                        CommonConstants.sharedGetSpawnEggFromEntity.put(MOD + "_" + tamable, animalSpawnEgg);
+                    } else if (spawnEggString != null) {
+                        String animalSpawnEgg = (addStringBeforeAnimalName ?
+                                MOD + ":" + spawnEggString + tamable :
+                                MOD + ":" + tamable + spawnEggString);
+                        CommonConstants.sharedGetSpawnEggFromEntity.put(MOD + "_" + tamable, animalSpawnEgg);
+                    } else {
+                        String animalSpawnEgg = MOD + ":" + tamable + "_spawn_egg";
+                        CommonConstants.sharedGetSpawnEggFromEntity.put(MOD + "_" + tamable, animalSpawnEgg);
                     }
                 }
 
-            }
-        }
-    }
-
-    public static void addTamableAnimalNames(List<String> tamableOnly, Map<String, String> tamingIngredients, Map<String, Integer> tamingChance, String MOD, @Nullable String spawnEggString, boolean addStringBeforeAnimalName, Map<String, @Nullable String> extraIngredients) {
-        for (String tamable : tamableOnly) {
-            if (tamingIngredients.get(tamable) != null && tamingChance.get(tamable) != null) {
-                String animalTamingIngredients = tamingIngredients.get(tamable);
-                int animalTamingChance = tamingChance.get(tamable);
-                CommonConstants.tamingIngredientConfigs.put(MOD + "_" + tamable, animalTamingIngredients);
-                CommonConstants.tamingChanceConfigs.put(MOD + "_" + tamable, animalTamingChance);
-
-                String animalSpawnEgg = spawnEggString != null ?
-                        (addStringBeforeAnimalName ?
-                                MOD + ":" + spawnEggString + tamable :
-                                MOD + ":" + tamable + spawnEggString) :
-                        MOD + ":" + tamable + "_spawn_egg";
-                CommonConstants.spawnEggConfigs.put(MOD + "_" + tamable, animalSpawnEgg);
-
                 if (extraIngredients != null) {
                     if (extraIngredients.get(tamable) != null) {
                         String animalExtraTamingIngredients = extraIngredients.get(tamable);
-                        CommonConstants.extraTamingIngredientConfigs.put(MOD + "_" + tamable, animalExtraTamingIngredients);
+                        CommonConstants.tamingExtraIngredients.put(MOD + "_" + tamable, animalExtraTamingIngredients);
                     }
                 }
 
@@ -396,16 +409,35 @@ public class CommonUtils {
         trustingChance.put(name, 33);
     }
 
+    @SuppressWarnings("unused")
+    public static void addTrustingOnly(String name, String spawnEggItem, String entityFromName, String trustingIngredient, List<String> trustingOnly, Map<String, String> trustingIngredients, Map<String, Integer> trustingChance, Map<String, String> spawnEggItems, Map<String, String> entitiesFromNames) {
+        addTrustingOnly(name, trustingIngredient, trustingOnly, trustingIngredients, trustingChance);
+        spawnEggItems.put(name, spawnEggItem);
+        entitiesFromNames.put(name, entityFromName);
+    }
+
     public static void addTrustingAnimalNames(List<String> trustingOnly, Map<String, String> trustingIngredients, Map<String, Integer> trustingChance, String MOD) {
+        addTrustingAnimalNames(trustingOnly, trustingIngredients, trustingChance, MOD, null, null);
+    }
+
+    public static void addTrustingAnimalNames(List<String> trustingOnly, Map<String, String> trustingIngredients, Map<String, Integer> trustingChance, String MOD, @Nullable Map<String, String> spawnEggItems, @Nullable Map<String, String> entitiesFromNames) {
         for (String trusting : trustingOnly) {
             if (trustingIngredients.get(trusting) != null && trustingChance.get(trusting) != null) {
                 String animalTrustingIngredients = trustingIngredients.get(trusting);
                 int animalTrustingChance = trustingChance.get(trusting);
-                CommonConstants.trustingIngredientConfigs.put(MOD + "_" + trusting, animalTrustingIngredients);
-                CommonConstants.trustingChanceConfigs.put(MOD + "_" + trusting, animalTrustingChance);
-                CommonConstants.animalTrustingConfigs.put(MOD + "_" + trusting, true);
-                String animalSpawnEgg = MOD + ":" + trusting + "_spawn_egg";
-                CommonConstants.spawnEggConfigs.put(MOD + "_" + trusting, animalSpawnEgg);
+                CommonConstants.trustingIngredients.put(MOD + "_" + trusting, animalTrustingIngredients);
+                CommonConstants.trustingChance.put(MOD + "_" + trusting, animalTrustingChance);
+                CommonConstants.breedingNeedsToBeTrusting.put(MOD + "_" + trusting, true);
+
+                if (spawnEggItems != null && entitiesFromNames != null) {
+                    if (spawnEggItems.get(trusting) != null && entitiesFromNames.get(trusting) != null) {
+                        CommonConstants.breedingGetSpawnEggFromItem.put(MOD + "_" + trusting, spawnEggItems.get(trusting));
+                        CommonConstants.breedingGetMobFromString.put(MOD + "_" + trusting, entitiesFromNames.get(trusting));
+                    }
+                } else {
+                    String animalSpawnEgg = MOD + ":" + trusting + "_spawn_egg";
+                    CommonConstants.sharedGetSpawnEggFromEntity.put(MOD + "_" + trusting, animalSpawnEgg);
+                }
             }
         }
     }

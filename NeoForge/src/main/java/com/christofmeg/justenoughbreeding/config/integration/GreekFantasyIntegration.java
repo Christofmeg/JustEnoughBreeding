@@ -34,10 +34,10 @@ tamableOnly		cerastes		#greekfantasy:cerastes_food
         for (String animal : animalNames) {
             String animalIngredients = ingredients.get(animal);
             String animalSpawnEgg = animal + "_spawn_egg";
-            CommonConstants.ingredientConfigs.put(MOD + "_" + animal, animalIngredients);
-            CommonConstants.spawnEggConfigs.put(MOD + "_" + animal, animalSpawnEgg);
+            CommonConstants.breedingIngredients.put(MOD + "_" + animal, animalIngredients);
+            CommonConstants.sharedGetSpawnEggFromEntity.put(MOD + "_" + animal, animalSpawnEgg);
             if(needsToBeTamed.get(animal) != null) {
-                CommonConstants.animalTamedConfigs.put(MOD + "_" + animal, true);
+                CommonConstants.breedingNeedsToBeTamed.put(MOD + "_" + animal, true);
             }
             if(breedingCooldown.get(animal) != null) {
                 Integer animalBreedingCooldown = breedingCooldown.get(animal);
