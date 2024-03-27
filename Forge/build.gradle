@@ -69,6 +69,10 @@ dependencies {
         //ZETA https://www.curseforge.com/minecraft/mc-mods/zeta
         implementation fg.deobf("curse.maven:zeta-968868:5151582")
 
+    implementation fg.deobf("curse.maven:chococraft-225280:5192542")
+    implementation fg.deobf("curse.maven:architectury-api-419699:5137938")
+
+
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -132,6 +136,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("alexs-caves")
     mainFile.addOptional("untamedwilds")
     mainFile.addOptional("alexs-mobs")
+    mainFile.addOptional("chococraft")
 }
 
 modrinth {
@@ -166,5 +171,6 @@ modrinth {
         optional.project "biome-makeover"
         optional.project "alexs-caves"
         optional.project "alexs-mobs"
+        optional.project "chococraft"
     }
 }

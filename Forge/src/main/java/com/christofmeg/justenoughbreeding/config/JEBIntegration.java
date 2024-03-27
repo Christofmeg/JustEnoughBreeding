@@ -1,6 +1,7 @@
 package com.christofmeg.justenoughbreeding.config;
 
 import com.christofmeg.justenoughbreeding.config.integrated.*;
+import com.christofmeg.justenoughbreeding.config.integration.ChocoCraftIntegration;
 import com.christofmeg.justenoughbreeding.config.integration.GreekFantasyIntegration;
 import net.minecraftforge.fml.ModList;
 
@@ -62,9 +63,9 @@ public class JEBIntegration {
         if (ModList.get().isLoaded("twilightforest")) {
             TwilightForestIntegration.init();
         }
-//        if (ModList.get().isLoaded("chococraft")) {
-//        ChocoCraftIntegration.init();
-//        }
+        if (ModList.get().isLoaded("chococraft")) {
+            ChocoCraftIntegration.init();
+        }
         if (ModList.get().isLoaded("waddles")) {
             WaddlesIntegration.init();
         }

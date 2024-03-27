@@ -101,6 +101,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("naturalist")
     mainFile.addOptional("ydms-fennec-fox")
     mainFile.addOptional("biome-makeover")
+    mainFile.addOptional("chococraft")
 }
 
 modrinth {
@@ -128,5 +129,6 @@ modrinth {
         optional.project "lil-wings"
         optional.project "the-ducks"
         optional.project "biome-makeover"
+        optional.project "chococraft"
     }
 }

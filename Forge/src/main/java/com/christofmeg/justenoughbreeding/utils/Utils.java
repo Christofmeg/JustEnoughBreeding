@@ -3,7 +3,7 @@ package com.christofmeg.justenoughbreeding.utils;
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.jei.BreedingCategory;
-import com.christofmeg.justenoughbreeding.jei.recipe.BreedingRecipe;
+import com.christofmeg.justenoughbreeding.jei.BreedingRecipe;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;

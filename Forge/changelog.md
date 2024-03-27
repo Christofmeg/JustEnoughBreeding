@@ -1,4 +1,3 @@
-1.0.13:
-- Added ja_jp.json by [EndilCrafter](https://github.com/EndilCrafter)
-- Move away from using config file.
-- Removed dependency to Forge Config API Port
+1.0.14:
+- Added Quark Parrot Eggs
+- ChocoCraft integration

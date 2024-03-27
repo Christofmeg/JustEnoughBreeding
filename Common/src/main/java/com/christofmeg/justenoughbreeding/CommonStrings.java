@@ -139,4 +139,6 @@ public class CommonStrings {
     public static final String CYAN_PARROT_EGG = "quark:egg_parrot_yellow_blue";
     public static final String GREY_PARROT_EGG = "quark:egg_parrot_grey";
     public static final String BEETROOT_SEEDS = "minecraft:beetroot_seeds";
+    public static final String GYSAHL_GREEN = "chococraft:gysahl_green";
+    public static final String LOVERLY_GYSAHL = "chococraft:loverly_gysahl_green";
 }

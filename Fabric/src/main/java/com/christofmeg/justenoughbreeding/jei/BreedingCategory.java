@@ -1,7 +1,6 @@
 package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
-import com.christofmeg.justenoughbreeding.jei.recipe.BreedingRecipe;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import mezz.jei.api.constants.VanillaTypes;

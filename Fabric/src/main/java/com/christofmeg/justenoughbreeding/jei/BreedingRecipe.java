@@ -1,6 +1,5 @@
-package com.christofmeg.justenoughbreeding.jei.recipe;
+package com.christofmeg.justenoughbreeding.jei;
 
-import com.christofmeg.justenoughbreeding.jei.BreedingCategory;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.EntityType;
