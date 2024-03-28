@@ -7,7 +7,6 @@ import net.minecraftforge.fml.ModList;
 
 public class JEBIntegration {
 
-    @SuppressWarnings("unused")
     public static void init() {
 
         MinecraftIntegration.init();
@@ -135,7 +134,5 @@ public class JEBIntegration {
         if (ModList.get().isLoaded("deep_aether")) {
             DeepAetherIntegration.init();
         }
-
     }
-
 }

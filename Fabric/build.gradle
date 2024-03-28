@@ -28,57 +28,6 @@ dependencies {
         modImplementation("curse.maven:catalogue-667377:${fabric_catalogue_version}")
     }
 
-    // CARACAL MOB           //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/caracal-mod
-//    modImplementation "curse.maven:caracal-mod-486505:3952705"
-//        modImplementation "curse.maven:geckolib-388172:4407239"  // https://www.curseforge.com/minecraft/mc-mods/geckolib
-
-    // THE DUCKS             //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/ydms-ducks-mod
-//    modImplementation "curse.maven:ydms-ducks-mod-576073:4016490"
-
-    // FENNECFOX            //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/ydms-fennec-fox
-//    modImplementation "curse.maven:ydms-fennec-fox-694325:4125141"
-
-    // YDMS REDPANDA        //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/ydms-red-panda/
-//    modImplementation "curse.maven:ydms-red-panda-623035:4029825"
-
-    // FROZENUP             //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/frozen-up
-//    modImplementation "curse.maven:frozen-up-430652:4139740"
-
-    // YDMS GLARE           //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/ydms-glare
-//    modImplementation "curse.maven:ydms-glare-589268:4016323"
-
-    // LIL WINGS             //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/lil-wings
-//    modImplementation "curse.maven:lil-wings-561277:4325684"
-//        modImplementation "curse.maven:geckolib-388172:4407239"  // https://www.curseforge.com/minecraft/mc-mods/geckolib
-//        modImplementation(include("io.github.tropheusj:milk-lib:1.0.48"))
-
-    // DUCKLING             //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/duckling
-//    modImplementation "curse.maven:duckling-597248:4127030"
-//        modImplementation "curse.maven:geckolib-388172:4407239"  // https://www.curseforge.com/minecraft/mc-mods/geckolib
-
-    // TWILIGHT FOREST      //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/the-twilight-forest
-//    modImplementation "curse.maven:the-twilight-forest-227639:4490392"
-//        implementation files('libs/Manningham.Mills-2.0.jar')
-
-    // CHOCOCRAFT           //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/chococraft
-//    implementation fg.deobf("curse.maven:chococraft-225280:4656794")
-//        implementation fg.deobf("curse.maven:architectury-api-419699:4555749")
-//        implementation fg.deobf("curse.maven:patchouli-306770:4031402")
-
-    // ECOLOGICS            //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/ecologics
-//    modImplementation "curse.maven:ecologics-570463:4171284"
-//        modImplementation "curse.maven:cloth-config-348521:4633414"  //https://www.curseforge.com/minecraft/mc-mods/cloth-config
-
-    // NATURALIST           //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/naturalist
-//    modImplementation "curse.maven:naturalist-627986:4660373"
-//        modImplementation "curse.maven:geckolib-388172:4407239"  // https://www.curseforge.com/minecraft/mc-mods/geckolib
-
-//    modImplementation "curse.maven:more-mob-variants-695107:4581457"
-
-    // BIOME MAKEOVER       // Fabric           https://www.curseforge.com/minecraft/mc-mods/biome-makeover
- //   modImplementation "curse.maven:biome-makeover-412182:4815823"
- //       modImplementation "curse.maven:architectury-api-419699:4663009"
-
 }
 
 loom {

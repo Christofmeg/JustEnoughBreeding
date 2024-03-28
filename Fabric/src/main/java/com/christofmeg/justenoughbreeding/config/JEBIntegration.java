@@ -5,7 +5,6 @@ import net.fabricmc.loader.api.FabricLoader;
 
 public class JEBIntegration {
 
-    @SuppressWarnings("unused")
     public static void init() {
 
         MinecraftIntegration.init();
@@ -43,9 +42,9 @@ public class JEBIntegration {
         if (FabricLoader.getInstance().isModLoaded("twilightforest")) {
             TwilightForestIntegration.init();
         }
-//        if (FabricLoader.getInstance().isModLoaded("chococraft")) {
-//        ChocoCraftIntegration.init();
-//        }
+        if (FabricLoader.getInstance().isModLoaded("chococraft")) {
+            ChocoCraftIntegration.init();
+        }
         if (FabricLoader.getInstance().isModLoaded("ecologics")) {
             EcologicsIntegration.init();
         }

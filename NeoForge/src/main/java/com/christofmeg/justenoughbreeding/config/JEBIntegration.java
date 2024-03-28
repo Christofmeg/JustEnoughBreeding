@@ -6,7 +6,6 @@ import net.minecraftforge.fml.ModList;
 
 public class JEBIntegration {
 
-    @SuppressWarnings("unused")
     public static void init() {
 
         MinecraftIntegration.init();
@@ -62,9 +61,9 @@ public class JEBIntegration {
         if (ModList.get().isLoaded("twilightforest")) {
             TwilightForestIntegration.init();
         }
-//        if (ModList.get().isLoaded("chococraft")) {
-//        ChocoCraftIntegration.init();
-//        }
+        if (ModList.get().isLoaded("chococraft")) {
+            ChocoCraftIntegration.init();
+        }
         if (ModList.get().isLoaded("waddles")) {
             WaddlesIntegration.init();
         }
@@ -135,5 +134,4 @@ public class JEBIntegration {
             DeepAetherIntegration.init();
         }
     }
-
 }

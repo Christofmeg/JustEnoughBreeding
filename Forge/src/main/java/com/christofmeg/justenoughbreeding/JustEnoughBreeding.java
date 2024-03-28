@@ -1,7 +1,6 @@
 package com.christofmeg.justenoughbreeding;
 
 import com.christofmeg.justenoughbreeding.config.JEBIntegration;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;

@@ -1,5 +1,6 @@
 package com.christofmeg.justenoughbreeding;
 
+import com.christofmeg.justenoughbreeding.config.JEBIntegration;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -11,6 +12,7 @@ public class JustEnoughBreeding implements ClientModInitializer {
 
     @Override
     public void onInitializeClient(ModContainer mod) {
+        JEBIntegration.init();
     }
 
     public static Item getItemFromLoaderRegistries(ResourceLocation resourceLocation) {

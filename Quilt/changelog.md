@@ -1,2 +1,2 @@
-1.0.14:
-- ChocoCraft integration
+1.0.16:
+- Actually enable ChocoCraft integration

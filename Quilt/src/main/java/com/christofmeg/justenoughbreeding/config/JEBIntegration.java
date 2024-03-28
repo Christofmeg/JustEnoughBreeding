@@ -5,7 +5,6 @@ import org.quiltmc.loader.api.QuiltLoader;
 
 public class JEBIntegration {
 
-    @SuppressWarnings("unused")
     public static void init() {
 
         MinecraftIntegration.init();
@@ -43,9 +42,9 @@ public class JEBIntegration {
         if (QuiltLoader.isModLoaded("twilightforest")) {
             TwilightForestIntegration.init();
         }
-//        if (QuiltLoader.isModLoaded("chococraft")) {
-//        ChocoCraftIntegration.init();
-//        }
+        if (QuiltLoader.isModLoaded("chococraft")) {
+            ChocoCraftIntegration.init();
+        }
         if (QuiltLoader.isModLoaded("ecologics")) {
             EcologicsIntegration.init();
         }
