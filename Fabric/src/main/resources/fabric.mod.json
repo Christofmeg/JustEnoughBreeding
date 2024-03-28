@@ -29,10 +29,6 @@
     "fabricloader": ">=0.14",
     "fabric": "*",
     "minecraft": ">=1.19 <=1.19.2",
-    "java": ">=17",
-    "jei": ">=11",
-    "forgeconfigapiport": ">=4.2",
-    "com_electronwill_night-config_core": "*",
-    "com_electronwill_night-config_toml": "*"
+    "java": ">=17"
   }
 }

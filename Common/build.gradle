@@ -15,18 +15,11 @@ dependencies {
 
     // JEI
     if (project.hasProperty('jei_version')) {
-        compileOnly("mezz.jei:jei-${minecraft_version}-common:${jei_version}")
-        compileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
-        compileOnly("mezz.jei:jei-${minecraft_version}-core:${jei_version}")
-        compileOnly("mezz.jei:jei-${minecraft_version}-gui:${jei_version}")
-        compileOnly("mezz.jei:jei-${minecraft_version}-lib:${jei_version}")
-    }
-
-    // FORGE CONFIG API PORT FABRIC
-    if (project.hasProperty('forge_config_api_version')) {
-        implementation "curse.maven:forge-config-api-port-fabric-547434:${forge_config_api_version}"
-        implementation 'com.electronwill.night-config:core:3.6.5'
-        implementation 'com.electronwill.night-config:toml:3.6.5'
+        implementation("mezz.jei:jei-${minecraft_version}-common:${jei_version}")
+        implementation("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
+        implementation("mezz.jei:jei-${minecraft_version}-core:${jei_version}")
+        implementation("mezz.jei:jei-${minecraft_version}-gui:${jei_version}")
+        implementation("mezz.jei:jei-${minecraft_version}-lib:${jei_version}")
     }
 }
 

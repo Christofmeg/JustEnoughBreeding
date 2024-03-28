@@ -3,6 +3,7 @@ package com.christofmeg.justenoughbreeding.utils;
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.jei.BreedingCategory;
+import com.christofmeg.justenoughbreeding.jei.BreedingRecipe;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -13,6 +14,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,44 +46,73 @@ public class Utils {
         return String.join(", ", edibleMeatItemNames);
     }
 
-    public static String getAllItems() {
-        List<String> allItems = new ArrayList<>();
-
-        for (ResourceLocation key : ForgeRegistries.ITEMS.getKeys()) {
-            Item item = ForgeRegistries.ITEMS.getValue(key);
-            if (item != null) {
-                allItems.add(key.toString());
-            }
-        }
-
-        return String.join(", ", allItems);
-    }
-
     public static void registerMobBreedingRecipes(IRecipeRegistration registration) {
-        List<String> sortedMobNames = new ArrayList<>(CommonConstants.ingredientConfigs.keySet());
+        List<String> sortedMobNames = new ArrayList<>(CommonConstants.breedingIngredients.keySet());
         Collections.sort(sortedMobNames);
 
         for (String mobName : sortedMobNames) {
             if (mobName != null) {
-                if (CommonConstants.ingredientConfigs != null && CommonConstants.spawnEggConfigs != null) {
-                    if (CommonConstants.spawnEggConfigs.get(mobName) != null) {
-                        String mobIngredients = CommonConstants.ingredientConfigs.get(mobName).get();
-                        String mobSpawnEgg = CommonConstants.spawnEggConfigs.get(mobName).get();
-                        String mobResultItem = CommonConstants.eggResultConfigs.get(mobName) != null ? CommonConstants.eggResultConfigs.get(mobName).get() : "";
-                        int mobMinResultCount = CommonConstants.eggMinAmountConfigs.get(mobName) != null ? CommonConstants.eggMinAmountConfigs.get(mobName).get() : 1;
-                        int mobMaxResultCount = CommonConstants.eggMaxAmountConfigs.get(mobName) != null ? CommonConstants.eggMaxAmountConfigs.get(mobName).get() : 1;
+                if (CommonConstants.breedingIngredients != null) {
+                    String mobIngredients = CommonConstants.breedingIngredients.get(mobName);
+                    String mobResultItem = CommonConstants.breedingEggResult.get(mobName) != null ? CommonConstants.breedingEggResult.get(mobName) : "";
+                    if (CommonConstants.sharedGetSpawnEggFromEntity != null) {
+                        if (CommonConstants.sharedGetSpawnEggFromEntity.get(mobName) != null) {
+                            String mobSpawnEgg = CommonConstants.sharedGetSpawnEggFromEntity.get(mobName);
+                            int mobMinResultCount = CommonConstants.breedingEggResultMinAmount.get(mobName) != null ? CommonConstants.breedingEggResultMinAmount.get(mobName) : 1;
+                            int mobMaxResultCount = CommonConstants.breedingEggResultMaxAmount.get(mobName) != null ? CommonConstants.breedingEggResultMaxAmount.get(mobName) : 1;
 
-                        if (mobIngredients != null && mobSpawnEgg != null) {
-                            Ingredient combinedIngredient = createCombinedIngredient(mobIngredients);
-                            List<Ingredient> combinedResultIngredient = Utils.createCombinedResultIngredients(mobResultItem, mobMinResultCount, mobMaxResultCount);
-                            Item spawnEggItem = JustEnoughBreeding.getItemFromLoaderRegistries(new ResourceLocation(mobSpawnEgg.trim()));
+                            if (mobIngredients != null && mobSpawnEgg != null) {
+                                Ingredient combinedIngredient = createCombinedIngredient(mobIngredients);
+                                List<Ingredient> combinedResultIngredient = createCombinedResultIngredients(mobResultItem, mobMinResultCount, mobMaxResultCount);
+                                Item spawnEggItem = JustEnoughBreeding.getItemFromLoaderRegistries(new ResourceLocation(mobSpawnEgg.trim()));
 
-                            if (spawnEggItem instanceof SpawnEggItem spawnEgg) {
-                                EntityType<?> entityType = spawnEgg.getType(null);
-                                Boolean needsToBeTamed = CommonConstants.animalTamedConfigs.get(mobName);
-                                Boolean animalTrusting = CommonConstants.animalTrustingConfigs.get(mobName);
-                                BreedingCategory.BreedingRecipe breedingRecipe = createBreedingRecipe(entityType, combinedIngredient, spawnEggItem, needsToBeTamed, combinedResultIngredient, animalTrusting);
+                                if (spawnEggItem instanceof SpawnEggItem spawnEgg) {
+                                    EntityType<?> entityType = spawnEgg.getType(null);
+                                    Boolean needsToBeTamed = CommonConstants.breedingNeedsToBeTamed.get(mobName);
+                                    Boolean animalTrusting = CommonConstants.breedingNeedsToBeTrusting.get(mobName);
 
+                                    Ingredient combinedExtraIngredient = null;
+                                    if (CommonConstants.breedingExtraIngredients != null) {
+                                        if (CommonConstants.breedingExtraIngredients.get(mobName) != null) {
+                                            String mobExtraIngredients = CommonConstants.breedingExtraIngredients.get(mobName);
+                                            if (mobExtraIngredients != null) {
+                                                combinedExtraIngredient = createCombinedIngredient(mobExtraIngredients);
+                                            }
+                                        }
+                                    }
+
+                                    BreedingRecipe breedingRecipe = createBreedingRecipe(entityType, combinedIngredient, spawnEggItem, needsToBeTamed, combinedResultIngredient, animalTrusting, combinedExtraIngredient);
+                                    registration.addRecipes(BreedingCategory.TYPE, Collections.singletonList(breedingRecipe));
+                                }
+                            }
+                        }
+                    }
+                    if (CommonConstants.breedingGetSpawnEggFromItem != null && CommonConstants.breedingGetMobFromString != null) {
+                        if (CommonConstants.breedingGetSpawnEggFromItem.get(mobName) != null && CommonConstants.breedingGetMobFromString.get(mobName) != null) {
+                            String mobSpawnEggItem = CommonConstants.breedingGetSpawnEggFromItem.get(mobName);
+                            String mobEntityName = CommonConstants.breedingGetMobFromString.get(mobName);
+                            int mobMinResultCount = CommonConstants.breedingEggResultMinAmount.get(mobName) != null ? CommonConstants.breedingEggResultMinAmount.get(mobName) : 1;
+                            int mobMaxResultCount = CommonConstants.breedingEggResultMaxAmount.get(mobName) != null ? CommonConstants.breedingEggResultMaxAmount.get(mobName) : 1;
+
+                            if (mobIngredients != null && mobSpawnEggItem != null && mobEntityName != null) {
+                                Ingredient combinedIngredient = createCombinedIngredient(mobIngredients);
+                                List<Ingredient> combinedResultIngredient = createCombinedResultIngredients(mobResultItem, mobMinResultCount, mobMaxResultCount);
+                                Item spawnEggItem = JustEnoughBreeding.getItemFromLoaderRegistries(new ResourceLocation(mobSpawnEggItem.trim()));
+                                EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(new ResourceLocation(mobEntityName.trim()));
+                                Boolean needsToBeTamed = CommonConstants.breedingNeedsToBeTamed.get(mobName);
+                                Boolean animalTrusting = CommonConstants.breedingNeedsToBeTrusting.get(mobName);
+
+                                Ingredient combinedExtraIngredient = null;
+                                if (CommonConstants.breedingExtraIngredients != null) {
+                                    if (CommonConstants.breedingExtraIngredients.get(mobName) != null) {
+                                        String mobExtraIngredients = CommonConstants.breedingExtraIngredients.get(mobName);
+                                        if (mobExtraIngredients != null) {
+                                            combinedExtraIngredient = createCombinedIngredient(mobExtraIngredients);
+                                        }
+                                    }
+                                }
+
+                                BreedingRecipe breedingRecipe = createBreedingRecipe(entityType, combinedIngredient, spawnEggItem, needsToBeTamed, combinedResultIngredient, animalTrusting, combinedExtraIngredient);
                                 registration.addRecipes(BreedingCategory.TYPE, Collections.singletonList(breedingRecipe));
                             }
                         }
@@ -110,7 +141,7 @@ public class Utils {
         return resultIngredients;
     }
 
-    private static BreedingCategory.BreedingRecipe createBreedingRecipe(EntityType<?> entityType, Ingredient combinedIngredient, Item spawnEggItem, Boolean needsToBeTamed, List<Ingredient> resultItemStacks, Boolean animalTrusting) {
+    private static BreedingRecipe createBreedingRecipe(EntityType<?> entityType, Ingredient combinedIngredient, Item spawnEggItem, Boolean needsToBeTamed, List<Ingredient> resultItemStacks, Boolean animalTrusting, @Nullable Ingredient combinedExtraIngredient) {
         List<ItemStack> mergedResultItemStacks = new ArrayList<>();
 
         for (Ingredient resultItemStack : resultItemStacks) {
@@ -118,13 +149,13 @@ public class Utils {
             mergedResultItemStacks.addAll(Arrays.asList(stacks));
         }
 
-        return new BreedingCategory.BreedingRecipe(
+        return new BreedingRecipe(
                 entityType,
                 combinedIngredient,
                 new ItemStack(spawnEggItem),
                 needsToBeTamed,
                 Ingredient.of(mergedResultItemStacks.toArray(new ItemStack[0])),
-                null,
+                combinedExtraIngredient,
                 animalTrusting
         );
     }

@@ -21,18 +21,6 @@
       {
         "id": "quilt_base",
         "version": "*"
-      },
-      {
-        "id": "forgeconfigapiport",
-        "version": ">=4.2"
-      },
-      {
-        "id": "com_electronwill_night-config_core",
-        "version": "*"
-      },
-      {
-        "id": "com_electronwill_night-config_toml",
-        "version": ">*"
       }
     ],
     "metadata": {
