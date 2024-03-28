@@ -123,6 +123,10 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("untamedwilds")
     mainFile.addOptional("alexs-mobs")
     mainFile.addOptional("chococraft")
+    mainFile.addOptional("ice-and-fire-dragons")
+    mainFile.addOptional("aether")
+    mainFile.addOptional("aether-redux")
+    mainFile.addOptional("deep-aether")
 }
 
 modrinth {
@@ -158,5 +162,9 @@ modrinth {
         optional.project "alexs-caves"
         optional.project "alexs-mobs"
         optional.project "chococraft"
+        optional.project "ice-and-fire-dragons"
+        optional.project "aether"
+        optional.project "the-aether-redux"
+        optional.project "deep-aether"
     }
 }

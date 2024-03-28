@@ -1,4 +1,4 @@
-package com.christofmeg.justenoughbreeding.config.integration;
+package com.christofmeg.justenoughbreeding.config.integrated;
 
 import com.christofmeg.justenoughbreeding.CommonStrings;
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;

@@ -1,7 +1,7 @@
 package com.christofmeg.justenoughbreeding.config;
 
 import com.christofmeg.justenoughbreeding.config.integrated.*;
-import com.christofmeg.justenoughbreeding.config.integration.ChocoCraftIntegration;
+import com.christofmeg.justenoughbreeding.config.integrated.ChocoCraftIntegration;
 import com.christofmeg.justenoughbreeding.config.integration.GreekFantasyIntegration;
 import net.minecraftforge.fml.ModList;
 
@@ -123,6 +123,19 @@ public class JEBIntegration {
         if (ModList.get().isLoaded("untamedwilds")) {
             UntamedWildsIntegration.init();
         }
+        if (ModList.get().isLoaded("iceandfire")) {
+            IceAndFireIntegration.init();
+        }
+        if (ModList.get().isLoaded("aether")) {
+            AetherIntegration.init();
+        }
+        if (ModList.get().isLoaded("aether_redux")) {
+            AetherReduxIntegration.init();
+        }
+        if (ModList.get().isLoaded("deep_aether")) {
+            DeepAetherIntegration.init();
+        }
+
     }
 
 }

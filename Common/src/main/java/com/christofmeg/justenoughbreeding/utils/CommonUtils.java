@@ -307,13 +307,42 @@ public class CommonUtils {
         tamingChance.put(name, 33);
     }
 
+    public static void addTamableOnly(String name, String tamingIngredient, List<String> tamableOnly, Map<String, String> tamingIngredients, Map<String, Integer> tamingChance, int chance) {
+        tamableOnly.add(name);
+        tamingIngredients.put(name, tamingIngredient);
+        tamingChance.put(name, chance);
+    }
+
     public static void addTamableOnly(String name, String tamingIngredient, List<String> tamableOnly, Map<String, String> tamingIngredients, Map<String, Integer> tamingChance, String extraIngredient, Map<String, String> extraIngredients) {
         addTamableOnly(name, tamingIngredient, tamableOnly, tamingIngredients, tamingChance);
         extraIngredients.put(name, extraIngredient);
     }
 
+    public static void addTamableOnly(String name, String tamingIngredient, List<String> tamableOnly, Map<String, String> tamingIngredients, Map<String, Integer> tamingChance, int chance, String extraIngredient, Map<String, String> extraIngredients) {
+        addTamableOnly(name, tamingIngredient, tamableOnly, tamingIngredients, tamingChance, chance);
+        extraIngredients.put(name, extraIngredient);
+    }
+
+    public static void addTamableOnly(String name, String spawnEggItem, String entityFromName, String tamingIngredient, List<String> tamableOnly, Map<String, String> tamingIngredients, Map<String, Integer> tamingChance, Map<String, String> spawnEggItems, Map<String, String> entitiesFromNames) {
+        addTamableOnly(name, tamingIngredient, tamableOnly, tamingIngredients, tamingChance);
+        spawnEggItems.put(name, spawnEggItem);
+        entitiesFromNames.put(name, entityFromName);
+    }
+
+    public static void addTamableOnly(String name, String spawnEggItem, String entityFromName, String tamingIngredient, List<String> tamableOnly, Map<String, String> tamingIngredients, Map<String, Integer> tamingChance, int chance, Map<String, String> spawnEggItems, Map<String, String> entitiesFromNames) {
+        addTamableOnly(name, tamingIngredient, tamableOnly, tamingIngredients, tamingChance, chance);
+        spawnEggItems.put(name, spawnEggItem);
+        entitiesFromNames.put(name, entityFromName);
+    }
+
     public static void addTamableOnly(String name, String spawnEggItem, String entityFromName, String tamingIngredient, List<String> tamableOnly, Map<String, String> tamingIngredients, Map<String, Integer> tamingChance, String extraIngredient, Map<String, String> extraIngredients, Map<String, String> spawnEggItems, Map<String, String> entitiesFromNames) {
         addTamableOnly(name, tamingIngredient, tamableOnly, tamingIngredients, tamingChance, extraIngredient, extraIngredients);
+        spawnEggItems.put(name, spawnEggItem);
+        entitiesFromNames.put(name, entityFromName);
+    }
+
+    public static void addTamableOnly(String name, String spawnEggItem, String entityFromName, String tamingIngredient, List<String> tamableOnly, Map<String, String> tamingIngredients, Map<String, Integer> tamingChance, int chance, String extraIngredient, Map<String, String> extraIngredients, Map<String, String> spawnEggItems, Map<String, String> entitiesFromNames) {
+        addTamableOnly(name, tamingIngredient, tamableOnly, tamingIngredients, tamingChance, chance, extraIngredient, extraIngredients);
         spawnEggItems.put(name, spawnEggItem);
         entitiesFromNames.put(name, entityFromName);
     }

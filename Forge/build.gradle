@@ -64,14 +64,19 @@ dependencies {
     // GREEK FANTASY        //Forge only            https://www.curseforge.com/minecraft/mc-mods/greek-fantasy
 //    implementation fg.deobf("curse.maven:greek-fantasy-413724:4066828")
 
-    // QUARK https://www.curseforge.com/minecraft/mc-mods/quark
-    implementation fg.deobf("curse.maven:quark-243121:5206769")
-        //ZETA https://www.curseforge.com/minecraft/mc-mods/zeta
-        implementation fg.deobf("curse.maven:zeta-968868:5151582")
+    implementation fg.deobf("curse.maven:aether-255308:5196418") //https://www.curseforge.com/minecraft/mc-mods/aether
+    implementation fg.deobf("curse.maven:geckolib-388172:5188427")
 
-    implementation fg.deobf("curse.maven:chococraft-225280:5192542")
-    implementation fg.deobf("curse.maven:architectury-api-419699:5137938")
+    implementation fg.deobf("curse.maven:aether-redux-867237:5201581") //https://www.curseforge.com/minecraft/mc-mods/aether-redux
+    implementation fg.deobf("curse.maven:aeroblender-879879:4789008")
+    implementation fg.deobf("curse.maven:terrablender-563928:5068218")
 
+    implementation fg.deobf("curse.maven:ancient-aether-886751:5213500") //https://www.curseforge.com/minecraft/mc-mods/ancient-aether
+
+    implementation fg.deobf("curse.maven:aether-lost-content-318602:4927038") //https://www.curseforge.com/minecraft/mc-mods/aether-lost-content
+    implementation fg.deobf("curse.maven:structure-gel-api-378802:5188368")
+
+    implementation fg.deobf("curse.maven:deep-aether-852465:5076616") //https://www.curseforge.com/minecraft/mc-mods/deep-aether
 
 }
 
@@ -137,6 +142,10 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("untamedwilds")
     mainFile.addOptional("alexs-mobs")
     mainFile.addOptional("chococraft")
+    mainFile.addOptional("ice-and-fire-dragons")
+    mainFile.addOptional("aether")
+    mainFile.addOptional("aether-redux")
+    mainFile.addOptional("deep-aether")
 }
 
 modrinth {
@@ -172,5 +181,9 @@ modrinth {
         optional.project "alexs-caves"
         optional.project "alexs-mobs"
         optional.project "chococraft"
+        optional.project "ice-and-fire-dragons"
+        optional.project "aether"
+        optional.project "the-aether-redux"
+        optional.project "deep-aether"
     }
 }

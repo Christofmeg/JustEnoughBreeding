@@ -141,4 +141,24 @@ public class CommonStrings {
     public static final String BEETROOT_SEEDS = "minecraft:beetroot_seeds";
     public static final String GYSAHL_GREEN = "chococraft:gysahl_green";
     public static final String LOVERLY_GYSAHL = "chococraft:loverly_gysahl_green";
+    public static final String FIRE_LILY_MIXTURE = "iceandfire:fire_stew";
+    public static final String FROST_LILY_MIXTURE = "iceandfire:frost_stew";
+    public static final String LIGHTNING_LILY_MIXTURE = "iceandfire:lightning_stew";
+    public static final String FIRE_DRAGON_EGGS = "iceandfire:dragonegg_green, iceandfire:dragonegg_red, iceandfire:dragonegg_bronze, iceandfire:dragonegg_gray";
+    public static final String ICE_DRAGON_EGGS = "iceandfire:dragonegg_sapphire, iceandfire:dragonegg_blue, iceandfire:dragonegg_silver, iceandfire:dragonegg_white";
+    public static final String LIGHTNING_DRAGON_EGGS = "iceandfire:dragonegg_amythest, iceandfire:dragonegg_electric, iceandfire:dragonegg_copper, iceandfire:dragonegg_black";
+    public static final String CREATIVE_DRAGON_MEAL = "iceandfire:creative_dragon_meal";
+    public static final String CAKE = "minecraft:cake";
+    public static final String RABBIT_FOOT = "minecraft:rabbit_foot";
+    public static final String RABBIT_STEW = "minecraft:rabbit_stew";
+    public static final String COOKIE = "minecraft:cookie";
+    public static final String PRISMARINE_CRYSTALS = "minecraft:prismarine_crystals";
+    public static final String KELP = "minecraft:kelp";
+    public static final String AERBUNNY_TEMPTATION_ITEMS_TAG = "#aether:aerbunny_temptation_items";
+    public static final String FLYING_COW_TEMPTATION_ITEMS_TAG = "#aether:flying_cow_temptation_items";
+    public static final String PHYG_TEMPTATION_ITEMS_TAG = "#aether:phyg_temptation_items";
+    public static final String SHEEPUFF_TEMPTATION_ITEMS_TAG = "#aether:sheepuff_temptation_items";
+    public static final String MYKAPOD_TEMPTATION_ITEMS_TAG = "#aether_redux:mykapod_temptation_items";
+    public static final String SHIMMERCOW_TEMPTATION_ITEMS_TAG = "#aether_redux:glimmercow_temptation_items";
+    public static final String GOLDEN_GRASS_SEEDS = "deep_aether:golden_grass_seeds";
 }

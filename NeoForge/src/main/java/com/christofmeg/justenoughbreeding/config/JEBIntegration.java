@@ -122,6 +122,18 @@ public class JEBIntegration {
         if (ModList.get().isLoaded("untamedwilds")) {
             UntamedWildsIntegration.init();
         }
+        if (ModList.get().isLoaded("iceandfire")) {
+            IceAndFireIntegration.init();
+        }
+        if (ModList.get().isLoaded("aether")) {
+            AetherIntegration.init();
+        }
+        if (ModList.get().isLoaded("aether_redux")) {
+            AetherReduxIntegration.init();
+        }
+        if (ModList.get().isLoaded("deep_aether")) {
+            DeepAetherIntegration.init();
+        }
     }
 
 }

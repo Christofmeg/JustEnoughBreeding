@@ -35,10 +35,4 @@ public class CommonConstants {
 	public static Map<String, String> trustingIngredients = new HashMap<>(); //TODO add ALL items from registries if "*" is the item. Needed in minecraft:allay and Trusting
 	public static Map<String, Integer> trustingChance = new HashMap<>();
 
-
-	/*TODO
-	https://www.curseforge.com/minecraft/mc-mods/ice-and-fire-dragons
-	https://www.curseforge.com/minecraft/mc-mods/aether
-	https://www.curseforge.com/minecraft/mc-mods/aether-redux
-	*/
 }
