@@ -1,2 +1,2 @@
-1.0.16:
-- Actually enable ChocoCraft integration
+1.1.0:
+- Added support for REI

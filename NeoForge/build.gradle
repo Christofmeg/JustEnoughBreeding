@@ -49,11 +49,22 @@ dependencies {
     compileOnly project(":Common")
 
     // JEI
-    if (project.hasProperty('neo_jei_version')) {
-        compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${neo_jei_version}"))
-        compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${neo_jei_version}"))
-        runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${neo_jei_version}"))
+    compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"))
+    compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
+    compileOnly fg.deobf("me.shedaniel:REIPluginCompatibilities-forge-annotations:${rei_version}")
+    if (project.hasProperty('enable_jei')) {
+        runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))
     }
+
+    // REI
+    compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-api-forge:${rei_version}")
+    compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-default-plugin-forge:${rei_version}")
+    implementation fg.deobf("me.shedaniel.cloth:cloth-config-forge:${cloth_config_version}")
+    implementation fg.deobf("dev.architectury:architectury-forge:${architectury_version}")
+    if (project.hasProperty('enable_rei')) {
+        runtimeOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-forge:${rei_version}")
+    }
+
     // CATALOGUE
     if (project.hasProperty('catalogue_version')) {
         implementation fg.deobf("curse.maven:catalogue-459701:${catalogue_version}")
