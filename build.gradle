@@ -60,6 +60,8 @@ subprojects {
                     includeGroup "curse.maven"
                 }
             }
+            maven { url "https://maven.shedaniel.me" }
+            maven { url "https://maven.architectury.dev/" }
 
         }
     }

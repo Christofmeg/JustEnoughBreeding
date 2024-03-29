@@ -11,7 +11,10 @@
 		  ],
 		  "jei_mod_plugin": [
 		    "com.christofmeg.justenoughbreeding.jei.JEIPlugin"
-		  ]
+		  ],
+          "rei_client": [
+            "com.christofmeg.justenoughbreeding.rei.REIPlugin"
+          ]
         },
         "depends": [
             {
@@ -25,7 +28,7 @@
         ],
         "metadata": {
             "name": "Just Enough Breeding",
-            "description": "JEI plugin that displays breeding information",
+            "description": "JEI/REI plugin that displays breeding information",
             "contributors": {
                 "Christofmeg": "Developer"
             },

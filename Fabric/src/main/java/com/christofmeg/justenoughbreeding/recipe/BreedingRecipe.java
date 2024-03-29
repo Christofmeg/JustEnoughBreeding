@@ -1,5 +1,6 @@
-package com.christofmeg.justenoughbreeding.jei;
+package com.christofmeg.justenoughbreeding.recipe;
 
+import com.christofmeg.justenoughbreeding.jei.BreedingCategory;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.EntityType;
@@ -34,7 +35,7 @@ public class BreedingRecipe {
         this.animalTrusting = animalTrusting;
     }
 
-    public void doRendering(PoseStack stack, double mouseX) {
+    public LivingEntity doRendering() {
         long currentTime = System.currentTimeMillis();
         Level level = Minecraft.getInstance().level;
 
@@ -47,8 +48,9 @@ public class BreedingRecipe {
             if (currentLivingEntity instanceof TamableAnimal tamableAnimal) {
                 tamableAnimal.setTame(true);
             }
-            BreedingCategory.renderEntity(stack, mouseX, currentLivingEntity);
         }
+
+        return currentLivingEntity;
     }
 
 }
