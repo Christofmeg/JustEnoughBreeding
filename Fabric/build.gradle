@@ -118,6 +118,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("biome-makeover")
     mainFile.addOptional("chococraft")
     mainFile.addOptional("roughly-enough-items")
+    mainFile.addOptional("emi")
 }
 
 modrinth {
@@ -147,5 +148,6 @@ modrinth {
         optional.project "biome-makeover"
         optional.project "chococraft"
         optional.project "rei"
+        optional.project "emi"
     }
 }

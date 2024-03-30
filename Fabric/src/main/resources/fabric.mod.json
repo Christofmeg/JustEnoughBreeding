@@ -26,6 +26,9 @@
     ],
     "rei_client": [
       "com.christofmeg.justenoughbreeding.rei.REIPlugin"
+    ],
+    "emi": [
+      "com.christofmeg.justenoughbreeding.emi.EMIPlugin"
     ]
   },
   "depends": {
