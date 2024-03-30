@@ -62,6 +62,10 @@ subprojects {
             }
             maven { url "https://maven.shedaniel.me" }
             maven { url "https://maven.architectury.dev/" }
+            maven {
+                name = "TerraformersMC" //EMI
+                url = "https://maven.terraformersmc.com/"
+            }
 
         }
     }

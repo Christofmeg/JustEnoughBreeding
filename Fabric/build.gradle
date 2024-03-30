@@ -35,6 +35,13 @@ dependencies {
         modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${rei_version}"
     }
 
+    //EMI
+//    modCompileOnly "dev.emi:emi-fabric:${emi_version}+${fabric_minecraft_version}:api"
+    modCompileOnly "dev.emi:emi-fabric:${emi_version}+${fabric_minecraft_version}"
+    if (project.hasProperty('enable_emi')) {
+        modLocalRuntime "dev.emi:emi-fabric:${emi_version}+${fabric_minecraft_version}"
+    }
+
     // CATALOGUE
     if (project.hasProperty('fabric_catalogue_version')) {
         modImplementation("curse.maven:catalogue-667377:${fabric_catalogue_version}")
