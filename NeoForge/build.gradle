@@ -158,6 +158,8 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("aether")
     mainFile.addOptional("aether-redux")
     mainFile.addOptional("deep-aether")
+    mainFile.addOptional("roughly-enough-items")
+    mainFile.addOptional("emi")
 }
 
 modrinth {
@@ -197,5 +199,7 @@ modrinth {
         optional.project "aether"
         optional.project "the-aether-redux"
         optional.project "deep-aether"
+        optional.project "rei"
+        optional.project "emi"
     }
 }
