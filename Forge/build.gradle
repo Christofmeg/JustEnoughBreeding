@@ -52,7 +52,7 @@ dependencies {
     compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"))
     compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
     compileOnly fg.deobf("me.shedaniel:REIPluginCompatibilities-forge-annotations:${rei_version}")
-    if (project.hasProperty('enable_jei')) {
+    if (project.hasProperty('enable_jei') && project.enable_jei.toBoolean()) {
         runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))
     }
 
@@ -61,7 +61,7 @@ dependencies {
     compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-default-plugin-forge:${rei_version}")
     implementation fg.deobf("me.shedaniel.cloth:cloth-config-forge:${cloth_config_version}")
     implementation fg.deobf("dev.architectury:architectury-forge:${architectury_version}")
-    if (project.hasProperty('enable_rei')) {
+    if (project.hasProperty('enable_rei') && project.enable_rei.toBoolean()) {
         runtimeOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-forge:${rei_version}")
     }
 
