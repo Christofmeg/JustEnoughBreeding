@@ -1,7 +1,6 @@
 package com.christofmeg.justenoughbreeding.config;
 
 import com.christofmeg.justenoughbreeding.config.integrated.*;
-import com.christofmeg.justenoughbreeding.config.integrated.ChocoCraftIntegration;
 import com.christofmeg.justenoughbreeding.config.integration.GreekFantasyIntegration;
 import net.minecraftforge.fml.ModList;
 
