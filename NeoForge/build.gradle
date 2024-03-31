@@ -71,18 +71,14 @@ dependencies {
         }
     }
 
-    //EMI
+    // EMI
     if (project.hasProperty('emi_version')) {
-//    compileOnly "dev.emi:emi-forge:${emi_version}+${minecraft_version}:api"
-
         compileOnly fg.deobf("curse.maven:emi-580555:5032425")
-        runtimeOnly fg.deobf("curse.maven:emi-580555:5032425")
-
-        /*
-        compileOnly "dev.emi:emi-forge:${emi_version}+${minecraft_version}"
+//        compileOnly "dev.emi:emi-forge:${emi_version}+${minecraft_version}"
         if (project.hasProperty('enable_emi') && project.enable_emi.toBoolean()) {
-            runtimeOnly "dev.emi:emi-forge:${emi_version}+${minecraft_version}"
-        }*/
+//            runtimeOnly "dev.emi:emi-forge:${emi_version}+${minecraft_version}"
+            runtimeOnly fg.deobf("curse.maven:emi-580555:5032425")
+        }
     }
 
     // CATALOGUE
@@ -160,6 +156,10 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("deep-aether")
     mainFile.addOptional("roughly-enough-items")
     mainFile.addOptional("emi")
+    mainFile.addOptional("call-of-the-wild")
+    mainFile.addOptional("creatures-and-beasts")
+    mainFile.addOptional("winter-overhaul")
+    mainFile.addOptional("critters-and-companions")
 }
 
 modrinth {
@@ -201,5 +201,8 @@ modrinth {
         optional.project "deep-aether"
         optional.project "rei"
         optional.project "emi"
+        optional.project "creatures-and-beasts"
+        optional.project "winter-overhaul"
+        optional.project "critters-and-companions"
     }
 }

@@ -133,5 +133,17 @@ public class JEBIntegration {
         if (ModList.get().isLoaded("deep_aether")) {
             DeepAetherIntegration.init();
         }
+        if (ModList.get().isLoaded("cotw")) {
+            CallOfTheWildIntegration.init();
+        }
+        if (ModList.get().isLoaded("cnb")) {
+            CreaturesAndBeastsIntegration.init();
+        }
+        if (ModList.get().isLoaded("winteroverhaul")) {
+            WinterOverhaulIntegration.init();
+        }
+        if (ModList.get().isLoaded("crittersandcompanions")) {
+            CrittersAndCompanions.init();
+        }
     }
 }

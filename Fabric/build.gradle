@@ -39,9 +39,8 @@ dependencies {
         }
     }
 
+    // EMI
     if (project.hasProperty('emi_version')) {
-        //EMI
-//    modCompileOnly "dev.emi:emi-fabric:${emi_version}+${fabric_minecraft_version}:api"
         modCompileOnly "dev.emi:emi-fabric:${emi_version}+${fabric_minecraft_version}"
         if (project.hasProperty('enable_emi') && project.enable_emi.toBoolean()) {
             modLocalRuntime "dev.emi:emi-fabric:${emi_version}+${fabric_minecraft_version}"
@@ -119,6 +118,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("chococraft")
     mainFile.addOptional("roughly-enough-items")
     mainFile.addOptional("emi")
+    mainFile.addOptional("critters-and-companions")
 }
 
 modrinth {
@@ -149,5 +149,6 @@ modrinth {
         optional.project "chococraft"
         optional.project "rei"
         optional.project "emi"
+        optional.project "critters-and-companions"
     }
 }
