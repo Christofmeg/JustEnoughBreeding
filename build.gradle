@@ -1,3 +1,8 @@
+plugins {
+    // Required for NeoGradle
+    id "org.jetbrains.gradle.plugin.idea-ext" version "1.1.7"
+}
+
 subprojects {
     
     apply plugin: 'java'
@@ -59,6 +64,12 @@ subprojects {
                 content {
                     includeGroup "curse.maven"
                 }
+            }
+            maven { url "https://maven.shedaniel.me" }
+            maven { url "https://maven.architectury.dev/" }
+            maven {
+                name = "TerraformersMC" //EMI
+                url = "https://maven.terraformersmc.com/"
             }
 
         }

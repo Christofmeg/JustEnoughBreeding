@@ -1,28 +1,34 @@
 package com.christofmeg.justenoughbreeding;
 
-import com.christofmeg.justenoughbreeding.config.JEBConfig;
+import com.christofmeg.justenoughbreeding.config.JEBIntegration;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.fml.IExtensionPoint;
+import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.loading.FMLEnvironment;
+import net.neoforged.neoforge.network.NetworkConstants;
 
 @Mod(CommonConstants.MOD_ID)
-@Mod.EventBusSubscriber(modid = CommonConstants.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class JustEnoughBreeding {
 
-    private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
-    @SuppressWarnings("unused")
-    public static final JEBConfig GENERAL = new JEBConfig(BUILDER);
-
     public JustEnoughBreeding() {
-        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, BUILDER.build());
+        //Make sure the mod being absent on the other network side does not cause the client to display the server as incompatible
+        ModLoadingContext.get().registerExtensionPoint(IExtensionPoint.DisplayTest.class, () -> new IExtensionPoint.DisplayTest(()-> NetworkConstants.IGNORESERVERONLY, (remote, isServer)-> true));
+        if (FMLEnvironment.dist == Dist.CLIENT) {
+            JEBIntegration.init();
+        }
     }
 
     public static Item getItemFromLoaderRegistries(ResourceLocation resourceLocation) {
-        return ForgeRegistries.ITEMS.getValue(resourceLocation);
+        return BuiltInRegistries.ITEM.get(resourceLocation);
+    }
+
+    public static EntityType<?> getEntityFromLoaderRegistries(ResourceLocation resourceLocation) {
+        return BuiltInRegistries.ENTITY_TYPE.get(resourceLocation);
     }
 
 }

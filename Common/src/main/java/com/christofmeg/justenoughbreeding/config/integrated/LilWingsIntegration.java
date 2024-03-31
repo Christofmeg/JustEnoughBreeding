@@ -2,7 +2,6 @@ package com.christofmeg.justenoughbreeding.config.integrated;
 
 import com.christofmeg.justenoughbreeding.CommonStrings;
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;
-import net.minecraftforge.common.ForgeConfigSpec;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,16 +10,13 @@ import java.util.Map;
 
 public class LilWingsIntegration {
 
-    final String MOD = "lilwings";
+    static final String MOD = "lilwings";
 
-    final List<String> animalNames = new ArrayList<>();
-    final Map<String, String> ingredients = new HashMap<>();
-    final Map<String, Integer> breedingCooldown = new HashMap<>();
+    static final List<String> animalNames = new ArrayList<>();
+    static final Map<String, String> ingredients = new HashMap<>();
+    static final Map<String, Integer> breedingCooldown = new HashMap<>();
 
-    public LilWingsIntegration(ForgeConfigSpec.Builder builder) {
-        builder.push("integration");
-        builder.push(MOD);
-
+    public static void init() {
         CommonUtils.addAnimal("white_fox", CommonStrings.LILY_OF_THE_VALLEY, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("swamp_hopper", CommonStrings.BLUE_ORCHID, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("swallow_tail", CommonStrings.WHEAT_SEEDS, animalNames, ingredients, breedingCooldown);
@@ -33,10 +29,7 @@ public class LilWingsIntegration {
         CommonUtils.addAnimal("aponi", CommonStrings.BROWN_MUSHROOM, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("red_applefly", CommonStrings.APPLE, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("grayling", CommonStrings.MOSS_BLOCK, animalNames, ingredients, breedingCooldown);
-
-        CommonUtils.addAnimalNames(animalNames, builder, ingredients, MOD, breedingCooldown, null, "_egg", false);
-
-        builder.pop(2);
+        CommonUtils.addAnimalNames(animalNames, ingredients, MOD, breedingCooldown, "_egg", false);
     }
 
 }

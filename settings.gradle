@@ -19,9 +19,18 @@ pluginManagement {
         }
         mavenCentral()
     }
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.toString() == 'org.spongepowered.mixin') {
+                useModule("org.spongepowered:mixingradle:${requested.version}")
+            }
+        }
+    }
+}
+
+plugins {
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '0.5.0'
 }
 
 rootProject.name = 'JustEnoughBreeding'
-include("Common", "Fabric", "Forge")
-//include("Quilt")
-//include("NeoForge")
+include("Common", "Fabric", "Forge", "Quilt", "NeoForge")
