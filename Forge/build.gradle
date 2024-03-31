@@ -73,7 +73,6 @@ dependencies {
 
     //EMI
     if (project.hasProperty('emi_version')) {
-//    compileOnly "dev.emi:emi-forge:${emi_version}+${minecraft_version}:api"
         compileOnly fg.deobf("curse.maven:emi-580555:5204253")
 //        compileOnly "dev.emi:emi-forge:${emi_version}+${minecraft_version}"
         if (project.hasProperty('enable_emi') && project.enable_emi.toBoolean()) {
@@ -82,10 +81,20 @@ dependencies {
         }
     }
 
+    //JADE
+    implementation fg.deobf("curse.maven:jade-324717:4800904")
+
     // CATALOGUE
     if (project.hasProperty('catalogue_version')) {
         implementation fg.deobf("curse.maven:catalogue-459701:${catalogue_version}")
     }
+
+    implementation fg.deobf("curse.maven:sullys-mod-386534:4775845") //https://www.curseforge.com/minecraft/mc-mods/sullys-mod
+        implementation fg.deobf("curse.maven:geckolib-388172:4407241")
+        implementation fg.deobf("curse.maven:blueprint-382216:4749000")
+
+// 1.18.2
+//    implementation fg.deobf("curse.maven:ghost-602665:4717886") //https://www.curseforge.com/minecraft/mc-mods/ghost
 
     // GREEK FANTASY https://www.curseforge.com/minecraft/mc-mods/greek-fantasy
 //    runtimeOnly fg.deobf("curse.maven:greek-fantasy-413724:4066828")
@@ -160,6 +169,10 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("deep-aether")
     mainFile.addOptional("roughly-enough-items")
     mainFile.addOptional("emi")
+    mainFile.addOptional("call-of-the-wild")
+    mainFile.addOptional("creatures-and-beasts")
+    mainFile.addOptional("winter-overhaul")
+    mainFile.addOptional("critters-and-companions")
 }
 
 modrinth {
@@ -201,5 +214,8 @@ modrinth {
         optional.project "deep-aether"
         optional.project "rei"
         optional.project "emi"
+        optional.project "creatures-and-beasts"
+        optional.project "winter-overhaul"
+        optional.project "critters-and-companions"
     }
 }

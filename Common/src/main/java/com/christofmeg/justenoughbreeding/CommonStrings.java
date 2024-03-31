@@ -161,4 +161,17 @@ public class CommonStrings {
     public static final String MYKAPOD_TEMPTATION_ITEMS_TAG = "#aether_redux:mykapod_temptation_items";
     public static final String SHIMMERCOW_TEMPTATION_ITEMS_TAG = "#aether_redux:glimmercow_temptation_items";
     public static final String GOLDEN_GRASS_SEEDS = "deep_aether:golden_grass_seeds";
+    public static final String LEAVES_TAG = "#minecraft:leaves";
+    public static final String WHEAT_MELON_PUMPKIN_BEETROOT_SEEDS = "minecraft:wheat_seeds, minecraft:pumpkin_seeds, minecraft:melon_seeds, minecraft:beetroot_seeds";
+    public static final String CINDERSHEEL_FOOD_TAG = "#cnb:cindershell_food";
+    public static final String LITTLE_GREBE_FOOD_TAG = "#cnb:little_grebe_food";
+    public static final String END_WHALE_FOOD_TAG = "#cnb:end_whale_food";
+    public static final String SPORELING_FOOD_TAG = "#cnb:sporeling_food";
+    public static final String MELON_SLICE = "minecraft:melon_slice";
+    public static final String APPLE_SLICE = "cnb:apple_slice";
+    public static final String CLAM = "crittersandcompanions:clam";
+    public static final String FERRET_FOOD_TAG = "#crittersandcompanions:ferret_food";
+    public static final String SHIMA_ENAGA_FOOD_TAG = "#crittersandcompanions:shima_enaga_food";
+    public static final String DRAGONFLY_WING = "crittersandcompanions:dragonfly_wing";
+
 }

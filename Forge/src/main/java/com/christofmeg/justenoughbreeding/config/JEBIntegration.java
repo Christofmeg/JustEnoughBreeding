@@ -133,5 +133,30 @@ public class JEBIntegration {
         if (ModList.get().isLoaded("deep_aether")) {
             DeepAetherIntegration.init();
         }
+        if (ModList.get().isLoaded("cotw")) {
+            CallOfTheWildIntegration.init();
+        }
+        if (ModList.get().isLoaded("cnb")) {
+            CreaturesAndBeastsIntegration.init();
+        }
+        if (ModList.get().isLoaded("winteroverhaul")) {
+            WinterOverhaulIntegration.init();
+        }
+        if (ModList.get().isLoaded("crittersandcompanions")) {
+            CrittersAndCompanions.init();
+        }
     }
+
+    /* TODO
+      * https://www.curseforge.com/minecraft/mc-mods/resourceful-bees
+      * https://www.curseforge.com/minecraft/mc-mods/zoo-architect
+      * https://www.curseforge.com/minecraft/mc-mods/the-bumblezone-forge
+      * https://www.curseforge.com/minecraft/mc-mods/lets-go-herping
+      * https://www.curseforge.com/minecraft/mc-mods/aardvarks-weirder-wonderfuller-wild
+      * https://www.curseforge.com/minecraft/mc-mods/zoobox
+      * https://www.curseforge.com/minecraft/mc-mods/zoologicraft
+      * https://www.curseforge.com/minecraft/mc-mods/mineageries-plus
+      * https://modrinth.com/mod/critters-n-crawlers
+     */
+
 }

@@ -57,5 +57,8 @@ public class JEBIntegration {
         if (FabricLoader.getInstance().isModLoaded("biomemakeover")) {
             BiomeMakeoverIntegration.init();
         }
+        if (FabricLoader.getInstance().isModLoaded("crittersandcompanions")) {
+            CrittersAndCompanions.init();
+        }
     }
 }

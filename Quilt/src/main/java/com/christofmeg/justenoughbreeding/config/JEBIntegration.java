@@ -57,5 +57,8 @@ public class JEBIntegration {
         if (QuiltLoader.isModLoaded("biomemakeover")) {
             BiomeMakeoverIntegration.init();
         }
+        if (QuiltLoader.isModLoaded("crittersandcompanions")) {
+            CrittersAndCompanions.init();
+        }
     }
 }
