@@ -89,10 +89,6 @@ dependencies {
         implementation fg.deobf("curse.maven:catalogue-459701:${catalogue_version}")
     }
 
-    implementation fg.deobf("curse.maven:sullys-mod-386534:4775845") //https://www.curseforge.com/minecraft/mc-mods/sullys-mod
-        implementation fg.deobf("curse.maven:geckolib-388172:4407241")
-        implementation fg.deobf("curse.maven:blueprint-382216:4749000")
-
 // 1.18.2
 //    implementation fg.deobf("curse.maven:ghost-602665:4717886") //https://www.curseforge.com/minecraft/mc-mods/ghost
 
