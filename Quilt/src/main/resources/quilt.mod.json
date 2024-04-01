@@ -1,53 +1,47 @@
 {
-  "schema_version": 1,
-  "quilt_loader": {
-    "group": "com.christofmeg.justenoughbreeding",
-    "id": "justenoughbreeding",
-    "version": "${version}",
-    "intermediate_mappings": "net.fabricmc:intermediary",
-    "entrypoints": {
-      "client_init": [
-        "com.christofmeg.justenoughbreeding.JustEnoughBreeding"
-      ],
-      "jei_mod_plugin": [
-        "com.christofmeg.justenoughbreeding.jei.JEIPlugin"
-      ]
-    },
-    "depends": [
-      {
-        "id": "quilt_loader",
-        "version": "*"
-      },
-      {
-        "id": "quilt_base",
-        "version": "*"
-      },
-      {
-        "id": "forgeconfigapiport",
-        "version": ">=6.0"
-      },
-      {
-        "id": "com_electronwill_night-config_core",
-        "version": "*"
-      },
-      {
-        "id": "com_electronwill_night-config_toml",
-        "version": ">*"
-      }
-    ],
-    "metadata": {
-      "name": "Just Enough Breeding",
-      "description": "JEI plugin that displays breeding information",
-      "contributors": {
-        "Christofmeg": "Developer"
-      },
-      "contact": {
-        "homepage": "https://github.com/Christofmeg/JustEnoughBreeding",
-        "sources": "https://github.com/Christofmeg/JustEnoughBreeding",
-        "issues": "https://github.com/Christofmeg/JustEnoughBreeding/issues"
-      },
-      "license": "MIT",
-      "icon": "icon.png"
+    "schema_version": 1,
+    "quilt_loader": {
+        "group": "com.christofmeg.justenoughbreeding",
+        "id": "justenoughbreeding",
+        "version": "${version}",
+        "intermediate_mappings": "net.fabricmc:intermediary",
+        "entrypoints": {
+          "client_init": [
+		    "com.christofmeg.justenoughbreeding.JustEnoughBreeding"
+		  ],
+		  "jei_mod_plugin": [
+		    "com.christofmeg.justenoughbreeding.jei.JEIPlugin"
+		  ],
+          "rei_client": [
+            "com.christofmeg.justenoughbreeding.rei.REIPlugin"
+          ],
+          "emi": [
+            "com.christofmeg.justenoughbreeding.emi.EMIPlugin"
+          ]
+        },
+        "depends": [
+            {
+				"id": "quilt_loader",
+				"version": "*"
+			},
+			{
+				"id": "quilt_base",
+				"version": "*"
+			}
+        ],
+        "metadata": {
+            "name": "Just Enough Breeding",
+            "description": "JEI/REI/EMI plugin that displays breeding information",
+            "contributors": {
+                "Christofmeg": "Developer"
+            },
+            "contact": {
+				"homepage": "https://github.com/Christofmeg/JustEnoughBreeding",
+				"sources": "https://github.com/Christofmeg/JustEnoughBreeding",
+				"issues": "https://github.com/Christofmeg/JustEnoughBreeding/issues"
+            },
+            "license": "MIT",
+            "icon": "icon.png"
+        }
     }
-  }
 }

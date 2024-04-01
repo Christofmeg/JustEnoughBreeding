@@ -1,7 +1,6 @@
 package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
-import com.christofmeg.justenoughbreeding.utils.Utils;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.helpers.IGuiHelper;
@@ -29,7 +28,7 @@ public class JEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipes(@NotNull IRecipeRegistration registration) {
-        Utils.registerMobBreedingRecipes(registration);
+        JEIUtils.registerMobBreedingRecipes(registration);
     }
 
 }
