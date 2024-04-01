@@ -18,11 +18,11 @@ dependencies {
     implementation project(":Common")
 
     // JEI
-    if (project.hasProperty('fabric_jei_version')) {
-        modCompileOnly("mezz.jei:jei-${fabric_minecraft_version}-common-api:${fabric_jei_version}")
-        modCompileOnly("mezz.jei:jei-${fabric_minecraft_version}-fabric-api:${fabric_jei_version}")
+    if (project.hasProperty('jei_version')) {
+        modCompileOnly("mezz.jei:jei-${fabric_minecraft_version}-common-api:${jei_version}")
+        modCompileOnly("mezz.jei:jei-${fabric_minecraft_version}-fabric-api:${jei_version}")
         if (project.hasProperty('enable_jei') && project.enable_jei.toBoolean()) {
-            modRuntimeOnly("mezz.jei:jei-${fabric_minecraft_version}-fabric:${fabric_jei_version}")
+            modRuntimeOnly("mezz.jei:jei-${fabric_minecraft_version}-fabric:${jei_version}")
         }
     }
 
@@ -47,9 +47,15 @@ dependencies {
         }
     }
 
+    // JADE
+    if (project.hasProperty('jade_version')) {
+        modImplementation("curse.maven:jade-324717:${jade_version}")
+    }
+
+
     // CATALOGUE
-    if (project.hasProperty('fabric_catalogue_version')) {
-        modImplementation("curse.maven:catalogue-667377:${fabric_catalogue_version}")
+    if (project.hasProperty('catalogue_version')) {
+        modImplementation("curse.maven:catalogue-667377:${catalogue_version}")
     }
 
 }
@@ -95,6 +101,15 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     "${fabric_release_versions}".split(',').each {
         mainFile.addGameVersion("${it}")
     }
+    if (project.hasProperty('jei_version')) {
+        mainFile.addOptional("jei")
+    }
+    if (project.hasProperty('rei_version')) {
+        mainFile.addOptional("roughly-enough-items")
+    }
+    if (project.hasProperty('emi_version')) {
+        mainFile.addOptional("emi")
+    }
     mainFile.addRequirement("fabric-api")
     mainFile.addOptional("catalogue-fabric")
     mainFile.addOptional("friends-and-foes")
@@ -103,7 +118,6 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("snuffles-fabric")
     mainFile.addOptional("steves-vanilla")
     mainFile.addOptional("the-twilight-forest")
-    mainFile.addOptional("jei")
     mainFile.addOptional("frozen-up")
     mainFile.addOptional("caracal-mod")
     mainFile.addOptional("lil-wings")
@@ -116,8 +130,6 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("ydms-fennec-fox")
     mainFile.addOptional("biome-makeover")
     mainFile.addOptional("chococraft")
-    mainFile.addOptional("roughly-enough-items")
-    mainFile.addOptional("emi")
     mainFile.addOptional("critters-and-companions")
 }
 
@@ -130,13 +142,21 @@ modrinth {
     uploadFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")
     gameVersions = "${fabric_release_versions}".split(",") as List<String>
     dependencies {
+        if (project.hasProperty('jei_version')) {
+            optional.project "jei"
+        }
+        if (project.hasProperty('rei_version')) {
+            optional.project "rei"
+        }
+        if (project.hasProperty('emi_version')) {
+            optional.project "emi"
+        }
         required.project "fabric-api"
         optional.project "naturalist"
         optional.project "ydms-glare"
         optional.project "friends-and-foes"
         optional.project "snowpig-fabric"
         optional.project "duckling"
-        optional.project "jei"
         optional.project "ydms-fennec-fox"
         optional.project "ydms-red-panda"
         optional.project "caracal_mob"
@@ -147,8 +167,6 @@ modrinth {
         optional.project "the-ducks"
         optional.project "biome-makeover"
         optional.project "chococraft"
-        optional.project "rei"
-        optional.project "emi"
         optional.project "critters-and-companions"
     }
 }
