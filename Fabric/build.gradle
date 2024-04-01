@@ -52,7 +52,6 @@ dependencies {
         modImplementation("curse.maven:jade-324717:${jade_version}")
     }
 
-
     // CATALOGUE
     if (project.hasProperty('catalogue_version')) {
         modImplementation("curse.maven:catalogue-667377:${catalogue_version}")
