@@ -17,6 +17,8 @@ dependencies {
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
     implementation project(":Common")
 
+    implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.2.2"))
+
     // JEI
     if (project.hasProperty('jei_version')) {
         modCompileOnly("mezz.jei:jei-${fabric_minecraft_version}-common-api:${jei_version}")
@@ -49,7 +51,7 @@ dependencies {
 
     // CATALOGUE
     if (project.hasProperty('catalogue_version')) {
-        modImplementation("curse.maven:catalogue-667377:${fabric_catalogue_version}")
+        modImplementation("curse.maven:catalogue-459701:${catalogue_version}")
     }
 
 }
@@ -95,6 +97,15 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     "${fabric_release_versions}".split(',').each {
         mainFile.addGameVersion("${it}")
     }
+    if (project.hasProperty('jei_version')) {
+        mainFile.addOptional("jei")
+    }
+    if (project.hasProperty('rei_version')) {
+        mainFile.addOptional("roughly-enough-items")
+    }
+    if (project.hasProperty('emi_version')) {
+        mainFile.addOptional("emi")
+    }
     mainFile.addRequirement("fabric-api")
     mainFile.addOptional("catalogue-fabric")
     mainFile.addOptional("friends-and-foes")
@@ -103,7 +114,6 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("snuffles-fabric")
     mainFile.addOptional("steves-vanilla")
     mainFile.addOptional("the-twilight-forest")
-    mainFile.addOptional("jei")
     mainFile.addOptional("frozen-up")
     mainFile.addOptional("caracal-mod")
     mainFile.addOptional("lil-wings")
@@ -116,8 +126,6 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("ydms-fennec-fox")
     mainFile.addOptional("biome-makeover")
     mainFile.addOptional("chococraft")
-    mainFile.addOptional("roughly-enough-items")
-    mainFile.addOptional("emi")
     mainFile.addOptional("critters-and-companions")
 }
 
@@ -130,13 +138,21 @@ modrinth {
     uploadFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")
     gameVersions = "${fabric_release_versions}".split(",") as List<String>
     dependencies {
+        if (project.hasProperty('jei_version')) {
+            optional.project "jei"
+        }
+        if (project.hasProperty('rei_version')) {
+            optional.project "rei"
+        }
+        if (project.hasProperty('emi_version')) {
+            optional.project "emi"
+        }
         required.project "fabric-api"
         optional.project "naturalist"
         optional.project "ydms-glare"
         optional.project "friends-and-foes"
         optional.project "snowpig-fabric"
         optional.project "duckling"
-        optional.project "jei"
         optional.project "ydms-fennec-fox"
         optional.project "ydms-red-panda"
         optional.project "caracal_mob"
@@ -147,8 +163,6 @@ modrinth {
         optional.project "the-ducks"
         optional.project "biome-makeover"
         optional.project "chococraft"
-        optional.project "rei"
-        optional.project "emi"
         optional.project "critters-and-companions"
     }
 }

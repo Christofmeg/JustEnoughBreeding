@@ -19,7 +19,7 @@ license="The MIT License (MIT)"
 [[dependencies.justenoughbreeding]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.20.2,1.21)"
+    versionRange="[1.20.4,1.21)"
     ordering="NONE"
     side="BOTH"
 [modproperties.justenoughbreeding]

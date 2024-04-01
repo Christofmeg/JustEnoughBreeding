@@ -1,6 +1,30 @@
 package com.christofmeg.justenoughbreeding.jei;
 
-public class BreedingCategory { /* implements IRecipeCategory<BreedingRecipe> {
+import com.christofmeg.justenoughbreeding.CommonConstants;
+import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
+import com.christofmeg.justenoughbreeding.utils.Utils;
+import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
+import mezz.jei.api.helpers.IGuiHelper;
+import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.RecipeIngredientRole;
+import mezz.jei.api.recipe.RecipeType;
+import mezz.jei.api.recipe.category.IRecipeCategory;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
+import org.jetbrains.annotations.NotNull;
+
+public class BreedingCategory implements IRecipeCategory<BreedingRecipe> {
 
     public static final RecipeType<BreedingRecipe> TYPE = new RecipeType<>(
             new ResourceLocation(CommonConstants.MOD_ID, "breeding"), BreedingRecipe.class);
@@ -168,5 +192,5 @@ public class BreedingCategory { /* implements IRecipeCategory<BreedingRecipe> {
 
         }
     }
-*/
+
 }

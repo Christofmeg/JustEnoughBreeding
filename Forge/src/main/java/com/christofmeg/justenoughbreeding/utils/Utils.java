@@ -103,13 +103,14 @@ public class Utils {
                 combinedIngredients.add(CommonUtils.createTagIngredient(ingredientId));
             } else {
                 Item ingredientItem = JustEnoughBreeding.getItemFromLoaderRegistries(new ResourceLocation(ingredientId.trim()));
-                if (ingredientItem != null) {
-                    combinedIngredients.add(Ingredient.of(new ItemStack(ingredientItem)));
-                }
+                combinedIngredients.add(Ingredient.of(new ItemStack(ingredientItem)));
             }
         }
 
-        return Ingredient.merge(combinedIngredients);
+        return Ingredient.of(Arrays.stream(combinedIngredients.toArray(Ingredient[]::new))
+                .flatMap(ingredient -> Arrays.stream(ingredient.getItems()))
+                .distinct()
+                .toArray(ItemStack[]::new));
     }
 
     public static void renderEntity(@NotNull PoseStack stack, double mouseX, LivingEntity currentLivingEntity) {

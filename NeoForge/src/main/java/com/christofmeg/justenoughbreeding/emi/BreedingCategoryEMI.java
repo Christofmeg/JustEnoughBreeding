@@ -1,6 +1,35 @@
 package com.christofmeg.justenoughbreeding.emi;
 
-public class BreedingCategoryEMI {  /*implements EmiRecipe {
+import com.christofmeg.justenoughbreeding.CommonConstants;
+import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
+import com.christofmeg.justenoughbreeding.utils.Utils;
+import dev.emi.emi.EmiPort;
+import dev.emi.emi.EmiRenderHelper;
+import dev.emi.emi.api.recipe.EmiRecipe;
+import dev.emi.emi.api.recipe.EmiRecipeCategory;
+import dev.emi.emi.api.recipe.EmiRecipeSorting;
+import dev.emi.emi.api.render.EmiTexture;
+import dev.emi.emi.api.stack.EmiIngredient;
+import dev.emi.emi.api.stack.EmiStack;
+import dev.emi.emi.api.widget.Bounds;
+import dev.emi.emi.api.widget.Widget;
+import dev.emi.emi.api.widget.WidgetHolder;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class BreedingCategoryEMI implements EmiRecipe {
     private final ResourceLocation id;
     private final BreedingRecipe recipe;
     public static final EmiTexture TOP = new EmiTexture(EmiRenderHelper.WIDGETS, 18, 0, 25, 1);
@@ -182,5 +211,5 @@ public class BreedingCategoryEMI {  /*implements EmiRecipe {
         }
 
     }
-*/
+
 }

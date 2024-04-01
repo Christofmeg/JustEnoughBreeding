@@ -1,32 +1,25 @@
 modLoader="javafml"
-loaderVersion="[46,)"
+loaderVersion="[49,)"
 issueTrackerURL="https://github.com/Christofmeg/JustEnoughBreeding/issues" #optional
 license="The MIT License (MIT)"
 [[mods]]
-modId="justenoughbreeding"
-version="${file.jarVersion}"
-displayName="Just Enough Breeding"
-displayURL="https://github.com/Christofmeg/JustEnoughBreeding" #optional
-logoFile="icon.png"
-authors="Christofmeg"
-#credits=""
-description="JEI/REI/EMI plugin that displays breeding information"
+    modId="justenoughbreeding"
+    version="${file.jarVersion}"
+    displayName="Just Enough Breeding"
+    displayURL="https://github.com/Christofmeg/JustEnoughBreeding" #optional
+    logoFile="icon.png"
+    authors="Christofmeg"
+    description="JEI/REI/EMI plugin that displays breeding information"
 [[dependencies.justenoughbreeding]]
     modId="forge"
     mandatory=true
-    versionRange="[46,)"
+    versionRange="[49,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.justenoughbreeding]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.20.2,1.21)"
-    ordering="NONE"
-    side="BOTH"
-[[dependencies.justenoughbreeding]]
-    modId="jei"
-    mandatory=false
-    versionRange="[16,)"
+    versionRange="[1.20.4,1.21)"
     ordering="NONE"
     side="BOTH"
 [modproperties.justenoughbreeding]

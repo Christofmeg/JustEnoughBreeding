@@ -1,7 +1,22 @@
 package com.christofmeg.justenoughbreeding.jei;
 
+import com.christofmeg.justenoughbreeding.CommonConstants;
+import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
+import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
+import com.christofmeg.justenoughbreeding.utils.Utils;
+import mezz.jei.api.registration.IRecipeRegistration;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.item.crafting.Ingredient;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class JEIUtils {
-/*
+
     public static void registerMobBreedingRecipes(IRecipeRegistration registration) {
         List<String> sortedMobNames = new ArrayList<>(CommonConstants.breedingIngredients.keySet());
         Collections.sort(sortedMobNames);
@@ -77,5 +92,5 @@ public class JEIUtils {
             }
         }
     }
-*/
+
 }
