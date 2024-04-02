@@ -42,11 +42,11 @@ dependencies {
 
     // JEI
     if (project.hasProperty('jei_version')) {
-        compileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
-        compileOnly("mezz.jei:jei-${minecraft_version}-neo-api:${jei_version}")
+        compileOnly("mezz.jei:jei-${neo_minecraft_version}-common-api:${jei_version}")
+        compileOnly("mezz.jei:jei-${neo_minecraft_version}-neo-api:${jei_version}")
         compileOnly "me.shedaniel:REIPluginCompatibilities-forge-annotations:${reipc_forge_annotations_version}"
         if (project.hasProperty('enable_jei') && project.enable_jei.toBoolean()) {
-            runtimeOnly("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
+            runtimeOnly("mezz.jei:jei-${neo_minecraft_version}-forge:${jei_version}")
         }
     }
 
@@ -65,16 +65,18 @@ dependencies {
 
     // EMI
     if (project.hasProperty('emi_version')) {
-//        compileOnly "curse.maven:emi-580555:5032425"
-        compileOnly "dev.emi:emi-forge:${emi_version}+${minecraft_version}"
+//        compileOnly "curse.maven:emi-580555:${emi_version}"
+        compileOnly "dev.emi:emi-forge:${emi_version}+${neo_minecraft_version}"
         if (project.hasProperty('enable_emi') && project.enable_emi.toBoolean()) {
-//            runtimeOnly "dev.emi:emi-forge:${emi_version}+${minecraft_version}"
-            runtimeOnly "curse.maven:emi-580555:5032425"
+//            runtimeOnly "dev.emi:emi-forge:${emi_version}+${neo_minecraft_version}"
+            runtimeOnly "curse.maven:emi-580555:${emi_version}"
         }
     }
 
     // JADE
-    implementation "curse.maven:jade-324717:4979237"
+    if (project.hasProperty('jade_version')) {
+        modImplementation "curse.maven:jade-324717:${jade_version}"
+    }
 
     // CATALOGUE
     if (project.hasProperty('catalogue_version')) {
@@ -102,16 +104,21 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     "${neoforge_release_versions}".split(',').each {
         mainFile.addGameVersion("${it}")
     }
-    mainFile.addOptional("aquaculture")
-    mainFile.addOptional("sophisticated-wolves")
-    mainFile.addOptional("the-twilight-forest")
     if (project.hasProperty('jei_version')) {
         mainFile.addOptional("jei")
         mainFile.addOptional("roughly-enough-items-hacks")
     }
+    if (project.hasProperty('rei_version')) {
+        mainFile.addOptional("roughly-enough-items")
+    }
+    if (project.hasProperty('emi_version')) {
+        mainFile.addOptional("emi")
+    }
+    mainFile.addOptional("aquaculture")
+    mainFile.addOptional("sophisticated-wolves")
+    mainFile.addOptional("the-twilight-forest")
     mainFile.addOptional("quark")
     mainFile.addOptional("waddles")
-    mainFile.addOptional("roughly-enough-items")
     mainFile.addOptional("blue-skies")
     mainFile.addOptional("chileancraft")
     mainFile.addOptional("autumnity")
@@ -149,12 +156,6 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("aether")
     mainFile.addOptional("aether-redux")
     mainFile.addOptional("deep-aether")
-    if (project.hasProperty('rei_version')) {
-        mainFile.addOptional("roughly-enough-items")
-    }
-    if (project.hasProperty('emi_version')) {
-        mainFile.addOptional("emi")
-    }
     mainFile.addOptional("call-of-the-wild")
     mainFile.addOptional("creatures-and-beasts")
     mainFile.addOptional("winter-overhaul")
@@ -174,10 +175,13 @@ modrinth {
             optional.project "jei"
             optional.project "roughly-enough-items-hacks"
         }
-        optional.project "quark"
         if (project.hasProperty('rei_version')) {
             optional.project "rei"
         }
+        if (project.hasProperty('emi_version')) {
+            optional.project "emi"
+        }
+        optional.project "quark"
         optional.project "blue-skies"
         optional.project "snowpig"
         optional.project "caracal_mob"
@@ -202,12 +206,6 @@ modrinth {
         optional.project "aether"
         optional.project "the-aether-redux"
         optional.project "deep-aether"
-        if (project.hasProperty('rei_version')) {
-            optional.project "rei"
-        }
-        if (project.hasProperty('emi_version')) {
-            optional.project "emi"
-        }
         optional.project "creatures-and-beasts"
         optional.project "winter-overhaul"
         optional.project "critters-and-companions"

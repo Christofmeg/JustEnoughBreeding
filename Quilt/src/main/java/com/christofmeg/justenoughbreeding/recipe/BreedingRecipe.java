@@ -23,6 +23,7 @@ public class BreedingRecipe {
     public final @Nullable Ingredient extraInputStack;
     @Nullable
     public final Boolean animalTrusting;
+    public static final int ENTITY_CREATION_INTERVAL = 3000;
 
     public BreedingRecipe(EntityType<?> entityType, Ingredient breedingCatalyst, ItemStack spawnEgg, @Nullable Boolean needsToBeTamed, @Nullable Ingredient resultItemStack, @Nullable Ingredient extraInputStack, @Nullable Boolean animalTrusting) {
         this.entityType = entityType;
@@ -38,7 +39,7 @@ public class BreedingRecipe {
         long currentTime = System.currentTimeMillis();
         Level level = Minecraft.getInstance().level;
 
-        if (level != null && (currentLivingEntity == null || currentTime - lastEntityCreationTime >= BreedingCategory.ENTITY_CREATION_INTERVAL)) {
+        if (level != null && (currentLivingEntity == null || currentTime - lastEntityCreationTime >= ENTITY_CREATION_INTERVAL)) {
             currentLivingEntity = (LivingEntity) entityType.create(level);
             lastEntityCreationTime = currentTime;
         }
