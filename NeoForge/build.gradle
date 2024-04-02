@@ -65,16 +65,18 @@ dependencies {
 
     // EMI
     if (project.hasProperty('emi_version')) {
-        compileOnly "curse.maven:emi-580555:5204231"
+        compileOnly "curse.maven:emi-580555:${emi_version}"
 //        compileOnly "dev.emi:emi-neoforge:${emi_version}+${minecraft_version}"
         if (project.hasProperty('enable_emi') && project.enable_emi.toBoolean()) {
 //            runtimeOnly "dev.emi:emi-forge:${emi_version}+${minecraft_version}"
-            runtimeOnly "curse.maven:emi-580555:5204231"
+            runtimeOnly "curse.maven:emi-580555:${emi_version}"
         }
     }
 
     // JADE
-    implementation "curse.maven:jade-324717:5109393"
+    if (project.hasProperty('jade_version')) {
+        modImplementation "curse.maven:jade-324717:${jade_version}"
+    }
 
     // CATALOGUE
     if (project.hasProperty('catalogue_version')) {
