@@ -1,6 +1,5 @@
 package com.christofmeg.justenoughbreeding.recipe;
 
-import com.christofmeg.justenoughbreeding.jei.BreedingCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
