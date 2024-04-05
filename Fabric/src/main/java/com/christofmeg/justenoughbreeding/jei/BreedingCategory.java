@@ -26,8 +26,6 @@ import org.jetbrains.annotations.NotNull;
 
 public class BreedingCategory implements IRecipeCategory<BreedingRecipe> {
 
-    public static final int ENTITY_CREATION_INTERVAL = 3000;
-
     public static final RecipeType<BreedingRecipe> TYPE = new RecipeType<>(
             new ResourceLocation(CommonConstants.MOD_ID, "breeding"), BreedingRecipe.class);
 
