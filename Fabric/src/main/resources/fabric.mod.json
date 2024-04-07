@@ -3,7 +3,7 @@
   "id": "justenoughbreeding",
   "version": "${version}",
   "name": "Just Enough Breeding",
-  "description": "JEI plugin that displays breeding information",
+  "description": "JEI/REI/EMI plugin that displays breeding information",
   "authors": [
     "Christofmeg"
   ],
@@ -23,16 +23,18 @@
     ],
     "jei_mod_plugin": [
       "com.christofmeg.justenoughbreeding.jei.JEIPlugin"
+    ],
+    "rei_client": [
+      "com.christofmeg.justenoughbreeding.rei.REIPlugin"
+    ],
+    "emi": [
+      "com.christofmeg.justenoughbreeding.emi.EMIPlugin"
     ]
   },
   "depends": {
     "fabricloader": ">=0.14",
     "fabric": "*",
-    "minecraft": ">=1.18.2 <=1.19",
-    "java": ">=17",
-    "jei": ">=10",
-    "forgeconfigapiport": ">=3.2",
-    "com_electronwill_night-config_core": "*",
-    "com_electronwill_night-config_toml": "*"
+    "minecraft": "1.18.2",
+    "java": ">=17"
   }
 }

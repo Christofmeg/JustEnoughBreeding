@@ -10,7 +10,7 @@ displayURL="https://github.com/Christofmeg/JustEnoughBreeding" #optional
 logoFile="icon.png"
 authors="Christofmeg"
 #credits=""
-description="JEI plugin that displays breeding information"
+description="JEI/REI/EMI plugin that displays breeding information"
 [[dependencies.justenoughbreeding]]
     modId="forge"
     mandatory=true
@@ -21,12 +21,6 @@ description="JEI plugin that displays breeding information"
     modId="minecraft"
     mandatory=true
     versionRange="[1.18.2,1.19)"
-    ordering="NONE"
-    side="BOTH"
-[[dependencies.justenoughbreeding]]
-    modId="jei"
-    mandatory=false
-    versionRange="[10,)"
     ordering="NONE"
     side="BOTH"
 [modproperties.justenoughbreeding]
