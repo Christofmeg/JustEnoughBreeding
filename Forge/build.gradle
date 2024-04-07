@@ -1,16 +1,16 @@
 import net.darkhax.curseforgegradle.TaskPublishCurseForge
 
 plugins {
-    id 'net.minecraftforge.gradle' version '5.1.+'
+    id 'net.minecraftforge.gradle' version '6.+'
     id 'idea'
     id 'net.darkhax.curseforgegradle' version '1.+'
     id 'com.modrinth.minotaur' version '2.+'
 }
 
-archivesBaseName = "${mod_id}-forge-${supported_versions}"
+archivesBaseName = "${mod_id}-forge-${forge_supported_versions}"
 
 minecraft {
-    mappings channel: 'official', version: minecraft_version
+    mappings channel: 'official', version: forge_minecraft_version
 
     runs {
         client {
@@ -45,111 +45,53 @@ minecraft {
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    minecraft "net.minecraftforge:forge:${forge_minecraft_version}-${forge_version}"
     compileOnly project(":Common")
 
     // JEI
     if (project.hasProperty('jei_version')) {
-        compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}:api"))
-        runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}:${jei_version}"))
+        compileOnly(fg.deobf("mezz.jei:jei-${forge_minecraft_version}:${jei_version}:api"))
+        if (project.hasProperty('enable_jei') && project.enable_jei.toBoolean()) {
+            runtimeOnly(fg.deobf("mezz.jei:jei-${forge_minecraft_version}:${jei_version}"))
+        }
     }
-    // CONFIGURED
-    if (project.hasProperty('configured_version')) {
-        implementation fg.deobf("curse.maven:configured-457570:${configured_version}")
+
+    // REI
+    if (project.hasProperty('rei_version') &&
+            project.hasProperty('cloth_config_version') &&
+            project.hasProperty('architectury_version')) {
+        compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-forge:${rei_version}")
+        compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-api-forge:${rei_version}")
+        compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-default-plugin-forge:${rei_version}")
+        implementation fg.deobf("me.shedaniel.cloth:cloth-config-forge:${cloth_config_version}")
+        implementation fg.deobf("dev.architectury:architectury-forge:${architectury_version}")
+        if (project.hasProperty('enable_rei') && project.enable_rei.toBoolean()) {
+            runtimeOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-forge:${rei_version}")
+        }
     }
+
+    // EMI
+    if (project.hasProperty('emi_version')) {
+        compileOnly fg.deobf("curse.maven:emi-580555:${emi_version}")
+        //    compileOnly "dev.emi:emi-forge:${emi_version}+${forge_minecraft_version}"
+        if (project.hasProperty('enable_emi') && project.enable_emi.toBoolean()) {
+            //        runtimeOnly "dev.emi:emi-forge:${emi_version}+${forge_minecraft_version}"
+            runtimeOnly fg.deobf("curse.maven:emi-580555:${emi_version}")
+        }
+    }
+
+    // JADE
+    if (project.hasProperty('jade_version')) {
+        implementation fg.deobf("curse.maven:jade-324717:${jade_version}")
+    }
+
     // CATALOGUE
     if (project.hasProperty('catalogue_version')) {
         implementation fg.deobf("curse.maven:catalogue-459701:${catalogue_version}")
     }
 
-
-    // ALEXSMOBS    //Forge only        https://www.curseforge.com/minecraft/mc-mods/alexs-mobs //TODO WIP
-//    implementation fg.deobf("curse.maven:alexs-mobs-426558:4159154")
-//        implementation fg.deobf("curse.maven:citadel-331936:4473243")
-
-    // SNUFFLES             //Forge                 https://www.curseforge.com/minecraft/mc-mods/snuffles
-    //Fabric                https://www.curseforge.com/minecraft/mc-mods/snuffles-fabric
-//    implementation fg.deobf("curse.maven:snuffles-556372:4513912")
-
-    // SNOW PIG              //Forge                 https://www.curseforge.com/minecraft/mc-mods/snow-pig
-    //Fabric                https://legacy.curseforge.com/minecraft/mc-mods/snow-pig-fabric
-//    implementation fg.deobf("curse.maven:snow-pig-410500:4065342")
-
-    // APPLECOWS            //Forge only            https://www.curseforge.com/minecraft/mc-mods/apple-cows
-//    implementation fg.deobf("curse.maven:apple-cows-399492:4226751")
-
-    // GREEK FANTASY        //Forge only            https://www.curseforge.com/minecraft/mc-mods/greek-fantasy
-//    implementation fg.deobf("curse.maven:greek-fantasy-413724:4066828")
-
-    // SOPHISTICATED WOLVES //Forge only            https://www.curseforge.com/minecraft/mc-mods/sophisticated-wolves
-//    implementation fg.deobf("curse.maven:sophisticated-wolves-220495:4627162")
-
-    // STEVES VANILLA       //Forge only            https://www.curseforge.com/minecraft/mc-mods/steves-vanilla
-//    implementation fg.deobf("curse.maven:steves-vanilla-531442:4120701")
-
-    // Ulterlands: Worlds Apart  //Forge only       https://www.curseforge.com/minecraft/mc-mods/the-ulterlands
-//    implementation fg.deobf("curse.maven:the-ulterlands-650094:4421381")
-
-    // WADDLES              //Forge only            https://www.curseforge.com/minecraft/mc-mods/waddles
-//    implementation fg.deobf("curse.maven:waddles-251767:3875922")
-
-    // AQUACULTURE          //Forge only            https://www.curseforge.com/minecraft/mc-mods/aquaculture
-//    implementation fg.deobf("curse.maven:aquaculture-60028:4074684")
-
-    // OSTRICH              //Forge only            https://legacy.curseforge.com/minecraft/mc-mods/ydms-ostrich
-//    implementation fg.deobf("curse.maven:ydms-ostrich-689562:4032662")
-
-    // MARINE IGUANA        //Forge only            https://www.curseforge.com/minecraft/mc-mods/marine-iguana
-//    implementation fg.deobf("curse.maven:marine-iguana-688475:4028499")
-
-    // BLUE SKIES        //Forge only               https://www.curseforge.com/minecraft/mc-mods/blue-skies
-//    implementation fg.deobf("curse.maven:blue-skies-312918:3966273")
-//        implementation fg.deobf("curse.maven:structure-gel-api-378802:4489756")
-
-
-
-    // CARACAL MOB           //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/caracal-mod
-//    implementation fg.deobf("curse.maven:caracal-mod-486505:3953520")
-
-    // THE DUCKS             //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/ydms-ducks-mod
-//    implementation fg.deobf("curse.maven:ydms-ducks-mod-576073:3884042")
-
-    // FENNECFOX            //Forge and Fabric      https://legacy.curseforge.com/minecraft/mc-mods/ydms-fennec-fox
-//    implementation fg.deobf("curse.maven:ydms-fennec-fox-694325:4053896")
-
-    // YDMS REDPANDA        //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/ydms-red-panda/
-//    implementation fg.deobf("curse.maven:ydms-red-panda-623035:4029471")
-
-    // FROZENUP             //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/frozen-up
-//    implementation fg.deobf("curse.maven:frozen-up-430652:4365451")
-
-    // YDMS GLARE           //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/ydms-glare
-//    implementation fg.deobf("curse.maven:ydms-glare-589268:3884007")
-
-    // LIL WINGS             //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/lil-wings
-//    implementation fg.deobf("curse.maven:lil-wings-561277:4325685")
-//        implementation fg.deobf("curse.maven:geckolib-388172:4407241")
-
-    // DUCKLING             //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/duckling
-//    implementation fg.deobf("curse.maven:duckling-597248:4127032")
-//        implementation fg.deobf("curse.maven:geckolib-388172:4407241")
-
-    // TWILIGHT FOREST      //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/the-twilight-forest
-//    implementation fg.deobf("curse.maven:the-twilight-forest-227639:4389567")
-
-    //TODO NEEDS MORE REWORK TO BE ADDED
-    // CHOCOCRAFT           //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/chococraft
-
-//    implementation fg.deobf("curse.maven:chococraft-225280:4656794")
-//        implementation fg.deobf("curse.maven:architectury-api-419699:4555749")
-//        implementation fg.deobf("curse.maven:patchouli-306770:4031402")
-
-    // ECOLOGICS            //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/ecologics
-//    implementation fg.deobf("curse.maven:ecologics-570463:4171285")
-
-    // NATURALIST           //Forge and Fabric      https://www.curseforge.com/minecraft/mc-mods/naturalist
-//    implementation fg.deobf("curse.maven:naturalist-627986:4660377")
-//        implementation fg.deobf("curse.maven:geckolib-388172:4407241")
+    // GREEK FANTASY https://www.curseforge.com/minecraft/mc-mods/greek-fantasy
+//    runtimeOnly fg.deobf("curse.maven:greek-fantasy-413724:4066828")
 
 }
 
@@ -174,13 +116,21 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     "${forge_release_versions}".split(',').each {
         mainFile.addGameVersion("${it}")
     }
+    if (project.hasProperty('jei_version')) {
+        mainFile.addOptional("jei")
+//        mainFile.addOptional("roughly-enough-items-hacks")
+    }
+    if (project.hasProperty('rei_version')) {
+        mainFile.addOptional("roughly-enough-items")
+    }
+    if (project.hasProperty('emi_version')) {
+        mainFile.addOptional("emi")
+    }
     mainFile.addOptional("aquaculture")
     mainFile.addOptional("sophisticated-wolves")
     mainFile.addOptional("the-twilight-forest")
-    mainFile.addOptional("jei")
     mainFile.addOptional("quark")
     mainFile.addOptional("waddles")
-    mainFile.addOptional("roughly-enough-items")
     mainFile.addOptional("blue-skies")
     mainFile.addOptional("chileancraft")
     mainFile.addOptional("autumnity")
@@ -188,11 +138,9 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("snow-pig")
     mainFile.addOptional("greek-fantasy")
     mainFile.addOptional("frozen-up")
-    mainFile.addOptional("configured")
     mainFile.addOptional("catalogue")
     mainFile.addOptional("frostrealm")
     mainFile.addOptional("caracal-mod")
-    mainFile.addOptional("roughly-enough-items-hacks")
     mainFile.addOptional("kiwi-boi")
     mainFile.addOptional("steves-vanilla")
     mainFile.addOptional("snuffles")
@@ -211,6 +159,19 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("ydms-fennec-fox")
     mainFile.addOptional("recrafted-creatures")
     mainFile.addOptional("earth-mobs")
+    mainFile.addOptional("biome-makeover-forge")
+    mainFile.addOptional("alexs-caves")
+    mainFile.addOptional("untamedwilds")
+    mainFile.addOptional("alexs-mobs")
+    mainFile.addOptional("chococraft")
+    mainFile.addOptional("ice-and-fire-dragons")
+    mainFile.addOptional("aether")
+    mainFile.addOptional("aether-redux")
+    mainFile.addOptional("deep-aether")
+    mainFile.addOptional("call-of-the-wild")
+    mainFile.addOptional("creatures-and-beasts")
+    mainFile.addOptional("winter-overhaul")
+    mainFile.addOptional("critters-and-companions")
 }
 
 modrinth {
@@ -222,13 +183,20 @@ modrinth {
     uploadFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")
     gameVersions = "${forge_release_versions}".split(",") as List<String>
     dependencies {
-        optional.project "jei"
+        if (project.hasProperty('jei_version')) {
+            optional.project "jei"
+//            optional.project "roughly-enough-items-hacks"
+        }
+        if (project.hasProperty('rei_version')) {
+            optional.project "rei"
+        }
+        if (project.hasProperty('emi_version')) {
+            optional.project "emi"
+        }
         optional.project "quark"
-        optional.project "rei"
         optional.project "blue-skies"
         optional.project "snowpig"
         optional.project "caracal_mob"
-        optional.project "roughly-enough-items-hacks"
         optional.project "kiwi-boi"
         optional.project "snuffles"
         optional.project "lil-wings"
@@ -242,5 +210,16 @@ modrinth {
         optional.project "ydms-ostrich"
         optional.project "ydms-fennec-fox"
         optional.project "earthmobs"
+        optional.project "biome-makeover"
+        optional.project "alexs-caves"
+        optional.project "alexs-mobs"
+        optional.project "chococraft"
+        optional.project "ice-and-fire-dragons"
+        optional.project "aether"
+        optional.project "the-aether-redux"
+        optional.project "deep-aether"
+        optional.project "creatures-and-beasts"
+        optional.project "winter-overhaul"
+        optional.project "critters-and-companions"
     }
 }
