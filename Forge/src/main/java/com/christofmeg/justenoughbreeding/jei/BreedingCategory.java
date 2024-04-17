@@ -1,9 +1,9 @@
 package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
+import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
+import com.christofmeg.justenoughbreeding.utils.Utils;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Quaternion;
-import com.mojang.math.Vector3f;
 import mezz.jei.api.MethodsReturnNonnullByDefault;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;
@@ -13,33 +13,15 @@ import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.TamableAnimal;
-import net.minecraft.world.entity.animal.Cat;
-import net.minecraft.world.entity.animal.Fox;
-import net.minecraft.world.entity.animal.Ocelot;
-import net.minecraft.world.entity.animal.Panda;
-import net.minecraft.world.entity.animal.Pig;
-import net.minecraft.world.entity.animal.Turtle;
-import net.minecraft.world.entity.animal.Wolf;
-import net.minecraft.world.entity.animal.axolotl.Axolotl;
-import net.minecraft.world.entity.animal.horse.Horse;
-import net.minecraft.world.entity.monster.hoglin.Hoglin;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.AABB;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -48,10 +30,7 @@ import java.util.List;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class BreedingCategory implements IRecipeCategory<BreedingCategory.BreedingRecipe> {
-
-    static final int ENTITY_CREATION_INTERVAL = 3000;
-    static final int ENTITY_RENDER_DISTANCE = 15728880;
+public class BreedingCategory implements IRecipeCategory<BreedingRecipe> {
 
     public static final ResourceLocation TYPE = new ResourceLocation(CommonConstants.MOD_ID, "breeding");
 
@@ -72,9 +51,11 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
     private final IDrawable mobRenderSlotTopCorner;
     private final IDrawable mobRenderSlotTopCenter;
 
-    final int inputSlotX = 68;
-    final int inputSlot1Y = 51;
-    final int inputSlot2Y = 32;
+    final int inputSlotItemX = 69;
+    final int inputSlotFrameX = 68;
+    final int inputSlot1ItemY = 52;
+    final int inputSlot1FrameY = 51;
+    final int inputSlot2FrameY = 32;
 
     final int outputSlotFrameX = 94;
     final int outputSlotFrameY = 38;
@@ -109,6 +90,16 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
     }
 
     @Override
+    public ResourceLocation getUid() {
+        return TYPE;
+    }
+
+    @Override
+    public Class<? extends BreedingRecipe> getRecipeClass() {
+        return BreedingRecipe.class;
+    }
+
+    @Override
     public void setIngredients(BreedingRecipe recipe, IIngredients ingredients) {
         List<ItemStack> spawnEggList = Collections.singletonList(recipe.spawnEgg);
 
@@ -129,7 +120,8 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
         }
 
         if (recipe.extraInputStack != null && !recipe.extraInputStack.isEmpty()) {
-            List<ItemStack> extraInputList = Collections.singletonList(recipe.extraInputStack);
+            List<ItemStack> extraInputList = new ArrayList<>();
+            Collections.addAll(extraInputList, recipe.extraInputStack.getItems());
             inputList.add(extraInputList);
         }
 
@@ -142,23 +134,26 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
     }
 
     @Override
-    public void setRecipe(IRecipeLayout builder, BreedingRecipe recipe, @Nonnull IIngredients ingredients) {
+    public void setRecipe(IRecipeLayout builder, BreedingRecipe recipe, IIngredients ingredients) {
         builder.getItemStacks().init(0, false, 133, 0);
         builder.getItemStacks().set(0, recipe.spawnEgg);
 
-        builder.getItemStacks().init(1, true, inputSlotX, inputSlot1Y);
+        builder.getItemStacks().init(1, true, inputSlotItemX, inputSlot1ItemY);
         builder.getItemStacks().set(1, List.of(recipe.breedingCatalyst.getItems()));
 
         final int outputSlotItemX = 129;
         final int outputSlotItemY = 42;
+        final int inputSlot2ItemY = 32;
 
         if (recipe.resultItemStack != null && !recipe.resultItemStack.isEmpty()) {
             builder.getItemStacks().init(2, false, outputSlotItemX, outputSlotItemY);
             builder.getItemStacks().set(2, List.of(recipe.resultItemStack.getItems()));
         }
         if (recipe.extraInputStack != null && !recipe.extraInputStack.isEmpty()) {
-            builder.getItemStacks().init(3, true, inputSlotX, inputSlot2Y);
-            builder.getItemStacks().set(3, recipe.extraInputStack);
+            builder.getItemStacks().init(3, true, 68, inputSlot2ItemY);
+            List<ItemStack> extraInputList = new ArrayList<>();
+            Collections.addAll(extraInputList, recipe.extraInputStack.getItems());
+            builder.getItemStacks().set(3, extraInputList);
         }
     }
 
@@ -169,10 +164,10 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
         slot.draw(stack, 133, 0);
 
         // Input Slot
-        slot.draw(stack, inputSlotX, inputSlot1Y);
+        slot.draw(stack, inputSlotFrameX, inputSlot1FrameY);
 
         // Extra Input Slot
-        slot.draw(stack, inputSlotX, inputSlot2Y);
+        slot.draw(stack, inputSlotFrameX, inputSlot2FrameY);
 
         // Output Slot
         outputSlot.draw(stack, outputSlotFrameX, outputSlotFrameY);
@@ -237,162 +232,15 @@ public class BreedingCategory implements IRecipeCategory<BreedingCategory.Breedi
 
             if (!entityNameString.isEmpty()) {
                 Component abbreviatedEntityName = Component.nullToEmpty(entityNameString);
-                font.draw(stack, abbreviatedEntityName, 0.0F, 0.0F, DyeColor.BLACK.getTextColor());
+                font.draw(stack, abbreviatedEntityName, 0, 0, DyeColor.BLACK.getTextColor());
             }
 
-            recipe.doRendering(stack, mouseX);
-
-        }
-    }
-
-    @Override
-    public ResourceLocation getUid() {
-        return TYPE;
-    }
-
-    @Override
-    public Class<? extends BreedingRecipe> getRecipeClass() {
-        return BreedingCategory.BreedingRecipe.class;
-    }
-
-    private static void renderEntity(PoseStack stack, double mouseX, LivingEntity currentLivingEntity) {
-        // Set the desired position of the entity on the screen
-        int entityPosX = 31;
-        int entityPosY = 89;
-
-        float yaw = (float) (60 - mouseX); // Calculate the yaw based on the mouse position
-
-        stack.pushPose(); // Push the current pose onto the stack
-        stack.translate((float) entityPosX, (float) entityPosY, 50f); // Translate the entity's position
-
-        // Calculate the scaling factor based on the bounding box's largest dimension
-        AABB boundingBox = currentLivingEntity.getBoundingBox();
-        double largestDimension = Math.max(boundingBox.getXsize(), Math.max(boundingBox.getYsize(), boundingBox.getZsize()));
-
-        float desiredWidth = 30.0F;
-        float desiredHeight = 40.0F;
-
-        // Calculate the scaling factors for width and height
-        float scaleX = desiredWidth / (float) largestDimension;
-        float scaleY = desiredHeight / (float) largestDimension;
-
-        // Use the smaller of the two scaling factors to ensure the entity fits within the area
-        float scalingFactor = Math.min(scaleX, scaleY);
-
-        if (currentLivingEntity instanceof Axolotl || currentLivingEntity instanceof Cat ||
-                currentLivingEntity instanceof Pig || currentLivingEntity instanceof Wolf) {
-            scalingFactor = 25;
-        }
-
-        if (currentLivingEntity instanceof Ocelot || currentLivingEntity instanceof Fox
-                || currentLivingEntity instanceof Turtle) {
-            scalingFactor = 20;
-        }
-
-        if (currentLivingEntity instanceof Hoglin || currentLivingEntity instanceof Horse
-                || currentLivingEntity instanceof Panda) {
-            scalingFactor = 15;
-        }
-
-        stack.scale(scalingFactor, scalingFactor, scalingFactor); // Scale the entity to fit within the desired area
-        stack.mulPose(Vector3f.ZP.rotationDegrees(180.0F)); // Rotate the entity to face a certain direction
-
-        float yawRadians = -(yaw / 40.F) * 20.0F; // Calculate the yaw angle in radians for the entity's rotation
-
-        // Apply the calculated yaw angle to the entity's rotation properties
-        currentLivingEntity.yBodyRot = yawRadians;
-        currentLivingEntity.setYRot(yawRadians);
-        currentLivingEntity.yHeadRot = yawRadians;
-        currentLivingEntity.yHeadRotO = yawRadians;
-
-        stack.translate(0.0F, currentLivingEntity.getMyRidingOffset(), 0.0F); // Translate the entity vertically to adjust its position
-
-        Minecraft instance = Minecraft.getInstance();
-        EntityRenderDispatcher entityRenderDispatcher = instance.getEntityRenderDispatcher(); // Get the entity rendering dispatcher
-        entityRenderDispatcher.overrideCameraOrientation(Quaternion.ONE); // Override the camera orientation for rendering
-        entityRenderDispatcher.setRenderShadow(false); // Disable rendering shadows for the entity
-
-        // Get the buffer source for rendering
-        final MultiBufferSource.BufferSource bufferSource = instance.renderBuffers().bufferSource();
-
-        // Render the currentLivingEntity using the entityRenderDispatcher
-        entityRenderDispatcher.render(currentLivingEntity, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, stack, bufferSource, ENTITY_RENDER_DISTANCE);
-
-        bufferSource.endBatch(); // End the rendering batch
-        entityRenderDispatcher.setRenderShadow(true); // Re-enable rendering shadows
-
-        stack.popPose(); // Pop the pose from the stack to revert transformations
-    }
-
-    public static class BreedingRecipe {
-        private LivingEntity currentLivingEntity = null;
-        private long lastEntityCreationTime = 0;
-
-        private final EntityType<?> entityType;
-        private final Ingredient breedingCatalyst;
-        private final ItemStack spawnEgg;
-        @Nullable
-        private final Boolean needsToBeTamed;
-        private final Ingredient resultItemStack;
-        @Nullable
-        private final ItemStack extraInputStack;
-        @Nullable
-        private final Boolean animalTrusting;
-
-        public BreedingRecipe(EntityType<?> entityType, Ingredient breedingCatalyst, ItemStack spawnEgg, @Nullable Boolean needsToBeTamed, @Nullable Ingredient resultItemStack, @Nullable ItemStack extraInputStack, @Nullable Boolean animalTrusting) {
-            this.entityType = entityType;
-            this.breedingCatalyst = breedingCatalyst;
-            this.spawnEgg = spawnEgg;
-            this.needsToBeTamed = needsToBeTamed;
-            this.resultItemStack = resultItemStack;
-            this.extraInputStack = extraInputStack;
-            this.animalTrusting = animalTrusting;
-        }
-
-        private void doRendering(PoseStack stack, double mouseX) {
-            long currentTime = System.currentTimeMillis();
-            Level level = Minecraft.getInstance().level;
-
-            if (level != null && (currentLivingEntity == null || currentTime - lastEntityCreationTime >= ENTITY_CREATION_INTERVAL)) {
-                currentLivingEntity = (LivingEntity) entityType.create(level);
-                lastEntityCreationTime = currentTime;
-            }
-
+            LivingEntity currentLivingEntity = recipe.doRendering();
             if (currentLivingEntity != null) {
-                if (currentLivingEntity instanceof TamableAnimal tamableAnimal) {
-                    tamableAnimal.setTame(true);
-                }
-                renderEntity(stack, mouseX, currentLivingEntity);
+                Utils.renderEntity(stack, mouseX, currentLivingEntity);
             }
+
         }
-
     }
-
-    //TODO https://www.curseforge.com/minecraft/mc-mods/betteranimalsplus
-    //TODO https://www.curseforge.com/minecraft/mc-mods/upgrade-aquatic
-    //TODO https://www.curseforge.com/minecraft/mc-mods/galosphere
-    //TODO https://www.curseforge.com/minecraft/mc-mods/buzzier-bees
-    //TODO https://www.curseforge.com/minecraft/mc-mods/exotic-birds
-    //TODO https://www.curseforge.com/minecraft/mc-mods/creatures-and-beasts
-    //TODO https://www.curseforge.com/minecraft/mc-mods/extended-mushrooms
-    //TODO https://www.curseforge.com/minecraft/mc-mods/more-babies
-    //TODO https://www.curseforge.com/minecraft/mc-mods/goodall
-    //TODO https://www.curseforge.com/minecraft/mc-mods/energeticsheep
-    //TODO https://www.curseforge.com/minecraft/mc-mods/feywild
-    //TODO https://www.curseforge.com/minecraft/mc-mods/earth2java
-    //TODO https://www.curseforge.com/minecraft/mc-mods/unusual-end
-    //TODO https://www.curseforge.com/minecraft/mc-mods/vanilla-degus
-    //TODO https://www.curseforge.com/minecraft/mc-mods/fins-and-tails
-    //TODO https://www.curseforge.com/minecraft/mc-mods/realistic-horse-genetics
-    //TODO https://www.curseforge.com/minecraft/mc-mods/critters-and-companions
-    //TODO https://www.curseforge.com/minecraft/mc-mods/the-undergarden
-    //TODO https://www.curseforge.com/minecraft/mc-mods/productivebees
-    //TODO https://www.curseforge.com/minecraft/mc-mods/roost-ultimate
-    //TODO https://www.curseforge.com/minecraft/mc-mods/ender-zoology
-    //TODO https://www.curseforge.com/minecraft/mc-mods/primal-reservation
-    //TODO https://www.curseforge.com/minecraft/mc-mods/baby-fat
-    //TODO https://www.curseforge.com/minecraft/mc-mods/fins-and-tails
-    //TODO https://www.curseforge.com/minecraft/mc-mods/minecraft-earth-mod
-
 
 }

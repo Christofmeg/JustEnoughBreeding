@@ -1,7 +1,6 @@
 package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
-import com.christofmeg.justenoughbreeding.utils.Utils;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.MethodsReturnNonnullByDefault;
@@ -16,6 +15,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 @SuppressWarnings("unused")
+//@REIPluginCompatIgnore
 @JeiPlugin
 public class JEIPlugin implements IModPlugin {
 
@@ -29,12 +29,17 @@ public class JEIPlugin implements IModPlugin {
         IGuiHelper helper = registration.getJeiHelpers().getGuiHelper();
         registration.addRecipeCategories(
                 new BreedingCategory(helper, Items.WHEAT)
+//                ,new TamingCategory(helper, Items.BONE),
+//                new TemperCategory(helper, Items.GOLDEN_CARROT),
+//                new TransformationCategory(helper, Items.GOLDEN_CARROT),
+//                new TrustingCategory(helper, Items.SWEET_BERRIES)
+
         );
     }
 
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
-        Utils.registerMobBreedingRecipes(registration);
+        JEIUtils.registerMobBreedingRecipes(registration);
     }
 
 }
