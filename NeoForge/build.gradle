@@ -75,7 +75,7 @@ dependencies {
 
     // JADE
     if (project.hasProperty('jade_version')) {
-        modImplementation "curse.maven:jade-324717:${jade_version}"
+        implementation "curse.maven:jade-324717:${jade_version}"
     }
 
     // CATALOGUE
@@ -106,7 +106,6 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     }
     if (project.hasProperty('jei_version')) {
         mainFile.addOptional("jei")
-//        mainFile.addOptional("roughly-enough-items-hacks")
     }
     if (project.hasProperty('rei_version')) {
         mainFile.addOptional("roughly-enough-items")
@@ -173,7 +172,6 @@ modrinth {
     dependencies {
         if (project.hasProperty('jei_version')) {
             optional.project "jei"
-//            optional.project "roughly-enough-items-hacks"
         }
         if (project.hasProperty('rei_version')) {
             optional.project "rei"
