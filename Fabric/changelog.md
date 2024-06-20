@@ -1,5 +1,2 @@
-1.2.3:
-- Added russian translation by [ImpOfficer](https://github.com/ImpOfficer)
+Port to 1.20.6
 
-1.2.2:
-- Bump modloader versions

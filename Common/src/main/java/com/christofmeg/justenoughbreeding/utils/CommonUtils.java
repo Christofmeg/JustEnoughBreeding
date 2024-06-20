@@ -2,17 +2,16 @@ package com.christofmeg.justenoughbreeding.utils;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.jei.recipe.TemperRecipe;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -160,7 +159,7 @@ public class CommonUtils {
     public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, Map<String, @Nullable String> extraIngredients, String MOD, Map<String, Integer> breedingCooldown, @Nullable Map<String, Boolean> needsToBeTamed, @Nullable String spawnEggString, boolean addStringBeforeAnimalName, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
         addAnimalNames(animalNames, ingredients, extraIngredients, MOD, breedingCooldown, needsToBeTamed, spawnEggString, addStringBeforeAnimalName);
         for (String animal : animalNames) {
-            if(resultEggs.get(animal) != null && eggsAmountMin.get(animal) != null && eggsAmountMax.get(animal) != null) {
+            if (resultEggs.get(animal) != null && eggsAmountMin.get(animal) != null && eggsAmountMax.get(animal) != null) {
                 String animalEggResult = resultEggs.get(animal);
                 int animalMinEggAmount = eggsAmountMin.get(animal);
                 int animalMaxEggAmount = eggsAmountMax.get(animal);
@@ -186,7 +185,7 @@ public class CommonUtils {
     public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, Map<String, @Nullable String> extraIngredients, @Nullable Map<String, String> spawnEggItems, @Nullable Map<String, String> entitiesFromNames, String MOD, Map<String, Integer> breedingCooldown, @Nullable Map<String, Boolean> needsToBeTamed, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
         addAnimalNames(animalNames, ingredients, extraIngredients, spawnEggItems, entitiesFromNames, MOD, breedingCooldown, needsToBeTamed);
         for (String animal : animalNames) {
-            if(resultEggs.get(animal) != null && eggsAmountMin.get(animal) != null && eggsAmountMax.get(animal) != null) {
+            if (resultEggs.get(animal) != null && eggsAmountMin.get(animal) != null && eggsAmountMax.get(animal) != null) {
                 String animalEggResult = resultEggs.get(animal);
                 int animalMinEggAmount = eggsAmountMin.get(animal);
                 int animalMaxEggAmount = eggsAmountMax.get(animal);
@@ -466,24 +465,7 @@ public class CommonUtils {
  */
 
     public static String getEdibleMeatItemNames(boolean includeRottenFlesh) {
-        List<String> edibleMeatItemNames = new ArrayList<>();
-
-        for (ResourceLocation key : BuiltInRegistries.ITEM.keySet()) {
-            Item item = BuiltInRegistries.ITEM.get(key);
-            FoodProperties foodProperties = item.getFoodProperties();
-            if(includeRottenFlesh) {
-                if (foodProperties != null && item.isEdible() && foodProperties.isMeat()) {
-                    edibleMeatItemNames.add(key.toString());
-                }
-            }
-            else {
-                if (foodProperties != null && item.isEdible() && foodProperties.isMeat() && item != Items.ROTTEN_FLESH) {
-                    edibleMeatItemNames.add(key.toString());
-                }
-            }
-        }
-
-        return String.join(", ", edibleMeatItemNames);
+        return "#" + ItemTags.MEAT.location(); //TODO fix with or without Rotten Flesh
     }
 
     public static Ingredient createTagIngredient(String tagId) {

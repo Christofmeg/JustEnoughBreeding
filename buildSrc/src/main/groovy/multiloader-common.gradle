@@ -1,6 +1,5 @@
 plugins {
     id 'java-library'
-    id 'maven-publish'
 }
 
 base {
@@ -38,9 +37,6 @@ repositories {
         capability("$group:${base.archivesName.get()}:$version")
         capability("$group:$mod_id-${project.name}-${minecraft_version}:$version")
         capability("$group:$mod_id:$version")
-    }
-    publishing.publications.configureEach {
-        suppressPomMetadataWarningsFor(variant)
     }
 }
 
@@ -91,18 +87,4 @@ processResources {
         expand expandProps
     }
     inputs.properties(expandProps)
-}
-
-publishing {
-    publications {
-        register('mavenJava', MavenPublication) {
-            artifactId base.archivesName.get()
-            from components.java
-        }
-    }
-    repositories {
-        maven {
-            url System.getenv("local_maven_url")
-        }
-    }
 }

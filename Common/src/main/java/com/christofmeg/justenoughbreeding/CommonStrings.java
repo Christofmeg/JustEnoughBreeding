@@ -102,7 +102,6 @@ public class CommonStrings {
     public static final String CHICKEN = "minecraft:chicken, minecraft:cooked_chicken";
     public static final String LEAFCUTTER = "alexsmobs:leafcutter_ant_pupa";
     public static final String CHORUS = "minecraft:chorus_fruit";
-    public static final String MAGGOT = "alexsmobs:maggot";
     public static final String DEAD_BUSH_GRASS = "minecraft:dead_bush, minecraft:grass";
     public static  final String LARVA = "alexsmobs:mosquito_larva";
     public static final String MUNGAL = "alexsmobs:mungal_spores";
@@ -173,4 +172,5 @@ public class CommonStrings {
     public static final String FERRET_FOOD_TAG = "#crittersandcompanions:ferret_food";
     public static final String SHIMA_ENAGA_FOOD_TAG = "#crittersandcompanions:shima_enaga_food";
     public static final String DRAGONFLY_WING = "crittersandcompanions:dragonfly_wing";
+
 }

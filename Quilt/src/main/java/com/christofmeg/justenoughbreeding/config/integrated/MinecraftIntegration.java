@@ -32,6 +32,7 @@ public class MinecraftIntegration {
 
     public static void init() {
         CommonUtils.addTrustingOnly("allay", "*", trustableOnly, trustingIngredients, trustingChance);
+        CommonUtils.addAnimal("armadillo", CommonStrings.SPIDER_EYE, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("axolotl", CommonStrings.TROPICAL_FISH_BUCKET, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("bee", CommonStrings.FLOWERS_TAG, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("camel", CommonStrings.CACTUS, animalNames, ingredients, breedingCooldown);
