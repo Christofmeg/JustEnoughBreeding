@@ -14,7 +14,7 @@ dependencies {
     if (project.hasProperty('jei_version')) {
         compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
         compileOnly "mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"
-        compileOnly "me.shedaniel:REIPluginCompatibilities-forge-annotations:${reipc_forge_annotations_version}"
+//        compileOnly "me.shedaniel:REIPluginCompatibilities-forge-annotations:${reipc_forge_annotations_version}"
         if (project.hasProperty('enable_jei') && project.enable_jei.toBoolean()) {
             runtimeOnly "mezz.jei:jei-${minecraft_version}-forge:${jei_version}"
         }

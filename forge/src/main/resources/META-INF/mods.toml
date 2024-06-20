@@ -4,7 +4,7 @@ issueTrackerURL="https://github.com/Christofmeg/JustEnoughBreeding/issues" #opti
 license="The MIT License (MIT)"
 [[mods]]
     modId="justenoughbreeding"
-    version="${file.jarVersion}"
+    version="${version}"
     displayName="Just Enough Breeding"
     displayURL="https://github.com/Christofmeg/JustEnoughBreeding" #optional
     logoFile="icon.png"
