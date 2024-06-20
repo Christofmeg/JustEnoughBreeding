@@ -16,13 +16,10 @@ import net.minecraft.world.entity.animal.frog.Frog;
 import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.entity.animal.sniffer.Sniffer;
 import net.minecraft.world.entity.monster.hoglin.Hoglin;
-import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.phys.AABB;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Quaternionf;
@@ -32,29 +29,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Utils {
-
-    public static String getEdibleMeatItemNames(boolean includeRottenFlesh) {
-        List<String> edibleMeatItemNames = new ArrayList<>();
-
-        for (ResourceLocation key : ForgeRegistries.ITEMS.getKeys()) {
-            Item item = ForgeRegistries.ITEMS.getValue(key);
-            if (item != null) {
-                FoodProperties foodProperties = item.getFoodProperties(item.getDefaultInstance(), null);
-                if(includeRottenFlesh) {
-                    if (foodProperties != null && item.isEdible() && foodProperties.isMeat()) {
-                        edibleMeatItemNames.add(key.toString());
-                    }
-                }
-                else {
-                    if (foodProperties != null && item.isEdible() && foodProperties.isMeat() && item != Items.ROTTEN_FLESH) {
-                        edibleMeatItemNames.add(key.toString());
-                    }
-                }
-            }
-        }
-
-        return String.join(", ", edibleMeatItemNames);
-    }
 
     public static List<Ingredient> createCombinedResultIngredients(String mobIngredients, int minCount, int maxCount) {
         String[] ingredientIds = mobIngredients.split(",");
@@ -172,7 +146,7 @@ public class Utils {
         currentLivingEntity.yHeadRot = yawRadians;
         currentLivingEntity.yHeadRotO = yawRadians;
 
-        stack.translate(0.0F, currentLivingEntity.getMyRidingOffset(currentLivingEntity), 0.0F); // Translate the entity vertically to adjust its position
+//        stack.translate(0.0F, currentLivingEntity.getMyRidingOffset(currentLivingEntity), 0.0F); // Translate the entity vertically to adjust its position
 
         Minecraft instance = Minecraft.getInstance();
         EntityRenderDispatcher entityRenderDispatcher = instance.getEntityRenderDispatcher(); // Get the entity rendering dispatcher

@@ -27,7 +27,7 @@ public class FrostRealmIntegration {
     static final Map<String, String> trustingIngredients = new HashMap<>();
     static final Map<String, Integer> trustingChance = new HashMap<>();
 
-    static final String MEAT = Utils.getEdibleMeatItemNames(true);
+    static final String MEAT = CommonUtils.getEdibleMeatItemNames(true);
 
     public static void init() {
         CommonUtils.addAnimal("crystal_fox", CommonStrings.BEARBERRY, animalNames, ingredients, breedingCooldown);

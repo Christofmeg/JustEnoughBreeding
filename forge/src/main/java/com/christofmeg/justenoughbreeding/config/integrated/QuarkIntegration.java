@@ -21,7 +21,7 @@ public class QuarkIntegration {
     static final Map<String, String> tamingIngredients = new HashMap<>();
     static final Map<String, Integer> tamingChance = new HashMap<>();
 
-    static final String MEAT = Utils.getEdibleMeatItemNames(true);
+    static final String MEAT = CommonUtils.getEdibleMeatItemNames(true);
 
     static final List<String> vanillaAnimalNames = new ArrayList<>();
     static final Map<String, String> vanillaIngredients = new HashMap<>();

@@ -25,8 +25,8 @@ public class AlexsMobsIntegration {
     static final Map<String, String> tamingIngredients = new HashMap<>();
     static final Map<String, Integer> tamingChance = new HashMap<>();
 
-    static final String MEAT = Utils.getEdibleMeatItemNames(true);
-    static final String MEAT_WITHOUT_FLESH = Utils.getEdibleMeatItemNames(false);
+    static final String MEAT = CommonUtils.getEdibleMeatItemNames(true);
+    static final String MEAT_WITHOUT_FLESH = CommonUtils.getEdibleMeatItemNames(false);
 
     public static void init() {
         CommonUtils.addAnimal("alligator_snapping_turtle", CommonStrings.COD, animalNames, ingredients, breedingCooldown);
