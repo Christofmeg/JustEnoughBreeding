@@ -1,6 +1,5 @@
 package com.christofmeg.justenoughbreeding.config;
 
-import com.christofmeg.justenoughbreeding.common.integrated.*;
 import com.christofmeg.justenoughbreeding.config.integrated.*;
 import com.christofmeg.justenoughbreeding.config.integration.GreekFantasyIntegration;
 import net.neoforged.fml.ModList;

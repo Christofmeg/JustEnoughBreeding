@@ -2,7 +2,6 @@ package com.christofmeg.justenoughbreeding.config.integrated;
 
 import com.christofmeg.justenoughbreeding.CommonStrings;
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;
-import com.christofmeg.justenoughbreeding.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,7 +26,7 @@ public class FrostRealmIntegration {
     static final Map<String, String> trustingIngredients = new HashMap<>();
     static final Map<String, Integer> trustingChance = new HashMap<>();
 
-    static final String MEAT = Utils.getEdibleMeatItemNames(true);
+    static final String MEAT = CommonUtils.getEdibleMeatItemNames(true);
 
     public static void init() {
         CommonUtils.addAnimal("crystal_fox", CommonStrings.BEARBERRY, animalNames, ingredients, breedingCooldown);
