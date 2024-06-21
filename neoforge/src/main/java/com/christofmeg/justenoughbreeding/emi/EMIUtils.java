@@ -38,7 +38,7 @@ public class EMIUtils {
                                 Item spawnEggItem = JustEnoughBreeding.getItemFromLoaderRegistries(new ResourceLocation(mobSpawnEgg.trim()));
 
                                 if (spawnEggItem instanceof SpawnEggItem spawnEgg) {
-                                    EntityType<?> entityType = spawnEgg.getType(null);
+                                    EntityType<?> entityType = spawnEgg.getType(spawnEggItem.getDefaultInstance());
                                     Boolean needsToBeTamed = CommonConstants.breedingNeedsToBeTamed.get(mobName);
                                     Boolean animalTrusting = CommonConstants.breedingNeedsToBeTrusting.get(mobName);
 

@@ -59,11 +59,11 @@ public class BreedingCategoryREI implements DisplayCategory<BreedingDisplay> {
         widgets.add(Widgets.createRecipeBase(bounds));
         widgets.add(Widgets.createSlotBase(new Rectangle(bounds.x + mobSlotX, bounds.y + mobSlotY, 61, 81)));
         widgets.add(Widgets.createSlot(new Point(bounds.x + eggSlotX, bounds.y + eggSlotY)).entries(List.of(EntryStacks.of(display.breedingRecipe.spawnEgg))));
-        widgets.add(Widgets.createSlot(new Point(bounds.x + inputSlotFrameX, bounds.y + inputSlot1FrameY)).entries(display.getInputEntries().get(0)));
-        widgets.add(Widgets.createSlot(new Point(bounds.x + inputSlotFrameX, bounds.y + inputSlot2FrameY)).entries(display.getExtraInputEntries().get(0)));
+        widgets.add(Widgets.createSlot(new Point(bounds.x + inputSlotFrameX, bounds.y + inputSlot1FrameY)).entries(display.getInputEntries().getFirst()));
+        widgets.add(Widgets.createSlot(new Point(bounds.x + inputSlotFrameX, bounds.y + inputSlot2FrameY)).entries(display.getExtraInputEntries().getFirst()));
         widgets.add(Widgets.createArrow(new Point(bounds.x + arrowX, bounds.y + arrowY)));
         widgets.add(Widgets.createResultSlotBackground(new Point(bounds.x + outputSlotFrameX, bounds.y + outputSlotFrameY)));
-        widgets.add(Widgets.createSlot(new Point(bounds.x + outputSlotFrameX, bounds.y + outputSlotFrameY)).entries(display.getOutputEntries().get(0)).disableBackground().markOutput());
+        widgets.add(Widgets.createSlot(new Point(bounds.x + outputSlotFrameX, bounds.y + outputSlotFrameY)).entries(display.getOutputEntries().getFirst()).disableBackground().markOutput());
 
         BreedingRecipe recipe = display.breedingRecipe;
         EntityType<?> entityType = recipe.entityType;
