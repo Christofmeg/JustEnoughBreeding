@@ -2,7 +2,6 @@ package com.christofmeg.justenoughbreeding.config.integrated;
 
 import com.christofmeg.justenoughbreeding.CommonStrings;
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;
-import com.christofmeg.justenoughbreeding.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;

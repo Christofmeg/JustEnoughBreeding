@@ -13,7 +13,7 @@ license="The MIT License (MIT)"
 [[dependencies.justenoughbreeding]]
     modId="forge"
     mandatory=true
-    versionRange="[50,)"
+    versionRange="[50.1.2,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.justenoughbreeding]]

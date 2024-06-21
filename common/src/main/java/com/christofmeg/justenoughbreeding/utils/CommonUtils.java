@@ -6,12 +6,10 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -424,7 +422,7 @@ public class CommonUtils {
     public static void addTrustingOnly(String name, String trustingIngredient, List<String> trustingOnly, Map<String, String> trustingIngredients, Map<String, Integer> trustingChance) {
         trustingOnly.add(name);
         trustingIngredients.put(name, trustingIngredient);
-        trustingChance.put(name, 33);
+        trustingChance.put(name, 33); //TODO rework this to display that foxes are breedable without trusting the player, but can trust the player if bred
     }
 
     @SuppressWarnings("unused")
