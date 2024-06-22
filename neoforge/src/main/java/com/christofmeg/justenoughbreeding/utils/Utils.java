@@ -37,7 +37,7 @@ public class Utils {
         List<ItemStack> combinedItemStacks = new ArrayList<>();
         for (int count = minCount; count <= maxCount; count++) {
             for (String ingredientId : ingredientIds) {
-                Item ingredientItem = JustEnoughBreeding.getItemFromLoaderRegistries(new ResourceLocation(ingredientId.trim()));
+                Item ingredientItem = JustEnoughBreeding.getItemFromLoaderRegistries(ResourceLocation.parse(ingredientId.trim()));
                 combinedItemStacks.add(new ItemStack(ingredientItem, count));
             }
         }
@@ -73,7 +73,7 @@ public class Utils {
             if (ingredientId.trim().startsWith("#")) {
                 combinedIngredients.add(CommonUtils.createTagIngredient(ingredientId));
             } else {
-                Item ingredientItem = JustEnoughBreeding.getItemFromLoaderRegistries(new ResourceLocation(ingredientId.trim()));
+                Item ingredientItem = JustEnoughBreeding.getItemFromLoaderRegistries(ResourceLocation.parse(ingredientId.trim()));
                 combinedIngredients.add(Ingredient.of(new ItemStack(ingredientItem)));
             }
         }

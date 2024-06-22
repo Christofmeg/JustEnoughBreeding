@@ -468,8 +468,13 @@ public class CommonUtils {
 
     public static Ingredient createTagIngredient(String tagId) {
         String tagLocationStr = tagId.trim().substring(1);
-        ResourceLocation tagLocation = new ResourceLocation(tagLocationStr);
-        return Ingredient.of(TagKey.create(Registries.ITEM, tagLocation));
+        ResourceLocation tagLocation = ResourceLocation.tryParse(tagLocationStr);
+        if (tagLocation != null) {
+            return Ingredient.of(TagKey.create(Registries.ITEM, tagLocation));
+        } else {
+            return Ingredient.EMPTY;
+        }
+
     }
 
 }

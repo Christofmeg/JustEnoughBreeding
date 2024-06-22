@@ -35,7 +35,7 @@ public class REIUtils {
                             if (mobIngredients != null && mobSpawnEgg != null) {
                                 Ingredient combinedIngredient = Utils.createCombinedIngredient(mobIngredients);
                                 List<Ingredient> combinedResultIngredient = Utils.createCombinedResultIngredients(mobResultItem, mobMinResultCount, mobMaxResultCount);
-                                Item spawnEggItem = JustEnoughBreeding.getItemFromLoaderRegistries(new ResourceLocation(mobSpawnEgg.trim()));
+                                Item spawnEggItem = JustEnoughBreeding.getItemFromLoaderRegistries(ResourceLocation.parse(mobSpawnEgg.trim()));
 
                                 if (spawnEggItem instanceof SpawnEggItem spawnEgg) {
                                     EntityType<?> entityType = spawnEgg.getType(spawnEggItem.getDefaultInstance());
@@ -68,8 +68,8 @@ public class REIUtils {
                             if (mobIngredients != null && mobSpawnEggItem != null && mobEntityName != null) {
                                 Ingredient combinedIngredient = Utils.createCombinedIngredient(mobIngredients);
                                 List<Ingredient> combinedResultIngredient = Utils.createCombinedResultIngredients(mobResultItem, mobMinResultCount, mobMaxResultCount);
-                                Item spawnEggItem = JustEnoughBreeding.getItemFromLoaderRegistries(new ResourceLocation(mobSpawnEggItem.trim()));
-                                EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(new ResourceLocation(mobEntityName.trim()));
+                                Item spawnEggItem = JustEnoughBreeding.getItemFromLoaderRegistries(ResourceLocation.parse(mobSpawnEggItem.trim()));
+                                EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(ResourceLocation.parse(mobEntityName.trim()));
                                 Boolean needsToBeTamed = CommonConstants.breedingNeedsToBeTamed.get(mobName);
                                 Boolean animalTrusting = CommonConstants.breedingNeedsToBeTrusting.get(mobName);
 

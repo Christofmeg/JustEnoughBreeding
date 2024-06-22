@@ -40,7 +40,7 @@ public class BreedingCategoryEMI implements EmiRecipe {
     public static final EmiTexture BACKGROUND = new EmiTexture(EmiRenderHelper.WIDGETS, 19, 1, 24, 24);
 
     public static EmiRecipeCategory TYPE = new EmiRecipeCategory(
-        new ResourceLocation(CommonConstants.MOD_ID + ":" + "breeding"),
+        ResourceLocation.parse(CommonConstants.MOD_ID + ":" + "breeding"),
         EmiStack.of(Items.WHEAT), EMIPlugin.simplifiedRenderer(), EmiRecipeSorting.none());
 
     protected BreedingCategoryEMI(Builder builder, BreedingRecipe breedingRecipe) {

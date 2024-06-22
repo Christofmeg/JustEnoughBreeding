@@ -28,15 +28,11 @@ public class CommonStrings {
     public static final String ORTHUS_FOOD_TAG = "#greekfantasy:orthus_food";
     public static final String KIWI_CAKE = "kiwiboi:kiwicake";
     public static final String SEAGRASS = "minecraft:seagrass";
-    public static final String TROPICAL_FISH_BUCKET = "minecraft:tropical_fish_bucket";
     public static final String COD_SALMON = "minecraft:cod, minecraft:salmon";
     public static final String GOLDEN_APPLE_CARROT = "minecraft:golden_apple, minecraft:enchanted_golden_apple, minecraft:golden_carrot";
-    public static final String BERRIES = "#minecraft:fox_food";
     public static final String SLIME_BALL = "minecraft:slime_ball";
-    public static final String CRIMSON_FUNGUS = "minecraft:crimson_fungus";
     public static final String HAY_BLOCK = "minecraft:hay_block";
     public static final String BAMBOO = "minecraft:bamboo";
-    public static final String WARPED_FUNGUS = "minecraft:warped_fungus";
     public static final String APPLE = "minecraft:apple";
     public static final String CRABFOOD = "minecraft:wheat, minecraft:chicken, #minecraft:fishes";
     public static final String GIRAFFE_FOOD = "minecraft:wheat, minecraft:hay_block, minecraft:carrot, minecraft:golden_carrot, #minecraft:leaves";
@@ -75,8 +71,6 @@ public class CommonStrings {
     public static final String CRESCENT_FRUIT = "blue_skies:crescent_fruit";
     public static final String WHEAT_HAY = "minecraft:wheat, minecraft:hay_block";
     public static final String COAL = "minecraft:coal";
-    public static final String TORCHFLOWERS_SEEDS = "minecraft:torchflower_seeds";
-    public static final String CACTUS = "minecraft:cactus";
     public static final String PINK_PETALS = "biomemakeover:pink_petals";
     public static final String SPIDER_EYE = "minecraft:spider_eye";
     public static final String RADGILL = "alexscaves:radgill";

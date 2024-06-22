@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[50,)"
+loaderVersion="[0,)"
 issueTrackerURL="https://github.com/Christofmeg/JustEnoughBreeding/issues" #optional
 license="The MIT License (MIT)"
 [[mods]]
@@ -13,13 +13,13 @@ license="The MIT License (MIT)"
 [[dependencies.justenoughbreeding]]
     modId="forge"
     mandatory=true
-    versionRange="[50.1.2,)"
+    versionRange="[0,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.justenoughbreeding]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.20.6,1.21)"
+    versionRange="[1.21,1.22)"
     ordering="NONE"
     side="BOTH"
 [modproperties.justenoughbreeding]

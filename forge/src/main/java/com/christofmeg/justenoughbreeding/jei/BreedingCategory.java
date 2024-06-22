@@ -27,12 +27,12 @@ import org.jetbrains.annotations.NotNull;
 public class BreedingCategory implements IRecipeCategory<BreedingRecipe> {
 
     public static final RecipeType<BreedingRecipe> TYPE = new RecipeType<>(
-            new ResourceLocation(CommonConstants.MOD_ID, "breeding"), BreedingRecipe.class);
+            ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "breeding"), BreedingRecipe.class);
 
-    final ResourceLocation slotVanilla = new ResourceLocation("jei",
+    final ResourceLocation slotVanilla = ResourceLocation.fromNamespaceAndPath("jei",
             "textures/jei/atlas/gui/slot.png");
 
-    final ResourceLocation guiVanilla = new ResourceLocation("jei",
+    final ResourceLocation guiVanilla = ResourceLocation.fromNamespaceAndPath("jei",
             "textures/jei/gui/gui_vanilla.png");
 
     private final IDrawable background;
