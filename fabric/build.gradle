@@ -7,8 +7,12 @@ plugins {
     id 'com.modrinth.minotaur' version '2.+'
 }
 
+base {
+    archivesName = "${mod_id}-${project.name}-${fabric_supported_versions}"
+}
+
 dependencies {
-    minecraft "com.mojang:minecraft:${minecraft_version}"
+    minecraft "com.mojang:minecraft:${fabric_minecraft_version}"
     mappings loom.officialMojangMappings()
     modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"

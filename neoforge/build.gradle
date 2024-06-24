@@ -7,6 +7,10 @@ plugins {
     id 'com.modrinth.minotaur' version '2.+'
 }
 
+base {
+    archivesName = "${mod_id}-${project.name}-${neoforge_supported_versions}"
+}
+
 runs {
     configureEach {
         modSource project.sourceSets.main
@@ -32,11 +36,11 @@ dependencies {
 
     // JEI
     if (project.hasProperty('jei_version')) {
-        compileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
-        compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
+        compileOnly("mezz.jei:jei-${neoforge_minecraft_version}-common-api:${jei_version}")
+        compileOnly("mezz.jei:jei-${neoforge_minecraft_version}-neoforge-api:${jei_version}")
         compileOnly "me.shedaniel:REIPluginCompatibilities-forge-annotations:${reipc_forge_annotations_version}"
         if (project.hasProperty('enable_jei') && project.enable_jei.toBoolean()) {
-            runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
+            runtimeOnly("mezz.jei:jei-${neoforge_minecraft_version}-neoforge:${jei_version}")
         }
     }
 
