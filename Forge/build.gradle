@@ -117,6 +117,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     "${forge_release_versions}".split(',').each {
         mainFile.addGameVersion("${it}")
     }
+    mainFile.addModLoader('Forge', 'NeoForge')
     if (project.hasProperty('jei_version')) {
         mainFile.addOptional("jei")
         mainFile.addOptional("roughly-enough-items-hacks")
@@ -188,6 +189,7 @@ modrinth {
     changelog = file('changelog.md').text
     uploadFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")
     gameVersions = "${forge_release_versions}".split(",") as List<String>
+    loaders = "forge,neoforge".split(",") as List<String>
     dependencies {
         if (project.hasProperty('jei_version')) {
             optional.project "jei"
