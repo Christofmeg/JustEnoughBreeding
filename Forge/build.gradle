@@ -94,6 +94,9 @@ dependencies {
     // GREEK FANTASY https://www.curseforge.com/minecraft/mc-mods/greek-fantasy
 //    runtimeOnly fg.deobf("curse.maven:greek-fantasy-413724:4066828")
 
+    implementation fg.deobf("curse.maven:ambient-additions-531946:5134222")
+    implementation fg.deobf("curse.maven:geckolib-388172:5460309")
+
 }
 
 tasks.withType(JavaCompile).configureEach {
