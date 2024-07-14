@@ -49,7 +49,7 @@ public class AmbientAdditionsIntegration {
         CommonUtils.addAnimal("sloth_bear", CommonStrings.WORM, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("spider_tailed_adder", CommonStrings.CHICKEN, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("veiled_chameleon", CommonStrings.SPIDER_EYE, animalNames, ingredients, breedingCooldown);
-
+        
         CommonUtils.addAnimalNames(animalNames, ingredients, MOD, breedingCooldown);
         CommonUtils.addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, MOD);
     }
