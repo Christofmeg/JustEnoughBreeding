@@ -17,6 +17,9 @@ dependencies {
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
     implementation project(":Common")
 
+    modImplementation("io.github.llamalad7:mixinextras-common:0.4.0")
+    modImplementation("io.github.llamalad7:mixinextras-fabric:0.4.0")
+
     // JEI
     if (project.hasProperty('jei_version')) {
         modCompileOnly("mezz.jei:jei-${fabric_minecraft_version}-common-api:${jei_version}")

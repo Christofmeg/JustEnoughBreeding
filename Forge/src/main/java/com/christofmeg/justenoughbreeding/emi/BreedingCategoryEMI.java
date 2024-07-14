@@ -23,6 +23,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -70,8 +71,9 @@ public class BreedingCategoryEMI implements EmiRecipe {
     @Override
     public List<EmiIngredient> getCatalysts() {
         return List.of(EmiIngredient.of(recipe.breedingCatalyst),
-                EmiIngredient.of(recipe.extraInputStack)
-                );
+                EmiIngredient.of(recipe.extraInputStack),
+                EmiIngredient.of(Ingredient.of(recipe.spawnEgg))
+        );
     }
 
     @Override
@@ -81,6 +83,7 @@ public class BreedingCategoryEMI implements EmiRecipe {
             for (ItemStack item : recipe.resultItemStack.getItems()) {
                 list.add(EmiStack.of(item));
             }
+            list.add(EmiStack.of(recipe.spawnEgg));
         }
         return list;
     }
