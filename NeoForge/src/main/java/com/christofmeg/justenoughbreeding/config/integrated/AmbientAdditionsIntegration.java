@@ -50,7 +50,7 @@ public class AmbientAdditionsIntegration {
         CommonUtils.addAnimal("spider_tailed_adder", CommonStrings.CHICKEN, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("veiled_chameleon", CommonStrings.SPIDER_EYE, animalNames, ingredients, breedingCooldown);
         
-        CommonUtils.addAnimalNames(animalNames, ingredients, MOD, breedingCooldown);
+        CommonUtils.addAnimalNames(animalNames, ingredients, MOD, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
         CommonUtils.addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, MOD);
     }
 
