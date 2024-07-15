@@ -94,9 +94,6 @@ dependencies {
     // GREEK FANTASY https://www.curseforge.com/minecraft/mc-mods/greek-fantasy
 //    runtimeOnly fg.deobf("curse.maven:greek-fantasy-413724:4066828")
 
-    implementation fg.deobf("curse.maven:ambient-additions-531946:5134222")
-    implementation fg.deobf("curse.maven:geckolib-388172:5460309")
-
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -176,6 +173,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("winter-overhaul")
     mainFile.addOptional("critters-and-companions")
     mainFile.addOptional("ambient-additions")
+    mainFile.addOptional("terrafirmacraft")
 }
 
 modrinth {
@@ -229,5 +227,6 @@ modrinth {
         optional.project "creatures-and-beasts"
         optional.project "winter-overhaul"
         optional.project "critters-and-companions"
+        optional.project "terrafirmacraft"
     }
 }

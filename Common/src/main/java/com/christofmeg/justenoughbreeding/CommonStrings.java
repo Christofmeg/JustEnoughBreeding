@@ -178,4 +178,5 @@ public class CommonStrings {
     public static final String PINOCCHIO_ANOLE_POT = "ambientadditions:pinocchio_anole_pot";
     public static final String CARROT_APPLE = "minecraft:carrot, minecraft:apple";
     public static final String CHICKEN = "minecraft:chicken";
+    public static final String PENGUIN_FOOD_TAG = "#tfc:penguin_food";
 }

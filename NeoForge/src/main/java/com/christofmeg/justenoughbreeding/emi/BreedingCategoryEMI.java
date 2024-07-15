@@ -172,6 +172,10 @@ public class BreedingCategoryEMI implements EmiRecipe {
             } else if (recipe.animalTrusting != null) {
                 Component trusting = Component.translatable("translation.justenoughbreeding.trusting");
                 entityNameString += " (" + trusting.getString() + ")";
+            } else if (recipe.spawnEgg.getDescriptionId().startsWith("item.tfc")) {
+                Component familiarity = Component.translatable("tfc.jade.familiarity");
+                String tfc = familiarity.getString().replaceAll(":[^:]*$", "");
+                entityNameString += " (" + tfc + " > 30" + ")";
             }
 
             int stringWidth = font.width(entityNameString); // Measure the width of the string in pixels

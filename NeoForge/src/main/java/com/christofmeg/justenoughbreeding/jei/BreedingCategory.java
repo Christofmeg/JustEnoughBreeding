@@ -157,18 +157,22 @@ public class BreedingCategory implements IRecipeCategory<BreedingRecipe> {
         mobRenderSlotTopCenter.draw(stack, 36, 66);
 
         EntityType<?> entityType = recipe.entityType;
-        if(entityType != null) {
+        if (entityType != null) {
             Minecraft instance = Minecraft.getInstance();
             Font font = instance.font;
             Component entityName = Component.translatable(entityType.getDescriptionId());
 
             String entityNameString = entityName.getString(); // Convert Component to String
-            if(recipe.needsToBeTamed != null) {
+            if (recipe.needsToBeTamed != null) {
                 Component tamed = Component.translatable("translation.justenoughbreeding.tamed");
                 entityNameString += " (" + tamed.getString() + ")";
-            } else if(recipe.animalTrusting != null) {
+            } else if (recipe.animalTrusting != null) {
                 Component trusting = Component.translatable("translation.justenoughbreeding.trusting");
                 entityNameString += " (" + trusting.getString() + ")";
+            } else if (recipe.spawnEgg.getDescriptionId().startsWith("item.tfc")) {
+                Component familiarity = Component.translatable("tfc.jade.familiarity");
+                String tfc = familiarity.getString().replaceAll(":[^:]*$", "");
+                entityNameString += " (" + tfc + " > 30" + ")";
             }
 
             int stringWidth = font.width(entityNameString); // Measure the width of the string in pixels

@@ -148,5 +148,8 @@ public class JEBIntegration {
         if (ModList.get().isLoaded("ambientadditions")) {
             AmbientAdditionsIntegration.init();
         }
+        if (ModList.get().isLoaded("tfc")) {
+            TerraFirmaCraftIntegration.init();
+        }
     }
 }

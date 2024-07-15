@@ -71,9 +71,22 @@ public class CommonUtils {
         eggsAmountMax.put(name, eggAmountMax);
     }
 
+    public static void addAnimalEggLayingExtraIngredients(String name, String spawnEggItem, String ingredient, String extraIngredient, String resultEgg, int eggAmountMax, List<String> animalNames, Map<String, String> ingredients, Map<String, String> extraIngredients, Map<String, Integer> breedingCooldown, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax, Map<String, String> spawnEggItems) {
+        addAnimalEggLaying(name, ingredient, resultEgg, eggAmountMax, animalNames, ingredients, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
+        spawnEggItems.put(name, spawnEggItem);
+        extraIngredients.put(name, extraIngredient);
+    }
+
     public static void addAnimalEggLaying(String name, String spawnEggItem, String entityFromName, String ingredient, String resultEgg, int eggAmountMax, List<String> animalNames, Map<String, String> ingredients, Map<String, Integer> breedingCooldown, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax, Map<String, String> spawnEggItems, Map<String, String> entitiesFromNames) {
         addAnimalEggLaying(name, ingredient, resultEgg, eggAmountMax, animalNames, ingredients, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
         spawnEggItems.put(name, spawnEggItem);
+        entitiesFromNames.put(name, entityFromName);
+    }
+
+    public static void addAnimalEggLaying(String name, String spawnEggItem, String entityFromName, String ingredient, String extraIngredient, String resultEgg, int eggAmountMax, List<String> animalNames, Map<String, String> ingredients, Map<String, String> extraIngredients, Map<String, Integer> breedingCooldown, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax, Map<String, String> spawnEggItems, Map<String, String> entitiesFromNames) {
+        addAnimalEggLaying(name, ingredient, resultEgg, eggAmountMax, animalNames, ingredients, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
+        spawnEggItems.put(name, spawnEggItem);
+        extraIngredients.put(name, extraIngredient);
         entitiesFromNames.put(name, entityFromName);
     }
 
