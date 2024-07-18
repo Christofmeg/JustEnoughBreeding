@@ -18,9 +18,6 @@ public class ChocoCraftIntegration {
     static final Map<String, Integer> breedingCooldown = new HashMap<>();
     static final Map<String, String> tamingIngredients = new HashMap<>();
     static final Map<String, Integer> tamingChance = new HashMap<>();
-    static final Map<String, String> resultEggs = new HashMap<>();
-    static final Map<String, Integer> eggsAmountMin = new HashMap<>();
-    static final Map<String, Integer> eggsAmountMax = new HashMap<>();
     static final Map<String, String> spawnEggItems = new HashMap<>();
     static final Map<String, String> entitiesFromNames = new HashMap<>();
 
@@ -35,7 +32,7 @@ public class ChocoCraftIntegration {
         CommonUtils.addAnimal("red" + "_" + "chocobo", "chococraft:" + "red" + "_chocobo_spawn_egg", "chococraft:chocobo", CommonStrings.LOVERLY_GYSAHL, animalNames, ingredients, breedingCooldown, spawnEggItems, entitiesFromNames);
         CommonUtils.addAnimal("white" + "_" + "chocobo", "chococraft:" + "white" + "_chocobo_spawn_egg", "chococraft:chocobo", CommonStrings.LOVERLY_GYSAHL, animalNames, ingredients, breedingCooldown, spawnEggItems, entitiesFromNames);
         CommonUtils.addAnimal("yellow" + "_" + "chocobo", "chococraft:" + "yellow" + "_chocobo_spawn_egg", "chococraft:chocobo", CommonStrings.LOVERLY_GYSAHL, animalNames, ingredients, breedingCooldown, spawnEggItems, entitiesFromNames);
-        CommonUtils.addAnimalNames(animalNames, ingredients, spawnEggItems, entitiesFromNames, MOD, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
+        CommonUtils.addAnimalNames(animalNames, ingredients, spawnEggItems, entitiesFromNames, MOD, breedingCooldown);
 
         CommonUtils.addTamableOnly("black_chocobo", CommonStrings.GYSAHL_GREEN, tamableOnly, tamingIngredients, tamingChance);
         CommonUtils.addTamableOnly("blue_chocobo", CommonStrings.GYSAHL_GREEN, tamableOnly, tamingIngredients, tamingChance);
