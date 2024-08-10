@@ -1,0 +1,163 @@
+import net.darkhax.curseforgegradle.TaskPublishCurseForge
+
+plugins {
+    id 'multiloader-loader'
+    id 'org.quiltmc.loom' version '1.6.+'
+    id 'net.darkhax.curseforgegradle' version '1.+'
+    id 'com.modrinth.minotaur' version '2.+'
+}
+
+base {
+    archivesName = "${mod_id}-${project.name}-${quilt_supported_versions}"
+}
+
+project.configurations.configureEach {
+    exclude(group: "net.fabricmc", module: "fabric-loader")
+    exclude(group: "net.fabricmc.fabric-api")
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${quilt_minecraft_version}"
+    mappings loom.officialMojangMappings()
+    modImplementation "org.quiltmc:quilt-loader:${quilt_loader_version}"
+    modImplementation "org.quiltmc.quilted-fabric-api:quilted-fabric-api:${quilt_version}-${quilt_minecraft_version}"
+
+    // JEI
+    if (project.hasProperty('jei_version')) {
+        modCompileOnly("mezz.jei:jei-${quilt_minecraft_version}-common-api:${jei_version}")
+        modCompileOnly("mezz.jei:jei-${quilt_minecraft_version}-fabric-api:${jei_version}")
+        if (project.hasProperty('enable_jei') && project.enable_jei.toBoolean()) {
+            modRuntimeOnly("mezz.jei:jei-${quilt_minecraft_version}-fabric:${jei_version}")
+        }
+    }
+
+    // REI
+    if (project.hasProperty('rei_version') &&
+            project.hasProperty('cloth_config_version') &&
+            project.hasProperty('architectury_version')) {
+        modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${rei_version}"
+        modCompileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:${rei_version}"
+        modApi "me.shedaniel.cloth:cloth-config-fabric:${cloth_config_version}"
+        modApi "dev.architectury:architectury-fabric:${architectury_version}"
+        if (project.hasProperty('enable_rei') && project.enable_rei.toBoolean()) {
+            modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${rei_version}"
+        }
+    }
+
+    // EMI
+    if (project.hasProperty('emi_version')) {
+        modCompileOnly "dev.emi:emi-fabric:${emi_version}+${quilt_minecraft_version}"
+        if (project.hasProperty('enable_emi') && project.enable_emi.toBoolean()) {
+            modLocalRuntime "dev.emi:emi-fabric:${emi_version}+${quilt_minecraft_version}"
+        }
+    }
+
+    // JADE
+    if (project.hasProperty('jade_version')) {
+        modImplementation "curse.maven:jade-324717:${jade_version}"
+    }
+
+    // CATALOGUE
+    if (project.hasProperty('catalogue_version')) {
+        modImplementation("curse.maven:catalogue-459701:${catalogue_version}")
+    }
+
+}
+
+loom {
+    runs {
+        client {
+            client()
+            setConfigName("Quilt Client")
+            ideConfigGenerated(true)
+            runDir("run")
+        }
+        server {
+            server()
+            setConfigName("Quilt Server")
+            ideConfigGenerated(true)
+            runDir("run")
+        }
+    }
+}
+
+tasks.register('publishCurseForge', TaskPublishCurseForge) {
+    apiToken = file('../../API Tokens/justenoughbreeding.md')
+    def projectId = "${cf_id}".toString()
+    def mainFile = upload(projectId, file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar"))
+    mainFile.changelogType = 'markdown'
+    mainFile.changelog = file('changelog.md')
+    mainFile.addGameVersion('Client', 'Server')
+    mainFile.releaseType = "${release_type}"
+    "${quilt_release_versions}".split(',').each {
+        mainFile.addGameVersion("${it}")
+    }
+    if (project.hasProperty('jei_version')) {
+        mainFile.addOptional("jei")
+    }
+    if (project.hasProperty('rei_version')) {
+        mainFile.addOptional("roughly-enough-items")
+    }
+    if (project.hasProperty('emi_version')) {
+        mainFile.addOptional("emi")
+    }
+    mainFile.addRequirement("qsl")
+    mainFile.addOptional("catalogue-fabric")
+    mainFile.addOptional("friends-and-foes")
+    mainFile.addOptional("kiwi-boi")
+    mainFile.addOptional("snow-pig-fabric")
+    mainFile.addOptional("snuffles-fabric")
+    mainFile.addOptional("steves-vanilla")
+    mainFile.addOptional("the-twilight-forest")
+    mainFile.addOptional("frozen-up")
+    mainFile.addOptional("caracal-mod")
+    mainFile.addOptional("lil-wings")
+    mainFile.addOptional("ecologics")
+    mainFile.addOptional("ydms-ducks-mod")
+    mainFile.addOptional("ydms-glare")
+    mainFile.addOptional("duckling")
+    mainFile.addOptional("ydms-red-panda")
+    mainFile.addOptional("naturalist")
+    mainFile.addOptional("ydms-fennec-fox")
+    mainFile.addOptional("biome-makeover")
+    mainFile.addOptional("chococraft")
+    mainFile.addOptional("critters-and-companions")
+}
+
+modrinth {
+    token = file('../../API Tokens/modrinth.md').text
+    projectId = "${modrinth_id}"
+    versionName = getArchivesBaseName() + "-" + getVersion()
+    versionType = "${release_type}"
+    changelog = file('changelog.md').text
+    uploadFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")
+    gameVersions = "${quilt_release_versions}".split(",") as List<String>
+    dependencies {
+        if (project.hasProperty('jei_version')) {
+            optional.project "jei"
+        }
+        if (project.hasProperty('rei_version')) {
+            optional.project "rei"
+        }
+        if (project.hasProperty('emi_version')) {
+            optional.project "emi"
+        }
+        required.project "qsl"
+        optional.project "naturalist"
+        optional.project "ydms-glare"
+        optional.project "friends-and-foes"
+        optional.project "snowpig-fabric"
+        optional.project "duckling"
+        optional.project "ydms-fennec-fox"
+        optional.project "ydms-red-panda"
+        optional.project "caracal_mob"
+        optional.project "kiwi-boi"
+        optional.project "ecologics"
+        optional.project "snuffles-fabric"
+        optional.project "lil-wings"
+        optional.project "the-ducks"
+        optional.project "biome-makeover"
+        optional.project "chococraft"
+        optional.project "critters-and-companions"
+    }
+}

@@ -50,7 +50,7 @@ pluginManagement {
         }
         maven {
             name = 'Quilt'
-            url = 'https://maven.quiltmc.org/repository/release'
+            url = uri("https://maven.quiltmc.org/repository/release")
         }
     }
 }
@@ -60,4 +60,4 @@ plugins {
 }
 
 rootProject.name = 'JustEnoughBreeding'
-include("Common", "Fabric", "Forge", "NeoForge", "Quilt")
+include("common", "fabric", "forge", "neoforge", "quilt")
