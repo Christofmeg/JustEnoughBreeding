@@ -140,6 +140,8 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("creatures-and-beasts")
     mainFile.addOptional("winter-overhaul")
     mainFile.addOptional("critters-and-companions")
+    mainFile.addOptional("ambient-additions")
+    mainFile.addOptional("terrafirmacraft")
 }
 
 modrinth {
@@ -188,5 +190,7 @@ modrinth {
         optional.project "creatures-and-beasts"
         optional.project "winter-overhaul"
         optional.project "critters-and-companions"
+        optional.project "critters-and-companions"
+        optional.project "terrafirmacraft"
     }
 }

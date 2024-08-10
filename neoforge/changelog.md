@@ -1,2 +1,3 @@
-1.2.4:
-- Made breeding category searchable with spawn eggs
+1.3.0:
+- Ambient Additions Integration
+- Terra Firma Craft Integration
