@@ -32,11 +32,11 @@ dependencies {
 
     // JEI
     if (project.hasProperty('jei_version')) {
-        compileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
-        compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
+        compileOnly("mezz.jei:jei-${neoforge_minecraft_version}-common-api:${jei_version}")
+        compileOnly("mezz.jei:jei-${neoforge_minecraft_version}-neoforge-api:${jei_version}")
         compileOnly "me.shedaniel:REIPluginCompatibilities-forge-annotations:${reipc_forge_annotations_version}"
         if (project.hasProperty('enable_jei') && project.enable_jei.toBoolean()) {
-            runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
+            runtimeOnly("mezz.jei:jei-${neoforge_minecraft_version}-neoforge:${jei_version}")
         }
     }
 
@@ -56,9 +56,9 @@ dependencies {
     // EMI
     if (project.hasProperty('emi_version')) {
         compileOnly "curse.maven:emi-580555:${emi_version}"
-//        compileOnly "dev.emi:emi-neoforge:${emi_version}+${minecraft_version}"
+//        compileOnly "dev.emi:emi-neoforge:${emi_version}+${neoforge_minecraft_version}"
         if (project.hasProperty('enable_emi') && project.enable_emi.toBoolean()) {
-//            runtimeOnly "dev.emi:emi-forge:${emi_version}+${minecraft_version}"
+//            runtimeOnly "dev.emi:emi-forge:${emi_version}+${neoforge_minecraft_version}"
             runtimeOnly "curse.maven:emi-580555:${emi_version}"
         }
     }
@@ -82,7 +82,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.changelog = file('changelog.md')
     mainFile.addGameVersion('Client', 'Server')
     mainFile.releaseType = "${release_type}"
-    "${forge_release_versions}".split(',').each {
+    "${neoforge_release_versions}".split(',').each {
         mainFile.addGameVersion("${it}")
     }
     if (project.hasProperty('jei_version')) {
@@ -149,7 +149,7 @@ modrinth {
     versionType = "${release_type}"
     changelog = file('changelog.md').text
     uploadFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")
-    gameVersions = "${forge_release_versions}".split(",") as List<String>
+    gameVersions = "${neoforge_release_versions}".split(",") as List<String>
     dependencies {
         if (project.hasProperty('jei_version')) {
             optional.project "jei"

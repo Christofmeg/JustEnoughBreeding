@@ -1,33 +1,28 @@
 import net.darkhax.curseforgegradle.TaskPublishCurseForge
 
 plugins {
-    id 'org.quiltmc.loom' version '1.3.+'
-    id 'idea'
+    id 'multiloader-loader'
+    id 'fabric-loom' version '1.7.1'
     id 'net.darkhax.curseforgegradle' version '1.+'
     id 'com.modrinth.minotaur' version '2.+'
 }
 
-archivesBaseName = "${mod_id}-quilt-${quilt_supported_versions}"
-
-project.configurations.configureEach {
-    exclude(group: "net.fabricmc", module: "fabric-loader")
-    exclude(group: "net.fabricmc.fabric-api")
+base {
+    archivesName = "${mod_id}-${project.name}-${quilt_supported_versions}"
 }
 
 dependencies {
-    minecraft "com.mojang:minecraft:${quilt_minecraft_version}"
+    minecraft "com.mojang:minecraft:${fabric_minecraft_version}"
     mappings loom.officialMojangMappings()
-    modImplementation "org.quiltmc:quilt-loader:${quilt_loader_version}"
-    modImplementation "org.quiltmc.quilted-fabric-api:quilted-fabric-api:${quilt_version}-${quilt_minecraft_version}"
-    implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
-    implementation project(":Common")
+    modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
 
     // JEI
     if (project.hasProperty('jei_version')) {
-        modCompileOnly("mezz.jei:jei-${quilt_minecraft_version}-common-api:${jei_version}")
-        modCompileOnly("mezz.jei:jei-${quilt_minecraft_version}-fabric-api:${jei_version}")
+        modCompileOnly("mezz.jei:jei-${fabric_minecraft_version}-common-api:${jei_version}")
+        modCompileOnly("mezz.jei:jei-${fabric_minecraft_version}-fabric-api:${jei_version}")
         if (project.hasProperty('enable_jei') && project.enable_jei.toBoolean()) {
-            modRuntimeOnly("mezz.jei:jei-${quilt_minecraft_version}-fabric:${jei_version}")
+            modRuntimeOnly("mezz.jei:jei-${fabric_minecraft_version}-fabric:${jei_version}")
         }
     }
 
@@ -46,9 +41,9 @@ dependencies {
 
     // EMI
     if (project.hasProperty('emi_version')) {
-        modCompileOnly "dev.emi:emi-fabric:${emi_version}+${quilt_minecraft_version}"
+        modCompileOnly "dev.emi:emi-fabric:${emi_version}+${fabric_minecraft_version}"
         if (project.hasProperty('enable_emi') && project.enable_emi.toBoolean()) {
-            modLocalRuntime "dev.emi:emi-fabric:${emi_version}+${quilt_minecraft_version}"
+            modLocalRuntime "dev.emi:emi-fabric:${emi_version}+${fabric_minecraft_version}"
         }
     }
 
@@ -65,38 +60,27 @@ dependencies {
 }
 
 loom {
+    def aw = project(":common").file("src/main/resources/${mod_id}.accesswidener")
+    if (aw.exists()) {
+        accessWidenerPath.set(aw)
+    }
+    mixin {
+        defaultRefmapName.set("${mod_id}.refmap.json")
+    }
     runs {
         client {
             client()
-            setConfigName("Quilt Client")
+            setConfigName("Fabric Client")
             ideConfigGenerated(true)
-            runDir("run")
+            runDir("runs/client")
         }
         server {
             server()
-            setConfigName("Quilt Server")
+            setConfigName("Fabric Server")
             ideConfigGenerated(true)
-            runDir("run")
+            runDir("runs/server")
         }
     }
-}
-
-processResources {
-    from project(":Common").sourceSets.main.resources
-    inputs.property 'version', version
-
-    filesMatching('quilt.mod.json') {
-        expand "version": version
-    }
-}
-
-tasks.withType(JavaCompile).configureEach {
-    source(project(":Common").sourceSets.main.allSource)
-}
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
 }
 
 tasks.register('publishCurseForge', TaskPublishCurseForge) {
@@ -119,6 +103,10 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     if (project.hasProperty('emi_version')) {
         mainFile.addOptional("emi")
     }
+
+    mainFile.disableVersionDetection()
+    mainFile.addModLoader("Quilt")
+
     mainFile.addRequirement("qsl")
     mainFile.addOptional("catalogue-fabric")
     mainFile.addOptional("friends-and-foes")
@@ -178,4 +166,5 @@ modrinth {
         optional.project "chococraft"
         optional.project "critters-and-companions"
     }
+    loaders = "quilt".split(",") as List<String>
 }

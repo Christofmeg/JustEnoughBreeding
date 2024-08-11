@@ -38,17 +38,17 @@ minecraft {
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    minecraft "net.minecraftforge:forge:${forge_minecraft_version}-${forge_version}"
     // Hack fix for now, force jopt-simple to be exactly 5.0.4 because Mojang ships that version, but some transitive dependencies request 6.0+
     implementation('net.sf.jopt-simple:jopt-simple:5.0.4') { version { strictly '5.0.4' } }
 
     // JEI
     if (project.hasProperty('jei_version')) {
-        compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
-        compileOnly "mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"
+        compileOnly "mezz.jei:jei-${forge_minecraft_version}-common-api:${jei_version}"
+        compileOnly "mezz.jei:jei-${forge_minecraft_version}-forge-api:${jei_version}"
 //        compileOnly "me.shedaniel:REIPluginCompatibilities-forge-annotations:${reipc_forge_annotations_version}"
         if (project.hasProperty('enable_jei') && project.enable_jei.toBoolean()) {
-            runtimeOnly "mezz.jei:jei-${minecraft_version}-forge:${jei_version}"
+            runtimeOnly "mezz.jei:jei-${forge_minecraft_version}-forge:${jei_version}"
         }
     }
 
@@ -68,9 +68,9 @@ dependencies {
     // EMI
     if (project.hasProperty('emi_version')) {
         compileOnly "curse.maven:emi-580555:${emi_version}"
-        //    compileOnly "dev.emi:emi-forge:${emi_version}+${minecraft_version}"
+        //    compileOnly "dev.emi:emi-forge:${emi_version}+${forge_minecraft_version}"
         if (project.hasProperty('enable_emi') && project.enable_emi.toBoolean()) {
-            //        runtimeOnly "dev.emi:emi-forge:${emi_version}+${minecraft_version}"
+            //        runtimeOnly "dev.emi:emi-forge:${emi_version}+${forge_minecraft_version}"
             runtimeOnly "curse.maven:emi-580555:${emi_version}"
         }
     }

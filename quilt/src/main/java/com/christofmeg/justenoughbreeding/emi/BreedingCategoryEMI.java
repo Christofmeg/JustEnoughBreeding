@@ -23,6 +23,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ public class BreedingCategoryEMI implements EmiRecipe {
     public static final EmiTexture BACKGROUND = new EmiTexture(EmiRenderHelper.WIDGETS, 19, 1, 24, 24);
 
     public static EmiRecipeCategory TYPE = new EmiRecipeCategory(
-        new ResourceLocation(CommonConstants.MOD_ID + ":" + "breeding"),
+        ResourceLocation.parse(CommonConstants.MOD_ID + ":" + "breeding"),
         EmiStack.of(Items.WHEAT), EMIPlugin.simplifiedRenderer(), EmiRecipeSorting.none());
 
     protected BreedingCategoryEMI(Builder builder, BreedingRecipe breedingRecipe) {
@@ -69,8 +70,9 @@ public class BreedingCategoryEMI implements EmiRecipe {
     @Override
     public List<EmiIngredient> getCatalysts() {
         return List.of(EmiIngredient.of(recipe.breedingCatalyst),
-                EmiIngredient.of(recipe.extraInputStack)
-                );
+                EmiIngredient.of(recipe.extraInputStack),
+                EmiIngredient.of(Ingredient.of(recipe.spawnEgg))
+        );
     }
 
     @Override
@@ -80,6 +82,7 @@ public class BreedingCategoryEMI implements EmiRecipe {
             for (ItemStack item : recipe.resultItemStack.getItems()) {
                 list.add(EmiStack.of(item));
             }
+            list.add(EmiStack.of(recipe.spawnEgg));
         }
         return list;
     }

@@ -38,7 +38,7 @@ public class Utils {
 
         for (int count = minCount; count <= maxCount; count++) {
             for (String ingredientId : ingredientIds) {
-                Item ingredientItem = JustEnoughBreeding.getItemFromLoaderRegistries(new ResourceLocation(ingredientId.trim()));
+                Item ingredientItem = JustEnoughBreeding.getItemFromLoaderRegistries(ResourceLocation.parse(ingredientId.trim()));
                 combinedItemStacks.add(new ItemStack(ingredientItem, count));
             }
         }
@@ -74,7 +74,7 @@ public class Utils {
             if (ingredientId.trim().startsWith("#")) {
                 combinedIngredients.add(CommonUtils.createTagIngredient(ingredientId));
             } else {
-                Item ingredientItem = JustEnoughBreeding.getItemFromLoaderRegistries(new ResourceLocation(ingredientId.trim()));
+                Item ingredientItem = JustEnoughBreeding.getItemFromLoaderRegistries(ResourceLocation.parse(ingredientId.trim()));
                 combinedIngredients.add(Ingredient.of(new ItemStack(ingredientItem)));
             }
         }
@@ -144,7 +144,7 @@ public class Utils {
         currentLivingEntity.yHeadRot = yawRadians;
         currentLivingEntity.yHeadRotO = yawRadians;
 
-        stack.translate(0.0F, currentLivingEntity.getMyRidingOffset(currentLivingEntity), 0.0F); // Translate the entity vertically to adjust its position
+//        stack.translate(0.0F, currentLivingEntity.getMyRidingOffset(currentLivingEntity), 0.0F); // Translate the entity vertically to adjust its position
 
         Minecraft instance = Minecraft.getInstance();
         EntityRenderDispatcher entityRenderDispatcher = instance.getEntityRenderDispatcher(); // Get the entity rendering dispatcher

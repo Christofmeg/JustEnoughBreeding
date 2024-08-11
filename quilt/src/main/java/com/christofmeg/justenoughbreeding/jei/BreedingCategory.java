@@ -27,12 +27,12 @@ import org.jetbrains.annotations.NotNull;
 public class BreedingCategory implements IRecipeCategory<BreedingRecipe> {
 
     public static final RecipeType<BreedingRecipe> TYPE = new RecipeType<>(
-            new ResourceLocation(CommonConstants.MOD_ID, "breeding"), BreedingRecipe.class);
+            ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "breeding"), BreedingRecipe.class);
 
-    final ResourceLocation slotVanilla = new ResourceLocation("jei",
+    final ResourceLocation slotVanilla = ResourceLocation.fromNamespaceAndPath("jei",
             "textures/jei/atlas/gui/slot.png");
 
-    final ResourceLocation guiVanilla = new ResourceLocation("jei",
+    final ResourceLocation guiVanilla = ResourceLocation.fromNamespaceAndPath("jei",
             "textures/jei/gui/gui_vanilla.png");
 
     private final IDrawable background;
@@ -157,16 +157,16 @@ public class BreedingCategory implements IRecipeCategory<BreedingRecipe> {
         mobRenderSlotTopCenter.draw(stack, 36, 66);
 
         EntityType<?> entityType = recipe.entityType;
-        if(entityType != null) {
+        if (entityType != null) {
             Minecraft instance = Minecraft.getInstance();
             Font font = instance.font;
             Component entityName = Component.translatable(entityType.getDescriptionId());
 
             String entityNameString = entityName.getString(); // Convert Component to String
-            if(recipe.needsToBeTamed != null) {
+            if (recipe.needsToBeTamed != null) {
                 Component tamed = Component.translatable("translation.justenoughbreeding.tamed");
                 entityNameString += " (" + tamed.getString() + ")";
-            } else if(recipe.animalTrusting != null) {
+            } else if (recipe.animalTrusting != null) {
                 Component trusting = Component.translatable("translation.justenoughbreeding.trusting");
                 entityNameString += " (" + trusting.getString() + ")";
             }

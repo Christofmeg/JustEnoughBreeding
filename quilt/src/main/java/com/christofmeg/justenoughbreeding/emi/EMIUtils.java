@@ -35,10 +35,10 @@ public class EMIUtils {
                             if (mobIngredients != null && mobSpawnEgg != null) {
                                 Ingredient combinedIngredient = Utils.createCombinedIngredient(mobIngredients);
                                 List<Ingredient> combinedResultIngredient = Utils.createCombinedResultIngredients(mobResultItem, mobMinResultCount, mobMaxResultCount);
-                                Item spawnEggItem = JustEnoughBreeding.getItemFromLoaderRegistries(new ResourceLocation(mobSpawnEgg.trim()));
+                                Item spawnEggItem = JustEnoughBreeding.getItemFromLoaderRegistries(ResourceLocation.parse(mobSpawnEgg.trim()));
 
                                 if (spawnEggItem instanceof SpawnEggItem spawnEgg) {
-                                    EntityType<?> entityType = spawnEgg.getType(null);
+                                    EntityType<?> entityType = spawnEgg.getType(spawnEggItem.getDefaultInstance());
                                     Boolean needsToBeTamed = CommonConstants.breedingNeedsToBeTamed.get(mobName);
                                     Boolean animalTrusting = CommonConstants.breedingNeedsToBeTrusting.get(mobName);
 
@@ -55,7 +55,7 @@ public class EMIUtils {
                                     BreedingRecipe breedingRecipe = Utils.createBreedingRecipe(entityType, combinedIngredient, spawnEggItem, needsToBeTamed, combinedResultIngredient, animalTrusting, combinedExtraIngredient);
                                     registration.addRecipe(
                                             BreedingCategoryEMI.builder()
-                                            .id(new ResourceLocation(CommonConstants.MOD_ID, "breeding" + "/" + breedingRecipe.entityType.getDescriptionId() + "/" + breedingRecipe.spawnEgg.getDescriptionId()))
+                                            .id(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "breeding" + "/" + breedingRecipe.entityType.getDescriptionId() + "/" + breedingRecipe.spawnEgg.getDescriptionId()))
                                             .breedingRecipe(breedingRecipe)
                                             .build()
                                     );
@@ -73,8 +73,8 @@ public class EMIUtils {
                             if (mobIngredients != null && mobSpawnEggItem != null && mobEntityName != null) {
                                 Ingredient combinedIngredient = Utils.createCombinedIngredient(mobIngredients);
                                 List<Ingredient> combinedResultIngredient = Utils.createCombinedResultIngredients(mobResultItem, mobMinResultCount, mobMaxResultCount);
-                                Item spawnEggItem = JustEnoughBreeding.getItemFromLoaderRegistries(new ResourceLocation(mobSpawnEggItem.trim()));
-                                EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(new ResourceLocation(mobEntityName.trim()));
+                                Item spawnEggItem = JustEnoughBreeding.getItemFromLoaderRegistries(ResourceLocation.parse(mobSpawnEggItem.trim()));
+                                EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(ResourceLocation.parse(mobEntityName.trim()));
                                 Boolean needsToBeTamed = CommonConstants.breedingNeedsToBeTamed.get(mobName);
                                 Boolean animalTrusting = CommonConstants.breedingNeedsToBeTrusting.get(mobName);
 
@@ -91,7 +91,7 @@ public class EMIUtils {
                                 BreedingRecipe breedingRecipe = Utils.createBreedingRecipe(entityType, combinedIngredient, spawnEggItem, needsToBeTamed, combinedResultIngredient, animalTrusting, combinedExtraIngredient);
                                 registration.addRecipe(
                                         BreedingCategoryEMI.builder()
-                                                .id(new ResourceLocation(CommonConstants.MOD_ID, "breeding" + "/" + breedingRecipe.entityType.getDescriptionId() + "/" + breedingRecipe.spawnEgg.getDescriptionId()))
+                                                .id(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "breeding" + "/" + breedingRecipe.entityType.getDescriptionId() + "/" + breedingRecipe.spawnEgg.getDescriptionId()))
                                                 .breedingRecipe(breedingRecipe)
                                                 .build()
                                 );

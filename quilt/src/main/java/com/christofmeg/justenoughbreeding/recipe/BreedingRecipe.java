@@ -45,7 +45,7 @@ public class BreedingRecipe {
 
         if (currentLivingEntity != null) {
             if (currentLivingEntity instanceof TamableAnimal tamableAnimal) {
-                tamableAnimal.setTame(true);
+                tamableAnimal.setTame(true, true);
             }
         }
 

@@ -4,7 +4,6 @@ import me.shedaniel.rei.api.client.plugins.REIClientPlugin;
 import me.shedaniel.rei.api.client.registry.category.CategoryRegistry;
 import me.shedaniel.rei.api.client.registry.display.DisplayRegistry;
 
-@SuppressWarnings("unused")
 public class REIPlugin implements REIClientPlugin {
 
     @Override
