@@ -1,2 +1,2 @@
-1.2.5:
-- Update version range
+1.2.4:
+- Made breeding category searchable with spawn eggs

@@ -103,7 +103,8 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     if (project.hasProperty('emi_version')) {
         mainFile.addOptional("emi")
     }
-    mainFile.addRequirement("fabric-api")
+    mainFile.addModLoader('Quilt')
+    mainFile.addRequirement("qsl")
     mainFile.addOptional("catalogue-fabric")
     mainFile.addOptional("friends-and-foes")
     mainFile.addOptional("kiwi-boi")
@@ -144,7 +145,7 @@ modrinth {
         if (project.hasProperty('emi_version')) {
             optional.project "emi"
         }
-        required.project "fabric-api"
+        required.project "qsl"
         optional.project "naturalist"
         optional.project "ydms-glare"
         optional.project "friends-and-foes"
@@ -162,4 +163,5 @@ modrinth {
         optional.project "chococraft"
         optional.project "critters-and-companions"
     }
+    loaders = "quilt".split(",") as List<String>
 }
