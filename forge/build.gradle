@@ -168,7 +168,12 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
 }
 
 modrinth {
-    token = file('../../API Tokens/modrinth.md').text
+    def tokenText = file('../../API Tokens/modrinth.md')
+    if (tokenText.exists()) {
+        token = tokenText.text
+    } else {
+        token = ""
+    }
     projectId = "${modrinth_id}"
     versionName = getArchivesBaseName() + "-" + getVersion()
     versionType = "${release_type}"
