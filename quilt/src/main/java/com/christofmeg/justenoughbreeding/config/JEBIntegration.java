@@ -1,7 +1,7 @@
 package com.christofmeg.justenoughbreeding.config;
 
 import com.christofmeg.justenoughbreeding.config.integrated.*;
-import org.quiltmc.loader.api.QuiltLoader;
+import net.fabricmc.loader.api.FabricLoader;
 
 public class JEBIntegration {
 
@@ -9,55 +9,55 @@ public class JEBIntegration {
 
         MinecraftIntegration.init();
 
-        if (QuiltLoader.isModLoaded("snuffles")) {
+        if (FabricLoader.getInstance().isModLoaded("snuffles")) {
             SnufflesIntegration.init();
         }
-        if (QuiltLoader.isModLoaded("snowpig")) {
+        if (FabricLoader.getInstance().isModLoaded("snowpig")) {
             SnowPigIntegration.init();
         }
-        if (QuiltLoader.isModLoaded("aqupdcaracal")) {
+        if (FabricLoader.getInstance().isModLoaded("aqupdcaracal")) {
             AqcaracalIntegration.init();
         }
-        if (QuiltLoader.isModLoaded("theducksmod")) {
+        if (FabricLoader.getInstance().isModLoaded("theducksmod")) {
             TheDucksModIntegration.init();
         }
-        if (QuiltLoader.isModLoaded("fennecfox")) {
+        if (FabricLoader.getInstance().isModLoaded("fennecfox")) {
             FennecFoxIntegration.init();
         }
-        if (QuiltLoader.isModLoaded("ydms_redpanda")) {
+        if (FabricLoader.getInstance().isModLoaded("ydms_redpanda")) {
             RedPandaIntegration.init();
         }
-        if (QuiltLoader.isModLoaded("frozenup")) {
+        if (FabricLoader.getInstance().isModLoaded("frozenup")) {
             FrozenUpIntegration.init();
         }
-        if (QuiltLoader.isModLoaded("glare")) {
+        if (FabricLoader.getInstance().isModLoaded("glare")) {
             GlareIntegration.init();
         }
-        if (QuiltLoader.isModLoaded("lilwings")) {
+        if (FabricLoader.getInstance().isModLoaded("lilwings")) {
             LilWingsIntegration.init();
         }
-        if (QuiltLoader.isModLoaded("duckling")) {
+        if (FabricLoader.getInstance().isModLoaded("duckling")) {
             DucklingIntegration.init();
         }
-        if (QuiltLoader.isModLoaded("twilightforest")) {
+        if (FabricLoader.getInstance().isModLoaded("twilightforest")) {
             TwilightForestIntegration.init();
         }
-        if (QuiltLoader.isModLoaded("chococraft")) {
+        if (FabricLoader.getInstance().isModLoaded("chococraft")) {
             ChocoCraftIntegration.init();
         }
-        if (QuiltLoader.isModLoaded("ecologics")) {
+        if (FabricLoader.getInstance().isModLoaded("ecologics")) {
             EcologicsIntegration.init();
         }
-        if (QuiltLoader.isModLoaded("naturalist")) {
+        if (FabricLoader.getInstance().isModLoaded("naturalist")) {
             NaturalistIntegration.init();
         }
-        if (QuiltLoader.isModLoaded("friendsandfoes")) {
+        if (FabricLoader.getInstance().isModLoaded("friendsandfoes")) {
             FriendsAndFoesIntegration.init();
         }
-        if (QuiltLoader.isModLoaded("biomemakeover")) {
+        if (FabricLoader.getInstance().isModLoaded("biomemakeover")) {
             BiomeMakeoverIntegration.init();
         }
-        if (QuiltLoader.isModLoaded("crittersandcompanions")) {
+        if (FabricLoader.getInstance().isModLoaded("crittersandcompanions")) {
             CrittersAndCompanions.init();
         }
     }

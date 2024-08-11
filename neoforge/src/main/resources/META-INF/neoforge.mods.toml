@@ -1,26 +1,26 @@
 modLoader="javafml"
-loaderVersion="[2,)"
+loaderVersion="${neoforge_loader_version_range}"
 issueTrackerURL="https://github.com/Christofmeg/JustEnoughBreeding/issues"
-license="The MIT License (MIT)"
+license="${license}"
 [[mods]]
-    modId="justenoughbreeding"
+    modId="${mod_id}"
     version="${version}"
-    displayName="Just Enough Breeding"
+    displayName="${mod_name}"
     displayURL="https://github.com/Christofmeg/JustEnoughBreeding"
     logoFile="icon.png"
-    authors="Christofmeg"
-    description="JEI/REI/EMI plugin that displays breeding information"
-[[dependencies.justenoughbreeding]]
+    authors="${mod_author}"
+    description="${description}"
+[[dependencies.${mod_id}]]
     modId="neoforge"
     type="required"
-    versionRange="[20.5,)"
+    versionRange="${neoforge_loader_version_range}"
     ordering="NONE"
     side="BOTH"
-[[dependencies.justenoughbreeding]]
+[[dependencies.${mod_id}]]
     modId="minecraft"
     type="required"
-    versionRange="[1.20.5,1.21)"
+    versionRange="${neoforge_minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
-[modproperties.justenoughbreeding]
+[modproperties.${mod_id}]
     catalogueImageIcon="catalogue-icon.png"

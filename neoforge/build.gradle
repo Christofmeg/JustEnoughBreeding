@@ -86,7 +86,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.changelog = file('changelog.md')
     mainFile.addGameVersion('Client', 'Server')
     mainFile.releaseType = "${release_type}"
-    "${forge_release_versions}".split(',').each {
+    "${neoforge_release_versions}".split(',').each {
         mainFile.addGameVersion("${it}")
     }
     if (project.hasProperty('jei_version')) {
@@ -153,7 +153,7 @@ modrinth {
     versionType = "${release_type}"
     changelog = file('changelog.md').text
     uploadFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")
-    gameVersions = "${forge_release_versions}".split(",") as List<String>
+    gameVersions = "${neoforge_release_versions}".split(",") as List<String>
     dependencies {
         if (project.hasProperty('jei_version')) {
             optional.project "jei"

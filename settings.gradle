@@ -60,4 +60,4 @@ plugins {
 }
 
 rootProject.name = 'JustEnoughBreeding'
-include("common", "fabric", "forge", "neoforge"/*, "quilt"*/)
+include("common", "fabric", "forge", "neoforge", "quilt")
