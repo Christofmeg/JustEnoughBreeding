@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 public class CommonUtils {
 
-/*-----------------------------------------------------------------------------------------*/
+    /*-----------------------------------------------------------------------------------------*/
     public static void addAnimal(String name, String ingredient, List<String> animalNames, Map<String, String> ingredients, Map<String, Integer> breedingCooldown) {
         animalNames.add(name);
         ingredients.put(name, ingredient);
@@ -68,9 +68,22 @@ public class CommonUtils {
         eggsAmountMax.put(name, eggAmountMax);
     }
 
+    public static void addAnimalEggLayingExtraIngredients(String name, String spawnEggItem, String ingredient, String extraIngredient, String resultEgg, int eggAmountMax, List<String> animalNames, Map<String, String> ingredients, Map<String, String> extraIngredients, Map<String, Integer> breedingCooldown, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax, Map<String, String> spawnEggItems) {
+        addAnimalEggLaying(name, ingredient, resultEgg, eggAmountMax, animalNames, ingredients, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
+        spawnEggItems.put(name, spawnEggItem);
+        extraIngredients.put(name, extraIngredient);
+    }
+
     public static void addAnimalEggLaying(String name, String spawnEggItem, String entityFromName, String ingredient, String resultEgg, int eggAmountMax, List<String> animalNames, Map<String, String> ingredients, Map<String, Integer> breedingCooldown, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax, Map<String, String> spawnEggItems, Map<String, String> entitiesFromNames) {
         addAnimalEggLaying(name, ingredient, resultEgg, eggAmountMax, animalNames, ingredients, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
         spawnEggItems.put(name, spawnEggItem);
+        entitiesFromNames.put(name, entityFromName);
+    }
+
+    public static void addAnimalEggLaying(String name, String spawnEggItem, String entityFromName, String ingredient, String extraIngredient, String resultEgg, int eggAmountMax, List<String> animalNames, Map<String, String> ingredients, Map<String, String> extraIngredients, Map<String, Integer> breedingCooldown, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax, Map<String, String> spawnEggItems, Map<String, String> entitiesFromNames) {
+        addAnimalEggLaying(name, ingredient, resultEgg, eggAmountMax, animalNames, ingredients, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
+        spawnEggItems.put(name, spawnEggItem);
+        extraIngredients.put(name, extraIngredient);
         entitiesFromNames.put(name, entityFromName);
     }
 
@@ -157,7 +170,7 @@ public class CommonUtils {
     public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, Map<String, @Nullable String> extraIngredients, String MOD, Map<String, Integer> breedingCooldown, @Nullable Map<String, Boolean> needsToBeTamed, @Nullable String spawnEggString, boolean addStringBeforeAnimalName, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
         addAnimalNames(animalNames, ingredients, extraIngredients, MOD, breedingCooldown, needsToBeTamed, spawnEggString, addStringBeforeAnimalName);
         for (String animal : animalNames) {
-            if (resultEggs.get(animal) != null && eggsAmountMin.get(animal) != null && eggsAmountMax.get(animal) != null) {
+            if(resultEggs.get(animal) != null && eggsAmountMin.get(animal) != null && eggsAmountMax.get(animal) != null) {
                 String animalEggResult = resultEggs.get(animal);
                 int animalMinEggAmount = eggsAmountMin.get(animal);
                 int animalMaxEggAmount = eggsAmountMax.get(animal);
@@ -183,7 +196,7 @@ public class CommonUtils {
     public static void addAnimalNames(List<String> animalNames, Map<String, String> ingredients, Map<String, @Nullable String> extraIngredients, @Nullable Map<String, String> spawnEggItems, @Nullable Map<String, String> entitiesFromNames, String MOD, Map<String, Integer> breedingCooldown, @Nullable Map<String, Boolean> needsToBeTamed, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax) {
         addAnimalNames(animalNames, ingredients, extraIngredients, spawnEggItems, entitiesFromNames, MOD, breedingCooldown, needsToBeTamed);
         for (String animal : animalNames) {
-            if (resultEggs.get(animal) != null && eggsAmountMin.get(animal) != null && eggsAmountMax.get(animal) != null) {
+            if(resultEggs.get(animal) != null && eggsAmountMin.get(animal) != null && eggsAmountMax.get(animal) != null) {
                 String animalEggResult = resultEggs.get(animal);
                 int animalMinEggAmount = eggsAmountMin.get(animal);
                 int animalMaxEggAmount = eggsAmountMax.get(animal);
@@ -422,7 +435,7 @@ public class CommonUtils {
     public static void addTrustingOnly(String name, String trustingIngredient, List<String> trustingOnly, Map<String, String> trustingIngredients, Map<String, Integer> trustingChance) {
         trustingOnly.add(name);
         trustingIngredients.put(name, trustingIngredient);
-        trustingChance.put(name, 33); //TODO rework this to display that foxes are breedable without trusting the player, but can trust the player if bred
+        trustingChance.put(name, 33);
     }
 
     @SuppressWarnings("unused")

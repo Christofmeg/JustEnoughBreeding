@@ -104,8 +104,9 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
         mainFile.addOptional("emi")
     }
 
-    mainFile.disableVersionDetection()
+    disableVersionDetection()
     mainFile.addModLoader("Quilt")
+    mainFile.addJavaVersion("Java ${java_version}")
 
     mainFile.addRequirement("qsl")
     mainFile.addOptional("catalogue-fabric")
