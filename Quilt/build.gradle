@@ -19,7 +19,6 @@ dependencies {
     mappings loom.officialMojangMappings()
     modImplementation "org.quiltmc:quilt-loader:${quilt_loader_version}"
     modImplementation "org.quiltmc.quilted-fabric-api:quilted-fabric-api:${quilt_version}-${quilt_minecraft_version}"
-    implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
     implementation project(":Common")
 
     // JEI
@@ -83,11 +82,29 @@ loom {
 
 processResources {
     from project(":Common").sourceSets.main.resources
-    inputs.property 'version', version
+    def expandProps = [
+            "version": version,
+            "group": project.group, //Else we target the task's group.
+            "minecraft_version": minecraft_version,
+            "forge_version": forge_version,
+            "forge_loader_version_range": forge_loader_version_range,
+            "forge_version_range": forge_version_range,
+            "minecraft_version_range": minecraft_version_range,
+            "fabric_version": fabric_version,
+            "fabric_loader_version": fabric_loader_version,
+            "fabric_loader_version_major": fabric_loader_version_major,
+            "mod_name": mod_name,
+            "mod_author": mod_author,
+            "mod_id": mod_id,
+            "license": license,
+            "description": project.description,
+            "java_version": java_version
+    ]
 
-    filesMatching('quilt.mod.json') {
-        expand "version": version
+    filesMatching(['pack.mcmeta', 'fabric.mod.json', 'META-INF/mods.toml', 'META-INF/neoforge.mods.toml', 'quilt.mod.json', '*.mixins.json']) {
+        expand expandProps
     }
+    inputs.properties(expandProps)
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -143,7 +160,12 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
 }
 
 modrinth {
-    token = file('../../API Tokens/modrinth.md').text
+    def tokenText = file('../../API Tokens/modrinth.md')
+    if (tokenText.exists()) {
+        token = tokenText.text
+    } else {
+        token = ""
+    }
     projectId = "${modrinth_id}"
     versionName = getArchivesBaseName() + "-" + getVersion()
     versionType = "${release_type}"

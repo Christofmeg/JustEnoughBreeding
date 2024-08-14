@@ -59,15 +59,15 @@ dependencies {
     }
 
     // REI
-    if (project.hasProperty('rei_version') &&
-            project.hasProperty('cloth_config_version') &&
-            project.hasProperty('architectury_version')) {
+    if (project.hasProperty('rei_version') && project.hasProperty('cloth_config_version') && project.hasProperty('architectury_version')) {
         compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-api-forge:${rei_version}")
         compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-default-plugin-forge:${rei_version}")
-        implementation fg.deobf("me.shedaniel.cloth:cloth-config-forge:${cloth_config_version}")
-        implementation fg.deobf("dev.architectury:architectury-forge:${architectury_version}")
+        compileOnly fg.deobf("me.shedaniel.cloth:cloth-config-forge:${cloth_config_version}")
+        compileOnly fg.deobf("dev.architectury:architectury-forge:${architectury_version}")
         if (project.hasProperty('enable_rei') && project.enable_rei.toBoolean()) {
             runtimeOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-forge:${rei_version}")
+            runtimeOnly fg.deobf("me.shedaniel.cloth:cloth-config-forge:${cloth_config_version}")
+            runtimeOnly fg.deobf("dev.architectury:architectury-forge:${architectury_version}")
         }
     }
 
@@ -102,6 +102,29 @@ tasks.withType(JavaCompile).configureEach {
 
 processResources {
     from project(":Common").sourceSets.main.resources
+    def expandProps = [
+            "version": version,
+            "group": project.group, //Else we target the task's group.
+            "minecraft_version": minecraft_version,
+            "forge_version": forge_version,
+            "forge_loader_version_range": forge_loader_version_range,
+            "forge_version_range": forge_version_range,
+            "minecraft_version_range": minecraft_version_range,
+            "fabric_version": fabric_version,
+            "fabric_loader_version": fabric_loader_version,
+            "fabric_loader_version_major": fabric_loader_version_major,
+            "mod_name": mod_name,
+            "mod_author": mod_author,
+            "mod_id": mod_id,
+            "license": license,
+            "description": project.description,
+            "java_version": java_version
+    ]
+
+    filesMatching(['pack.mcmeta', 'fabric.mod.json', 'META-INF/mods.toml', 'META-INF/neoforge.mods.toml', 'quilt.mod.json', '*.mixins.json']) {
+        expand expandProps
+    }
+    inputs.properties(expandProps)
 }
 
 jar.finalizedBy('reobfJar')
@@ -173,10 +196,17 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("creatures-and-beasts")
     mainFile.addOptional("winter-overhaul")
     mainFile.addOptional("critters-and-companions")
+    mainFile.addOptional("ambient-additions")
+    mainFile.addOptional("terrafirmacraft")
 }
 
 modrinth {
-    token = file('../../API Tokens/modrinth.md').text
+    def tokenText = file('../../API Tokens/modrinth.md')
+    if (tokenText.exists()) {
+        token = tokenText.text
+    } else {
+        token = ""
+    }
     projectId = "${modrinth_id}"
     versionName = getArchivesBaseName() + "-" + getVersion()
     versionType = "${release_type}"
@@ -222,5 +252,6 @@ modrinth {
         optional.project "creatures-and-beasts"
         optional.project "winter-overhaul"
         optional.project "critters-and-companions"
+        optional.project "terrafirmacraft"
     }
 }

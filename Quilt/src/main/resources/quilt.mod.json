@@ -1,8 +1,8 @@
 {
     "schema_version": 1,
     "quilt_loader": {
-        "group": "com.christofmeg.justenoughbreeding",
-        "id": "justenoughbreeding",
+        "group": "${group}",
+        "id": "${mod_id}",
         "version": "${version}",
         "intermediate_mappings": "net.fabricmc:intermediary",
         "entrypoints": {
@@ -30,10 +30,10 @@
 			}
         ],
         "metadata": {
-            "name": "Just Enough Breeding",
-            "description": "JEI/REI/EMI plugin that displays breeding information",
+            "name": "${mod_name}",
+            "description": "${description}",
             "contributors": {
-                "Christofmeg": "Developer"
+                "${mod_author}": "Developer"
             },
             "contact": {
 				"homepage": "https://github.com/Christofmeg/JustEnoughBreeding",

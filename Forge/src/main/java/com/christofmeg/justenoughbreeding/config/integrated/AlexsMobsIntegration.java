@@ -30,7 +30,7 @@ public class AlexsMobsIntegration {
 
     public static void init() {
         CommonUtils.addAnimal("alligator_snapping_turtle", CommonStrings.COD, animalNames, ingredients, breedingCooldown);
-        CommonUtils.addAnimal("anaconda", CommonStrings.CHICKEN, animalNames, ingredients, breedingCooldown);
+        CommonUtils.addAnimal("anaconda", CommonStrings.CHICKENS, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("anteater", CommonStrings.LEAFCUTTER, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("bald_eagle", CommonStrings.FLESH, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("banana_slug", CommonStrings.BROWN_MUSHROOM, animalNames, ingredients, breedingCooldown);

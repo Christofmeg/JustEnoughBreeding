@@ -1,6 +1,6 @@
 {
     "pack": {
-        "description": "§5Just Enough Breeding",
-        "pack_format": 10
+        "description": "${mod_name}",
+        "pack_format": 13
     }
 }
