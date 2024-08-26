@@ -1,4 +1,2 @@
-1.3.0:
-- Ambient Additions Integration
-- Terra Firma Craft Integration
-- Implement [#15](https://github.com/Christofmeg/JustEnoughBreeding/issues/15)
+1.3.1:
+- Prevent variant cycling if Entity Model Features or Optifine is present
