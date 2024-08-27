@@ -9,7 +9,7 @@ plugins {
     id 'com.modrinth.minotaur' version '2.+'
 }
 
-archivesBaseName = "${mod_id}-neoforge-${neo_supported_versions}"
+archivesBaseName = "${mod_id}-neoforge-${neoforge_supported_versions}"
 /*
 runs {
     configureEach {
@@ -31,7 +31,7 @@ runs {
  */
 
 minecraft {
-    mappings channel: 'official', version: neo_minecraft_version
+    mappings channel: 'official', version: neoforge_minecraft_version
 
     runs {
         client {
@@ -66,17 +66,17 @@ minecraft {
 }
 
 dependencies {
-//    implementation "net.neoforged:neoforge:${neo_minecraft_version}"
+//    implementation "net.neoforged:neoforge:${neoforge_minecraft_version}"
     minecraft "net.minecraftforge:forge:${forge_minecraft_version}-${forge_version}"
     compileOnly project(":Common")
 
     // JEI
     if (project.hasProperty('jei_version')) {
-        compileOnly(fg.deobf("mezz.jei:jei-${neo_minecraft_version}-common-api:${jei_version}"))
-        compileOnly(fg.deobf("mezz.jei:jei-${neo_minecraft_version}-forge-api:${jei_version}"))
+        compileOnly(fg.deobf("mezz.jei:jei-${neoforge_minecraft_version}-common-api:${jei_version}"))
+        compileOnly(fg.deobf("mezz.jei:jei-${neoforge_minecraft_version}-forge-api:${jei_version}"))
         compileOnly fg.deobf("me.shedaniel:REIPluginCompatibilities-forge-annotations:${rei_version}")
         if (project.hasProperty('enable_jei') && project.enable_jei.toBoolean()) {
-            runtimeOnly(fg.deobf("mezz.jei:jei-${neo_minecraft_version}-forge:${jei_version}"))
+            runtimeOnly(fg.deobf("mezz.jei:jei-${neoforge_minecraft_version}-forge:${jei_version}"))
         }
     }
 
@@ -96,21 +96,21 @@ dependencies {
     // EMI
     if (project.hasProperty('emi_version')) {
         compileOnly fg.deobf("curse.maven:emi-580555:${emi_version}")
-//        compileOnly "dev.emi:emi-forge:${emi_version}+${neo_minecraft_version}"
+//        compileOnly "dev.emi:emi-forge:${emi_version}+${neoforge_minecraft_version}"
         if (project.hasProperty('enable_emi') && project.enable_emi.toBoolean()) {
-//            runtimeOnly "dev.emi:emi-forge:${emi_version}+${neo_minecraft_version}"
+//            runtimeOnly "dev.emi:emi-forge:${emi_version}+${neoforge_minecraft_version}"
             runtimeOnly fg.deobf("curse.maven:emi-580555:${emi_version}")
         }
     }
 
     // JADE
     if (project.hasProperty('jade_version')) {
-        implementation fg.deobf("curse.maven:jade-324717:${jade_version}")
+        runtimeOnly fg.deobf("curse.maven:jade-324717:${jade_version}")
     }
 
     // CATALOGUE
     if (project.hasProperty('catalogue_version')) {
-        implementation fg.deobf("curse.maven:catalogue-459701:${catalogue_version}")
+        runtimeOnly fg.deobf("curse.maven:catalogue-459701:${catalogue_version}")
     }
 
 }
@@ -121,6 +121,28 @@ tasks.withType(JavaCompile).configureEach {
 
 processResources {
     from project(":Common").sourceSets.main.resources
+    def expandProps = [
+            "version": version,
+            "group": project.group,
+            "java_version": java_version,
+            "minecraft_version": minecraft_version,
+            "mod_name": mod_name,
+            "mod_author": mod_author,
+            "mod_id": mod_id,
+            "license": license,
+            "description": project.description,
+            "minecraft_version_range": minecraft_version_range,
+
+            "neoforge_version": neoforge_version,
+            "neoforge_loader_version_range": neoforge_loader_version_range,
+            "neoforge_version_range": neoforge_version_range,
+            "neoforge_minecraft_version_range": neoforge_minecraft_version_range
+    ]
+
+    filesMatching(['pack.mcmeta', 'META-INF/mods.toml', 'META-INF/neoforge.mods.toml', '*.mixins.json']) {
+        expand expandProps
+    }
+    inputs.properties(expandProps)
 }
 
 jar.finalizedBy('reobfJar')
