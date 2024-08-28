@@ -19,7 +19,6 @@ dependencies {
     mappings loom.officialMojangMappings()
     modImplementation "org.quiltmc:quilt-loader:${quilt_loader_version}"
     modImplementation "org.quiltmc.quilted-fabric-api:quilted-fabric-api:${quilt_version}-${quilt_minecraft_version}"
-    implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
     implementation project(":Common")
 
     // JEI
@@ -54,12 +53,12 @@ dependencies {
 
     // JADE
     if (project.hasProperty('jade_version')) {
-        modImplementation "curse.maven:jade-324717:${jade_version}"
+        modRuntimeOnly "curse.maven:jade-324717:${jade_version}"
     }
 
     // CATALOGUE
     if (project.hasProperty('fabric_catalogue_version')) {
-        modImplementation("curse.maven:catalogue-667377:${fabric_catalogue_version}")
+        modRuntimeOnly("curse.maven:catalogue-667377:${fabric_catalogue_version}")
     }
 
 }
@@ -81,17 +80,29 @@ loom {
     }
 }
 
-processResources {
-    from project(":Common").sourceSets.main.resources
-    inputs.property 'version', version
-
-    filesMatching('quilt.mod.json') {
-        expand "version": version
-    }
-}
-
 tasks.withType(JavaCompile).configureEach {
     source(project(":Common").sourceSets.main.allSource)
+}
+
+processResources {
+    from project(":Common").sourceSets.main.resources
+    def expandProps = [
+            "version": version,
+            "group": project.group,
+            "java_version": java_version,
+            "minecraft_version": minecraft_version,
+            "mod_name": mod_name,
+            "mod_author": mod_author,
+            "mod_id": mod_id,
+            "license": license,
+            "description": project.description,
+            "minecraft_version_range": minecraft_version_range,
+    ]
+
+    filesMatching(['pack.mcmeta', 'fabric.mod.json', 'quilt.mod.json', '*.mixins.json']) {
+        expand expandProps
+    }
+    inputs.properties(expandProps)
 }
 
 java {

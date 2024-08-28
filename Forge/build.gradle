@@ -83,12 +83,12 @@ dependencies {
 
     // JADE
     if (project.hasProperty('jade_version')) {
-        implementation fg.deobf( "curse.maven:jade-324717:${jade_version}")
+        runtimeOnly fg.deobf( "curse.maven:jade-324717:${jade_version}")
     }
 
     // CATALOGUE
     if (project.hasProperty('catalogue_version')) {
-        implementation fg.deobf("curse.maven:catalogue-459701:${catalogue_version}")
+        runtimeOnly fg.deobf("curse.maven:catalogue-459701:${catalogue_version}")
     }
 
     // GREEK FANTASY https://www.curseforge.com/minecraft/mc-mods/greek-fantasy
@@ -102,6 +102,27 @@ tasks.withType(JavaCompile).configureEach {
 
 processResources {
     from project(":Common").sourceSets.main.resources
+    def expandProps = [
+            "version": version,
+            "group": project.group,
+            "java_version": java_version,
+            "minecraft_version": minecraft_version,
+            "mod_name": mod_name,
+            "mod_author": mod_author,
+            "mod_id": mod_id,
+            "license": license,
+            "description": project.description,
+            "minecraft_version_range": minecraft_version_range,
+
+            "forge_version": forge_version,
+            "forge_loader_version_range": forge_loader_version_range,
+            "forge_version_range": forge_version_range,
+    ]
+
+    filesMatching(['pack.mcmeta', 'META-INF/mods.toml', '*.mixins.json']) {
+        expand expandProps
+    }
+    inputs.properties(expandProps)
 }
 
 jar.finalizedBy('reobfJar')
