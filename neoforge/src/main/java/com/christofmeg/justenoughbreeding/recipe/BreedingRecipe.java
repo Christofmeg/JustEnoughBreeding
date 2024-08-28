@@ -7,6 +7,7 @@ import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
+import net.neoforged.fml.ModList;
 import org.jetbrains.annotations.Nullable;
 
 public class BreedingRecipe {
@@ -38,9 +39,17 @@ public class BreedingRecipe {
         long currentTime = System.currentTimeMillis();
         Level level = Minecraft.getInstance().level;
 
-        if (level != null && (currentLivingEntity == null || currentTime - lastEntityCreationTime >= ENTITY_CREATION_INTERVAL)) {
-            currentLivingEntity = (LivingEntity) entityType.create(level);
-            lastEntityCreationTime = currentTime;
+        if (level != null) {
+            if (currentLivingEntity == null) {
+                currentLivingEntity = (LivingEntity) entityType.create(level);
+                lastEntityCreationTime = currentTime;
+            }
+            if (currentTime - lastEntityCreationTime >= ENTITY_CREATION_INTERVAL) {
+                if (!ModList.get().isLoaded("entity_model_features") && !ModList.get().isLoaded("optifine")) {
+                    currentLivingEntity = (LivingEntity) entityType.create(level);
+                    lastEntityCreationTime = currentTime;
+                }
+            }
         }
 
         if (currentLivingEntity != null) {
