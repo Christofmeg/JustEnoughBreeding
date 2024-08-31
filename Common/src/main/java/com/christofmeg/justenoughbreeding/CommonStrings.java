@@ -99,7 +99,7 @@ public class CommonStrings {
     public static final String RED_PANDA_FOOD = "minecraft:bamboo, recrafted_creatures:apple_slice";
     public static final String CRIMSON_NYLIUM_FUNGUS = "minecraft:crimson_nylium, minecraft:crimson_fungus";
     public static final String MAGMA_CREAM = "minecraft:magma_cream";
-    public static final String CHICKEN = "minecraft:chicken, minecraft:cooked_chicken";
+    public static final String CHICKENS = "minecraft:chicken, minecraft:cooked_chicken";
     public static final String LEAFCUTTER = "alexsmobs:leafcutter_ant_pupa";
     public static final String CHORUS = "minecraft:chorus_fruit";
     public static final String MAGGOT = "alexsmobs:maggot";
@@ -173,5 +173,12 @@ public class CommonStrings {
     public static final String FERRET_FOOD_TAG = "#crittersandcompanions:ferret_food";
     public static final String SHIMA_ENAGA_FOOD_TAG = "#crittersandcompanions:shima_enaga_food";
     public static final String DRAGONFLY_WING = "crittersandcompanions:dragonfly_wing";
+    public static final String PUMPKIN_PIE = "minecraft:pumpkin_pie";
+    public static final String POTATO = "minecraft:potato";
+    public static final String WORM = "ambientadditions:worm";
+    public static final String PINOCCHIO_ANOLE_POT = "ambientadditions:pinocchio_anole_pot";
+    public static final String CARROT_APPLE = "minecraft:carrot, minecraft:apple";
+    public static final String CHICKEN = "minecraft:chicken";
+    public static final String PENGUIN_FOOD_TAG = "#tfc:penguin_food";
 
 }

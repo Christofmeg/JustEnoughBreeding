@@ -1,7 +1,13 @@
-1.2.1:
-- Call Of The Wild Integration
-- Creatures And Beasts Integration
-- Winter Overhaul Integration
-- Critters And Companions Integration
-- Implement [#13](https://github.com/Christofmeg/JustEnoughBreeding/issues/13)
-- Fix JEI Breeding Category missing background texture
+1.3.1:
+- Prevent variant cycling if Entity Model Features or Optifine is present
+
+1.3.0:
+- Ambient Additions Integration
+- Terra Firma Craft Integration
+
+1.2.4:
+- Update pack.mcmeta
+- Made breeding category searchable with spawn eggs
+
+1.2.3:
+- Added russian translation by [ImpOfficer](https://github.com/ImpOfficer)

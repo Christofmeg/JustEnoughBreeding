@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "id": "justenoughbreeding",
+  "id": "${mod_id}",
   "version": "${version}",
-  "name": "Just Enough Breeding",
-  "description": "JEI/REI/EMI plugin that displays breeding information",
+  "name": "${mod_name}",
+  "description": "${description}",
   "authors": [
-    "Christofmeg"
+    "${mod_author}"
   ],
   "contributors": [
   ],
@@ -14,7 +14,7 @@
     "sources": "https://github.com/Christofmeg/JustEnoughBreeding",
     "issues": "https://github.com/Christofmeg/JustEnoughBreeding/issues"
   },
-  "license": "The MIT License (MIT)",
+  "license": "${license}",
   "icon": "icon.png",
   "environment": "*",
   "entrypoints": {
@@ -32,9 +32,9 @@
     ]
   },
   "depends": {
-    "fabricloader": ">=0.14",
+    "fabricloader": ">=${fabric_loader_version_major}",
     "fabric": "*",
-    "minecraft": ">=1.19 <=1.19.2",
-    "java": ">=17"
+    "minecraft": ">=1.19 <=${minecraft_version}",
+    "java": ">=${java_version}"
   }
 }
