@@ -196,5 +196,8 @@ modrinth {
         optional.project "biome-makeover"
         optional.project "chococraft"
         optional.project "critters-and-companions"
+        optional.project "lets-do-meadow"
+        optional.project "fish-of-thieves"
+        optional.project "promenade"
     }
 }
