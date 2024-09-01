@@ -74,9 +74,7 @@ dependencies {
     // EMI
     if (project.hasProperty('emi_version')) {
         compileOnly fg.deobf("curse.maven:emi-580555:${emi_version}")
-    //    compileOnly "dev.emi:emi-forge:${emi_version}+${forge_minecraft_version}"
         if (project.hasProperty('enable_emi') && project.enable_emi.toBoolean()) {
-    //        runtimeOnly "dev.emi:emi-forge:${emi_version}+${forge_minecraft_version}"
             runtimeOnly fg.deobf("curse.maven:emi-580555:${emi_version}")
         }
     }
@@ -198,6 +196,13 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("critters-and-companions")
     mainFile.addOptional("ambient-additions")
     mainFile.addOptional("terrafirmacraft")
+    mainFile.addOptional("lets-do-meadow")
+    mainFile.addOptional("environmental")
+    mainFile.addOptional("atmospheric")
+    mainFile.addOptional("buzzier-bees")
+    mainFile.addOptional("upgrade-aquatic")
+    mainFile.addOptional("fish-of-thieves")
+    mainFile.addOptional("neapolitan")
 }
 
 modrinth {
@@ -253,5 +258,12 @@ modrinth {
         optional.project "winter-overhaul"
         optional.project "critters-and-companions"
         optional.project "terrafirmacraft"
+        optional.project "lets-do-meadow"
+        optional.project "environmental"
+        optional.project "atmospheric"
+        optional.project "buzzier-bees"
+        optional.project "upgrade-aquatic"
+        optional.project "fish-of-thieves"
+        optional.project "neapolitan"
     }
 }

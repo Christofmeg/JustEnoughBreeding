@@ -34,7 +34,6 @@ public class MinecraftIntegration {
         CommonUtils.addTrustingOnly("allay", "*", trustableOnly, trustingIngredients, trustingChance);
         CommonUtils.addAnimal("axolotl", CommonStrings.TROPICAL_FISH_BUCKET, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("bee", CommonStrings.FLOWERS_TAG, animalNames, ingredients, breedingCooldown);
-//        CommonUtils.addAnimal("camel", CommonStrings.CACTUS, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimalWithTamedTag("cat", CommonStrings.COD_SALMON, animalNames, ingredients, breedingCooldown, needsToBeTamed);
         CommonUtils.addTamableOnly("cat", CommonStrings.COD_SALMON, tamableOnly, tamingIngredients, tamingChance);
         CommonUtils.addAnimal("chicken", CommonStrings.SEEDS, animalNames, ingredients, breedingCooldown);
@@ -89,9 +88,6 @@ public class MinecraftIntegration {
         CommonUtils.addAnimal("pig", CommonStrings.VEGETABLES, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("rabbit", CommonStrings.DANDELION_CARROTS, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("sheep", CommonStrings.WHEAT, animalNames, ingredients, breedingCooldown);
-//        CommonUtils.addAnimalEggLaying("sniffer", CommonStrings.TORCHFLOWERS_SEEDS, "minecraft:sniffer_egg", 1,
-//                animalNames, ingredients, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
-
         CommonUtils.addAnimal("strider", CommonStrings.WARPED_FUNGUS, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimalWithTamedTag("trader_llama", CommonStrings.WHEAT_HAY, animalNames, ingredients, breedingCooldown, needsToBeTamed);
         CommonUtils.addTemperAnimal("trader_llama", new String[]{
@@ -104,11 +100,10 @@ public class MinecraftIntegration {
         CommonUtils.addAnimalWithTamedTag("wolf", MEAT, animalNames, ingredients, breedingCooldown, needsToBeTamed);
         CommonUtils.addTamableOnly("wolf", CommonStrings.BONE, tamableOnly, tamingIngredients, tamingChance);
 
-        CommonUtils.addAnimalNames(animalNames, ingredients, MOD, breedingCooldown, needsToBeTamed);
+        CommonUtils.addAnimalNames(animalNames, ingredients, MOD, breedingCooldown, needsToBeTamed, resultEggs, eggsAmountMin, eggsAmountMax);
         CommonUtils.addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, MOD);
         CommonUtils.addTrustingAnimalNames(trustableOnly, trustingIngredients, trustingChance, MOD);
         CommonUtils.addAnimalTempers(temperDataMap, MOD);
-        CommonUtils.addAnimalNames(animalNames, ingredients, MOD, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
     }
 
 }
