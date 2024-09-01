@@ -30,10 +30,10 @@ public class BreedingCategory implements IRecipeCategory<BreedingRecipe> {
             new ResourceLocation(CommonConstants.MOD_ID, "breeding"), BreedingRecipe.class);
 
     final ResourceLocation slotVanilla = new ResourceLocation("jei",
-            "textures/jei/atlas/gui/slot.png");
+            "textures/gui/slot.png");
 
     final ResourceLocation guiVanilla = new ResourceLocation("jei",
-            "textures/jei/gui/gui_vanilla.png");
+            "textures/gui/gui_vanilla.png");
 
     private final IDrawable background;
     private final IDrawable icon;

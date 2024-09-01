@@ -1,4 +1,6 @@
-1.2.1:
-- Critters And Companions Integration
-- Implement [#13](https://github.com/Christofmeg/JustEnoughBreeding/issues/13)
-- Fix JEI Breeding Category missing background texture
+1.4.0:
+- Update to new JEI texture paths: "jei:textures/gui/slot.png" and "jei:textures/gui/gui_vanilla.png"
+- Added portuguese translation by [WingFrosty](https://github.com/WingFrosty)
+- [Let's Do] Meadow Integration
+- Fish of Thieves Integration
+- Promenade Integration

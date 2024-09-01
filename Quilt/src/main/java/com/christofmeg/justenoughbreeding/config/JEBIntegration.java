@@ -60,5 +60,14 @@ public class JEBIntegration {
         if (QuiltLoader.isModLoaded("crittersandcompanions")) {
             CrittersAndCompanions.init();
         }
+        if (QuiltLoader.isModLoaded("meadow")) {
+            MeadowIntegration.init();
+        }
+        if (QuiltLoader.isModLoaded("fishofthieves")) {
+            FIshOfThievesIntegration.init();
+        }
+        if (QuiltLoader.isModLoaded("promenade")) {
+            PromenadeIntegration.init();
+        }
     }
 }
