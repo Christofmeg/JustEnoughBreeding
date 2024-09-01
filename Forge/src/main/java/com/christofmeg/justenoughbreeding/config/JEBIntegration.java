@@ -167,7 +167,7 @@ public class JEBIntegration {
             UpgradeAquaticIntegration.init();
         }
         if (ModList.get().isLoaded("fishofthieves")) {
-            FIshOfThievesIntegration.init();
+            FishOfThievesIntegration.init();
         }
         if (ModList.get().isLoaded("neapolitan")) {
             NeapolitanIntegration.init();

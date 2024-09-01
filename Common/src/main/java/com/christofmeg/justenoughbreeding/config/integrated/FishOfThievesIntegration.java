@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FIshOfThievesIntegration {
+public class FishOfThievesIntegration {
 
     static final String MOD = "fishofthieves";
 
