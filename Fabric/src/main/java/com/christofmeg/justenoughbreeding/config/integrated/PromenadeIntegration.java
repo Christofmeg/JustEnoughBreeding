@@ -20,6 +20,5 @@ public class PromenadeIntegration {
         CommonUtils.addAnimal("duck", CommonStrings.DUCK_TAG, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimalNames(animalNames, ingredients, MOD, breedingCooldown);
     }
-    //TODO needs updating on 1.20+
 
 }
