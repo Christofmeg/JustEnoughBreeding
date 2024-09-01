@@ -102,11 +102,10 @@ public class MinecraftIntegration {
         CommonUtils.addAnimalWithTamedTag("wolf", "#wolf" + "_food", animalNames, ingredients, breedingCooldown, needsToBeTamed);
         CommonUtils.addTamableOnly("wolf", CommonStrings.BONE, tamableOnly, tamingIngredients, tamingChance);
 
-        CommonUtils.addAnimalNames(animalNames, ingredients, MOD, breedingCooldown, needsToBeTamed);
+        CommonUtils.addAnimalNames(animalNames, ingredients, MOD, breedingCooldown, needsToBeTamed, resultEggs, eggsAmountMin, eggsAmountMax);
         CommonUtils.addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, MOD);
         CommonUtils.addTrustingAnimalNames(trustableOnly, trustingIngredients, trustingChance, MOD);
         CommonUtils.addAnimalTempers(temperDataMap, MOD);
-        CommonUtils.addAnimalNames(animalNames, ingredients, MOD, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
     }
 
 }

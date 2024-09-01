@@ -173,4 +173,14 @@ public class CommonStrings {
     public static final String CARROT_APPLE = "minecraft:carrot, minecraft:apple";
     public static final String CHICKEN = "minecraft:chicken";
     public static final String PENGUIN_FOOD_TAG = "#tfc:penguin_food";
+    public static final String SLABFISH_FOOD_TAG = "#environmental:slabfish_food";
+    public static final String DUCK_FOOD_TAG = "#environmental:duck_food";
+    public static final String DEER_FOOD_TAG = "#environmental:deer_food";
+    public static final String REINDEER_FOOD_TAG = "#environmental:reindeer_food";
+    public static final String YAK_FOOD_TAG = "#environmental:yak_food";
+    public static final String COCHINEAL_FOOD_TAG = "#atmospheric:cochineal_food";
+    public static final String WORMS_TAG = "#fishofthieves:worms";
+    public static final String CHIMPANZEE_FOOD_TAG = "#neapolitan:chimpanzee_food";
+    public static final String CAPYBARA_TAG = "#promenade:capybara";
+    public static final String DUCK_TAG = "#promenade:duck";
 }

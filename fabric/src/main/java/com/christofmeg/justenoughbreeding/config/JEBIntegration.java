@@ -60,5 +60,14 @@ public class JEBIntegration {
         if (FabricLoader.getInstance().isModLoaded("crittersandcompanions")) {
             CrittersAndCompanions.init();
         }
+        if (FabricLoader.getInstance().isModLoaded("meadow")) {
+            MeadowIntegration.init();
+        }
+        if (FabricLoader.getInstance().isModLoaded("fishofthieves")) {
+            FishOfThievesIntegration.init();
+        }
+        if (FabricLoader.getInstance().isModLoaded("promenade")) {
+            PromenadeIntegration.init();
+        }
     }
 }
