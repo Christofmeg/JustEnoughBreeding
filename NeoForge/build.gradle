@@ -287,8 +287,5 @@ modrinth {
         optional.project "upgrade-aquatic"
         optional.project "fish-of-thieves"
         optional.project "neapolitan"
-        optional.project "lets-do-meadow"
-        optional.project "fish-of-thieves"
-        optional.project "promenade"
     }
 }
