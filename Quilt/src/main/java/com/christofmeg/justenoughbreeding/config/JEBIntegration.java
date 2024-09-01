@@ -64,7 +64,7 @@ public class JEBIntegration {
             MeadowIntegration.init();
         }
         if (QuiltLoader.isModLoaded("fishofthieves")) {
-            FIshOfThievesIntegration.init();
+            FishOfThievesIntegration.init();
         }
         if (QuiltLoader.isModLoaded("promenade")) {
             PromenadeIntegration.init();
