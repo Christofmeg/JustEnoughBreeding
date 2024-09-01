@@ -151,6 +151,9 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("biome-makeover")
     mainFile.addOptional("chococraft")
     mainFile.addOptional("critters-and-companions")
+    mainFile.addOptional("lets-do-meadow")
+    mainFile.addOptional("fish-of-thieves")
+    mainFile.addOptional("promenade")
 }
 
 modrinth {
