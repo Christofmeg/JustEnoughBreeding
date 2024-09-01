@@ -57,36 +57,34 @@ dependencies {
     }
 
     // REI
-    if (project.hasProperty('rei_version') &&
-            project.hasProperty('cloth_config_version') &&
-            project.hasProperty('architectury_version')) {
+    if (project.hasProperty('rei_version') && project.hasProperty('cloth_config_version') && project.hasProperty('architectury_version')) {
         compileOnly "me.shedaniel:RoughlyEnoughItems-api-forge:${rei_version}"
         compileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-forge:${rei_version}"
-        implementation "me.shedaniel.cloth:cloth-config-forge:${cloth_config_version}"
-        implementation "dev.architectury:architectury-forge:${architectury_version}"
+        compileOnly "me.shedaniel.cloth:cloth-config-forge:${cloth_config_version}"
+        compileOnly "dev.architectury:architectury-forge:${architectury_version}"
         if (project.hasProperty('enable_rei') && project.enable_rei.toBoolean()) {
             runtimeOnly "me.shedaniel:RoughlyEnoughItems-forge:${rei_version}"
+            runtimeOnly "me.shedaniel.cloth:cloth-config-forge:${cloth_config_version}"
+            runtimeOnly "dev.architectury:architectury-forge:${architectury_version}"
         }
     }
 
     // EMI
     if (project.hasProperty('emi_version')) {
         compileOnly "curse.maven:emi-580555:${emi_version}"
-        //    compileOnly "dev.emi:emi-forge:${emi_version}+${minecraft_version}"
         if (project.hasProperty('enable_emi') && project.enable_emi.toBoolean()) {
-            //        runtimeOnly "dev.emi:emi-forge:${emi_version}+${minecraft_version}"
             runtimeOnly "curse.maven:emi-580555:${emi_version}"
         }
     }
 
     // JADE
     if (project.hasProperty('jade_version')) {
-        implementation "curse.maven:jade-324717:${jade_version}"
+        runtimeOnly "curse.maven:jade-324717:${jade_version}"
     }
 
     // CATALOGUE
     if (project.hasProperty('catalogue_version')) {
-        implementation "curse.maven:catalogue-459701:${catalogue_version}"
+        runtimeOnly "curse.maven:catalogue-459701:${catalogue_version}"
     }
 
 }
@@ -165,6 +163,13 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("critters-and-companions")
     mainFile.addOptional("ambient-additions")
     mainFile.addOptional("terrafirmacraft")
+    mainFile.addOptional("lets-do-meadow")
+    mainFile.addOptional("environmental")
+    mainFile.addOptional("atmospheric")
+    mainFile.addOptional("buzzier-bees")
+    mainFile.addOptional("upgrade-aquatic")
+    mainFile.addOptional("fish-of-thieves")
+    mainFile.addOptional("neapolitan")
 }
 
 modrinth {
@@ -219,5 +224,12 @@ modrinth {
         optional.project "winter-overhaul"
         optional.project "critters-and-companions"
         optional.project "terrafirmacraft"
+        optional.project "lets-do-meadow"
+        optional.project "environmental"
+        optional.project "atmospheric"
+        optional.project "buzzier-bees"
+        optional.project "upgrade-aquatic"
+        optional.project "fish-of-thieves"
+        optional.project "neapolitan"
     }
 }

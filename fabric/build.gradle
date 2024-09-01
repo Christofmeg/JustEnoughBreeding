@@ -27,9 +27,7 @@ dependencies {
     }
 
     // REI
-    if (project.hasProperty('rei_version') &&
-            project.hasProperty('cloth_config_version') &&
-            project.hasProperty('architectury_version')) {
+    if (project.hasProperty('rei_version') && project.hasProperty('cloth_config_version') && project.hasProperty('architectury_version')) {
         modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${rei_version}"
         modCompileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:${rei_version}"
         modApi "me.shedaniel.cloth:cloth-config-fabric:${cloth_config_version}"
@@ -49,12 +47,12 @@ dependencies {
 
     // JADE
     if (project.hasProperty('jade_version')) {
-        modImplementation "curse.maven:jade-324717:${jade_version}"
+        modRuntimeOnly "curse.maven:jade-324717:${jade_version}"
     }
 
     // CATALOGUE
     if (project.hasProperty('catalogue_version')) {
-        modImplementation("curse.maven:catalogue-459701:${catalogue_version}")
+        modRuntimeOnly("curse.maven:catalogue-459701:${catalogue_version}")
     }
 
 }
@@ -124,6 +122,9 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("biome-makeover")
     mainFile.addOptional("chococraft")
     mainFile.addOptional("critters-and-companions")
+    mainFile.addOptional("lets-do-meadow")
+    mainFile.addOptional("fish-of-thieves")
+    mainFile.addOptional("promenade")
 }
 
 modrinth {
@@ -166,5 +167,8 @@ modrinth {
         optional.project "biome-makeover"
         optional.project "chococraft"
         optional.project "critters-and-companions"
+        optional.project "lets-do-meadow"
+        optional.project "fish-of-thieves"
+        optional.project "promenade"
     }
 }
