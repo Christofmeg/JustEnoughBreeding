@@ -51,9 +51,7 @@ dependencies {
     }
 
     // REI
-    if (project.hasProperty('rei_version') &&
-            project.hasProperty('cloth_config_version') &&
-            project.hasProperty('architectury_version')) {
+    if (project.hasProperty('rei_version') && project.hasProperty('cloth_config_version') && project.hasProperty('architectury_version')) {
         compileOnly "me.shedaniel:RoughlyEnoughItems-api-neoforge:${rei_version}"
         compileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-neoforge:${rei_version}"
         api "me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}"
@@ -65,10 +63,8 @@ dependencies {
 
     // EMI
     if (project.hasProperty('emi_version')) {
-//        compileOnly "curse.maven:emi-580555:${emi_version}"
         compileOnly "dev.emi:emi-forge:${emi_version}+${neoforge_minecraft_version}"
         if (project.hasProperty('enable_emi') && project.enable_emi.toBoolean()) {
-//            runtimeOnly "dev.emi:emi-forge:${emi_version}+${neoforge_minecraft_version}"
             runtimeOnly "curse.maven:emi-580555:${emi_version}"
         }
     }
@@ -190,6 +186,13 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("critters-and-companions")
     mainFile.addOptional("ambient-additions")
     mainFile.addOptional("terrafirmacraft")
+    mainFile.addOptional("lets-do-meadow")
+    mainFile.addOptional("environmental")
+    mainFile.addOptional("atmospheric")
+    mainFile.addOptional("buzzier-bees")
+    mainFile.addOptional("upgrade-aquatic")
+    mainFile.addOptional("fish-of-thieves")
+    mainFile.addOptional("neapolitan")
 }
 
 modrinth {
@@ -245,5 +248,12 @@ modrinth {
         optional.project "critters-and-companions"
         optional.project "critters-and-companions"
         optional.project "terrafirmacraft"
+        optional.project "lets-do-meadow"
+        optional.project "environmental"
+        optional.project "atmospheric"
+        optional.project "buzzier-bees"
+        optional.project "upgrade-aquatic"
+        optional.project "fish-of-thieves"
+        optional.project "neapolitan"
     }
 }

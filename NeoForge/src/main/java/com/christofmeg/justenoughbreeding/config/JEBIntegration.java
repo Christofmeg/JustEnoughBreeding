@@ -151,5 +151,26 @@ public class JEBIntegration {
         if (ModList.get().isLoaded("tfc")) {
             TerraFirmaCraftIntegration.init();
         }
+        if (ModList.get().isLoaded("meadow")) {
+            MeadowIntegration.init();
+        }
+        if (ModList.get().isLoaded("environmental")) {
+            EnvironmentalIntegration.init();
+        }
+        if (ModList.get().isLoaded("atmospheric")) {
+            AtmosphericIntegration.init();
+        }
+        if (ModList.get().isLoaded("buzzier_bees")) {
+            BuzzierBeesIntegration.init();
+        }
+        if (ModList.get().isLoaded("upgrade_aquatic")) {
+            UpgradeAquaticIntegration.init();
+        }
+        if (ModList.get().isLoaded("fishofthieves")) {
+            FishOfThievesIntegration.init();
+        }
+        if (ModList.get().isLoaded("neapolitan")) {
+            NeapolitanIntegration.init();
+        }
     }
 }
