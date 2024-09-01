@@ -91,7 +91,7 @@ public class EMIUtils {
                                 BreedingRecipe breedingRecipe = Utils.createBreedingRecipe(entityType, combinedIngredient, spawnEggItem, needsToBeTamed, combinedResultIngredient, animalTrusting, combinedExtraIngredient);
                                 registration.addRecipe(
                                         BreedingCategoryEMI.builder()
-                                                .id(new ResourceLocation(CommonConstants.MOD_ID, "breeding" + "/" + breedingRecipe.entityType.getDescriptionId() + "/" + breedingRecipe.spawnEgg.getDescriptionId()))
+                                                .id(new ResourceLocation(CommonConstants.MOD_ID, "breeding" + "/" + breedingRecipe.entityType.getDescriptionId() + "/" + breedingRecipe.spawnEgg.getDescriptionId()+ "_2"))
                                                 .breedingRecipe(breedingRecipe)
                                                 .build()
                                 );
