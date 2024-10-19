@@ -1,8 +1,6 @@
 import net.darkhax.curseforgegradle.TaskPublishCurseForge
 
 plugins {
-//    id 'net.neoforged.gradle' version '[6.0.13,6.2)'
-//    id 'net.neoforged.gradle.userdev' version '7.0.116'
     id 'net.minecraftforge.gradle' version '6.+'
     id 'idea'
     id 'net.darkhax.curseforgegradle' version '1.+'
@@ -10,26 +8,6 @@ plugins {
 }
 
 archivesBaseName = "${mod_id}-neoforge-${neoforge_supported_versions}"
-
-/*
-runs {
-    configureEach {
-        systemProperty 'forge.logging.markers', 'REGISTRIES'
-        systemProperty 'forge.logging.console.level', 'debug'
-        modSource project.sourceSets.main
-    }
-
-    client {
-        systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
-    }
-
-    server {
-        systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
-        programArgument '--nogui'
-    }
-
-}
-*/
 
 minecraft {
     mappings channel: 'official', version: neoforge_minecraft_version
@@ -67,14 +45,12 @@ minecraft {
 }
 
 dependencies {
-//    implementation "net.neoforged:neoforge:${neoforge_minecraft_version}"
     minecraft "net.minecraftforge:forge:${forge_minecraft_version}-${forge_version}"
     compileOnly project(":Common")
 
     // JEI
     if (project.hasProperty('jei_version')) {
-        compileOnly(fg.deobf("mezz.jei:jei-${neoforge_minecraft_version}-common-api:${jei_version}"))
-        compileOnly(fg.deobf("mezz.jei:jei-${neoforge_minecraft_version}-forge-api:${jei_version}"))
+        compileOnly(fg.deobf("mezz.jei:jei-${neoforge_minecraft_version}-forge:${jei_version}"))
         compileOnly fg.deobf("me.shedaniel:REIPluginCompatibilities-forge-annotations:${rei_plugin_comp_version}")
         if (project.hasProperty('enable_jei') && project.enable_jei.toBoolean()) {
             runtimeOnly(fg.deobf("mezz.jei:jei-${neoforge_minecraft_version}-forge:${jei_version}"))

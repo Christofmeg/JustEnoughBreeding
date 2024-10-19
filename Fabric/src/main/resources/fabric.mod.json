@@ -36,5 +36,8 @@
     "fabric": "*",
     "minecraft": ">=${minecraft_version}",
     "java": ">=${java_version}"
+  },
+  "conflicts": {
+    "jei": "<15.20"
   }
 }

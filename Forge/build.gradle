@@ -50,8 +50,7 @@ dependencies {
 
     // JEI
     if (project.hasProperty('jei_version')) {
-        compileOnly(fg.deobf("mezz.jei:jei-${forge_minecraft_version}-common-api:${jei_version}"))
-        compileOnly(fg.deobf("mezz.jei:jei-${forge_minecraft_version}-forge-api:${jei_version}"))
+        compileOnly(fg.deobf("mezz.jei:jei-${forge_minecraft_version}-forge:${jei_version}"))
         compileOnly fg.deobf("me.shedaniel:REIPluginCompatibilities-forge-annotations:${rei_plugin_comp_version}")
         if (project.hasProperty('enable_jei') && project.enable_jei.toBoolean()) {
             runtimeOnly(fg.deobf("mezz.jei:jei-${forge_minecraft_version}-forge:${jei_version}"))

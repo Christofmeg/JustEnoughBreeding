@@ -27,6 +27,11 @@
       {
         "id": "quilt_base",
         "version": "*"
+      },
+      {
+        "id": "jei",
+        "version": ">=15.20",
+        "optional": true
       }
     ],
     "metadata": {

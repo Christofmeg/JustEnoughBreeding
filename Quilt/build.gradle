@@ -23,8 +23,7 @@ dependencies {
 
     // JEI
     if (project.hasProperty('jei_version')) {
-        modCompileOnly("mezz.jei:jei-${quilt_minecraft_version}-common-api:${jei_version}")
-        modCompileOnly("mezz.jei:jei-${quilt_minecraft_version}-fabric-api:${jei_version}")
+        modCompileOnly("mezz.jei:jei-${quilt_minecraft_version}-fabric:${jei_version}")
         if (project.hasProperty('enable_jei') && project.enable_jei.toBoolean()) {
             modRuntimeOnly("mezz.jei:jei-${quilt_minecraft_version}-fabric:${jei_version}")
         }

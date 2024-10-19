@@ -5,12 +5,17 @@ import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
 import com.christofmeg.justenoughbreeding.utils.Utils;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
-import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.gui.builder.IRecipeSlotBuilder;
+import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
+import mezz.jei.api.gui.placement.HorizontalAlignment;
+import mezz.jei.api.gui.placement.VerticalAlignment;
+import mezz.jei.api.gui.widgets.IRecipeExtrasBuilder;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
+import mezz.jei.api.recipe.category.AbstractRecipeCategory;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
@@ -24,139 +29,74 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Arrays;
-
-public class BreedingCategory implements IRecipeCategory<BreedingRecipe> {
+public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> implements IRecipeCategory<BreedingRecipe> {
 
     public static final RecipeType<BreedingRecipe> TYPE = new RecipeType<>(
             new ResourceLocation(CommonConstants.MOD_ID, "breeding"), BreedingRecipe.class);
 
-    final ResourceLocation slotVanilla = new ResourceLocation("jei",
-            "textures/jei/atlas/gui/slot.png");
-
-    final ResourceLocation guiVanilla = new ResourceLocation("jei",
-            "textures/jei/gui/gui_vanilla.png");
-
-    private final IDrawable background;
-    private final IDrawable icon;
-    private final IDrawable slot;
-    private final IDrawable outputSlot;
-    private final IDrawable mobRenderSlotTop;
-    private final IDrawable mobRenderSlotBottom;
-    private final IDrawable mobRenderSlotLeft;
-    private final IDrawable mobRenderSlotRight;
-    private final IDrawable mobRenderSlotTopCorner;
-    private final IDrawable mobRenderSlotTopCenter;
-
+    private final IDrawableStatic bigSlot;
     final int inputSlotItemX = 69;
-    final int inputSlotFrameX = 68;
-    final int inputSlot1ItemY = 52;
-    final int inputSlot1FrameY = 51;
-    final int inputSlot2FrameY = 32;
-
-    final int outputSlotFrameX = 94;
-    final int outputSlotFrameY = 38;
-
+    final int inputSlot1ItemY = 58;
+    final int outputSlotItemX = 130;
+    final int outputSlotItemY = 48;
+    final int inputSlot2ItemY = 33;
 
     public BreedingCategory(IGuiHelper helper, ItemLike itemStack) {
-        background = helper.createBlankDrawable(151, 91);
-        icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(itemStack));
-        slot = helper.drawableBuilder(slotVanilla, 0, 0, 18, 18).setTextureSize(18, 18).build();
-        outputSlot = helper.drawableBuilder(guiVanilla, 25, 224, 57, 26).setTextureSize(256,256).build();
-        mobRenderSlotTop = helper.drawableBuilder(guiVanilla, 56, 128, 25, 1).setTextureSize(256, 256).build();
-        mobRenderSlotBottom = helper.drawableBuilder(guiVanilla, 57, 153, 25, 1).setTextureSize(256, 256).build();
-        mobRenderSlotLeft = helper.drawableBuilder(guiVanilla, 56, 129, 1, 24).setTextureSize(256, 256).build();
-        mobRenderSlotRight = helper.drawableBuilder(guiVanilla, 81, 129, 1, 24).setTextureSize(256, 256).build();
-        mobRenderSlotTopCorner = helper.drawableBuilder(guiVanilla, 81, 128, 1, 1).setTextureSize(256, 256).build();
-        mobRenderSlotTopCenter = helper.drawableBuilder(guiVanilla, 57, 129, 24, 24).setTextureSize(256, 256).build();
-    }
-
-    @Override
-    public @NotNull RecipeType<BreedingRecipe> getRecipeType() {
-        return TYPE;
-    }
-
-    @Override
-    public @NotNull Component getTitle() {
-        return Component.translatable("translation.justenoughbreeding.breeding");
-    }
-
-    @Override
-    public @NotNull IDrawable getBackground() {
-        return background;
-    }
-
-    @Override
-    public @NotNull IDrawable getIcon() {
-        return icon;
+        super(TYPE, Component.translatable("translation.justenoughbreeding.breeding"), helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(itemStack)), 151 + 15, 91);
+        bigSlot = helper.getOutputSlot();
     }
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, BreedingRecipe recipe, @NotNull IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.INPUT, 134, 1).addItemStack((recipe.spawnEgg));
+        builder.addInputSlot(134 + 15, 1).setStandardSlotBackground().addItemStack(recipe.spawnEgg);
         builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).addItemStack(recipe.spawnEgg);
-        builder.addSlot(RecipeIngredientRole.INPUT, inputSlotItemX, inputSlot1ItemY).addIngredients((recipe.breedingCatalyst));
-
-        final int outputSlotItemX = 130;
-        final int outputSlotItemY = 43;
-        final int inputSlot2ItemY = 33;
+        IRecipeSlotBuilder inputSlot = builder.addInputSlot(inputSlotItemX, inputSlot1ItemY).setStandardSlotBackground().addIngredients(recipe.breedingCatalyst).setPosition(69, 38, 78, 35, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
 
         if (recipe.resultItemStack != null && !recipe.resultItemStack.isEmpty()) {
-            builder.addSlot(RecipeIngredientRole.OUTPUT, outputSlotItemX, outputSlotItemY).addIngredients(recipe.resultItemStack);
+            inputSlot.setPosition(69, 38, 78, 35, HorizontalAlignment.LEFT, VerticalAlignment.CENTER);
+            builder.addOutputSlot(outputSlotItemX, outputSlotItemY).setOutputSlotBackground().addIngredients(recipe.resultItemStack).setPosition(69, 38, 78, 35, HorizontalAlignment.RIGHT, VerticalAlignment.CENTER);
+            if (recipe.extraInputStack != null && !recipe.extraInputStack.isEmpty()) {
+                inputSlot.setPosition(69, 38, 78, 35, HorizontalAlignment.LEFT, VerticalAlignment.BOTTOM);
+                builder.addInputSlot(inputSlotItemX, inputSlot2ItemY).setStandardSlotBackground().addIngredients(recipe.extraInputStack).setPosition(69, 38, 78, 35, HorizontalAlignment.LEFT, VerticalAlignment.TOP);
+            }
         }
-        if (recipe.extraInputStack != null  && !recipe.extraInputStack.isEmpty()) {
-            builder.addSlot(RecipeIngredientRole.INPUT, 69, inputSlot2ItemY).addIngredients(recipe.extraInputStack);
+        else if (recipe.extraInputStack != null && !recipe.extraInputStack.isEmpty()) {
+            inputSlot.setPosition(69, 38, 78, 35, HorizontalAlignment.CENTER, VerticalAlignment.BOTTOM);
+            builder.addInputSlot(inputSlotItemX, inputSlot2ItemY).setStandardSlotBackground().addIngredients(recipe.extraInputStack).setPosition(69, 38, 78, 35, HorizontalAlignment.CENTER, VerticalAlignment.TOP);
+        }
+    }
+
+    @Override
+    public void createRecipeExtras(@NotNull IRecipeExtrasBuilder builder, @NotNull BreedingRecipe recipe, @NotNull IFocusGroup focuses) {
+        if (recipe.resultItemStack != null && !recipe.resultItemStack.isEmpty()) {
+            builder.addRecipeArrow().setPosition(69, 38, 78, 35, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
         }
     }
 
     @Override
     public void draw(@NotNull BreedingRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics stack, double mouseX, double mouseY) {
+        int mobSlotX = 0;
+        int mobSlotY = 10;
 
-        // Spawn Egg Slot
-        slot.draw(stack, 133, 0);
+        bigSlot.draw(stack, mobSlotX, mobSlotY, 0, 1, 0, 1);
+        bigSlot.draw(stack, mobSlotX + 18, mobSlotY, 0, 1, 1, 1);
+        bigSlot.draw(stack, mobSlotX + 32, mobSlotY, 0, 1, 1, 1);
+        bigSlot.draw(stack, mobSlotX + 35, mobSlotY, 0, 1, 22, 0);
 
-        // Input Slot
-        slot.draw(stack, inputSlotFrameX, inputSlot1FrameY);
+        bigSlot.draw(stack, mobSlotX, mobSlotY + 24, 1, 1, 0, 1);
+        bigSlot.draw(stack, mobSlotX + 18, mobSlotY + 24, 1, 1, 1, 1);
+        bigSlot.draw(stack, mobSlotX + 32, mobSlotY + 24, 1, 1, 1, 1);
+        bigSlot.draw(stack, mobSlotX + 35, mobSlotY + 24, 1, 1, 22, 0);
 
-        // Extra Input Slot
-        slot.draw(stack, inputSlotFrameX, inputSlot2FrameY);
+        bigSlot.draw(stack, mobSlotX, mobSlotY + 48, 1, 1, 0, 1);
+        bigSlot.draw(stack, mobSlotX + 18, mobSlotY + 48, 1, 1, 1, 1);
+        bigSlot.draw(stack, mobSlotX + 32, mobSlotY + 48, 1, 1, 1, 1);
+        bigSlot.draw(stack, mobSlotX + 35, mobSlotY + 48, 1, 1, 22, 0);
 
-        // Output Slot
-        outputSlot.draw(stack, outputSlotFrameX, outputSlotFrameY);
-
-        mobRenderSlotTop.draw(stack, 0, 10);
-        mobRenderSlotTop.draw(stack, 25, 10);
-        mobRenderSlotTop.draw(stack, 35, 10);
-
-        mobRenderSlotTopCorner.draw(stack, 60, 10);
-        mobRenderSlotTopCorner.draw(stack, 0, 90);
-
-        mobRenderSlotBottom.draw(stack, 1, 90);
-        mobRenderSlotBottom.draw(stack, 26, 90);
-        mobRenderSlotBottom.draw(stack, 36, 90);
-
-        mobRenderSlotLeft.draw(stack, 0, 11);
-        mobRenderSlotLeft.draw(stack, 0, 35);
-        mobRenderSlotLeft.draw(stack, 0, 59);
-        mobRenderSlotLeft.draw(stack, 0, 66);
-
-        mobRenderSlotRight.draw(stack, 60, 11);
-        mobRenderSlotRight.draw(stack, 60, 35);
-        mobRenderSlotRight.draw(stack, 60, 59);
-        mobRenderSlotRight.draw(stack, 60, 66);
-
-        mobRenderSlotTopCenter.draw(stack, 1, 11);
-        mobRenderSlotTopCenter.draw(stack, 25, 11);
-        mobRenderSlotTopCenter.draw(stack, 36, 11);
-        mobRenderSlotTopCenter.draw(stack, 1, 35);
-        mobRenderSlotTopCenter.draw(stack, 25, 35);
-        mobRenderSlotTopCenter.draw(stack, 36, 35);
-        mobRenderSlotTopCenter.draw(stack, 1, 59);
-        mobRenderSlotTopCenter.draw(stack, 25, 59);
-        mobRenderSlotTopCenter.draw(stack, 36, 59);
-        mobRenderSlotTopCenter.draw(stack, 1, 66);
-        mobRenderSlotTopCenter.draw(stack, 25, 66);
-        mobRenderSlotTopCenter.draw(stack, 36, 66);
+        bigSlot.draw(stack, mobSlotX, mobSlotY + 55, 18, 0, 0, 1);
+        bigSlot.draw(stack, mobSlotX + 18, mobSlotY + 55, 18, 0, 1, 1);
+        bigSlot.draw(stack, mobSlotX + 32, mobSlotY + 55, 18, 0, 1, 1);
+        bigSlot.draw(stack, mobSlotX + 35, mobSlotY + 55, 18, 0, 22, 0);
 
         EntityType<?> entityType = recipe.entityType;
         if (entityType != null) {
@@ -178,8 +118,7 @@ public class BreedingCategory implements IRecipeCategory<BreedingRecipe> {
             }
 
             int stringWidth = font.width(entityNameString); // Measure the width of the string in pixels
-
-            int availableWidth = 154; // Initial available width in pixels
+            int availableWidth = 148; // Initial available width in pixels
             if (stringWidth > availableWidth) {
                 float pixelWidthPerCharacter = (float) stringWidth / entityNameString.length();
                 int maxCharacters = (int) (availableWidth / pixelWidthPerCharacter);
@@ -195,7 +134,6 @@ public class BreedingCategory implements IRecipeCategory<BreedingRecipe> {
             if (currentLivingEntity != null) {
                 Utils.renderEntity(stack.pose(), mouseX, currentLivingEntity);
             }
-
         }
     }
 

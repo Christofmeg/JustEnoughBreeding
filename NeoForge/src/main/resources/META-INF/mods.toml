@@ -22,5 +22,11 @@ license="${license}"
     versionRange="${neoforge_minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
+[[dependencies.${mod_id}]]
+    modId="jei"
+    mandatory=false
+    versionRange="[15.20,)"
+    ordering="NONE"
+    side="CLIENT"
 [modproperties.${mod_id}]
     catalogueImageIcon="catalogue-icon.png"
