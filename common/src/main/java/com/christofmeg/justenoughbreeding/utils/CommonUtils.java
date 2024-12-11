@@ -2,10 +2,16 @@ package com.christofmeg.justenoughbreeding.utils;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.jei.recipe.TemperRecipe;
+import net.minecraft.client.Minecraft;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderSet;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
 import org.jetbrains.annotations.Nullable;
 
@@ -483,9 +489,14 @@ public class CommonUtils {
         String tagLocationStr = tagId.trim().substring(1);
         ResourceLocation tagLocation = ResourceLocation.tryParse(tagLocationStr);
         if (tagLocation != null) {
-            return Ingredient.of(TagKey.create(Registries.ITEM, tagLocation));
+            HolderLookup.Provider holderProvider = Minecraft.getInstance().level.registryAccess();
+            HolderLookup<Item> itemLookup = holderProvider.lookupOrThrow(Registries.ITEM);
+            TagKey<Item> tagKey = TagKey.create(Registries.ITEM, tagLocation);
+            HolderSet<Item> holderSet = itemLookup.getOrThrow(tagKey);
+            return Ingredient.of(holderSet);
+        //    return Ingredient.of(TagKey.create(Registries.ITEM, tagLocation));
         } else {
-            return Ingredient.EMPTY;
+            return Ingredient.of();
         }
 
     }

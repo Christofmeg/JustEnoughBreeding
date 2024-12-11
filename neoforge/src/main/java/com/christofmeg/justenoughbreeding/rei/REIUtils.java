@@ -14,6 +14,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class REIUtils {
 
@@ -34,7 +35,7 @@ public class REIUtils {
 
                             if (mobIngredients != null && mobSpawnEgg != null) {
                                 Ingredient combinedIngredient = Utils.createCombinedIngredient(mobIngredients);
-                                List<Ingredient> combinedResultIngredient = Utils.createCombinedResultIngredients(mobResultItem, mobMinResultCount, mobMaxResultCount);
+                                List<Ingredient> combinedResultIngredient = Objects.equals(mobResultItem, "") ? null : Utils.createCombinedResultIngredients(mobResultItem, mobMinResultCount, mobMaxResultCount);
                                 Item spawnEggItem = JustEnoughBreeding.getItemFromLoaderRegistries(ResourceLocation.parse(mobSpawnEgg.trim()));
 
                                 if (spawnEggItem instanceof SpawnEggItem spawnEgg) {

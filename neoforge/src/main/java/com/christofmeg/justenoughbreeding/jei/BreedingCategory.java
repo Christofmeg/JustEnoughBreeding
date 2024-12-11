@@ -1,5 +1,5 @@
 package com.christofmeg.justenoughbreeding.jei;
-
+/*
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
 import com.christofmeg.justenoughbreeding.utils.Utils;
@@ -23,8 +23,8 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
-
-public class BreedingCategory implements IRecipeCategory<BreedingRecipe> {
+*/
+public class BreedingCategory /*implements IRecipeCategory<BreedingRecipe>*/ {/*
 
     public static final RecipeType<BreedingRecipe> TYPE = new RecipeType<>(
             ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "breeding"), BreedingRecipe.class);
@@ -192,5 +192,5 @@ public class BreedingCategory implements IRecipeCategory<BreedingRecipe> {
 
         }
     }
-
+*/
 }

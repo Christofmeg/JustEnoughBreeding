@@ -2,6 +2,7 @@ package com.christofmeg.justenoughbreeding.recipe;
 
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.Minecraft;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.TamableAnimal;
@@ -41,12 +42,12 @@ public class BreedingRecipe {
 
         if (level != null) {
             if (currentLivingEntity == null) {
-                currentLivingEntity = (LivingEntity) entityType.create(level);
+                currentLivingEntity = (LivingEntity) entityType.create(level, EntitySpawnReason.NATURAL);
                 lastEntityCreationTime = currentTime;
             }
             if (currentTime - lastEntityCreationTime >= ENTITY_CREATION_INTERVAL) {
                 if (!FabricLoader.getInstance().isModLoaded("entity_model_features") && !FabricLoader.getInstance().isModLoaded("optifine")) {
-                    currentLivingEntity = (LivingEntity) entityType.create(level);
+                    currentLivingEntity = (LivingEntity) entityType.create(level, EntitySpawnReason.NATURAL);
                     lastEntityCreationTime = currentTime;
                 }
             }

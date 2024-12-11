@@ -1,5 +1,5 @@
 package com.christofmeg.justenoughbreeding.jei;
-
+/*
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -10,8 +10,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import org.jetbrains.annotations.NotNull;
 
-@JeiPlugin
-public class JEIPlugin implements IModPlugin {
+@JeiPlugin*/
+public class JEIPlugin /*implements IModPlugin */{/*
 
     @Override
     public @NotNull ResourceLocation getPluginUid() {
@@ -30,5 +30,5 @@ public class JEIPlugin implements IModPlugin {
     public void registerRecipes(@NotNull IRecipeRegistration registration) {
         JEIUtils.registerMobBreedingRecipes(registration);
     }
-
+*/
 }

@@ -21,11 +21,11 @@ public class JustEnoughBreeding {
     }
 
     public static Item getItemFromLoaderRegistries(ResourceLocation resourceLocation) {
-        return BuiltInRegistries.ITEM.get(resourceLocation);
+        return BuiltInRegistries.ITEM.getValue(resourceLocation);
     }
 
     public static EntityType<?> getEntityFromLoaderRegistries(ResourceLocation resourceLocation) {
-        return BuiltInRegistries.ENTITY_TYPE.get(resourceLocation);
+        return BuiltInRegistries.ENTITY_TYPE.getValue(resourceLocation);
     }
 
 }

@@ -1,5 +1,5 @@
 package com.christofmeg.justenoughbreeding.emi;
-
+/*
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
 import com.christofmeg.justenoughbreeding.utils.Utils;
@@ -29,8 +29,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
-
-public class BreedingCategoryEMI implements EmiRecipe {
+*/
+public class BreedingCategoryEMI /*implements EmiRecipe*/ {/*
     private final ResourceLocation id;
     private final BreedingRecipe recipe;
     public static final EmiTexture TOP = new EmiTexture(EmiRenderHelper.WIDGETS, 18, 0, 25, 1);
@@ -214,5 +214,5 @@ public class BreedingCategoryEMI implements EmiRecipe {
         }
 
     }
-
+*/
 }

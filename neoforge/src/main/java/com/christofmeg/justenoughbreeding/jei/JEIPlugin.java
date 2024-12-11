@@ -1,5 +1,5 @@
 package com.christofmeg.justenoughbreeding.jei;
-
+/*
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import me.shedaniel.rei.plugincompatibilities.api.REIPluginCompatIgnore;
 import mezz.jei.api.IModPlugin;
@@ -13,9 +13,9 @@ import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("unused")
 @REIPluginCompatIgnore
-@JeiPlugin
-public class JEIPlugin implements IModPlugin {
-
+@JeiPlugin*/
+public class JEIPlugin /*implements IModPlugin */{
+/*
     @Override
     public @NotNull ResourceLocation getPluginUid() {
         return ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "jei_plugin");
@@ -38,5 +38,5 @@ public class JEIPlugin implements IModPlugin {
     public void registerRecipes(@NotNull IRecipeRegistration registration) {
         JEIUtils.registerMobBreedingRecipes(registration);
     }
-
+*/
 }

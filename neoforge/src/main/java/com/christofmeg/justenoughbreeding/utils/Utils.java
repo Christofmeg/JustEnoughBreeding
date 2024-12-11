@@ -7,6 +7,8 @@ import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
+import net.minecraft.core.Holder;
+import net.minecraft.core.HolderSet;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -18,6 +20,7 @@ import net.minecraft.world.entity.animal.sniffer.Sniffer;
 import net.minecraft.world.entity.monster.hoglin.Hoglin;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.NotNull;
@@ -25,7 +28,6 @@ import org.jetbrains.annotations.Nullable;
 import org.joml.Quaternionf;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Utils {
@@ -33,33 +35,56 @@ public class Utils {
     public static List<Ingredient> createCombinedResultIngredients(String mobIngredients, int minCount, int maxCount) {
         String[] ingredientIds = mobIngredients.split(",");
         List<Ingredient> resultIngredients = new ArrayList<>();
+        List<Holder<Item>> combinedItemStacks = new ArrayList<>();
 
-        List<ItemStack> combinedItemStacks = new ArrayList<>();
         for (int count = minCount; count <= maxCount; count++) {
             for (String ingredientId : ingredientIds) {
-                Item ingredientItem = JustEnoughBreeding.getItemFromLoaderRegistries(ResourceLocation.parse(ingredientId.trim()));
-                combinedItemStacks.add(new ItemStack(ingredientItem, count));
+                // Validate ResourceLocation and the fetched Item
+                ResourceLocation resourceLocation = ResourceLocation.tryParse(ingredientId.trim());
+                Item ingredientItem = JustEnoughBreeding.getItemFromLoaderRegistries(resourceLocation);
+                if (resourceLocation == null || ingredientItem == Items.AIR) {
+                    continue;
+                }
+                combinedItemStacks.add(new ItemStack(ingredientItem, count).getItemHolder());
             }
         }
 
-        resultIngredients.add(Ingredient.of(combinedItemStacks.toArray(new ItemStack[0])));
+        // Ensure combinedItemStacks is not empty before creating an Ingredient
+        if (!combinedItemStacks.isEmpty()) {
+            resultIngredients.add(Ingredient.of(HolderSet.direct(combinedItemStacks)));
+        }
+
         return resultIngredients;
     }
 
-    public static BreedingRecipe createBreedingRecipe(EntityType<?> entityType, Ingredient combinedIngredient, Item spawnEggItem, Boolean needsToBeTamed, List<Ingredient> resultItemStacks, Boolean animalTrusting, @Nullable Ingredient combinedExtraIngredient) {
-        List<ItemStack> mergedResultItemStacks = new ArrayList<>();
-
-        for (Ingredient resultItemStack : resultItemStacks) {
-            ItemStack[] stacks = resultItemStack.getItems();
-            mergedResultItemStacks.addAll(Arrays.asList(stacks));
+    public static BreedingRecipe createBreedingRecipe(EntityType<?> entityType, Ingredient combinedIngredient, Item spawnEggItem, Boolean needsToBeTamed, @Nullable List<Ingredient> resultItemStacks, Boolean animalTrusting, @Nullable Ingredient combinedExtraIngredient) {
+        if (resultItemStacks == null || resultItemStacks.isEmpty()) {
+            return new BreedingRecipe(
+                    entityType,
+                    combinedIngredient,
+                    new ItemStack(spawnEggItem),
+                    needsToBeTamed,
+                    null,
+                    combinedExtraIngredient,
+                    animalTrusting
+            );
         }
 
+        List<Holder<Item>> list = new ArrayList<>();
+        for (Ingredient resultItemStack : resultItemStacks) {
+            if (resultItemStack == null || resultItemStack.items().isEmpty()) {
+                continue;
+            }
+            list.addAll(resultItemStack.items());
+        }
+
+        Ingredient mergedResultItemStacks = Ingredient.of(HolderSet.direct(list));
         return new BreedingRecipe(
                 entityType,
                 combinedIngredient,
                 new ItemStack(spawnEggItem),
                 needsToBeTamed,
-                Ingredient.of(mergedResultItemStacks.toArray(new ItemStack[0])),
+                mergedResultItemStacks,
                 combinedExtraIngredient,
                 animalTrusting
         );
@@ -74,15 +99,18 @@ public class Utils {
                 combinedIngredients.add(CommonUtils.createTagIngredient(ingredientId));
             } else {
                 Item ingredientItem = JustEnoughBreeding.getItemFromLoaderRegistries(ResourceLocation.parse(ingredientId.trim()));
-                combinedIngredients.add(Ingredient.of(new ItemStack(ingredientItem)));
+                combinedIngredients.add(Ingredient.of(new ItemStack(ingredientItem).getItem()));
             }
         }
 
-        return Ingredient.of(Arrays.stream(combinedIngredients.toArray(Ingredient[]::new))
-                .flatMap(ingredient -> Arrays.stream(ingredient.getItems()))
-                .distinct()
-                .toArray(ItemStack[]::new));
+        List<Holder<Item>> list = new ArrayList<>();
+        for (Ingredient resultItemStack : combinedIngredients) {
+            list.addAll(resultItemStack.items());
+        }
+
+        return Ingredient.of(HolderSet.direct(list));
     }
+
     public static void renderEntity(@NotNull PoseStack stack, double mouseX, LivingEntity currentLivingEntity) {
         // Set the desired position of the entity on the screen
         int entityPosX = 31;
@@ -153,7 +181,7 @@ public class Utils {
         final MultiBufferSource.BufferSource bufferSource = instance.renderBuffers().bufferSource();
 
         // Render the currentLivingEntity using the entityRenderDispatcher
-        entityRenderDispatcher.render(currentLivingEntity, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, stack, bufferSource, ENTITY_RENDER_DISTANCE);
+        entityRenderDispatcher.render(currentLivingEntity, 0.0D, 0.0D, 0.0D, 1.0F, stack, bufferSource, ENTITY_RENDER_DISTANCE);
 
         bufferSource.endBatch(); // End the rendering batch
         entityRenderDispatcher.setRenderShadow(true); // Re-enable rendering shadows

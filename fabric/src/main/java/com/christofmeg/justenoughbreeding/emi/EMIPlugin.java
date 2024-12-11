@@ -1,12 +1,12 @@
 package com.christofmeg.justenoughbreeding.emi;
-
+/*
 import dev.emi.emi.EmiRenderHelper;
 import dev.emi.emi.api.EmiPlugin;
 import dev.emi.emi.api.EmiRegistry;
 import dev.emi.emi.api.render.EmiRenderable;
 import dev.emi.emi.runtime.EmiDrawContext;
-
-public class EMIPlugin implements EmiPlugin {
+*/
+public class EMIPlugin /*implements EmiPlugin*/ {/*
     @Override
     public void register(EmiRegistry registry) {
         registry.addCategory(BreedingCategoryEMI.TYPE);
@@ -18,5 +18,5 @@ public class EMIPlugin implements EmiPlugin {
             EmiDrawContext context = EmiDrawContext.wrap(raw);
             context.drawTexture(EmiRenderHelper.WIDGETS, x, y, 208, 224, 16, 16);
         };
-    }
+    }*/
 }

@@ -2,7 +2,7 @@ import net.darkhax.curseforgegradle.TaskPublishCurseForge
 
 plugins {
     id 'multiloader-loader'
-    id 'fabric-loom' version '1.7.1'
+    id 'fabric-loom'
     id 'net.darkhax.curseforgegradle' version '1.+'
     id 'com.modrinth.minotaur' version '2.+'
 }
@@ -13,7 +13,9 @@ base {
 
 dependencies {
     minecraft "com.mojang:minecraft:${minecraft_version}"
-    mappings loom.officialMojangMappings()
+    mappings loom.layered {
+        officialMojangMappings()
+    }
     modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
 
@@ -140,6 +142,7 @@ modrinth {
     changelog = file('changelog.md').text
     uploadFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")
     gameVersions = "${fabric_release_versions}".split(",") as List<String>
+    loaders = ["${project.name}"]
     dependencies {
         if (project.hasProperty('jei_version')) {
             optional.project "jei"
