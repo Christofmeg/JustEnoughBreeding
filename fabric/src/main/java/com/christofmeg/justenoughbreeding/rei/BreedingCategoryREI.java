@@ -12,7 +12,6 @@ import me.shedaniel.rei.api.client.registry.display.DisplayCategory;
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -42,14 +41,10 @@ public class BreedingCategoryREI implements DisplayCategory<BreedingDisplay> {
     }
 
     final int inputSlotFrameX = 68 - 19 + 25;
-    final int inputSlot1FrameY = 51 + 12;
-    final int inputSlot2FrameY = 32 + 12;
     final int outputSlotFrameX = 94 + 16 + 25;
-    final int outputSlotFrameY = 38 + 15;
     final int eggSlotX = 133 - 4 + 25;
     final int eggSlotY = 6;
     final int arrowX = 73 + 25;
-    final int arrowY = 52;
     final int mobSlotX = 5;
     final int mobSlotY = 15;
 
@@ -59,19 +54,30 @@ public class BreedingCategoryREI implements DisplayCategory<BreedingDisplay> {
         widgets.add(Widgets.createRecipeBase(bounds));
         widgets.add(Widgets.createSlotBase(new Rectangle(bounds.x + mobSlotX, bounds.y + mobSlotY, 61, 81)));
         widgets.add(Widgets.createSlot(new Point(bounds.x + eggSlotX, bounds.y + eggSlotY)).entries(List.of(EntryStacks.of(display.breedingRecipe.spawnEgg))));
-        widgets.add(Widgets.createSlot(new Point(bounds.x + inputSlotFrameX, bounds.y + inputSlot1FrameY)).entries(display.getInputEntries().get(0)));
-        widgets.add(Widgets.createSlot(new Point(bounds.x + inputSlotFrameX, bounds.y + inputSlot2FrameY)).entries(display.getExtraInputEntries().get(0)));
-        widgets.add(Widgets.createArrow(new Point(bounds.x + arrowX, bounds.y + arrowY)));
-        widgets.add(Widgets.createResultSlotBackground(new Point(bounds.x + outputSlotFrameX, bounds.y + outputSlotFrameY)));
-        widgets.add(Widgets.createSlot(new Point(bounds.x + outputSlotFrameX, bounds.y + outputSlotFrameY)).entries(display.getOutputEntries().get(0)).disableBackground().markOutput());
+
+        boolean hasExtraInput = !display.getExtraInputEntries().get(0).get(0).isEmpty();
+        boolean hasOutput = !display.getOutputEntries().get(0).isEmpty();
+        if (hasExtraInput && hasOutput) {
+            widgets.add(Widgets.createSlot(new Point(bounds.getX() + inputSlotFrameX + 5, bounds.getCenterY() + 10 + 2)).entries(display.getInputEntries().get(0)));
+            widgets.add(Widgets.createSlot(new Point(bounds.getX() + inputSlotFrameX + 5, bounds.getCenterY() - 9 + 2)).entries(display.getExtraInputEntries().get(0)));
+        } else if (hasExtraInput) {
+            widgets.add(Widgets.createSlot(new Point(bounds.getX() + inputSlotFrameX + 31 + 7, bounds.getCenterY() + 10 + 2)).entries(display.getInputEntries().get(0)));
+            widgets.add(Widgets.createSlot(new Point(bounds.getX() + inputSlotFrameX + 31 + 7, bounds.getCenterY() - 9 + 2)).entries(display.getExtraInputEntries().get(0)));
+        } else if (!hasOutput) {
+            widgets.add(Widgets.createSlot(new Point(bounds.getX() + inputSlotFrameX + 31 + 7, bounds.getCenterY() + 3)).entries(display.getInputEntries().get(0)));
+        } else {
+            widgets.add(Widgets.createSlot(new Point(bounds.getX() + inputSlotFrameX + 5, bounds.getCenterY() + 3)).entries(display.getInputEntries().get(0)));
+        }
+        if (hasOutput) {
+            widgets.add(Widgets.createArrow(new Point(bounds.x + arrowX + 4, bounds.getCenterY() + 2)));
+            widgets.add(Widgets.createResultSlotBackground(new Point(bounds.x + outputSlotFrameX + 4, bounds.getCenterY() + 3)));
+            widgets.add(Widgets.createSlot(new Point(bounds.x + outputSlotFrameX + 4, bounds.getCenterY() + 3)).entries(display.getOutputEntries().get(0)).disableBackground().markOutput());
+        }
 
         BreedingRecipe recipe = display.breedingRecipe;
         EntityType<?> entityType = recipe.entityType;
         if (entityType != null) {
-            Minecraft instance = Minecraft.getInstance();
-            Font font = instance.font;
             Component entityName = Component.translatable(entityType.getDescriptionId());
-
             String entityNameString = entityName.getString(); // Convert Component to String
             if (recipe.needsToBeTamed != null) {
                 Component tamed = Component.translatable("translation.justenoughbreeding.tamed");
@@ -81,8 +87,7 @@ public class BreedingCategoryREI implements DisplayCategory<BreedingDisplay> {
                 entityNameString += " (" + trusting.getString() + ")";
             }
 
-            int stringWidth = font.width(entityNameString); // Measure the width of the string in pixels
-
+            int stringWidth = Minecraft.getInstance().font.width(entityNameString); // Measure the width of the string in pixels
             int availableWidth = 154; // Initial available width in pixels
             if (stringWidth > availableWidth) {
                 float pixelWidthPerCharacter = (float) stringWidth / entityNameString.length();
@@ -96,11 +101,11 @@ public class BreedingCategoryREI implements DisplayCategory<BreedingDisplay> {
                         abbreviatedEntityName).noShadow().leftAligned().color(0xFF404040, 0xFFBBBBBB));
             }
             widgets.add(Widgets.withTranslate(Widgets.createDrawableWidget((stack, mouseX, mouseY, v) -> {
-                    LivingEntity currentLivingEntity = recipe.doRendering();
-                    if (currentLivingEntity != null) {
-                        Utils.renderEntity(stack.pose(), mouseX, currentLivingEntity);
+                        LivingEntity currentLivingEntity = recipe.doRendering();
+                        if (currentLivingEntity != null) {
+                            Utils.renderEntity(stack.pose(), mouseX, currentLivingEntity);
+                        }
                     }
-                }
             ), bounds.x + mobSlotX, bounds.y + mobSlotY - 10, 0));
         }
 

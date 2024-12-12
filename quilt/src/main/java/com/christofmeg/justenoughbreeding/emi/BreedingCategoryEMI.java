@@ -15,7 +15,6 @@ import dev.emi.emi.api.widget.Bounds;
 import dev.emi.emi.api.widget.Widget;
 import dev.emi.emi.api.widget.WidgetHolder;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -40,8 +39,8 @@ public class BreedingCategoryEMI implements EmiRecipe {
     public static final EmiTexture BACKGROUND = new EmiTexture(EmiRenderHelper.WIDGETS, 19, 1, 24, 24);
 
     public static EmiRecipeCategory TYPE = new EmiRecipeCategory(
-        new ResourceLocation(CommonConstants.MOD_ID + ":" + "breeding"),
-        EmiStack.of(Items.WHEAT), EMIPlugin.simplifiedRenderer(), EmiRecipeSorting.none());
+            new ResourceLocation(CommonConstants.MOD_ID + ":" + "breeding"),
+            EmiStack.of(Items.WHEAT), EMIPlugin.simplifiedRenderer(), EmiRecipeSorting.none());
 
     protected BreedingCategoryEMI(Builder builder, BreedingRecipe breedingRecipe) {
         this.id = builder.id;
@@ -104,11 +103,28 @@ public class BreedingCategoryEMI implements EmiRecipe {
 
     @Override
     public void addWidgets(WidgetHolder widgets) {
-        widgets.addTexture(EmiTexture.EMPTY_ARROW, 94, 48);
         widgets.addSlot(EmiStack.of(recipe.spawnEgg), 149, 1);
-        widgets.addSlot(EmiIngredient.of(recipe.breedingCatalyst), 69, 58);
-        widgets.addSlot(EmiIngredient.of(recipe.extraInputStack), 69, 39);
-        widgets.addSlot(EmiIngredient.of(recipe.resultItemStack), 126, 44).large(true).recipeContext(this);
+
+        int inputX = 69 + 5;
+        int inputY = 58 - 10;
+        int extraY = inputY - 19;
+        boolean hasExtraInput = recipe.extraInputStack != null && !recipe.extraInputStack.isEmpty();
+        boolean hasOutput = recipe.resultItemStack != null && !recipe.resultItemStack.isEmpty();
+        if (hasExtraInput && hasOutput) {
+            widgets.addSlot(EmiIngredient.of(recipe.breedingCatalyst), inputX, inputY + 9);
+            widgets.addSlot(EmiIngredient.of(recipe.extraInputStack), inputX, extraY + 9);
+        } else if (hasExtraInput) {
+            widgets.addSlot(EmiIngredient.of(recipe.breedingCatalyst), inputX + 33, inputY + 9);
+            widgets.addSlot(EmiIngredient.of(recipe.extraInputStack), inputX + 33, extraY + 9);
+        } else if (!hasOutput) {
+            widgets.addSlot(EmiIngredient.of(recipe.breedingCatalyst), inputX  + 33, inputY);
+        } else {
+            widgets.addSlot(EmiIngredient.of(recipe.breedingCatalyst), inputX, inputY);
+        }
+        if (hasOutput) {
+            widgets.addTexture(EmiTexture.EMPTY_ARROW, 94 + 4, 48);
+            widgets.addSlot(EmiIngredient.of(recipe.resultItemStack), 126 + 4, 44).large(true).recipeContext(this);
+        }
 
         widgets.addTexture(TOP, 1, 11);
         widgets.addTexture(TOP, 26, 11);
@@ -160,10 +176,7 @@ public class BreedingCategoryEMI implements EmiRecipe {
 
         EntityType<?> entityType = recipe.entityType;
         if (entityType != null) {
-            Minecraft instance = Minecraft.getInstance();
-            Font font = instance.font;
             Component entityName = Component.translatable(entityType.getDescriptionId());
-
             String entityNameString = entityName.getString(); // Convert Component to String
             if (recipe.needsToBeTamed != null) {
                 Component tamed = Component.translatable("translation.justenoughbreeding.tamed");
@@ -173,8 +186,7 @@ public class BreedingCategoryEMI implements EmiRecipe {
                 entityNameString += " (" + trusting.getString() + ")";
             }
 
-            int stringWidth = font.width(entityNameString); // Measure the width of the string in pixels
-
+            int stringWidth = Minecraft.getInstance().font.width(entityNameString); // Measure the width of the string in pixels
             int availableWidth = 154; // Initial available width in pixels
             if (stringWidth > availableWidth) {
                 float pixelWidthPerCharacter = (float) stringWidth / entityNameString.length();

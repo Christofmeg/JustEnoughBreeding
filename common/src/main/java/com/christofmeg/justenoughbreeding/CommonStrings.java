@@ -189,4 +189,6 @@ public class CommonStrings {
     public static final String CHIMPANZEE_FOOD_TAG = "#neapolitan:chimpanzee_food";
     public static final String CAPYBARA_TAG = "#promenade:capybara";
     public static final String DUCK_TAG = "#promenade:duck";
+    public static final String MELON_AND_SEEDS = "minecraft:melon,minecraft:melon_seeds";
+    public static final String TORTOISE_FOOD_TAG = "#sullysmod:tortoise_food";
 }

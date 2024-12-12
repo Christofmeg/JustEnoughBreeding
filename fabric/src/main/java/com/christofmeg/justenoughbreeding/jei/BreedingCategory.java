@@ -50,19 +50,21 @@ public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> imp
     public void setRecipe(IRecipeLayoutBuilder builder, BreedingRecipe recipe, @NotNull IFocusGroup focuses) {
         builder.addInputSlot(134 + 15, 1).setStandardSlotBackground().addItemStack(recipe.spawnEgg);
         builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).addItemStack(recipe.spawnEgg);
-        IRecipeSlotBuilder inputSlot = builder.addInputSlot(inputSlotItemX, inputSlot1ItemY).setStandardSlotBackground().addIngredients(recipe.breedingCatalyst).setPosition(69, 38, 78, 35, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
+        IRecipeSlotBuilder inputSlot = builder.addInputSlot(inputSlotItemX, inputSlot1ItemY).setStandardSlotBackground().addIngredients(recipe.breedingCatalyst).setPosition(63, 20, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
 
-        if (recipe.resultItemStack != null && !recipe.resultItemStack.isEmpty()) {
-            inputSlot.setPosition(69, 38, 78, 35, HorizontalAlignment.LEFT, VerticalAlignment.CENTER);
-            builder.addOutputSlot(outputSlotItemX, outputSlotItemY).setOutputSlotBackground().addIngredients(recipe.resultItemStack).setPosition(69, 38, 78, 35, HorizontalAlignment.RIGHT, VerticalAlignment.CENTER);
-            if (recipe.extraInputStack != null && !recipe.extraInputStack.isEmpty()) {
-                inputSlot.setPosition(69, 38, 78, 35, HorizontalAlignment.LEFT, VerticalAlignment.BOTTOM);
-                builder.addInputSlot(inputSlotItemX, inputSlot2ItemY).setStandardSlotBackground().addIngredients(recipe.extraInputStack).setPosition(69, 38, 78, 35, HorizontalAlignment.LEFT, VerticalAlignment.TOP);
+        boolean hasExtraInput = recipe.extraInputStack != null && !recipe.extraInputStack.isEmpty();
+        boolean hasOutput = recipe.resultItemStack != null && !recipe.resultItemStack.isEmpty();
+        if (hasOutput) {
+            inputSlot.setPosition(69 + 5, 38, 78, 35, HorizontalAlignment.LEFT, VerticalAlignment.CENTER);
+            builder.addOutputSlot(outputSlotItemX, outputSlotItemY).setOutputSlotBackground().addIngredients(recipe.resultItemStack).setPosition(69 + 3, 38, 78, 35, HorizontalAlignment.RIGHT, VerticalAlignment.CENTER);
+            if (hasExtraInput) {
+                inputSlot.setPosition(69 + 5, 38, 78, 35, HorizontalAlignment.LEFT, VerticalAlignment.BOTTOM);
+                builder.addInputSlot(inputSlotItemX, inputSlot2ItemY).setStandardSlotBackground().addIngredients(recipe.extraInputStack).setPosition(69 + 5, 38, 78, 35, HorizontalAlignment.LEFT, VerticalAlignment.TOP);
             }
         }
-        else if (recipe.extraInputStack != null && !recipe.extraInputStack.isEmpty()) {
-            inputSlot.setPosition(69, 38, 78, 35, HorizontalAlignment.CENTER, VerticalAlignment.BOTTOM);
-            builder.addInputSlot(inputSlotItemX, inputSlot2ItemY).setStandardSlotBackground().addIngredients(recipe.extraInputStack).setPosition(69, 38, 78, 35, HorizontalAlignment.CENTER, VerticalAlignment.TOP);
+        else if (hasExtraInput) {
+            inputSlot.setPosition(63, 20 - 10, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
+            builder.addInputSlot(inputSlotItemX, inputSlot2ItemY).setStandardSlotBackground().addIngredients(recipe.extraInputStack).setPosition(63, 20 + 9, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
         }
     }
 
@@ -100,10 +102,8 @@ public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> imp
 
         EntityType<?> entityType = recipe.entityType;
         if (entityType != null) {
-            Minecraft instance = Minecraft.getInstance();
-            Font font = instance.font;
+            Font font = Minecraft.getInstance().font;
             Component entityName = Component.translatable(entityType.getDescriptionId());
-
             String entityNameString = entityName.getString(); // Convert Component to String
             if (recipe.needsToBeTamed != null) {
                 Component tamed = Component.translatable("translation.justenoughbreeding.tamed");
