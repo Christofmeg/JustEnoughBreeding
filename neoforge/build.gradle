@@ -16,7 +16,7 @@ base {
 runs {
     configureEach {
         modSource project.sourceSets.main
-        modSource project(":Common").sourceSets.main
+        modSource project(":common").sourceSets.main
         systemProperty 'mixin.env.remapRefMap', 'true'
         systemProperty 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
     }
@@ -38,7 +38,7 @@ runs {
 
 dependencies {
     implementation "net.neoforged:neoforge:${neoforge_version}"
-    compileOnly project(":Common")
+    compileOnly project(":common")
 
     // JEI
     if (project.hasProperty('jei_version')) {
@@ -85,15 +85,15 @@ dependencies {
 Spec<Task> notNeoTask = { Task it -> !it.name.startsWith("neo") } as Spec<Task>
 
 tasks.withType(JavaCompile).matching(notNeoTask).configureEach {
-    source(project(":Common").sourceSets.main.allSource)
+    source(project(":common").sourceSets.main.allSource)
 }
 
 tasks.withType(Javadoc).matching(notNeoTask).configureEach {
-    source(project(":Common").sourceSets.main.allJava)
+    source(project(":common").sourceSets.main.allJava)
 }
 
 tasks.withType(ProcessResources).matching(notNeoTask).configureEach {
-    from project(":Common").sourceSets.main.resources
+    from project(":common").sourceSets.main.resources
     def expandProps = [
             "version": version,
             "group": project.group,
