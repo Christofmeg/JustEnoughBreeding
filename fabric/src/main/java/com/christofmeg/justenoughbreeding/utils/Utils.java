@@ -72,10 +72,10 @@ public class Utils {
 
         List<Holder<Item>> list = new ArrayList<>();
         for (Ingredient resultItemStack : resultItemStacks) {
-            if (resultItemStack == null || resultItemStack.items().isEmpty()) {
+            if (resultItemStack == null || resultItemStack.items().toList().isEmpty()) {
                 continue;
             }
-            list.addAll(resultItemStack.items());
+            list.addAll(resultItemStack.items().toList());
         }
 
         Ingredient mergedResultItemStacks = Ingredient.of(HolderSet.direct(list));
@@ -105,7 +105,7 @@ public class Utils {
 
         List<Holder<Item>> list = new ArrayList<>();
         for (Ingredient resultItemStack : combinedIngredients) {
-            list.addAll(resultItemStack.items());
+            list.addAll(resultItemStack.items().toList());
         }
 
         return Ingredient.of(HolderSet.direct(list));
