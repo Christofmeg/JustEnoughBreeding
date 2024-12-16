@@ -172,5 +172,11 @@ public class JEBIntegration {
         if (ModList.get().isLoaded("neapolitan")) {
             NeapolitanIntegration.init();
         }
+        if (ModList.get().isLoaded("farmlife")) {
+            FarmLifeIntegration.init();
+        }
+        if (ModList.get().isLoaded("sullysmod")) {
+            SullysModIntegration.init();
+        }
     }
 }

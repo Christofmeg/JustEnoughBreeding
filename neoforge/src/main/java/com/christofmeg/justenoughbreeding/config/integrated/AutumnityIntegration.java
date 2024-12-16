@@ -19,6 +19,8 @@ public class AutumnityIntegration {
     public static void init() {
         CommonUtils.addAnimal("snail", CommonStrings.SNAIL_FOOD_TAG, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimal("turkey", CommonStrings.TURKEY_FOOD_TAG, animalNames, ingredients, breedingCooldown);
+
+        CommonUtils.addAnimalNames(animalNames, ingredients, MOD, breedingCooldown);
     }
 
 }
