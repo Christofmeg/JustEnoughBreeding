@@ -102,6 +102,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.changelog = file('changelog.md')
     mainFile.addGameVersion('Client', 'Server')
     mainFile.releaseType = "${release_type}"
+	mainFile.addModLoader("${project.name}")
     "${forge_release_versions}".split(',').each {
         mainFile.addGameVersion("${it}")
     }
@@ -184,6 +185,7 @@ modrinth {
     changelog = file('changelog.md').text
     uploadFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")
     gameVersions = "${forge_release_versions}".split(",") as List<String>
+	loaders = ["${project.name}"]
     dependencies {
         if (project.hasProperty('jei_version')) {
             optional.project "jei"
