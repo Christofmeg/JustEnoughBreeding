@@ -46,16 +46,6 @@ public class BreedingCategory implements IRecipeCategory<BreedingRecipe> {
     private final IDrawable mobRenderSlotTopCorner;
     private final IDrawable mobRenderSlotTopCenter;
 
-    final int inputSlotItemX = 69;
-    final int inputSlotFrameX = 68;
-    final int inputSlot1ItemY = 52;
-    final int inputSlot1FrameY = 51;
-    final int inputSlot2FrameY = 32;
-
-    final int outputSlotFrameX = 94;
-    final int outputSlotFrameY = 38;
-
-
     public BreedingCategory(IGuiHelper helper, ItemLike itemStack) {
         background = helper.createBlankDrawable(151, 91);
         icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(itemStack));
@@ -91,36 +81,53 @@ public class BreedingCategory implements IRecipeCategory<BreedingRecipe> {
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, BreedingRecipe recipe, @NotNull IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.INPUT, 134, 1).addItemStack((recipe.spawnEgg));
+        builder.addSlot(RecipeIngredientRole.INPUT, 149, 1).addItemStack((recipe.spawnEgg));
         builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).addItemStack(recipe.spawnEgg);
-        builder.addSlot(RecipeIngredientRole.INPUT, inputSlotItemX, inputSlot1ItemY).addIngredients((recipe.breedingCatalyst));
 
-        final int outputSlotItemX = 130;
-        final int outputSlotItemY = 43;
-        final int inputSlot2ItemY = 33;
-
-        if (recipe.resultItemStack != null && !recipe.resultItemStack.isEmpty()) {
-            builder.addSlot(RecipeIngredientRole.OUTPUT, outputSlotItemX, outputSlotItemY).addIngredients(recipe.resultItemStack);
+        int inputX = 74;
+        int inputY = 48;
+        int extraY = inputY - 10;
+        boolean hasExtraInput = recipe.extraInputStack != null && !recipe.extraInputStack.isEmpty();
+        boolean hasOutput = recipe.resultItemStack != null && !recipe.resultItemStack.isEmpty();
+        if (hasExtraInput && hasOutput) {
+            builder.addSlot(RecipeIngredientRole.INPUT, inputX, inputY + 9).addIngredients((recipe.breedingCatalyst));
+            builder.addSlot(RecipeIngredientRole.INPUT, inputX, extraY).addIngredients((recipe.extraInputStack));
+        } else if (hasExtraInput) {
+            builder.addSlot(RecipeIngredientRole.INPUT, inputX + 33, inputY + 9).addIngredients((recipe.breedingCatalyst));
+            builder.addSlot(RecipeIngredientRole.INPUT, inputX + 33, extraY).addIngredients((recipe.extraInputStack));
+        } else if (!hasOutput) {
+            builder.addSlot(RecipeIngredientRole.INPUT, inputX + 33, inputY).addIngredients((recipe.breedingCatalyst));
+        } else {
+            builder.addSlot(RecipeIngredientRole.INPUT, inputX, inputY).addIngredients((recipe.breedingCatalyst));
         }
-        if (recipe.extraInputStack != null  && !recipe.extraInputStack.isEmpty()) {
-            builder.addSlot(RecipeIngredientRole.INPUT, 69, inputSlot2ItemY).addIngredients(recipe.extraInputStack);
+        if (hasOutput) {
+            builder.addSlot(RecipeIngredientRole.OUTPUT, 134, inputY).addIngredients((recipe.resultItemStack));
         }
     }
 
     @Override
     public void draw(@NotNull BreedingRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics stack, double mouseX, double mouseY) {
+        slot.draw(stack, 148, 0); //Spawn Egg
 
-        // Spawn Egg Slot
-        slot.draw(stack, 133, 0);
-
-        // Input Slot
-        slot.draw(stack, inputSlotFrameX, inputSlot1FrameY);
-
-        // Extra Input Slot
-        slot.draw(stack, inputSlotFrameX, inputSlot2FrameY);
-
-        // Output Slot
-        outputSlot.draw(stack, outputSlotFrameX, outputSlotFrameY);
+        int inputX = 73;
+        int inputY = 47;
+        int extraY = inputY - 10;
+        boolean hasExtraInput = recipe.extraInputStack != null && !recipe.extraInputStack.isEmpty();
+        boolean hasOutput = recipe.resultItemStack != null && !recipe.resultItemStack.isEmpty();
+        if (hasExtraInput && hasOutput) {
+            slot.draw(stack, inputX, inputY + 9); //Input
+            slot.draw(stack, inputX, extraY); //Extra Input
+        } else if (hasExtraInput) {
+            slot.draw(stack, inputX + 33, inputY + 9); //Input
+            slot.draw(stack, inputX + 33, extraY); //Extra Input
+        } else if (!hasOutput) {
+            slot.draw(stack, inputX + 33, inputY); //Input
+        } else {
+            slot.draw(stack, inputX, inputY); //Input
+        }
+        if (hasOutput) {
+            outputSlot.draw(stack, 98, 43); //Output
+        }
 
         mobRenderSlotTop.draw(stack, 0, 10);
         mobRenderSlotTop.draw(stack, 25, 10);
@@ -157,22 +164,19 @@ public class BreedingCategory implements IRecipeCategory<BreedingRecipe> {
         mobRenderSlotTopCenter.draw(stack, 36, 66);
 
         EntityType<?> entityType = recipe.entityType;
-        if(entityType != null) {
-            Minecraft instance = Minecraft.getInstance();
-            Font font = instance.font;
+        if (entityType != null) {
+            Font font = Minecraft.getInstance().font;
             Component entityName = Component.translatable(entityType.getDescriptionId());
-
             String entityNameString = entityName.getString(); // Convert Component to String
-            if(recipe.needsToBeTamed != null) {
+            if (recipe.needsToBeTamed != null) {
                 Component tamed = Component.translatable("translation.justenoughbreeding.tamed");
                 entityNameString += " (" + tamed.getString() + ")";
-            } else if(recipe.animalTrusting != null) {
+            } else if (recipe.animalTrusting != null) {
                 Component trusting = Component.translatable("translation.justenoughbreeding.trusting");
                 entityNameString += " (" + trusting.getString() + ")";
             }
 
             int stringWidth = font.width(entityNameString); // Measure the width of the string in pixels
-
             int availableWidth = 154; // Initial available width in pixels
             if (stringWidth > availableWidth) {
                 float pixelWidthPerCharacter = (float) stringWidth / entityNameString.length();
