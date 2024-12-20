@@ -89,6 +89,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.changelog = file('changelog.md')
     mainFile.addGameVersion('Client', 'Server')
     mainFile.releaseType = "${release_type}"
+    mainFile.addModLoader("${project.name}")
     "${quilt_release_versions}".split(',').each {
         mainFile.addGameVersion("${it}")
     }
@@ -145,6 +146,7 @@ modrinth {
     changelog = file('changelog.md').text
     uploadFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")
     gameVersions = "${quilt_release_versions}".split(",") as List<String>
+    loaders = ["${project.name}"]
     dependencies {
         if (project.hasProperty('jei_version')) {
             optional.project "jei"

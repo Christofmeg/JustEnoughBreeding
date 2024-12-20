@@ -82,6 +82,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.changelog = file('changelog.md')
     mainFile.addGameVersion('Client', 'Server')
     mainFile.releaseType = "${release_type}"
+    mainFile.addModLoader("${project.name}")
     "${neoforge_release_versions}".split(',').each {
         mainFile.addGameVersion("${it}")
     }
@@ -149,6 +150,8 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("upgrade-aquatic")
     mainFile.addOptional("fish-of-thieves")
     mainFile.addOptional("neapolitan")
+    mainFile.addOptional("dracovita-farm-life")
+    mainFile.addOptional("sullys-mod")
 }
 
 modrinth {
@@ -164,6 +167,7 @@ modrinth {
     changelog = file('changelog.md').text
     uploadFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")
     gameVersions = "${neoforge_release_versions}".split(",") as List<String>
+    loaders = ["${project.name}"]
     dependencies {
         if (project.hasProperty('jei_version')) {
             optional.project "jei"
@@ -210,5 +214,6 @@ modrinth {
         optional.project "upgrade-aquatic"
         optional.project "fish-of-thieves"
         optional.project "neapolitan"
+        optional.project "sullysmod"
     }
 }
