@@ -162,6 +162,8 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("upgrade-aquatic")
     mainFile.addOptional("fish-of-thieves")
     mainFile.addOptional("neapolitan")
+    mainFile.addOptional("dracovita-farm-life")
+    mainFile.addOptional("sullys-mod")
 }
 
 modrinth {
@@ -224,5 +226,6 @@ modrinth {
         optional.project "upgrade-aquatic"
         optional.project "fish-of-thieves"
         optional.project "neapolitan"
+        optional.project "sullysmod"
     }
 }

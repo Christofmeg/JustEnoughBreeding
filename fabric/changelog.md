@@ -1,2 +1,4 @@
-1.4.0:
-- Port to 21.4
+1.5.0:
+- German Translation and Modmenu description by [Lucanoria](https://github.com/Lucanoria)
+- Unify how the breeding category is displayed between JEI/REI/EMI
+- Remove unused EMI/JEI integration for this version and loader
