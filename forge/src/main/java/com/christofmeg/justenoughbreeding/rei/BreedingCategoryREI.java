@@ -101,11 +101,11 @@ public class BreedingCategoryREI implements DisplayCategory<BreedingDisplay> {
                         abbreviatedEntityName).noShadow().leftAligned().color(0xFF404040, 0xFFBBBBBB));
             }
             widgets.add(Widgets.withTranslate(Widgets.createDrawableWidget((stack, mouseX, mouseY, v) -> {
-                    LivingEntity currentLivingEntity = recipe.doRendering();
-                    if (currentLivingEntity != null) {
-                        Utils.renderEntity(stack.pose(), mouseX, currentLivingEntity);
+                        LivingEntity currentLivingEntity = recipe.doRendering();
+                        if (currentLivingEntity != null) {
+                            Utils.renderEntity(stack.pose(), mouseX, currentLivingEntity);
+                        }
                     }
-                }
             ), bounds.x + mobSlotX, bounds.y + mobSlotY - 10, 0));
         }
 

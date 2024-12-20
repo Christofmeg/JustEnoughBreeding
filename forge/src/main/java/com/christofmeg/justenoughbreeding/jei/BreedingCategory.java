@@ -46,18 +46,8 @@ public class BreedingCategory implements IRecipeCategory<BreedingRecipe> {
     private final IDrawable mobRenderSlotTopCorner;
     private final IDrawable mobRenderSlotTopCenter;
 
-    final int inputSlotItemX = 69;
-    final int inputSlotFrameX = 68;
-    final int inputSlot1ItemY = 52;
-    final int inputSlot1FrameY = 51;
-    final int inputSlot2FrameY = 32;
-
-    final int outputSlotFrameX = 94;
-    final int outputSlotFrameY = 38;
-
-
     public BreedingCategory(IGuiHelper helper, ItemLike itemStack) {
-        background = helper.createBlankDrawable(151, 91);
+        background = helper.createBlankDrawable(166, 91);
         icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(itemStack));
         slot = helper.drawableBuilder(slotVanilla, 0, 0, 18, 18).setTextureSize(18, 18).build();
         outputSlot = helper.drawableBuilder(guiVanilla, 25, 224, 57, 26).setTextureSize(256,256).build();
