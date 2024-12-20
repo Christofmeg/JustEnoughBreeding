@@ -1,3 +1,7 @@
-1.5.0:
-- Port to 21.2 and 21.3
-- Made REI display more dynamic
+1.5.1:
+- Fix Autumnity Integration not working
+- Integration to Dracovita Farm Life
+- Integration to Sully's Mod
+- German Translation and Modmenu description by [Lucanoria](https://github.com/Lucanoria)
+- Unify how the breeding category is displayed between JEI/REI/EMI
+- Remove unused EMI/JEI integration for this version and loader
