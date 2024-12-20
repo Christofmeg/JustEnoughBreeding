@@ -23,7 +23,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -94,12 +93,12 @@ public class BreedingCategoryEMI implements EmiRecipe {
 
     @Override
     public int getDisplayWidth() {
-        return 151 + 17;
+        return 168;
     }
 
     @Override
     public int getDisplayHeight() {
-        return 91 + 2;
+        return 93;
     }
 
     @Override
@@ -167,7 +166,7 @@ public class BreedingCategoryEMI implements EmiRecipe {
             }
 
             @Override
-            public void render(@NotNull GuiGraphics stack, int mouseX, int mouseY, float delta) {
+            public void render(GuiGraphics stack, int mouseX, int mouseY, float delta) {
                 LivingEntity currentLivingEntity = recipe.doRendering();
                 if (currentLivingEntity != null) {
                     Utils.renderEntity(stack.pose(), mouseX, currentLivingEntity);
@@ -198,7 +197,6 @@ public class BreedingCategoryEMI implements EmiRecipe {
             if (!entityNameString.isEmpty()) {
                 Component abbreviatedEntityName = Component.nullToEmpty(entityNameString);
                 widgets.addText(EmiPort.ordered(abbreviatedEntityName), 1, 1, -1, true);
-
             }
         }
 

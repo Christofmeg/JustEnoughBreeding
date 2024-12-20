@@ -93,12 +93,12 @@ public class BreedingCategoryEMI implements EmiRecipe {
 
     @Override
     public int getDisplayWidth() {
-        return 151 + 17;
+        return 168;
     }
 
     @Override
     public int getDisplayHeight() {
-        return 91 + 2;
+        return 93;
     }
 
     @Override
@@ -197,7 +197,6 @@ public class BreedingCategoryEMI implements EmiRecipe {
             if (!entityNameString.isEmpty()) {
                 Component abbreviatedEntityName = Component.nullToEmpty(entityNameString);
                 widgets.addText(EmiPort.ordered(abbreviatedEntityName), 1, 1, -1, true);
-
             }
         }
 
