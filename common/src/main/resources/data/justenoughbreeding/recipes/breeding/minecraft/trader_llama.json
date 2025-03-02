@@ -1,0 +1,19 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "minecraft",
+  "mobs": [
+    {
+      "trader_llama": {
+        "inputs": [
+          {
+            "item": "minecraft:wheat"
+          },
+          {
+            "item": "minecraft:hay_block"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

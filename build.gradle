@@ -51,6 +51,10 @@ subprojects {
                     includeGroup "curse.maven"
                 }
             }
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
             maven { url "https://maven.shedaniel.me" }
             maven { url "https://maven.architectury.dev/" }
             maven {

@@ -3,21 +3,44 @@ package com.christofmeg.justenoughbreeding.emi;
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
-import com.christofmeg.justenoughbreeding.utils.Utils;
+import com.christofmeg.justenoughbreeding.recipe.TamingRecipe;
 import dev.emi.emi.api.EmiRegistry;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.SpawnEggItem;
-import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class EMIUtils {
 
-    public static void registerMobBreedingRecipes(EmiRegistry registration) {
+    public static void registerRecipes(EmiRegistry registration) {
+
+        List<BreedingRecipe> breedingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.BREEDING_PROVIDER_TYPE.get()));
+        breedingRecipes.sort(Comparator.comparing(r -> r.animalID));
+        for (BreedingRecipe recipe : breedingRecipes) {
+            if (JustEnoughBreeding.isModLoaded(recipe.modID) && recipe.entityType != null) {
+                registration.addRecipe(
+                        BreedingCategoryEMI.builder()
+                                .id(new ResourceLocation(CommonConstants.MOD_ID, "/" + "breeding" + "/" + recipe.modID + "/" + recipe.animalID))
+                                .breedingRecipe(recipe)
+                                .build()
+                );
+            }
+        }
+
+        List<TamingRecipe> tamingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TAMING_PROVIDER_TYPE.get()));
+        tamingRecipes.sort(Comparator.comparing(r -> r.animalID));
+        for (TamingRecipe recipe : tamingRecipes) {
+            if (JustEnoughBreeding.isModLoaded(recipe.modID) && recipe.entityType != null) {
+                registration.addRecipe(
+                        TamingCategoryEMI.builder()
+                                .id(new ResourceLocation(CommonConstants.MOD_ID, "/" + "taming" + "/" + recipe.modID + "/" + recipe.animalID))
+                                .tamingRecipe(recipe)
+                                .build()
+                );
+            }
+        }
+/*
         List<String> sortedMobNames = new ArrayList<>(CommonConstants.breedingIngredients.keySet());
         Collections.sort(sortedMobNames);
 
@@ -100,7 +123,7 @@ public class EMIUtils {
                     }
                 }
             }
-        }
+        }*/
     }
 
 }

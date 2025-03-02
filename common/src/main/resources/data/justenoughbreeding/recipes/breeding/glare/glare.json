@@ -1,0 +1,16 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "glare",
+  "mobs": [
+    {
+      "glare": {
+        "inputs": [
+          {
+            "item": "minecraft:glow_berries"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

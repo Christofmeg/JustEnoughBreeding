@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "ecologics",
+  "mobs": [
+    {
+      "camel": {
+        "inputs": [
+          {
+            "item": "ecologics:prickly_pear"
+          }
+        ]
+      }
+    }
+  ]
+}

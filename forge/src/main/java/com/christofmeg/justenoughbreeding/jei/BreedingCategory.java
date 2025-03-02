@@ -31,8 +31,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> implements IRecipeCategory<BreedingRecipe> {
 
-    public static final RecipeType<BreedingRecipe> TYPE = new RecipeType<>(
-            new ResourceLocation(CommonConstants.MOD_ID, "breeding"), BreedingRecipe.class);
+    public static final RecipeType<BreedingRecipe> TYPE = new RecipeType<>(new ResourceLocation(CommonConstants.MOD_ID, "breeding"), BreedingRecipe.class);
 
     private final IDrawableStatic bigSlot;
     final int inputSlotItemX = 69;
@@ -48,9 +47,9 @@ public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> imp
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, BreedingRecipe recipe, @NotNull IFocusGroup focuses) {
-        builder.addInputSlot(134 + 15, 1).setStandardSlotBackground().addItemStack(recipe.spawnEgg);
-        builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).addItemStack(recipe.spawnEgg);
-        IRecipeSlotBuilder inputSlot = builder.addInputSlot(inputSlotItemX, inputSlot1ItemY).setStandardSlotBackground().addIngredients(recipe.breedingCatalyst).setPosition(63, 20, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
+        builder.addInputSlot(134 + 15, 1).setStandardSlotBackground().addIngredients(recipe.spawnEgg);
+        builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).addIngredients(recipe.spawnEgg);
+        IRecipeSlotBuilder inputSlot = builder.addInputSlot(inputSlotItemX, inputSlot1ItemY).setStandardSlotBackground().addIngredients(recipe.inputStack).setPosition(63, 20, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
 
         boolean hasExtraInput = recipe.extraInputStack != null && !recipe.extraInputStack.isEmpty();
         boolean hasOutput = recipe.resultItemStack != null && !recipe.resultItemStack.isEmpty();
@@ -106,17 +105,20 @@ public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> imp
             Font font = Minecraft.getInstance().font;
             Component entityName = Component.translatable(entityType.getDescriptionId());
             String entityNameString = entityName.getString(); // Convert Component to String
-            if (recipe.needsToBeTamed != null) {
+            if (recipe.needsToBeTamed != null && recipe.needsToBeTamed) {
                 Component tamed = Component.translatable("translation.justenoughbreeding.tamed");
                 entityNameString += " (" + tamed.getString() + ")";
-            } else if (recipe.animalTrusting != null) {
+            } else if (recipe.animalTrusting != null && recipe.animalTrusting) {
                 Component trusting = Component.translatable("translation.justenoughbreeding.trusting");
                 entityNameString += " (" + trusting.getString() + ")";
-            } else if (recipe.spawnEgg.getDescriptionId().startsWith("item.tfc")) {
+            }
+            //TODO readd TFC integration mob page name
+            /*
+            else if (recipe.spawnEgg.getDescriptionId().startsWith("item.tfc")) {
                 Component familiarity = Component.translatable("tfc.jade.familiarity");
                 String tfc = familiarity.getString().replaceAll(":[^:]*$", "");
                 entityNameString += " (" + tfc + " > 30" + ")";
-            }
+            }*/
 
             int stringWidth = font.width(entityNameString); // Measure the width of the string in pixels
             int availableWidth = 148; // Initial available width in pixels

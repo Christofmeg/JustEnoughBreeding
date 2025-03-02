@@ -1,23 +1,31 @@
 package com.christofmeg.justenoughbreeding.rei;
 
-import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
-import com.christofmeg.justenoughbreeding.utils.Utils;
+import com.christofmeg.justenoughbreeding.recipe.TamingRecipe;
 import me.shedaniel.rei.api.client.registry.display.DisplayRegistry;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.SpawnEggItem;
-import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class REIUtils {
 
-    public static void registerMobBreedingRecipes(DisplayRegistry registration) {
+    public static void registerRecipes(DisplayRegistry registration) {
+
+        List<BreedingRecipe> breedingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.BREEDING_PROVIDER_TYPE.get()));
+        breedingRecipes.sort(Comparator.comparing(r -> r.entityType.toShortString()));
+        for (BreedingRecipe recipe : breedingRecipes) {
+            registration.add(new BreedingDisplay(recipe));
+        }
+
+        List<TamingRecipe> tamingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TAMING_PROVIDER_TYPE.get()));
+        tamingRecipes.sort(Comparator.comparing(r -> r.entityType.toShortString()));
+        for (TamingRecipe recipe : tamingRecipes) {
+            registration.add(new TamingDisplay(recipe));
+        }
+
+        /*-
         List<String> sortedMobNames = new ArrayList<>(CommonConstants.breedingIngredients.keySet());
         Collections.sort(sortedMobNames);
 
@@ -91,6 +99,8 @@ public class REIUtils {
                 }
             }
         }
+
+         */
     }
 
 }

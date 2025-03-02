@@ -1,23 +1,37 @@
 package com.christofmeg.justenoughbreeding.jei;
 
-import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
-import com.christofmeg.justenoughbreeding.utils.Utils;
+import com.christofmeg.justenoughbreeding.recipe.TamingRecipe;
 import mezz.jei.api.registration.IRecipeRegistration;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.SpawnEggItem;
-import net.minecraft.world.item.crafting.Ingredient;
+import mezz.jei.api.registration.IRuntimeRegistration;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientLevel;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class JEIUtils {
 
-    public static void registerMobBreedingRecipes(IRecipeRegistration registration) {
+    public static void registerRecipes(IRecipeRegistration registration) {
+        ClientLevel clientLevel = Minecraft.getInstance().level;
+        if (clientLevel != null) {
+            List<BreedingRecipe> breedingRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.BREEDING_PROVIDER_TYPE.get()));
+            breedingRecipes.sort(Comparator.comparing(r -> r.entityType.toShortString()));
+            for (BreedingRecipe recipe : breedingRecipes) {
+                registration.addRecipes(BreedingCategory.TYPE, Collections.singletonList(recipe));
+            }
+
+            List<TamingRecipe> tamingRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TAMING_PROVIDER_TYPE.get()));
+            tamingRecipes.sort(Comparator.comparing(r -> r.entityType.toShortString()));
+            for (TamingRecipe recipe : tamingRecipes) {
+                registration.addRecipes(TamingCategory.TYPE, Collections.singletonList(recipe));
+            }
+        }
+
+        /*
         List<String> sortedMobNames = new ArrayList<>(CommonConstants.breedingIngredients.keySet());
         Collections.sort(sortedMobNames);
 
@@ -90,7 +104,7 @@ public class JEIUtils {
                     }
                 }
             }
-        }
+        }*/
     }
 
 }

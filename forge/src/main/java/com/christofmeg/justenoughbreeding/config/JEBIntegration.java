@@ -8,7 +8,7 @@ public class JEBIntegration {
 
     public static void init() {
 
-        MinecraftIntegration.init();
+ //       MinecraftIntegration.init();
 
         if (ModList.get().isLoaded("alexsmobs")) {
             AlexsMobsIntegration.init();
@@ -25,9 +25,6 @@ public class JEBIntegration {
         if (ModList.get().isLoaded("theducksmod")) {
             TheDucksModIntegration.init();
         }
-        if (ModList.get().isLoaded("fennecfox")) {
-            FennecFoxIntegration.init();
-        }
         if (ModList.get().isLoaded("apple_cows")) {
             AppleCowsIntegration.init();
         }
@@ -37,23 +34,14 @@ public class JEBIntegration {
         if (ModList.get().isLoaded("frozenup")) {
             FrozenUpIntegration.init();
         }
-        if (ModList.get().isLoaded("glare")) {
-            GlareIntegration.init();
-        }
         if (ModList.get().isLoaded("greekfantasy")) {
             GreekFantasyIntegration.init();
         }
         if (ModList.get().isLoaded("sophisticated_wolves")) {
             SophisticatedWolvesIntegration.init();
         }
-        if (ModList.get().isLoaded("lilwings")) {
-            LilWingsIntegration.init();
-        }
         if (ModList.get().isLoaded("steves_vanilla")) {
             StevesVanillaIntegration.init();
-        }
-        if (ModList.get().isLoaded("duckling")) {
-            DucklingIntegration.init();
         }
         if (ModList.get().isLoaded("ulterlands")) {
             UlterlandsIntegration.init();
@@ -61,17 +49,11 @@ public class JEBIntegration {
         if (ModList.get().isLoaded("twilightforest")) {
             TwilightForestIntegration.init();
         }
-        if (ModList.get().isLoaded("chococraft")) {
-            ChocoCraftIntegration.init();
-        }
         if (ModList.get().isLoaded("waddles")) {
             WaddlesIntegration.init();
         }
         if (ModList.get().isLoaded("aquaculture")) {
             AquacultureIntegration.init();
-        }
-        if (ModList.get().isLoaded("ecologics")) {
-            EcologicsIntegration.init();
         }
         if (ModList.get().isLoaded("ostrich")) {
             OstrichIntegration.init();
@@ -88,17 +70,11 @@ public class JEBIntegration {
         if (ModList.get().isLoaded("quark")) {
             QuarkIntegration.init();
         }
-        if (ModList.get().isLoaded("friendsandfoes")) {
-            FriendsAndFoesIntegration.init();
-        }
         if (ModList.get().isLoaded("earthmobsmod")) {
             EarthMobsIntegration.init();
         }
         if (ModList.get().isLoaded("autumnity")) {
             AutumnityIntegration.init();
-        }
-        if (ModList.get().isLoaded("kiwiboi")) {
-            KiwiBoiIntegration.init();
         }
         if (ModList.get().isLoaded("recrafted_creatures")) {
             RecraftedCreaturesIntegration.init();
@@ -111,9 +87,6 @@ public class JEBIntegration {
         }
         if (ModList.get().isLoaded("biome_backlog")) {
             BiomeBacklogIntegration.init();
-        }
-        if (ModList.get().isLoaded("biomemakeover")) {
-            BiomeMakeoverIntegration.init();
         }
         if (ModList.get().isLoaded("alexscaves")) {
             AlexsCavesIntegration.init();
@@ -142,9 +115,6 @@ public class JEBIntegration {
         if (ModList.get().isLoaded("winteroverhaul")) {
             WinterOverhaulIntegration.init();
         }
-        if (ModList.get().isLoaded("crittersandcompanions")) {
-            CrittersAndCompanions.init();
-        }
         if (ModList.get().isLoaded("ambientadditions")) {
             AmbientAdditionsIntegration.init();
         }
@@ -165,9 +135,6 @@ public class JEBIntegration {
         }
         if (ModList.get().isLoaded("upgrade_aquatic")) {
             UpgradeAquaticIntegration.init();
-        }
-        if (ModList.get().isLoaded("fishofthieves")) {
-            FishOfThievesIntegration.init();
         }
         if (ModList.get().isLoaded("neapolitan")) {
             NeapolitanIntegration.init();

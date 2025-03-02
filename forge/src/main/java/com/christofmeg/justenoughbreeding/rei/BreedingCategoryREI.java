@@ -10,13 +10,16 @@ import me.shedaniel.rei.api.client.gui.widgets.Widget;
 import me.shedaniel.rei.api.client.gui.widgets.Widgets;
 import me.shedaniel.rei.api.client.registry.display.DisplayCategory;
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;
+import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -53,9 +56,16 @@ public class BreedingCategoryREI implements DisplayCategory<BreedingDisplay> {
         List<Widget> widgets = new LinkedList<>();
         widgets.add(Widgets.createRecipeBase(bounds));
         widgets.add(Widgets.createSlotBase(new Rectangle(bounds.x + mobSlotX, bounds.y + mobSlotY, 61, 81)));
-        widgets.add(Widgets.createSlot(new Point(bounds.x + eggSlotX, bounds.y + eggSlotY)).entries(List.of(EntryStacks.of(display.breedingRecipe.spawnEgg))));
+        List<EntryStack<?>> entryStackList = new ArrayList<>();
+        for (ItemStack stack : display.breedingRecipe.spawnEgg.getItems()) {
+            entryStackList.add(EntryStacks.of(stack));
+        }
+        widgets.add(Widgets.createSlot(new Point(bounds.x + eggSlotX, bounds.y + eggSlotY)).entries(entryStackList));
 
-        boolean hasExtraInput = !display.getExtraInputEntries().get(0).get(0).isEmpty();
+        boolean hasExtraInput = !display.getExtraInputEntries().isEmpty() &&
+                !display.getExtraInputEntries().get(0).isEmpty() &&
+                !display.getExtraInputEntries().get(0).get(0).isEmpty();
+
         boolean hasOutput = !display.getOutputEntries().get(0).isEmpty();
         if (hasExtraInput && hasOutput) {
             widgets.add(Widgets.createSlot(new Point(bounds.getX() + inputSlotFrameX + 5, bounds.getCenterY() + 10 + 2)).entries(display.getInputEntries().get(0)));
@@ -79,17 +89,20 @@ public class BreedingCategoryREI implements DisplayCategory<BreedingDisplay> {
         if (entityType != null) {
             Component entityName = Component.translatable(entityType.getDescriptionId());
             String entityNameString = entityName.getString(); // Convert Component to String
-            if (recipe.needsToBeTamed != null) {
+            if (recipe.needsToBeTamed != null && recipe.needsToBeTamed) {
                 Component tamed = Component.translatable("translation.justenoughbreeding.tamed");
                 entityNameString += " (" + tamed.getString() + ")";
-            } else if (recipe.animalTrusting != null) {
+            } else if (recipe.animalTrusting != null && recipe.animalTrusting) {
                 Component trusting = Component.translatable("translation.justenoughbreeding.trusting");
                 entityNameString += " (" + trusting.getString() + ")";
-            } else if (recipe.spawnEgg.getDescriptionId().startsWith("item.tfc")) {
+            }
+            //TODO readd TFC integration mob page name
+            /*
+            else if (recipe.spawnEgg.getDescriptionId().startsWith("item.tfc")) {
                 Component familiarity = Component.translatable("tfc.jade.familiarity");
                 String tfc = familiarity.getString().replaceAll(":[^:]*$", "");
                 entityNameString += " (" + tfc + " > 30" + ")";
-            }
+            }*/
 
             int stringWidth = Minecraft.getInstance().font.width(entityNameString); // Measure the width of the string in pixels
             int availableWidth = 154; // Initial available width in pixels

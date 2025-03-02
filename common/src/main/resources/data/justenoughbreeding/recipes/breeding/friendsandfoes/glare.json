@@ -1,0 +1,16 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "friendsandfoes",
+  "mobs": [
+    {
+      "glare": {
+        "inputs": [
+          {
+            "tag": "friendsandfoes:glare_tempt_items"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

@@ -1,7 +1,9 @@
 {
     "translation.justenoughbreeding.breeding": "Reprodução",
+    "translation.justenoughbreeding.taming": "Taming",
     "translation.justenoughbreeding.tamed": "Domesticado",
     "translation.justenoughbreeding.trusting": "Confiando",
     "emi.category.justenoughbreeding.breeding": "Reprodução",
+    "emi.category.justenoughbreeding.taming": "Taming",
     "modmenu.descriptionTranslation.justenoughbreeding": "JEI/REI/EMI plugin that displays breeding information"
   }

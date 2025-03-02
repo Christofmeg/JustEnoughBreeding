@@ -44,8 +44,6 @@ public class CommonStrings {
     public static final String POTATOES = "minecraft:baked_potato, minecraft:potato";
     public static final String MOUNTAIN_BUDS = "steves_vanilla:mountain_buds";
     public static final String BREAD = "minecraft:bread";
-    public static final String FENNECFOX_FOOD = "minecraft:glow_berries, minecraft:rabbit_foot, minecraft:sweet_berries";
-    public static final String GLOW_BERRIES = "minecraft:glow_berries";
     public static final String SWEET_BERRIES = "minecraft:sweet_berries";
     public static final String CHILLOO_BREED_ITEMS_TAG = "#frozenup:chilloo_breed_items";
     public static final String LILY_OF_THE_VALLEY = "minecraft:lily_of_the_valley";
@@ -77,7 +75,6 @@ public class CommonStrings {
     public static final String COAL = "minecraft:coal";
     public static final String TORCHFLOWERS_SEEDS = "minecraft:torchflower_seeds";
     public static final String CACTUS = "minecraft:cactus";
-    public static final String PINK_PETALS = "biomemakeover:pink_petals";
     public static final String SPIDER_EYE = "minecraft:spider_eye";
     public static final String RADGILL = "alexscaves:radgill";
     public static final String TREE_STAR = "alexscaves:tree_star";
@@ -90,8 +87,6 @@ public class CommonStrings {
     public static final String MELON = "minecraft:melon";
     public static final String LIZARD_TEMPT_ITEMS_TAG = "#naturalist:lizard_tempt_items";
     public static final String BIRD_FOOD_ITEMS_TAG = "#naturalist:bird_food_items";
-    public static final String PENGUIN_TEMPT_ITEMS_TAG = "#ecologics:penguin_tempt_items";
-    public static final String SQUIRREL_TEMPT_ITEMS_TAG = "#ecologics:squirrel_tempt_items";
     public static final String SPIDER_EYES = "minecraft:spider_eye, minecraft:fermented_spider_eye";
     public static final String MARMOT_FOOD = "minecraft:tall_grass, #minecraft:flowers, minecraft:egg, minecraft:cookie";
     public static final String RABBIT = "minecraft:rabbit";
@@ -130,7 +125,6 @@ public class CommonStrings {
     public static final String GRIZZLY_HONEY_TAG = "#alexsmobs:grizzly_honey";
     public static final String FERMENTED_SPIDER_EYE = "minecraft:fermented_spider_eye";
     public static final String SNOWPILE_QUAIL_FOOD = "minecraft:seeds, minecraft:melon_seeds, minecraft:pumpkin_seeds, minecraft:beetroot_seeds, frostrealm:sugarbeet_seeds";
-    public static final String PRICKLY_PEAR = "ecologics:prickly_pear";
     public static final String DOG_TREAT = "sophisticated_wolves:dog_treat";
     public static final String RED_PARROT_EGG = "quark:egg_parrot_red_blue";
     public static final String BLUE_PARROT_EGG = "quark:egg_parrot_blue";
@@ -168,17 +162,12 @@ public class CommonStrings {
     public static final String SPORELING_FOOD_TAG = "#cnb:sporeling_food";
     public static final String MELON_SLICE = "minecraft:melon_slice";
     public static final String APPLE_SLICE = "cnb:apple_slice";
-    public static final String CLAM = "crittersandcompanions:clam";
-    public static final String FERRET_FOOD_TAG = "#crittersandcompanions:ferret_food";
-    public static final String SHIMA_ENAGA_FOOD_TAG = "#crittersandcompanions:shima_enaga_food";
-    public static final String DRAGONFLY_WING = "crittersandcompanions:dragonfly_wing";
     public static final String PUMPKIN_PIE = "minecraft:pumpkin_pie";
     public static final String POTATO = "minecraft:potato";
     public static final String WORM = "ambientadditions:worm";
     public static final String PINOCCHIO_ANOLE_POT = "ambientadditions:pinocchio_anole_pot";
     public static final String CARROT_APPLE = "minecraft:carrot, minecraft:apple";
     public static final String CHICKEN = "minecraft:chicken";
-    public static final String PENGUIN_FOOD_TAG = "#tfc:penguin_food";
     public static final String SLABFISH_FOOD_TAG = "#environmental:slabfish_food";
     public static final String DUCK_FOOD_TAG = "#environmental:duck_food";
     public static final String DEER_FOOD_TAG = "#environmental:deer_food";

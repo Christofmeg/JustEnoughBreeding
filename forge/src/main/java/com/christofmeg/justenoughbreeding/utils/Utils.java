@@ -1,14 +1,14 @@
 package com.christofmeg.justenoughbreeding.utils;
 
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
-import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.entity.animal.axolotl.Axolotl;
@@ -24,11 +24,9 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.joml.Quaternionf;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Utils {
@@ -40,7 +38,7 @@ public class Utils {
             Item item = ForgeRegistries.ITEMS.getValue(key);
             if (item != null) {
                 FoodProperties foodProperties = item.getFoodProperties(item.getDefaultInstance(), null);
-                if(includeRottenFlesh) {
+                if (includeRottenFlesh) {
                     if (foodProperties != null && item.isEdible() && foodProperties.isMeat()) {
                         edibleMeatItemNames.add(key.toString());
                     }
@@ -75,6 +73,7 @@ public class Utils {
         return resultIngredients;
     }
 
+    /*
     public static BreedingRecipe createBreedingRecipe(EntityType<?> entityType, Ingredient combinedIngredient, Item spawnEggItem, Boolean needsToBeTamed, List<Ingredient> resultItemStacks, Boolean animalTrusting, @Nullable Ingredient combinedExtraIngredient) {
         List<ItemStack> mergedResultItemStacks = new ArrayList<>();
 
@@ -86,13 +85,14 @@ public class Utils {
         return new BreedingRecipe(
                 entityType,
                 combinedIngredient,
-                new ItemStack(spawnEggItem),
+                Ingredient.of(new ItemStack(spawnEggItem)),
                 needsToBeTamed,
                 Ingredient.of(mergedResultItemStacks.toArray(new ItemStack[0])),
                 combinedExtraIngredient,
                 animalTrusting
         );
     }
+     */
 
     public static Ingredient createCombinedIngredient(String mobIngredients) {
         String[] ingredientIds = mobIngredients.split(",");
@@ -109,6 +109,22 @@ public class Utils {
             }
         }
 
+        return Ingredient.merge(combinedIngredients);
+    }
+
+    public static Ingredient createCombinedIngredientFromTag(String mobIngredients) {
+        List<Ingredient> combinedIngredients = new ArrayList<>();
+        ResourceLocation tagLocation = new ResourceLocation(mobIngredients.trim());
+        combinedIngredients.add(Ingredient.of(TagKey.create(Registries.ITEM, tagLocation)));
+        return Ingredient.merge(combinedIngredients);
+    }
+
+    public static Ingredient createCombinedIngredient(String mobIngredients, int amount) {
+        List<Ingredient> combinedIngredients = new ArrayList<>();
+        Item ingredientItem = JustEnoughBreeding.getItemFromLoaderRegistries(new ResourceLocation(mobIngredients.trim()));
+        if (ingredientItem != null) {
+            combinedIngredients.add(Ingredient.of(new ItemStack(ingredientItem, amount)));
+        }
         return Ingredient.merge(combinedIngredients);
     }
 

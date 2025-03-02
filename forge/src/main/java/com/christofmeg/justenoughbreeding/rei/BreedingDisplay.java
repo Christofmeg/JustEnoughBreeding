@@ -7,7 +7,6 @@ import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.List;
 
@@ -17,8 +16,8 @@ public class BreedingDisplay extends BasicDisplay {
     public BreedingRecipe breedingRecipe;
 
     public BreedingDisplay(BreedingRecipe recipe) {
-        super(List.of(EntryIngredients.ofIngredient(recipe.breedingCatalyst), EntryIngredients.ofIngredient(Ingredient.of(recipe.spawnEgg))),
-                List.of(EntryIngredients.ofIngredient(recipe.resultItemStack), EntryIngredients.ofIngredient(Ingredient.of(recipe.spawnEgg)))
+        super(List.of(EntryIngredients.ofIngredient(recipe.inputStack), EntryIngredients.ofIngredient(recipe.spawnEgg)),
+                List.of(EntryIngredients.ofIngredient(recipe.resultItemStack), EntryIngredients.ofIngredient(recipe.spawnEgg))
         );
         breedingRecipe = recipe;
         if (recipe.extraInputStack != null) {

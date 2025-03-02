@@ -1,0 +1,19 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "minecraft",
+  "mobs": [
+    {
+      "cat": {
+        "inputs": [
+          {
+            "item": "minecraft:cod"
+          },
+          {
+            "item": "minecraft:salmon"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

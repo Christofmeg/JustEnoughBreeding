@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "ecologics",
+  "mobs": [
+    {
+      "penguin": {
+        "inputs": [
+          {
+            "tag": "ecologics:penguin_tempt_items"
+          }
+        ]
+      }
+    }
+  ]
+}

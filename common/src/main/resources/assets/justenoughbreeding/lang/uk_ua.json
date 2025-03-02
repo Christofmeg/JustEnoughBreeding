@@ -1,7 +1,9 @@
 {
   "translation.justenoughbreeding.breeding": "Розмноження",
+  "translation.justenoughbreeding.taming": "Taming",
   "translation.justenoughbreeding.tamed": "приручений",
   "translation.justenoughbreeding.trusting": "довіра",
   "emi.category.justenoughbreeding.breeding": "Розмноження",
+  "emi.category.justenoughbreeding.taming": "Taming",
   "modmenu.descriptionTranslation.justenoughbreeding": "JEI/REI/EMI plugin that displays breeding information"
 }

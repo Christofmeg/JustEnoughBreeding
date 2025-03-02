@@ -1,0 +1,18 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "biomemakeover",
+  "mobs": [
+    {
+      "toad": {
+        "inputs": [
+          {
+            "item": "minecraft:slimball"
+          },
+          {
+            "item": "minecraft:spider_eye"
+          }
+        ]
+      }
+    }
+  ]
+}

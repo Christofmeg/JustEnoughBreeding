@@ -91,12 +91,6 @@ dependencies {
     // GREEK FANTASY https://www.curseforge.com/minecraft/mc-mods/greek-fantasy
 //    runtimeOnly fg.deobf("curse.maven:greek-fantasy-413724:4066828")
 
-    implementation fg.deobf("curse.maven:alexs-mobs-426558:5698791")
-
-    implementation fg.deobf("curse.maven:citadel-331936:5633260")
-    implementation fg.deobf("curse.maven:geckolib-388172:5021668")
-    implementation fg.deobf("curse.maven:blueprint-382216:5292242")
-
 }
 
 tasks.withType(JavaCompile).configureEach {

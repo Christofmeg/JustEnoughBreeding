@@ -12,7 +12,8 @@ public class EMIPlugin implements EmiPlugin {
     @Override
     public void register(EmiRegistry registry) {
         registry.addCategory(BreedingCategoryEMI.TYPE);
-        EMIUtils.registerMobBreedingRecipes(registry);
+        registry.addCategory(TamingCategoryEMI.TYPE);
+        EMIUtils.registerRecipes(registry);
     }
 
     public static EmiRenderable simplifiedRenderer() {

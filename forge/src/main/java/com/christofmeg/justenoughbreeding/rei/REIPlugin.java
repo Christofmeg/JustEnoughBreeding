@@ -12,11 +12,12 @@ public class REIPlugin implements REIClientPlugin {
     @Override
     public void registerCategories(CategoryRegistry registry) {
         registry.add(new BreedingCategoryREI());
+        registry.add(new TamingCategoryREI());
     }
 
     @Override
     public void registerDisplays(DisplayRegistry registry) {
-        REIUtils.registerMobBreedingRecipes(registry);
+        REIUtils.registerRecipes(registry);
     }
 
 }

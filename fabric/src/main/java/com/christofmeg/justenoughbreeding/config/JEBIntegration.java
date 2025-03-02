@@ -21,23 +21,14 @@ public class JEBIntegration {
         if (FabricLoader.getInstance().isModLoaded("theducksmod")) {
             TheDucksModIntegration.init();
         }
-        if (FabricLoader.getInstance().isModLoaded("fennecfox")) {
-            FennecFoxIntegration.init();
-        }
         if (FabricLoader.getInstance().isModLoaded("ydms_redpanda")) {
             RedPandaIntegration.init();
         }
         if (FabricLoader.getInstance().isModLoaded("frozenup")) {
             FrozenUpIntegration.init();
         }
-        if (FabricLoader.getInstance().isModLoaded("glare")) {
-            GlareIntegration.init();
-        }
         if (FabricLoader.getInstance().isModLoaded("lilwings")) {
             LilWingsIntegration.init();
-        }
-        if (FabricLoader.getInstance().isModLoaded("duckling")) {
-            DucklingIntegration.init();
         }
         if (FabricLoader.getInstance().isModLoaded("twilightforest")) {
             TwilightForestIntegration.init();
@@ -50,9 +41,6 @@ public class JEBIntegration {
         }
         if (FabricLoader.getInstance().isModLoaded("naturalist")) {
             NaturalistIntegration.init();
-        }
-        if (FabricLoader.getInstance().isModLoaded("friendsandfoes")) {
-            FriendsAndFoesIntegration.init();
         }
         if (FabricLoader.getInstance().isModLoaded("biomemakeover")) {
             BiomeMakeoverIntegration.init();

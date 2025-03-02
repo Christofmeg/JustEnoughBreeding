@@ -22,7 +22,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Ingredient;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -64,14 +63,14 @@ public class BreedingCategoryEMI implements EmiRecipe {
 
     @Override
     public List<EmiIngredient> getInputs() {
-        return List.of(EmiIngredient.of(recipe.breedingCatalyst));
+        return List.of(EmiIngredient.of(recipe.inputStack));
     }
 
     @Override
     public List<EmiIngredient> getCatalysts() {
-        return List.of(EmiIngredient.of(recipe.breedingCatalyst),
+        return List.of(EmiIngredient.of(recipe.inputStack),
                 EmiIngredient.of(recipe.extraInputStack),
-                EmiIngredient.of(Ingredient.of(recipe.spawnEgg))
+                EmiIngredient.of(recipe.spawnEgg)
         );
     }
 
@@ -82,7 +81,9 @@ public class BreedingCategoryEMI implements EmiRecipe {
             for (ItemStack item : recipe.resultItemStack.getItems()) {
                 list.add(EmiStack.of(item));
             }
-            list.add(EmiStack.of(recipe.spawnEgg));
+            for (ItemStack item : recipe.spawnEgg.getItems()) {
+                list.add(EmiStack.of(item));
+            }
         }
         return list;
     }
@@ -104,7 +105,7 @@ public class BreedingCategoryEMI implements EmiRecipe {
 
     @Override
     public void addWidgets(WidgetHolder widgets) {
-        widgets.addSlot(EmiStack.of(recipe.spawnEgg), 149, 1);
+        widgets.addSlot(EmiIngredient.of(recipe.spawnEgg), 149, 1);
 
         int inputX = 69 + 5;
         int inputY = 58 - 10;
@@ -112,15 +113,15 @@ public class BreedingCategoryEMI implements EmiRecipe {
         boolean hasExtraInput = recipe.extraInputStack != null && !recipe.extraInputStack.isEmpty();
         boolean hasOutput = recipe.resultItemStack != null && !recipe.resultItemStack.isEmpty();
         if (hasExtraInput && hasOutput) {
-            widgets.addSlot(EmiIngredient.of(recipe.breedingCatalyst), inputX, inputY + 9);
+            widgets.addSlot(EmiIngredient.of(recipe.inputStack), inputX, inputY + 9);
             widgets.addSlot(EmiIngredient.of(recipe.extraInputStack), inputX, extraY + 9);
         } else if (hasExtraInput) {
-            widgets.addSlot(EmiIngredient.of(recipe.breedingCatalyst), inputX + 33, inputY + 9);
+            widgets.addSlot(EmiIngredient.of(recipe.inputStack), inputX + 33, inputY + 9);
             widgets.addSlot(EmiIngredient.of(recipe.extraInputStack), inputX + 33, extraY + 9);
         } else if (!hasOutput) {
-            widgets.addSlot(EmiIngredient.of(recipe.breedingCatalyst), inputX  + 33, inputY);
+            widgets.addSlot(EmiIngredient.of(recipe.inputStack), inputX  + 33, inputY);
         } else {
-            widgets.addSlot(EmiIngredient.of(recipe.breedingCatalyst), inputX, inputY);
+            widgets.addSlot(EmiIngredient.of(recipe.inputStack), inputX, inputY);
         }
         if (hasOutput) {
             widgets.addTexture(EmiTexture.EMPTY_ARROW, 94 + 4, 48);
@@ -179,17 +180,20 @@ public class BreedingCategoryEMI implements EmiRecipe {
         if (entityType != null) {
             Component entityName = Component.translatable(entityType.getDescriptionId());
             String entityNameString = entityName.getString(); // Convert Component to String
-            if (recipe.needsToBeTamed != null) {
+            if (recipe.needsToBeTamed != null && recipe.needsToBeTamed) {
                 Component tamed = Component.translatable("translation.justenoughbreeding.tamed");
                 entityNameString += " (" + tamed.getString() + ")";
-            } else if (recipe.animalTrusting != null) {
+            } else if (recipe.animalTrusting != null && recipe.animalTrusting) {
                 Component trusting = Component.translatable("translation.justenoughbreeding.trusting");
                 entityNameString += " (" + trusting.getString() + ")";
-            } else if (recipe.spawnEgg.getDescriptionId().startsWith("item.tfc")) {
+            }
+            //TODO readd TFC integration mob page name
+            /*
+            else if (recipe.spawnEgg.getDescriptionId().startsWith("item.tfc")) {
                 Component familiarity = Component.translatable("tfc.jade.familiarity");
                 String tfc = familiarity.getString().replaceAll(":[^:]*$", "");
                 entityNameString += " (" + tfc + " > 30" + ")";
-            }
+            }*/
 
             int stringWidth = Minecraft.getInstance().font.width(entityNameString); // Measure the width of the string in pixels
             int availableWidth = 154; // Initial available width in pixels
