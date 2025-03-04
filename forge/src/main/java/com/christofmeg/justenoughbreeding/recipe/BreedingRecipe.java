@@ -8,11 +8,14 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.TamableAnimal;
+import net.minecraft.world.entity.animal.Pig;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -21,6 +24,7 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.fml.ModList;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -115,23 +119,28 @@ public class BreedingRecipe extends BaseRecipe {
     public static class Serializer implements RecipeSerializer<BreedingRecipe> {
         @Override
         public @NotNull BreedingRecipe fromJson(@NotNull ResourceLocation jsonPath, @NotNull JsonObject json) {
+
             JsonArray mobs = json.getAsJsonArray("mobs");
             JsonObject mobObject = mobs.get(0).getAsJsonObject();
             Map.Entry<String, JsonElement> mobEntry = mobObject.entrySet().iterator().next();
             String modID = json.get("mod").getAsString();
             String mobName = mobEntry.getKey();
+            String modFolder = jsonPath.getPath().substring(0, jsonPath.getPath().lastIndexOf('/')).replace("breeding/", "");
 
-            if (!JustEnoughBreeding.isModLoaded(modID)) {
-                return new BreedingRecipe(null, null, null, null, null, null, null, modID, mobName);
+            if (!JustEnoughBreeding.isModLoaded(modFolder) || !JustEnoughBreeding.isModLoaded(modID)) {
+                return new BreedingRecipe(null, null, null, null, null, null, null, modFolder + "_" + modID, mobName);
             }
 
-            JsonObject mobData = mobEntry.getValue().getAsJsonObject();
             EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(new ResourceLocation(modID, mobName));
+            if (!mobName.equals(entityType.toShortString())) {
+                return new BreedingRecipe(null, null, null, null, null, null, null, modFolder + "_" + modID, mobName);
+            }
+
             List<Ingredient> inputIngredients = new ArrayList<>();
             List<Ingredient> extraInputIngredients = new ArrayList<>();
             List<Ingredient> outputIngredients = new ArrayList<>();
             List<Ingredient> spawnEggs = new ArrayList<>();
-
+            JsonObject mobData = mobEntry.getValue().getAsJsonObject();
             boolean isTamed = mobData.has("tamed") && mobData.get("tamed").getAsBoolean();
             boolean isTrusting = mobData.has("trusting") && mobData.get("trusting").getAsBoolean();
 

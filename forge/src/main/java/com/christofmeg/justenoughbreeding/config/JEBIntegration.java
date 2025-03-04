@@ -121,9 +121,6 @@ public class JEBIntegration {
         if (ModList.get().isLoaded("tfc")) {
             TerraFirmaCraftIntegration.init();
         }
-        if (ModList.get().isLoaded("meadow")) {
-            MeadowIntegration.init();
-        }
         if (ModList.get().isLoaded("environmental")) {
             EnvironmentalIntegration.init();
         }

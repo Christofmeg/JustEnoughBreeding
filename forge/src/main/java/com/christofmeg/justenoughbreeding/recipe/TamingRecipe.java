@@ -106,23 +106,29 @@ public class TamingRecipe extends BaseRecipe {
     public static class Serializer implements RecipeSerializer<TamingRecipe> {
 
         @Override
-        public @NotNull TamingRecipe fromJson(@NotNull ResourceLocation recipeId, @NotNull JsonObject json) {
+        public @NotNull TamingRecipe fromJson(@NotNull ResourceLocation jsonPath, @NotNull JsonObject json) {
+
             JsonArray mobs = json.getAsJsonArray("mobs");
             JsonObject mobObject = mobs.get(0).getAsJsonObject();
             Map.Entry<String, JsonElement> mobEntry = mobObject.entrySet().iterator().next();
             String modID = json.get("mod").getAsString();
             String mobName = mobEntry.getKey();
+            String modFolder = jsonPath.getPath().substring(0, jsonPath.getPath().lastIndexOf('/')).replace("taming/", "");
 
-            if (!JustEnoughBreeding.isModLoaded(modID)) {
-                return new TamingRecipe(null, null, null, null, modID, mobName);
+            if (!JustEnoughBreeding.isModLoaded(modFolder) || !JustEnoughBreeding.isModLoaded(modID)) {
+                return new TamingRecipe(null, null, null, null, modFolder + "_" + modID, mobName);
             }
 
-            JsonObject mobData = mobEntry.getValue().getAsJsonObject();
             EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(new ResourceLocation(modID, mobName));
+            if (!mobName.equals(entityType.toShortString())) {
+                return new TamingRecipe(null, null, null, null, modFolder + "_" + modID, mobName);
+            }
+
             List<Ingredient> inputIngredients = new ArrayList<>();
             List<Ingredient> extraInputIngredients = new ArrayList<>();
             List<Ingredient> outputIngredients = new ArrayList<>();
             List<Ingredient> spawnEggs = new ArrayList<>();
+            JsonObject mobData = mobEntry.getValue().getAsJsonObject();
 
             addIngredients(mobData, inputIngredients, "inputs");
             addIngredients(mobData, extraInputIngredients, "extra_inputs");
