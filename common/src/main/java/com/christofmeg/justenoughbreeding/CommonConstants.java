@@ -18,19 +18,14 @@ public class CommonConstants {
 	public static Map<String, Integer> breedingEggResultMaxAmount = new HashMap<>();
 	public static Map<String, Boolean> breedingNeedsToBeTamed = new HashMap<>();
 	public static Map<String, Boolean> breedingNeedsToBeTrusting = new HashMap<>();
-	public static Map<String, Integer> breedingIngredientAmount = new HashMap<>();
-	public static Map<String, Integer> breedingExtraIngredientAmount = new HashMap<>(); //Or use ItemStack with size
 	public static Map<String, Integer> breedingCooldown = new HashMap<>();
-
 
 	public static Map<String, String> tamingIngredients = new HashMap<>();
 	public static Map<String, String> tamingExtraIngredients = new HashMap<>();
 	public static Map<String, Integer> tamingChance = new HashMap<>();
 
-
 	public static Map<String, String> temperIngredients = new HashMap<>();
 	public static Map<String, String> temperValueIngredientsAdd = new HashMap<>();
-
 
 	public static Map<String, String> trustingIngredients = new HashMap<>(); //TODO add ALL items from registries if "*" is the item. Needed in minecraft:allay and Trusting
 	public static Map<String, Integer> trustingChance = new HashMap<>();

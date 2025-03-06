@@ -1,7 +1,7 @@
 package com.christofmeg.justenoughbreeding.utils;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
-import com.christofmeg.justenoughbreeding.jei.recipe.TemperRecipe;
+import com.christofmeg.justenoughbreeding.recipe.TemperRecipe;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -71,12 +71,6 @@ public class CommonUtils {
         eggsAmountMax.put(name, eggAmountMax);
     }
 
-    public static void addAnimalEggLayingExtraIngredients(String name, String spawnEggItem, String ingredient, String extraIngredient, String resultEgg, int eggAmountMax, List<String> animalNames, Map<String, String> ingredients, Map<String, String> extraIngredients, Map<String, Integer> breedingCooldown, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax, Map<String, String> spawnEggItems) {
-        addAnimalEggLaying(name, ingredient, resultEgg, eggAmountMax, animalNames, ingredients, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
-        spawnEggItems.put(name, spawnEggItem);
-        extraIngredients.put(name, extraIngredient);
-    }
-
     public static void addAnimalEggLaying(String name, String spawnEggItem, String entityFromName, String ingredient, String resultEgg, int eggAmountMax, List<String> animalNames, Map<String, String> ingredients, Map<String, Integer> breedingCooldown, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax, Map<String, String> spawnEggItems, Map<String, String> entitiesFromNames) {
         addAnimalEggLaying(name, ingredient, resultEgg, eggAmountMax, animalNames, ingredients, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
         spawnEggItems.put(name, spawnEggItem);
@@ -95,7 +89,6 @@ public class CommonUtils {
         needsToBeTamed.put(name, true);
     }
 
-    @SuppressWarnings("unused")
     public static void addAnimalEggLayingWithTamedTag(String name, String spawnEggItem, String entityFromName, String ingredient, String resultEgg, int eggAmountMax, List<String> animalNames, Map<String, String> ingredients, Map<String, Integer> breedingCooldown, Map<String, String> resultEggs, Map<String, Integer> eggsAmountMin, Map<String, Integer> eggsAmountMax, Map<String, Boolean> needsToBeTamed, Map<String, String> spawnEggItems, Map<String, String> entitiesFromNames) {
         addAnimalEggLayingWithTamedTag(name, ingredient, resultEgg, eggAmountMax, animalNames, ingredients, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax, needsToBeTamed);
         spawnEggItems.put(name, spawnEggItem);
@@ -439,13 +432,6 @@ public class CommonUtils {
         trustingOnly.add(name);
         trustingIngredients.put(name, trustingIngredient);
         trustingChance.put(name, 33);
-    }
-
-    @SuppressWarnings("unused")
-    public static void addTrustingOnly(String name, String spawnEggItem, String entityFromName, String trustingIngredient, List<String> trustingOnly, Map<String, String> trustingIngredients, Map<String, Integer> trustingChance, Map<String, String> spawnEggItems, Map<String, String> entitiesFromNames) {
-        addTrustingOnly(name, trustingIngredient, trustingOnly, trustingIngredients, trustingChance);
-        spawnEggItems.put(name, spawnEggItem);
-        entitiesFromNames.put(name, entityFromName);
     }
 
     public static void addTrustingAnimalNames(List<String> trustingOnly, Map<String, String> trustingIngredients, Map<String, Integer> trustingChance, String MOD) {

@@ -1,0 +1,21 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "snowpig",
+  "mobs": [
+    {
+      "snow_pig": {
+        "inputs": [
+          {
+            "item": "minecraft:carrot"
+          },
+          {
+            "item": "minecraft:potato"
+          },
+          {
+            "item": "minecraft:beetroot"
+          }
+        ]
+      }
+    }
+  ]
+}

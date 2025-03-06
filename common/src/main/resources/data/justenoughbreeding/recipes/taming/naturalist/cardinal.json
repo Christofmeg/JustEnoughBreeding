@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:taming_provider",
+  "mod": "naturalist",
+  "mobs": [
+    {
+      "cardinal": {
+        "inputs": [
+          {
+            "tag": "naturalist:bird_food_items"
+          }
+        ]
+      }
+    }
+  ]
+}

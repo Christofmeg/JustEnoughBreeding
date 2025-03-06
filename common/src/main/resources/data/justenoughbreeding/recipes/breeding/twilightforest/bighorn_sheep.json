@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "twilightforest",
+  "mobs": [
+    {
+      "bighorn_sheep": {
+        "inputs": [
+          {
+            "item": "minecraft:wheat"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -16,20 +16,11 @@ public class JEBIntegration {
         if (ModList.get().isLoaded("snuffles")) {
             SnufflesIntegration.init();
         }
-        if (ModList.get().isLoaded("snowpig")) {
-            SnowPigIntegration.init();
-        }
         if (ModList.get().isLoaded("aqcaracal")) {
             AqcaracalIntegration.init();
         }
-        if (ModList.get().isLoaded("theducksmod")) {
-            TheDucksModIntegration.init();
-        }
         if (ModList.get().isLoaded("apple_cows")) {
             AppleCowsIntegration.init();
-        }
-        if (ModList.get().isLoaded("ydms_redpanda")) {
-            RedPandaIntegration.init();
         }
         if (ModList.get().isLoaded("frozenup")) {
             FrozenUpIntegration.init();
@@ -45,9 +36,6 @@ public class JEBIntegration {
         }
         if (ModList.get().isLoaded("ulterlands")) {
             UlterlandsIntegration.init();
-        }
-        if (ModList.get().isLoaded("twilightforest")) {
-            TwilightForestIntegration.init();
         }
         if (ModList.get().isLoaded("waddles")) {
             WaddlesIntegration.init();
