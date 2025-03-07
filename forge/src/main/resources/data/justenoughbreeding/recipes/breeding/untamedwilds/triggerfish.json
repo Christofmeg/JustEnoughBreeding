@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "untamedwilds",
+  "mobs": [
+    {
+      "triggerfish": {
+        "inputs": [
+          {
+            "item": "untamedwilds:chum"
+          }
+        ]
+      }
+    }
+  ]
+}

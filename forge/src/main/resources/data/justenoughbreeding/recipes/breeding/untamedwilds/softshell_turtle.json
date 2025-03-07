@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "untamedwilds",
+  "mobs": [
+    {
+      "softshell_turtle": {
+        "inputs": [
+          {
+            "item": "minecraft:cod"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "aether",
+  "mobs": [
+    {
+      "aerbunny": {
+        "inputs": [
+          {
+            "tag": "aether:aerbunny_temptation_items"
+          }
+        ]
+      }
+    }
+  ]
+}

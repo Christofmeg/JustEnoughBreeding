@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "untamedwilds",
+  "mobs": [
+    {
+      "hippo": {
+        "inputs": [
+          {
+            "item": "untamedwilds:flora_water_hyacinth_item"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "untamedwilds",
+  "mobs": [
+    {
+      "newt": {
+        "inputs": [
+          {
+            "item": "untamedwilds:food_turtle_raw"
+          }
+        ]
+      }
+    }
+  ]
+}

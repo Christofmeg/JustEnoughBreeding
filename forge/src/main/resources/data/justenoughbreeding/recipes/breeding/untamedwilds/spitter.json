@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "untamedwilds",
+  "mobs": [
+    {
+      "spitter": {
+        "inputs": [
+          {
+            "item": "minecraft:glow_lichen"
+          }
+        ]
+      }
+    }
+  ]
+}

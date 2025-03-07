@@ -1,0 +1,18 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "untamedwilds",
+  "mobs": [
+    {
+      "manatee": {
+        "inputs": [
+          {
+            "item": "minecraft:sea_grass"
+          },
+          {
+            "item": "minecraft:kelp"
+          }
+        ]
+      }
+    }
+  ]
+}

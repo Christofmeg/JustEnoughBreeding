@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "untamedwilds",
+  "mobs": [
+    {
+      "giant_clam": {
+        "inputs": [
+          {
+            "item": "untamedwilds:chum"
+          }
+        ]
+      }
+    }
+  ]
+}

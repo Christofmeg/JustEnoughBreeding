@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "aether",
+  "mobs": [
+    {
+      "phyg": {
+        "inputs": [
+          {
+            "tag": "aether:phyg_temptation_items"
+          }
+        ]
+      }
+    }
+  ]
+}

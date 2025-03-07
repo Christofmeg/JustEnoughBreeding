@@ -1,0 +1,18 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "untamedwilds",
+  "mobs": [
+    {
+      "bison": {
+        "inputs": [
+          {
+            "item": "untamedwilds:flora_junegrass"
+          },
+          {
+            "item": "minecraft:wheat"
+          }
+        ]
+      }
+    }
+  ]
+}

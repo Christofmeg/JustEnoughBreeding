@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "untamedwilds",
+  "mobs": [
+    {
+      "tarantula": {
+        "inputs": [
+          {
+            "item": "minecraft:chicken"
+          }
+        ]
+      }
+    }
+  ]
+}

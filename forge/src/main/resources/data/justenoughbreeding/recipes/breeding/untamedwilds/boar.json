@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "untamedwilds",
+  "mobs": [
+    {
+      "boar": {
+        "inputs": [
+          {
+            "item": "minecraft:beetroot"
+          }
+        ]
+      }
+    }
+  ]
+}

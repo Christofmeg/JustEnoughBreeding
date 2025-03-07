@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "aether_redux",
+  "mobs": [
+    {
+      "mykapod": {
+        "inputs": [
+          {
+            "tag": "aether_redux:mykapod_temptation_items"
+          }
+        ]
+      }
+    }
+  ]
+}

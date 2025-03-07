@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "winteroverhaul",
+  "mobs": [
+    {
+      "robin": {
+        "inputs": [
+          {
+            "item": "minecraft:sweet_berries"
+          }
+        ]
+      }
+    }
+  ]
+}

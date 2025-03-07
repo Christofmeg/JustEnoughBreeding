@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "farmlife",
+  "mobs": [
+    {
+      "domestic_tribull": {
+        "inputs": [
+          {
+            "item": "minecraft:beetroot"
+          }
+        ]
+      }
+    }
+  ]
+}

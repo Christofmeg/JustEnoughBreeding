@@ -13,14 +13,8 @@ public class JEBIntegration {
         if (ModList.get().isLoaded("alexsmobs")) {
             AlexsMobsIntegration.init();
         }
-        if (ModList.get().isLoaded("snuffles")) {
-            SnufflesIntegration.init();
-        }
         if (ModList.get().isLoaded("aqcaracal")) {
             AqcaracalIntegration.init();
-        }
-        if (ModList.get().isLoaded("apple_cows")) {
-            AppleCowsIntegration.init();
         }
         if (ModList.get().isLoaded("frozenup")) {
             FrozenUpIntegration.init();
@@ -33,12 +27,6 @@ public class JEBIntegration {
         }
         if (ModList.get().isLoaded("steves_vanilla")) {
             StevesVanillaIntegration.init();
-        }
-        if (ModList.get().isLoaded("ulterlands")) {
-            UlterlandsIntegration.init();
-        }
-        if (ModList.get().isLoaded("waddles")) {
-            WaddlesIntegration.init();
         }
         if (ModList.get().isLoaded("aquaculture")) {
             AquacultureIntegration.init();
@@ -67,9 +55,6 @@ public class JEBIntegration {
         if (ModList.get().isLoaded("recrafted_creatures")) {
             RecraftedCreaturesIntegration.init();
         }
-        if (ModList.get().isLoaded("chileancraft")) {
-            ChileanCraftIntegration.init();
-        }
         if (ModList.get().isLoaded("frostrealm")) {
             FrostRealmIntegration.init();
         }
@@ -79,29 +64,14 @@ public class JEBIntegration {
         if (ModList.get().isLoaded("alexscaves")) {
             AlexsCavesIntegration.init();
         }
-        if (ModList.get().isLoaded("untamedwilds")) {
-            UntamedWildsIntegration.init();
-        }
         if (ModList.get().isLoaded("iceandfire")) {
             IceAndFireIntegration.init();
-        }
-        if (ModList.get().isLoaded("aether")) {
-            AetherIntegration.init();
-        }
-        if (ModList.get().isLoaded("aether_redux")) {
-            AetherReduxIntegration.init();
-        }
-        if (ModList.get().isLoaded("deep_aether")) {
-            DeepAetherIntegration.init();
         }
         if (ModList.get().isLoaded("cotw")) {
             CallOfTheWildIntegration.init();
         }
         if (ModList.get().isLoaded("cnb")) {
             CreaturesAndBeastsIntegration.init();
-        }
-        if (ModList.get().isLoaded("winteroverhaul")) {
-            WinterOverhaulIntegration.init();
         }
         if (ModList.get().isLoaded("ambientadditions")) {
             AmbientAdditionsIntegration.init();
@@ -118,17 +88,8 @@ public class JEBIntegration {
         if (ModList.get().isLoaded("buzzier_bees")) {
             BuzzierBeesIntegration.init();
         }
-        if (ModList.get().isLoaded("upgrade_aquatic")) {
-            UpgradeAquaticIntegration.init();
-        }
         if (ModList.get().isLoaded("neapolitan")) {
             NeapolitanIntegration.init();
-        }
-        if (ModList.get().isLoaded("farmlife")) {
-            FarmLifeIntegration.init();
-        }
-        if (ModList.get().isLoaded("sullysmod")) {
-            SullysModIntegration.init();
         }
     }
 }
