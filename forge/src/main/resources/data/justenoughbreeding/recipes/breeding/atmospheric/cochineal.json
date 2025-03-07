@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "atmospheric",
+  "mobs": [
+    {
+      "cochineal": {
+        "inputs": [
+          {
+            "tag": "atmospheric:cochineal_food"
+          }
+        ]
+      }
+    }
+  ]
+}

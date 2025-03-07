@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "autumnity",
+  "mobs": [
+    {
+      "snail": {
+        "inputs": [
+          {
+            "tag": "autumnity:snail_food"
+          }
+        ]
+      }
+    }
+  ]
+}

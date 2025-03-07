@@ -25,12 +25,6 @@ public class JEBIntegration {
         if (ModList.get().isLoaded("steves_vanilla")) {
             StevesVanillaIntegration.init();
         }
-        if (ModList.get().isLoaded("aquaculture")) {
-            AquacultureIntegration.init();
-        }
-        if (ModList.get().isLoaded("ostrich")) {
-            OstrichIntegration.init();
-        }
         if (ModList.get().isLoaded("marineiguana")) {
             MarineIguanaIntegration.init();
         }
@@ -43,26 +37,17 @@ public class JEBIntegration {
         if (ModList.get().isLoaded("earthmobsmod")) {
             EarthMobsIntegration.init();
         }
-        if (ModList.get().isLoaded("autumnity")) {
-            AutumnityIntegration.init();
-        }
         if (ModList.get().isLoaded("recrafted_creatures")) {
             RecraftedCreaturesIntegration.init();
         }
         if (ModList.get().isLoaded("frostrealm")) {
             FrostRealmIntegration.init();
         }
-        if (ModList.get().isLoaded("biome_backlog")) {
-            BiomeBacklogIntegration.init();
-        }
         if (ModList.get().isLoaded("alexscaves")) {
             AlexsCavesIntegration.init();
         }
         if (ModList.get().isLoaded("iceandfire")) {
             IceAndFireIntegration.init();
-        }
-        if (ModList.get().isLoaded("cotw")) {
-            CallOfTheWildIntegration.init();
         }
         if (ModList.get().isLoaded("cnb")) {
             CreaturesAndBeastsIntegration.init();
@@ -75,15 +60,6 @@ public class JEBIntegration {
         }
         if (ModList.get().isLoaded("environmental")) {
             EnvironmentalIntegration.init();
-        }
-        if (ModList.get().isLoaded("atmospheric")) {
-            AtmosphericIntegration.init();
-        }
-        if (ModList.get().isLoaded("buzzier_bees")) {
-            BuzzierBeesIntegration.init();
-        }
-        if (ModList.get().isLoaded("neapolitan")) {
-            NeapolitanIntegration.init();
         }
     }
 }

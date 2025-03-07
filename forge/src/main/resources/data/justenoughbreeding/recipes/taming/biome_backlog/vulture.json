@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:taming_provider",
+  "mod": "biome_backlog",
+  "mobs": [
+    {
+      "vulture": {
+        "inputs": [
+          {
+            "item": "minecraft:rotten_flesh"
+          }
+        ]
+      }
+    }
+  ]
+}

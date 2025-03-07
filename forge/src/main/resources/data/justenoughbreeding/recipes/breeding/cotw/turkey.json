@@ -1,0 +1,24 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "aquaculture",
+  "mobs": [
+    {
+      "turkey": {
+        "inputs": [
+          {
+            "item": "minecraft:wheat_seeds"
+          },
+          {
+            "item": "minecraft:pumpkin_seeds"
+          },
+          {
+            "item": "minecraft:melon_seeds"
+          },
+          {
+            "item": "minecraft:beetroot_seeds"
+          }
+        ]
+      }
+    }
+  ]
+}

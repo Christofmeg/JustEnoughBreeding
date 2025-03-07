@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "autumnity",
+  "mobs": [
+    {
+      "turkey": {
+        "inputs": [
+          {
+            "tag": "autumnity:turkey_food"
+          }
+        ]
+      }
+    }
+  ]
+}
