@@ -13,6 +13,7 @@ public class REIPlugin implements REIClientPlugin {
     public void registerCategories(CategoryRegistry registry) {
         registry.add(new BreedingCategoryREI());
         registry.add(new TamingCategoryREI());
+        registry.add(new TemperCategoryREI());
     }
 
     @Override

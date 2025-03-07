@@ -1,0 +1,36 @@
+{
+  "type": "justenoughbreeding:temper_provider",
+  "mod": "minecraft",
+  "mobs": [
+    {
+      "mule": {
+        "inputs": [
+          {
+            "item": "minecraft:sugar",
+            "value": 3
+          },
+          {
+            "item": "minecraft:wheat",
+            "value": 3
+          },
+          {
+            "item": "minecraft:apple",
+            "value": 3
+          },
+          {
+            "item": "minecraft:golden_carrot",
+            "value": 5
+          },
+          {
+            "item": "minecraft:golden_apple",
+            "value": 10
+          },
+          {
+            "item": "minecraft:enchanted_golden_apple",
+            "value": 10
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -91,6 +91,9 @@ dependencies {
     // GREEK FANTASY https://www.curseforge.com/minecraft/mc-mods/greek-fantasy
 //    runtimeOnly fg.deobf("curse.maven:greek-fantasy-413724:4066828")
 
+    //FORGE https://www.curseforge.com/minecraft/mc-mods/mineageries-plus
+//    runtimeOnly fg.deobf("maven.modrinth:mineageries-plus:zrdqXK5t")
+
 }
 
 tasks.withType(JavaCompile).configureEach {

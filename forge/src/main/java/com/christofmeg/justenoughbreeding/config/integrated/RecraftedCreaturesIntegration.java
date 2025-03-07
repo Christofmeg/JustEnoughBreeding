@@ -2,7 +2,6 @@ package com.christofmeg.justenoughbreeding.config.integrated;
 
 import com.christofmeg.justenoughbreeding.CommonStrings;
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;
-import com.christofmeg.justenoughbreeding.recipe.TemperRecipe;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,7 +22,6 @@ public class RecraftedCreaturesIntegration {
     static final Map<String, Integer> breedingCooldown = new HashMap<>();
     static final Map<String, String> tamingIngredients = new HashMap<>();
     static final Map<String, Integer> tamingChance = new HashMap<>();
-    static final Map<String, List<TemperRecipe>> temperDataMap = new HashMap<>();
 
     public static void init() {
         CommonUtils.addAnimalEggLaying("chameleon", CommonStrings.SPIDER_EYES, "recrafted_creatures:chameleon_egg", 4, animalNames, ingredients, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
@@ -41,14 +39,6 @@ public class RecraftedCreaturesIntegration {
         CommonUtils.addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, MOD);
 
         CommonUtils.addAnimalWithTamedTag("zebra", CommonStrings.GOLDEN_APPLE_CARROT, animalNames, ingredients, breedingCooldown, needsToBeTamed);
-        CommonUtils.addTemperAnimal("zebra", new String[]{
-                CommonStrings.SUGAR,
-                CommonStrings.WHEAT,
-                CommonStrings.APPLE,
-                CommonStrings.GOLDEN_CARROT,
-                CommonStrings.GOLDEN_APPLE,
-                CommonStrings.ENCHANTED_GOLDEN_APPLE
-        }, new int[]{3, 3, 3, 5, 10, 10}, temperDataMap);
     }
 
 }

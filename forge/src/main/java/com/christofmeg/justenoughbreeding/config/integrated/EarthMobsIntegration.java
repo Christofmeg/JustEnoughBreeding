@@ -2,7 +2,6 @@ package com.christofmeg.justenoughbreeding.config.integrated;
 
 import com.christofmeg.justenoughbreeding.CommonStrings;
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;
-import com.christofmeg.justenoughbreeding.recipe.TemperRecipe;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,7 +19,6 @@ public class EarthMobsIntegration {
     static final Map<String, Integer> breedingCooldown = new HashMap<>();
     static final Map<String, String> tamingIngredients = new HashMap<>();
     static final Map<String, Integer> tamingChance = new HashMap<>();
-    static final Map<String, List<TemperRecipe>> temperDataMap = new HashMap<>();
 
     public static void init() {
         CommonUtils.addAnimal("albino_cow", CommonStrings.WHEAT, animalNames, ingredients, breedingCooldown);
@@ -47,11 +45,6 @@ public class EarthMobsIntegration {
         CommonUtils.addTamableOnly("wither_skelton_wolf", CommonStrings.BONE_FLESH, tamableOnly, tamingIngredients, tamingChance);
         CommonUtils.addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, MOD);
 
-        CommonUtils.addTemperAnimal("jolly_llama", new String[]{
-                CommonStrings.WHEAT,
-                CommonStrings.HAY_BLOCK
-        }, new int[]{3, 6}, temperDataMap);
-        CommonUtils.addAnimalTempers(temperDataMap, MOD);
     }
 
 }

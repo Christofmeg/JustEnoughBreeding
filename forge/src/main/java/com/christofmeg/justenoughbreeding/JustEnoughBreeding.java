@@ -3,6 +3,7 @@ package com.christofmeg.justenoughbreeding;
 import com.christofmeg.justenoughbreeding.config.JEBIntegration;
 import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
 import com.christofmeg.justenoughbreeding.recipe.TamingRecipe;
+import com.christofmeg.justenoughbreeding.recipe.TemperRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
@@ -35,8 +36,12 @@ public class JustEnoughBreeding {
     public static final RegistryObject<RecipeType<TamingRecipe>> TAMING_PROVIDER_TYPE = RECIPE_TYPES.register("taming_provider", () -> RecipeType.simple(new ResourceLocation(CommonConstants.MOD_ID, "taming_provider")));
     public static final RegistryObject<RecipeSerializer<TamingRecipe>> TAMING_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("taming_provider", TamingRecipe.Serializer::new);
 
+    public static final RegistryObject<RecipeType<TemperRecipe>> TEMPER_PROVIDER_TYPE = RECIPE_TYPES.register("temper_provider", () -> RecipeType.simple(new ResourceLocation(CommonConstants.MOD_ID, "temper_provider")));
+    public static final RegistryObject<RecipeSerializer<TemperRecipe>> TEMPER_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("temper_provider", TemperRecipe.Serializer::new);
+
     public static List<BreedingRecipe> breedingRecipes = new ArrayList<>();
     public static List<TamingRecipe> tamingRecipes = new ArrayList<>();
+    public static List<TemperRecipe> temperRecipes = new ArrayList<>();
 
     public JustEnoughBreeding() {
         RECIPES_SERIALIZERS.register(FMLJavaModLoadingContext.get().getModEventBus());

@@ -16,9 +16,6 @@ public class JEBIntegration {
         if (ModList.get().isLoaded("aqcaracal")) {
             AqcaracalIntegration.init();
         }
-        if (ModList.get().isLoaded("frozenup")) {
-            FrozenUpIntegration.init();
-        }
         if (ModList.get().isLoaded("greekfantasy")) {
             GreekFantasyIntegration.init();
         }
@@ -39,9 +36,6 @@ public class JEBIntegration {
         }
         if (ModList.get().isLoaded("blue_skies")) {
             BlueSkiesIntegration.init();
-        }
-        if (ModList.get().isLoaded("naturalist")) {
-            NaturalistIntegration.init();
         }
         if (ModList.get().isLoaded("quark")) {
             QuarkIntegration.init();

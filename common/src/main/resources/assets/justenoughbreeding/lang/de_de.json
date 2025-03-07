@@ -1,9 +1,11 @@
 {
   "translation.justenoughbreeding.breeding": "Züchtung",
   "translation.justenoughbreeding.taming": "Taming",
+  "translation.justenoughbreeding.temper": "Temper",
   "translation.justenoughbreeding.tamed": "Gezähmt",
   "translation.justenoughbreeding.trusting": "Vertrauend",
   "emi.category.justenoughbreeding.breeding": "Züchtung",
   "emi.category.justenoughbreeding.taming": "Taming",
+  "emi.category.justenoughbreeding.temper": "Temper",
   "modmenu.descriptionTranslation.justenoughbreeding": "JEI/REI/EMI Plugin zur Anzeige von Zuchtinformationen"
 }

@@ -3,6 +3,7 @@ package com.christofmeg.justenoughbreeding.rei;
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
 import com.christofmeg.justenoughbreeding.recipe.TamingRecipe;
+import com.christofmeg.justenoughbreeding.recipe.TemperRecipe;
 import me.shedaniel.rei.api.client.registry.display.DisplayRegistry;
 
 import java.util.ArrayList;
@@ -14,15 +15,27 @@ public class REIUtils {
     public static void registerRecipes(DisplayRegistry registration) {
 
         List<BreedingRecipe> breedingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.BREEDING_PROVIDER_TYPE.get()));
-        breedingRecipes.sort(Comparator.comparing(r -> r.entityType.toShortString()));
+        breedingRecipes.sort(Comparator.comparing(r -> r.animalID));
         for (BreedingRecipe recipe : breedingRecipes) {
-            registration.add(new BreedingDisplay(recipe));
+            if (JustEnoughBreeding.isModLoaded(recipe.modID) && recipe.entityType != null) {
+                registration.add(new BreedingDisplay(recipe));
+            }
         }
 
         List<TamingRecipe> tamingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TAMING_PROVIDER_TYPE.get()));
-        tamingRecipes.sort(Comparator.comparing(r -> r.entityType.toShortString()));
+        tamingRecipes.sort(Comparator.comparing(r -> r.animalID));
         for (TamingRecipe recipe : tamingRecipes) {
-            registration.add(new TamingDisplay(recipe));
+            if (JustEnoughBreeding.isModLoaded(recipe.modID) && recipe.entityType != null) {
+                registration.add(new TamingDisplay(recipe));
+            }
+        }
+
+        List<TemperRecipe> temperRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TEMPER_PROVIDER_TYPE.get()));
+        temperRecipes.sort(Comparator.comparing(r -> r.animalID));
+        for (TemperRecipe recipe : temperRecipes) {
+            if (JustEnoughBreeding.isModLoaded(recipe.modID) && recipe.entityType != null) {
+                registration.add(new TemperDisplay(recipe));
+            }
         }
 
         /*-

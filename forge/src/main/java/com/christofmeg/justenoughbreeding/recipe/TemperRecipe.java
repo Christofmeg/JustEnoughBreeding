@@ -29,31 +29,23 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public class BreedingRecipe extends BaseRecipe {
+public class TemperRecipe extends BaseRecipe {
     private LivingEntity currentLivingEntity = null;
     private long lastEntityCreationTime = 0;
 
     public final EntityType<?> entityType;
     public Ingredient inputStack;
     public Ingredient spawnEgg;
-    @Nullable
-    public final Boolean needsToBeTamed;
-    public Ingredient resultItemStack;
     public @Nullable Ingredient extraInputStack;
-    @Nullable
-    public final Boolean animalTrusting;
     public static final int ENTITY_CREATION_INTERVAL = 3000;
     public final String modID;
     public final String animalID;
 
-    public BreedingRecipe(EntityType<?> entityType, Ingredient inputStack, Ingredient spawnEgg, @Nullable Boolean needsToBeTamed, @Nullable Ingredient resultItemStack, @Nullable Ingredient extraInputStack, @Nullable Boolean animalTrusting, String modID, String animalID) {
+    public TemperRecipe(EntityType<?> entityType, Ingredient inputStack, Ingredient spawnEgg, @Nullable Ingredient extraInputStack, String modID, String animalID) {
         this.entityType = entityType;
         this.inputStack = inputStack;
         this.spawnEgg = spawnEgg;
-        this.needsToBeTamed = needsToBeTamed;
-        this.resultItemStack = resultItemStack;
         this.extraInputStack = extraInputStack;
-        this.animalTrusting = animalTrusting;
         this.modID = modID;
         this.animalID = animalID;
     }
@@ -86,17 +78,17 @@ public class BreedingRecipe extends BaseRecipe {
 
     @Override
     public @NotNull ResourceLocation getId() {
-        return new ResourceLocation(CommonConstants.MOD_ID, "breeding" + "/" + this.modID + "/" + this.animalID);
+        return new ResourceLocation(CommonConstants.MOD_ID, "temper" + "." + this.modID + "." + this.animalID);
     }
 
     @Override
     public @NotNull RecipeSerializer<?> getSerializer() {
-        return JustEnoughBreeding.BREEDING_PROVIDER_SERIALIZER.get();
+        return JustEnoughBreeding.TEMPER_PROVIDER_SERIALIZER.get();
     }
 
     @Override
     public @NotNull RecipeType<?> getType() {
-        return JustEnoughBreeding.BREEDING_PROVIDER_TYPE.get();
+        return JustEnoughBreeding.TEMPER_PROVIDER_TYPE.get();
     }
 
     public void setInputIngredient(Ingredient ingredient) {
@@ -107,32 +99,29 @@ public class BreedingRecipe extends BaseRecipe {
         this.extraInputStack = ingredient;
     }
 
-    public void setOutputIngredient(Ingredient ingredient) {
-        this.resultItemStack = ingredient;
-    }
-
     public void setSpawnEggs(Ingredient ingredient) {
         this.spawnEgg = ingredient;
     }
 
-    public static class Serializer implements RecipeSerializer<BreedingRecipe> {
+    public static class Serializer implements RecipeSerializer<TemperRecipe> {
+
         @Override
-        public @NotNull BreedingRecipe fromJson(@NotNull ResourceLocation jsonPath, @NotNull JsonObject json) {
+        public @NotNull TemperRecipe fromJson(@NotNull ResourceLocation jsonPath, @NotNull JsonObject json) {
 
             JsonArray mobs = json.getAsJsonArray("mobs");
             JsonObject mobObject = mobs.get(0).getAsJsonObject();
             Map.Entry<String, JsonElement> mobEntry = mobObject.entrySet().iterator().next();
             String modID = json.get("mod").getAsString();
             String mobName = mobEntry.getKey();
-            String modFolder = jsonPath.getPath().substring(0, jsonPath.getPath().lastIndexOf('/')).replace("breeding/", "");
+            String modFolder = jsonPath.getPath().substring(0, jsonPath.getPath().lastIndexOf('/')).replace("temper/", "");
 
             if (!JustEnoughBreeding.isModLoaded(modFolder) || !JustEnoughBreeding.isModLoaded(modID)) {
-                return new BreedingRecipe(null, null, null, null, null, null, null, modFolder + "_" + modID, mobName);
+                return new TemperRecipe(null, null, null, null, modFolder + "_" + modID, mobName);
             }
 
             EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(new ResourceLocation(modID, mobName));
             if (!mobName.equals(entityType.toShortString())) {
-                return new BreedingRecipe(null, null, null, null, null, null, null, modFolder + "_" + modID, mobName);
+                return new TemperRecipe(null, null, null, null, modFolder + "_" + modID, mobName);
             }
 
             List<Ingredient> inputIngredients = new ArrayList<>();
@@ -140,8 +129,6 @@ public class BreedingRecipe extends BaseRecipe {
             List<Ingredient> outputIngredients = new ArrayList<>();
             List<Ingredient> spawnEggs = new ArrayList<>();
             JsonObject mobData = mobEntry.getValue().getAsJsonObject();
-            boolean isTamed = mobData.has("tamed") && mobData.get("tamed").getAsBoolean();
-            boolean isTrusting = mobData.has("trusting") && mobData.get("trusting").getAsBoolean();
 
             addIngredients(mobData, inputIngredients, "inputs");
             addIngredients(mobData, extraInputIngredients, "extra_inputs");
@@ -156,70 +143,49 @@ public class BreedingRecipe extends BaseRecipe {
                 spawnEggs = new ArrayList<>(List.of(Ingredient.of(spawnEgg)));
             }
 
-            for (BreedingRecipe existingRecipe : JustEnoughBreeding.breedingRecipes) {
+            for (TemperRecipe existingRecipe : JustEnoughBreeding.temperRecipes) {
                 if (existingRecipe.modID.equals(modID) && existingRecipe.animalID.equals(mobName)) {
 
                     inputIngredients.add(existingRecipe.inputStack);
                     spawnEggs.add(existingRecipe.spawnEgg);
-                    outputIngredients.add(existingRecipe.resultItemStack);
                     extraInputIngredients.add(existingRecipe.extraInputStack);
 
                     existingRecipe.setInputIngredient(Ingredient.merge(inputIngredients));
                     existingRecipe.setExtraInputIngredient(Ingredient.merge(extraInputIngredients));
-                    existingRecipe.setOutputIngredient(Ingredient.merge(outputIngredients));
                     existingRecipe.setSpawnEggs(Ingredient.merge(spawnEggs));
 
                     return existingRecipe;
                 }
             }
 
-            BreedingRecipe newRecipe = new BreedingRecipe(
+            TemperRecipe newRecipe = new TemperRecipe(
                     entityType,
                     Ingredient.merge(inputIngredients),
                     Ingredient.merge(spawnEggs),
-                    isTamed,
-                    Ingredient.merge(outputIngredients),
                     Ingredient.merge(extraInputIngredients),
-                    isTrusting,
                     modID,
                     mobName
             );
 
-            JustEnoughBreeding.breedingRecipes.add(newRecipe);
+            JustEnoughBreeding.temperRecipes.add(newRecipe);
             return newRecipe;
         }
 
         @Override
-        public @Nullable BreedingRecipe fromNetwork(@NotNull ResourceLocation resourceLocation, @NotNull FriendlyByteBuf friendlyByteBuf) {
+        public @Nullable TemperRecipe fromNetwork(@NotNull ResourceLocation resourceLocation, @NotNull FriendlyByteBuf friendlyByteBuf) {
             return null;
         }
 
         @Override
-        public void toNetwork(@NotNull FriendlyByteBuf friendlyByteBuf, @NotNull BreedingRecipe breedingRecipe) {}
+        public void toNetwork(@NotNull FriendlyByteBuf friendlyByteBuf, @NotNull TemperRecipe temperRecipe) {}
 
         private void addIngredients(JsonObject mobData, List<Ingredient> ingredientList, String memberName) {
             if (mobData.has(memberName)) {
                 for (JsonElement input : mobData.getAsJsonArray(memberName)) {
                     if (input.getAsJsonObject().has("item")) {
                         String ingredient = input.getAsJsonObject().get("item").getAsString();
-                        JsonElement amountElement = input.getAsJsonObject().get("amount");
-                        if (amountElement != null && amountElement.isJsonObject()) {
-                            JsonObject amountObj = amountElement.getAsJsonObject();
-                            int min = amountObj.has("min") ? amountObj.get("min").getAsInt() : 1;
-                            int max = amountObj.has("max") ? amountObj.get("max").getAsInt() : min;
-                            for (int i = min; i <= max; i++) {
-                                ingredientList.add(Utils.createCombinedIngredient(ingredient, i));
-                            }
-                        } else {
-                            int amount = input.getAsJsonObject().has("amount") ? input.getAsJsonObject().get("amount").getAsInt() : 1;
-                            ingredientList.add(Utils.createCombinedIngredient(ingredient, amount));
-                        }
-                    } else if (input.getAsJsonObject().has("tag")) {
-                        String ingredient = input.getAsJsonObject().get("tag").getAsString();
-                        ingredientList.add(Utils.createCombinedIngredientFromTag(ingredient));
-                    } else if (input.getAsJsonObject().has("meat")) {
-                        boolean meat = input.getAsJsonObject().get("meat").getAsBoolean();
-                        ingredientList.add(Utils.createCombinedIngredient(CommonUtils.getEdibleMeatItemNames(meat)));
+                        int temperValue = input.getAsJsonObject().has("value") ? input.getAsJsonObject().get("value").getAsInt() : 1;
+                        ingredientList.add(Utils.createCombinedIngredient(ingredient, temperValue));
                     }
                 }
             }

@@ -1,7 +1,6 @@
 package com.christofmeg.justenoughbreeding.utils;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
-import com.christofmeg.justenoughbreeding.recipe.TemperRecipe;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -15,7 +14,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class CommonUtils {
 
@@ -273,7 +271,7 @@ public class CommonUtils {
 /*
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  */
-
+/*
     public static void addTemperAnimal(String name, String[] temperItems, int[] temperValues, Map<String, List<TemperRecipe>> temperDataMap) {
         List<TemperRecipe> temperDataList = temperDataMap.computeIfAbsent(name, k -> new ArrayList<>());
 
@@ -302,7 +300,7 @@ public class CommonUtils {
             CommonConstants.temperValueIngredientsAdd.put(MOD + "_" + temperAnimal, temperValuesString);
         }
     }
-
+*/
 /*
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  */

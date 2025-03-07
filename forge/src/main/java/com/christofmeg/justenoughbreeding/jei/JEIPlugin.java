@@ -27,8 +27,8 @@ public class JEIPlugin implements IModPlugin {
         IGuiHelper helper = registration.getJeiHelpers().getGuiHelper();
         registration.addRecipeCategories(
                 new BreedingCategory(helper, Items.WHEAT),
-                new TamingCategory(helper, Items.BONE)
-//                new TemperCategory(helper, Items.GOLDEN_CARROT),
+                new TamingCategory(helper, Items.BONE),
+                new TemperCategory(helper, Items.GOLDEN_APPLE)
 //                new TransformationCategory(helper, Items.GOLDEN_CARROT), villager to witch, pig to zombie pigman
 //                new TrustingCategory(helper, Items.SWEET_BERRIES)
                 // AllayDuplication https://minecraft.wiki/w/Allay#Allay_duplication

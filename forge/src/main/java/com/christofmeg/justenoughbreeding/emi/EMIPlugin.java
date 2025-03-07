@@ -13,6 +13,7 @@ public class EMIPlugin implements EmiPlugin {
     public void register(EmiRegistry registry) {
         registry.addCategory(BreedingCategoryEMI.TYPE);
         registry.addCategory(TamingCategoryEMI.TYPE);
+        registry.addCategory(TemperCategoryEMI.TYPE);
         EMIUtils.registerRecipes(registry);
     }
 

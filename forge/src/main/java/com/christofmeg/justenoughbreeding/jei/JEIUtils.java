@@ -3,6 +3,7 @@ package com.christofmeg.justenoughbreeding.jei;
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
 import com.christofmeg.justenoughbreeding.recipe.TamingRecipe;
+import com.christofmeg.justenoughbreeding.recipe.TemperRecipe;
 import mezz.jei.api.registration.IRecipeRegistration;
 import mezz.jei.api.registration.IRuntimeRegistration;
 import net.minecraft.client.Minecraft;
@@ -19,15 +20,27 @@ public class JEIUtils {
         ClientLevel clientLevel = Minecraft.getInstance().level;
         if (clientLevel != null) {
             List<BreedingRecipe> breedingRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.BREEDING_PROVIDER_TYPE.get()));
-            breedingRecipes.sort(Comparator.comparing(r -> r.entityType.toShortString()));
+            breedingRecipes.sort(Comparator.comparing(r -> r.animalID));
             for (BreedingRecipe recipe : breedingRecipes) {
-                registration.addRecipes(BreedingCategory.TYPE, Collections.singletonList(recipe));
+                if (JustEnoughBreeding.isModLoaded(recipe.modID) && recipe.entityType != null) {
+                    registration.addRecipes(BreedingCategory.TYPE, Collections.singletonList(recipe));
+                }
             }
 
             List<TamingRecipe> tamingRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TAMING_PROVIDER_TYPE.get()));
-            tamingRecipes.sort(Comparator.comparing(r -> r.entityType.toShortString()));
+            tamingRecipes.sort(Comparator.comparing(r -> r.animalID));
             for (TamingRecipe recipe : tamingRecipes) {
-                registration.addRecipes(TamingCategory.TYPE, Collections.singletonList(recipe));
+                if (JustEnoughBreeding.isModLoaded(recipe.modID) && recipe.entityType != null) {
+                    registration.addRecipes(TamingCategory.TYPE, Collections.singletonList(recipe));
+                }
+            }
+
+            List<TemperRecipe> temperRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TEMPER_PROVIDER_TYPE.get()));
+            temperRecipes.sort(Comparator.comparing(r -> r.animalID));
+            for (TemperRecipe recipe : temperRecipes) {
+                if (JustEnoughBreeding.isModLoaded(recipe.modID) && recipe.entityType != null) {
+                    registration.addRecipes(TemperCategory.TYPE, Collections.singletonList(recipe));
+                }
             }
         }
 
