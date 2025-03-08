@@ -1,11 +1,12 @@
 {
-  "translation.justenoughbreeding.breeding": "繁殖",
-  "translation.justenoughbreeding.taming": "Taming",
-  "translation.justenoughbreeding.temper": "Temper",
-  "translation.justenoughbreeding.tamed": "ペット",
-  "translation.justenoughbreeding.trusting": "信頼",
   "emi.category.justenoughbreeding.breeding": "繁殖",
   "emi.category.justenoughbreeding.taming": "Taming",
   "emi.category.justenoughbreeding.temper": "Temper",
-  "modmenu.descriptionTranslation.justenoughbreeding": "JEI/REI/EMI plugin that displays breeding information"
+  "emi.category.justenoughbreeding.trusting": "Trusting",
+  "modmenu.descriptionTranslation.justenoughbreeding": "JEI/REI/EMI plugin that displays breeding information",
+  "translation.justenoughbreeding.breeding": "繁殖",
+  "translation.justenoughbreeding.tamed": "ペット",
+  "translation.justenoughbreeding.taming": "Taming",
+  "translation.justenoughbreeding.temper": "Temper",
+  "translation.justenoughbreeding.trusting": "信頼"
 }

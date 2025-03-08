@@ -28,8 +28,6 @@ public class MinecraftIntegration {
 
     public static void init() {
         CommonUtils.addTrustingOnly("allay", "*", trustableOnly, trustingIngredients, trustingChance);
-        CommonUtils.addTrustingOnly("fox", CommonStrings.BERRIES, trustableOnly, trustingIngredients, trustingChance);
-        CommonUtils.addTrustingOnly("ocelot", CommonStrings.COD_SALMON, trustableOnly, trustingIngredients, trustingChance);
 
         CommonUtils.addAnimalNames(animalNames, ingredients, MOD, breedingCooldown, needsToBeTamed, resultEggs, eggsAmountMin, eggsAmountMax);
         CommonUtils.addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, MOD);

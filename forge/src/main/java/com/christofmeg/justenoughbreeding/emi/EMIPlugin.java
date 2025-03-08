@@ -14,6 +14,7 @@ public class EMIPlugin implements EmiPlugin {
         registry.addCategory(BreedingCategoryEMI.TYPE);
         registry.addCategory(TamingCategoryEMI.TYPE);
         registry.addCategory(TemperCategoryEMI.TYPE);
+        registry.addCategory(TrustingCategoryEMI.TYPE);
         EMIUtils.registerRecipes(registry);
     }
 

@@ -1,7 +1,7 @@
 package com.christofmeg.justenoughbreeding.rei;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
-import com.christofmeg.justenoughbreeding.recipe.TemperRecipe;
+import com.christofmeg.justenoughbreeding.recipe.TrustingRecipe;
 import com.christofmeg.justenoughbreeding.utils.Utils;
 import me.shedaniel.math.Point;
 import me.shedaniel.math.Rectangle;
@@ -23,24 +23,24 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class TemperCategoryREI implements DisplayCategory<TemperDisplay> {
+public class TrustingCategoryREI implements DisplayCategory<TrustingDisplay> {
 
-    public static final CategoryIdentifier<TemperDisplay> TYPE =
-            CategoryIdentifier.of(CommonConstants.MOD_ID, "temper");
+    public static final CategoryIdentifier<TrustingDisplay> TYPE =
+            CategoryIdentifier.of(CommonConstants.MOD_ID, "trusting");
 
     @Override
-    public CategoryIdentifier<? extends TemperDisplay> getCategoryIdentifier() {
+    public CategoryIdentifier<? extends TrustingDisplay> getCategoryIdentifier() {
         return TYPE;
     }
 
     @Override
     public Component getTitle() {
-        return Component.translatable("translation.justenoughbreeding.temper");
+        return Component.translatable("translation.justenoughbreeding.trusting");
     }
 
     @Override
     public Renderer getIcon() {
-        return EntryStacks.of(Items.GOLDEN_APPLE);
+        return EntryStacks.of(Items.SWEET_BERRIES);
     }
 
     final int inputSlotFrameX = 68 - 19 + 25;
@@ -50,12 +50,12 @@ public class TemperCategoryREI implements DisplayCategory<TemperDisplay> {
     final int mobSlotY = 15;
 
     @Override
-    public List<Widget> setupDisplay(TemperDisplay display, Rectangle bounds) {
+    public List<Widget> setupDisplay(TrustingDisplay display, Rectangle bounds) {
         List<Widget> widgets = new LinkedList<>();
         widgets.add(Widgets.createRecipeBase(bounds));
         widgets.add(Widgets.createSlotBase(new Rectangle(bounds.x + mobSlotX, bounds.y + mobSlotY, 61, 81)));
         List<EntryStack<?>> entryStackList = new ArrayList<>();
-        for (ItemStack stack : display.temperRecipe.spawnEgg.getItems()) {
+        for (ItemStack stack : display.trustingRecipe.spawnEgg.getItems()) {
             entryStackList.add(EntryStacks.of(stack));
         }
         widgets.add(Widgets.createSlot(new Point(bounds.x + eggSlotX, bounds.y + eggSlotY)).entries(entryStackList));
@@ -71,7 +71,7 @@ public class TemperCategoryREI implements DisplayCategory<TemperDisplay> {
             widgets.add(Widgets.createSlot(new Point(bounds.getX() + inputSlotFrameX + 31 + 7, bounds.getCenterY() + 3)).entries(display.getInputEntries().get(0)));
         }
 
-        TemperRecipe recipe = display.temperRecipe;
+        TrustingRecipe recipe = display.trustingRecipe;
         EntityType<?> entityType = recipe.entityType;
         if (entityType != null) {
             Component entityName = Component.translatable(entityType.getDescriptionId());
@@ -91,11 +91,11 @@ public class TemperCategoryREI implements DisplayCategory<TemperDisplay> {
                         abbreviatedEntityName).noShadow().leftAligned().color(0xFF404040, 0xFFBBBBBB));
             }
             widgets.add(Widgets.withTranslate(Widgets.createDrawableWidget((stack, mouseX, mouseY, v) -> {
-                    LivingEntity currentLivingEntity = recipe.doRendering();
-                    if (currentLivingEntity != null) {
-                        Utils.renderEntity(stack.pose(), mouseX, currentLivingEntity);
+                        LivingEntity currentLivingEntity = recipe.doRendering();
+                        if (currentLivingEntity != null) {
+                            Utils.renderEntity(stack.pose(), mouseX, currentLivingEntity);
+                        }
                     }
-                }
             ), bounds.x + mobSlotX, bounds.y + mobSlotY - 10, 0));
         }
 
@@ -103,7 +103,7 @@ public class TemperCategoryREI implements DisplayCategory<TemperDisplay> {
     }
 
     @Override
-    public int getDisplayWidth(TemperDisplay display) {
+    public int getDisplayWidth(TrustingDisplay display) {
         return 151 + 25;
     }
 

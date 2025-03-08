@@ -14,6 +14,7 @@ public class REIPlugin implements REIClientPlugin {
         registry.add(new BreedingCategoryREI());
         registry.add(new TamingCategoryREI());
         registry.add(new TemperCategoryREI());
+        registry.add(new TrustingCategoryREI());
     }
 
     @Override

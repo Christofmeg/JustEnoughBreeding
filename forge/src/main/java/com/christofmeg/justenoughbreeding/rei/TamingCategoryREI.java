@@ -103,7 +103,7 @@ public class TamingCategoryREI implements DisplayCategory<TamingDisplay> {
     }
 
     @Override
-    public int getDisplayWidth(TamingDisplay breedingDisplay) {
+    public int getDisplayWidth(TamingDisplay display) {
         return 151 + 25;
     }
 

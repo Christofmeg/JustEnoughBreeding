@@ -130,7 +130,7 @@ public class BreedingCategoryREI implements DisplayCategory<BreedingDisplay> {
     }
 
     @Override
-    public int getDisplayWidth(BreedingDisplay breedingDisplay) {
+    public int getDisplayWidth(BreedingDisplay display) {
         return 151 + 25;
     }
 

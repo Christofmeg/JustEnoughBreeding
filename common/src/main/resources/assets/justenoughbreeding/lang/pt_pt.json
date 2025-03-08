@@ -1,11 +1,12 @@
 {
-    "translation.justenoughbreeding.breeding": "Reprodução",
-    "translation.justenoughbreeding.taming": "Taming",
-    "translation.justenoughbreeding.temper": "Temper",
-    "translation.justenoughbreeding.tamed": "Domesticado",
-    "translation.justenoughbreeding.trusting": "Confiando",
-    "emi.category.justenoughbreeding.breeding": "Reprodução",
-    "emi.category.justenoughbreeding.taming": "Taming",
-    "emi.category.justenoughbreeding.temper": "Temper",
-    "modmenu.descriptionTranslation.justenoughbreeding": "JEI/REI/EMI plugin that displays breeding information"
-  }
+  "emi.category.justenoughbreeding.breeding": "Reprodução",
+  "emi.category.justenoughbreeding.taming": "Taming",
+  "emi.category.justenoughbreeding.temper": "Temper",
+  "emi.category.justenoughbreeding.trusting": "Trusting",
+  "modmenu.descriptionTranslation.justenoughbreeding": "JEI/REI/EMI plugin that displays breeding information",
+  "translation.justenoughbreeding.breeding": "Reprodução",
+  "translation.justenoughbreeding.tamed": "Domesticado",
+  "translation.justenoughbreeding.taming": "Taming",
+  "translation.justenoughbreeding.temper": "Temper",
+  "translation.justenoughbreeding.trusting": "Confiando"
+}

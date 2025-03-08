@@ -4,8 +4,8 @@ import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
 import com.christofmeg.justenoughbreeding.recipe.TamingRecipe;
 import com.christofmeg.justenoughbreeding.recipe.TemperRecipe;
+import com.christofmeg.justenoughbreeding.recipe.TrustingRecipe;
 import mezz.jei.api.registration.IRecipeRegistration;
-import mezz.jei.api.registration.IRuntimeRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 
@@ -40,6 +40,14 @@ public class JEIUtils {
             for (TemperRecipe recipe : temperRecipes) {
                 if (JustEnoughBreeding.isModLoaded(recipe.modID) && recipe.entityType != null) {
                     registration.addRecipes(TemperCategory.TYPE, Collections.singletonList(recipe));
+                }
+            }
+
+            List<TrustingRecipe> trustingRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TRUSTING_PROVIDER_TYPE.get()));
+            trustingRecipes.sort(Comparator.comparing(r -> r.animalID));
+            for (TrustingRecipe recipe : trustingRecipes) {
+                if (JustEnoughBreeding.isModLoaded(recipe.modID) && recipe.entityType != null) {
+                    registration.addRecipes(TrustingCategory.TYPE, Collections.singletonList(recipe));
                 }
             }
         }

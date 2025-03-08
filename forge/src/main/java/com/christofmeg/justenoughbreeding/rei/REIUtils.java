@@ -4,6 +4,7 @@ import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
 import com.christofmeg.justenoughbreeding.recipe.TamingRecipe;
 import com.christofmeg.justenoughbreeding.recipe.TemperRecipe;
+import com.christofmeg.justenoughbreeding.recipe.TrustingRecipe;
 import me.shedaniel.rei.api.client.registry.display.DisplayRegistry;
 
 import java.util.ArrayList;
@@ -35,6 +36,14 @@ public class REIUtils {
         for (TemperRecipe recipe : temperRecipes) {
             if (JustEnoughBreeding.isModLoaded(recipe.modID) && recipe.entityType != null) {
                 registration.add(new TemperDisplay(recipe));
+            }
+        }
+
+        List<TrustingRecipe> trustingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TRUSTING_PROVIDER_TYPE.get()));
+        trustingRecipes.sort(Comparator.comparing(r -> r.animalID));
+        for (TrustingRecipe recipe : trustingRecipes) {
+            if (JustEnoughBreeding.isModLoaded(recipe.modID) && recipe.entityType != null) {
+                registration.add(new TrustingDisplay(recipe));
             }
         }
 

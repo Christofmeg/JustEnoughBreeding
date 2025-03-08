@@ -5,6 +5,7 @@ import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
 import com.christofmeg.justenoughbreeding.recipe.TamingRecipe;
 import com.christofmeg.justenoughbreeding.recipe.TemperRecipe;
+import com.christofmeg.justenoughbreeding.recipe.TrustingRecipe;
 import dev.emi.emi.api.EmiRegistry;
 import net.minecraft.resources.ResourceLocation;
 
@@ -50,6 +51,19 @@ public class EMIUtils {
                         TemperCategoryEMI.builder()
                                 .id(new ResourceLocation(CommonConstants.MOD_ID, "/" + "temper" + "/" + recipe.modID + "/" + recipe.animalID))
                                 .temperRecipe(recipe)
+                                .build()
+                );
+            }
+        }
+
+        List<TrustingRecipe> trustingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TRUSTING_PROVIDER_TYPE.get()));
+        trustingRecipes.sort(Comparator.comparing(r -> r.animalID));
+        for (TrustingRecipe recipe : trustingRecipes) {
+            if (JustEnoughBreeding.isModLoaded(recipe.modID) && recipe.entityType != null) {
+                registration.addRecipe(
+                        TrustingCategoryEMI.builder()
+                                .id(new ResourceLocation(CommonConstants.MOD_ID, "/" + "trusting" + "/" + recipe.modID + "/" + recipe.animalID))
+                                .trustingRecipe(recipe)
                                 .build()
                 );
             }
