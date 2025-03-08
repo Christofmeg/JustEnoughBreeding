@@ -1,0 +1,28 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "alexscaves",
+  "mobs": [
+    {
+      "tremorsaurus": {
+        "inputs": [
+          {
+            "item": "alexscaves:cooked_dinosaur_chop"
+          },
+          {
+            "item": "alexscaves:dinosaur_chop"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "alexscaves:tremorsaurus_egg"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexscaves:spawn_egg_tremorsaurus"
+          }
+        ]
+      }
+    }
+  ]
+}

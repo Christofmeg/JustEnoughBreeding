@@ -13,20 +13,8 @@ public class JEBIntegration {
         if (ModList.get().isLoaded("alexsmobs")) {
             AlexsMobsIntegration.init();
         }
-        if (ModList.get().isLoaded("aqcaracal")) {
-            AqcaracalIntegration.init();
-        }
         if (ModList.get().isLoaded("greekfantasy")) {
             GreekFantasyIntegration.init();
-        }
-        if (ModList.get().isLoaded("sophisticated_wolves")) {
-            SophisticatedWolvesIntegration.init();
-        }
-        if (ModList.get().isLoaded("steves_vanilla")) {
-            StevesVanillaIntegration.init();
-        }
-        if (ModList.get().isLoaded("marineiguana")) {
-            MarineIguanaIntegration.init();
         }
         if (ModList.get().isLoaded("blue_skies")) {
             BlueSkiesIntegration.init();
@@ -42,9 +30,6 @@ public class JEBIntegration {
         }
         if (ModList.get().isLoaded("frostrealm")) {
             FrostRealmIntegration.init();
-        }
-        if (ModList.get().isLoaded("alexscaves")) {
-            AlexsCavesIntegration.init();
         }
         if (ModList.get().isLoaded("iceandfire")) {
             IceAndFireIntegration.init();

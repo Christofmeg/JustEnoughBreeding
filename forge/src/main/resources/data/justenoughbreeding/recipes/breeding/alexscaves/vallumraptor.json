@@ -1,0 +1,29 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "alexscaves",
+  "mobs": [
+    {
+      "vallumraptor": {
+        "inputs": [
+          {
+            "item": "alexscaves:dinosaur_nugget"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "alexscaves:vallumraptor_egg",
+            "amount": {
+              "min": 1,
+              "max": 4
+            }
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexscaves:spawn_egg_vallumraptor"
+          }
+        ]
+      }
+    }
+  ]
+}

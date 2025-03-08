@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:taming_provider",
+  "mod": "sophisticated_wolves",
+  "mobs": [
+    {
+      "sophisticated_wolf": {
+        "inputs": [
+          {
+            "item": "minecraft:bone"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "sophisticated_wolves:dog_egg"
+          }
+        ]
+      }
+    }
+  ]
+}
