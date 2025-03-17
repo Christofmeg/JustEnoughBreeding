@@ -43,6 +43,8 @@ public class JustEnoughBreeding {
     public static final RegistryObject<RecipeType<TrustingRecipe>> TRUSTING_PROVIDER_TYPE = RECIPE_TYPES.register("trusting_provider", () -> RecipeType.simple(new ResourceLocation(CommonConstants.MOD_ID, "trusting_provider")));
     public static final RegistryObject<RecipeSerializer<TrustingRecipe>> TRUSTING_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("trusting_provider", TrustingRecipe.Serializer::new);
 
+    //TODO TFC Familiarity category (https://tfcraft.fandom.com/wiki/Familiarity)
+
     public static List<BreedingRecipe> breedingRecipes = new ArrayList<>();
     public static List<TamingRecipe> tamingRecipes = new ArrayList<>();
     public static List<TemperRecipe> temperRecipes = new ArrayList<>();

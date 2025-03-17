@@ -1,0 +1,25 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "tfc",
+  "mobs": [
+    {
+      "chicken": {
+        "inputs": [
+          {
+            "tag": "tfc:chicken_food"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "minecraft:frogspawn"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "tfc:spawn_egg/chicken"
+          }
+        ]
+      }
+    }
+  ]
+}

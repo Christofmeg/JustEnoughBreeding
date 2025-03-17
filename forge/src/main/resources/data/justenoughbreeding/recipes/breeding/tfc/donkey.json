@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "tfc",
+  "mobs": [
+    {
+      "donkey": {
+        "inputs": [
+          {
+            "tag": "tfc:donkey_food"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "tfc:spawn_egg/donkey"
+          }
+        ]
+      }
+    }
+  ]
+}

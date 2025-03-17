@@ -8,7 +8,7 @@ public class JEBIntegration {
 
     public static void init() {
 
- //       MinecraftIntegration.init();
+        MinecraftIntegration.init();
 
         if (ModList.get().isLoaded("alexsmobs")) {
             AlexsMobsIntegration.init();
@@ -21,9 +21,6 @@ public class JEBIntegration {
         }
         if (ModList.get().isLoaded("quark")) {
             QuarkIntegration.init();
-        }
-        if (ModList.get().isLoaded("earthmobsmod")) {
-            EarthMobsIntegration.init();
         }
         if (ModList.get().isLoaded("recrafted_creatures")) {
             RecraftedCreaturesIntegration.init();
@@ -39,9 +36,6 @@ public class JEBIntegration {
         }
         if (ModList.get().isLoaded("ambientadditions")) {
             AmbientAdditionsIntegration.init();
-        }
-        if (ModList.get().isLoaded("tfc")) {
-            TerraFirmaCraftIntegration.init();
         }
         if (ModList.get().isLoaded("environmental")) {
             EnvironmentalIntegration.init();

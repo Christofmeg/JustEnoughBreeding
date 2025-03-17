@@ -111,14 +111,11 @@ public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> imp
             } else if (recipe.animalTrusting != null && recipe.animalTrusting) {
                 Component trusting = Component.translatable("translation.justenoughbreeding.trusting");
                 entityNameString += " (" + trusting.getString() + ")";
-            }
-            //TODO readd TFC integration mob page name
-            /*
-            else if (recipe.spawnEgg.getDescriptionId().startsWith("item.tfc")) {
+            } else if (recipe.modID.equals("tfc")) {
                 Component familiarity = Component.translatable("tfc.jade.familiarity");
                 String tfc = familiarity.getString().replaceAll(":[^:]*$", "");
                 entityNameString += " (" + tfc + " > 30" + ")";
-            }*/
+            }
 
             int stringWidth = font.width(entityNameString); // Measure the width of the string in pixels
             int availableWidth = 148; // Initial available width in pixels

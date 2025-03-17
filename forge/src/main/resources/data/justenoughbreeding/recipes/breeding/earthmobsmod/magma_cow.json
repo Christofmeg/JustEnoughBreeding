@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "earthmobsmod",
+  "mobs": [
+    {
+      "magma_cow": {
+        "inputs": [
+          {
+            "item": "minecraft:magma_cream"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "recrafted_creatures",
+  "mobs": [
+    {
+      "marmot": {
+        "inputs": [
+          {
+            "item": "minecraft:tall_grass"
+          },
+          {
+            "tag": "minecraft:flowers"
+          },
+          {
+            "item": "minecraft:egg"
+          },
+          {
+            "item": "minecraft:cookie"
+          }
+        ]
+      }
+    }
+  ]
+}

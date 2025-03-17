@@ -1,0 +1,21 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "earthmobsmod",
+  "mobs": [
+    {
+      "teacup_pig": {
+        "inputs": [
+          {
+            "item": "minecraft:carrot"
+          },
+          {
+            "item": "minecraft:potato"
+          },
+          {
+            "item": "minecraft:beetroot"
+          }
+        ]
+      }
+    }
+  ]
+}

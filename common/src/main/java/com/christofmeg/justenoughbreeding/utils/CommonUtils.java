@@ -17,7 +17,6 @@ import java.util.Map;
 
 public class CommonUtils {
 
-/*-----------------------------------------------------------------------------------------*/
     public static void addAnimal(String name, String ingredient, List<String> animalNames, Map<String, String> ingredients, Map<String, Integer> breedingCooldown) {
         animalNames.add(name);
         ingredients.put(name, ingredient);
@@ -268,43 +267,6 @@ public class CommonUtils {
         }
     }
 
-/*
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- */
-/*
-    public static void addTemperAnimal(String name, String[] temperItems, int[] temperValues, Map<String, List<TemperRecipe>> temperDataMap) {
-        List<TemperRecipe> temperDataList = temperDataMap.computeIfAbsent(name, k -> new ArrayList<>());
-
-        for (int i = 0; i < temperItems.length && i < temperValues.length; i++) {
-            temperDataList.add(new TemperRecipe(temperItems[i], temperValues[i]));
-        }
-    }
-
-    public static void addAnimalTempers(Map<String, List<TemperRecipe>> temperDataMap, String MOD) {
-        for (Map.Entry<String, List<TemperRecipe>> entry : temperDataMap.entrySet()) {
-            String temperAnimal = entry.getKey();
-            List<TemperRecipe> temperDataList = entry.getValue();
-            List<String> temperIngredients = temperDataList.stream()
-                    .map(TemperRecipe::temperIngredient)
-                    .collect(Collectors.toList());
-            List<Integer> temperValues = temperDataList.stream()
-                    .map(TemperRecipe::temperValue)
-                    .toList();
-
-            String temperIngredientsString = String.join(", ", temperIngredients);
-            String temperValuesString = temperValues.stream()
-                    .map(Object::toString)
-                    .collect(Collectors.joining(", "));
-
-            CommonConstants.temperIngredients.put(MOD + "_" + temperAnimal, temperIngredientsString);
-            CommonConstants.temperValueIngredientsAdd.put(MOD + "_" + temperAnimal, temperValuesString);
-        }
-    }
-*/
-/*
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- */
-
     public static void addTamableOnly(String name, String tamingIngredient, List<String> tamableOnly, Map<String, String> tamingIngredients, Map<String, Integer> tamingChance) {
         tamableOnly.add(name);
         tamingIngredients.put(name, tamingIngredient);
@@ -422,10 +384,6 @@ public class CommonUtils {
         }
     }
 
-/*
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- */
-
     public static void addTrustingOnly(String name, String trustingIngredient, List<String> trustingOnly, Map<String, String> trustingIngredients, Map<String, Integer> trustingChance) {
         trustingOnly.add(name);
         trustingIngredients.put(name, trustingIngredient);
@@ -457,10 +415,6 @@ public class CommonUtils {
             }
         }
     }
-
- /*
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- */
 
     public static String getEdibleMeatItemNames(boolean includeRottenFlesh) {
         List<String> edibleMeatItemNames = new ArrayList<>();

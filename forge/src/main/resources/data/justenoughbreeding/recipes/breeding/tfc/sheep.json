@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "tfc",
+  "mobs": [
+    {
+      "sheep": {
+        "inputs": [
+          {
+            "tag": "tfc:sheep_food"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "tfc:spawn_egg/sheep"
+          }
+        ]
+      }
+    }
+  ]
+}
