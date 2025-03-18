@@ -1,0 +1,34 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "iceandfire",
+  "mobs": [
+    {
+      "lightning_dragon": {
+        "inputs": [
+          {
+            "item": "iceandfire:lightning_stew"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "iceandfire:dragonegg_amythest"
+          },
+          {
+            "item": "iceandfire:dragonegg_electric"
+          },
+          {
+            "item": "iceandfire:dragonegg_copper"
+          },
+          {
+            "item": "iceandfire:dragonegg_black"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "iceandfire:spawn_egg_lightning_dragon"
+          }
+        ]
+      }
+    }
+  ]
+}

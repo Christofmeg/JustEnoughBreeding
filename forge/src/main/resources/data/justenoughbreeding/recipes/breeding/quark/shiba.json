@@ -1,0 +1,16 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "quark",
+  "mobs": [
+    {
+      "shiba": {
+        "inputs": [
+          {
+            "meat": "true"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "iceandfire",
+  "mobs": [
+    {
+      "ice_dragon": {
+        "inputs": [
+          {
+            "item": "iceandfire:frost_stew"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "iceandfire:dragonegg_sapphire"
+          },
+          {
+            "item": "iceandfire:dragonegg_blue"
+          },
+          {
+            "item": "iceandfire:dragonegg_silver"
+          },
+          {
+            "item": "iceandfire:dragonegg_white"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "iceandfire:spawn_egg_ice_dragon"
+          }
+        ]
+      }
+    }
+  ]
+}

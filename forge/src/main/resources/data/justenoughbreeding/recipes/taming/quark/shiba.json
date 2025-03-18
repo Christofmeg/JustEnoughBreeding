@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:taming_provider",
+  "mod": "quark",
+  "mobs": [
+    {
+      "shiba": {
+        "inputs": [
+          {
+            "item": "minecraft:bone"
+          }
+        ]
+      }
+    }
+  ]
+}
