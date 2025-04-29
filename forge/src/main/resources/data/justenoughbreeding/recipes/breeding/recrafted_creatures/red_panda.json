@@ -1,14 +1,15 @@
 {
   "type": "justenoughbreeding:breeding_provider",
-  "mod": "cotw",
+  "mod": "recrafted_creatures",
   "mobs": [
     {
-      "moose": {
+      "red_panda": {
         "inputs": [
           {
-            "tag": "minecraft:leaves"
+            "item": "minecraft:bamboo"
           }
-        ]
+        ],
+        "tamed": true
       }
     }
   ]

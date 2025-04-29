@@ -1,12 +1,12 @@
 {
   "type": "justenoughbreeding:breeding_provider",
-  "mod": "cotw",
+  "mod": "environmental",
   "mobs": [
     {
-      "moose": {
+      "slabfish": {
         "inputs": [
           {
-            "tag": "minecraft:leaves"
+            "tag": "environmental:slabfish_food"
           }
         ]
       }

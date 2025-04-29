@@ -94,8 +94,8 @@ dependencies {
     //FORGE https://www.curseforge.com/minecraft/mc-mods/mineageries-plus
 //    runtimeOnly fg.deobf("maven.modrinth:mineageries-plus:zrdqXK5t")
 
-    runtimeOnly fg.deobf("curse.maven:terrafirmacraft-302973:6187491")
-    runtimeOnly fg.deobf("curse.maven:patchouli-306770:6164575")
+    runtimeOnly fg.deobf("curse.maven:frostrealm-479086:4801495")
+    runtimeOnly fg.deobf("curse.maven:bagus-lib-866533:5739157")
 
 }
 

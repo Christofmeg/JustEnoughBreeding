@@ -35,13 +35,10 @@ public class FrostRealmIntegration {
         CommonUtils.addAnimalWithTamedTag("frost_wolf", MEAT, animalNames, ingredients, breedingCooldown, needsToBeTamed);
         CommonUtils.addAnimal("seal", CommonStrings.FISHES_TAG, animalNames, ingredients, breedingCooldown);
         CommonUtils.addAnimalEggLaying("snowpile_quail", CommonStrings.SNOWPILE_QUAIL_FOOD, "frostrealm:snowpile_quail_egg", 1, animalNames, ingredients, breedingCooldown, resultEggs, eggsAmountMin, eggsAmountMax);
-        CommonUtils.addAnimalNames(animalNames, ingredients, MOD, breedingCooldown, needsToBeTamed, resultEggs, eggsAmountMin, eggsAmountMax);
 
         CommonUtils.addTamableOnly("frost_wolf", MEAT, tamableOnly, tamingIngredients, tamingChance);
-        CommonUtils.addTamableAnimalNames(tamableOnly, tamingIngredients, tamingChance, MOD, "spawn_egg_", true);
 
         CommonUtils.addTrustingOnly("crystal_fox", CommonStrings.BEARBERRY, trustableOnly, trustingIngredients, trustingChance);
-        CommonUtils.addTrustingAnimalNames(trustableOnly, trustingIngredients, trustingChance, MOD);
     }
 
 }

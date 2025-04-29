@@ -1,12 +1,12 @@
 {
   "type": "justenoughbreeding:breeding_provider",
-  "mod": "cotw",
+  "mod": "environmental",
   "mobs": [
     {
-      "moose": {
+      "reindeer": {
         "inputs": [
           {
-            "tag": "minecraft:leaves"
+            "tag": "environmental:reindeer_food"
           }
         ]
       }

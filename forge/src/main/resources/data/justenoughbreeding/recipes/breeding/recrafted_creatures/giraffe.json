@@ -1,0 +1,28 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "recrafted_creatures",
+  "mobs": [
+    {
+      "giraffe": {
+        "inputs": [
+          {
+            "item": "minecraft:wheat"
+          },
+          {
+            "item": "minecraft:hay_block"
+          },
+          {
+            "item": "minecraft:carrot"
+          },
+          {
+            "item": "minecraft:golden_carrot"
+          },
+          {
+            "tag": "minecraft:leaves"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

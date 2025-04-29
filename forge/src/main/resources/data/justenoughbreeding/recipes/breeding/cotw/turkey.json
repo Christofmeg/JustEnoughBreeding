@@ -1,6 +1,6 @@
 {
   "type": "justenoughbreeding:breeding_provider",
-  "mod": "aquaculture",
+  "mod": "cotw",
   "mobs": [
     {
       "turkey": {

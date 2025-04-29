@@ -1,12 +1,12 @@
 {
   "type": "justenoughbreeding:breeding_provider",
-  "mod": "cotw",
+  "mod": "environmental",
   "mobs": [
     {
-      "moose": {
+      "yak": {
         "inputs": [
           {
-            "tag": "minecraft:leaves"
+            "tag": "environmental:yak_food"
           }
         ]
       }

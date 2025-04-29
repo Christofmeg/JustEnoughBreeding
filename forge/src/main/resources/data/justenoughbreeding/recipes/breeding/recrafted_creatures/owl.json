@@ -1,20 +1,20 @@
 {
   "type": "justenoughbreeding:breeding_provider",
-  "mod": "sullysmod",
+  "mod": "recrafted_creatures",
   "mobs": [
     {
-      "tortoise": {
+      "owl": {
         "inputs": [
           {
-            "tag": "sullysmod:tortoise_food"
+            "item": "minecraft:rabbit"
           }
         ],
         "outputs": [
           {
-            "item": "sullysmod:tortoise_egg",
+            "item": "recrafted_creatures:owl_egg",
             "amount": {
               "min": 1,
-              "max": 4
+              "max": 3
             }
           }
         ]

@@ -19,26 +19,14 @@ public class JEBIntegration {
         if (ModList.get().isLoaded("blue_skies")) {
             BlueSkiesIntegration.init();
         }
-        if (ModList.get().isLoaded("quark")) {
-            QuarkIntegration.init();
-        }
-        if (ModList.get().isLoaded("recrafted_creatures")) {
-            RecraftedCreaturesIntegration.init();
-        }
         if (ModList.get().isLoaded("frostrealm")) {
             FrostRealmIntegration.init();
-        }
-        if (ModList.get().isLoaded("iceandfire")) {
-            IceAndFireIntegration.init();
         }
         if (ModList.get().isLoaded("cnb")) {
             CreaturesAndBeastsIntegration.init();
         }
         if (ModList.get().isLoaded("ambientadditions")) {
             AmbientAdditionsIntegration.init();
-        }
-        if (ModList.get().isLoaded("environmental")) {
-            EnvironmentalIntegration.init();
         }
     }
 }

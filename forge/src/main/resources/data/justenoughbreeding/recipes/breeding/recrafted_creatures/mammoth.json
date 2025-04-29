@@ -1,14 +1,15 @@
 {
   "type": "justenoughbreeding:breeding_provider",
-  "mod": "cotw",
+  "mod": "recrafted_creatures",
   "mobs": [
     {
-      "moose": {
+      "mammoth": {
         "inputs": [
           {
-            "tag": "minecraft:leaves"
+            "item": "minecraft:hay_block"
           }
-        ]
+        ],
+        "tamed": true
       }
     }
   ]
