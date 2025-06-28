@@ -1,7 +1,6 @@
 package com.christofmeg.justenoughbreeding;
 
 public class CommonStrings {
-
     public static final String WHEAT = "minecraft:wheat";
     public static final String GOLDEN_WHEAT = "apple_cows:golden_wheat";
     public static final String ENCHANTED_GOLDEN_WHEAT = "apple_cows:enchanted_golden_wheat";
@@ -52,7 +51,6 @@ public class CommonStrings {
     public static final String COD = "minecraft:cod";
     public static final String BAKED_POTATO = "minecraft:baked_potato";
     public static final String SUGAR = "minecraft:sugar";
-    public static final String GLOW_LICHEN = "minecraft:glow_lichen";
     public static final String GOLDEN_CARROT = "minecraft:golden_carrot";
     public static final String GOLDEN_APPLE = "minecraft:golden_apple";
     public static final String ENCHANTED_GOLDEN_APPLE = "minecraft:enchanted_golden_apple";

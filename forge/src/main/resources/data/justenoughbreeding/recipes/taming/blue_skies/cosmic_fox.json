@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:taming_provider",
+  "mod": "blue_skies",
+  "mobs": [
+    {
+      "cosmic_fox": {
+        "inputs": [
+          {
+            "item": "blue_skies:crescent_fruit"
+          }
+        ]
+      }
+    }
+  ]
+}

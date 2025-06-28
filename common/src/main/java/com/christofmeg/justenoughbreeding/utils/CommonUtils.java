@@ -418,11 +418,10 @@ public class CommonUtils {
 
     public static String getEdibleMeatItemNames(boolean includeRottenFlesh) {
         List<String> edibleMeatItemNames = new ArrayList<>();
-
         for (ResourceLocation key : BuiltInRegistries.ITEM.keySet()) {
             Item item = BuiltInRegistries.ITEM.get(key);
             FoodProperties foodProperties = item.getFoodProperties();
-            if(includeRottenFlesh) {
+            if (includeRottenFlesh) {
                 if (foodProperties != null && item.isEdible() && foodProperties.isMeat()) {
                     edibleMeatItemNames.add(key.toString());
                 }
@@ -433,7 +432,6 @@ public class CommonUtils {
                 }
             }
         }
-
         return String.join(", ", edibleMeatItemNames);
     }
 

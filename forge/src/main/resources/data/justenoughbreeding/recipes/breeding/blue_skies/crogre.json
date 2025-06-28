@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "blue_skies",
+  "mobs": [
+    {
+      "crogre": {
+        "inputs": [
+          {
+            "item": "blue_skies:bug_guts"
+          }
+        ]
+      }
+    }
+  ]
+}

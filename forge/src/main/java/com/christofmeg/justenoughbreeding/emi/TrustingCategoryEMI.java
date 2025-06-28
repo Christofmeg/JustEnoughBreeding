@@ -154,7 +154,7 @@ public class TrustingCategoryEMI implements EmiRecipe {
 
             @Override
             public void render(@NotNull GuiGraphics stack, int mouseX, int mouseY, float delta) {
-                LivingEntity currentLivingEntity = recipe.doRendering();
+                LivingEntity currentLivingEntity = recipe.doRendering(recipe.entityType);
                 if (currentLivingEntity != null) {
                     Utils.renderEntity(stack.pose(), mouseX, currentLivingEntity);
                 }

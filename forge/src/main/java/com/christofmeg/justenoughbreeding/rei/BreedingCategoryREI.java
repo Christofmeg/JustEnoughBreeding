@@ -95,7 +95,7 @@ public class BreedingCategoryREI implements DisplayCategory<BreedingDisplay> {
             } else if (recipe.animalTrusting != null && recipe.animalTrusting) {
                 Component trusting = Component.translatable("translation.justenoughbreeding.trusting");
                 entityNameString += " (" + trusting.getString() + ")";
-            } else if (recipe.modID.equals("tfc")) {
+            } else if (recipe.jsonModID.equals("tfc")) {
                 Component familiarity = Component.translatable("tfc.jade.familiarity");
                 String tfc = familiarity.getString().replaceAll(":[^:]*$", "");
                 entityNameString += " (" + tfc + " > 30" + ")";
@@ -115,7 +115,7 @@ public class BreedingCategoryREI implements DisplayCategory<BreedingDisplay> {
                         abbreviatedEntityName).noShadow().leftAligned().color(0xFF404040, 0xFFBBBBBB));
             }
             widgets.add(Widgets.withTranslate(Widgets.createDrawableWidget((stack, mouseX, mouseY, v) -> {
-                    LivingEntity currentLivingEntity = recipe.doRendering();
+                    LivingEntity currentLivingEntity = recipe.doRendering(entityType);
                     if (currentLivingEntity != null) {
                         Utils.renderEntity(stack.pose(), mouseX, currentLivingEntity);
                     }

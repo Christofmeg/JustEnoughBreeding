@@ -3,10 +3,10 @@
   "mod": "tfc",
   "mobs": [
     {
-      "chicken": {
+      "frog": {
         "inputs": [
           {
-            "tag": "tfc:chicken_food"
+            "tag": "tfc:frog_food"
           }
         ],
         "outputs": [
@@ -16,7 +16,7 @@
         ],
         "spawn_eggs": [
           {
-            "item": "tfc:spawn_egg/chicken"
+            "item": "tfc:spawn_egg/frog"
           }
         ]
       }

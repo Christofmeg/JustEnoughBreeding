@@ -1,10 +1,7 @@
 package com.christofmeg.justenoughbreeding;
 
 import com.christofmeg.justenoughbreeding.config.JEBIntegration;
-import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
-import com.christofmeg.justenoughbreeding.recipe.TamingRecipe;
-import com.christofmeg.justenoughbreeding.recipe.TemperRecipe;
-import com.christofmeg.justenoughbreeding.recipe.TrustingRecipe;
+import com.christofmeg.justenoughbreeding.recipe.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
@@ -43,12 +40,25 @@ public class JustEnoughBreeding {
     public static final RegistryObject<RecipeType<TrustingRecipe>> TRUSTING_PROVIDER_TYPE = RECIPE_TYPES.register("trusting_provider", () -> RecipeType.simple(new ResourceLocation(CommonConstants.MOD_ID, "trusting_provider")));
     public static final RegistryObject<RecipeSerializer<TrustingRecipe>> TRUSTING_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("trusting_provider", TrustingRecipe.Serializer::new);
 
+    public static final RegistryObject<RecipeType<TransformationRecipe>> TRANSFORMATION_PROVIDER_TYPE = RECIPE_TYPES.register("transformation_provider", () -> RecipeType.simple(new ResourceLocation(CommonConstants.MOD_ID, "transformation_provider")));
+    public static final RegistryObject<RecipeSerializer<TransformationRecipe>> TRANSFORMATION_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("transformation_provider", TransformationRecipe.Serializer::new);
+
+    //TODO fix duplicate itemstacks appearing in same ingredient in ALL RECIPES, 1 x diamond, 1 x diamond
     //TODO TFC Familiarity category (https://tfcraft.fandom.com/wiki/Familiarity)
+
+    //TODO greek fantasy tamable
+    //tamableOnly		cerastes		#greekfantasy:cerastes_food
+    // addAnimalTamed("orthus", CommonStrings.ORTHUS_FOOD_TAG);
+
+    //TODO move to mob creation/transformation category
+    // horse (tamed) + enchanted golden apple = arion
+    // yellow sheep + dragons breath = greekfantasy:golden_ram
 
     public static List<BreedingRecipe> breedingRecipes = new ArrayList<>();
     public static List<TamingRecipe> tamingRecipes = new ArrayList<>();
     public static List<TemperRecipe> temperRecipes = new ArrayList<>();
     public static List<TrustingRecipe> trustingRecipes = new ArrayList<>();
+    public static List<TransformationRecipe> transformationRecipes = new ArrayList<>();
 
     public JustEnoughBreeding() {
         RECIPES_SERIALIZERS.register(FMLJavaModLoadingContext.get().getModEventBus());

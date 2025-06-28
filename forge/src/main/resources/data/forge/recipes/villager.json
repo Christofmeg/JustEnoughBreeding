@@ -1,0 +1,44 @@
+{
+  "type": "justenoughbreeding:transformation_provider",
+  "mod": "minecraft",
+  "inputs": [
+    {
+      "item": "minecraft:tipped_arrow"
+    },
+    {
+      "item": "minecraft:tipped_arrow"
+    },
+    {
+      "item": "minecraft:splash_potion"
+    },
+    {
+      "item": "minecraft:splash_potion"
+    },
+    {
+      "item": "minecraft:lingering_potion"
+    },
+    {
+      "item": "minecraft:lingering_potion"
+    },
+    {
+      "item": "minecraft:weakness"
+    }
+  ],
+  "extra_inputs": [
+    {
+      "item": "minecraft:golden_apple"
+    }
+  ],
+  "input_entity": "minecraft:zombie_villager",
+  "input_spawn_eggs": [
+    {
+      "item": "minecraft:zombie_villager_spawn_egg"
+    }
+  ],
+  "output_entity": "minecraft:villager",
+  "output_spawn_eggs": [
+    {
+      "item": "minecraft:villager_spawn_egg"
+    }
+  ]
+}

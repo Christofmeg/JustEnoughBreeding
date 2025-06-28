@@ -2,7 +2,6 @@ package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
-import com.christofmeg.justenoughbreeding.utils.Utils;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.builder.IRecipeSlotBuilder;
@@ -17,14 +16,9 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.AbstractRecipeCategory;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
@@ -50,7 +44,6 @@ public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> imp
         builder.addInputSlot(134 + 15, 1).setStandardSlotBackground().addIngredients(recipe.spawnEgg);
         builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).addIngredients(recipe.spawnEgg);
         IRecipeSlotBuilder inputSlot = builder.addInputSlot(inputSlotItemX, inputSlot1ItemY).setStandardSlotBackground().addIngredients(recipe.inputStack).setPosition(63, 20, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
-
         boolean hasExtraInput = recipe.extraInputStack != null && !recipe.extraInputStack.isEmpty();
         boolean hasOutput = recipe.resultItemStack != null && !recipe.resultItemStack.isEmpty();
         if (hasOutput) {
@@ -77,64 +70,8 @@ public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> imp
 
     @Override
     public void draw(@NotNull BreedingRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics stack, double mouseX, double mouseY) {
-        int mobSlotX = 0;
-        int mobSlotY = 10;
-
-        bigSlot.draw(stack, mobSlotX, mobSlotY, 0, 1, 0, 1);
-        bigSlot.draw(stack, mobSlotX + 18, mobSlotY, 0, 1, 1, 1);
-        bigSlot.draw(stack, mobSlotX + 32, mobSlotY, 0, 1, 1, 1);
-        bigSlot.draw(stack, mobSlotX + 35, mobSlotY, 0, 1, 22, 0);
-
-        bigSlot.draw(stack, mobSlotX, mobSlotY + 24, 1, 1, 0, 1);
-        bigSlot.draw(stack, mobSlotX + 18, mobSlotY + 24, 1, 1, 1, 1);
-        bigSlot.draw(stack, mobSlotX + 32, mobSlotY + 24, 1, 1, 1, 1);
-        bigSlot.draw(stack, mobSlotX + 35, mobSlotY + 24, 1, 1, 22, 0);
-
-        bigSlot.draw(stack, mobSlotX, mobSlotY + 48, 1, 1, 0, 1);
-        bigSlot.draw(stack, mobSlotX + 18, mobSlotY + 48, 1, 1, 1, 1);
-        bigSlot.draw(stack, mobSlotX + 32, mobSlotY + 48, 1, 1, 1, 1);
-        bigSlot.draw(stack, mobSlotX + 35, mobSlotY + 48, 1, 1, 22, 0);
-
-        bigSlot.draw(stack, mobSlotX, mobSlotY + 55, 18, 0, 0, 1);
-        bigSlot.draw(stack, mobSlotX + 18, mobSlotY + 55, 18, 0, 1, 1);
-        bigSlot.draw(stack, mobSlotX + 32, mobSlotY + 55, 18, 0, 1, 1);
-        bigSlot.draw(stack, mobSlotX + 35, mobSlotY + 55, 18, 0, 22, 0);
-
-        EntityType<?> entityType = recipe.entityType;
-        if (entityType != null) {
-            Font font = Minecraft.getInstance().font;
-            Component entityName = Component.translatable(entityType.getDescriptionId());
-            String entityNameString = entityName.getString(); // Convert Component to String
-            if (recipe.needsToBeTamed != null && recipe.needsToBeTamed) {
-                Component tamed = Component.translatable("translation.justenoughbreeding.tamed");
-                entityNameString += " (" + tamed.getString() + ")";
-            } else if (recipe.animalTrusting != null && recipe.animalTrusting) {
-                Component trusting = Component.translatable("translation.justenoughbreeding.trusting");
-                entityNameString += " (" + trusting.getString() + ")";
-            } else if (recipe.modID.equals("tfc")) {
-                Component familiarity = Component.translatable("tfc.jade.familiarity");
-                String tfc = familiarity.getString().replaceAll(":[^:]*$", "");
-                entityNameString += " (" + tfc + " > 30" + ")";
-            }
-
-            int stringWidth = font.width(entityNameString); // Measure the width of the string in pixels
-            int availableWidth = 148; // Initial available width in pixels
-            if (stringWidth > availableWidth) {
-                float pixelWidthPerCharacter = (float) stringWidth / entityNameString.length();
-                int maxCharacters = (int) (availableWidth / pixelWidthPerCharacter);
-                entityNameString = entityNameString.substring(0, maxCharacters);
-            }
-
-            if (!entityNameString.isEmpty()) {
-                Component abbreviatedEntityName = Component.nullToEmpty(entityNameString);
-                stack.drawString(font, abbreviatedEntityName, 0, 0, DyeColor.BLACK.getTextColor(), false);
-            }
-
-            LivingEntity currentLivingEntity = recipe.doRendering();
-            if (currentLivingEntity != null) {
-                Utils.renderEntity(stack.pose(), mouseX, currentLivingEntity);
-            }
-        }
+        JEIUtils.drawMobSlot(0, 10, bigSlot, stack);
+        JEIUtils.drawMobNameAndEntity(recipe.entityType, stack, mouseX, recipe);
     }
 
 }

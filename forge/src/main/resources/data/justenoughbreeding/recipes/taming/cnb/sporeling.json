@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:taming_provider",
+  "mod": "cnb",
+  "mobs": [
+    {
+      "sporeling": {
+        "inputs": [
+          {
+            "tag": "cnb:sporeling_food"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "cnb:sporeling_overworld_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

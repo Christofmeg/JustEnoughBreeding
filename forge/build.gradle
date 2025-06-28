@@ -88,14 +88,11 @@ dependencies {
         runtimeOnly fg.deobf("curse.maven:catalogue-459701:${catalogue_version}")
     }
 
-    // GREEK FANTASY https://www.curseforge.com/minecraft/mc-mods/greek-fantasy
-//    runtimeOnly fg.deobf("curse.maven:greek-fantasy-413724:4066828")
-
     //FORGE https://www.curseforge.com/minecraft/mc-mods/mineageries-plus
 //    runtimeOnly fg.deobf("maven.modrinth:mineageries-plus:zrdqXK5t")
 
-    runtimeOnly fg.deobf("curse.maven:frostrealm-479086:4801495")
-    runtimeOnly fg.deobf("curse.maven:bagus-lib-866533:5739157")
+    runtimeOnly fg.deobf("maven.modrinth:tag-tooltips:a0H0FGkF")
+    runtimeOnly fg.deobf("curse.maven:just-enough-effect-descriptions-jeed-532286:6172935")
 
 }
 

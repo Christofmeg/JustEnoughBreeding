@@ -6,20 +6,15 @@ import com.christofmeg.justenoughbreeding.utils.Utils;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ForgeSpawnEggItem;
-import net.minecraftforge.fml.ModList;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -28,56 +23,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public class TemperRecipe extends BaseRecipe {
-    private LivingEntity currentLivingEntity = null;
-    private long lastEntityCreationTime = 0;
+public class TemperRecipe extends ForgeRecipe {
 
     public final EntityType<?> entityType;
     public Ingredient inputStack;
     public Ingredient spawnEgg;
     public @Nullable Ingredient extraInputStack;
-    public static final int ENTITY_CREATION_INTERVAL = 3000;
-    public final String modID;
-    public final String animalID;
+    public final String jsonModID;
+    public final String jsonAnimalID;
+    public final String modFolder;
+    public final String fileName;
 
-    public TemperRecipe(EntityType<?> entityType, Ingredient inputStack, Ingredient spawnEgg, @Nullable Ingredient extraInputStack, String modID, String animalID) {
+    public TemperRecipe(EntityType<?> entityType, Ingredient inputStack, Ingredient spawnEgg, @Nullable Ingredient extraInputStack, String jsonModID, String jsonAnimalID, String modFolder, String fileName) {
         this.entityType = entityType;
         this.inputStack = inputStack;
         this.spawnEgg = spawnEgg;
         this.extraInputStack = extraInputStack;
-        this.modID = modID;
-        this.animalID = animalID;
-    }
-
-    public LivingEntity doRendering() {
-        long currentTime = System.currentTimeMillis();
-        Level level = Minecraft.getInstance().level;
-
-        if (level != null) {
-            if (currentLivingEntity == null) {
-                currentLivingEntity = (LivingEntity) entityType.create(level);
-                lastEntityCreationTime = currentTime;
-            }
-            if (currentTime - lastEntityCreationTime >= ENTITY_CREATION_INTERVAL) {
-                if (!ModList.get().isLoaded("entity_model_features") && !ModList.get().isLoaded("optifine")) {
-                    currentLivingEntity = (LivingEntity) entityType.create(level);
-                    lastEntityCreationTime = currentTime;
-                }
-            }
-        }
-
-        if (currentLivingEntity != null) {
-            if (currentLivingEntity instanceof TamableAnimal tamableAnimal) {
-                tamableAnimal.setTame(true);
-            }
-        }
-
-        return currentLivingEntity;
+        this.jsonModID = jsonModID;
+        this.jsonAnimalID = jsonAnimalID;
+        this.modFolder = modFolder;
+        this.fileName = fileName;
     }
 
     @Override
     public @NotNull ResourceLocation getId() {
-        return new ResourceLocation(CommonConstants.MOD_ID, "temper" + "." + this.modID + "." + this.animalID);
+        return new ResourceLocation(CommonConstants.MOD_ID, "temper" + "/" + this.modFolder + "/" + this.fileName + "/" + this.jsonModID + "/" + this.jsonAnimalID);
     }
 
     @Override
@@ -112,15 +82,16 @@ public class TemperRecipe extends BaseRecipe {
             Map.Entry<String, JsonElement> mobEntry = mobObject.entrySet().iterator().next();
             String modID = json.get("mod").getAsString();
             String mobName = mobEntry.getKey();
-            String modFolder = jsonPath.getPath().substring(0, jsonPath.getPath().lastIndexOf('/')).replace("temper/", "");
+            String modFolder = jsonPath.getNamespace();
+            String fileName = jsonPath.getPath().substring(jsonPath.getPath().lastIndexOf('/') + 1);
 
             if (!JustEnoughBreeding.isModLoaded(modFolder) || !JustEnoughBreeding.isModLoaded(modID)) {
-                return new TemperRecipe(null, null, null, null, modFolder + "_" + modID, mobName);
+                return new TemperRecipe(null, null, null, null, modID, mobName, modFolder, fileName);
             }
 
             EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(new ResourceLocation(modID, mobName));
             if (!mobName.equals(entityType.toShortString())) {
-                return new TemperRecipe(null, null, null, null, modFolder + "_" + modID, mobName);
+                return new TemperRecipe(null, null, null, null, modID, mobName, modFolder, fileName);
             }
 
             List<Ingredient> inputIngredients = new ArrayList<>();
@@ -143,7 +114,7 @@ public class TemperRecipe extends BaseRecipe {
             }
 
             for (TemperRecipe existingRecipe : JustEnoughBreeding.temperRecipes) {
-                if (existingRecipe.modID.equals(modID) && existingRecipe.animalID.equals(mobName)) {
+                if (existingRecipe.jsonModID.equals(modID) && existingRecipe.jsonAnimalID.equals(mobName)) {
 
                     inputIngredients.add(existingRecipe.inputStack);
                     spawnEggs.add(existingRecipe.spawnEgg);
@@ -163,7 +134,9 @@ public class TemperRecipe extends BaseRecipe {
                     Ingredient.merge(spawnEggs),
                     Ingredient.merge(extraInputIngredients),
                     modID,
-                    mobName
+                    mobName,
+                    modFolder,
+                    fileName
             );
 
             JustEnoughBreeding.temperRecipes.add(newRecipe);

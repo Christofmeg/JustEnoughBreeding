@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:taming_provider",
+  "mod": "ambientadditions",
+  "mobs": [
+    {
+      "pembroke_corgi": {
+        "inputs": [
+          {
+            "item": "minecraft:pumpkin_pie"
+          }
+        ]
+      }
+    }
+  ]
+}

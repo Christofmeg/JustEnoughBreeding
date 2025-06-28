@@ -1,0 +1,16 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "frostrealm",
+  "mobs": [
+    {
+      "frost_wolf": {
+        "inputs": [
+          {
+            "meat": "true"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

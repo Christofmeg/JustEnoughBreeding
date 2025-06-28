@@ -7,7 +7,6 @@ import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
-import mezz.jei.api.registration.IRuntimeRegistration;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import org.jetbrains.annotations.NotNull;
@@ -29,8 +28,8 @@ public class JEIPlugin implements IModPlugin {
                 new BreedingCategory(helper, Items.WHEAT),
                 new TamingCategory(helper, Items.BONE),
                 new TemperCategory(helper, Items.GOLDEN_APPLE),
-                new TrustingCategory(helper, Items.SWEET_BERRIES)
-//                new TransformationCategory(helper, Items.GOLDEN_CARROT), villager to witch, pig to zombie pigman
+                new TrustingCategory(helper, Items.SWEET_BERRIES),
+                new TransformationCategory(helper, Items.GOLDEN_CARROT)//, villager to witch, pig to zombie pigman
                 // AllayDuplication https://minecraft.wiki/w/Allay#Allay_duplication
 
         );

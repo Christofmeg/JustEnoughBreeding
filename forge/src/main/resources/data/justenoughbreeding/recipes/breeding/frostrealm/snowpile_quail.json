@@ -1,0 +1,32 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "frostrealm",
+  "mobs": [
+    {
+      "snowpile_quail": {
+        "inputs": [
+          {
+            "item": "minecraft:seeds"
+          },
+          {
+            "item": " minecraft:melon_seeds"
+          },
+          {
+            "item": "minecraft:pumpkin_seeds"
+          },
+          {
+            "item": "minecraft:beetroot_seeds"
+          },
+          {
+            "item": "frostrealm:sugarbeet_seeds"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "frostrealm:snowpile_quail_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

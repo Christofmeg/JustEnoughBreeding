@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "ambientadditions",
+  "mobs": [
+    {
+      "giant_land_snail": {
+        "inputs": [
+          {
+            "tag": "minecraft:leaves"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "type": "justenoughbreeding:transformation_provider",
+  "mod": "greekfantasy",
+  "inputs": [
+    {
+      "item": "minecraft:dragon_breath"
+    }
+  ],
+  "input_entity": "minecraft:sheep",
+  "input_spawn_eggs": [
+    {
+      "item": "minecraft:sheep_spawn_egg"
+    }
+  ],
+  "output_entity": "greekfantasy:golden_ram",
+  "output_spawn_eggs": [
+    {
+      "item": "greekfantasy:golden_ram_spawn_egg"
+    }
+  ]
+}

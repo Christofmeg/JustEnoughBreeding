@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:taming_provider",
+  "mod": "cnb",
+  "mobs": [
+    {
+      "end_whale": {
+        "inputs": [
+          {
+            "tag": "cnb:end_whale_food"
+          }
+        ]
+      }
+    }
+  ]
+}

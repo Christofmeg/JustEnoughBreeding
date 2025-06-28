@@ -1,6 +1,14 @@
 package com.christofmeg.justenoughbreeding.utils;
 
+import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
+import com.christofmeg.justenoughbreeding.recipe.BaseRecipe;
+import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
+import com.christofmeg.justenoughbreeding.recipe.TamingRecipe;
+import com.christofmeg.justenoughbreeding.recipe.TrustingRecipe;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
@@ -9,6 +17,7 @@ import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.entity.animal.axolotl.Axolotl;
@@ -20,14 +29,15 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.phys.AABB;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Quaternionf;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Utils {
 
@@ -53,46 +63,6 @@ public class Utils {
 
         return String.join(", ", edibleMeatItemNames);
     }
-
-    public static List<Ingredient> createCombinedResultIngredients(String mobIngredients, int minCount, int maxCount) {
-        String[] ingredientIds = mobIngredients.split(",");
-        List<Ingredient> resultIngredients = new ArrayList<>();
-
-        List<ItemStack> combinedItemStacks = new ArrayList<>();
-
-        for (int count = minCount; count <= maxCount; count++) {
-            for (String ingredientId : ingredientIds) {
-                Item ingredientItem = JustEnoughBreeding.getItemFromLoaderRegistries(new ResourceLocation(ingredientId.trim()));
-                if (ingredientItem != null) {
-                    combinedItemStacks.add(new ItemStack(ingredientItem, count));
-                }
-            }
-        }
-
-        resultIngredients.add(Ingredient.of(combinedItemStacks.toArray(new ItemStack[0])));
-        return resultIngredients;
-    }
-
-    /*
-    public static BreedingRecipe createBreedingRecipe(EntityType<?> entityType, Ingredient combinedIngredient, Item spawnEggItem, Boolean needsToBeTamed, List<Ingredient> resultItemStacks, Boolean animalTrusting, @Nullable Ingredient combinedExtraIngredient) {
-        List<ItemStack> mergedResultItemStacks = new ArrayList<>();
-
-        for (Ingredient resultItemStack : resultItemStacks) {
-            ItemStack[] stacks = resultItemStack.getItems();
-            mergedResultItemStacks.addAll(Arrays.asList(stacks));
-        }
-
-        return new BreedingRecipe(
-                entityType,
-                combinedIngredient,
-                Ingredient.of(new ItemStack(spawnEggItem)),
-                needsToBeTamed,
-                Ingredient.of(mergedResultItemStacks.toArray(new ItemStack[0])),
-                combinedExtraIngredient,
-                animalTrusting
-        );
-    }
-     */
 
     public static Ingredient createCombinedIngredient(String mobIngredients) {
         String[] ingredientIds = mobIngredients.split(",");
@@ -129,9 +99,11 @@ public class Utils {
     }
 
     public static void renderEntity(@NotNull PoseStack stack, double mouseX, LivingEntity currentLivingEntity) {
+        renderEntity(stack, mouseX, currentLivingEntity, 31, 89);
+    }
+
+    public static void renderEntity(@NotNull PoseStack stack, double mouseX, LivingEntity currentLivingEntity, int entityPosX, int entityPosY) {
         // Set the desired position of the entity on the screen
-        int entityPosX = 31;
-        int entityPosY = 89;
         int ENTITY_RENDER_DISTANCE = 15728880;
 
         float yaw = (float) (60 - mouseX); // Calculate the yaw based on the mouse position
@@ -187,8 +159,6 @@ public class Utils {
         currentLivingEntity.yHeadRot = yawRadians;
         currentLivingEntity.yHeadRotO = yawRadians;
 
-        stack.translate(0.0F, currentLivingEntity.getMyRidingOffset(), 0.0F); // Translate the entity vertically to adjust its position
-
         Minecraft instance = Minecraft.getInstance();
         EntityRenderDispatcher entityRenderDispatcher = instance.getEntityRenderDispatcher(); // Get the entity rendering dispatcher
         entityRenderDispatcher.overrideCameraOrientation(new Quaternionf(0.0F, 0.0F, 0.0F, 1.0F)); // Override the camera orientation for rendering
@@ -204,6 +174,181 @@ public class Utils {
         entityRenderDispatcher.setRenderShadow(true); // Re-enable rendering shadows
 
         stack.popPose(); // Pop the pose from the stack to revert transformations
+    }
+
+    public static void addIngredients(JsonObject mobData, List<Ingredient> ingredientList, String memberName) {
+        if (mobData.has(memberName)) {
+            for (JsonElement input : mobData.getAsJsonArray(memberName)) {
+                if (input.getAsJsonObject().has("item")) {
+                    String ingredient = input.getAsJsonObject().get("item").getAsString();
+                    JsonElement amountElement = input.getAsJsonObject().get("amount");
+                    if (amountElement != null && amountElement.isJsonObject()) {
+                        JsonObject amountObj = amountElement.getAsJsonObject();
+                        int min = amountObj.has("min") ? amountObj.get("min").getAsInt() : 1;
+                        int max = amountObj.has("max") ? amountObj.get("max").getAsInt() : min;
+                        for (int i = min; i <= max; i++) {
+                            ingredientList.add(createCombinedIngredient(ingredient, i));
+                        }
+                    } else {
+                        int amount = input.getAsJsonObject().has("amount") ? input.getAsJsonObject().get("amount").getAsInt() : 1;
+                        ingredientList.add(createCombinedIngredient(ingredient, amount));
+                    }
+                } else if (input.getAsJsonObject().has("tag")) {
+                    String ingredient = input.getAsJsonObject().get("tag").getAsString();
+                    ingredientList.add(createCombinedIngredientFromTag(ingredient));
+                } else if (input.getAsJsonObject().has("meat")) {
+                    boolean meat = input.getAsJsonObject().get("meat").getAsBoolean();
+                    ingredientList.add(createCombinedIngredient(CommonUtils.getEdibleMeatItemNames(meat)));
+                }
+            }
+        }
+    }
+
+    public static BaseRecipe readJsonContents (@NotNull ResourceLocation jsonPath, @NotNull JsonObject json, String recipeType) {
+        JsonArray mobs = json.getAsJsonArray("mobs");
+        JsonObject mobObject = mobs.get(0).getAsJsonObject();
+        Map.Entry<String, JsonElement> mobEntry = mobObject.entrySet().iterator().next();
+        String jsonModID = json.get("mod").getAsString();
+        String jsonAnimalID = mobEntry.getKey();
+        String modFolder = jsonPath.getNamespace();
+        String fileName = jsonPath.getPath().substring(jsonPath.getPath().lastIndexOf('/') + 1);
+
+        if (jsonPath.getNamespace().equals(CommonConstants.MOD_ID)) {
+            modFolder = jsonPath.getPath().split("/")[1];
+        }
+
+        if (!JustEnoughBreeding.isModLoaded(modFolder) || !JustEnoughBreeding.isModLoaded(jsonModID)) {
+            switch (recipeType) {
+                case "breeding" -> {
+                    return new BreedingRecipe(null, null, null, null, null, null, null, jsonModID, jsonAnimalID, modFolder, fileName);
+                }
+                case "taming" -> {
+                    return new TamingRecipe(null, null, null, null, jsonModID, jsonAnimalID, modFolder, fileName);
+                }
+                case "trusting" -> {
+                    return new TrustingRecipe(null, null, null, null, jsonModID, jsonAnimalID, modFolder, fileName);
+                }
+            }
+        }
+
+        EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(new ResourceLocation(jsonModID, jsonAnimalID));
+        if (!jsonAnimalID.equals(entityType.toShortString())) {
+            switch (recipeType) {
+                case "breeding" -> {
+                    return new BreedingRecipe(null, null, null, null, null, null, null, jsonModID, jsonAnimalID, modFolder, fileName);
+                }
+                case "taming" -> {
+                    return new TamingRecipe(null, null, null, null, jsonModID, jsonAnimalID, modFolder, fileName);
+                }
+                case "trusting" -> {
+                    return new TrustingRecipe(null, null, null, null, jsonModID, jsonAnimalID, modFolder, fileName);
+                }
+            }
+        }
+
+        List<Ingredient> inputIngredients = new ArrayList<>();
+        List<Ingredient> extraInputIngredients = new ArrayList<>();
+        List<Ingredient> outputIngredients = new ArrayList<>();
+        List<Ingredient> spawnEggs = new ArrayList<>();
+        JsonObject mobData = mobEntry.getValue().getAsJsonObject();
+        Utils.addIngredients(mobData, inputIngredients, "inputs");
+        Utils.addIngredients(mobData, extraInputIngredients, "extra_inputs");
+        Utils.addIngredients(mobData, outputIngredients, "outputs");
+
+        if (mobData.has("spawn_eggs")) {
+            Utils.addIngredients(mobData, spawnEggs, "spawn_eggs");
+        } else {
+            ItemStack spawnEgg = Optional.ofNullable(ForgeSpawnEggItem.fromEntityType(entityType)).map(SpawnEggItem::getDefaultInstance).orElse(ItemStack.EMPTY);
+            spawnEggs = new ArrayList<>(List.of(Ingredient.of(spawnEgg)));
+        }
+
+        return switch (recipeType) {
+            case "trusting":
+                for (TrustingRecipe existingRecipe : JustEnoughBreeding.trustingRecipes) {
+                    if (existingRecipe.jsonModID.equals(jsonModID) && existingRecipe.jsonAnimalID.equals(jsonAnimalID)) {
+                        inputIngredients.add(existingRecipe.inputStack);
+                        spawnEggs.add(existingRecipe.spawnEgg);
+                        extraInputIngredients.add(existingRecipe.extraInputStack);
+                        existingRecipe.setInputIngredient(Ingredient.merge(inputIngredients));
+                        existingRecipe.setExtraInputIngredient(Ingredient.merge(extraInputIngredients));
+                        existingRecipe.setSpawnEggs(Ingredient.merge(spawnEggs));
+                        yield existingRecipe;
+                    }
+                }
+
+                TrustingRecipe trustingRecipe = new TrustingRecipe(
+                        entityType,
+                        Ingredient.merge(inputIngredients),
+                        Ingredient.merge(spawnEggs),
+                        Ingredient.merge(extraInputIngredients),
+                        jsonModID,
+                        jsonAnimalID,
+                        modFolder,
+                        fileName
+                );
+
+                JustEnoughBreeding.trustingRecipes.add(trustingRecipe);
+                yield trustingRecipe;
+            case "taming":
+                for (TamingRecipe existingRecipe : JustEnoughBreeding.tamingRecipes) {
+                    if (existingRecipe.jsonModID.equals(jsonModID) && existingRecipe.jsonAnimalID.equals(jsonAnimalID)) {
+                        inputIngredients.add(existingRecipe.inputStack);
+                        spawnEggs.add(existingRecipe.spawnEgg);
+                        extraInputIngredients.add(existingRecipe.extraInputStack);
+                        existingRecipe.setInputIngredient(Ingredient.merge(inputIngredients));
+                        existingRecipe.setExtraInputIngredient(Ingredient.merge(extraInputIngredients));
+                        existingRecipe.setSpawnEggs(Ingredient.merge(spawnEggs));
+                        yield existingRecipe;
+                    }
+                }
+
+                TamingRecipe tamingRecipe = new TamingRecipe(
+                        entityType,
+                        Ingredient.merge(inputIngredients),
+                        Ingredient.merge(spawnEggs),
+                        Ingredient.merge(extraInputIngredients),
+                        jsonModID,
+                        jsonAnimalID,
+                        modFolder,
+                        fileName
+                );
+
+                JustEnoughBreeding.tamingRecipes.add(tamingRecipe);
+                yield tamingRecipe;
+            default:
+                for (BreedingRecipe existingRecipe : JustEnoughBreeding.breedingRecipes) {
+                    if (existingRecipe.jsonModID.equals(jsonModID) && existingRecipe.jsonAnimalID.equals(jsonAnimalID)) {
+                        inputIngredients.add(existingRecipe.inputStack);
+                        extraInputIngredients.add(existingRecipe.extraInputStack);
+                        outputIngredients.add(existingRecipe.resultItemStack);
+                        spawnEggs.add(existingRecipe.spawnEgg);
+                        existingRecipe.setInputIngredient(Ingredient.merge(inputIngredients));
+                        existingRecipe.setExtraInputIngredient(Ingredient.merge(extraInputIngredients));
+                        existingRecipe.setOutputIngredient(Ingredient.merge(outputIngredients));
+                        existingRecipe.setSpawnEggs(Ingredient.merge(spawnEggs));
+                        yield existingRecipe;
+                    }
+                }
+
+                boolean isTamed = mobData.has("tamed") && mobData.get("tamed").getAsBoolean();
+                boolean isTrusting = mobData.has("trusting") && mobData.get("trusting").getAsBoolean();
+                BreedingRecipe breedingRecipe = new BreedingRecipe(
+                        entityType,
+                        Ingredient.merge(inputIngredients),
+                        Ingredient.merge(spawnEggs),
+                        isTamed,
+                        Ingredient.merge(outputIngredients),
+                        Ingredient.merge(extraInputIngredients),
+                        isTrusting,
+                        jsonModID,
+                        jsonAnimalID,
+                        modFolder,
+                        fileName
+                );
+
+                JustEnoughBreeding.breedingRecipes.add(breedingRecipe);
+                yield breedingRecipe;
+        };
     }
 
 }

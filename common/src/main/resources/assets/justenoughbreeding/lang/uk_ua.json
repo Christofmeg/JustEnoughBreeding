@@ -3,10 +3,12 @@
   "emi.category.justenoughbreeding.taming": "Taming",
   "emi.category.justenoughbreeding.temper": "Temper",
   "emi.category.justenoughbreeding.trusting": "Trusting",
+  "emi.category.justenoughbreeding.transformation": "Transformation",
   "modmenu.descriptionTranslation.justenoughbreeding": "JEI/REI/EMI plugin that displays breeding information",
   "translation.justenoughbreeding.breeding": "Розмноження",
   "translation.justenoughbreeding.tamed": "приручений",
   "translation.justenoughbreeding.taming": "Taming",
   "translation.justenoughbreeding.temper": "Temper",
-  "translation.justenoughbreeding.trusting": "довіра"
+  "translation.justenoughbreeding.trusting": "довіра",
+  "translation.justenoughbreeding.transformation": "Transformation"
 }

@@ -2,11 +2,13 @@
   "emi.category.justenoughbreeding.breeding": "繁殖",
   "emi.category.justenoughbreeding.taming": "Taming",
   "emi.category.justenoughbreeding.temper": "Temper",
-  "emi.category.justenoughbreeding.trusting": "Trusting",
+  "emi.category.justenoughbreeding.trusting": "信任",
+  "emi.category.justenoughbreeding.transformation": "Transformation",
   "modmenu.descriptionTranslation.justenoughbreeding": "JEI/REI/EMI plugin that displays breeding information",
   "translation.justenoughbreeding.breeding": "繁殖",
   "translation.justenoughbreeding.tamed": "已驯服",
   "translation.justenoughbreeding.taming": "Taming",
   "translation.justenoughbreeding.temper": "Temper",
-  "translation.justenoughbreeding.trusting": "信任"
+  "translation.justenoughbreeding.trusting": "信任",
+  "translation.justenoughbreeding.transformation": "Transformation"
 }

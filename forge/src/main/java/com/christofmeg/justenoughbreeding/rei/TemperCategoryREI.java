@@ -91,7 +91,7 @@ public class TemperCategoryREI implements DisplayCategory<TemperDisplay> {
                         abbreviatedEntityName).noShadow().leftAligned().color(0xFF404040, 0xFFBBBBBB));
             }
             widgets.add(Widgets.withTranslate(Widgets.createDrawableWidget((stack, mouseX, mouseY, v) -> {
-                    LivingEntity currentLivingEntity = recipe.doRendering();
+                    LivingEntity currentLivingEntity = recipe.doRendering(entityType);
                     if (currentLivingEntity != null) {
                         Utils.renderEntity(stack.pose(), mouseX, currentLivingEntity);
                     }

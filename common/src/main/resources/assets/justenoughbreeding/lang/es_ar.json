@@ -3,10 +3,12 @@
   "emi.category.justenoughbreeding.taming": "Domesticación",
   "emi.category.justenoughbreeding.temper": "Carácter",
   "emi.category.justenoughbreeding.trusting": "Confianza",
+  "emi.category.justenoughbreeding.transformation": "Transformation",
   "modmenu.descriptionTranslation.justenoughbreeding": "Complemento para JEI/REI/EMI que muestra información sobre reproducción",
   "translation.justenoughbreeding.breeding": "Reproducción",
   "translation.justenoughbreeding.tamed": "Domesticado",
   "translation.justenoughbreeding.taming": "Domesticación",
   "translation.justenoughbreeding.temper": "Carácter",
-  "translation.justenoughbreeding.trusting": "Confianza"
+  "translation.justenoughbreeding.trusting": "Confianza",
+  "translation.justenoughbreeding.transformation": "Transformation"
 }

@@ -3,10 +3,12 @@
   "emi.category.justenoughbreeding.taming": "Taming",
   "emi.category.justenoughbreeding.temper": "Temper",
   "emi.category.justenoughbreeding.trusting": "Vertrauend",
+  "emi.category.justenoughbreeding.transformation": "Transformation",
   "modmenu.descriptionTranslation.justenoughbreeding": "JEI/REI/EMI Plugin zur Anzeige von Zuchtinformationen",
   "translation.justenoughbreeding.breeding": "Züchtung",
   "translation.justenoughbreeding.tamed": "Gezähmt",
   "translation.justenoughbreeding.taming": "Taming",
   "translation.justenoughbreeding.temper": "Temper",
-  "translation.justenoughbreeding.trusting": "Vertrauend"
+  "translation.justenoughbreeding.trusting": "Vertrauend",
+  "translation.justenoughbreeding.transformation": "Transformation"
 }

@@ -169,7 +169,7 @@ public class BreedingCategoryEMI implements EmiRecipe {
 
             @Override
             public void render(@NotNull GuiGraphics stack, int mouseX, int mouseY, float delta) {
-                LivingEntity currentLivingEntity = recipe.doRendering();
+                LivingEntity currentLivingEntity = recipe.doRendering(recipe.entityType);
                 if (currentLivingEntity != null) {
                     Utils.renderEntity(stack.pose(), mouseX, currentLivingEntity);
                 }
@@ -186,7 +186,7 @@ public class BreedingCategoryEMI implements EmiRecipe {
             } else if (recipe.animalTrusting != null && recipe.animalTrusting) {
                 Component trusting = Component.translatable("translation.justenoughbreeding.trusting");
                 entityNameString += " (" + trusting.getString() + ")";
-            } else if (recipe.modID.equals("tfc")) {
+            } else if (recipe.jsonModID.equals("tfc")) {
                 Component familiarity = Component.translatable("tfc.jade.familiarity");
                 String tfc = familiarity.getString().replaceAll(":[^:]*$", "");
                 entityNameString += " (" + tfc + " > 30" + ")";

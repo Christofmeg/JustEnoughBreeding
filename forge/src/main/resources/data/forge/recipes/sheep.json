@@ -1,0 +1,21 @@
+{
+  "type": "justenoughbreeding:transformation_provider",
+  "mod": "minecraft",
+  "inputs": [
+    {
+      "item": "minecraft:fish"
+    }
+  ],
+  "input_entity": "minecraft:sheep",
+  "input_spawn_eggs": [
+    {
+      "item": "minecraft:sheep_spawn_egg"
+    }
+  ],
+  "output_entity": "minecraft:cat",
+  "output_spawn_eggs": [
+    {
+      "item": "minecraft:cat_spawn_egg"
+    }
+  ]
+}
