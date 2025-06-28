@@ -1,12 +1,16 @@
 package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
+import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
 import com.christofmeg.justenoughbreeding.recipe.TransformationRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.builder.IRecipeSlotBuilder;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
+import mezz.jei.api.gui.placement.HorizontalAlignment;
+import mezz.jei.api.gui.placement.VerticalAlignment;
+import mezz.jei.api.gui.widgets.IRecipeExtrasBuilder;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeType;
@@ -51,5 +55,7 @@ public class TransformationCategory extends AbstractRecipeCategory<Transformatio
         JEIUtils.drawMobSlot(105, 10, bigSlot, stack);
         JEIUtils.drawMobNameAndEntity(recipe.outputEntityType, stack, mouseX, recipe, 61, 105, false, recipe.outputColor);
     }
+
+    //TODO ARROW
 
 }
