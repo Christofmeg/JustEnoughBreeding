@@ -93,10 +93,10 @@ public class JEIUtils {
     }
 
     public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, ForgeRecipe recipe, int availableWidth, int extraX) {
-        drawMobNameAndEntity(entityType, stack, mouseX, recipe, availableWidth, extraX, true);
+        drawMobNameAndEntity(entityType, stack, mouseX, recipe, availableWidth, extraX, true, null);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, ForgeRecipe recipe, int availableWidth, int extraX, boolean input) {
+    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, ForgeRecipe recipe, int availableWidth, int extraX, boolean input, DyeColor color) {
         if (entityType != null) {
             Font font = Minecraft.getInstance().font;
             Component entityName = Component.translatable(entityType.getDescriptionId());
@@ -113,6 +113,11 @@ public class JEIUtils {
                     String tfc = familiarity.getString().replaceAll(":[^:]*$", "");
                     entityNameString += " (" + tfc + " > 30" + ")";
                 }
+            } else if (recipe instanceof TransformationRecipe transformationRecipe && input) {
+                if (transformationRecipe.needsToBeTamed != null && transformationRecipe.needsToBeTamed) {
+                    Component tamed = Component.translatable("translation.justenoughbreeding.tamed");
+                    entityNameString += " (" + tamed.getString() + ")";
+                }
             }
 
             int stringWidth = font.width(entityNameString); // Measure the width of the string in pixels
@@ -127,7 +132,7 @@ public class JEIUtils {
                 stack.drawString(font, abbreviatedEntityName, extraX, 0, DyeColor.BLACK.getTextColor(), false);
             }
 
-            LivingEntity currentLivingEntity = recipe instanceof TransformationRecipe ? ((TransformationRecipe) recipe).doRendering(entityType, input) : recipe.doRendering(entityType);
+            LivingEntity currentLivingEntity = recipe instanceof TransformationRecipe ? ((TransformationRecipe) recipe).doRendering(entityType, input, color) : recipe.doRendering(entityType);
             if (currentLivingEntity != null) {
                 Utils.renderEntity(stack.pose(), mouseX, currentLivingEntity, 31 + extraX, 89);
             }

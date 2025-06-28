@@ -10,9 +10,6 @@ import java.util.Map;
 public class UntamedWildsIntegration {
 
     static final String MOD = "untamedwilds";
-
-    //TODO check if playerBreeding is enabled
-
     static final List<String> animalNames = new ArrayList<>();
     static final Map<String, String> ingredients = new HashMap<>();
     static final Map<String, Integer> breedingCooldown = new HashMap<>();

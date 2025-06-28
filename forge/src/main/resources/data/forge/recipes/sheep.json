@@ -3,7 +3,7 @@
   "mod": "minecraft",
   "inputs": [
     {
-      "item": "minecraft:fish"
+      "item": "minecraft:orange_dye"
     }
   ],
   "input_entity": "minecraft:sheep",
@@ -12,10 +12,13 @@
       "item": "minecraft:sheep_spawn_egg"
     }
   ],
-  "output_entity": "minecraft:cat",
+  "input_color": "green",
+  "output_entity": "minecraft:sheep",
   "output_spawn_eggs": [
     {
-      "item": "minecraft:cat_spawn_egg"
+      "item": "minecraft:sheep_spawn_egg"
     }
-  ]
+  ],
+  "output_color": "orange",
+  "tamed": true
 }

@@ -26,7 +26,6 @@ public class TerraFirmaCraftIntegration {
     static final Map<String, String> entitiesFromNames = new HashMap<>();
 
     public static void init() {
-        //TODO add (Familiarity > 30 %)
         CommonUtils.addAnimal("pig", "tfc:spawn_egg/" + "pig", "tfc:" + "pig", "#tfc:" + "pig" + "_food", animalNames, ingredients, breedingCooldown, spawnEggItems, entitiesFromNames);
         CommonUtils.addAnimal("cow", "tfc:spawn_egg/" + "cow", "tfc:" + "cow", "#tfc:" + "cow" + "_food", animalNames, ingredients, breedingCooldown, spawnEggItems, entitiesFromNames);
         CommonUtils.addAnimal("goat", "tfc:spawn_egg/" + "goat", "tfc:" + "goat", "#tfc:" + "goat" + "_food", animalNames, ingredients, breedingCooldown, spawnEggItems, entitiesFromNames);

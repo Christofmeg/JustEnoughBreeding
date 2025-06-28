@@ -47,9 +47,9 @@ public class TransformationCategory extends AbstractRecipeCategory<Transformatio
     @Override
     public void draw(@NotNull TransformationRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics stack, double mouseX, double mouseY) {
         JEIUtils.drawMobSlot(0, 10, bigSlot, stack);
-        JEIUtils.drawMobNameAndEntity(recipe.inputEntityType, stack, mouseX, recipe, 61, 0, true);
+        JEIUtils.drawMobNameAndEntity(recipe.inputEntityType, stack, mouseX, recipe, 99, 0, true, recipe.inputColor);
         JEIUtils.drawMobSlot(105, 10, bigSlot, stack);
-        JEIUtils.drawMobNameAndEntity(recipe.outputEntityType, stack, mouseX, recipe, 61, 105, false);
+        JEIUtils.drawMobNameAndEntity(recipe.outputEntityType, stack, mouseX, recipe, 61, 105, false, recipe.outputColor);
     }
 
 }

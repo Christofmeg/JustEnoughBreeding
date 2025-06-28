@@ -34,23 +34,30 @@ public class TransformationRecipe extends ForgeRecipe {
     public @Nullable Ingredient extraInputStack;
     public final EntityType<?> outputEntityType;
     public Ingredient outputSpawnEgg;
+    @Nullable
+    public final Boolean needsToBeTamed;
     public final String jsonModID;
     public final String modFolder;
     public final String fileName;
+    public final DyeColor inputColor;
+    public final DyeColor outputColor;
 
-    public TransformationRecipe(EntityType<?> inputEntityType, Ingredient inputStack, Ingredient inputSpawnEgg, @Nullable Ingredient extraInputStack, EntityType<?> outputEntityType, Ingredient outputSpawnEgg, String jsonModID, String modFolder, String fileName) {
+    public TransformationRecipe(EntityType<?> inputEntityType, Ingredient inputStack, Ingredient inputSpawnEgg, @Nullable Ingredient extraInputStack, EntityType<?> outputEntityType, Ingredient outputSpawnEgg, @Nullable Boolean needsToBeTamed, String jsonModID, String modFolder, String fileName, @Nullable DyeColor inputColor, @Nullable DyeColor outputColor) {
         this.inputEntityType = inputEntityType;
         this.inputStack = inputStack;
         this.inputSpawnEgg = inputSpawnEgg;
         this.extraInputStack = extraInputStack;
         this.outputEntityType = outputEntityType;
         this.outputSpawnEgg = outputSpawnEgg;
+        this.needsToBeTamed = needsToBeTamed;
         this.jsonModID = jsonModID;
         this.modFolder = modFolder;
         this.fileName = fileName;
+        this.inputColor = inputColor;
+        this.outputColor = outputColor;
     }
 
-    public LivingEntity doRendering(EntityType<?> entityType, boolean input) {
+    public LivingEntity doRendering(EntityType<?> entityType, boolean input, DyeColor color) {
         long currentTime = System.currentTimeMillis();
         Level level = Minecraft.getInstance().level;
 
@@ -72,13 +79,11 @@ public class TransformationRecipe extends ForgeRecipe {
                     tamableAnimal.setTame(true);
                 }
             }
-
-            //TODO implement color handling to greek fantasy
-            /*
-            if (inputEntity instanceof Sheep sheep) {
-                sheep.setColor(DyeColor.YELLOW);
-            }*/
-
+            if (color != null) {
+                if (inputEntity instanceof Sheep sheep) {
+                    sheep.setColor(color);
+                }
+            }
             return inputEntity;
         } else {
             if (level != null) {
@@ -96,6 +101,11 @@ public class TransformationRecipe extends ForgeRecipe {
             if (outputEntity != null) {
                 if (outputEntity instanceof TamableAnimal tamableAnimal) {
                     tamableAnimal.setTame(true);
+                }
+            }
+            if (color != null) {
+                if (outputEntity instanceof Sheep sheep) {
+                    sheep.setColor(color);
                 }
             }
             return outputEntity;
@@ -136,7 +146,7 @@ public class TransformationRecipe extends ForgeRecipe {
 
         @Override
         public @NotNull TransformationRecipe fromJson(@NotNull ResourceLocation jsonPath, @NotNull JsonObject json) {
-            return (TransformationRecipe) readJsonContents(jsonPath, json, "transformation");
+            return (TransformationRecipe) readJsonContents(jsonPath, json);
         }
 
         @Override
@@ -149,7 +159,7 @@ public class TransformationRecipe extends ForgeRecipe {
 
     }
 
-    public static BaseRecipe readJsonContents (@NotNull ResourceLocation jsonPath, @NotNull JsonObject json, String recipeType) {
+    public static BaseRecipe readJsonContents (@NotNull ResourceLocation jsonPath, @NotNull JsonObject json) {
         String jsonModID = json.get("mod").getAsString();
         String modFolder = jsonPath.getNamespace();
         String fileName = jsonPath.getPath().substring(jsonPath.getPath().lastIndexOf('/') + 1);
@@ -182,7 +192,7 @@ public class TransformationRecipe extends ForgeRecipe {
         }
 
         if (!JustEnoughBreeding.isModLoaded(modFolder) || !JustEnoughBreeding.isModLoaded(jsonModID)) {
-            return new TransformationRecipe(null, null, null, null, null, null, jsonModID, modFolder, fileName);
+            return new TransformationRecipe(null, null, null, null, null, null, null, jsonModID, modFolder, fileName, null, null);
         }
 
         for (TransformationRecipe existingRecipe : JustEnoughBreeding.transformationRecipes) {
@@ -199,6 +209,9 @@ public class TransformationRecipe extends ForgeRecipe {
             }
         }
 
+        boolean isTamed = json.has("tamed") && json.get("tamed").getAsBoolean();
+        DyeColor inputColor = json.has("input_color") ? DyeColor.valueOf(json.get("input_color").getAsString().toUpperCase()) : null;
+        DyeColor outputColor = json.has("output_color") ? DyeColor.valueOf(json.get("output_color").getAsString().toUpperCase()) : null;
         TransformationRecipe transformationRecipe = new TransformationRecipe(
                 inputEntityType,
                 Ingredient.merge(inputIngredients),
@@ -206,9 +219,12 @@ public class TransformationRecipe extends ForgeRecipe {
                 Ingredient.merge(extraInputIngredients),
                 outputEntityType,
                 Ingredient.merge(outputSpawnEggs),
+                isTamed,
                 jsonModID,
                 modFolder,
-                fileName
+                fileName,
+                inputColor,
+                outputColor
         );
 
         JustEnoughBreeding.transformationRecipes.add(transformationRecipe);

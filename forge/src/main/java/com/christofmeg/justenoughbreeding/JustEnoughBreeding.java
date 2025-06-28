@@ -45,15 +45,7 @@ public class JustEnoughBreeding {
 
     //TODO fix duplicate itemstacks appearing in same ingredient in ALL RECIPES, 1 x diamond, 1 x diamond
     //TODO TFC Familiarity category (https://tfcraft.fandom.com/wiki/Familiarity)
-
-    //TODO greek fantasy tamable
-    //tamableOnly		cerastes		#greekfantasy:cerastes_food
-    // addAnimalTamed("orthus", CommonStrings.ORTHUS_FOOD_TAG);
-
-    //TODO move to mob creation/transformation category
-    // horse (tamed) + enchanted golden apple = arion
-    // yellow sheep + dragons breath = greekfantasy:golden_ram
-
+    
     public static List<BreedingRecipe> breedingRecipes = new ArrayList<>();
     public static List<TamingRecipe> tamingRecipes = new ArrayList<>();
     public static List<TemperRecipe> temperRecipes = new ArrayList<>();

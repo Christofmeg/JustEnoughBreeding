@@ -3,7 +3,7 @@
   "mod": "greekfantasy",
   "inputs": [
     {
-      "item": "minecraft:dragon_breath"
+      "item": "minecraft:dragons_breath"
     }
   ],
   "input_entity": "minecraft:sheep",
@@ -12,6 +12,7 @@
       "item": "minecraft:sheep_spawn_egg"
     }
   ],
+  "input_color": "yellow",
   "output_entity": "greekfantasy:golden_ram",
   "output_spawn_eggs": [
     {

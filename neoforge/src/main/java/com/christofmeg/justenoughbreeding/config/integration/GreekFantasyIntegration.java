@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class GreekFantasyIntegration {
 
-    static final String MOD = "greekfantasy"; //TODO BREEDING TEMPER TAMING TRUSTING
+    static final String MOD = "greekfantasy";
 
     static final List<String> animalNames = new ArrayList<>();
     static final Map<String, String> ingredients = new HashMap<>();
@@ -19,17 +19,6 @@ public class GreekFantasyIntegration {
 
     public static void init() {
         addAnimalTamed("orthus", CommonStrings.ORTHUS_FOOD_TAG);
-
-
-        /*
-        greek fantasy:
-tamableOnly		cerastes		#greekfantasy:cerastes_food
-         */
-
-        //TODO move to mob creation/transformation category
-        // arion    gold_ram
-        // CommonUtils.addAnimal("makhai", "minecraft:horse_spawn_egg", "minecraft:enchanted_golden_apple", animalNames, ingredients, extraIngredients, breedingCooldown);
-
 
         for (String animal : animalNames) {
             String animalIngredients = ingredients.get(animal);
