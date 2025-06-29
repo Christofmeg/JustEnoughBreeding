@@ -23,6 +23,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
+@SuppressWarnings("removal")
 public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> implements IRecipeCategory<BreedingRecipe> {
 
     public static final RecipeType<BreedingRecipe> TYPE = new RecipeType<>(new ResourceLocation(CommonConstants.MOD_ID, "breeding"), BreedingRecipe.class);

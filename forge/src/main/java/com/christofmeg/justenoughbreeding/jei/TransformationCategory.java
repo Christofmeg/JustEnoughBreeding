@@ -1,15 +1,12 @@
 package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
-import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
 import com.christofmeg.justenoughbreeding.recipe.TransformationRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.builder.IRecipeSlotBuilder;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
-import mezz.jei.api.gui.placement.HorizontalAlignment;
-import mezz.jei.api.gui.placement.VerticalAlignment;
 import mezz.jei.api.gui.widgets.IRecipeExtrasBuilder;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
@@ -23,6 +20,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
+@SuppressWarnings("removal")
 public class TransformationCategory extends AbstractRecipeCategory<TransformationRecipe> implements IRecipeCategory<TransformationRecipe> {
 
     public static final RecipeType<TransformationRecipe> TYPE = new RecipeType<>(new ResourceLocation(CommonConstants.MOD_ID, "transformation"), TransformationRecipe.class);
@@ -49,13 +47,16 @@ public class TransformationCategory extends AbstractRecipeCategory<Transformatio
     }
 
     @Override
+    public void createRecipeExtras(@NotNull IRecipeExtrasBuilder builder, @NotNull TransformationRecipe recipe, @NotNull IFocusGroup focuses) {
+        builder.addRecipeArrow().setPosition(71, 47);
+    }
+
+    @Override
     public void draw(@NotNull TransformationRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics stack, double mouseX, double mouseY) {
         JEIUtils.drawMobSlot(0, 10, bigSlot, stack);
         JEIUtils.drawMobNameAndEntity(recipe.inputEntityType, stack, mouseX, recipe, 99, 0, true, recipe.inputColor);
         JEIUtils.drawMobSlot(105, 10, bigSlot, stack);
         JEIUtils.drawMobNameAndEntity(recipe.outputEntityType, stack, mouseX, recipe, 61, 105, false, recipe.outputColor);
     }
-
-    //TODO ARROW
 
 }
