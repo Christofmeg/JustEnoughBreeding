@@ -6,7 +6,10 @@
       "parrot": {
         "inputs": [
           {
-            "item": "minecraft:diamond"
+            "tag": "forge:ingots/iron"
+          },
+          {
+            "tag": "minecraft:fishes"
           }
         ],
         "outputs": [

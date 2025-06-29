@@ -10,11 +10,14 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.TagParser;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
@@ -33,6 +36,7 @@ import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.ForgeSpawnEggItem;
+import net.minecraftforge.common.crafting.StrictNBTIngredient;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Quaternionf;
@@ -89,11 +93,15 @@ public class Utils {
         return Ingredient.merge(combinedIngredients);
     }
 
-    public static Ingredient createCombinedIngredient(String mobIngredients, int amount) {
+    public static Ingredient createCombinedIngredient(String mobIngredients, int amount, CompoundTag nbt) {
         List<Ingredient> combinedIngredients = new ArrayList<>();
         Item ingredientItem = JustEnoughBreeding.getItemFromLoaderRegistries(new ResourceLocation(mobIngredients.trim()));
         if (ingredientItem != null) {
-            combinedIngredients.add(Ingredient.of(new ItemStack(ingredientItem, amount)));
+            ItemStack stack = new ItemStack(ingredientItem, amount);
+            if (nbt != null) {
+                stack.setTag(nbt); //TODO fix nbt on ITEMS
+            }
+            combinedIngredients.add(Ingredient.of(stack));
         }
         return Ingredient.merge(combinedIngredients);
     }
@@ -179,6 +187,14 @@ public class Utils {
     public static void addIngredients(JsonObject mobData, List<Ingredient> ingredientList, String memberName) {
         if (mobData.has(memberName)) {
             for (JsonElement input : mobData.getAsJsonArray(memberName)) {
+                CompoundTag nbt = null;
+                if (input.getAsJsonObject().has("nbt")) {
+                    try {
+                        nbt = TagParser.parseTag(input.getAsJsonObject().get("nbt").getAsString());
+                    } catch (CommandSyntaxException e) {
+                        System.err.println("Invalid NBT data: {}" + input.getAsJsonObject().get("nbt").getAsString());
+                    }
+                }
                 if (input.getAsJsonObject().has("item")) {
                     String ingredient = input.getAsJsonObject().get("item").getAsString();
                     JsonElement amountElement = input.getAsJsonObject().get("amount");
@@ -187,11 +203,11 @@ public class Utils {
                         int min = amountObj.has("min") ? amountObj.get("min").getAsInt() : 1;
                         int max = amountObj.has("max") ? amountObj.get("max").getAsInt() : min;
                         for (int i = min; i <= max; i++) {
-                            ingredientList.add(createCombinedIngredient(ingredient, i));
+                            ingredientList.add(createCombinedIngredient(ingredient, i, nbt));
                         }
                     } else {
                         int amount = input.getAsJsonObject().has("amount") ? input.getAsJsonObject().get("amount").getAsInt() : 1;
-                        ingredientList.add(createCombinedIngredient(ingredient, amount));
+                        ingredientList.add(createCombinedIngredient(ingredient, amount, nbt));
                     }
                 } else if (input.getAsJsonObject().has("tag")) {
                     String ingredient = input.getAsJsonObject().get("tag").getAsString();
@@ -269,18 +285,18 @@ public class Utils {
                         inputIngredients.add(existingRecipe.inputStack);
                         spawnEggs.add(existingRecipe.spawnEgg);
                         extraInputIngredients.add(existingRecipe.extraInputStack);
-                        existingRecipe.setInputIngredient(Ingredient.merge(inputIngredients));
-                        existingRecipe.setExtraInputIngredient(Ingredient.merge(extraInputIngredients));
-                        existingRecipe.setSpawnEggs(Ingredient.merge(spawnEggs));
+                        existingRecipe.setInputIngredient(Utils.deduplicateIngredients(inputIngredients));
+                        existingRecipe.setExtraInputIngredient(Utils.deduplicateIngredients(extraInputIngredients));
+                        existingRecipe.setSpawnEggs(Utils.deduplicateIngredients(spawnEggs));
                         yield existingRecipe;
                     }
                 }
 
                 TrustingRecipe trustingRecipe = new TrustingRecipe(
                         entityType,
-                        Ingredient.merge(inputIngredients),
-                        Ingredient.merge(spawnEggs),
-                        Ingredient.merge(extraInputIngredients),
+                        Utils.deduplicateIngredients(inputIngredients),
+                        Utils.deduplicateIngredients(spawnEggs),
+                        Utils.deduplicateIngredients(extraInputIngredients),
                         jsonModID,
                         jsonAnimalID,
                         modFolder,
@@ -295,18 +311,18 @@ public class Utils {
                         inputIngredients.add(existingRecipe.inputStack);
                         spawnEggs.add(existingRecipe.spawnEgg);
                         extraInputIngredients.add(existingRecipe.extraInputStack);
-                        existingRecipe.setInputIngredient(Ingredient.merge(inputIngredients));
-                        existingRecipe.setExtraInputIngredient(Ingredient.merge(extraInputIngredients));
-                        existingRecipe.setSpawnEggs(Ingredient.merge(spawnEggs));
+                        existingRecipe.setInputIngredient(Utils.deduplicateIngredients(inputIngredients));
+                        existingRecipe.setExtraInputIngredient(Utils.deduplicateIngredients(extraInputIngredients));
+                        existingRecipe.setSpawnEggs(Utils.deduplicateIngredients(spawnEggs));
                         yield existingRecipe;
                     }
                 }
 
                 TamingRecipe tamingRecipe = new TamingRecipe(
                         entityType,
-                        Ingredient.merge(inputIngredients),
-                        Ingredient.merge(spawnEggs),
-                        Ingredient.merge(extraInputIngredients),
+                        Utils.deduplicateIngredients(inputIngredients),
+                        Utils.deduplicateIngredients(spawnEggs),
+                        Utils.deduplicateIngredients(extraInputIngredients),
                         jsonModID,
                         jsonAnimalID,
                         modFolder,
@@ -322,10 +338,10 @@ public class Utils {
                         extraInputIngredients.add(existingRecipe.extraInputStack);
                         outputIngredients.add(existingRecipe.resultItemStack);
                         spawnEggs.add(existingRecipe.spawnEgg);
-                        existingRecipe.setInputIngredient(Ingredient.merge(inputIngredients));
-                        existingRecipe.setExtraInputIngredient(Ingredient.merge(extraInputIngredients));
-                        existingRecipe.setOutputIngredient(Ingredient.merge(outputIngredients));
-                        existingRecipe.setSpawnEggs(Ingredient.merge(spawnEggs));
+                        existingRecipe.setInputIngredient(Utils.deduplicateIngredients(inputIngredients));
+                        existingRecipe.setExtraInputIngredient(Utils.deduplicateIngredients(extraInputIngredients));
+                        existingRecipe.setOutputIngredient(Utils.deduplicateIngredients(outputIngredients));
+                        existingRecipe.setSpawnEggs(Utils.deduplicateIngredients(spawnEggs));
                         yield existingRecipe;
                     }
                 }
@@ -334,11 +350,11 @@ public class Utils {
                 boolean isTrusting = mobData.has("trusting") && mobData.get("trusting").getAsBoolean();
                 BreedingRecipe breedingRecipe = new BreedingRecipe(
                         entityType,
-                        Ingredient.merge(inputIngredients),
-                        Ingredient.merge(spawnEggs),
+                        Utils.deduplicateIngredients(inputIngredients),
+                        Utils.deduplicateIngredients(spawnEggs),
                         isTamed,
-                        Ingredient.merge(outputIngredients),
-                        Ingredient.merge(extraInputIngredients),
+                        Utils.deduplicateIngredients(outputIngredients),
+                        Utils.deduplicateIngredients(extraInputIngredients),
                         isTrusting,
                         jsonModID,
                         jsonAnimalID,
@@ -349,6 +365,28 @@ public class Utils {
                 JustEnoughBreeding.breedingRecipes.add(breedingRecipe);
                 yield breedingRecipe;
         };
+    }
+
+    public static Ingredient deduplicateIngredients(List<Ingredient> ingredientList) {
+        Ingredient ingredient = Ingredient.merge(ingredientList);
+        Set<JsonElement> seen = new HashSet<>();
+        List<JsonElement> uniqueJson = new ArrayList<>();
+
+        JsonElement json = ingredient.toJson();
+        if (json.isJsonArray()) {
+            for (JsonElement el : json.getAsJsonArray()) {
+                if (seen.add(el)) {
+                    uniqueJson.add(el);
+                }
+            }
+        } else {
+            seen.add(json);
+            uniqueJson.add(json);
+        }
+
+        JsonArray result = new JsonArray();
+        uniqueJson.forEach(result::add);
+        return Ingredient.fromJson(result);
     }
 
 }

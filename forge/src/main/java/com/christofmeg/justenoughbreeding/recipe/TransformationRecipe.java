@@ -201,10 +201,10 @@ public class TransformationRecipe extends ForgeRecipe {
                 extraInputIngredients.add(existingRecipe.extraInputStack);
                 inputSpawnEggs.add(existingRecipe.inputSpawnEgg);
                 outputSpawnEggs.add(existingRecipe.outputSpawnEgg);
-                existingRecipe.setInputIngredient(Ingredient.merge(inputIngredients));
-                existingRecipe.setExtraInputIngredient(Ingredient.merge(extraInputIngredients));
-                existingRecipe.setInputSpawnEggs(Ingredient.merge(inputSpawnEggs));
-                existingRecipe.setOutputSpawnEggs(Ingredient.merge(outputSpawnEggs));
+                existingRecipe.setInputIngredient(Utils.deduplicateIngredients(inputIngredients));
+                existingRecipe.setExtraInputIngredient(Utils.deduplicateIngredients(extraInputIngredients));
+                existingRecipe.setInputSpawnEggs(Utils.deduplicateIngredients(inputSpawnEggs));
+                existingRecipe.setOutputSpawnEggs(Utils.deduplicateIngredients(outputSpawnEggs));
                 return existingRecipe;
             }
         }
@@ -214,11 +214,11 @@ public class TransformationRecipe extends ForgeRecipe {
         DyeColor outputColor = json.has("output_color") ? DyeColor.valueOf(json.get("output_color").getAsString().toUpperCase()) : null;
         TransformationRecipe transformationRecipe = new TransformationRecipe(
                 inputEntityType,
-                Ingredient.merge(inputIngredients),
-                Ingredient.merge(inputSpawnEggs),
-                Ingredient.merge(extraInputIngredients),
+                Utils.deduplicateIngredients(inputIngredients),
+                Utils.deduplicateIngredients(inputSpawnEggs),
+                Utils.deduplicateIngredients(extraInputIngredients),
                 outputEntityType,
-                Ingredient.merge(outputSpawnEggs),
+                Utils.deduplicateIngredients(outputSpawnEggs),
                 isTamed,
                 jsonModID,
                 modFolder,

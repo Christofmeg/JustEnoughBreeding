@@ -45,6 +45,8 @@ public class JustEnoughBreeding {
 
     //TODO fix duplicate itemstacks appearing in same ingredient in ALL RECIPES, 1 x diamond, 1 x diamond
     //TODO TFC Familiarity category (https://tfcraft.fandom.com/wiki/Familiarity)
+    //TODO clean REI/EMI categories
+    //TODO add TransformationCategory to REI/EMI
 
     public static List<BreedingRecipe> breedingRecipes = new ArrayList<>();
     public static List<TamingRecipe> tamingRecipes = new ArrayList<>();

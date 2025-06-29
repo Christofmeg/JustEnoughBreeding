@@ -6,6 +6,9 @@ import com.christofmeg.justenoughbreeding.utils.Utils;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.TagParser;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -154,10 +157,18 @@ public class TemperRecipe extends ForgeRecipe {
         private void addIngredients(JsonObject mobData, List<Ingredient> ingredientList, String memberName) {
             if (mobData.has(memberName)) {
                 for (JsonElement input : mobData.getAsJsonArray(memberName)) {
+                    CompoundTag nbt = null;
+                    if (input.getAsJsonObject().has("nbt")) {
+                        try {
+                            nbt = TagParser.parseTag(input.getAsJsonObject().get("nbt").getAsString());
+                        } catch (CommandSyntaxException e) {
+                            System.err.println("Invalid NBT data: {}" + input.getAsJsonObject().get("nbt").getAsString());
+                        }
+                    }
                     if (input.getAsJsonObject().has("item")) {
                         String ingredient = input.getAsJsonObject().get("item").getAsString();
                         int temperValue = input.getAsJsonObject().has("value") ? input.getAsJsonObject().get("value").getAsInt() : 1;
-                        ingredientList.add(Utils.createCombinedIngredient(ingredient, temperValue));
+                        ingredientList.add(Utils.createCombinedIngredient(ingredient, temperValue, null));
                     }
                 }
             }

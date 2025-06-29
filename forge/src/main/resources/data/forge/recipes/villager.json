@@ -3,25 +3,16 @@
   "mod": "minecraft",
   "inputs": [
     {
-      "item": "minecraft:tipped_arrow"
+      "item": "minecraft:tipped_arrow",
+      "nbt": "{Potion:\"minecraft:weakness\"}"
     },
     {
-      "item": "minecraft:tipped_arrow"
+      "item": "minecraft:splash_potion",
+      "nbt": "{Potion:\"minecraft:weakness\"}"
     },
     {
-      "item": "minecraft:splash_potion"
-    },
-    {
-      "item": "minecraft:splash_potion"
-    },
-    {
-      "item": "minecraft:lingering_potion"
-    },
-    {
-      "item": "minecraft:lingering_potion"
-    },
-    {
-      "item": "minecraft:weakness"
+      "item": "minecraft:lingering_potion",
+      "nbt": "{Potion:\"minecraft:weakness\"}"
     }
   ],
   "extra_inputs": [
