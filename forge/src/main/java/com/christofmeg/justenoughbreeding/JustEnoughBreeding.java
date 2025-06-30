@@ -22,6 +22,7 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("removal")
 @Mod(CommonConstants.MOD_ID)
 public class JustEnoughBreeding {
 
@@ -43,8 +44,6 @@ public class JustEnoughBreeding {
     public static final RegistryObject<RecipeType<TransformationRecipe>> TRANSFORMATION_PROVIDER_TYPE = RECIPE_TYPES.register("transformation_provider", () -> RecipeType.simple(new ResourceLocation(CommonConstants.MOD_ID, "transformation_provider")));
     public static final RegistryObject<RecipeSerializer<TransformationRecipe>> TRANSFORMATION_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("transformation_provider", TransformationRecipe.Serializer::new);
 
-    //TODO fix duplicate itemstacks appearing in same ingredient in ALL RECIPES, 1 x diamond, 1 x diamond
-    //TODO TFC Familiarity category (https://tfcraft.fandom.com/wiki/Familiarity)
     //TODO clean REI/EMI categories
     //TODO add TransformationCategory to REI/EMI
 

@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+@SuppressWarnings("removal")
 public class TemperRecipe extends ForgeRecipe {
 
     public final EntityType<?> entityType;
@@ -168,7 +169,7 @@ public class TemperRecipe extends ForgeRecipe {
                     if (input.getAsJsonObject().has("item")) {
                         String ingredient = input.getAsJsonObject().get("item").getAsString();
                         int temperValue = input.getAsJsonObject().has("value") ? input.getAsJsonObject().get("value").getAsInt() : 1;
-                        ingredientList.add(Utils.createCombinedIngredient(ingredient, temperValue, null));
+                        ingredientList.add(Utils.createCombinedIngredient(ingredient, temperValue, nbt));
                     }
                 }
             }

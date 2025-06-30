@@ -13,6 +13,7 @@ import net.minecraft.world.item.crafting.RecipeType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+@SuppressWarnings("removal")
 public class BreedingRecipe extends ForgeRecipe {
 
     public final EntityType<?> entityType;

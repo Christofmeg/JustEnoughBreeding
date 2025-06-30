@@ -1,20 +1,20 @@
 {
   "type": "justenoughbreeding:breeding_provider",
-  "mod": "minecraft",
+  "mod": "alexsmobs",
   "mobs": [
     {
-      "parrot": {
+      "rhinoceros": {
         "inputs": [
           {
-            "tag": "forge:ingots/iron"
+            "item": "minecraft:dead_bush"
           },
           {
-            "tag": "minecraft:fishes"
+            "item": "minecraft:grass"
           }
         ],
-        "outputs": [
+        "spawn_eggs": [
           {
-            "item": "minecraft:bone"
+            "item": "alexsmobs:spawn_egg_rhinoceros"
           }
         ]
       }

@@ -11,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import org.jetbrains.annotations.NotNull;
 
-@SuppressWarnings("unused")
+@SuppressWarnings("removal,unused")
 @REIPluginCompatIgnore
 @JeiPlugin
 public class JEIPlugin implements IModPlugin {

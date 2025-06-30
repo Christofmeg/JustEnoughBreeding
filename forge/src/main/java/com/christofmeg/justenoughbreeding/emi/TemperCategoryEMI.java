@@ -28,6 +28,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("removal")
 public class TemperCategoryEMI implements EmiRecipe {
     private final ResourceLocation id;
     private final TemperRecipe recipe;

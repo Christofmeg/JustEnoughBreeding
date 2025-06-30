@@ -1,0 +1,21 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "alexsmobs",
+  "mobs": [
+    {
+      "gorilla": {
+        "inputs": [
+          {
+            "tag": "alexsmobs:bananas"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_gorilla"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

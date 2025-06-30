@@ -21,6 +21,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
+@SuppressWarnings("removal")
 public class TamingCategory extends AbstractRecipeCategory<TamingRecipe> implements IRecipeCategory<TamingRecipe> {
 
     public static final RecipeType<TamingRecipe> TYPE = new RecipeType<>(new ResourceLocation(CommonConstants.MOD_ID, "taming"), TamingRecipe.class);

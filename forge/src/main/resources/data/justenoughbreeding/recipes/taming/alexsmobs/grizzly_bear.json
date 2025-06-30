@@ -1,0 +1,25 @@
+{
+  "type": "justenoughbreeding:taming_provider",
+  "mod": "alexmobs",
+  "mobs": [
+    {
+      "grizzly_bear": {
+        "extra_inputs": [
+          {
+            "item": "minecraft:salmon"
+          }
+        ],
+        "inputs": [
+          {
+            "tag": "alexsmobs:grizzly_honey"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexscaves:spawn_egg_grizzly_bear"
+          }
+        ]
+      }
+    }
+  ]
+}

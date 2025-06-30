@@ -21,6 +21,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
+@SuppressWarnings("removal")
 public class TemperCategory extends AbstractRecipeCategory<TemperRecipe> implements IRecipeCategory<TemperRecipe> {
 
     public static final RecipeType<TemperRecipe> TYPE = new RecipeType<>(new ResourceLocation(CommonConstants.MOD_ID, "temper"), TemperRecipe.class);

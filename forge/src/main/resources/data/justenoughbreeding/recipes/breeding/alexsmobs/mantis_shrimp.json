@@ -1,0 +1,24 @@
+{
+  "type": "justenoughbreeding:breeding_provider",
+  "mod": "alexsmobs",
+  "mobs": [
+    {
+      "mantis_shrimp": {
+        "inputs": [
+          {
+            "item": "alexsmobs:cooked_lobster_tail"
+          },
+          {
+            "item": "alexsmobs:lobster_tail"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_mantis_shrimp"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}
