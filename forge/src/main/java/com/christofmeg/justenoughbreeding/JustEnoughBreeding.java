@@ -1,14 +1,11 @@
 package com.christofmeg.justenoughbreeding;
 
-import com.christofmeg.justenoughbreeding.config.JEBIntegration;
 import com.christofmeg.justenoughbreeding.recipe.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.IExtensionPoint;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -59,7 +56,6 @@ public class JustEnoughBreeding {
 
         //Make sure the mod being absent on the other network side does not cause the client to display the server as incompatible
         ModLoadingContext.get().registerExtensionPoint(IExtensionPoint.DisplayTest.class, () -> new IExtensionPoint.DisplayTest(()-> NetworkConstants.IGNORESERVERONLY, (remote, isServer)-> true));
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> JEBIntegration::init);
     }
 
     public static Item getItemFromLoaderRegistries(ResourceLocation resourceLocation) {
