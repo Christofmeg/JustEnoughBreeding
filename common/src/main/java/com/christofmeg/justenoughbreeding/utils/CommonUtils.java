@@ -3,17 +3,22 @@ package com.christofmeg.justenoughbreeding.utils;
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.jei.recipe.TemperRecipe;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderSet;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -499,6 +504,62 @@ public class CommonUtils {
             return Ingredient.of();
         }
 
+    }
+
+    public static void renderEntity(Entity entity, Rect bounds, GuiGraphics guiGraphics, int mouseX) {
+        if (entity instanceof LivingEntity livingEntity) {
+            guiGraphics.pose().pushMatrix();
+            guiGraphics.pose().translate(-52, 54);
+            EntityDimensions dimensions = entity.getType().getDimensions();
+            renderEntityInInventoryFollowsMouse(
+                    guiGraphics,
+                    bounds.x(),
+                    bounds.y() - 53,
+                    bounds.right(),
+                    bounds.bottom() - 33,
+                    (int) (Math.min(20 / dimensions.height(), 20 / dimensions.width())),
+                    0.0625F,
+                    mouseX,
+                    livingEntity
+            );
+            guiGraphics.pose().popMatrix();
+        }
+    }
+
+    public static void renderEntityInInventoryFollowsMouse(GuiGraphics guiGraphics, int left, int top, int right, int bottom, int size, float scale, float mouseX, LivingEntity entity) {
+        float hCenter = (float)(left + right) / 2.0F;
+        float xRotation = (float)Math.atan((hCenter - mouseX) / 40.0F);
+        float yRotation = 0.0F;
+        float yBodyRot = entity.yBodyRot;
+        float entityYRot = entity.getYRot();
+        float entityXRot = entity.getXRot();
+        float yHeadRotO = entity.yHeadRotO;
+        float yHeadRot = entity.yHeadRot;
+        Quaternionf rotateZ = (new Quaternionf()).rotateZ((float)Math.PI);
+        Quaternionf rotateX = (new Quaternionf()).rotateX(yRotation * 20.0F * ((float)Math.PI / 180F));
+
+        rotateZ.mul(rotateX);
+        //guiGraphics.fill(left, top, right, bottom, 0x7F00FF00); // debug cutoff area
+        guiGraphics.enableScissor(left, top, right, bottom);
+        entity.yBodyRot = 180.0F + xRotation * 20.0F;
+        entity.setYRot(180.0F + xRotation * 40.0F);
+        entity.setXRot(-yRotation * 20.0F);
+        entity.yHeadRot = entity.getYRot();
+        entity.yHeadRotO = entity.getYRot();
+
+        float entityScale = entity.getScale();
+        Vector3f $$22 = new Vector3f(0.0F, entity.getBbHeight() / 2.0F + scale * entityScale, 0.0F);
+        float $$23 = (float)size / entityScale;
+        int x = (int) guiGraphics.pose().m20();
+        int y = (int) guiGraphics.pose().m21();
+        InventoryScreen.renderEntityInInventory(guiGraphics, left + x, top + y + 19, right + x, bottom + y + 19, $$23, $$22, rotateZ, rotateX, entity);
+
+        entity.yBodyRot = yBodyRot;
+        entity.setYRot(entityYRot);
+        entity.setXRot(entityXRot);
+        entity.yHeadRotO = yHeadRotO;
+        entity.yHeadRot = yHeadRot;
+        guiGraphics.disableScissor();
     }
 
 }

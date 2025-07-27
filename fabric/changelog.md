@@ -1,2 +1,2 @@
-1.6.0:
-- Argentine Spanish (es_ar) by [Texaliuz](https://github.com/Texaliuz)
+1.6.1:
+- Update Catalogue icon size from 16px to 256px

@@ -4,12 +4,19 @@ import com.christofmeg.justenoughbreeding.CommonConstants;
 import me.shedaniel.rei.plugincompatibilities.api.REIPluginCompatIgnore;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
-import mezz.jei.api.helpers.IGuiHelper;
+import mezz.jei.api.helpers.IJeiHelpers;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
+import mezz.jei.api.registration.IRuntimeRegistration;
+import mezz.jei.api.runtime.IJeiRuntime;
+import net.minecraft.client.gui.navigation.ScreenPosition;
+import net.minecraft.client.gui.navigation.ScreenRectangle;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Optional;
 
 @SuppressWarnings("unused")
 @REIPluginCompatIgnore
@@ -23,7 +30,7 @@ public class JEIPlugin implements IModPlugin {
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registration) {
-        IGuiHelper helper = registration.getJeiHelpers().getGuiHelper();
+        IJeiHelpers helper = registration.getJeiHelpers();
         registration.addRecipeCategories(
                 new BreedingCategory(helper, Items.WHEAT)
 //                ,new TamingCategory(helper, Items.BONE),

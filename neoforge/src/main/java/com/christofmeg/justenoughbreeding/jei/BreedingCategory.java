@@ -2,7 +2,8 @@ package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
-import com.christofmeg.justenoughbreeding.utils.Utils;
+import com.christofmeg.justenoughbreeding.utils.CommonUtils;
+import com.christofmeg.justenoughbreeding.utils.Rect;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.builder.IRecipeSlotBuilder;
@@ -11,7 +12,8 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.gui.placement.HorizontalAlignment;
 import mezz.jei.api.gui.placement.VerticalAlignment;
 import mezz.jei.api.gui.widgets.IRecipeExtrasBuilder;
-import mezz.jei.api.helpers.IGuiHelper;
+import mezz.jei.api.gui.widgets.IRecipeWidget;
+import mezz.jei.api.helpers.IJeiHelpers;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.AbstractRecipeCategory;
@@ -20,6 +22,7 @@ import mezz.jei.api.recipe.types.IRecipeType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.navigation.ScreenPosition;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -39,10 +42,12 @@ public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> imp
     final int outputSlotItemX = 130;
     final int outputSlotItemY = 48;
     final int inputSlot2ItemY = 33;
+    final int CATEGORY_WIDTH;
 
-    public BreedingCategory(IGuiHelper helper, ItemLike itemStack) {
-        super(TYPE, Component.translatable("translation.justenoughbreeding.breeding"), helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(itemStack)), 151 + 15, 91);
-        bigSlot = helper.getOutputSlot();
+    public BreedingCategory(IJeiHelpers helper, ItemLike itemStack) {
+        super(TYPE, Component.translatable("translation.justenoughbreeding.breeding"), helper.getGuiHelper().createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(itemStack)), 151 + 15, 91);
+        bigSlot = helper.getGuiHelper().getOutputSlot();
+        this.CATEGORY_WIDTH = this.getWidth();
     }
 
     @Override
@@ -65,6 +70,7 @@ public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> imp
             inputSlot.setPosition(63, 20 - 10, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
             builder.addInputSlot(inputSlotItemX, inputSlot2ItemY).setStandardSlotBackground().add(recipe.extraInputStack).setPosition(63, 20 + 9, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
         }
+
     }
 
     @Override
@@ -72,6 +78,25 @@ public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> imp
         if (recipe.resultItemStack != null && !recipe.resultItemStack.isEmpty()) {
             builder.addRecipeArrow().setPosition(69, 38, 78, 35, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
         }
+        builder.addWidget(new IRecipeWidget() {
+            private static final int WIDGET_SIZE = 59;
+            final Rect rect = new Rect((CATEGORY_WIDTH - WIDGET_SIZE) / 2, 10, WIDGET_SIZE, WIDGET_SIZE);
+            final ScreenPosition position = new ScreenPosition(0, 0);
+
+            @Override
+            public void drawWidget(@NotNull GuiGraphics guiGraphics, double mouseX, double mouseY) {
+                LivingEntity currentLivingEntity = recipe.doRendering();
+                if (currentLivingEntity != null) {
+                    CommonUtils.renderEntity(currentLivingEntity, rect, guiGraphics, (int) mouseX);
+                }
+            }
+
+            @NotNull
+            @Override
+            public ScreenPosition getPosition() {
+                return position;
+            }
+        });
     }
 
     @Override
@@ -123,11 +148,6 @@ public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> imp
             if (!entityNameString.isEmpty()) {
                 Component abbreviatedEntityName = Component.nullToEmpty(entityNameString);
                 stack.drawString(font, abbreviatedEntityName, 0, 0, DyeColor.BLACK.getTextColor(), false);
-            }
-
-            LivingEntity currentLivingEntity = recipe.doRendering();
-            if (currentLivingEntity != null) {
-                Utils.renderEntity(stack.pose(), mouseX, currentLivingEntity);
             }
         }
     }
