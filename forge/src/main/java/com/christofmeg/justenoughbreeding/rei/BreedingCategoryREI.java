@@ -2,7 +2,7 @@ package com.christofmeg.justenoughbreeding.rei;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
-import com.christofmeg.justenoughbreeding.utils.Utils;
+import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import me.shedaniel.math.Point;
 import me.shedaniel.math.Rectangle;
 import me.shedaniel.rei.api.client.gui.Renderer;
@@ -117,7 +117,7 @@ public class BreedingCategoryREI implements DisplayCategory<BreedingDisplay> {
             widgets.add(Widgets.withTranslate(Widgets.createDrawableWidget((stack, mouseX, mouseY, v) -> {
                     LivingEntity currentLivingEntity = recipe.doRendering(entityType);
                     if (currentLivingEntity != null) {
-                        Utils.renderEntity(stack.pose(), mouseX, currentLivingEntity);
+                        CommonUtils.renderEntity(stack.pose(), mouseX, currentLivingEntity);
                     }
                 }
             ), bounds.x + mobSlotX, bounds.y + mobSlotY - 10, 0));

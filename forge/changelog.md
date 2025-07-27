@@ -1,3 +1,10 @@
+2.0.0:
+- Added Taming Category
+- Added Temper Category
+- Added Trusting Categeory
+- Added Transformation Category
+- Reworked how integrations work, they are now json based
+
 1.6.2:
 - Update icon to match 256px
 

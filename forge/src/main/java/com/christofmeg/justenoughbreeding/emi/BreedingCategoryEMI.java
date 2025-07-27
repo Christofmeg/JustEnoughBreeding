@@ -2,64 +2,34 @@ package com.christofmeg.justenoughbreeding.emi;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
-import com.christofmeg.justenoughbreeding.utils.Utils;
-import dev.emi.emi.EmiPort;
-import dev.emi.emi.EmiRenderHelper;
 import dev.emi.emi.api.recipe.EmiRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
 import dev.emi.emi.api.recipe.EmiRecipeSorting;
 import dev.emi.emi.api.render.EmiTexture;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
-import dev.emi.emi.api.widget.Bounds;
-import dev.emi.emi.api.widget.Widget;
 import dev.emi.emi.api.widget.WidgetHolder;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("removal")
-public class BreedingCategoryEMI implements EmiRecipe {
-    private final ResourceLocation id;
-    private final BreedingRecipe recipe;
-    public static final EmiTexture TOP = new EmiTexture(EmiRenderHelper.WIDGETS, 18, 0, 25, 1);
-    public static final EmiTexture CORNER = new EmiTexture(EmiRenderHelper.WIDGETS, 43, 0, 1, 1);
-    public static final EmiTexture LEFT = new EmiTexture(EmiRenderHelper.WIDGETS, 18, 0, 1, 25);
-    public static final EmiTexture RIGHT = new EmiTexture(EmiRenderHelper.WIDGETS, 43, 1, 1, 25);
-    public static final EmiTexture BOTTOM = new EmiTexture(EmiRenderHelper.WIDGETS, 19, 25, 25, 1);
-    public static final EmiTexture BACKGROUND = new EmiTexture(EmiRenderHelper.WIDGETS, 19, 1, 24, 24);
+public class BreedingCategoryEMI extends AbstractRecipeCategoryEMI {
 
-    public static EmiRecipeCategory TYPE = new EmiRecipeCategory(
-        new ResourceLocation(CommonConstants.MOD_ID + ":" + "breeding"),
-        EmiStack.of(Items.WHEAT), EMIPlugin.simplifiedRenderer(), EmiRecipeSorting.none());
+    private final BreedingRecipe recipe;
+    public static final EmiRecipeCategory TYPE =new EmiRecipeCategory(new ResourceLocation(CommonConstants.MOD_ID + ":" + "breeding"),
+            EmiStack.of(Items.WHEAT), EMIPlugin.simplifiedRenderer(), EmiRecipeSorting.none());
 
     protected BreedingCategoryEMI(Builder builder, BreedingRecipe breedingRecipe) {
-        this.id = builder.id;
+        super(TYPE, 168, 93, builder.id);
         this.recipe = breedingRecipe;
     }
 
     public static Builder builder() {
         return new Builder();
-    }
-
-    @Override
-    public EmiRecipeCategory getCategory() {
-        return TYPE;
-    }
-
-    @Override
-    public @Nullable ResourceLocation getId() {
-        return id;
     }
 
     @Override
@@ -90,21 +60,6 @@ public class BreedingCategoryEMI implements EmiRecipe {
     }
 
     @Override
-    public boolean supportsRecipeTree() {
-        return false;
-    }
-
-    @Override
-    public int getDisplayWidth() {
-        return 151 + 17;
-    }
-
-    @Override
-    public int getDisplayHeight() {
-        return 91 + 2;
-    }
-
-    @Override
     public void addWidgets(WidgetHolder widgets) {
         widgets.addSlot(EmiIngredient.of(recipe.spawnEgg), 149, 1);
 
@@ -129,96 +84,18 @@ public class BreedingCategoryEMI implements EmiRecipe {
             widgets.addSlot(EmiIngredient.of(recipe.resultItemStack), 126 + 4, 44).large(true).recipeContext(this);
         }
 
-        widgets.addTexture(TOP, 1, 11);
-        widgets.addTexture(TOP, 26, 11);
-        widgets.addTexture(TOP, 36, 11);
-        widgets.addTexture(CORNER, 61, 11);
-
-        widgets.addTexture(LEFT, 1, 12);
-        widgets.addTexture(LEFT, 1, 37);
-        widgets.addTexture(LEFT, 1, 62);
-        widgets.addTexture(LEFT, 1, 66);
-
-        widgets.addTexture(RIGHT, 61, 12);
-        widgets.addTexture(RIGHT, 61, 37);
-        widgets.addTexture(RIGHT, 61, 62);
-        widgets.addTexture(RIGHT, 61, 66);
-
-        widgets.addTexture(BACKGROUND, 2, 12);
-        widgets.addTexture(BACKGROUND, 26, 12);
-        widgets.addTexture(BACKGROUND, 37, 12);
-        widgets.addTexture(BACKGROUND, 2, 12 + 24);
-        widgets.addTexture(BACKGROUND, 26, 12 + 24);
-        widgets.addTexture(BACKGROUND, 37, 12 + 24);
-        widgets.addTexture(BACKGROUND, 2, 12 + 48);
-        widgets.addTexture(BACKGROUND, 26, 12 + 48);
-        widgets.addTexture(BACKGROUND, 37, 12 + 48);
-        widgets.addTexture(BACKGROUND, 2, 12 + 55);
-        widgets.addTexture(BACKGROUND, 26, 12 + 55);
-        widgets.addTexture(BACKGROUND, 37, 12 + 55);
-
-        widgets.addTexture(CORNER, 1, 91);
-        widgets.addTexture(BOTTOM, 2, 91);
-        widgets.addTexture(BOTTOM, 27, 91);
-        widgets.addTexture(BOTTOM, 37, 91);
-
-        widgets.add(new Widget() {
-            @Override
-            public Bounds getBounds() {
-                return new Bounds(0, 0, 60, 80);
-            }
-
-            @Override
-            public void render(@NotNull GuiGraphics stack, int mouseX, int mouseY, float delta) {
-                LivingEntity currentLivingEntity = recipe.doRendering(recipe.entityType);
-                if (currentLivingEntity != null) {
-                    Utils.renderEntity(stack.pose(), mouseX, currentLivingEntity);
-                }
-            }
-        });
-
-        EntityType<?> entityType = recipe.entityType;
-        if (entityType != null) {
-            Component entityName = Component.translatable(entityType.getDescriptionId());
-            String entityNameString = entityName.getString(); // Convert Component to String
-            if (recipe.needsToBeTamed != null && recipe.needsToBeTamed) {
-                Component tamed = Component.translatable("translation.justenoughbreeding.tamed");
-                entityNameString += " (" + tamed.getString() + ")";
-            } else if (recipe.animalTrusting != null && recipe.animalTrusting) {
-                Component trusting = Component.translatable("translation.justenoughbreeding.trusting");
-                entityNameString += " (" + trusting.getString() + ")";
-            } else if (recipe.jsonModID.equals("tfc")) {
-                Component familiarity = Component.translatable("tfc.jade.familiarity");
-                String tfc = familiarity.getString().replaceAll(":[^:]*$", "");
-                entityNameString += " (" + tfc + " > 30" + ")";
-            }
-
-            int stringWidth = Minecraft.getInstance().font.width(entityNameString); // Measure the width of the string in pixels
-            int availableWidth = 154; // Initial available width in pixels
-            if (stringWidth > availableWidth) {
-                float pixelWidthPerCharacter = (float) stringWidth / entityNameString.length();
-                int maxCharacters = (int) (availableWidth / pixelWidthPerCharacter);
-                entityNameString = entityNameString.substring(0, maxCharacters);
-            }
-
-            if (!entityNameString.isEmpty()) {
-                Component abbreviatedEntityName = Component.nullToEmpty(entityNameString);
-                widgets.addText(EmiPort.ordered(abbreviatedEntityName), 1, 1, -1, true);
-
-            }
-        }
-
+        EMIUtils.drawMobSlot(0, 10, widgets);
+        EMIUtils.drawMobNameAndEntity(recipe.entityType, widgets, recipe, 99, 0);
     }
 
     public static class Builder {
-        private ResourceLocation id = null;
-        private BreedingRecipe breedingRecipe;
+        private ResourceLocation id;
+        private BreedingRecipe recipe;
 
-        private Builder() {
-        }
+        private Builder() {}
 
         public EmiRecipe build() {
-            return new BreedingCategoryEMI(this, breedingRecipe);
+            return new BreedingCategoryEMI(this, recipe);
         }
 
         public Builder id(ResourceLocation id) {
@@ -226,11 +103,10 @@ public class BreedingCategoryEMI implements EmiRecipe {
             return this;
         }
 
-        public Builder breedingRecipe(BreedingRecipe recipe) {
-            this.breedingRecipe = recipe;
+        public Builder recipe(BreedingRecipe recipe) {
+            this.recipe = recipe;
             return this;
         }
-
     }
 
 }

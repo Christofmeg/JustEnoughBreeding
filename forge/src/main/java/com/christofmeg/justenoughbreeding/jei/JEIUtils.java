@@ -2,7 +2,7 @@ package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.recipe.*;
-import com.christofmeg.justenoughbreeding.utils.Utils;
+import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
@@ -48,19 +48,19 @@ public class JEIUtils {
                 }
             }
 
-            List<TrustingRecipe> trustingRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TRUSTING_PROVIDER_TYPE.get()));
-            trustingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID));
-            for (TrustingRecipe recipe : trustingRecipes) {
-                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
-                    registration.addRecipes(TrustingCategory.TYPE, Collections.singletonList(recipe));
-                }
-            }
-
             List<TransformationRecipe> transformationRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE.get()));
             transformationRecipes.sort(Comparator.comparing(r -> r.outputEntityType == null ? r.fileName: r.outputEntityType.toShortString()));
             for (TransformationRecipe recipe : transformationRecipes) {
                 if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.inputEntityType != null && recipe.outputEntityType != null) {
                     registration.addRecipes(TransformationCategory.TYPE, Collections.singletonList(recipe));
+                }
+            }
+
+            List<TrustingRecipe> trustingRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TRUSTING_PROVIDER_TYPE.get()));
+            trustingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID));
+            for (TrustingRecipe recipe : trustingRecipes) {
+                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
+                    registration.addRecipes(TrustingCategory.TYPE, Collections.singletonList(recipe));
                 }
             }
         }
@@ -134,7 +134,7 @@ public class JEIUtils {
 
             LivingEntity currentLivingEntity = recipe instanceof TransformationRecipe ? ((TransformationRecipe) recipe).doRendering(entityType, input, color) : recipe.doRendering(entityType);
             if (currentLivingEntity != null) {
-                Utils.renderEntity(stack.pose(), mouseX, currentLivingEntity, 31 + extraX, 89);
+                CommonUtils.renderEntity(stack.pose(), mouseX, currentLivingEntity, 31 + extraX, 89);
             }
         }
     }

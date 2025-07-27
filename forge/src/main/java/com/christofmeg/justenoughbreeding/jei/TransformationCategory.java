@@ -36,19 +36,19 @@ public class TransformationCategory extends AbstractRecipeCategory<Transformatio
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, TransformationRecipe recipe, @NotNull IFocusGroup focuses) {
-        builder.addInputSlot(64, 73).setStandardSlotBackground().addIngredients(recipe.inputSpawnEgg);
-        builder.addOutputSlot(84, 73).setStandardSlotBackground().addIngredients(recipe.outputSpawnEgg);
-        IRecipeSlotBuilder inputStack = builder.addInputSlot(74, 21).setStandardSlotBackground().addIngredients(recipe.inputStack);
+        builder.addInputSlot(65, 74).setStandardSlotBackground().addIngredients(recipe.inputSpawnEgg);
+        builder.addOutputSlot(85, 74).setStandardSlotBackground().addIngredients(recipe.outputSpawnEgg);
+        IRecipeSlotBuilder inputStack = builder.addInputSlot(75, 22).setStandardSlotBackground().addIngredients(recipe.inputStack);
         boolean hasExtraInput = recipe.extraInputStack != null && !recipe.extraInputStack.isEmpty();
         if (hasExtraInput) {
-            inputStack.setPosition(64, 21);
-            builder.addInputSlot(inputSlotItemX, inputSlot2ItemY).setStandardSlotBackground().addIngredients(recipe.extraInputStack).setPosition(84, 21);
+            inputStack.setPosition(65, 22);
+            builder.addInputSlot(inputSlotItemX, inputSlot2ItemY).setStandardSlotBackground().addIngredients(recipe.extraInputStack).setPosition(85, 22);
         }
     }
 
     @Override
     public void createRecipeExtras(@NotNull IRecipeExtrasBuilder builder, @NotNull TransformationRecipe recipe, @NotNull IFocusGroup focuses) {
-        builder.addRecipeArrow().setPosition(71, 47);
+        builder.addRecipeArrow().setPosition(72, 48);
     }
 
     @Override
