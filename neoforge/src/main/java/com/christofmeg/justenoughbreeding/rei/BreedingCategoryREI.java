@@ -2,7 +2,8 @@ package com.christofmeg.justenoughbreeding.rei;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
-import com.christofmeg.justenoughbreeding.utils.Utils;
+import com.christofmeg.justenoughbreeding.utils.CommonUtils;
+import com.christofmeg.justenoughbreeding.utils.Rect;
 import me.shedaniel.math.Point;
 import me.shedaniel.math.Rectangle;
 import me.shedaniel.rei.api.client.gui.Renderer;
@@ -22,8 +23,7 @@ import java.util.List;
 
 public class BreedingCategoryREI implements DisplayCategory<BreedingDisplay> {
 
-    public static final CategoryIdentifier<BreedingDisplay> TYPE =
-            CategoryIdentifier.of(CommonConstants.MOD_ID, "breeding");
+    public static final CategoryIdentifier<BreedingDisplay> TYPE = CategoryIdentifier.of(CommonConstants.MOD_ID, "breeding");
 
     @Override
     public CategoryIdentifier<? extends BreedingDisplay> getCategoryIdentifier() {
@@ -47,6 +47,8 @@ public class BreedingCategoryREI implements DisplayCategory<BreedingDisplay> {
     final int arrowX = 98;
     final int mobSlotX = 5;
     final int mobSlotY = 15;
+    private static final int WIDGET_SIZE = 59;
+    int CATEGORY_WIDTH;
 
     @Override
     public List<Widget> setupDisplay(BreedingDisplay display, Rectangle bounds) {
@@ -55,6 +57,7 @@ public class BreedingCategoryREI implements DisplayCategory<BreedingDisplay> {
         widgets.add(Widgets.createSlotBase(new Rectangle(bounds.x + mobSlotX, bounds.y + mobSlotY, 61, 81)));
         widgets.add(Widgets.createSlot(new Point(bounds.x + eggSlotX, bounds.y + eggSlotY)).entries(List.of(EntryStacks.of(display.breedingRecipe.spawnEgg))));
 
+        this.CATEGORY_WIDTH = this.getDisplayWidth(display);
         boolean hasExtraInput = !display.getExtraInputEntries().getFirst().getFirst().isEmpty();
         boolean hasOutput = !display.getOutputEntries().getFirst().getFirst().isEmpty();
         if (hasExtraInput && hasOutput) {
@@ -100,13 +103,14 @@ public class BreedingCategoryREI implements DisplayCategory<BreedingDisplay> {
                 widgets.add(Widgets.createLabel(new Point(bounds.x + 5, bounds.y + 5),
                         abbreviatedEntityName).noShadow().leftAligned().color(0xFF404040, 0xFFBBBBBB));
             }
-            widgets.add(Widgets.withTranslate(Widgets.createDrawableWidget((stack, mouseX, mouseY, v) -> {
+            widgets.add(Widgets.withTranslate(Widgets.createDrawableWidget((graphics, mouseX, mouseY, v) -> {
                         LivingEntity currentLivingEntity = recipe.doRendering();
                         if (currentLivingEntity != null) {
-                            Utils.renderEntity(stack.pose(), mouseX, currentLivingEntity);
+                            final Rect rect = new Rect((CATEGORY_WIDTH - WIDGET_SIZE - 10) / 2, 10, WIDGET_SIZE, WIDGET_SIZE);
+                            CommonUtils.renderEntity(currentLivingEntity, rect, graphics, mouseX);
                         }
                     }
-            ), bounds.x + mobSlotX, bounds.y + mobSlotY - 10, 0));
+            ), bounds.x + mobSlotX, bounds.y + mobSlotY - 10));
         }
 
         return widgets;
