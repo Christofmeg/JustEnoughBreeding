@@ -19,12 +19,11 @@ public class BreedingRecipe extends ForgeRecipe {
     public final EntityType<?> entityType;
     public Ingredient inputStack;
     public Ingredient spawnEgg;
-    @Nullable
-    public final Boolean needsToBeTamed;
+    public final @Nullable Boolean needsToBeTamed;
     public Ingredient resultItemStack;
     public @Nullable Ingredient extraInputStack;
-    @Nullable
-    public final Boolean animalTrusting;
+
+    public final @Nullable Boolean animalTrusting;
     public final String jsonModID;
     public final String jsonAnimalID;
     public final String modFolder;

@@ -41,8 +41,7 @@ public class JustEnoughBreeding {
     public static final RegistryObject<RecipeType<TransformationRecipe>> TRANSFORMATION_PROVIDER_TYPE = RECIPE_TYPES.register("transformation_provider", () -> RecipeType.simple(new ResourceLocation(CommonConstants.MOD_ID, "transformation_provider")));
     public static final RegistryObject<RecipeSerializer<TransformationRecipe>> TRANSFORMATION_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("transformation_provider", TransformationRecipe.Serializer::new);
 
-    //TODO clean REI categories
-    //TODO add TransformationCategory to REI
+    //TODO make WIKI on how to make integrations
 
     public static List<BreedingRecipe> breedingRecipes = new ArrayList<>();
     public static List<TamingRecipe> tamingRecipes = new ArrayList<>();

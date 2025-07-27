@@ -24,10 +24,7 @@ import org.jetbrains.annotations.NotNull;
 public class TransformationCategory extends AbstractRecipeCategory<TransformationRecipe> implements IRecipeCategory<TransformationRecipe> {
 
     public static final RecipeType<TransformationRecipe> TYPE = new RecipeType<>(new ResourceLocation(CommonConstants.MOD_ID, "transformation"), TransformationRecipe.class);
-
     private final IDrawableStatic bigSlot;
-    final int inputSlotItemX = 69;
-    final int inputSlot2ItemY = 33;
 
     public TransformationCategory(IGuiHelper helper, ItemLike itemStack) {
         super(TYPE, Component.translatable("translation.justenoughbreeding.transformation"), helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(itemStack)), 151 + 15, 91);
@@ -42,7 +39,7 @@ public class TransformationCategory extends AbstractRecipeCategory<Transformatio
         boolean hasExtraInput = recipe.extraInputStack != null && !recipe.extraInputStack.isEmpty();
         if (hasExtraInput) {
             inputStack.setPosition(65, 22);
-            builder.addInputSlot(inputSlotItemX, inputSlot2ItemY).setStandardSlotBackground().addIngredients(recipe.extraInputStack).setPosition(85, 22);
+            builder.addInputSlot(69, 33).setStandardSlotBackground().addIngredients(recipe.extraInputStack).setPosition(85, 22);
         }
     }
 

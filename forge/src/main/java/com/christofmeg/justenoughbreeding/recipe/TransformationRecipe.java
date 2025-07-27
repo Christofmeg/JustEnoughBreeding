@@ -35,8 +35,7 @@ public class TransformationRecipe extends ForgeRecipe {
     public @Nullable Ingredient extraInputStack;
     public final EntityType<?> outputEntityType;
     public Ingredient outputSpawnEgg;
-    @Nullable
-    public final Boolean needsToBeTamed;
+    public final @Nullable Boolean needsToBeTamed;
     public final String jsonModID;
     public final String modFolder;
     public final String fileName;

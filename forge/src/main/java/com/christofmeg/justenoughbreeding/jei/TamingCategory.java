@@ -1,6 +1,5 @@
 package com.christofmeg.justenoughbreeding.jei;
 
-import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.recipe.TamingRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -24,26 +23,22 @@ import org.jetbrains.annotations.NotNull;
 @SuppressWarnings("removal")
 public class TamingCategory extends AbstractRecipeCategory<TamingRecipe> implements IRecipeCategory<TamingRecipe> {
 
-    public static final RecipeType<TamingRecipe> TYPE = new RecipeType<>(new ResourceLocation(CommonConstants.MOD_ID, "taming"), TamingRecipe.class);
-
+    public static final RecipeType<TamingRecipe> TYPE = new RecipeType<>(new ResourceLocation("justenoughbreeding", "taming"), TamingRecipe.class);
     private final IDrawableStatic bigSlot;
-    final int inputSlotItemX = 69;
-    final int inputSlot1ItemY = 58;
-    final int inputSlot2ItemY = 33;
 
     public TamingCategory(IGuiHelper helper, ItemLike itemStack) {
-        super(TYPE, Component.translatable("translation.justenoughbreeding.taming"), helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(itemStack)), 151 + 15, 91);
+        super(TYPE, Component.translatable("translation.justenoughbreeding.taming"), helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(itemStack)), 166, 91);
         bigSlot = helper.getOutputSlot();
     }
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, TamingRecipe recipe, @NotNull IFocusGroup focuses) {
-        builder.addInputSlot(134 + 15, 1).setStandardSlotBackground().addIngredients(recipe.spawnEgg);
+        builder.addInputSlot(149, 1).setStandardSlotBackground().addIngredients(recipe.spawnEgg);
         builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).addIngredients(recipe.spawnEgg);
-        builder.addInputSlot(inputSlotItemX, inputSlot1ItemY).setStandardSlotBackground().addIngredients(recipe.inputStack).setPosition(63, 20, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
+        builder.addInputSlot(69, 58).setStandardSlotBackground().addIngredients(recipe.inputStack).setPosition(63, 20, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
         boolean hasExtraInput = recipe.extraInputStack != null && !recipe.extraInputStack.isEmpty();
         if (hasExtraInput) {
-            builder.addInputSlot(inputSlotItemX, inputSlot2ItemY).setStandardSlotBackground().addIngredients(recipe.extraInputStack).setPosition(63, 20 + 9, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
+            builder.addInputSlot(69, 33).setStandardSlotBackground().addIngredients(recipe.extraInputStack).setPosition(63, 29, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
         }
     }
 
