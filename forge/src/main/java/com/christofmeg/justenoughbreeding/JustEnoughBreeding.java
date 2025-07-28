@@ -26,26 +26,25 @@ public class JustEnoughBreeding {
     private static final DeferredRegister<RecipeSerializer<?>> RECIPES_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, CommonConstants.MOD_ID);
     private static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(ForgeRegistries.RECIPE_TYPES, CommonConstants.MOD_ID);
 
-    public static final RegistryObject<RecipeType<AllayDuplicationRecipe>> ALLAY_DUPLICAITON_PROVIDER_TYPE = RECIPE_TYPES.register("allay_duplication_provider", () -> RecipeType.simple(new ResourceLocation(CommonConstants.MOD_ID, "allay_duplication_provider")));
-    public static final RegistryObject<RecipeSerializer<AllayDuplicationRecipe>> ALLAY_DUPLICAITON_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("allay_duplication_provider", AllayDuplicationRecipe.Serializer::new);
+    public static final RegistryObject<RecipeType<AllayDuplicationRecipe>> ALLAY_DUPLICAITON_PROVIDER_TYPE = RECIPE_TYPES.register("allay_duplication", () -> RecipeType.simple(new ResourceLocation(CommonConstants.MOD_ID, "allay_duplication")));
+    public static final RegistryObject<RecipeSerializer<AllayDuplicationRecipe>> ALLAY_DUPLICAITON_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("allay_duplication", AllayDuplicationRecipe.Serializer::new);
 
-    public static final RegistryObject<RecipeType<BreedingRecipe>> BREEDING_PROVIDER_TYPE = RECIPE_TYPES.register("breeding_provider", () -> RecipeType.simple(new ResourceLocation(CommonConstants.MOD_ID, "breeding_provider")));
-    public static final RegistryObject<RecipeSerializer<BreedingRecipe>> BREEDING_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("breeding_provider", BreedingRecipe.Serializer::new);
+    public static final RegistryObject<RecipeType<BreedingRecipe>> BREEDING_PROVIDER_TYPE = RECIPE_TYPES.register("breeding", () -> RecipeType.simple(new ResourceLocation(CommonConstants.MOD_ID, "breeding")));
+    public static final RegistryObject<RecipeSerializer<BreedingRecipe>> BREEDING_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("breeding", BreedingRecipe.Serializer::new);
 
-    public static final RegistryObject<RecipeType<TamingRecipe>> TAMING_PROVIDER_TYPE = RECIPE_TYPES.register("taming_provider", () -> RecipeType.simple(new ResourceLocation(CommonConstants.MOD_ID, "taming_provider")));
-    public static final RegistryObject<RecipeSerializer<TamingRecipe>> TAMING_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("taming_provider", TamingRecipe.Serializer::new);
+    public static final RegistryObject<RecipeType<TamingRecipe>> TAMING_PROVIDER_TYPE = RECIPE_TYPES.register("taming", () -> RecipeType.simple(new ResourceLocation(CommonConstants.MOD_ID, "taming")));
+    public static final RegistryObject<RecipeSerializer<TamingRecipe>> TAMING_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("taming", TamingRecipe.Serializer::new);
 
-    public static final RegistryObject<RecipeType<TemperRecipe>> TEMPER_PROVIDER_TYPE = RECIPE_TYPES.register("temper_provider", () -> RecipeType.simple(new ResourceLocation(CommonConstants.MOD_ID, "temper_provider")));
-    public static final RegistryObject<RecipeSerializer<TemperRecipe>> TEMPER_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("temper_provider", TemperRecipe.Serializer::new);
+    public static final RegistryObject<RecipeType<TemperRecipe>> TEMPER_PROVIDER_TYPE = RECIPE_TYPES.register("temper", () -> RecipeType.simple(new ResourceLocation(CommonConstants.MOD_ID, "temper")));
+    public static final RegistryObject<RecipeSerializer<TemperRecipe>> TEMPER_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("temper", TemperRecipe.Serializer::new);
 
-    public static final RegistryObject<RecipeType<TrustingRecipe>> TRUSTING_PROVIDER_TYPE = RECIPE_TYPES.register("trusting_provider", () -> RecipeType.simple(new ResourceLocation(CommonConstants.MOD_ID, "trusting_provider")));
-    public static final RegistryObject<RecipeSerializer<TrustingRecipe>> TRUSTING_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("trusting_provider", TrustingRecipe.Serializer::new);
+    public static final RegistryObject<RecipeType<TrustingRecipe>> TRUSTING_PROVIDER_TYPE = RECIPE_TYPES.register("trusting", () -> RecipeType.simple(new ResourceLocation(CommonConstants.MOD_ID, "trusting")));
+    public static final RegistryObject<RecipeSerializer<TrustingRecipe>> TRUSTING_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("trusting", TrustingRecipe.Serializer::new);
 
-    public static final RegistryObject<RecipeType<TransformationRecipe>> TRANSFORMATION_PROVIDER_TYPE = RECIPE_TYPES.register("transformation_provider", () -> RecipeType.simple(new ResourceLocation(CommonConstants.MOD_ID, "transformation_provider")));
-    public static final RegistryObject<RecipeSerializer<TransformationRecipe>> TRANSFORMATION_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("transformation_provider", TransformationRecipe.Serializer::new);
+    public static final RegistryObject<RecipeType<TransformationRecipe>> TRANSFORMATION_PROVIDER_TYPE = RECIPE_TYPES.register("transformation", () -> RecipeType.simple(new ResourceLocation(CommonConstants.MOD_ID, "transformation")));
+    public static final RegistryObject<RecipeSerializer<TransformationRecipe>> TRANSFORMATION_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("transformation", TransformationRecipe.Serializer::new);
 
     //TODO make WIKI on how to make integrations
-    //TODO rename justenoughbreeding:..._provider to ...
 
     public static List<AllayDuplicationRecipe> allayDuplicationRecipes = new ArrayList<>();
     public static List<BreedingRecipe> breedingRecipes = new ArrayList<>();

@@ -1,5 +1,5 @@
 {
-  "type": "justenoughbreeding:allay_duplication_provider",
+  "type": "justenoughbreeding:allay_duplication",
   "mod": "minecraft",
   "mobs": [
     {
