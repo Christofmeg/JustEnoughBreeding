@@ -29,6 +29,19 @@ import java.util.List;
 public class EMIUtils {
 
     public static void registerRecipes(EmiRegistry registration) {
+        List<AllayDuplicationRecipe> allayDuplicationRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.ALLAY_DUPLICAITON_PROVIDER_TYPE.get()));
+        allayDuplicationRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID));
+        for (AllayDuplicationRecipe recipe : allayDuplicationRecipes) {
+            if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
+                registration.addRecipe(
+                        AllayDuplicationCategoryEMI.builder()
+                                .id(new ResourceLocation(CommonConstants.MOD_ID, "/" + "allay_duplication" + "/" + recipe.jsonModID + "/" + recipe.jsonAnimalID))
+                                .recipe(recipe)
+                                .build()
+                );
+            }
+        }
+
         List<BreedingRecipe> breedingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.BREEDING_PROVIDER_TYPE.get()));
         breedingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID));
         for (BreedingRecipe recipe : breedingRecipes) {

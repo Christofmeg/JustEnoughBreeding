@@ -31,13 +31,13 @@ public class TransformationCategoryREI extends AbstractRecipeCategoryREI<Transfo
         widgets.add(Widgets.createRecipeBase(bounds));
 
         List<EntryStack<?>> inputSpawnEggs = new ArrayList<>();
-        for (ItemStack stack : display.transformationRecipe.inputSpawnEgg.getItems()) {
+        for (ItemStack stack : display.recipe.inputSpawnEgg.getItems()) {
             inputSpawnEggs.add(EntryStacks.of(stack));
         }
         widgets.add(Widgets.createSlot(new Point(bounds.x + 70, bounds.y + 79)).entries(inputSpawnEggs));
 
         List<EntryStack<?>> outputSpawnEggs = new ArrayList<>();
-        for (ItemStack stack : display.transformationRecipe.outputSpawnEgg.getItems()) {
+        for (ItemStack stack : display.recipe.outputSpawnEgg.getItems()) {
             outputSpawnEggs.add(EntryStacks.of(stack));
         }
         widgets.add(Widgets.createSlot(new Point(bounds.x + 90, bounds.y + 79)).entries(outputSpawnEggs));
@@ -55,7 +55,7 @@ public class TransformationCategoryREI extends AbstractRecipeCategoryREI<Transfo
 
         widgets.add(Widgets.createArrow(new Point(bounds.x + 76, bounds.getCenterY() + 3)));
 
-        TransformationRecipe recipe = display.transformationRecipe;
+        TransformationRecipe recipe = display.recipe;
         REIUtils.drawMobSlot(widgets, bounds,0, 10);
         REIUtils.drawMobNameAndEntity(widgets, bounds, recipe.inputEntityType, recipe, 99, 0, true, recipe.inputColor);
         REIUtils.drawMobSlot(widgets, bounds,105, 10);

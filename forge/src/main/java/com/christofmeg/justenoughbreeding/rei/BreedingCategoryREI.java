@@ -30,7 +30,7 @@ public class BreedingCategoryREI extends AbstractRecipeCategoryREI<BreedingDispl
         widgets.add(Widgets.createRecipeBase(bounds));
 
         List<EntryStack<?>> entryStackList = new ArrayList<>();
-        for (ItemStack stack : display.breedingRecipe.spawnEgg.getItems()) {
+        for (ItemStack stack : display.recipe.spawnEgg.getItems()) {
             entryStackList.add(EntryStacks.of(stack));
         }
         widgets.add(Widgets.createSlot(new Point(bounds.x + 154, bounds.y + 6)).entries(entryStackList));
@@ -57,7 +57,7 @@ public class BreedingCategoryREI extends AbstractRecipeCategoryREI<BreedingDispl
             widgets.add(Widgets.createSlot(new Point(bounds.x + 139, bounds.getCenterY() + 3)).entries(display.getOutputEntries().get(0)).disableBackground().markOutput());
         }
 
-        BreedingRecipe recipe = display.breedingRecipe;
+        BreedingRecipe recipe = display.recipe;
         REIUtils.drawMobSlot(widgets, bounds,0, 10);
         REIUtils.drawMobNameAndEntity(widgets, bounds, recipe.entityType, recipe);
 

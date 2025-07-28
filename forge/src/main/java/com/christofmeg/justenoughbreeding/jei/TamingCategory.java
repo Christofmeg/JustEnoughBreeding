@@ -12,7 +12,6 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.AbstractRecipeCategory;
-import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -21,7 +20,7 @@ import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("removal")
-public class TamingCategory extends AbstractRecipeCategory<TamingRecipe> implements IRecipeCategory<TamingRecipe> {
+public class TamingCategory extends AbstractRecipeCategory<TamingRecipe> {
 
     public static final RecipeType<TamingRecipe> TYPE = new RecipeType<>(new ResourceLocation("justenoughbreeding", "taming"), TamingRecipe.class);
     private final IDrawableStatic bigSlot;

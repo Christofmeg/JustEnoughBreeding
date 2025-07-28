@@ -13,13 +13,13 @@ import java.util.List;
 public class TrustingDisplay extends BasicDisplay {
 
     protected List<EntryIngredient> extraInputs;
-    public TrustingRecipe trustingRecipe;
+    public TrustingRecipe recipe;
 
     public TrustingDisplay(TrustingRecipe recipe) {
         super(List.of(EntryIngredients.ofIngredient(recipe.inputStack), EntryIngredients.ofIngredient(recipe.spawnEgg)),
                 List.of(EntryIngredients.ofIngredient(recipe.spawnEgg))
         );
-        trustingRecipe = recipe;
+        this.recipe = recipe;
         if (recipe.extraInputStack != null) {
             extraInputs = List.of(EntryIngredients.ofIngredient(recipe.extraInputStack));
         } else {

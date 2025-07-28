@@ -13,13 +13,13 @@ import java.util.List;
 public class TemperDisplay extends BasicDisplay {
 
     protected List<EntryIngredient> extraInputs;
-    public TemperRecipe temperRecipe;
+    public TemperRecipe recipe;
 
     public TemperDisplay(TemperRecipe recipe) {
         super(List.of(EntryIngredients.ofIngredient(recipe.inputStack), EntryIngredients.ofIngredient(recipe.spawnEgg)),
                 List.of(EntryIngredients.ofIngredient(recipe.spawnEgg))
         );
-        temperRecipe = recipe;
+        this.recipe = recipe;
         if (recipe.extraInputStack != null) {
             extraInputs = List.of(EntryIngredients.ofIngredient(recipe.extraInputStack));
         } else {

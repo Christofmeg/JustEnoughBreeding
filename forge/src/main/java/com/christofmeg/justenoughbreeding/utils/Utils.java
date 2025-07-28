@@ -2,10 +2,7 @@ package com.christofmeg.justenoughbreeding.utils;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
-import com.christofmeg.justenoughbreeding.recipe.BaseRecipe;
-import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
-import com.christofmeg.justenoughbreeding.recipe.TamingRecipe;
-import com.christofmeg.justenoughbreeding.recipe.TrustingRecipe;
+import com.christofmeg.justenoughbreeding.recipe.*;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -143,6 +140,9 @@ public class Utils {
 
         if (!JustEnoughBreeding.isModLoaded(modFolder) || !JustEnoughBreeding.isModLoaded(jsonModID)) {
             switch (recipeType) {
+                case "allay_duplication" -> {
+                    return new AllayDuplicationRecipe(null, null, null, jsonModID, jsonAnimalID, modFolder, fileName);
+                }
                 case "breeding" -> {
                     return new BreedingRecipe(null, null, null, null, null, null, null, jsonModID, jsonAnimalID, modFolder, fileName);
                 }
@@ -158,6 +158,9 @@ public class Utils {
         EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(new ResourceLocation(jsonModID, jsonAnimalID));
         if (!jsonAnimalID.equals(entityType.toShortString())) {
             switch (recipeType) {
+                case "allay_duplication" -> {
+                    return new AllayDuplicationRecipe(null, null, null, jsonModID, jsonAnimalID, modFolder, fileName);
+                }
                 case "breeding" -> {
                     return new BreedingRecipe(null, null, null, null, null, null, null, jsonModID, jsonAnimalID, modFolder, fileName);
                 }
@@ -199,7 +202,6 @@ public class Utils {
                         yield existingRecipe;
                     }
                 }
-
                 TrustingRecipe trustingRecipe = new TrustingRecipe(
                         entityType,
                         Utils.deduplicateIngredients(inputIngredients),
@@ -210,9 +212,9 @@ public class Utils {
                         modFolder,
                         fileName
                 );
-
                 JustEnoughBreeding.trustingRecipes.add(trustingRecipe);
                 yield trustingRecipe;
+
             case "taming":
                 for (TamingRecipe existingRecipe : JustEnoughBreeding.tamingRecipes) {
                     if (existingRecipe.jsonModID.equals(jsonModID) && existingRecipe.jsonAnimalID.equals(jsonAnimalID)) {
@@ -225,7 +227,6 @@ public class Utils {
                         yield existingRecipe;
                     }
                 }
-
                 TamingRecipe tamingRecipe = new TamingRecipe(
                         entityType,
                         Utils.deduplicateIngredients(inputIngredients),
@@ -236,9 +237,31 @@ public class Utils {
                         modFolder,
                         fileName
                 );
-
                 JustEnoughBreeding.tamingRecipes.add(tamingRecipe);
                 yield tamingRecipe;
+
+            case "allay_duplication":
+                for (AllayDuplicationRecipe existingRecipe : JustEnoughBreeding.allayDuplicationRecipes) {
+                    if (existingRecipe.jsonModID.equals(jsonModID) && existingRecipe.jsonAnimalID.equals(jsonAnimalID)) {
+                        inputIngredients.add(existingRecipe.inputStack);
+                        spawnEggs.add(existingRecipe.spawnEgg);
+                        existingRecipe.setInputIngredient(Utils.deduplicateIngredients(inputIngredients));
+                        existingRecipe.setSpawnEggs(Utils.deduplicateIngredients(spawnEggs));
+                        yield existingRecipe;
+                    }
+                }
+                AllayDuplicationRecipe allayDuplicationRecipe = new AllayDuplicationRecipe(
+                        entityType,
+                        Utils.deduplicateIngredients(inputIngredients),
+                        Utils.deduplicateIngredients(spawnEggs),
+                        jsonModID,
+                        jsonAnimalID,
+                        modFolder,
+                        fileName
+                );
+                JustEnoughBreeding.allayDuplicationRecipes.add(allayDuplicationRecipe);
+                yield allayDuplicationRecipe;
+
             default:
                 for (BreedingRecipe existingRecipe : JustEnoughBreeding.breedingRecipes) {
                     if (existingRecipe.jsonModID.equals(jsonModID) && existingRecipe.jsonAnimalID.equals(jsonAnimalID)) {
@@ -253,7 +276,6 @@ public class Utils {
                         yield existingRecipe;
                     }
                 }
-
                 boolean isTamed = mobData.has("tamed") && mobData.get("tamed").getAsBoolean();
                 boolean isTrusting = mobData.has("trusting") && mobData.get("trusting").getAsBoolean();
                 BreedingRecipe breedingRecipe = new BreedingRecipe(
@@ -269,7 +291,6 @@ public class Utils {
                         modFolder,
                         fileName
                 );
-
                 JustEnoughBreeding.breedingRecipes.add(breedingRecipe);
                 yield breedingRecipe;
         };

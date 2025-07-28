@@ -13,13 +13,13 @@ import java.util.List;
 public class TamingDisplay extends BasicDisplay {
 
     protected List<EntryIngredient> extraInputs;
-    public TamingRecipe tamingRecipe;
+    public TamingRecipe recipe;
 
     public TamingDisplay(TamingRecipe recipe) {
         super(List.of(EntryIngredients.ofIngredient(recipe.inputStack), EntryIngredients.ofIngredient(recipe.spawnEgg)),
                 List.of(EntryIngredients.ofIngredient(recipe.spawnEgg))
         );
-        tamingRecipe = recipe;
+        this.recipe = recipe;
         if (recipe.extraInputStack != null) {
             extraInputs = List.of(EntryIngredients.ofIngredient(recipe.extraInputStack));
         } else {

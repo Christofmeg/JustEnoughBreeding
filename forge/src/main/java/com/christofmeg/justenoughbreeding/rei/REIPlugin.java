@@ -11,6 +11,7 @@ public class REIPlugin implements REIClientPlugin {
 
     @Override
     public void registerCategories(CategoryRegistry registry) {
+        registry.add(new AllayDuplicationCategoryREI());
         registry.add(new BreedingCategoryREI());
         registry.add(new TamingCategoryREI());
         registry.add(new TemperCategoryREI());

@@ -11,6 +11,7 @@ import dev.emi.emi.runtime.EmiDrawContext;
 public class EMIPlugin implements EmiPlugin {
     @Override
     public void register(EmiRegistry registry) {
+        registry.addCategory(AllayDuplicationCategoryEMI.TYPE);
         registry.addCategory(BreedingCategoryEMI.TYPE);
         registry.addCategory(TamingCategoryEMI.TYPE);
         registry.addCategory(TemperCategoryEMI.TYPE);

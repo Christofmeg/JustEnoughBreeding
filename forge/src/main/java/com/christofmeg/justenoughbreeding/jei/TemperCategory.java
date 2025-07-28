@@ -12,7 +12,6 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.AbstractRecipeCategory;
-import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -21,7 +20,7 @@ import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("removal")
-public class TemperCategory extends AbstractRecipeCategory<TemperRecipe> implements IRecipeCategory<TemperRecipe> {
+public class TemperCategory extends AbstractRecipeCategory<TemperRecipe> {
 
     public static final RecipeType<TemperRecipe> TYPE = new RecipeType<>(new ResourceLocation("justenoughbreeding", "temper"), TemperRecipe.class);
     private final IDrawableStatic bigSlot;

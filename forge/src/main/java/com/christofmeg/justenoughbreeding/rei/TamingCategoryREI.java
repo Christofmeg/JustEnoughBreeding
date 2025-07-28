@@ -30,7 +30,7 @@ public class TamingCategoryREI extends AbstractRecipeCategoryREI<TamingDisplay> 
         widgets.add(Widgets.createRecipeBase(bounds));
 
         List<EntryStack<?>> entryStackList = new ArrayList<>();
-        for (ItemStack stack : display.tamingRecipe.spawnEgg.getItems()) {
+        for (ItemStack stack : display.recipe.spawnEgg.getItems()) {
             entryStackList.add(EntryStacks.of(stack));
         }
         widgets.add(Widgets.createSlot(new Point(bounds.x + 154, bounds.y + 6)).entries(entryStackList));
@@ -46,7 +46,7 @@ public class TamingCategoryREI extends AbstractRecipeCategoryREI<TamingDisplay> 
             widgets.add(Widgets.createSlot(new Point(bounds.getX() + 112, bounds.getCenterY() + 3)).entries(display.getInputEntries().get(0)));
         }
 
-        TamingRecipe recipe = display.tamingRecipe;
+        TamingRecipe recipe = display.recipe;
         REIUtils.drawMobSlot(widgets, bounds,0, 10);
         REIUtils.drawMobNameAndEntity(widgets, bounds, recipe.entityType, recipe);
 

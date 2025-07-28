@@ -13,13 +13,13 @@ import java.util.List;
 public class TransformationDisplay extends BasicDisplay {
 
     protected List<EntryIngredient> extraInputs;
-    public TransformationRecipe transformationRecipe;
+    public TransformationRecipe recipe;
 
     public TransformationDisplay(TransformationRecipe recipe) {
         super(List.of(EntryIngredients.ofIngredient(recipe.inputStack), EntryIngredients.ofIngredient(recipe.inputSpawnEgg)),
                 List.of(EntryIngredients.ofIngredient(recipe.outputSpawnEgg))
         );
-        transformationRecipe = recipe;
+        this.recipe = recipe;
         if (recipe.extraInputStack != null) {
             extraInputs = List.of(EntryIngredients.ofIngredient(recipe.extraInputStack));
         } else {

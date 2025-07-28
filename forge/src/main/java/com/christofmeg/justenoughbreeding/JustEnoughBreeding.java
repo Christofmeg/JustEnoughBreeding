@@ -26,6 +26,9 @@ public class JustEnoughBreeding {
     private static final DeferredRegister<RecipeSerializer<?>> RECIPES_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, CommonConstants.MOD_ID);
     private static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(ForgeRegistries.RECIPE_TYPES, CommonConstants.MOD_ID);
 
+    public static final RegistryObject<RecipeType<AllayDuplicationRecipe>> ALLAY_DUPLICAITON_PROVIDER_TYPE = RECIPE_TYPES.register("allay_duplication_provider", () -> RecipeType.simple(new ResourceLocation(CommonConstants.MOD_ID, "allay_duplication_provider")));
+    public static final RegistryObject<RecipeSerializer<AllayDuplicationRecipe>> ALLAY_DUPLICAITON_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("allay_duplication_provider", AllayDuplicationRecipe.Serializer::new);
+
     public static final RegistryObject<RecipeType<BreedingRecipe>> BREEDING_PROVIDER_TYPE = RECIPE_TYPES.register("breeding_provider", () -> RecipeType.simple(new ResourceLocation(CommonConstants.MOD_ID, "breeding_provider")));
     public static final RegistryObject<RecipeSerializer<BreedingRecipe>> BREEDING_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("breeding_provider", BreedingRecipe.Serializer::new);
 
@@ -42,12 +45,14 @@ public class JustEnoughBreeding {
     public static final RegistryObject<RecipeSerializer<TransformationRecipe>> TRANSFORMATION_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("transformation_provider", TransformationRecipe.Serializer::new);
 
     //TODO make WIKI on how to make integrations
+    //TODO rename justenoughbreeding:..._provider to ...
 
+    public static List<AllayDuplicationRecipe> allayDuplicationRecipes = new ArrayList<>();
     public static List<BreedingRecipe> breedingRecipes = new ArrayList<>();
     public static List<TamingRecipe> tamingRecipes = new ArrayList<>();
     public static List<TemperRecipe> temperRecipes = new ArrayList<>();
-    public static List<TrustingRecipe> trustingRecipes = new ArrayList<>();
     public static List<TransformationRecipe> transformationRecipes = new ArrayList<>();
+    public static List<TrustingRecipe> trustingRecipes = new ArrayList<>();
 
     public JustEnoughBreeding() {
         RECIPES_SERIALIZERS.register(FMLJavaModLoadingContext.get().getModEventBus());

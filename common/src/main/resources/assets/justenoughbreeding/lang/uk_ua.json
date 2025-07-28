@@ -1,10 +1,12 @@
 {
+  "emi.category.justenoughbreeding.allay_duplication": "Allay Duplication",
   "emi.category.justenoughbreeding.breeding": "Розмноження",
   "emi.category.justenoughbreeding.taming": "Taming",
   "emi.category.justenoughbreeding.temper": "Temper",
   "emi.category.justenoughbreeding.trusting": "Trusting",
   "emi.category.justenoughbreeding.transformation": "Transformation",
   "modmenu.descriptionTranslation.justenoughbreeding": "JEI/REI/EMI plugin that displays breeding information",
+  "translation.justenoughbreeding.allay_duplication": "Allay Duplication",
   "translation.justenoughbreeding.breeding": "Розмноження",
   "translation.justenoughbreeding.tamed": "приручений",
   "translation.justenoughbreeding.taming": "Taming",

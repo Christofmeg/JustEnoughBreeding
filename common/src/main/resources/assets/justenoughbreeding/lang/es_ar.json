@@ -1,10 +1,12 @@
 {
+  "emi.category.justenoughbreeding.allay_duplication": "Allay Duplication",
   "emi.category.justenoughbreeding.breeding": "Reproducción",
   "emi.category.justenoughbreeding.taming": "Domesticación",
   "emi.category.justenoughbreeding.temper": "Carácter",
   "emi.category.justenoughbreeding.trusting": "Confianza",
   "emi.category.justenoughbreeding.transformation": "Transformation",
   "modmenu.descriptionTranslation.justenoughbreeding": "Complemento para JEI/REI/EMI que muestra información sobre reproducción",
+  "translation.justenoughbreeding.allay_duplication": "Allay Duplication",
   "translation.justenoughbreeding.breeding": "Reproducción",
   "translation.justenoughbreeding.tamed": "Domesticado",
   "translation.justenoughbreeding.taming": "Domesticación",

@@ -12,7 +12,6 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.AbstractRecipeCategory;
-import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -21,7 +20,7 @@ import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("removal")
-public class TrustingCategory extends AbstractRecipeCategory<TrustingRecipe> implements IRecipeCategory<TrustingRecipe> {
+public class TrustingCategory extends AbstractRecipeCategory<TrustingRecipe> {
 
     public static final RecipeType<TrustingRecipe> TYPE = new RecipeType<>(new ResourceLocation("justenoughbreeding", "trusting"), TrustingRecipe.class);
     private final IDrawableStatic bigSlot;
