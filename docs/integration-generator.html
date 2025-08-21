@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>JustEnoughBreeding Integration Generator</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #000000;
+      --input-bg: #f0f0f0;
+      --input-fg: #000000;
+      --border: #cccccc;
+      --accent: #4caf50;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1e1e1e;
+        --fg: #f0f0f0;
+        --input-bg: #2a2a2a;
+        --input-fg: #ffffff;
+        --border: #444444;
+        --accent: #81c784;
+      }
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--fg);
+      font-family: system-ui, sans-serif;
+      margin: 2em;
+      max-width: 800px;
+    }
+
+    textarea, input, select {
+      background-color: var(--input-bg);
+      color: var(--input-fg);
+      border: 1px solid var(--border);
+      padding: 0.5em;
+      margin-bottom: 1em;
+      width: 100%;
+      font-size: 1em;
+    }
+
+    label {
+      font-weight: bold;
+      margin-top: 1em;
+      display: block;
+    }
+
+    button {
+      background-color: var(--accent);
+      color: var(--bg);
+      border: none;
+      padding: 0.6em 1.2em;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 0.25em;
+      margin-top: 1em;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .output {
+      margin-top: 1.5em;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    h1 {
+      font-size: 1.6em;
+    }
+
+    h2 {
+      font-size: 1.2em;
+      margin-top: 2em;
+    }
+
+    .group {
+      border: 1px solid var(--border);
+      padding: 1em;
+      border-radius: 8px;
+      margin-top: 1em;
+    }
+
+    .inline-flex {
+      display: flex;
+      gap: 0.5em;
+      margin-bottom: 0.5em;
+    }
+
+    .inline-flex > * {
+      flex: 1;
+    }
+
+    .remove-button {
+      flex: 0 0 auto;
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 0.4em 0.6em;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .remove-button:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+<h1>JustEnoughBreeding Integration Generator</h1>
+
+<label for="providerType">Recipe Type (Provider):</label>
+<select id="providerType" onchange="toggleOptionalFields()">
+  <option value="allay_duplication">allay_duplication</option>
+  <option value="breeding">breeding</option>
+  <option value="taming">taming</option>
+  <option value="temper">temper</option>
+  <option value="trusting">trusting</option>
+</select>
+
+<label for="modId">Mod ID:</label>
+<input type="text" id="modId" value="minecraft" />
+
+<label for="mobId">Mob ID:</label>
+<input type="text" id="mobId" value="bee" />
+
+<div class="group">
+  <div id="inputs"></div>
+  <button type="button" onclick="addInput('inputs')">+ Input</button>
+</div>
+
+<div class="group">
+  <div id="extraInputs"></div>
+  <button type="button" onclick="addInput('extraInputs')">+ Additional Input</button>
+</div>
+
+<div class="group">
+  <div id="outputs"></div>
+  <button type="button" onclick="addInput('outputs')">+ Output</button>
+</div>
+
+<div class="group">
+  <div id="spawn_eggs"></div>
+  <button type="button" onclick="addInput('spawn_eggs')">+ Custom Spawn Egg</button>
+</div>
+
+<div class="group hidden" id="tamingGroup">
+  <label><input type="checkbox" id="tamedCheckbox" /> Needs to be tamed</label>
+</div>
+
+<div class="group hidden" id="trustingGroup">
+  <label><input type="checkbox" id="trustingCheckbox" /> Needs to trust player</label>
+</div>
+
+<button onclick="generateRecipe()">Generate</button>
+<button onclick="downloadRecipe()">Download JSON</button>
+
+<div class="output">
+  <h2>📝 Generated JSON:</h2>
+  <textarea id="outputArea" readonly></textarea>
+</div>
+
+<script>
+  function createInputRow(containerId) {
+    const div = document.createElement('div');
+    div.className = 'inline-flex';
+
+    const typeSelect = document.createElement('select');
+    let types;
+
+    // Meat is only valid for inputs and extraInputs
+    if (containerId === 'inputs' || containerId === 'extraInputs') {
+      types = ['item', 'tag', 'meat'];
+    } else {
+      types = ['item', 'tag'];
+    }
+
+    types.forEach(type => {
+      const opt = document.createElement('option');
+      opt.value = type;
+      opt.textContent = type;
+      typeSelect.appendChild(opt);
+    });
+
+    const valueInput = document.createElement('input');
+    valueInput.placeholder = containerId === 'spawn_eggs'
+      ? 'minecraft:bee_spawn_egg'
+      : 'minecraft:carrot';
+
+    // 🔄 Update placeholder dynamically when type changes
+  typeSelect.addEventListener('change', () => {
+    if (typeSelect.value === 'meat') {
+      valueInput.placeholder = '(true/false) All meat including Rotten Flesh';
+    } else if (typeSelect.value === 'tag') {
+      valueInput.placeholder = 'minecraft:flowers';
+    } else if (typeSelect.value === 'item') {
+      valueInput.placeholder = containerId === 'spawn_eggs'
+        ? 'minecraft:bee_spawn_egg'
+        : 'minecraft:carrot';
+    }
+  });
+
+    const removeBtn = document.createElement('button');
+    removeBtn.textContent = '✕';
+    removeBtn.className = 'remove-button';
+    removeBtn.onclick = () => div.remove();
+
+    div.appendChild(typeSelect);
+    div.appendChild(valueInput);
+    div.appendChild(removeBtn);
+    document.getElementById(containerId).appendChild(div);
+  }
+
+
+  function addInput(containerId) {
+    createInputRow(containerId);
+  }
+
+  function collectInputs(containerId) {
+    const result = [];
+    const container = document.getElementById(containerId);
+    container.querySelectorAll('.inline-flex').forEach(row => {
+      const [select, input] = row.querySelectorAll('select, input');
+      const type = select.value;
+      const value = input.value.trim();
+      if (value !== '') {
+        if (type === 'meat') {
+          result.push({ meat: value });
+        } else {
+          result.push({ [type]: value });
+        }
+      }
+    });
+    return result;
+  }
+
+  function toggleOptionalFields() {
+    const provider = document.getElementById('providerType').value;
+    const tamingGroup = document.getElementById('tamingGroup');
+    const trustingGroup = document.getElementById('trustingGroup');
+    if (provider === 'breeding') {
+      tamingGroup.classList.remove('hidden');
+      trustingGroup.classList.remove('hidden');
+    } else {
+      tamingGroup.classList.add('hidden');
+      document.getElementById('tamedCheckbox').checked = false;
+      trustingGroup.classList.add('hidden');
+      document.getElementById('trustingCheckbox').checked = false;
+    }
+  }
+
+  function autoResizeTextarea(textarea) {
+    textarea.style.height = "auto"; // reset height
+    textarea.style.height = textarea.scrollHeight + "px"; // set to content height
+  }
+
+  function generateRecipe() {
+    const provider = document.getElementById('providerType').value;
+    const modId = document.getElementById('modId').value.trim();
+    const mobId = document.getElementById('mobId').value.trim();
+    const inputs = collectInputs('inputs');
+    const extraInputs = collectInputs('extraInputs');
+    const outputs = collectInputs('outputs');
+    const tamed = document.getElementById('tamedCheckbox').checked;
+    const trusting = document.getElementById('trustingCheckbox').checked;
+
+    const mobData = {};
+    if (inputs.length) mobData.inputs = inputs;
+    if (extraInputs.length) mobData.extra_inputs = extraInputs;
+    if (outputs.length) mobData.outputs = outputs;
+    if (tamed) mobData.tamed = true;
+    if (trusting) mobData.trusting = true;
+
+    const recipe = {
+      type: 'justenoughbreeding:' + provider,
+      mod: modId,
+      mobs: [
+        { [mobId]: mobData }
+      ]
+    };
+
+    const outputArea = document.getElementById('outputArea');
+    outputArea.value = JSON.stringify(recipe, null, 2);
+
+    autoResizeTextarea(outputArea); // 👈 auto adjust height
+  }
+
+  function downloadRecipe() {
+    // Always generate fresh JSON before downloading
+    generateRecipe();
+
+    const content = document.getElementById('outputArea').value;
+    const mobId = document.getElementById('mobId').value.trim() || "recipe";
+    const provider = document.getElementById('providerType').value;
+
+    if (!content.trim()) {
+      alert("Please generate a recipe first!");
+      return;
+    }
+
+    const blob = new Blob([content], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = mobId + ".json"; // e.g. bee.json
+    a.click();
+
+    URL.revokeObjectURL(url);
+  }
+
+  // Add one default input row for usability
+  window.onload = () => {
+    addInput('inputs');
+    toggleOptionalFields();
+  };
+</script>
+</body>
+</html>
