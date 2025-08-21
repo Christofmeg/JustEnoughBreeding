@@ -121,9 +121,9 @@ public class REIUtils {
             }
 
             LivingEntity currentLivingEntity = recipe instanceof TransformationRecipe ? ((TransformationRecipe) recipe).doRendering(entityType, input, color) : recipe.doRendering(entityType);
-            widgets.add(Widgets.withTranslate(Widgets.createDrawableWidget((stack, mouseX, mouseY, v) -> {
+            widgets.add(Widgets.withTranslate(Widgets.createDrawableWidget((graphics, mouseX, mouseY, v) -> {
                         if (currentLivingEntity != null) {
-                            CommonUtils.renderEntity(stack.pose(), mouseX, currentLivingEntity, 31 + extraX, 89);
+                            CommonUtils.renderEntity(graphics.pose(), mouseX, currentLivingEntity, 31 + extraX, 89);
                         }
                     }
             ), bounds.x + 5, bounds.y + 5, 0));

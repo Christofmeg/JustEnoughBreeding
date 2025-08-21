@@ -456,10 +456,6 @@ public class CommonUtils {
         return Ingredient.of(TagKey.create(Registries.ITEM, tagLocation));
     }
 
-    public static void renderEntity(@NotNull PoseStack stack, double mouseX, LivingEntity currentLivingEntity) {
-        renderEntity(stack, mouseX, currentLivingEntity, 31, 89);
-    }
-
     public static void renderEntity(@NotNull PoseStack stack, double mouseX, LivingEntity currentLivingEntity, int entityPosX, int entityPosY) {
         // Set the desired position of the entity on the screen
         int ENTITY_RENDER_DISTANCE = 15728880;

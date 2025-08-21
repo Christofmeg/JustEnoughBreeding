@@ -94,12 +94,10 @@ dependencies {
     //FORGE https://www.curseforge.com/minecraft/mc-mods/mineageries-plus
 //    runtimeOnly fg.deobf("curse.maven:mineageries-plus-978364:6225352")
 
-    runtimeOnly fg.deobf("maven.modrinth:tag-tooltips:a0H0FGkF")
-    runtimeOnly fg.deobf("curse.maven:item-nbt-viewer-514135:4578522")
-    runtimeOnly fg.deobf("curse.maven:just-enough-effect-descriptions-jeed-532286:6172935")
+//    runtimeOnly fg.deobf("maven.modrinth:tag-tooltips:a0H0FGkF")
+//    runtimeOnly fg.deobf("curse.maven:item-nbt-viewer-514135:4578522")
 
-    runtimeOnly fg.deobf("curse.maven:untitled-duck-mod-forge-451789:6198540")
-    runtimeOnly fg.deobf("curse.maven:geckolib-388172:6658942")
+    runtimeOnly fg.deobf("curse.maven:cold-sweat-506194:6880105")
 
 }
 
@@ -213,6 +211,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("dracovita-farm-life")
     mainFile.addOptional("sullys-mod")
     mainFile.addOptional("untitled-duck-mod-forge")
+    mainFile.addOptional("cold-sweat")
 }
 
 modrinth {
@@ -277,5 +276,6 @@ modrinth {
         optional.project "neapolitan"
         optional.project "sullysmod"
         optional.project "untitled-duck-mod"
+        optional.project "cold-sweat"
     }
 }
