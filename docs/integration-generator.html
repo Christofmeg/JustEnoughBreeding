@@ -151,11 +151,11 @@
 </div>
 
 <div class="group hidden" id="tamingGroup">
-  <label><input type="checkbox" id="tamedCheckbox" /> Needs to be tamed</label>
+  <label><input type="radio" name="tameTrust" id="tamedRadio" value="tamed" /> Needs to be tamed</label>
 </div>
 
 <div class="group hidden" id="trustingGroup">
-  <label><input type="checkbox" id="trustingCheckbox" /> Needs to trust player</label>
+  <label><input type="radio" name="tameTrust" id="trustingRadio" value="trusting" /> Needs to trust player</label>
 </div>
 
 <button onclick="generateRecipe()">Generate</button>
@@ -174,7 +174,6 @@
     const typeSelect = document.createElement('select');
     let types;
 
-    // Meat is only valid for inputs and extraInputs
     if (containerId === 'inputs' || containerId === 'extraInputs') {
       types = ['item', 'tag', 'meat'];
     } else {
@@ -193,18 +192,17 @@
       ? 'minecraft:bee_spawn_egg'
       : 'minecraft:carrot';
 
-    // 🔄 Update placeholder dynamically when type changes
-  typeSelect.addEventListener('change', () => {
-    if (typeSelect.value === 'meat') {
-      valueInput.placeholder = '(true/false) All meat including Rotten Flesh';
-    } else if (typeSelect.value === 'tag') {
-      valueInput.placeholder = 'minecraft:flowers';
-    } else if (typeSelect.value === 'item') {
-      valueInput.placeholder = containerId === 'spawn_eggs'
-        ? 'minecraft:bee_spawn_egg'
-        : 'minecraft:carrot';
-    }
-  });
+    typeSelect.addEventListener('change', () => {
+      if (typeSelect.value === 'meat') {
+        valueInput.placeholder = '(true/false) All meat including Rotten Flesh';
+      } else if (typeSelect.value === 'tag') {
+        valueInput.placeholder = 'minecraft:flowers';
+      } else if (typeSelect.value === 'item') {
+        valueInput.placeholder = containerId === 'spawn_eggs'
+          ? 'minecraft:bee_spawn_egg'
+          : 'minecraft:carrot';
+      }
+    });
 
     const removeBtn = document.createElement('button');
     removeBtn.textContent = '✕';
@@ -216,7 +214,6 @@
     div.appendChild(removeBtn);
     document.getElementById(containerId).appendChild(div);
   }
-
 
   function addInput(containerId) {
     createInputRow(containerId);
@@ -255,46 +252,60 @@
     }
   }
 
+  // 🔄 Make checkboxes mutually exclusive
+  function setupExclusiveCheckboxes() {
+    const tamed = document.getElementById('tamedCheckbox');
+    const trusting = document.getElementById('trustingCheckbox');
+
+    tamed.addEventListener('change', () => {
+      if (tamed.checked) trusting.checked = false;
+    });
+
+    trusting.addEventListener('change', () => {
+      if (trusting.checked) tamed.checked = false;
+    });
+  }
+
   function autoResizeTextarea(textarea) {
-    textarea.style.height = "auto"; // reset height
-    textarea.style.height = textarea.scrollHeight + "px"; // set to content height
+    textarea.style.height = "auto";
+    textarea.style.height = textarea.scrollHeight + "px";
   }
 
-  function generateRecipe() {
-    const provider = document.getElementById('providerType').value;
-    const modId = document.getElementById('modId').value.trim();
-    const mobId = document.getElementById('mobId').value.trim();
-    const inputs = collectInputs('inputs');
-    const extraInputs = collectInputs('extraInputs');
-    const outputs = collectInputs('outputs');
-    const tamed = document.getElementById('tamedCheckbox').checked;
-    const trusting = document.getElementById('trustingCheckbox').checked;
+function generateRecipe() {
+  const provider = document.getElementById('providerType').value;
+  const modId = document.getElementById('modId').value.trim();
+  const mobId = document.getElementById('mobId').value.trim();
+  const inputs = collectInputs('inputs');
+  const extraInputs = collectInputs('extraInputs');
+  const outputs = collectInputs('outputs');
 
-    const mobData = {};
-    if (inputs.length) mobData.inputs = inputs;
-    if (extraInputs.length) mobData.extra_inputs = extraInputs;
-    if (outputs.length) mobData.outputs = outputs;
-    if (tamed) mobData.tamed = true;
-    if (trusting) mobData.trusting = true;
+  const mobData = {};
+  if (inputs.length) mobData.inputs = inputs;
+  if (extraInputs.length) mobData.extra_inputs = extraInputs;
+  if (outputs.length) mobData.outputs = outputs;
 
-    const recipe = {
-      type: 'justenoughbreeding:' + provider,
-      mod: modId,
-      mobs: [
-        { [mobId]: mobData }
-      ]
-    };
-
-    const outputArea = document.getElementById('outputArea');
-    outputArea.value = JSON.stringify(recipe, null, 2);
-
-    autoResizeTextarea(outputArea); // 👈 auto adjust height
+  // 🔄 check selected radio
+  const tameTrust = document.querySelector('input[name="tameTrust"]:checked');
+  if (tameTrust) {
+    if (tameTrust.value === "tamed") mobData.tamed = true;
+    if (tameTrust.value === "trusting") mobData.trusting = true;
   }
+
+  const recipe = {
+    type: 'justenoughbreeding:' + provider,
+    mod: modId,
+    mobs: [
+      { [mobId]: mobData }
+    ]
+  };
+
+  const outputArea = document.getElementById('outputArea');
+  outputArea.value = JSON.stringify(recipe, null, 2);
+  autoResizeTextarea(outputArea);
+}
 
   function downloadRecipe() {
-    // Always generate fresh JSON before downloading
     generateRecipe();
-
     const content = document.getElementById('outputArea').value;
     const mobId = document.getElementById('mobId').value.trim() || "recipe";
     const provider = document.getElementById('providerType').value;
@@ -309,16 +320,16 @@
 
     const a = document.createElement("a");
     a.href = url;
-    a.download = mobId + ".json"; // e.g. bee.json
+    a.download = mobId + ".json";
     a.click();
 
     URL.revokeObjectURL(url);
   }
 
-  // Add one default input row for usability
   window.onload = () => {
     addInput('inputs');
     toggleOptionalFields();
+    setupExclusiveCheckboxes(); // 👈 activate mutual exclusivity
   };
 </script>
 </body>
