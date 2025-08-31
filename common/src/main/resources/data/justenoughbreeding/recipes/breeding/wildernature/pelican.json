@@ -1,0 +1,27 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "wildernature",
+  "mobs": [
+    {
+      "pelican": {
+        "inputs": [
+          {
+            "item": "minecraft:cod"
+          },
+          {
+            "item": "minecraft:salmon"
+          },
+          {
+            "item": "minecraft:pufferfish"
+          },
+          {
+            "item": "minecraft:cooked_cod"
+          },
+          {
+            "item": "minecraft:cooked_salmon"
+          }
+        ]
+      }
+    }
+  ]
+}

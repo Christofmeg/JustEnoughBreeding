@@ -44,6 +44,7 @@ public class JustEnoughBreeding {
     public static final RegistryObject<RecipeType<TransformationRecipe>> TRANSFORMATION_PROVIDER_TYPE = RECIPE_TYPES.register("transformation", () -> RecipeType.simple(new ResourceLocation(CommonConstants.MOD_ID, "transformation")));
     public static final RegistryObject<RecipeSerializer<TransformationRecipe>> TRANSFORMATION_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("transformation", TransformationRecipe.Serializer::new);
 
+    //TODO swap position on main and extra input
     //TODO make WIKI on how to make integrations
     //TODO be able to uncheck needs to be tamed and needs to trust player
 

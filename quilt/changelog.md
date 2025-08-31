@@ -4,6 +4,8 @@
 - Added Trusting Categeory
 - Added Transformation Category
 - Reworked how integrations work, they are now json based
+- Integration to Untitled Duck Mod
+- Integration to [Let's Do] WilderNature
 
 1.6.2:
 - Update icon to match 256px

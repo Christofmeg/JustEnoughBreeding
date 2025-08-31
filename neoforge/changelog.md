@@ -7,6 +7,7 @@
 - Integration to Untitled Duck Mod
 - Integration to Cold Sweat
 - Integration to Biodiverse
+- Integration to [Let's Do] WilderNature
 
 1.6.2:
 - Update icon to match 256px

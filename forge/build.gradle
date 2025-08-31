@@ -106,8 +106,8 @@ dependencies {
 
     //FORGE/FABRIC https://www.curseforge.com/minecraft/mc-mods/lets-do-wildernature
     //FORGE/FABRIC https://modrinth.com/mod/lets-do-wildernature
-    runtimeOnly fg.deobf("curse.maven:lets-do-wildernature-1071657:6854817")
-    runtimeOnly fg.deobf("curse.maven:curios-309927:6418456")
+//    runtimeOnly fg.deobf("curse.maven:lets-do-wildernature-1071657:6854817")
+//    runtimeOnly fg.deobf("curse.maven:curios-309927:6418456")
 
     //FORGE https://modrinth.com/mod/creatures_squared
     runtimeOnly fg.deobf("maven.modrinth:creatures_squared:vz60ZHh7")
@@ -229,6 +229,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("untitled-duck-mod-forge")
     mainFile.addOptional("cold-sweat")
     mainFile.addOptional("biodiverse")
+    mainFile.addOptional("lets-do-wildernature")
 }
 
 modrinth {
@@ -295,5 +296,6 @@ modrinth {
         optional.project "untitled-duck-mod"
         optional.project "cold-sweat"
         optional.project "biodiverse"
+        optional.project "lets-do-wildernature"
     }
 }

@@ -152,6 +152,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("fish-of-thieves")
     mainFile.addOptional("promenade")
     mainFile.addOptional("untitled-duck-mod-fabric")
+    mainFile.addOptional("lets-do-wildernature")
 }
 
 modrinth {
@@ -199,5 +200,6 @@ modrinth {
         optional.project "fish-of-thieves"
         optional.project "promenade"
         optional.project "untitled-duck-mod"
+        optional.project "lets-do-wildernature"
     }
 }
