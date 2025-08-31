@@ -91,13 +91,29 @@ dependencies {
     //FORGE https://modrinth.com/mod/mineageries-plus
     runtimeOnly fg.deobf("maven.modrinth:mineageries-plus:zrdqXK5t")
     runtimeOnly fg.deobf("maven.modrinth:geckolib:AiVKLYep")
-    //FORGE https://www.curseforge.com/minecraft/mc-mods/mineageries-plus
-//    runtimeOnly fg.deobf("curse.maven:mineageries-plus-978364:6225352")
+
+    //FORGE https://www.curseforge.com/minecraft/mc-mods/wildlife-additions
+//    runtimeOnly fg.deobf("curse.maven:wildlife-additions-1066293:5563545")
+
+    //FORGE https://www.curseforge.com/minecraft/mc-mods/brazilian-expansion
+    //FORGE https://modrinth.com/mod/brazilian-expansion
+    runtimeOnly fg.deobf("curse.maven:brazilian-expansion-1143074:6599703")
+    runtimeOnly fg.deobf("curse.maven:terrablender-563928:6290448")
+
+    //FORGE https://www.curseforge.com/minecraft/mc-mods/critters-n-crawlers
+    //FORGE https://modrinth.com/mod/critters-n-crawlers
+    runtimeOnly fg.deobf("maven.modrinth:critters-n-crawlers:5Xn9p2q1")
+
+    //FORGE/FABRIC https://www.curseforge.com/minecraft/mc-mods/lets-do-wildernature
+    //FORGE/FABRIC https://modrinth.com/mod/lets-do-wildernature
+    runtimeOnly fg.deobf("curse.maven:lets-do-wildernature-1071657:6854817")
+    runtimeOnly fg.deobf("curse.maven:curios-309927:6418456")
+
+    //FORGE https://modrinth.com/mod/creatures_squared
+    runtimeOnly fg.deobf("maven.modrinth:creatures_squared:vz60ZHh7")
 
 //    runtimeOnly fg.deobf("maven.modrinth:tag-tooltips:a0H0FGkF")
 //    runtimeOnly fg.deobf("curse.maven:item-nbt-viewer-514135:4578522")
-
-    runtimeOnly fg.deobf("curse.maven:cold-sweat-506194:6880105")
 
 }
 
@@ -212,6 +228,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("sullys-mod")
     mainFile.addOptional("untitled-duck-mod-forge")
     mainFile.addOptional("cold-sweat")
+    mainFile.addOptional("biodiverse")
 }
 
 modrinth {
@@ -277,5 +294,6 @@ modrinth {
         optional.project "sullysmod"
         optional.project "untitled-duck-mod"
         optional.project "cold-sweat"
+        optional.project "biodiverse"
     }
 }

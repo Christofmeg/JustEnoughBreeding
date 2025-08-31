@@ -45,6 +45,7 @@ public class JustEnoughBreeding {
     public static final RegistryObject<RecipeSerializer<TransformationRecipe>> TRANSFORMATION_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("transformation", TransformationRecipe.Serializer::new);
 
     //TODO make WIKI on how to make integrations
+    //TODO be able to uncheck needs to be tamed and needs to trust player
 
     public static List<AllayDuplicationRecipe> allayDuplicationRecipes = new ArrayList<>();
     public static List<BreedingRecipe> breedingRecipes = new ArrayList<>();

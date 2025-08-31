@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "biodiverse",
+  "mobs": [
+    {
+      "bison": {
+        "inputs": [
+          {
+            "item": "minecraft:wheat"
+          }
+        ]
+      }
+    }
+  ]
+}
