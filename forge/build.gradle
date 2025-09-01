@@ -109,9 +109,6 @@ dependencies {
 //    runtimeOnly fg.deobf("curse.maven:lets-do-wildernature-1071657:6854817")
 //    runtimeOnly fg.deobf("curse.maven:curios-309927:6418456")
 
-    //FORGE https://modrinth.com/mod/creatures_squared
-    runtimeOnly fg.deobf("maven.modrinth:creatures_squared:vz60ZHh7")
-
 //    runtimeOnly fg.deobf("maven.modrinth:tag-tooltips:a0H0FGkF")
 //    runtimeOnly fg.deobf("curse.maven:item-nbt-viewer-514135:4578522")
 
@@ -230,6 +227,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("cold-sweat")
     mainFile.addOptional("biodiverse")
     mainFile.addOptional("lets-do-wildernature")
+    mainFile.addOptional("pet-cemetery")
 }
 
 modrinth {
@@ -298,5 +296,6 @@ modrinth {
         optional.project "biodiverse"
         optional.project "lets-do-wildernature"
         optional.project "creatures_squared"
+        optional.project "pet-cemetery"
     }
 }
