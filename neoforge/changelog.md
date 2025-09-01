@@ -8,6 +8,7 @@
 - Integration to Cold Sweat
 - Integration to Biodiverse
 - Integration to [Let's Do] WilderNature
+- Integration to Creatures²
 
 1.6.2:
 - Update icon to match 256px

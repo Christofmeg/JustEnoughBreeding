@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "creatures_squared",
+  "mobs": [
+    {
+      "collared_anteater": {
+        "inputs": [
+          {
+            "item": "minecraft:spider_eye"
+          }
+        ]
+      }
+    }
+  ]
+}

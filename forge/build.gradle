@@ -297,5 +297,6 @@ modrinth {
         optional.project "cold-sweat"
         optional.project "biodiverse"
         optional.project "lets-do-wildernature"
+        optional.project "creatures_squared"
     }
 }

@@ -274,5 +274,6 @@ modrinth {
         optional.project "untitled-duck-mod"
         optional.project "cold-sweat"
         optional.project "lets-do-wildernature"
+        optional.project "creatures_squared"
     }
 }
