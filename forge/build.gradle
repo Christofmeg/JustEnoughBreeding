@@ -100,10 +100,6 @@ dependencies {
     runtimeOnly fg.deobf("curse.maven:brazilian-expansion-1143074:6599703")
     runtimeOnly fg.deobf("curse.maven:terrablender-563928:6290448")
 
-    //FORGE https://www.curseforge.com/minecraft/mc-mods/critters-n-crawlers
-    //FORGE https://modrinth.com/mod/critters-n-crawlers
-    runtimeOnly fg.deobf("maven.modrinth:critters-n-crawlers:5Xn9p2q1")
-
     //FORGE/FABRIC https://www.curseforge.com/minecraft/mc-mods/lets-do-wildernature
     //FORGE/FABRIC https://modrinth.com/mod/lets-do-wildernature
 //    runtimeOnly fg.deobf("curse.maven:lets-do-wildernature-1071657:6854817")
@@ -228,6 +224,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("biodiverse")
     mainFile.addOptional("lets-do-wildernature")
     mainFile.addOptional("pet-cemetery")
+    mainFile.addOptional("critters-n-crawlers")
 }
 
 modrinth {
@@ -297,5 +294,6 @@ modrinth {
         optional.project "lets-do-wildernature"
         optional.project "creatures_squared"
         optional.project "pet-cemetery"
+        optional.project "critters-n-crawlers"
     }
 }

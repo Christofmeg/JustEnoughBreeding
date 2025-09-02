@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "cnc",
+  "mobs": [
+    {
+      "rattlesnake": {
+        "inputs": [
+          {
+            "item": "minecraft:rabbit"
+          }
+        ]
+      }
+    }
+  ]
+}

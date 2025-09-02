@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "cnc",
+  "mobs": [
+    {
+      "caribou": {
+        "inputs": [
+          {
+            "item": "minecraft:red_mushroom"
+          }
+        ]
+      }
+    }
+  ]
+}

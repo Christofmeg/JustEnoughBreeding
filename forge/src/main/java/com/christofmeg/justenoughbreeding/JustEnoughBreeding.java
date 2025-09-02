@@ -47,6 +47,7 @@ public class JustEnoughBreeding {
     //TODO swap position on main and extra input
     //TODO make WIKI on how to make integrations
     //TODO be able to uncheck needs to be tamed and needs to trust player
+    //TODO remove tamed true from generator page when switching from breeding to taming or other categories
 
     public static List<AllayDuplicationRecipe> allayDuplicationRecipes = new ArrayList<>();
     public static List<BreedingRecipe> breedingRecipes = new ArrayList<>();
