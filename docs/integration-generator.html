@@ -375,13 +375,14 @@
     const inputs = collectInputs('inputs');
     const extraInputs = collectInputs('extraInputs');
     const outputs = collectInputs('outputs');
+    const spawnEggs = collectInputs('spawn_eggs'); // 👈 add this
 
     const mobData = {};
     if (inputs.length) mobData.inputs = inputs;
     if (extraInputs.length) mobData.extra_inputs = extraInputs;
     if (outputs.length) mobData.outputs = outputs;
+    if (spawnEggs.length) mobData.spawn_eggs = spawnEggs; // 👈 include in recipe
 
-   // ✅ checkboxes instead of radios
     if (document.getElementById('tamedCheckbox').checked) {
       mobData.tamed = true;
     }
