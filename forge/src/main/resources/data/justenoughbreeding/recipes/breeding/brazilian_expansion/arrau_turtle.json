@@ -1,0 +1,24 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "brazilian_expansion",
+  "mobs": [
+    {
+      "arrau_turtle": {
+        "inputs": [
+          {
+            "item": "minecraft:seagrass"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "brazilian_expansion:arrau_egg",
+            "amount": {
+              "min": 1,
+              "max": 4
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

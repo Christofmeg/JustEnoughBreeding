@@ -95,11 +95,6 @@ dependencies {
     runtimeOnly fg.deobf("maven.modrinth:mineageries-plus:zrdqXK5t")
     runtimeOnly fg.deobf("maven.modrinth:geckolib:AiVKLYep")
 
-    //FORGE https://www.curseforge.com/minecraft/mc-mods/brazilian-expansion
-    //FORGE https://modrinth.com/mod/brazilian-expansion
-    runtimeOnly fg.deobf("curse.maven:brazilian-expansion-1143074:6599703")
-    runtimeOnly fg.deobf("curse.maven:terrablender-563928:6290448")
-
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -218,6 +213,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("pet-cemetery")
     mainFile.addOptional("critters-n-crawlers")
     mainFile.addOptional("endergetic")
+    mainFile.addOptional("brazilian-expansion")
 }
 
 modrinth {
@@ -289,5 +285,6 @@ modrinth {
         optional.project "pet-cemetery"
         optional.project "critters-n-crawlers"
         optional.project "endergetic"
+        optional.project "brazilian-expansion"
     }
 }

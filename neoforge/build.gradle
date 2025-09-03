@@ -211,6 +211,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("pet-cemetery")
     mainFile.addOptional("critters-n-crawlers")
     mainFile.addOptional("endergetic")
+    mainFile.addOptional("brazilian-expansion")
 }
 
 modrinth {
@@ -281,5 +282,6 @@ modrinth {
         optional.project "pet-cemetery"
         optional.project "critters-n-crawlers"
         optional.project "endergetic"
+        optional.project "brazilian-expansion"
     }
 }
