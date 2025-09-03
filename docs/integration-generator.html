@@ -151,11 +151,11 @@
 </div>
 
 <div class="group hidden" id="tamingGroup">
-  <label><input type="radio" name="tameTrust" id="tamedRadio" value="tamed" /> Needs to be tamed</label>
+  <label><input type="checkbox" id="tamedCheckbox" /> Needs to be tamed</label>
 </div>
 
 <div class="group hidden" id="trustingGroup">
-  <label><input type="radio" name="tameTrust" id="trustingRadio" value="trusting" /> Needs to trust player</label>
+  <label><input type="checkbox" id="trustingCheckbox" /> Needs to trust player</label>
 </div>
 
 <button onclick="generateRecipe()">Generate</button>
@@ -253,18 +253,18 @@
   }
 
   // 🔄 Make checkboxes mutually exclusive
-  function setupExclusiveCheckboxes() {
-    const tamed = document.getElementById('tamedCheckbox');
-    const trusting = document.getElementById('trustingCheckbox');
+function setupExclusiveCheckboxes() {
+  const tamed = document.getElementById('tamedCheckbox');
+  const trusting = document.getElementById('trustingCheckbox');
 
-    tamed.addEventListener('change', () => {
-      if (tamed.checked) trusting.checked = false;
-    });
+  tamed.addEventListener('change', () => {
+    if (tamed.checked) trusting.checked = false;
+  });
 
-    trusting.addEventListener('change', () => {
-      if (trusting.checked) tamed.checked = false;
-    });
-  }
+  trusting.addEventListener('change', () => {
+    if (trusting.checked) tamed.checked = false;
+  });
+}
 
   function autoResizeTextarea(textarea) {
     textarea.style.height = "auto";
@@ -284,11 +284,12 @@ function generateRecipe() {
   if (extraInputs.length) mobData.extra_inputs = extraInputs;
   if (outputs.length) mobData.outputs = outputs;
 
-  // 🔄 check selected radio
-  const tameTrust = document.querySelector('input[name="tameTrust"]:checked');
-  if (tameTrust) {
-    if (tameTrust.value === "tamed") mobData.tamed = true;
-    if (tameTrust.value === "trusting") mobData.trusting = true;
+ // ✅ checkboxes instead of radios
+  if (document.getElementById('tamedCheckbox').checked) {
+    mobData.tamed = true;
+  }
+  if (document.getElementById('trustingCheckbox').checked) {
+    mobData.trusting = true;
   }
 
   const recipe = {
