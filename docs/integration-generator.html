@@ -110,6 +110,33 @@
     .remove-button:hover {
       opacity: 0.8;
     }
+
+    .checkbox-button {
+      display: inline-block;
+      background-color: var(--accent);
+      color: var(--bg);
+      border: none;
+      padding: 0.6em 1.2em;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 0.25em;
+      margin-top: 0.5em;
+      text-align: center;
+      user-select: none;
+      font-weight: normal; /* remove bold */
+    }
+
+    .checkbox-button:hover {
+      opacity: 0.9;
+    }
+
+    .checkbox-button input {
+      display: none; /* hide default checkbox */
+    }
+
+    .checkbox-button.active {
+      background-color: #388e3c; /* darker green when active */
+    }
   </style>
 </head>
 <body>
@@ -151,11 +178,15 @@
 </div>
 
 <div class="group hidden" id="tamingGroup">
-  <label><input type="checkbox" id="tamedCheckbox" /> Needs to be tamed</label>
+  <label class="checkbox-button" id="tamedLabel">
+    <input type="checkbox" id="tamedCheckbox" /> Needs to be tamed
+  </label>
 </div>
 
 <div class="group hidden" id="trustingGroup">
-  <label><input type="checkbox" id="trustingCheckbox" /> Needs to trust player</label>
+  <label class="checkbox-button" id="trustingLabel">
+    <input type="checkbox" id="trustingCheckbox" /> Needs to trust player
+  </label>
 </div>
 
 <button onclick="generateRecipe()">Generate</button>
@@ -253,18 +284,30 @@
   }
 
   // 🔄 Make checkboxes mutually exclusive
-function setupExclusiveCheckboxes() {
-  const tamed = document.getElementById('tamedCheckbox');
-  const trusting = document.getElementById('trustingCheckbox');
+  function setupExclusiveCheckboxes() {
+    const tamed = document.getElementById('tamedCheckbox');
+    const trusting = document.getElementById('trustingCheckbox');
+    const tamedLabel = document.getElementById('tamedLabel');
+    const trustingLabel = document.getElementById('trustingLabel');
 
-  tamed.addEventListener('change', () => {
-    if (tamed.checked) trusting.checked = false;
-  });
+    function updateStyles() {
+      tamedLabel.classList.toggle('active', tamed.checked);
+      trustingLabel.classList.toggle('active', trusting.checked);
+    }
 
-  trusting.addEventListener('change', () => {
-    if (trusting.checked) tamed.checked = false;
-  });
-}
+    tamed.addEventListener('change', () => {
+      if (tamed.checked) trusting.checked = false;
+      updateStyles();
+    });
+
+    trusting.addEventListener('change', () => {
+      if (trusting.checked) tamed.checked = false;
+      updateStyles();
+    });
+
+    // initial state
+    updateStyles();
+  }
 
   function autoResizeTextarea(textarea) {
     textarea.style.height = "auto";
