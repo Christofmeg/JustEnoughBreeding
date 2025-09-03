@@ -41,11 +41,11 @@ public class BreedingCategoryREI extends AbstractRecipeCategoryREI<BreedingDispl
 
         boolean hasOutput = !display.getOutputEntries().get(0).isEmpty();
         if (hasExtraInput && hasOutput) {
-            widgets.add(Widgets.createSlot(new Point(bounds.getX() + 79, bounds.getCenterY() + 12)).entries(display.getInputEntries().get(0)));
-            widgets.add(Widgets.createSlot(new Point(bounds.getX() + 79, bounds.getCenterY() - 11)).entries(display.getExtraInputEntries().get(0)));
+            widgets.add(Widgets.createSlot(new Point(bounds.getX() + 79, bounds.getCenterY() - 11)).entries(display.getInputEntries().get(0)));
+            widgets.add(Widgets.createSlot(new Point(bounds.getX() + 79, bounds.getCenterY() + 12)).entries(display.getExtraInputEntries().get(0)));
         } else if (hasExtraInput) {
-            widgets.add(Widgets.createSlot(new Point(bounds.getX() + 112, bounds.getCenterY() + 12)).entries(display.getInputEntries().get(0)));
-            widgets.add(Widgets.createSlot(new Point(bounds.getX() + 112, bounds.getCenterY() - 11)).entries(display.getExtraInputEntries().get(0)));
+            widgets.add(Widgets.createSlot(new Point(bounds.getX() + 112, bounds.getCenterY() - 11)).entries(display.getInputEntries().get(0)));
+            widgets.add(Widgets.createSlot(new Point(bounds.getX() + 112, bounds.getCenterY() + 12)).entries(display.getExtraInputEntries().get(0)));
         } else if (!hasOutput) {
             widgets.add(Widgets.createSlot(new Point(bounds.getX() + 112, bounds.getCenterY() + 3)).entries(display.getInputEntries().get(0)));
         } else {

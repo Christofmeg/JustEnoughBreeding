@@ -11,6 +11,7 @@
 - Integration to Creatures²
 - Integration to Pet Cemetery
 - Integration to Critters n' Crawlers
+- Swap location of extra input and input slot
 
 1.6.2:
 - Update icon to match 256px

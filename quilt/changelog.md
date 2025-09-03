@@ -6,6 +6,7 @@
 - Reworked how integrations work, they are now json based
 - Integration to Untitled Duck Mod
 - Integration to [Let's Do] WilderNature
+- Swap location of extra input and input slot
 
 1.6.2:
 - Update icon to match 256px

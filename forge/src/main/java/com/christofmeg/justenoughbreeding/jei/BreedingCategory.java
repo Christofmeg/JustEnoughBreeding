@@ -46,8 +46,7 @@ public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> {
                 inputSlot.setPosition(74, 38, 78, 35, HorizontalAlignment.LEFT, VerticalAlignment.BOTTOM);
                 builder.addInputSlot(69, 33).setStandardSlotBackground().addIngredients(recipe.extraInputStack).setPosition(74, 38, 78, 35, HorizontalAlignment.LEFT, VerticalAlignment.TOP);
             }
-        }
-        else if (hasExtraInput) {
+        } else if (hasExtraInput) {
             inputSlot.setPosition(63, 10, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
             builder.addInputSlot(69, 33).setStandardSlotBackground().addIngredients(recipe.extraInputStack).setPosition(63, 29, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
         }

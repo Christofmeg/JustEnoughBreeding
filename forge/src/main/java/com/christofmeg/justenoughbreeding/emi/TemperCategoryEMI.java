@@ -59,12 +59,11 @@ public class TemperCategoryEMI extends AbstractRecipeCategoryEMI {
         widgets.addSlot(EmiIngredient.of(recipe.spawnEgg), 149, 1);
 
         int inputX = 69 + 5;
-        int inputY = 58 - 10;
-        int extraY = inputY - 19;
+        int inputY = 48;
         boolean hasExtraInput = recipe.extraInputStack != null && !recipe.extraInputStack.isEmpty();
         if (hasExtraInput) {
-            widgets.addSlot(EmiIngredient.of(recipe.inputStack), inputX + 33, inputY + 9);
-            widgets.addSlot(EmiIngredient.of(recipe.extraInputStack), inputX + 33, extraY + 9);
+            widgets.addSlot(EmiIngredient.of(recipe.inputStack), inputX + 33, 38);
+            widgets.addSlot(EmiIngredient.of(recipe.extraInputStack), inputX + 33, 57);
         } else {
             widgets.addSlot(EmiIngredient.of(recipe.inputStack), inputX  + 33, inputY);
         }
