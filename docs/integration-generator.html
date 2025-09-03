@@ -235,35 +235,89 @@
       }
     });
 
+    // ✅ append in correct order
+    div.appendChild(typeSelect);
+    div.appendChild(valueInput);
+
+    if (containerId === 'outputs') {
+      const minInput = document.createElement('input');
+      minInput.type = 'number';
+      minInput.placeholder = 'min';
+      minInput.style.maxWidth = '80px';
+
+      const maxInput = document.createElement('input');
+      maxInput.type = 'number';
+      maxInput.placeholder = 'max';
+      maxInput.style.maxWidth = '80px';
+
+      div.appendChild(minInput);
+      div.appendChild(maxInput);
+    }
+
     const removeBtn = document.createElement('button');
     removeBtn.textContent = '✕';
     removeBtn.className = 'remove-button';
     removeBtn.onclick = () => div.remove();
 
-    div.appendChild(typeSelect);
-    div.appendChild(valueInput);
     div.appendChild(removeBtn);
     document.getElementById(containerId).appendChild(div);
   }
 
-  function addInput(containerId) {
-    createInputRow(containerId);
-  }
+    function addInput(containerId) {
+      createInputRow(containerId);
+    }
 
   function collectInputs(containerId) {
     const result = [];
     const container = document.getElementById(containerId);
     container.querySelectorAll('.inline-flex').forEach(row => {
-      const [select, input] = row.querySelectorAll('select, input');
+      const children = Array.from(row.querySelectorAll('select, input'));
+      const select = children[0];
+      const valueInput = children[1];
+      const minInput = children[2];
+      const maxInput = children[3];
+
       const type = select.value;
-      const value = input.value.trim();
-      if (value !== '') {
-        if (type === 'meat') {
-          result.push({ meat: value });
+      const value = valueInput.value.trim();
+
+      if (!value) return; // skip empty rows
+
+      let entry;
+      if (type === 'meat') {
+        entry = { meat: value };
+      } else {
+        entry = { [type]: value };
+      }
+
+      if (containerId === 'outputs') {
+        let minVal = minInput?.value ? parseInt(minInput.value, 10) : null;
+        let maxVal = maxInput?.value ? parseInt(maxInput.value, 10) : null;
+
+        if (minVal === null && maxVal === null) {
+          // no amount
+        } else if (minVal === null && maxVal !== null) {
+          // only max filled → default min=1
+          entry.amount = { min: 1, max: maxVal };
+        } else if (minVal !== null && maxVal === null) {
+          // only min filled → fixed value (min=max)
+          if (minVal !== 1) {
+            entry.amount = { min: minVal, max: minVal };
+          }
         } else {
-          result.push({ [type]: value });
+          // both filled
+          if (minVal > maxVal) {
+            entry.amount = { min: minVal, max: minVal };
+          } else if (minVal === 1 && maxVal === 1) {
+            // skip amount
+          } else if (minVal === maxVal && minVal > 1) {
+            entry.amount = { min: minVal, max: minVal };
+          } else {
+            entry.amount = { min: minVal, max: maxVal };
+          }
         }
       }
+
+      result.push(entry);
     });
     return result;
   }
@@ -314,67 +368,67 @@
     textarea.style.height = textarea.scrollHeight + "px";
   }
 
-function generateRecipe() {
-  const provider = document.getElementById('providerType').value;
-  const modId = document.getElementById('modId').value.trim();
-  const mobId = document.getElementById('mobId').value.trim();
-  const inputs = collectInputs('inputs');
-  const extraInputs = collectInputs('extraInputs');
-  const outputs = collectInputs('outputs');
-
-  const mobData = {};
-  if (inputs.length) mobData.inputs = inputs;
-  if (extraInputs.length) mobData.extra_inputs = extraInputs;
-  if (outputs.length) mobData.outputs = outputs;
-
- // ✅ checkboxes instead of radios
-  if (document.getElementById('tamedCheckbox').checked) {
-    mobData.tamed = true;
-  }
-  if (document.getElementById('trustingCheckbox').checked) {
-    mobData.trusting = true;
-  }
-
-  const recipe = {
-    type: 'justenoughbreeding:' + provider,
-    mod: modId,
-    mobs: [
-      { [mobId]: mobData }
-    ]
-  };
-
-  const outputArea = document.getElementById('outputArea');
-  outputArea.value = JSON.stringify(recipe, null, 2);
-  autoResizeTextarea(outputArea);
-}
-
-  function downloadRecipe() {
-    generateRecipe();
-    const content = document.getElementById('outputArea').value;
-    const mobId = document.getElementById('mobId').value.trim() || "recipe";
+  function generateRecipe() {
     const provider = document.getElementById('providerType').value;
+    const modId = document.getElementById('modId').value.trim();
+    const mobId = document.getElementById('mobId').value.trim();
+    const inputs = collectInputs('inputs');
+    const extraInputs = collectInputs('extraInputs');
+    const outputs = collectInputs('outputs');
 
-    if (!content.trim()) {
-      alert("Please generate a recipe first!");
-      return;
+    const mobData = {};
+    if (inputs.length) mobData.inputs = inputs;
+    if (extraInputs.length) mobData.extra_inputs = extraInputs;
+    if (outputs.length) mobData.outputs = outputs;
+
+   // ✅ checkboxes instead of radios
+    if (document.getElementById('tamedCheckbox').checked) {
+      mobData.tamed = true;
+    }
+    if (document.getElementById('trustingCheckbox').checked) {
+      mobData.trusting = true;
     }
 
-    const blob = new Blob([content], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
+    const recipe = {
+      type: 'justenoughbreeding:' + provider,
+      mod: modId,
+      mobs: [
+        { [mobId]: mobData }
+      ]
+    };
 
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = mobId + ".json";
-    a.click();
-
-    URL.revokeObjectURL(url);
+    const outputArea = document.getElementById('outputArea');
+    outputArea.value = JSON.stringify(recipe, null, 2);
+    autoResizeTextarea(outputArea);
   }
 
-  window.onload = () => {
-    addInput('inputs');
-    toggleOptionalFields();
-    setupExclusiveCheckboxes(); // 👈 activate mutual exclusivity
-  };
+    function downloadRecipe() {
+      generateRecipe();
+      const content = document.getElementById('outputArea').value;
+      const mobId = document.getElementById('mobId').value.trim() || "recipe";
+      const provider = document.getElementById('providerType').value;
+
+      if (!content.trim()) {
+        alert("Please generate a recipe first!");
+        return;
+      }
+
+      const blob = new Blob([content], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = mobId + ".json";
+      a.click();
+
+      URL.revokeObjectURL(url);
+    }
+
+    window.onload = () => {
+      addInput('inputs');
+      toggleOptionalFields();
+      setupExclusiveCheckboxes(); // 👈 activate mutual exclusivity
+    };
 </script>
 </body>
 </html>
