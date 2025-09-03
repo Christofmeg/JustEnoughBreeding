@@ -12,6 +12,7 @@
 - Integration to Pet Cemetery
 - Integration to Critters n' Crawlers
 - Swap location of extra input and input slot
+- Integration to The Endergetic Expansion
 
 1.6.2:
 - Update icon to match 256px

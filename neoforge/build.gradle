@@ -210,6 +210,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("lets-do-wildernature")
     mainFile.addOptional("pet-cemetery")
     mainFile.addOptional("critters-n-crawlers")
+    mainFile.addOptional("endergetic")
 }
 
 modrinth {
@@ -279,5 +280,6 @@ modrinth {
         optional.project "creatures_squared"
         optional.project "pet-cemetery"
         optional.project "critters-n-crawlers"
+        optional.project "endergetic"
     }
 }

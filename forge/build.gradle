@@ -88,25 +88,17 @@ dependencies {
         runtimeOnly fg.deobf("curse.maven:catalogue-459701:${catalogue_version}")
     }
 
+//    runtimeOnly fg.deobf("maven.modrinth:tag-tooltips:a0H0FGkF")
+//    runtimeOnly fg.deobf("curse.maven:item-nbt-viewer-514135:4578522")
+
     //FORGE https://modrinth.com/mod/mineageries-plus
     runtimeOnly fg.deobf("maven.modrinth:mineageries-plus:zrdqXK5t")
     runtimeOnly fg.deobf("maven.modrinth:geckolib:AiVKLYep")
-
-    //FORGE https://www.curseforge.com/minecraft/mc-mods/wildlife-additions
-//    runtimeOnly fg.deobf("curse.maven:wildlife-additions-1066293:5563545")
 
     //FORGE https://www.curseforge.com/minecraft/mc-mods/brazilian-expansion
     //FORGE https://modrinth.com/mod/brazilian-expansion
     runtimeOnly fg.deobf("curse.maven:brazilian-expansion-1143074:6599703")
     runtimeOnly fg.deobf("curse.maven:terrablender-563928:6290448")
-
-    //FORGE/FABRIC https://www.curseforge.com/minecraft/mc-mods/lets-do-wildernature
-    //FORGE/FABRIC https://modrinth.com/mod/lets-do-wildernature
-//    runtimeOnly fg.deobf("curse.maven:lets-do-wildernature-1071657:6854817")
-//    runtimeOnly fg.deobf("curse.maven:curios-309927:6418456")
-
-//    runtimeOnly fg.deobf("maven.modrinth:tag-tooltips:a0H0FGkF")
-//    runtimeOnly fg.deobf("curse.maven:item-nbt-viewer-514135:4578522")
 
 }
 
@@ -225,6 +217,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("lets-do-wildernature")
     mainFile.addOptional("pet-cemetery")
     mainFile.addOptional("critters-n-crawlers")
+    mainFile.addOptional("endergetic")
 }
 
 modrinth {
@@ -295,5 +288,6 @@ modrinth {
         optional.project "creatures_squared"
         optional.project "pet-cemetery"
         optional.project "critters-n-crawlers"
+        optional.project "endergetic"
     }
 }
