@@ -1,0 +1,19 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "creaturecraft",
+  "mobs": [
+    {
+      "bairds_tapir": {
+        "inputs": [
+          {
+            "item": "creaturecraft:buff_grass"
+          },
+          {
+            "item": "creaturecraft:sav_grass_short"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

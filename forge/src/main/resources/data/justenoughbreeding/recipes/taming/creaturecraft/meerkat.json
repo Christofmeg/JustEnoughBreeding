@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "creaturecraft",
+  "mobs": [
+    {
+      "meerkat": {
+        "inputs": [
+          {
+            "item": "creaturecraft:termite_drop"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "creaturecraft",
+  "mobs": [
+    {
+      "spotted_hyena": {
+        "inputs": [
+          {
+            "item": "minecraft:chicken"
+          },
+          {
+            "item": "minecraft:beef"
+          },
+          {
+            "item": "minecraft:mutton"
+          },
+          {
+            "item": "minecraft:rabbit"
+          },
+          {
+            "item": "minecraft:bone"
+          },
+          {
+            "item": "minecraft:rotten_flesh"
+          },
+          {
+            "item": "minecraft:porkchop"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

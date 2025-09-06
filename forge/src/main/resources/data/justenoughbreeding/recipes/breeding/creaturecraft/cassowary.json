@@ -1,0 +1,31 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "creaturecraft",
+  "mobs": [
+    {
+      "cassowary": {
+        "inputs": [
+          {
+            "item": "minecraft:sweet_berries"
+          },
+          {
+            "item": "minecraft:melon_slice"
+          },
+          {
+            "item": "minecraft:melon_seeds"
+          },
+          {
+            "item": "minecraft:apple"
+          },
+          {
+            "item": "minecraft:golden_apple"
+          },
+          {
+            "item": "minecraft:enchanted_golden_apple"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

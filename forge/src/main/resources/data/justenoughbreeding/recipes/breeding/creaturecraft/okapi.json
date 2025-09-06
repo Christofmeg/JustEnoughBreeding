@@ -1,0 +1,40 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "creaturecraft",
+  "mobs": [
+    {
+      "okapi": {
+        "inputs": [
+          {
+            "item": "creaturecraft:baobab_leaves"
+          },
+          {
+            "item": "creaturecraft:buff_grass"
+          },
+          {
+            "item": "creaturecraft:sav_grass_short"
+          },
+          {
+            "item": "creaturecraft:sav_grass_tall"
+          },
+          {
+            "item": "creaturecraft:savannah_bush_tall"
+          },
+          {
+            "item": "creaturecraft:savannah_bush_short"
+          },
+          {
+            "item": "creaturecraft:baobab_sapling"
+          },
+          {
+            "item": "creaturecraft:palm_leaves"
+          },
+          {
+            "item": "creaturecraft:palm_sapling"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}
