@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "aether",
+  "mobs": [
+    {
+      "flying_cow": {
+        "inputs": [
+          {
+            "tag": "aether:flying_cow_temptation_items"
+          }
+        ]
+      }
+    }
+  ]
+}

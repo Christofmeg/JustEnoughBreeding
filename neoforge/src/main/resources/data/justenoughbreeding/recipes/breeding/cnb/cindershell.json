@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "cnb",
+  "mobs": [
+    {
+      "cindershell": {
+        "inputs": [
+          {
+            "tag": "cnb:cindershell_food"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "creaturecraft",
+  "mobs": [
+    {
+      "komodo": {
+        "inputs": [
+          {
+            "item": "minecraft:apple"
+          },
+          {
+            "item": "minecraft:golden_apple"
+          },
+          {
+            "item": "minecraft:enchanted_golden_apple"
+          }
+        ]
+      }
+    }
+  ]
+}

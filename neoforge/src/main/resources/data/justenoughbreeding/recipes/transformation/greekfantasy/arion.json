@@ -1,0 +1,22 @@
+{
+  "type": "justenoughbreeding:transformation",
+  "mod": "greekfantasy",
+  "inputs": [
+    {
+      "item": "minecraft:enchanted_golden_apple"
+    }
+  ],
+  "input_entity": "minecraft:horse",
+  "input_spawn_eggs": [
+    {
+      "item": "minecraft:horse_spawn_egg"
+    }
+  ],
+  "output_entity": "greekfantasy:arion",
+  "output_spawn_eggs": [
+    {
+      "item": "greekfantasy:arion_spawn_egg"
+    }
+  ],
+  "tamed": true
+}

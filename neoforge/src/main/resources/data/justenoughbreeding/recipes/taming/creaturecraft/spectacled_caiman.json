@@ -1,0 +1,30 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "creaturecraft",
+  "mobs": [
+    {
+      "spectacled_caiman": {
+        "inputs": [
+          {
+            "item": "creaminecraft:cod"
+          },
+          {
+            "item": "minecraft:salmon"
+          },
+          {
+            "item": "minecraft:tropical_fish"
+          },
+          {
+            "item": "minecraft:pufferfish"
+          },
+          {
+            "item": "minecraft:cooked_cod"
+          },
+          {
+            "item": "minecraft:cooked_salmon"
+          }
+        ]
+      }
+    }
+  ]
+}

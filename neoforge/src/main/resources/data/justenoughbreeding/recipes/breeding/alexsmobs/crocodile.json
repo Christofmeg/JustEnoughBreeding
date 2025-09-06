@@ -1,0 +1,25 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "mobs": [
+    {
+      "crocodile": {
+        "inputs": [
+          {
+            "item": "minecraft:rotten_flesh"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "alexmobs:crocodile_egg"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_crocodile"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "cnb",
+  "mobs": [
+    {
+      "little_grebe": {
+        "inputs": [
+          {
+            "tag": "cnb:little_grebe_food"
+          }
+        ]
+      }
+    }
+  ]
+}

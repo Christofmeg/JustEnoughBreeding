@@ -1,0 +1,16 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "recrafted_creatures",
+  "mobs": [
+    {
+      "red_panda": {
+        "inputs": [
+          {
+            "item": "minecraft:bamboo"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

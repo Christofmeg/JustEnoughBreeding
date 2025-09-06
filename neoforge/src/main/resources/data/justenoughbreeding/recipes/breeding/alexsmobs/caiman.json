@@ -1,0 +1,32 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "mobs": [
+    {
+      "caiman": {
+        "inputs": [
+          {
+            "item": "alexsmobs:raw_catfish"
+          },
+          {
+            "item": "alexsmobs:cooked_catfish"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "alexmobs:caiman_egg",
+            "amount": {
+              "min": 1,
+              "max": 4
+            }
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_caiman"
+          }
+        ]
+      }
+    }
+  ]
+}

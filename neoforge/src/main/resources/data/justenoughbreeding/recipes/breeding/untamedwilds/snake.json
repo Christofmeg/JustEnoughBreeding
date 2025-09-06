@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "untamedwilds",
+  "mobs": [
+    {
+      "snake": {
+        "inputs": [
+          {
+            "item": "minecraft:rabbit"
+          }
+        ]
+      }
+    }
+  ]
+}

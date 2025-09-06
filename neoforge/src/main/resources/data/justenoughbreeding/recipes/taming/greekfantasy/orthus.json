@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "greekfantasy",
+  "mobs": [
+    {
+      "orthus": {
+        "inputs": [
+          {
+            "tag": "greekfantasy:orthus_food"
+          }
+        ]
+      }
+    }
+  ]
+}

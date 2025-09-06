@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "brazilian_expansion",
+  "mobs": [
+    {
+      "brocket_deer": {
+        "inputs": [
+          {
+            "tag": "brazilian_expansion:food_cervo"
+          }
+        ]
+      }
+    }
+  ]
+}

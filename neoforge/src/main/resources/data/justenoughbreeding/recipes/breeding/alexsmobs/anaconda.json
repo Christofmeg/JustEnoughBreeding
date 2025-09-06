@@ -1,0 +1,23 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "mobs": [
+    {
+      "anaconda": {
+        "inputs": [
+          {
+            "item": "minecraft:chicken"
+          },
+          {
+            "item": "minecraft:cooked_chicken"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_anaconda"
+          }
+        ]
+      }
+    }
+  ]
+}

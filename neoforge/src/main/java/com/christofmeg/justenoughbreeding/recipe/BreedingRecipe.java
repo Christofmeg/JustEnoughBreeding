@@ -1,64 +1,93 @@
 package com.christofmeg.justenoughbreeding.recipe;
 
-import net.minecraft.client.Minecraft;
+import com.christofmeg.justenoughbreeding.CommonConstants;
+import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
+import com.christofmeg.justenoughbreeding.utils.Utils;
+import com.google.gson.JsonObject;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.TamableAnimal;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.Level;
-import net.minecraftforge.fml.ModList;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class BreedingRecipe {
-    private LivingEntity currentLivingEntity = null;
-    private long lastEntityCreationTime = 0;
+@SuppressWarnings("removal")
+public class BreedingRecipe extends ForgeRecipe {
 
     public final EntityType<?> entityType;
-    public final Ingredient breedingCatalyst;
-    public final ItemStack spawnEgg;
-    @Nullable
-    public final Boolean needsToBeTamed;
-    public final Ingredient resultItemStack;
-    public final @Nullable Ingredient extraInputStack;
-    @Nullable
-    public final Boolean animalTrusting;
-    public static final int ENTITY_CREATION_INTERVAL = 3000;
+    public Ingredient inputStack;
+    public Ingredient spawnEgg;
+    public final @Nullable Boolean needsToBeTamed;
+    public Ingredient resultItemStack;
+    public @Nullable Ingredient extraInputStack;
 
-    public BreedingRecipe(EntityType<?> entityType, Ingredient breedingCatalyst, ItemStack spawnEgg, @Nullable Boolean needsToBeTamed, @Nullable Ingredient resultItemStack, @Nullable Ingredient extraInputStack, @Nullable Boolean animalTrusting) {
+    public final @Nullable Boolean animalTrusting;
+    public final String jsonModID;
+    public final String jsonAnimalID;
+    public final String modFolder;
+    public final String fileName;
+
+    public BreedingRecipe(EntityType<?> entityType, Ingredient inputStack, Ingredient spawnEgg, @Nullable Boolean needsToBeTamed, @Nullable Ingredient resultItemStack, @Nullable Ingredient extraInputStack, @Nullable Boolean animalTrusting, String jsonModID, String jsonAnimalID, String modFolder, String fileName) {
         this.entityType = entityType;
-        this.breedingCatalyst = breedingCatalyst;
+        this.inputStack = inputStack;
         this.spawnEgg = spawnEgg;
         this.needsToBeTamed = needsToBeTamed;
         this.resultItemStack = resultItemStack;
         this.extraInputStack = extraInputStack;
         this.animalTrusting = animalTrusting;
+        this.jsonModID = jsonModID;
+        this.jsonAnimalID = jsonAnimalID;
+        this.modFolder = modFolder;
+        this.fileName = fileName;
     }
 
-    public LivingEntity doRendering() {
-        long currentTime = System.currentTimeMillis();
-        Level level = Minecraft.getInstance().level;
-
-        if (level != null) {
-            if (currentLivingEntity == null) {
-                currentLivingEntity = (LivingEntity) entityType.create(level);
-                lastEntityCreationTime = currentTime;
-            }
-            if (currentTime - lastEntityCreationTime >= ENTITY_CREATION_INTERVAL) {
-                if (!ModList.get().isLoaded("entity_model_features") && !ModList.get().isLoaded("optifine")) {
-                    currentLivingEntity = (LivingEntity) entityType.create(level);
-                    lastEntityCreationTime = currentTime;
-                }
-            }
-        }
-
-        if (currentLivingEntity != null) {
-            if (currentLivingEntity instanceof TamableAnimal tamableAnimal) {
-                tamableAnimal.setTame(true);
-            }
-        }
-
-        return currentLivingEntity;
+    @Override
+    public @NotNull ResourceLocation getId() {
+        return new ResourceLocation(CommonConstants.MOD_ID, "breeding" + "/" + this.modFolder + "/" + this.fileName + "/" + this.jsonModID + "/" + this.jsonAnimalID);
     }
 
+    @Override
+    public @NotNull RecipeSerializer<?> getSerializer() {
+        return JustEnoughBreeding.BREEDING_PROVIDER_SERIALIZER.get();
+    }
+
+    @Override
+    public @NotNull RecipeType<?> getType() {
+        return JustEnoughBreeding.BREEDING_PROVIDER_TYPE.get();
+    }
+
+    public void setInputIngredient(Ingredient ingredient) {
+        this.inputStack = ingredient;
+    }
+
+    public void setExtraInputIngredient(Ingredient ingredient) {
+        this.extraInputStack = ingredient;
+    }
+
+    public void setOutputIngredient(Ingredient ingredient) {
+        this.resultItemStack = ingredient;
+    }
+
+    public void setSpawnEggs(Ingredient ingredient) {
+        this.spawnEgg = ingredient;
+    }
+
+    public static class Serializer implements RecipeSerializer<BreedingRecipe> {
+
+        @Override
+        public @NotNull BreedingRecipe fromJson(@NotNull ResourceLocation jsonPath, @NotNull JsonObject json) {
+            return (BreedingRecipe) Utils.readJsonContents(jsonPath, json, "breeding");
+        }
+
+        @Override
+        public @Nullable BreedingRecipe fromNetwork(@NotNull ResourceLocation resourceLocation, @NotNull FriendlyByteBuf friendlyByteBuf) {
+            return null;
+        }
+
+        @Override
+        public void toNetwork(@NotNull FriendlyByteBuf friendlyByteBuf, @NotNull BreedingRecipe breedingRecipe) {}
+
+    }
 }

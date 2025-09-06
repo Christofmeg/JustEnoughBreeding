@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "aquaculture",
+  "mobs": [
+    {
+      "starshell_turtle": {
+        "inputs": [
+          {
+            "tag": "aquaculture:turtle_edible"
+          }
+        ]
+      }
+    }
+  ]
+}

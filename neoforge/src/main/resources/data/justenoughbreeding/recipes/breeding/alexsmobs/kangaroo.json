@@ -1,0 +1,23 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "mobs": [
+    {
+      "kangaroo": {
+        "inputs": [
+          {
+            "item": "minecraft:dead_bush"
+          },
+          {
+            "item": "minecraft:grass"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_kangaroo"
+          }
+        ]
+      }
+    }
+  ]
+}

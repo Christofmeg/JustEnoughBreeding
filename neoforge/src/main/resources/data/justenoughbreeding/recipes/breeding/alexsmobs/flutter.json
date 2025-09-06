@@ -1,0 +1,21 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "mobs": [
+    {
+      "flutter": {
+        "inputs": [
+          {
+            "item": "minecraft:bone_meal"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_flutter"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

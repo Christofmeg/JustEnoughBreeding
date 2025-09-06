@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "ambientadditions",
+  "mobs": [
+    {
+      "nine_banded_armadillo": {
+        "inputs": [
+          {
+            "item": "minecraft:spider_eye"
+          }
+        ]
+      }
+    }
+  ]
+}

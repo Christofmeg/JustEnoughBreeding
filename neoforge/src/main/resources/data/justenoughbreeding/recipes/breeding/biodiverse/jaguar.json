@@ -1,0 +1,21 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "biodiverse",
+  "mobs": [
+    {
+      "jaguar": {
+        "inputs": [
+          {
+            "item": "minecraft:mutton"
+          },
+          {
+            "item": "minecraft:beef"
+          },
+          {
+            "item": "minecraft:chicken"
+          }
+        ]
+      }
+    }
+  ]
+}

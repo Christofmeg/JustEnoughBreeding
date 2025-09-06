@@ -1,0 +1,16 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "creaturecraft",
+  "mobs": [
+    {
+      "maned_wolf": {
+        "inputs": [
+          {
+            "item": "minecraft:melon_slice"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

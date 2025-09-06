@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "mobs": [
+    {
+      "anteater": {
+        "inputs": [
+          {
+            "item": "alexsmobs:leafcutter_ant_pupa"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_anteater"
+          }
+        ]
+      }
+    }
+  ]
+}

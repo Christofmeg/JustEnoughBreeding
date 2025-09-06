@@ -1,0 +1,21 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "mobs": [
+    {
+      "warped_toad": {
+        "inputs": [
+          {
+            "item": "alexsmobs:mosquito_larva"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_warped_toad"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "creaturecraft",
+  "mobs": [
+    {
+      "pronghorn": {
+        "inputs": [
+          {
+            "item": "creaturecraft:buff_grass"
+          },
+          {
+            "item": "minecraft:grass"
+          },
+          {
+            "item": "minecraft:fern"
+          },
+          {
+            "item": "minecraft:tall_grass"
+          },
+          {
+            "item": "minecraft:wheat"
+          },
+          {
+            "item": "minecraft:wheat_seeds"
+          },
+          {
+            "item": "minecraft:wheat"
+          }
+        ]
+      }
+    }
+  ]
+}

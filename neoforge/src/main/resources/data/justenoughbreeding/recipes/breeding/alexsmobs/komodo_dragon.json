@@ -1,0 +1,21 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "mobs": [
+    {
+      "komodo_dragon": {
+        "inputs": [
+          {
+            "item": "minecraft:rotten_flesh"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_komodo_dragon"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

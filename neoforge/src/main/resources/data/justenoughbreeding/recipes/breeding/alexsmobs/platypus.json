@@ -1,0 +1,28 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "mobs": [
+    {
+      "platypus": {
+        "inputs": [
+          {
+            "item": "alexsmobs:cooked_lobster_tail"
+          },
+          {
+            "item": "alexsmobs:lobster_tail"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "alexmobs:platypus_egg"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_platypus"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "recrafted_creatures",
+  "mobs": [
+    {
+      "mammoth": {
+        "inputs": [
+          {
+            "item": "minecraft:melon"
+          },
+          {
+            "item": "minecraft:pumpkin"
+          }
+        ]
+      }
+    }
+  ]
+}

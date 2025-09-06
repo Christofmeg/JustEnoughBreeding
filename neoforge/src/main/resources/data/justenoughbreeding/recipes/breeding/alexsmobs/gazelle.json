@@ -1,0 +1,23 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "mobs": [
+    {
+      "gazelle": {
+        "inputs": [
+          {
+            "item": "alexsmobs:acacia_blossom"
+          },
+          {
+            "item": "minecraft:wheat"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_gazelle"
+          }
+        ]
+      }
+    }
+  ]
+}

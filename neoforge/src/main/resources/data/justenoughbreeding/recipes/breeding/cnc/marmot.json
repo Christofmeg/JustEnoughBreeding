@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "cnc",
+  "mobs": [
+    {
+      "marmot": {
+        "inputs": [
+          {
+            "item": "minecraft:dandelion"
+          }
+        ]
+      }
+    }
+  ]
+}

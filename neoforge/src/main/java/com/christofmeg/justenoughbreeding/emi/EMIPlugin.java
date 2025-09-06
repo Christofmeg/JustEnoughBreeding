@@ -7,12 +7,17 @@ import dev.emi.emi.api.EmiRegistry;
 import dev.emi.emi.api.render.EmiRenderable;
 import dev.emi.emi.runtime.EmiDrawContext;
 
-//@EmiEntrypoint
+@EmiEntrypoint
 public class EMIPlugin implements EmiPlugin {
     @Override
     public void register(EmiRegistry registry) {
+        registry.addCategory(AllayDuplicationCategoryEMI.TYPE);
         registry.addCategory(BreedingCategoryEMI.TYPE);
-        EMIUtils.registerMobBreedingRecipes(registry);
+        registry.addCategory(TamingCategoryEMI.TYPE);
+        registry.addCategory(TemperCategoryEMI.TYPE);
+        registry.addCategory(TransformationCategoryEMI.TYPE);
+        registry.addCategory(TrustingCategoryEMI.TYPE);
+        EMIUtils.registerRecipes(registry);
     }
 
     public static EmiRenderable simplifiedRenderer() {

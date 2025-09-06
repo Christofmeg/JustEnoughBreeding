@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "untamedwilds",
+  "mobs": [
+    {
+      "whale_shark": {
+        "inputs": [
+          {
+            "item": "untamedwilds:chum"
+          }
+        ]
+      }
+    }
+  ]
+}

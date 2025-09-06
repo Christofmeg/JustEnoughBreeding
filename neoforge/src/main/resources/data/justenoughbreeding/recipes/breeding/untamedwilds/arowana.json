@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "untamedwilds",
+  "mobs": [
+    {
+      "arowana": {
+        "inputs": [
+          {
+            "item": "untamedwilds:chum"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "creaturecraft",
+  "mobs": [
+    {
+      "zebra": {
+        "inputs": [
+          {
+            "item": "creaturecraft:buff_grass"
+          },
+          {
+            "item": "creaturecraft:sav_grass_short"
+          },
+          {
+            "item": "creaturecraft:sav_grass_tall"
+          },
+          {
+            "item": "minecraft:wheat"
+          }
+        ]
+      }
+    }
+  ]
+}

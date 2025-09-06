@@ -1,0 +1,21 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "mobs": [
+    {
+      "elephant": {
+        "inputs": [
+          {
+            "item": "alexsmobs:acacia_blossom"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_elephant"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "mobs": [
+    {
+      "alligator_snapping_turtle": {
+        "inputs": [
+          {
+            "item": "minecraft:cod"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_alligator_snapping_turtle"
+          }
+        ]
+      }
+    }
+  ]
+}

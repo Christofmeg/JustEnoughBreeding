@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "ambientadditions",
+  "mobs": [
+    {
+      "aye_aye": {
+        "inputs": [
+          {
+            "item": "ambientadditions:worm"
+          }
+        ]
+      }
+    }
+  ]
+}

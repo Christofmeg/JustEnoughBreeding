@@ -1,0 +1,33 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "creaturecraft",
+  "mobs": [
+    {
+      "leopard": {
+        "inputs": [
+          {
+            "item": "minecraft:cod"
+          },
+          {
+            "item": "minecraft:porkchop"
+          },
+          {
+            "item": "minecraft:cooked_porkchop"
+          },
+          {
+            "item": "minecraft:beef"
+          },
+          {
+            "item": "minecraft:cooked_beef"
+          },
+          {
+            "item": "minecraft:chicken"
+          },
+          {
+            "item": "minecraft:cooked_chicken"
+          }
+        ]
+      }
+    }
+  ]
+}

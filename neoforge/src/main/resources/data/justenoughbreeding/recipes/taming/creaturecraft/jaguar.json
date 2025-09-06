@@ -1,0 +1,30 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "creaturecraft",
+  "mobs": [
+    {
+      "jaguar": {
+        "inputs": [
+          {
+            "item": "minecraft:porkchop"
+          },
+          {
+            "item": "minecraft:beef"
+          },
+          {
+            "item": "minecraft:chicken"
+          },
+          {
+            "item": "minecraft:cooked_chicken"
+          },
+          {
+            "item": "minecraft:rabbit"
+          },
+          {
+            "item": "minecraft:mutton"
+          }
+        ]
+      }
+    }
+  ]
+}

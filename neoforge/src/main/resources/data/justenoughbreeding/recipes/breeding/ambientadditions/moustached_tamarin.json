@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "ambientadditions",
+  "mobs": [
+    {
+      "moustached_tamarin": {
+        "inputs": [
+          {
+            "item": "minecraft:apple"
+          }
+        ]
+      }
+    }
+  ]
+}

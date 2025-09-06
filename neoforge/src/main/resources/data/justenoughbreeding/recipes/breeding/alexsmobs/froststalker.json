@@ -1,0 +1,28 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "mobs": [
+    {
+      "froststalker": {
+        "inputs": [
+          {
+            "item": "minecraft:porkchop"
+          },
+          {
+            "item": "minecraft:cooked_porkchop"
+          }
+        ],
+        "extra_inputs": [
+          {
+            "item": "alexsmobs:froststalker_helmet"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_froststalker"
+          }
+        ]
+      }
+    }
+  ]
+}

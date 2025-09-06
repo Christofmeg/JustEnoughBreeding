@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "cnb",
+  "mobs": [
+    {
+      "yeti": {
+        "inputs": [
+          {
+            "item": "minecraft:melon_slice"
+          }
+        ]
+      }
+    }
+  ]
+}

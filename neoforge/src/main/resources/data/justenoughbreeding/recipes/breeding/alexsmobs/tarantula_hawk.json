@@ -1,0 +1,29 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "mobs": [
+    {
+      "tarantula_hawk": {
+        "extra_inputs": [
+          {
+            "item": "minecraft:cave_spider_spawn_egg"
+          },
+          {
+            "item": "minecraft:spider_spawn_egg"
+          }
+        ],
+        "inputs": [
+          {
+            "item": "minecraft:fermented_spider_eye"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_tarantula_hawk"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

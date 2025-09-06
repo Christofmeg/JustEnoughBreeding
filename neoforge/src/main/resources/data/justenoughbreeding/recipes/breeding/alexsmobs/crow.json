@@ -1,0 +1,21 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "mobs": [
+    {
+      "crow": {
+        "inputs": [
+          {
+            "item": "minecraft:pumpkin_seeds"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_crow"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

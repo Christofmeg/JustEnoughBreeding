@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "brazilian_expansion",
+  "mobs": [
+    {
+      "capivara": {
+        "inputs": [
+          {
+            "item": "minecraft:seagrass"
+          }
+        ]
+      }
+    }
+  ]
+}

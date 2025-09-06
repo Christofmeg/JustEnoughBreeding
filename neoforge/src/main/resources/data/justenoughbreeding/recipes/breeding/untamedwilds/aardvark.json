@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "untamedwilds",
+  "mobs": [
+    {
+      "aardvark": {
+        "inputs": [
+          {
+            "item": "untamedwilds:aardvark_cucumber"
+          }
+        ]
+      }
+    }
+  ]
+}

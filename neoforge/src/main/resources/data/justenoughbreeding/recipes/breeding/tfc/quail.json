@@ -1,0 +1,30 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "tfc",
+  "mobs": [
+    {
+      "quail": {
+        "inputs": [
+          {
+            "tag": "tfc:quail_food"
+          }
+        ],
+        "extra_inputs": [
+          {
+            "item": "tfc:nest_box"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "minecraft:egg"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "tfc:spawn_egg/quail"
+          }
+        ]
+      }
+    }
+  ]
+}

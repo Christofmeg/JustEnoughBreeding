@@ -1,0 +1,23 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "mobs": [
+    {
+      "snow_leopard": {
+        "inputs": [
+          {
+            "item": "alexsmobs:cooked_moose_ribs"
+          },
+          {
+            "item": "alexsmobs:moose_ribs"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_snow_leopard"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "biodiverse",
+  "mobs": [
+    {
+      "oryx": {
+        "inputs": [
+          {
+            "item": "minecraft:wheat_seeds"
+          },
+          {
+            "item": "minecraft:wheat"
+          }
+        ]
+      }
+    }
+  ]
+}

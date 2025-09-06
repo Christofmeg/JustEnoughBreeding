@@ -1,0 +1,21 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "mobs": [
+    {
+      "grizzly_bear": {
+        "inputs": [
+          {
+            "item": "minecraft:salmon"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_grizzly_bear"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

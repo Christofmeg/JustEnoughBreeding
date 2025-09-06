@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "mobs": [
+    {
+      "banana_slug": {
+        "inputs": [
+          {
+            "item": "minecraft:brown_mushroom"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_banana_slug"
+          }
+        ]
+      }
+    }
+  ]
+}

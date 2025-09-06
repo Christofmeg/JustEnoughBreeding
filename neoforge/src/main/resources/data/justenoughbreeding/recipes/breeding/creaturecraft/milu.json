@@ -1,0 +1,22 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "creaturecraft",
+  "mobs": [
+    {
+      "milu": {
+        "inputs": [
+          {
+            "item": "minecraft:mangrove_leaves"
+          },
+          {
+            "item": "minecraft:seagrass"
+          },
+          {
+            "item": "minecraft:tall_seagrass"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

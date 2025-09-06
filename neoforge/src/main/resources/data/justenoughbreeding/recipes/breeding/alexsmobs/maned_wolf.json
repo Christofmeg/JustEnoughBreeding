@@ -1,0 +1,29 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "mobs": [
+    {
+      "maned_wolf": {
+        "inputs": [
+          {
+            "item": "minecraft:chicken"
+          },
+          {
+            "item": "minecraft:cooked_chicken"
+          },
+          {
+            "item": "minecraft:cooked_rabbit"
+          },
+          {
+            "item": "minecraft:rabbit"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_maned_wolf"
+          }
+        ]
+      }
+    }
+  ]
+}

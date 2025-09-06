@@ -1,0 +1,32 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexscaves",
+  "mobs": [
+    {
+      "subterranodon": {
+        "inputs": [
+          {
+            "item": "minecraft:cod"
+          },
+          {
+            "item": "minecraft:cooked_cod"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "alexscaves:subterranodon_egg",
+            "amount": {
+              "min": 1,
+              "max": 4
+            }
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexscaves:spawn_egg_subterranodon"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "sophisticated_wolves",
+  "mobs": [
+    {
+      "sophisticated_wolf": {
+        "inputs": [
+          {
+            "item": "sophisticated_wolves:dog_treat"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "sophisticated_wolves:dog_egg"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

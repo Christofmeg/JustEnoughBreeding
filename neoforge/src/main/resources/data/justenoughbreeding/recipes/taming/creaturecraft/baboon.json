@@ -1,0 +1,24 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "creaturecraft",
+  "mobs": [
+    {
+      "baboon": {
+        "inputs": [
+          {
+            "item": "minecraft:apple"
+          },
+          {
+            "item": "minecraft:golden_apple"
+          },
+          {
+            "item": "minecraft:enchanted_golden_apple"
+          },
+          {
+            "item": "minecraft:sweet_berries"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "untamedwilds",
+  "mobs": [
+    {
+      "rhino": {
+        "inputs": [
+          {
+            "item": "minecraft:melon_slice"
+          }
+        ]
+      }
+    }
+  ]
+}

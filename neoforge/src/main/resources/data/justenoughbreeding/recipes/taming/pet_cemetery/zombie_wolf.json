@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "pet_cemetery",
+  "mobs": [
+    {
+      "zombie_wolf": {
+        "inputs": [
+          {
+            "item": "minecraft:bone"
+          }
+        ]
+      }
+    }
+  ]
+}

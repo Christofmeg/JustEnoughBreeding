@@ -1,0 +1,26 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "mobs": [
+    {
+      "mudskipper": {
+        "inputs": [
+          {
+            "item": "alexsmobs:cooked_lobster_tail"
+          },
+          {
+            "item": "alexsmobs:lobster_tail"
+          },
+          {
+            "tag": "alexsmobs:insect_items"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_mudskipper"
+          }
+        ]
+      }
+    }
+  ]
+}

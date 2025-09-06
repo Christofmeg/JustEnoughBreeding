@@ -1,0 +1,26 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "iceandfire",
+  "mobs": [
+    {
+      "hippogryph": {
+        "inputs": [
+          {
+            "item": "minecraft:rabbit_stew"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "iceandfire:hippogryph_egg"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "iceandfire:spawn_egg_hippogryph"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

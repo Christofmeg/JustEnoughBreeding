@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "mobs": [
+    {
+      "toucan": {
+        "inputs": [
+          {
+            "item": "minecraft:egg"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_toucan"
+          }
+        ]
+      }
+    }
+  ]
+}

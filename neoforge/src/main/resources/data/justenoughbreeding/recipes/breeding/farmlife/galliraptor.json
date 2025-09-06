@@ -1,0 +1,18 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "farmlife",
+  "mobs": [
+    {
+      "galliraptor": {
+        "inputs": [
+          {
+            "item": "minecraft:melon"
+          },
+          {
+            "item": "minecraft:melon_seeds"
+          }
+        ]
+      }
+    }
+  ]
+}

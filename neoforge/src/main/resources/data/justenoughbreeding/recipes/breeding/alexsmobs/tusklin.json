@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "mobs": [
+    {
+      "tusklin": {
+        "inputs": [
+          {
+            "item": "minecraft:red_mushroom"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_tusklin"
+          }
+        ]
+      }
+    }
+  ]
+}

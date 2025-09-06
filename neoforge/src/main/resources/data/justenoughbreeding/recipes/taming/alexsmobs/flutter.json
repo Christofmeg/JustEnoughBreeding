@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "alexmobs",
+  "mobs": [
+    {
+      "flutter": {
+        "inputs": [
+          {
+            "tag": "minecraft:flowers"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexscaves:spawn_egg_flutter"
+          }
+        ]
+      }
+    }
+  ]
+}

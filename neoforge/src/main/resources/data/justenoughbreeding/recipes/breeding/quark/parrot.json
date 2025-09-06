@@ -1,0 +1,32 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "minecraft",
+  "mobs": [
+    {
+      "parrot": {
+        "inputs": [
+          {
+            "item": "minecraft:beetroot_seeds"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "quark:egg_parrot_red_blue"
+          },
+          {
+            "item": "quark:egg_parrot_blue"
+          },
+          {
+            "item": "quark:egg_parrot_green"
+          },
+          {
+            "item": "quark:egg_parrot_yellow_blue"
+          },
+          {
+            "item": "quark:egg_parrot_grey"
+          }
+        ]
+      }
+    }
+  ]
+}

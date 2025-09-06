@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "aether_redux",
+  "mobs": [
+    {
+      "shimmercow": {
+        "inputs": [
+          {
+            "tag": "aether_redux:glimmercow_temptation_items"
+          }
+        ]
+      }
+    }
+  ]
+}
