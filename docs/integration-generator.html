@@ -326,15 +326,22 @@
     const provider = document.getElementById('providerType').value;
     const tamingGroup = document.getElementById('tamingGroup');
     const trustingGroup = document.getElementById('trustingGroup');
+    const tamed = document.getElementById('tamedCheckbox');
+    const trusting = document.getElementById('trustingCheckbox');
+
     if (provider === 'breeding') {
       tamingGroup.classList.remove('hidden');
       trustingGroup.classList.remove('hidden');
     } else {
       tamingGroup.classList.add('hidden');
-      document.getElementById('tamedCheckbox').checked = false;
+      tamed.checked = false;
       trustingGroup.classList.add('hidden');
-      document.getElementById('trustingCheckbox').checked = false;
+      trusting.checked = false;
     }
+
+    // ✅ ensure label styles update too
+    document.getElementById('tamedLabel').classList.toggle('active', tamed.checked);
+    document.getElementById('trustingLabel').classList.toggle('active', trusting.checked);
   }
 
   // 🔄 Make checkboxes mutually exclusive
