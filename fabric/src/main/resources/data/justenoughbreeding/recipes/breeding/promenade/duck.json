@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "promenade",
+  "mobs": [
+    {
+      "duck": {
+        "inputs": [
+          {
+            "tag": "promenade:duck"
+          }
+        ]
+      }
+    }
+  ]
+}

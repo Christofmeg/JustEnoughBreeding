@@ -22,13 +22,18 @@ public class JEIPlugin implements IModPlugin {
     public void registerCategories(IRecipeCategoryRegistration registration) {
         IGuiHelper helper = registration.getJeiHelpers().getGuiHelper();
         registration.addRecipeCategories(
-                new BreedingCategory(helper, Items.WHEAT)
+                new AllayDuplicationCategory(helper, Items.AMETHYST_SHARD),
+                new BreedingCategory(helper, Items.WHEAT),
+                new TamingCategory(helper, Items.BONE),
+                new TemperCategory(helper, Items.GOLDEN_APPLE),
+                new TransformationCategory(helper, Items.GOLDEN_CARROT),
+                new TrustingCategory(helper, Items.SWEET_BERRIES)
         );
     }
 
     @Override
     public void registerRecipes(@NotNull IRecipeRegistration registration) {
-        JEIUtils.registerMobBreedingRecipes(registration);
+        JEIUtils.registerRecipes(registration);
     }
 
 }

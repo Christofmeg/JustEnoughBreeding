@@ -1,30 +1,5 @@
 package com.christofmeg.justenoughbreeding;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class CommonConstants {
-
 	public static final String MOD_ID = "justenoughbreeding";
-
-	public static Map<String, String> sharedGetSpawnEggFromEntity = new HashMap<>();
-
-	public static Map<String, String> breedingIngredients = new HashMap<>();
-	public static Map<String, String> breedingExtraIngredients = new HashMap<>();
-	public static Map<String, String> breedingGetSpawnEggFromItem = new HashMap<>();
-	public static Map<String, String> breedingGetMobFromString = new HashMap<>();
-	public static Map<String, String> breedingEggResult = new HashMap<>();
-	public static Map<String, Integer> breedingEggResultMinAmount = new HashMap<>();
-	public static Map<String, Integer> breedingEggResultMaxAmount = new HashMap<>();
-	public static Map<String, Boolean> breedingNeedsToBeTamed = new HashMap<>();
-	public static Map<String, Boolean> breedingNeedsToBeTrusting = new HashMap<>();
-	public static Map<String, Integer> breedingCooldown = new HashMap<>();
-
-	public static Map<String, String> tamingIngredients = new HashMap<>();
-	public static Map<String, String> tamingExtraIngredients = new HashMap<>();
-	public static Map<String, Integer> tamingChance = new HashMap<>();
-
-	public static Map<String, String> trustingIngredients = new HashMap<>();
-	public static Map<String, Integer> trustingChance = new HashMap<>();
-
 }

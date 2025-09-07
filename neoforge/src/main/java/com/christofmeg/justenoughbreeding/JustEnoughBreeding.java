@@ -26,8 +26,8 @@ public class JustEnoughBreeding {
     private static final DeferredRegister<RecipeSerializer<?>> RECIPES_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, CommonConstants.MOD_ID);
     private static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(ForgeRegistries.RECIPE_TYPES, CommonConstants.MOD_ID);
 
-    public static final RegistryObject<RecipeType<AllayDuplicationRecipe>> ALLAY_DUPLICAITON_PROVIDER_TYPE = RECIPE_TYPES.register("allay_duplication", () -> RecipeType.simple(new ResourceLocation(CommonConstants.MOD_ID, "allay_duplication")));
-    public static final RegistryObject<RecipeSerializer<AllayDuplicationRecipe>> ALLAY_DUPLICAITON_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("allay_duplication", AllayDuplicationRecipe.Serializer::new);
+    public static final RegistryObject<RecipeType<AllayDuplicationRecipe>> ALLAY_DUPLICATION_PROVIDER_TYPE = RECIPE_TYPES.register("allay_duplication", () -> RecipeType.simple(new ResourceLocation(CommonConstants.MOD_ID, "allay_duplication")));
+    public static final RegistryObject<RecipeSerializer<AllayDuplicationRecipe>> ALLAY_DUPLICATION_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("allay_duplication", AllayDuplicationRecipe.Serializer::new);
 
     public static final RegistryObject<RecipeType<BreedingRecipe>> BREEDING_PROVIDER_TYPE = RECIPE_TYPES.register("breeding", () -> RecipeType.simple(new ResourceLocation(CommonConstants.MOD_ID, "breeding")));
     public static final RegistryObject<RecipeSerializer<BreedingRecipe>> BREEDING_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("breeding", BreedingRecipe.Serializer::new);
@@ -69,7 +69,7 @@ public class JustEnoughBreeding {
         return ForgeRegistries.ENTITY_TYPES.getValue(resourceLocation);
     }
 
-    public static Boolean isModLoaded (String modID) {
+    public static Boolean isModLoaded(String modID) {
         return ModList.get().isLoaded(modID);
     }
 

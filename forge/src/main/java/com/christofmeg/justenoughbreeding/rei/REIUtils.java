@@ -22,7 +22,7 @@ import java.util.List;
 public class REIUtils {
 
     public static void registerRecipes(DisplayRegistry registration) {
-        List<AllayDuplicationRecipe> allayDuplicationRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.ALLAY_DUPLICAITON_PROVIDER_TYPE.get()));
+        List<AllayDuplicationRecipe> allayDuplicationRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.ALLAY_DUPLICATION_PROVIDER_TYPE.get()));
         allayDuplicationRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID));
         for (AllayDuplicationRecipe recipe : allayDuplicationRecipes) {
             if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {

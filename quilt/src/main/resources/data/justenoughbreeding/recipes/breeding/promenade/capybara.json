@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "promenade",
+  "mobs": [
+    {
+      "capybara": {
+        "inputs": [
+          {
+            "tag": "promenade:capybara"
+          }
+        ]
+      }
+    }
+  ]
+}

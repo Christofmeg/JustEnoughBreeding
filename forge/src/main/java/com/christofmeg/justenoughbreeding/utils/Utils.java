@@ -82,7 +82,7 @@ public class Utils {
         if (ingredientItem != null) {
             ItemStack stack = new ItemStack(ingredientItem, amount);
             if (nbt != null) {
-                stack.setTag(nbt); //TODO fix nbt on ITEMS
+                stack.setTag(nbt);
             }
             combinedIngredients.add(Ingredient.of(stack));
         }

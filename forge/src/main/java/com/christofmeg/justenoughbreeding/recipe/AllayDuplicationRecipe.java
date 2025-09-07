@@ -41,12 +41,12 @@ public class AllayDuplicationRecipe extends ForgeRecipe {
 
     @Override
     public @NotNull RecipeSerializer<?> getSerializer() {
-        return JustEnoughBreeding.ALLAY_DUPLICAITON_PROVIDER_SERIALIZER.get();
+        return JustEnoughBreeding.ALLAY_DUPLICATION_PROVIDER_SERIALIZER.get();
     }
 
     @Override
     public @NotNull RecipeType<?> getType() {
-        return JustEnoughBreeding.ALLAY_DUPLICAITON_PROVIDER_TYPE.get();
+        return JustEnoughBreeding.ALLAY_DUPLICATION_PROVIDER_TYPE.get();
     }
 
     public void setInputIngredient(Ingredient ingredient) {

@@ -1,0 +1,24 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "aqupd",
+  "mobs": [
+    {
+      "caracal": {
+        "inputs": [
+          {
+            "item": "minecraft:chicken"
+          },
+          {
+            "item": "minecraft:cod"
+          },
+          {
+            "item": "minecraft:rabbit"
+          },
+          {
+            "item": "minecraft:salmon"
+          }
+        ]
+      }
+    }
+  ]
+}
