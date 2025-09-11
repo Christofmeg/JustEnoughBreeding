@@ -9,22 +9,20 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 
-import javax.annotation.Nonnull;
-
 public abstract class BaseRecipe implements Recipe<CraftingContainer> {
 
     @Override
-    public boolean matches(@Nonnull CraftingContainer craftingContainer, @Nonnull Level level) {
+    public boolean matches(CraftingContainer craftingContainer, Level level) {
         return false;
     }
 
     @Override
-    public @Nonnull ItemStack assemble(@Nonnull CraftingContainer craftingContainer, @Nonnull RegistryAccess registryAccess) {
+    public ItemStack assemble(CraftingContainer craftingContainer, RegistryAccess registryAccess) {
         return ItemStack.EMPTY;
     }
 
     @Override
-    public @Nonnull ItemStack getResultItem(@Nonnull RegistryAccess registryAccess) {
+    public ItemStack getResultItem(RegistryAccess registryAccess) {
         return ItemStack.EMPTY;
     }
 
@@ -34,17 +32,17 @@ public abstract class BaseRecipe implements Recipe<CraftingContainer> {
     }
 
     @Override
-    public @Nonnull ResourceLocation getId() {
+    public ResourceLocation getId() {
         return null;
     }
 
     @Override
-    public @Nonnull RecipeSerializer<?> getSerializer() {
+    public RecipeSerializer<?> getSerializer() {
         return null;
     }
 
     @Override
-    public @Nonnull RecipeType<?> getType() {
+    public RecipeType<?> getType() {
         return null;
     }
 

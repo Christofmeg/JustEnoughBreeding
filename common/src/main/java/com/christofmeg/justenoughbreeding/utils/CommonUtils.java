@@ -23,7 +23,6 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.phys.AABB;
 import org.joml.Quaternionf;
 
-import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,7 +53,7 @@ public class CommonUtils {
         return Ingredient.of(TagKey.create(Registries.ITEM, tagLocation));
     }
 
-    public static void renderEntity(@Nonnull PoseStack stack, double mouseX, LivingEntity currentLivingEntity, int entityPosX, int entityPosY) {
+    public static void renderEntity(PoseStack stack, double mouseX, LivingEntity currentLivingEntity, int entityPosX, int entityPosY) {
         // Set the desired position of the entity on the screen
         int ENTITY_RENDER_DISTANCE = 15728880;
 
