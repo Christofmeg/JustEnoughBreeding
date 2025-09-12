@@ -1,16 +1,15 @@
 {
-  "emi.category.justenoughbreeding.allay_duplication": "Allay Duplication",
+  "emi.category.justenoughbreeding.allay_duplication": "Размножение тихоней",
   "emi.category.justenoughbreeding.breeding": "Разведение",
-  "emi.category.justenoughbreeding.taming": "Taming",
-  "emi.category.justenoughbreeding.temper": "Temper",
-  "emi.category.justenoughbreeding.trusting": "Trusting",
-  "emi.category.justenoughbreeding.transformation": "Transformation",
-  "modmenu.descriptionTranslation.justenoughbreeding": "JEI/REI/EMI plugin that displays breeding information",
-  "translation.justenoughbreeding.allay_duplication": "Allay Duplication",
-  "translation.justenoughbreeding.breeding": "Разведение",
+  "emi.category.justenoughbreeding.taming": "Приручение",
+  "emi.category.justenoughbreeding.temper": "Усмирение",
+  "emi.category.justenoughbreeding.trusting": "Завоевание доверия",
+  "emi.category.justenoughbreeding.transformation": "Превращение",
+  "modmenu.descriptionTranslation.justenoughbreeding": "Плагин для JEI/REI/EMI, отображающий информацию о разведении",
+  "translation.justenoughbreeding.allay_duplication": "Размножение тихоней",
   "translation.justenoughbreeding.tamed": "Прирученный",
-  "translation.justenoughbreeding.taming": "Taming",
-  "translation.justenoughbreeding.temper": "Temper",
-  "translation.justenoughbreeding.trusting": "Доверяющий",
-  "translation.justenoughbreeding.transformation": "Transformation"
+  "translation.justenoughbreeding.taming": "Приручение",
+  "translation.justenoughbreeding.temper": "Усмирение",
+  "translation.justenoughbreeding.trusting": "Завоевание доверия",
+  "translation.justenoughbreeding.transformation": "Превращение"
 }
