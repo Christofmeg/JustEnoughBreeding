@@ -1,15 +1,2 @@
-2.0.0:
-- Added Taming Category
-- Added Temper Category
-- Added Trusting Categeory
-- Added Transformation Category
-- Reworked how integrations work, they are now json based
-- Integration to Untitled Duck Mod
-- Integration to [Let's Do] WilderNature
-- Swap location of extra input and input slot
-
-1.6.2:
-- Update icon to match 256px
-
-1.6.0:
-- Argentine Spanish (es_ar) by [Texaliuz](https://github.com/Texaliuz)
+2.0.1:
+- Update ru_ru.json by [mpustovoi](https://github.com/mpustovoi)
