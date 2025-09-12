@@ -149,15 +149,15 @@ public class EMIUtils {
         widgets.addTexture(BOTTOM, mobSlotX + 37, mobSlotY + 81);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, WidgetHolder widgets, ForgeRecipe recipe) {
+    public static void drawMobNameAndEntity(EntityType<?> entityType, WidgetHolder widgets, FabricRecipe recipe) {
         drawMobNameAndEntity(entityType, widgets, recipe, 148, 0);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, WidgetHolder widgets, ForgeRecipe recipe, int availableWidth, int extraX) {
+    public static void drawMobNameAndEntity(EntityType<?> entityType, WidgetHolder widgets, FabricRecipe recipe, int availableWidth, int extraX) {
         drawMobNameAndEntity(entityType, widgets, recipe, availableWidth, extraX, true, null);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, WidgetHolder widgets, ForgeRecipe recipe, int availableWidth, int extraX, boolean input, DyeColor color) {
+    public static void drawMobNameAndEntity(EntityType<?> entityType, WidgetHolder widgets, FabricRecipe recipe, int availableWidth, int extraX, boolean input, DyeColor color) {
         if (entityType != null) {
             Font font = Minecraft.getInstance().font;
             Component entityName = Component.translatable(entityType.getDescriptionId());

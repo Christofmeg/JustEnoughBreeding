@@ -75,15 +75,15 @@ public class REIUtils {
         widgets.add(Widgets.createSlotBase(new Rectangle(bounds.x + 5 + mobSlotX, bounds.y + 5 + mobSlotY, 61, 81)));
     }
 
-    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, ForgeRecipe recipe) {
+    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, FabricRecipe recipe) {
         drawMobNameAndEntity(widgets, bounds, entityType, recipe, 148, 0);
     }
 
-    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, ForgeRecipe recipe, int availableWidth, int extraX) {
+    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, FabricRecipe recipe, int availableWidth, int extraX) {
         drawMobNameAndEntity(widgets, bounds, entityType, recipe, availableWidth, extraX, true, null);
     }
 
-    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, ForgeRecipe recipe, int availableWidth, int extraX, boolean input, DyeColor color) {
+    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, FabricRecipe recipe, int availableWidth, int extraX, boolean input, DyeColor color) {
 
         if (entityType != null) {
             Font font = Minecraft.getInstance().font;

@@ -96,15 +96,15 @@ public class JEIUtils {
         bigSlot.draw(stack, mobSlotX + 35, mobSlotY + 55, 18, 0, 22, 0);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, ForgeRecipe recipe) {
+    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, FabricRecipe recipe) {
         drawMobNameAndEntity(entityType, stack, mouseX, recipe, 148, 0);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, ForgeRecipe recipe, int availableWidth, int extraX) {
+    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, FabricRecipe recipe, int availableWidth, int extraX) {
         drawMobNameAndEntity(entityType, stack, mouseX, recipe, availableWidth, extraX, true, null);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, ForgeRecipe recipe, int availableWidth, int extraX, boolean input, DyeColor color) {
+    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, FabricRecipe recipe, int availableWidth, int extraX, boolean input, DyeColor color) {
         if (entityType != null) {
             Font font = Minecraft.getInstance().font;
             Component entityName = Component.translatable(entityType.getDescriptionId());

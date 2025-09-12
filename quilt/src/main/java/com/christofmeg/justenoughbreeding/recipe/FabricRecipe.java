@@ -7,7 +7,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.level.Level;
 
-public class ForgeRecipe extends BaseRecipe {
+public class FabricRecipe extends BaseRecipe {
 
     private LivingEntity currentLivingEntity = null;
     private long lastEntityCreationTime = 0;

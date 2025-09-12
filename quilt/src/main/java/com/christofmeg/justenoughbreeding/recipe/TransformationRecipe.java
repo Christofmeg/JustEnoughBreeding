@@ -23,7 +23,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TransformationRecipe extends ForgeRecipe {
+public class TransformationRecipe extends FabricRecipe {
 
     private LivingEntity inputEntity = null;
     private LivingEntity outputEntity = null;
