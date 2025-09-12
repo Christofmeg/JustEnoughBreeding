@@ -13,7 +13,7 @@ import net.minecraft.world.item.crafting.RecipeType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class TrustingRecipe extends FabricRecipe {
+public class TrustingRecipe extends BaseRecipe {
 
     public final EntityType<?> entityType;
     public Ingredient inputStack;

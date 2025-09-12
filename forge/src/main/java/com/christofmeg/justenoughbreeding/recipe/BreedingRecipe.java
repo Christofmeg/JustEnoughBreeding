@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("removal")
-public class BreedingRecipe extends ForgeRecipe {
+public class BreedingRecipe extends BaseRecipe {
 
     public final EntityType<?> entityType;
     public Ingredient inputStack;

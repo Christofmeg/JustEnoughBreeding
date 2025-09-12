@@ -2,8 +2,9 @@ package com.christofmeg.justenoughbreeding.emi;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
+import com.christofmeg.justenoughbreeding.client.ClientUtils;
 import com.christofmeg.justenoughbreeding.recipe.*;
-import com.christofmeg.justenoughbreeding.utils.CommonUtils;
+import com.christofmeg.justenoughbreeding.utils.CommonClientUtils;
 import dev.emi.emi.EmiPort;
 import dev.emi.emi.EmiRenderHelper;
 import dev.emi.emi.api.EmiRegistry;
@@ -149,15 +150,15 @@ public class EMIUtils {
         widgets.addTexture(BOTTOM, mobSlotX + 37, mobSlotY + 81);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, WidgetHolder widgets, FabricRecipe recipe) {
+    public static void drawMobNameAndEntity(EntityType<?> entityType, WidgetHolder widgets, BaseRecipe recipe) {
         drawMobNameAndEntity(entityType, widgets, recipe, 148, 0);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, WidgetHolder widgets, FabricRecipe recipe, int availableWidth, int extraX) {
+    public static void drawMobNameAndEntity(EntityType<?> entityType, WidgetHolder widgets, BaseRecipe recipe, int availableWidth, int extraX) {
         drawMobNameAndEntity(entityType, widgets, recipe, availableWidth, extraX, true, null);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, WidgetHolder widgets, FabricRecipe recipe, int availableWidth, int extraX, boolean input, DyeColor color) {
+    public static void drawMobNameAndEntity(EntityType<?> entityType, WidgetHolder widgets, BaseRecipe recipe, int availableWidth, int extraX, boolean input, DyeColor color) {
         if (entityType != null) {
             Font font = Minecraft.getInstance().font;
             Component entityName = Component.translatable(entityType.getDescriptionId());
@@ -201,10 +202,10 @@ public class EMIUtils {
 
                 @Override
                 public void render(@NotNull GuiGraphics stack, int mouseX, int mouseY, float delta) {
-                    LivingEntity currentLivingEntity = recipe instanceof TransformationRecipe ? ((TransformationRecipe) recipe).doRendering(entityType, input, color) : recipe.doRendering(entityType);
+                    LivingEntity currentLivingEntity = recipe instanceof TransformationRecipe ? ClientUtils.doRendering(entityType, input, color) : ClientUtils.doRendering(entityType);
 
                     if (currentLivingEntity != null) {
-                        CommonUtils.renderEntity(stack.pose(), mouseX, currentLivingEntity, 31 + extraX, 89);
+                        CommonClientUtils.renderEntity(stack.pose(), mouseX, currentLivingEntity, 31 + extraX, 89);
                     }
                 }
             });

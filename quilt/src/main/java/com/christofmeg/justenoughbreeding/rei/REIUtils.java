@@ -1,8 +1,9 @@
 package com.christofmeg.justenoughbreeding.rei;
 
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
+import com.christofmeg.justenoughbreeding.client.ClientUtils;
 import com.christofmeg.justenoughbreeding.recipe.*;
-import com.christofmeg.justenoughbreeding.utils.CommonUtils;
+import com.christofmeg.justenoughbreeding.utils.CommonClientUtils;
 import me.shedaniel.math.Point;
 import me.shedaniel.math.Rectangle;
 import me.shedaniel.rei.api.client.gui.widgets.Widget;
@@ -75,15 +76,15 @@ public class REIUtils {
         widgets.add(Widgets.createSlotBase(new Rectangle(bounds.x + 5 + mobSlotX, bounds.y + 5 + mobSlotY, 61, 81)));
     }
 
-    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, FabricRecipe recipe) {
+    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, BaseRecipe recipe) {
         drawMobNameAndEntity(widgets, bounds, entityType, recipe, 148, 0);
     }
 
-    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, FabricRecipe recipe, int availableWidth, int extraX) {
+    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, BaseRecipe recipe, int availableWidth, int extraX) {
         drawMobNameAndEntity(widgets, bounds, entityType, recipe, availableWidth, extraX, true, null);
     }
 
-    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, FabricRecipe recipe, int availableWidth, int extraX, boolean input, DyeColor color) {
+    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, BaseRecipe recipe, int availableWidth, int extraX, boolean input, DyeColor color) {
 
         if (entityType != null) {
             Font font = Minecraft.getInstance().font;
@@ -120,10 +121,10 @@ public class REIUtils {
                 widgets.add(Widgets.createLabel(new Point(bounds.x + extraX + 5, bounds.y + 5), abbreviatedEntityName).leftAligned().noShadow().color(0xFF404040, 0xFFBBBBBB));
             }
 
-            LivingEntity currentLivingEntity = recipe instanceof TransformationRecipe ? ((TransformationRecipe) recipe).doRendering(entityType, input, color) : recipe.doRendering(entityType);
+            LivingEntity currentLivingEntity = recipe instanceof TransformationRecipe ? ClientUtils.doRendering(entityType, input, color) : ClientUtils.doRendering(entityType);
             widgets.add(Widgets.withTranslate(Widgets.createDrawableWidget((graphics, mouseX, mouseY, v) -> {
                         if (currentLivingEntity != null) {
-                            CommonUtils.renderEntity(graphics.pose(), mouseX, currentLivingEntity, 31 + extraX, 89);
+                            CommonClientUtils.renderEntity(graphics.pose(), mouseX, currentLivingEntity, 31 + extraX, 89);
                         }
                     }
             ), bounds.x + 5, bounds.y + 5, 0));

@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public class TemperRecipe extends FabricRecipe {
+public class TemperRecipe extends BaseRecipe {
 
     public final EntityType<?> entityType;
     public Ingredient inputStack;

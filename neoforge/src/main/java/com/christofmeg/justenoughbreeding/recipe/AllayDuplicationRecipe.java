@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("removal")
-public class AllayDuplicationRecipe extends ForgeRecipe {
+public class AllayDuplicationRecipe extends BaseRecipe {
 
     public final EntityType<?> entityType;
     public Ingredient inputStack;

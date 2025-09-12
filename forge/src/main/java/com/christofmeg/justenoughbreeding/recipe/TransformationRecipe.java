@@ -4,19 +4,13 @@ import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.utils.Utils;
 import com.google.gson.JsonObject;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.TamableAnimal;
-import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.Level;
-import net.minecraftforge.fml.ModList;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -24,11 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("removal")
-public class TransformationRecipe extends ForgeRecipe {
+public class TransformationRecipe extends BaseRecipe {
 
-    private LivingEntity inputEntity = null;
-    private LivingEntity outputEntity = null;
-    private long lastEntityCreationTime = 0;
     public final EntityType<?> inputEntityType;
     public Ingredient inputStack;
     public Ingredient inputSpawnEgg;
@@ -55,61 +46,6 @@ public class TransformationRecipe extends ForgeRecipe {
         this.fileName = fileName;
         this.inputColor = inputColor;
         this.outputColor = outputColor;
-    }
-
-    public LivingEntity doRendering(EntityType<?> entityType, boolean input, DyeColor color) {
-        long currentTime = System.currentTimeMillis();
-        Level level = Minecraft.getInstance().level;
-
-        if (input) {
-            if (level != null) {
-                if (inputEntity == null) {
-                    inputEntity = (LivingEntity) entityType.create(level);
-                    lastEntityCreationTime = currentTime;
-                }
-                if (currentTime - lastEntityCreationTime >= ENTITY_CREATION_INTERVAL) {
-                    if (!ModList.get().isLoaded("entity_model_features") && !ModList.get().isLoaded("optifine")) {
-                        inputEntity = (LivingEntity) entityType.create(level);
-                        lastEntityCreationTime = currentTime;
-                    }
-                }
-            }
-            if (inputEntity != null) {
-                if (inputEntity instanceof TamableAnimal tamableAnimal) {
-                    tamableAnimal.setTame(true);
-                }
-            }
-            if (color != null) {
-                if (inputEntity instanceof Sheep sheep) {
-                    sheep.setColor(color);
-                }
-            }
-            return inputEntity;
-        } else {
-            if (level != null) {
-                if (outputEntity == null) {
-                    outputEntity = (LivingEntity) entityType.create(level);
-                    lastEntityCreationTime = currentTime;
-                }
-                if (currentTime - lastEntityCreationTime >= ENTITY_CREATION_INTERVAL) {
-                    if (!ModList.get().isLoaded("entity_model_features") && !ModList.get().isLoaded("optifine")) {
-                        outputEntity = (LivingEntity) entityType.create(level);
-                        lastEntityCreationTime = currentTime;
-                    }
-                }
-            }
-            if (outputEntity != null) {
-                if (outputEntity instanceof TamableAnimal tamableAnimal) {
-                    tamableAnimal.setTame(true);
-                }
-            }
-            if (color != null) {
-                if (outputEntity instanceof Sheep sheep) {
-                    sheep.setColor(color);
-                }
-            }
-            return outputEntity;
-        }
     }
 
     @Override

@@ -1,8 +1,9 @@
 package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
+import com.christofmeg.justenoughbreeding.client.ClientUtils;
 import com.christofmeg.justenoughbreeding.recipe.*;
-import com.christofmeg.justenoughbreeding.utils.CommonUtils;
+import com.christofmeg.justenoughbreeding.utils.CommonClientUtils;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
@@ -96,15 +97,15 @@ public class JEIUtils {
         bigSlot.draw(stack, mobSlotX + 35, mobSlotY + 55, 18, 0, 22, 0);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, ForgeRecipe recipe) {
+    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, BaseRecipe recipe) {
         drawMobNameAndEntity(entityType, stack, mouseX, recipe, 148, 0);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, ForgeRecipe recipe, int availableWidth, int extraX) {
+    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, BaseRecipe recipe, int availableWidth, int extraX) {
         drawMobNameAndEntity(entityType, stack, mouseX, recipe, availableWidth, extraX, true, null);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, ForgeRecipe recipe, int availableWidth, int extraX, boolean input, DyeColor color) {
+    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, BaseRecipe recipe, int availableWidth, int extraX, boolean input, DyeColor color) {
         if (entityType != null) {
             Font font = Minecraft.getInstance().font;
             Component entityName = Component.translatable(entityType.getDescriptionId());
@@ -140,9 +141,9 @@ public class JEIUtils {
                 stack.drawString(font, abbreviatedEntityName, extraX, 0, DyeColor.BLACK.getTextColor(), false);
             }
 
-            LivingEntity currentLivingEntity = recipe instanceof TransformationRecipe ? ((TransformationRecipe) recipe).doRendering(entityType, input, color) : recipe.doRendering(entityType);
+            LivingEntity currentLivingEntity = recipe instanceof TransformationRecipe ? ClientUtils.doRendering(entityType, input, color) : ClientUtils.doRendering(entityType);
             if (currentLivingEntity != null) {
-                CommonUtils.renderEntity(stack.pose(), mouseX, currentLivingEntity, 31 + extraX, 89);
+                CommonClientUtils.renderEntity(stack.pose(), mouseX, currentLivingEntity, 31 + extraX, 89);
             }
         }
     }

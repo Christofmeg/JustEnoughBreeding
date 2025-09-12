@@ -27,7 +27,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @SuppressWarnings("removal")
-public class TemperRecipe extends ForgeRecipe {
+public class TemperRecipe extends BaseRecipe {
 
     public final EntityType<?> entityType;
     public Ingredient inputStack;
