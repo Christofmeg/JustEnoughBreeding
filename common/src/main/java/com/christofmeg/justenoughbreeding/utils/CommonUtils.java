@@ -10,6 +10,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +44,10 @@ public class CommonUtils {
 
     public static String makeKey(EntityType<?> type, boolean input, DyeColor color) {
         return type.toString() + ":" + input + ":" + (color != null ? color.getName() : "none");
+    }
+
+    public static @NotNull Ingredient safe(Ingredient ing) {
+        return ing == null ? Ingredient.EMPTY : ing;
     }
 
 }
