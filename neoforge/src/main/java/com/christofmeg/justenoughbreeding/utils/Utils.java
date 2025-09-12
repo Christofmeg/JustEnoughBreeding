@@ -13,43 +13,17 @@ import net.minecraft.nbt.TagParser;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.ForgeSpawnEggItem;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
 @SuppressWarnings("removal")
 public class Utils {
-
-    public static String getEdibleMeatItemNames(boolean includeRottenFlesh) {
-        List<String> edibleMeatItemNames = new ArrayList<>();
-
-        for (ResourceLocation key : ForgeRegistries.ITEMS.getKeys()) {
-            Item item = ForgeRegistries.ITEMS.getValue(key);
-            if (item != null) {
-                FoodProperties foodProperties = item.getFoodProperties(item.getDefaultInstance(), null);
-                if (includeRottenFlesh) {
-                    if (foodProperties != null && item.isEdible() && foodProperties.isMeat()) {
-                        edibleMeatItemNames.add(key.toString());
-                    }
-                }
-                else {
-                    if (foodProperties != null && item.isEdible() && foodProperties.isMeat() && item != Items.ROTTEN_FLESH) {
-                        edibleMeatItemNames.add(key.toString());
-                    }
-                }
-            }
-        }
-
-        return String.join(", ", edibleMeatItemNames);
-    }
 
     public static Ingredient createCombinedIngredient(String mobIngredients) {
         String[] ingredientIds = mobIngredients.split(",");
