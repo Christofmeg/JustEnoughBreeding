@@ -1,3 +1,4 @@
+// File: src/main/java/com/christofmeg/justenoughbreeding/emi/EMIUtils.java
 package com.christofmeg.justenoughbreeding.emi;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
@@ -30,8 +31,9 @@ import java.util.List;
 public class EMIUtils {
 
     public static void registerRecipes(EmiRegistry registration) {
+        // Allay Duplication
         List<AllayDuplicationRecipe> allayDuplicationRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.ALLAY_DUPLICATION_PROVIDER_TYPE.get()));
-        allayDuplicationRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID));
+        allayDuplicationRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
         for (AllayDuplicationRecipe recipe : allayDuplicationRecipes) {
             if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
                 registration.addRecipe(
@@ -43,8 +45,9 @@ public class EMIUtils {
             }
         }
 
+        // Breeding
         List<BreedingRecipe> breedingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.BREEDING_PROVIDER_TYPE.get()));
-        breedingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID));
+        breedingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
         for (BreedingRecipe recipe : breedingRecipes) {
             if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
                 registration.addRecipe(
@@ -56,8 +59,9 @@ public class EMIUtils {
             }
         }
 
+        // Taming
         List<TamingRecipe> tamingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TAMING_PROVIDER_TYPE.get()));
-        tamingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID));
+        tamingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
         for (TamingRecipe recipe : tamingRecipes) {
             if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
                 registration.addRecipe(
@@ -69,8 +73,9 @@ public class EMIUtils {
             }
         }
 
+        // Temper (fixed sort target)
         List<TemperRecipe> temperRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TEMPER_PROVIDER_TYPE.get()));
-        tamingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID));
+        temperRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
         for (TemperRecipe recipe : temperRecipes) {
             if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
                 registration.addRecipe(
@@ -82,8 +87,9 @@ public class EMIUtils {
             }
         }
 
+        // Transformation
         List<TransformationRecipe> transformationRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE.get()));
-        transformationRecipes.sort(Comparator.comparing(r -> r.outputEntityType == null ? r.fileName: r.outputEntityType.toShortString()));
+        transformationRecipes.sort(Comparator.comparing(r -> r.outputEntityType == null ? r.fileName : r.outputEntityType.toShortString()));
         for (TransformationRecipe recipe : transformationRecipes) {
             if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.inputEntityType != null && recipe.outputEntityType != null) {
                 registration.addRecipe(
@@ -95,8 +101,9 @@ public class EMIUtils {
             }
         }
 
+        // Trusting
         List<TrustingRecipe> trustingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TRUSTING_PROVIDER_TYPE.get()));
-        trustingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID));
+        trustingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
         for (TrustingRecipe recipe : trustingRecipes) {
             if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
                 registration.addRecipe(
@@ -171,7 +178,7 @@ public class EMIUtils {
                 } else if (breedingRecipe.animalTrusting != null && breedingRecipe.animalTrusting) {
                     Component trusting = Component.translatable("translation.justenoughbreeding.trusting");
                     entityNameString += " (" + trusting.getString() + ")";
-                } else if (breedingRecipe.jsonModID.equals("tfc")) {
+                } else if ("tfc".equals(breedingRecipe.jsonModID)) {
                     Component familiarity = Component.translatable("tfc.jade.familiarity");
                     String tfc = familiarity.getString().replaceAll(":[^:]*$", "");
                     entityNameString += " (" + tfc + " > 30" + ")";
@@ -183,11 +190,11 @@ public class EMIUtils {
                 }
             }
 
-            int stringWidth = font.width(entityNameString); // Measure the width of the string in pixels
+            int stringWidth = font.width(entityNameString);
             if (stringWidth > availableWidth) {
-                float pixelWidthPerCharacter = (float) stringWidth / entityNameString.length();
-                int maxCharacters = (int) (availableWidth / pixelWidthPerCharacter);
-                entityNameString = entityNameString.substring(0, maxCharacters);
+                float pixelWidthPerCharacter = (float) stringWidth / Math.max(1, entityNameString.length());
+                int maxCharacters = Math.max(0, (int) (availableWidth / pixelWidthPerCharacter));
+                entityNameString = entityNameString.substring(0, Math.min(entityNameString.length(), maxCharacters));
             }
 
             if (!entityNameString.isEmpty()) {
@@ -197,21 +204,16 @@ public class EMIUtils {
 
             widgets.add(new Widget() {
                 @Override
-                public Bounds getBounds() {
-                    return new Bounds(100, 0, 60, 80);
-                }
+                public Bounds getBounds() { return new Bounds(100, 0, 60, 80); }
 
                 @Override
                 public void render(@NotNull GuiGraphics stack, int mouseX, int mouseY, float delta) {
                     LivingEntity currentLivingEntity = recipe instanceof TransformationRecipe ? ClientUtils.doRendering(entityType, input, color) : ClientUtils.doRendering(entityType);
-
                     if (currentLivingEntity != null) {
                         CommonClientUtils.renderEntity(stack.pose(), mouseX, currentLivingEntity, 31 + extraX, 89);
                     }
                 }
             });
-
         }
     }
-
 }

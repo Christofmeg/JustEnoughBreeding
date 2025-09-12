@@ -15,10 +15,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.DyeColor;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class JEIUtils {
 
@@ -26,7 +23,7 @@ public class JEIUtils {
         ClientLevel clientLevel = Minecraft.getInstance().level;
         if (clientLevel != null) {
             List<AllayDuplicationRecipe> allayDuplicationRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.ALLAY_DUPLICATION_PROVIDER_TYPE.get()));
-            allayDuplicationRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID));
+            allayDuplicationRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
             for (AllayDuplicationRecipe recipe : allayDuplicationRecipes) {
                 if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
                     registration.addRecipes(AllayDuplicationCategory.TYPE, Collections.singletonList(recipe));
@@ -34,7 +31,7 @@ public class JEIUtils {
             }
 
             List<BreedingRecipe> breedingRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.BREEDING_PROVIDER_TYPE.get()));
-            breedingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID));
+            breedingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
             for (BreedingRecipe recipe : breedingRecipes) {
                 if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
                     registration.addRecipes(BreedingCategory.TYPE, Collections.singletonList(recipe));
@@ -42,7 +39,7 @@ public class JEIUtils {
             }
 
             List<TamingRecipe> tamingRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TAMING_PROVIDER_TYPE.get()));
-            tamingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID));
+            tamingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
             for (TamingRecipe recipe : tamingRecipes) {
                 if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
                     registration.addRecipes(TamingCategory.TYPE, Collections.singletonList(recipe));
@@ -50,7 +47,7 @@ public class JEIUtils {
             }
 
             List<TemperRecipe> temperRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TEMPER_PROVIDER_TYPE.get()));
-            temperRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID));
+            temperRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
             for (TemperRecipe recipe : temperRecipes) {
                 if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
                     registration.addRecipes(TemperCategory.TYPE, Collections.singletonList(recipe));
@@ -58,7 +55,7 @@ public class JEIUtils {
             }
 
             List<TransformationRecipe> transformationRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE.get()));
-            transformationRecipes.sort(Comparator.comparing(r -> r.outputEntityType == null ? r.fileName: r.outputEntityType.toShortString()));
+            transformationRecipes.sort(Comparator.comparing(r -> r.outputEntityType == null ? r.fileName : r.outputEntityType.toShortString()));
             for (TransformationRecipe recipe : transformationRecipes) {
                 if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.inputEntityType != null && recipe.outputEntityType != null) {
                     registration.addRecipes(TransformationCategory.TYPE, Collections.singletonList(recipe));
@@ -66,7 +63,7 @@ public class JEIUtils {
             }
 
             List<TrustingRecipe> trustingRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TRUSTING_PROVIDER_TYPE.get()));
-            trustingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID));
+            trustingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
             for (TrustingRecipe recipe : trustingRecipes) {
                 if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
                     registration.addRecipes(TrustingCategory.TYPE, Collections.singletonList(recipe));
@@ -117,7 +114,7 @@ public class JEIUtils {
                 } else if (breedingRecipe.animalTrusting != null && breedingRecipe.animalTrusting) {
                     Component trusting = Component.translatable("translation.justenoughbreeding.trusting");
                     entityNameString += " (" + trusting.getString() + ")";
-                } else if (breedingRecipe.jsonModID.equals("tfc")) {
+                } else if ("tfc".equals(breedingRecipe.jsonModID)) {
                     Component familiarity = Component.translatable("tfc.jade.familiarity");
                     String tfc = familiarity.getString().replaceAll(":[^:]*$", "");
                     entityNameString += " (" + tfc + " > 30" + ")";
@@ -129,11 +126,11 @@ public class JEIUtils {
                 }
             }
 
-            int stringWidth = font.width(entityNameString); // Measure the width of the string in pixels
+            int stringWidth = font.width(entityNameString);
             if (stringWidth > availableWidth) {
-                float pixelWidthPerCharacter = (float) stringWidth / entityNameString.length();
-                int maxCharacters = (int) (availableWidth / pixelWidthPerCharacter);
-                entityNameString = entityNameString.substring(0, maxCharacters);
+                float pixelWidthPerCharacter = (float) stringWidth / Math.max(1, entityNameString.length());
+                int maxCharacters = Math.max(0, (int) (availableWidth / pixelWidthPerCharacter));
+                entityNameString = entityNameString.substring(0, Math.min(entityNameString.length(), maxCharacters));
             }
 
             if (!entityNameString.isEmpty()) {
@@ -147,5 +144,4 @@ public class JEIUtils {
             }
         }
     }
-
 }
