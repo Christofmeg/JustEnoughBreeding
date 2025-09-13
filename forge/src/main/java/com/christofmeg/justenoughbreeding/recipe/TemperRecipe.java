@@ -18,7 +18,7 @@ public class TemperRecipe extends BaseRecipe {
     public final EntityType<?> entityType;
     public @NotNull Ingredient inputStack;
     public @NotNull Ingredient spawnEgg;
-    public @NotNull Ingredient extraInputStack; // EMPTY if absent
+    public @NotNull Ingredient extraInputStack;
     public final String jsonModID;
     public final String jsonAnimalID;
     public final String modFolder;

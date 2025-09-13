@@ -22,7 +22,6 @@ public class BreedingRecipe extends BaseRecipe {
     public final @Nullable Boolean needsToBeTamed;
     public @NotNull Ingredient resultItemStack;
     public @NotNull Ingredient extraInputStack;
-
     public final @Nullable Boolean animalTrusting;
     public final String jsonModID;
     public final String jsonAnimalID;
@@ -53,7 +52,6 @@ public class BreedingRecipe extends BaseRecipe {
         this.jsonAnimalID = Objects.requireNonNull(jsonAnimalID, "jsonAnimalID");
         this.modFolder = Objects.requireNonNull(modFolder, "modFolder");
         this.fileName = Objects.requireNonNull(fileName, "fileName");
-
         validateRequired();
     }
 

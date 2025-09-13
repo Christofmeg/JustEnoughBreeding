@@ -1,7 +1,7 @@
 package com.christofmeg.justenoughbreeding.client;
 
+import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -30,7 +30,7 @@ public class ClientUtils {
         long lastTime = CREATION_TIMES.getOrDefault(key, 0L);
 
         if (entity == null || (currentTime - lastTime >= ENTITY_CREATION_INTERVAL)) {
-            if (!FabricLoader.getInstance().isModLoaded("entity_model_features") && !FabricLoader.getInstance().isModLoaded("optifine")) {
+            if (!JustEnoughBreeding.isModLoaded("entity_model_features") && !JustEnoughBreeding.isModLoaded("optifine")) {
                 entity = (LivingEntity) entityType.create(level);
                 CREATION_TIMES.put(key, currentTime);
                 ENTITY_CACHE.put(key, entity);

@@ -1,5 +1,6 @@
 package com.christofmeg.justenoughbreeding.client;
 
+import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.EntityType;
@@ -8,7 +9,6 @@ import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.fml.ModList;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,7 +30,7 @@ public class ClientUtils {
         long lastTime = CREATION_TIMES.getOrDefault(key, 0L);
 
         if (entity == null || (currentTime - lastTime >= ENTITY_CREATION_INTERVAL)) {
-            if (!ModList.get().isLoaded("entity_model_features") && !ModList.get().isLoaded("optifine")) {
+            if (!JustEnoughBreeding.isModLoaded("entity_model_features") && !JustEnoughBreeding.isModLoaded("optifine")) {
                 entity = (LivingEntity) entityType.create(level);
                 CREATION_TIMES.put(key, currentTime);
                 ENTITY_CACHE.put(key, entity);

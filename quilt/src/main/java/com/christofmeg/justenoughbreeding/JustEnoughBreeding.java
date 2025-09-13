@@ -1,21 +1,23 @@
 package com.christofmeg.justenoughbreeding;
 
 import com.christofmeg.justenoughbreeding.recipe.*;
-import net.fabricmc.loader.api.FabricLoader;
+import com.christofmeg.justenoughbreeding.serializer.*;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import org.quiltmc.loader.api.ModContainer;
-import org.quiltmc.qsl.base.api.entrypoint.client.ClientModInitializer;
+import org.quiltmc.loader.api.QuiltLoader;
+import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class JustEnoughBreeding implements ClientModInitializer {
+public class JustEnoughBreeding implements ModInitializer {
 
     public static final RecipeType<AllayDuplicationRecipe> ALLAY_DUPLICATION_PROVIDER_TYPE = RecipeType.register(new ResourceLocation(CommonConstants.MOD_ID, "allay_duplication").toString());
     public static final RecipeType<BreedingRecipe> BREEDING_PROVIDER_TYPE = RecipeType.register(new ResourceLocation(CommonConstants.MOD_ID, "breeding").toString());
@@ -27,32 +29,32 @@ public class JustEnoughBreeding implements ClientModInitializer {
     public static final RecipeSerializer<AllayDuplicationRecipe> ALLAY_DUPLICATION_PROVIDER_SERIALIZER =
             Registry.register(BuiltInRegistries.RECIPE_SERIALIZER,
                     new ResourceLocation(CommonConstants.MOD_ID, "allay_duplication"),
-                    new AllayDuplicationRecipe.Serializer());
+                    new AllayDuplicationSerializer());
 
     public static final RecipeSerializer<BreedingRecipe> BREEDING_PROVIDER_SERIALIZER =
             Registry.register(BuiltInRegistries.RECIPE_SERIALIZER,
                     new ResourceLocation(CommonConstants.MOD_ID, "breeding"),
-                    new BreedingRecipe.Serializer());
+                    new BreedingSerializer());
 
     public static final RecipeSerializer<TamingRecipe> TAMING_PROVIDER_SERIALIZER =
             Registry.register(BuiltInRegistries.RECIPE_SERIALIZER,
                     new ResourceLocation(CommonConstants.MOD_ID, "taming"),
-                    new TamingRecipe.Serializer());
+                    new TamingSerializer());
 
     public static final RecipeSerializer<TemperRecipe> TEMPER_PROVIDER_SERIALIZER =
             Registry.register(BuiltInRegistries.RECIPE_SERIALIZER,
                     new ResourceLocation(CommonConstants.MOD_ID, "temper"),
-                    new TemperRecipe.Serializer());
+                    new TemperSerializer());
 
     public static final RecipeSerializer<TrustingRecipe> TRUSTING_PROVIDER_SERIALIZER =
             Registry.register(BuiltInRegistries.RECIPE_SERIALIZER,
                     new ResourceLocation(CommonConstants.MOD_ID, "trusting"),
-                    new TrustingRecipe.Serializer());
+                    new TrustingSerializer());
 
     public static final RecipeSerializer<TransformationRecipe> TRANSFORMATION_PROVIDER_SERIALIZER =
             Registry.register(BuiltInRegistries.RECIPE_SERIALIZER,
                     new ResourceLocation(CommonConstants.MOD_ID, "transformation"),
-                    new TransformationRecipe.Serializer());
+                    new TransformationSerializer());
 
     public static final List<AllayDuplicationRecipe> allayDuplicationRecipes = new ArrayList<>();
     public static final List<BreedingRecipe> breedingRecipes = new ArrayList<>();
@@ -62,7 +64,7 @@ public class JustEnoughBreeding implements ClientModInitializer {
     public static final List<TrustingRecipe> trustingRecipes = new ArrayList<>();
 
     @Override
-    public void onInitializeClient(ModContainer mod) {}
+    public void onInitialize(ModContainer container) {}
 
     public static Item getItemFromLoaderRegistries(ResourceLocation resourceLocation) {
         return BuiltInRegistries.ITEM.get(resourceLocation);
@@ -72,8 +74,16 @@ public class JustEnoughBreeding implements ClientModInitializer {
         return BuiltInRegistries.ENTITY_TYPE.get(resourceLocation);
     }
 
+    public static ResourceLocation getKeyLoaderRegistries(EntityType<?> entityType) {
+        return BuiltInRegistries.ENTITY_TYPE.getKey(entityType);
+    }
+
+    public static SpawnEggItem getSpawnEggItem(EntityType<?> entityType) {
+        return SpawnEggItem.byId(entityType);
+    }
+
     public static boolean isModLoaded(String modID) {
-        return FabricLoader.getInstance().isModLoaded(modID);
+        return QuiltLoader.isModLoaded(modID);
     }
 
 }

@@ -18,7 +18,7 @@ public class TrustingRecipe extends BaseRecipe {
     public final EntityType<?> entityType;
     public @NotNull Ingredient inputStack;
     public @NotNull Ingredient spawnEgg;
-    public @NotNull Ingredient extraInputStack; // EMPTY if absent
+    public @NotNull Ingredient extraInputStack;
     public final String jsonModID;
     public final String jsonAnimalID;
     public final String modFolder;
@@ -42,8 +42,6 @@ public class TrustingRecipe extends BaseRecipe {
         this.fileName = Objects.requireNonNull(fileName, "fileName");
         validateRequired();
     }
-
-
 
     private void validateRequired() {
         if (inputStack.isEmpty()) throw new IllegalStateException("TrustingRecipe " + getId() + " has empty input ingredient.");

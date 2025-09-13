@@ -5,8 +5,10 @@ import com.christofmeg.justenoughbreeding.serializer.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.fml.IExtensionPoint;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -66,6 +68,14 @@ public class JustEnoughBreeding {
 
     public static EntityType<?> getEntityFromLoaderRegistries(ResourceLocation resourceLocation) {
         return ForgeRegistries.ENTITY_TYPES.getValue(resourceLocation);
+    }
+
+    public static ResourceLocation getKeyLoaderRegistries(EntityType<?> entityType) {
+        return ForgeRegistries.ENTITY_TYPES.getKey(entityType);
+    }
+
+    public static SpawnEggItem getSpawnEggItem(EntityType<?> entityType) {
+        return ForgeSpawnEggItem.fromEntityType(entityType);
     }
 
     public static Boolean isModLoaded(String modID) {

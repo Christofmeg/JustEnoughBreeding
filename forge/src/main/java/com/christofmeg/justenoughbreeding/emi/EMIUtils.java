@@ -1,4 +1,3 @@
-// File: src/main/java/com/christofmeg/justenoughbreeding/emi/EMIUtils.java
 package com.christofmeg.justenoughbreeding.emi;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
@@ -31,7 +30,6 @@ import java.util.List;
 public class EMIUtils {
 
     public static void registerRecipes(EmiRegistry registration) {
-        // Allay Duplication
         List<AllayDuplicationRecipe> allayDuplicationRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.ALLAY_DUPLICATION_PROVIDER_TYPE.get()));
         allayDuplicationRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
         for (AllayDuplicationRecipe recipe : allayDuplicationRecipes) {
@@ -45,7 +43,6 @@ public class EMIUtils {
             }
         }
 
-        // Breeding
         List<BreedingRecipe> breedingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.BREEDING_PROVIDER_TYPE.get()));
         breedingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
         for (BreedingRecipe recipe : breedingRecipes) {
@@ -59,7 +56,6 @@ public class EMIUtils {
             }
         }
 
-        // Taming
         List<TamingRecipe> tamingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TAMING_PROVIDER_TYPE.get()));
         tamingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
         for (TamingRecipe recipe : tamingRecipes) {
@@ -73,7 +69,6 @@ public class EMIUtils {
             }
         }
 
-        // Temper (fixed sort target)
         List<TemperRecipe> temperRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TEMPER_PROVIDER_TYPE.get()));
         temperRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
         for (TemperRecipe recipe : temperRecipes) {
@@ -87,7 +82,6 @@ public class EMIUtils {
             }
         }
 
-        // Transformation
         List<TransformationRecipe> transformationRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE.get()));
         transformationRecipes.sort(Comparator.comparing(r -> r.outputEntityType == null ? r.fileName : r.outputEntityType.toShortString()));
         for (TransformationRecipe recipe : transformationRecipes) {
@@ -101,7 +95,6 @@ public class EMIUtils {
             }
         }
 
-        // Trusting
         List<TrustingRecipe> trustingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TRUSTING_PROVIDER_TYPE.get()));
         trustingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
         for (TrustingRecipe recipe : trustingRecipes) {

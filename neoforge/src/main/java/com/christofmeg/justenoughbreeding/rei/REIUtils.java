@@ -24,7 +24,7 @@ public class REIUtils {
 
     public static void registerRecipes(DisplayRegistry registration) {
         List<AllayDuplicationRecipe> allayDuplicationRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.ALLAY_DUPLICATION_PROVIDER_TYPE.get()));
-        allayDuplicationRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID));
+        allayDuplicationRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
         for (AllayDuplicationRecipe recipe : allayDuplicationRecipes) {
             if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
                 registration.add(new AllayDuplicationDisplay(recipe));
@@ -32,7 +32,7 @@ public class REIUtils {
         }
 
         List<BreedingRecipe> breedingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.BREEDING_PROVIDER_TYPE.get()));
-        breedingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID));
+        breedingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
         for (BreedingRecipe recipe : breedingRecipes) {
             if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
                 registration.add(new BreedingDisplay(recipe));
@@ -40,7 +40,7 @@ public class REIUtils {
         }
 
         List<TamingRecipe> tamingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TAMING_PROVIDER_TYPE.get()));
-        tamingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID));
+        tamingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
         for (TamingRecipe recipe : tamingRecipes) {
             if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
                 registration.add(new TamingDisplay(recipe));
@@ -48,7 +48,7 @@ public class REIUtils {
         }
 
         List<TemperRecipe> temperRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TEMPER_PROVIDER_TYPE.get()));
-        temperRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID));
+        temperRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
         for (TemperRecipe recipe : temperRecipes) {
             if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
                 registration.add(new TemperDisplay(recipe));
@@ -56,7 +56,7 @@ public class REIUtils {
         }
 
         List<TransformationRecipe> transformationRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE.get()));
-        transformationRecipes.sort(Comparator.comparing(r -> r.outputEntityType == null ? r.fileName: r.outputEntityType.toShortString()));
+        transformationRecipes.sort(Comparator.comparing(r -> r.outputEntityType == null ? r.fileName : r.outputEntityType.toShortString()));
         for (TransformationRecipe recipe : transformationRecipes) {
             if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.inputEntityType != null && recipe.outputEntityType != null) {
                 registration.add(new TransformationDisplay(recipe));
@@ -64,7 +64,7 @@ public class REIUtils {
         }
 
         List<TrustingRecipe> trustingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TRUSTING_PROVIDER_TYPE.get()));
-        trustingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID));
+        trustingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
         for (TrustingRecipe recipe : trustingRecipes) {
             if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
                 registration.add(new TrustingDisplay(recipe));
@@ -85,7 +85,6 @@ public class REIUtils {
     }
 
     public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, BaseRecipe recipe, int availableWidth, int extraX, boolean input, DyeColor color) {
-
         if (entityType != null) {
             Font font = Minecraft.getInstance().font;
             Component entityName = Component.translatable(entityType.getDescriptionId());
@@ -97,7 +96,7 @@ public class REIUtils {
                 } else if (breedingRecipe.animalTrusting != null && breedingRecipe.animalTrusting) {
                     Component trusting = Component.translatable("translation.justenoughbreeding.trusting");
                     entityNameString += " (" + trusting.getString() + ")";
-                } else if (breedingRecipe.jsonModID.equals("tfc")) {
+                } else if ("tfc".equals(breedingRecipe.jsonModID)) {
                     Component familiarity = Component.translatable("tfc.jade.familiarity");
                     String tfc = familiarity.getString().replaceAll(":[^:]*$", "");
                     entityNameString += " (" + tfc + " > 30" + ")";
@@ -109,11 +108,11 @@ public class REIUtils {
                 }
             }
 
-            int stringWidth = font.width(entityNameString); // Measure the width of the string in pixels
+            int stringWidth = font.width(entityNameString);
             if (stringWidth > availableWidth) {
-                float pixelWidthPerCharacter = (float) stringWidth / entityNameString.length();
-                int maxCharacters = (int) (availableWidth / pixelWidthPerCharacter);
-                entityNameString = entityNameString.substring(0, maxCharacters);
+                float pixelWidthPerCharacter = (float) stringWidth / Math.max(1, entityNameString.length());
+                int maxCharacters = Math.max(0, (int) (availableWidth / pixelWidthPerCharacter));
+                entityNameString = entityNameString.substring(0, Math.min(entityNameString.length(), maxCharacters));
             }
 
             if (!entityNameString.isEmpty()) {
@@ -130,5 +129,4 @@ public class REIUtils {
             ), bounds.x + 5, bounds.y + 5, 0));
         }
     }
-
 }
