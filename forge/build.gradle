@@ -91,6 +91,8 @@ dependencies {
 //    runtimeOnly fg.deobf("maven.modrinth:tag-tooltips:a0H0FGkF")
 //    runtimeOnly fg.deobf("curse.maven:item-nbt-viewer-514135:4578522")
 
+    runtimeOnly fg.deobf("curse.maven:prehistoric-fauna-311600:6302778")
+
 }
 
 tasks.withType(JavaCompile).configureEach {

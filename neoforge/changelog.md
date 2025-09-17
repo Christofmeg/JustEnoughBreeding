@@ -1,6 +1,3 @@
-2.1.0:
-- Fix [#35](https://github.com/Christofmeg/JustEnoughBreeding/issues/35)
-- Fix [#34](https://github.com/Christofmeg/JustEnoughBreeding/issues/34)
-
-2.0.1:
-- Update ru_ru.json by [mpustovoi](https://github.com/mpustovoi)
+2.1.1:
+- Fix [#36](https://github.com/Christofmeg/JustEnoughBreeding/issues/36)
+- Reduce log spam, when skipping integrations to mods that are not loaded.

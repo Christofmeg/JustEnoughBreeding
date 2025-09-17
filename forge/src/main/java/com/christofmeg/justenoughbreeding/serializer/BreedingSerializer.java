@@ -17,6 +17,9 @@ public class BreedingSerializer implements RecipeSerializer<BreedingRecipe> {
     @Override
     public @NotNull BreedingRecipe fromJson(@NotNull ResourceLocation jsonPath, @NotNull JsonObject json) {
         BreedingRecipe r = (BreedingRecipe) Utils.readJsonContents(jsonPath, json, "breeding");
+        if (r == null) {
+            return null;
+        }
         if (r.entityType == null) {
             throw new com.google.gson.JsonParseException("BreedingRecipe missing entityType: " + jsonPath);
         }

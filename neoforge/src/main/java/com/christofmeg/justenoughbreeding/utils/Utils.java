@@ -113,10 +113,8 @@ public class Utils {
             modFolder = jsonPath.getPath().split("/")[1];
         }
 
-        // If a required mod isn't present, skip the file cleanly with a clear message.
         if (!JustEnoughBreeding.isModLoaded(modFolder) || !JustEnoughBreeding.isModLoaded(jsonModID)) {
-            throw new JsonParseException("Skipping recipe because mod not loaded: file=" + jsonPath +
-                    " mods=" + modFolder + "," + jsonModID);
+            return null;
         }
 
         EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(new ResourceLocation(jsonModID, jsonAnimalID));

@@ -44,7 +44,7 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
         }
 
         if (!JustEnoughBreeding.isModLoaded(modFolder) || !JustEnoughBreeding.isModLoaded(modID)) {
-            throw new JsonParseException("Skipping Temper recipe because mod not loaded: file=" + jsonPath + " mods=" + modFolder + "," + modID);
+            return null;
         }
 
         EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(new ResourceLocation(modID, mobName));
@@ -94,6 +94,9 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
                 fileName
         );
         JustEnoughBreeding.temperRecipes.add(newRecipe);
+        if (newRecipe == null) {
+            return null;
+        }
         return newRecipe;
     }
 

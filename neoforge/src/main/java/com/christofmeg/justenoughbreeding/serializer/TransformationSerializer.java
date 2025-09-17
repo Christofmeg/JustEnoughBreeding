@@ -57,7 +57,7 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
         DyeColor inputColor = buf.readBoolean() ? DyeColor.byId(buf.readVarInt()) : null;
         DyeColor outputColor = buf.readBoolean() ? DyeColor.byId(buf.readVarInt()) : null;
 
-        return new TransformationRecipe(
+        TransformationRecipe r = new TransformationRecipe(
                 inputEntityType,
                 inputStack,
                 inputSpawnEgg,
@@ -71,6 +71,10 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                 inputColor,
                 outputColor
         );
+        if (r == null) {
+            return null;
+        }
+        return r;
     }
 
     @Override
@@ -109,7 +113,7 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
             modFolder = jsonPath.getPath().split("/")[1];
         }
         if (!JustEnoughBreeding.isModLoaded(modFolder) || !JustEnoughBreeding.isModLoaded(jsonModID)) {
-            throw new JsonParseException("Skipping Transformation recipe because mod not loaded: file=" + jsonPath + " mods=" + modFolder + "," + jsonModID);
+            return null;
         }
 
         List<Ingredient> inputIngredients = new ArrayList<>();
