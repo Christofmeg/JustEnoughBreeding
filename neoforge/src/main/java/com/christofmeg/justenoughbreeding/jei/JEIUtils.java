@@ -11,12 +11,17 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.DyeColor;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
+@SuppressWarnings("removal")
 public class JEIUtils {
 
     public static void registerRecipes(IRecipeRegistration registration) {
@@ -73,25 +78,40 @@ public class JEIUtils {
     }
 
     public static void drawMobSlot(int mobSlotX, int mobSlotY, IDrawableStatic bigSlot, GuiGraphics stack) {
-        bigSlot.draw(stack, mobSlotX, mobSlotY, 0, 1, 0, 1);
-        bigSlot.draw(stack, mobSlotX + 18, mobSlotY, 0, 1, 1, 1);
-        bigSlot.draw(stack, mobSlotX + 32, mobSlotY, 0, 1, 1, 1);
-        bigSlot.draw(stack, mobSlotX + 35, mobSlotY, 0, 1, 22, 0);
+        // Left
+        draw(bigSlot, stack, mobSlotX, mobSlotY, bigSlot.getHeight(), 0, 0, 1, 25);
+        draw(bigSlot, stack, mobSlotX, mobSlotY + 25, bigSlot.getHeight(), 0, 0, 1, 25);
+        draw(bigSlot, stack, mobSlotX, mobSlotY + 50, bigSlot.getHeight(), 0, 0, 1, 25);
+        draw(bigSlot, stack, mobSlotX, mobSlotY + 55, bigSlot.getHeight(), 0, 20, 1, 6);
 
-        bigSlot.draw(stack, mobSlotX, mobSlotY + 24, 1, 1, 0, 1);
-        bigSlot.draw(stack, mobSlotX + 18, mobSlotY + 24, 1, 1, 1, 1);
-        bigSlot.draw(stack, mobSlotX + 32, mobSlotY + 24, 1, 1, 1, 1);
-        bigSlot.draw(stack, mobSlotX + 35, mobSlotY + 24, 1, 1, 22, 0);
+        // Right
+        draw(bigSlot, stack, mobSlotX + 35, mobSlotY, bigSlot.getHeight(), 25, 0, 1, 25);
+        draw(bigSlot, stack, mobSlotX + 35, mobSlotY + 24, bigSlot.getHeight(), 25, 1, 1, 25);
+        draw(bigSlot, stack, mobSlotX + 35, mobSlotY + 49, bigSlot.getHeight(), 25, 1, 1, 25);
+        draw(bigSlot, stack, mobSlotX + 35, mobSlotY + 55, bigSlot.getHeight(), 25, 19, 1, 6);
 
-        bigSlot.draw(stack, mobSlotX, mobSlotY + 48, 1, 1, 0, 1);
-        bigSlot.draw(stack, mobSlotX + 18, mobSlotY + 48, 1, 1, 1, 1);
-        bigSlot.draw(stack, mobSlotX + 32, mobSlotY + 48, 1, 1, 1, 1);
-        bigSlot.draw(stack, mobSlotX + 35, mobSlotY + 48, 1, 1, 22, 0);
+        // Top
+        draw(bigSlot, stack, mobSlotX, mobSlotY, bigSlot.getHeight(), 1, 0, 24, 1);
+        draw(bigSlot, stack, mobSlotX + 24, mobSlotY, bigSlot.getHeight(), 1, 0, 24, 1);
+        draw(bigSlot, stack, mobSlotX + 35, mobSlotY, bigSlot.getHeight(), 14, 0, 11, 1);
 
-        bigSlot.draw(stack, mobSlotX, mobSlotY + 55, 18, 0, 0, 1);
-        bigSlot.draw(stack, mobSlotX + 18, mobSlotY + 55, 18, 0, 1, 1);
-        bigSlot.draw(stack, mobSlotX + 32, mobSlotY + 55, 18, 0, 1, 1);
-        bigSlot.draw(stack, mobSlotX + 35, mobSlotY + 55, 18, 0, 22, 0);
+        // Bottom
+        draw(bigSlot, stack, mobSlotX, mobSlotY + 55, bigSlot.getHeight(), 1, 25, 24, 1);
+        draw(bigSlot, stack, mobSlotX + 24, mobSlotY + 55, bigSlot.getHeight(), 1, 25, 24, 1);
+        draw(bigSlot, stack, mobSlotX + 35, mobSlotY + 55, bigSlot.getHeight(), 14, 25, 11, 1);
+
+        int color = CommonClientUtils.getPixelColor(new ResourceLocation("jei", "textures/jei/atlas/gui/output_slot.png"), 13 ,13);
+        int startX = mobSlotX + 1;
+        int startY = mobSlotY + 1;
+        int width  = 59;
+        int height = 79;
+        CommonClientUtils.fillSolidColor(stack, startX, startY, width, height, color);
+    }
+
+    private static void draw(IDrawableStatic slot, GuiGraphics stack, int mobSlotX, int mobSlotY, int textureSize, int removeFromLeft, int removeFromTop, int selectionX, int selectionY) {
+        int removeFromBottom = textureSize - (removeFromTop + selectionY);
+        int removeFromRight = textureSize - (removeFromLeft + selectionX);
+        slot.draw(stack, mobSlotX, mobSlotY, removeFromTop, removeFromBottom, removeFromLeft, removeFromRight);
     }
 
     public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, BaseRecipe recipe) {

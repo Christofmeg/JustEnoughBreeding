@@ -110,16 +110,15 @@ public class EMIUtils {
     }
 
     public static void drawMobSlot(int mobSlotX, int mobSlotY, WidgetHolder widgets) {
-        EmiTexture TOP = new EmiTexture(EmiRenderHelper.WIDGETS, 18, 0, 25, 1);
+        EmiTexture TOP = new EmiTexture(EmiRenderHelper.WIDGETS, 19, 0, 24, 1);
         EmiTexture CORNER = new EmiTexture(EmiRenderHelper.WIDGETS, 43, 0, 1, 1);
         EmiTexture LEFT = new EmiTexture(EmiRenderHelper.WIDGETS, 18, 0, 1, 25);
         EmiTexture RIGHT = new EmiTexture(EmiRenderHelper.WIDGETS, 43, 1, 1, 25);
         EmiTexture BOTTOM = new EmiTexture(EmiRenderHelper.WIDGETS, 19, 25, 25, 1);
-        EmiTexture BACKGROUND = new EmiTexture(EmiRenderHelper.WIDGETS, 19, 1, 24, 24);
 
-        widgets.addTexture(TOP, mobSlotX + 1, mobSlotY + 1);
+        widgets.addTexture(TOP, mobSlotX + 2, mobSlotY + 1);
         widgets.addTexture(TOP, mobSlotX + 26, mobSlotY + 1);
-        widgets.addTexture(TOP, mobSlotX + 36, mobSlotY + 1);
+        widgets.addTexture(new EmiTexture(EmiRenderHelper.WIDGETS, 19, 0, 11, 1), mobSlotX + 50, mobSlotY + 1);
         widgets.addTexture(CORNER, mobSlotX + 61, mobSlotY + 1);
 
         widgets.addTexture(LEFT, mobSlotX + 1, mobSlotY + 2);
@@ -132,19 +131,15 @@ public class EMIUtils {
         widgets.addTexture(RIGHT, mobSlotX + 61, mobSlotY + 52);
         widgets.addTexture(RIGHT, mobSlotX + 61, mobSlotY + 56);
 
-        widgets.addTexture(BACKGROUND, mobSlotX + 2, mobSlotY + 2);
-        widgets.addTexture(BACKGROUND, mobSlotX + 26, mobSlotY + 2);
-        widgets.addTexture(BACKGROUND, mobSlotX + 37, mobSlotY + 2);
-        widgets.addTexture(BACKGROUND, mobSlotX + 2, mobSlotY + 26);
-        widgets.addTexture(BACKGROUND, mobSlotX + 26, mobSlotY + 26);
-        widgets.addTexture(BACKGROUND, mobSlotX + 37, mobSlotY + 26);
-        widgets.addTexture(BACKGROUND, mobSlotX + 2, mobSlotY + 50);
-        widgets.addTexture(BACKGROUND, mobSlotX + 26, mobSlotY + 50);
-        widgets.addTexture(BACKGROUND, mobSlotX + 37, mobSlotY + 50);
-        widgets.addTexture(BACKGROUND, mobSlotX + 2, mobSlotY + 57);
-        widgets.addTexture(BACKGROUND, mobSlotX + 26, mobSlotY + 57);
-        widgets.addTexture(BACKGROUND, mobSlotX + 37, mobSlotY + 57);
-
+        int color = CommonClientUtils.getPixelColor(new ResourceLocation("emi", "textures/gui/widgets.png"), 30 ,12);
+        int startX = mobSlotX + 1;
+        int startY = mobSlotY - 4;
+        int width  = 59;
+        int height = 79;
+        widgets.addDrawable(startX, startY, width, height, (guiGraphics, mouseX, mouseY, delta) -> {
+            guiGraphics.fill(startX, startY, startX + width, startY + height, color);
+        });
+        
         widgets.addTexture(CORNER, mobSlotX + 1, mobSlotY + 81);
         widgets.addTexture(BOTTOM, mobSlotX + 2, mobSlotY + 81);
         widgets.addTexture(BOTTOM, mobSlotX + 27, mobSlotY + 81);

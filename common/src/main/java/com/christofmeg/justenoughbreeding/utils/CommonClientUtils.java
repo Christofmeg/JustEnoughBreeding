@@ -1,10 +1,15 @@
 package com.christofmeg.justenoughbreeding.utils;
 
+import com.mojang.blaze3d.platform.NativeImage;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.resources.Resource;
+import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.entity.animal.axolotl.Axolotl;
@@ -14,6 +19,9 @@ import net.minecraft.world.entity.animal.sniffer.Sniffer;
 import net.minecraft.world.entity.monster.hoglin.Hoglin;
 import net.minecraft.world.phys.AABB;
 import org.joml.Quaternionf;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 public class CommonClientUtils {
 
@@ -89,6 +97,37 @@ public class CommonClientUtils {
         entityRenderDispatcher.setRenderShadow(true); // Re-enable rendering shadows
 
         stack.popPose(); // Pop the pose from the stack to revert transformations
+    }
+
+
+    public static int getPixelColor(ResourceLocation texture, int px, int py) {
+        ResourceManager resourceManager = Minecraft.getInstance().getResourceManager();
+        try {
+            Resource resource = resourceManager.getResource(texture).orElse(null);
+            if (resource == null) return 0xFFFFFFFF; // fallback
+
+            try (InputStream is = resource.open()) {
+                NativeImage image = NativeImage.read(is);
+
+                // flip Y (Minecraft textures are usually top-left origin)
+                int flippedY = image.getHeight() - 1 - py;
+
+                // ABGR → ARGB conversion
+                int abgr = image.getPixelRGBA(px, flippedY);
+                int a = (abgr >> 24) & 0xFF;
+                int b = (abgr >> 16) & 0xFF;
+                int g = (abgr >> 8)  & 0xFF;
+                int r = (abgr)       & 0xFF;
+                return (a << 24) | (r << 16) | (g << 8) | b;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return 0xFFFFFFFF; // fallback
+    }
+
+    public static void fillSolidColor(GuiGraphics guiGraphics, int x, int y, int width, int height, int color) {
+        guiGraphics.fill(x, y, x + width, y + height, color);
     }
 
 }
