@@ -29,21 +29,31 @@ public class ClientUtils {
         LivingEntity entity = ENTITY_CACHE.get(key);
         long lastTime = CREATION_TIMES.getOrDefault(key, 0L);
 
-        if (entity == null || (currentTime - lastTime >= ENTITY_CREATION_INTERVAL)) {
-            if (!JustEnoughBreeding.isModLoaded("entity_model_features") && !JustEnoughBreeding.isModLoaded("optifine")) {
-                entity = (LivingEntity) entityType.create(level);
-                CREATION_TIMES.put(key, currentTime);
-                ENTITY_CACHE.put(key, entity);
+        boolean refreshAllowed =
+                !JustEnoughBreeding.isModLoaded("entity_model_features") &&
+                        !JustEnoughBreeding.isModLoaded("optifine");
 
-                if (entity instanceof TamableAnimal tamable) {
-                    tamable.setTame(true);
-                }
-                if (color != null && entity instanceof Sheep sheep) {
-                    sheep.setColor(color);
-                }
-            }
+        if (entity == null) {
+            entity = createEntity(entityType, level, color);
+            ENTITY_CACHE.put(key, entity);
+            CREATION_TIMES.put(key, currentTime);
+        } else if (refreshAllowed && (currentTime - lastTime >= ENTITY_CREATION_INTERVAL)) {
+            entity = createEntity(entityType, level, color);
+            ENTITY_CACHE.put(key, entity);
+            CREATION_TIMES.put(key, currentTime);
         }
 
+        return entity;
+    }
+
+    private static LivingEntity createEntity(EntityType<?> entityType, Level level, DyeColor color) {
+        LivingEntity entity = (LivingEntity) entityType.create(level);
+        if (entity instanceof TamableAnimal tamable) {
+            tamable.setTame(true);
+        }
+        if (color != null && entity instanceof Sheep sheep) {
+            sheep.setColor(color);
+        }
         return entity;
     }
 

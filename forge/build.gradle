@@ -92,6 +92,8 @@ dependencies {
 //    runtimeOnly fg.deobf("curse.maven:item-nbt-viewer-514135:4578522")
 
     runtimeOnly fg.deobf("curse.maven:prehistoric-fauna-311600:6302778")
+    runtimeOnly fg.deobf("curse.maven:entity-texture-features-fabric-568563:6954759")
+    runtimeOnly fg.deobf("curse.maven:entity-model-features-844662:6922712")
 
 }
 
