@@ -17,6 +17,9 @@ public class AllayDuplicationSerializer implements RecipeSerializer<AllayDuplica
     @Override
     public @NotNull AllayDuplicationRecipe fromJson(@NotNull ResourceLocation jsonPath, @NotNull JsonObject json) {
         AllayDuplicationRecipe r = (AllayDuplicationRecipe) Utils.readJsonContents(jsonPath, json, "allay_duplication");
+        if (r == null) {
+            return new AllayDuplicationRecipe.DummyRecipe();
+        }
         if (r.entityType == null || r.inputStack == null || r.spawnEgg == null) {
             throw new com.google.gson.JsonParseException("AllayDuplicationRecipe invalid/null fields: " + jsonPath);
         }

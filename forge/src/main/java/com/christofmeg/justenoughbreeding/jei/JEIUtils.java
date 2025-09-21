@@ -1,5 +1,6 @@
 package com.christofmeg.justenoughbreeding.jei;
 
+import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.client.ClientUtils;
 import com.christofmeg.justenoughbreeding.recipe.*;
@@ -101,6 +102,7 @@ public class JEIUtils {
         draw(bigSlot, stack, mobSlotX + 35, mobSlotY + 55, bigSlot.getHeight(), 14, 25, 11, 1);
 
         int color = CommonClientUtils.getPixelColor(new ResourceLocation("jei", "textures/jei/atlas/gui/output_slot.png"), 13 ,13);
+        CommonConstants.LOGGER.info("color: {}", color);
         int startX = mobSlotX + 1;
         int startY = mobSlotY + 1;
         int width  = 59;

@@ -27,7 +27,11 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
 
     @Override
     public @NotNull TransformationRecipe fromJson(@NotNull ResourceLocation jsonPath, @NotNull JsonObject json) {
-        return (TransformationRecipe) readJsonContents(jsonPath, json);
+        TransformationRecipe r = (TransformationRecipe) readJsonContents(jsonPath, json);
+        if (r == null) {
+            return new TransformationRecipe.DummyRecipe();
+        }
+        return r;
     }
 
     @Override

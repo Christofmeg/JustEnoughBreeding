@@ -41,11 +41,11 @@ public class TransformationRecipe extends BaseRecipe {
                                 String fileName,
                                 @Nullable DyeColor inputColor,
                                 @Nullable DyeColor outputColor) {
-        this.inputEntityType = Objects.requireNonNull(inputEntityType, "inputEntityType");
+        this.inputEntityType = inputEntityType;
         this.inputStack = CommonUtils.safe(inputStack);
         this.inputSpawnEgg = CommonUtils.safe(inputSpawnEgg);
         this.extraInputStack = CommonUtils.safe(extraInputStack);
-        this.outputEntityType = Objects.requireNonNull(outputEntityType, "outputEntityType");
+        this.outputEntityType = outputEntityType;
         this.outputSpawnEgg = CommonUtils.safe(outputSpawnEgg);
         this.needsToBeTamed = needsToBeTamed;
         this.jsonModID = Objects.requireNonNull(jsonModID, "jsonModID");
@@ -53,25 +53,6 @@ public class TransformationRecipe extends BaseRecipe {
         this.fileName = Objects.requireNonNull(fileName, "fileName");
         this.inputColor = inputColor;
         this.outputColor = outputColor;
-        validateRequired();
-    }
-
-    public void validateRequired() {
-        if (inputEntityType == null) {
-            throw new IllegalStateException("TransformationRecipe " + getId() + " has null entityType");
-        }
-
-        if (inputStack == null || inputSpawnEgg == null || outputSpawnEgg == null) {
-            throw new IllegalStateException("TransformationRecipe " + getId() + " has null ingredients");
-        }
-
-        if (inputStack == Ingredient.EMPTY) {
-            throw new IllegalStateException("TransformationRecipe " + getId() + " has completely missing input ingredient");
-        }
-
-        if (inputSpawnEgg == Ingredient.EMPTY || outputSpawnEgg == Ingredient.EMPTY) {
-            throw new IllegalStateException("TransformationRecipe " + getId() + " has completely missing spawn egg ingredient");
-        }
     }
 
     @Override
@@ -90,4 +71,9 @@ public class TransformationRecipe extends BaseRecipe {
     public void setInputSpawnEggs(Ingredient ingredient) { this.inputSpawnEgg = CommonUtils.safe(ingredient); }
     public void setOutputSpawnEggs(Ingredient ingredient) { this.outputSpawnEgg = CommonUtils.safe(ingredient); }
 
+    public static class DummyRecipe extends TransformationRecipe {
+        public DummyRecipe() {
+            super(null,null,null,null,null,null,null,"dummymod", "dummyfolder", "dummyfile", null, null);
+        }
+    }
 }

@@ -31,7 +31,7 @@ public class TrustingRecipe extends BaseRecipe {
                           String jsonAnimalID,
                           String modFolder,
                           String fileName) {
-        this.entityType = Objects.requireNonNull(entityType, "entityType");
+        this.entityType = entityType;
         this.inputStack = CommonUtils.safe(inputStack);
         this.spawnEgg = CommonUtils.safe(spawnEgg);
         this.extraInputStack = CommonUtils.safe(extraInputStack);
@@ -39,25 +39,6 @@ public class TrustingRecipe extends BaseRecipe {
         this.jsonAnimalID = Objects.requireNonNull(jsonAnimalID, "jsonAnimalID");
         this.modFolder = Objects.requireNonNull(modFolder, "modFolder");
         this.fileName = Objects.requireNonNull(fileName, "fileName");
-        validateRequired();
-    }
-
-    public void validateRequired() {
-        if (entityType == null) {
-            throw new IllegalStateException("TrustingRecipe " + getId() + " has null entityType");
-        }
-
-        if (inputStack == null || spawnEgg == null) {
-            throw new IllegalStateException("TrustingRecipe " + getId() + " has null ingredients");
-        }
-
-        if (inputStack == Ingredient.EMPTY) {
-            throw new IllegalStateException("TrustingRecipe " + getId() + " has completely missing input ingredient");
-        }
-
-        if (spawnEgg == Ingredient.EMPTY) {
-            throw new IllegalStateException("TrustingRecipe " + getId() + " has completely missing spawn egg ingredient");
-        }
     }
 
     @Override
@@ -75,4 +56,9 @@ public class TrustingRecipe extends BaseRecipe {
     public void setExtraInputIngredient(Ingredient ingredient) { this.extraInputStack = CommonUtils.safe(ingredient); }
     public void setSpawnEggs(Ingredient ingredient) { this.spawnEgg = CommonUtils.safe(ingredient); }
 
+    public static class DummyRecipe extends TrustingRecipe {
+        public DummyRecipe() {
+            super(null,null,null,null, "dummymod", "dummyanimal", "dummyfolder", "dummyfile");
+        }
+    }
 }

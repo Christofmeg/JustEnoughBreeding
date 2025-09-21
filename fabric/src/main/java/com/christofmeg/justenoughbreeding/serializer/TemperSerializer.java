@@ -93,6 +93,11 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
                 fileName
         );
         JustEnoughBreeding.temperRecipes.add(newRecipe);
+
+        if (newRecipe == null) {
+            return new TemperRecipe.DummyRecipe();
+        }
+
         return newRecipe;
     }
 

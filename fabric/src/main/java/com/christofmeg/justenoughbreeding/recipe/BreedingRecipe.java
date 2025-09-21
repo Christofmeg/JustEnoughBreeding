@@ -40,7 +40,7 @@ public class BreedingRecipe extends BaseRecipe {
             String modFolder,
             String fileName
     ) {
-        this.entityType = Objects.requireNonNull(entityType, "entityType");
+        this.entityType = entityType;
         this.inputStack = CommonUtils.safe(inputStack);
         this.spawnEgg = CommonUtils.safe(spawnEgg);
         this.needsToBeTamed = needsToBeTamed;
@@ -51,21 +51,6 @@ public class BreedingRecipe extends BaseRecipe {
         this.jsonAnimalID = Objects.requireNonNull(jsonAnimalID, "jsonAnimalID");
         this.modFolder = Objects.requireNonNull(modFolder, "modFolder");
         this.fileName = Objects.requireNonNull(fileName, "fileName");
-        validateRequired();
-    }
-
-    public void validateRequired() {
-        if (entityType == null) {
-            throw new IllegalStateException("BreedingRecipe " + getId() + " has null entityType");
-        }
-
-        if (inputStack == Ingredient.EMPTY) {
-            throw new IllegalStateException("BreedingRecipe " + getId() + " has completely missing input ingredient");
-        }
-
-        if (spawnEgg == Ingredient.EMPTY) {
-            throw new IllegalStateException("BreedingRecipe " + getId() + " has completely missing spawn egg ingredient");
-        }
     }
 
     @Override
@@ -91,4 +76,9 @@ public class BreedingRecipe extends BaseRecipe {
     public void setOutputIngredient(Ingredient ingredient) { this.resultItemStack = CommonUtils.safe(ingredient); }
     public void setSpawnEggs(Ingredient ingredient) { this.spawnEgg = CommonUtils.safe(ingredient); }
 
+    public static class DummyRecipe extends BreedingRecipe {
+        public DummyRecipe() {
+            super(null, null, null, null, null, null, null, "dummymod", "dummyanimal", "dummyfolder", "dummyfile");
+        }
+    }
 }

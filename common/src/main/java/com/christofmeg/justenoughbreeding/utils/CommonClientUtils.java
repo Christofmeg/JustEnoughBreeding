@@ -99,12 +99,11 @@ public class CommonClientUtils {
         stack.popPose(); // Pop the pose from the stack to revert transformations
     }
 
-
     public static int getPixelColor(ResourceLocation texture, int px, int py) {
         ResourceManager resourceManager = Minecraft.getInstance().getResourceManager();
         try {
             Resource resource = resourceManager.getResource(texture).orElse(null);
-            if (resource == null) return 0xFFFFFFFF; // fallback
+            if (resource == null) return -7631989; // fallback
 
             try (InputStream is = resource.open()) {
                 NativeImage image = NativeImage.read(is);
@@ -123,7 +122,7 @@ public class CommonClientUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return 0xFFFFFFFF; // fallback
+        return -7631989; // fallback
     }
 
     public static void fillSolidColor(GuiGraphics guiGraphics, int x, int y, int width, int height, int color) {

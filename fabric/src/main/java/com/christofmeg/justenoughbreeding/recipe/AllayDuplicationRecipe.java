@@ -23,32 +23,13 @@ public class AllayDuplicationRecipe extends BaseRecipe {
     public final String fileName;
 
     public AllayDuplicationRecipe(EntityType<?> entityType, Ingredient inputStack, Ingredient spawnEgg, String jsonModID, String jsonAnimalID, String modFolder, String fileName) {
-        this.entityType = Objects.requireNonNull(entityType, "entityType");
+        this.entityType = entityType;
         this.inputStack = CommonUtils.safe(inputStack);
         this.spawnEgg = CommonUtils.safe(spawnEgg);
         this.jsonModID = Objects.requireNonNull(jsonModID, "jsonModID");
         this.jsonAnimalID = Objects.requireNonNull(jsonAnimalID, "jsonAnimalID");
         this.modFolder = Objects.requireNonNull(modFolder, "modFolder");
         this.fileName = Objects.requireNonNull(fileName, "fileName");
-        validateRequired();
-    }
-
-    public void validateRequired() {
-        if (entityType == null) {
-            throw new IllegalStateException("AllayDuplicationRecipe " + getId() + " has null entityType");
-        }
-
-        if (inputStack == null || spawnEgg == null) {
-            throw new IllegalStateException("AllayDuplicationRecipe " + getId() + " has null ingredients");
-        }
-
-        if (inputStack == Ingredient.EMPTY) {
-            throw new IllegalStateException("AllayDuplicationRecipe " + getId() + " has completely missing input ingredient");
-        }
-
-        if (spawnEgg == Ingredient.EMPTY) {
-            throw new IllegalStateException("AllayDuplicationRecipe " + getId() + " has completely missing spawn egg ingredient");
-        }
     }
 
     @Override
@@ -65,4 +46,9 @@ public class AllayDuplicationRecipe extends BaseRecipe {
     public void setInputIngredient(Ingredient ingredient) { this.inputStack = CommonUtils.safe(ingredient); }
     public void setSpawnEggs(Ingredient ingredient) { this.spawnEgg = CommonUtils.safe(ingredient); }
 
+    public static class DummyRecipe extends AllayDuplicationRecipe {
+        public DummyRecipe() {
+            super(null, null, null, "dummymod", "dummyanimal", "dummyfolder", "dummyfile");
+        }
+    }
 }
