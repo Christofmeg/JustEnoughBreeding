@@ -154,4 +154,31 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
             }
         }
     }
+
+    //TODO [07:07:10] [Render thread/ERROR]:Parsing error loading recipe justenoughbreeding:temper/frozenup/reindeer
+    //com.google.gson.JsonParseException: Entity id mismatch. jsonAnimalID=reindeer != pig in justenoughbreeding:temper/frozenup/reindeer
+    //	at com.christofmeg.justenoughbreeding.serializer.TemperSerializer.fromJson(TemperSerializer.java:52) ~[justenoughbreeding-fabric-1.20-1.20.1-2.2.0.jar:?]
+    //	at com.christofmeg.justenoughbreeding.serializer.TemperSerializer.method_8121(TemperSerializer.java:29) ~[justenoughbreeding-fabric-1.20-1.20.1-2.2.0.jar:?]
+    //	at net.minecraft.class_1863.method_17720(class_1863.java:135) ~[client-intermediary.jar:?]
+    //	at net.minecraft.class_1863.method_20705(class_1863.java:56) ~[client-intermediary.jar:?]
+    //	at net.minecraft.class_1863.method_18788(class_1863.java:35) ~[client-intermediary.jar:?]
+    //	at net.minecraft.class_4080.method_18790(class_4080.java:13) ~[client-intermediary.jar:?]
+    //	at java.util.concurrent.CompletableFuture$UniAccept.tryFire(Unknown Source) ~[?:?]
+    //	at java.util.concurrent.CompletableFuture$Completion.run(Unknown Source) ~[?:?]
+    //	at net.minecraft.class_4014.method_18365(class_4014.java:69) ~[client-intermediary.jar:?]
+    //	at net.minecraft.class_1255.method_18859(class_1255.java:156) ~[client-intermediary.jar:?]
+    //	at net.minecraft.class_4093.method_18859(class_4093.java:23) ~[client-intermediary.jar:?]
+    //	at net.minecraft.class_1255.method_16075(class_1255.java:130) ~[client-intermediary.jar:?]
+    //	at net.minecraft.class_1255.method_18857(class_1255.java:139) ~[client-intermediary.jar:?]
+    //	at net.minecraft.class_7196.method_45694(class_7196.java:188) ~[client-intermediary.jar:?]
+    //	at net.minecraft.class_7196.method_41891(class_7196.java:123) ~[client-intermediary.jar:?]
+    //	at net.minecraft.class_7196.method_41899(class_7196.java:202) ~[client-intermediary.jar:?]
+    //	at net.minecraft.class_7196.method_41894(class_7196.java:64) ~[client-intermediary.jar:?]
+    //	at net.minecraft.class_528$class_4272.method_20174(class_528.java:590) ~[client-intermediary.jar:?]
+    //	at net.minecraft.class_528$class_4272.method_20164(class_528.java:480) ~[client-intermediary.jar:?]
+    //	at net.minecraft.class_528$class_4272.method_25402(class_528.java:407) ~[client-intermediary.jar:?]
+    //	at net.minecraft.class_350.method_25402(class_350.java:327) ~[client-intermediary.jar:?]
+    //	at net.minecraft.class_4069.method_25402(class_4069.java:38) ~[client-intermediary.jar:?]
+    //	at net.minecraft.class_312.method_1611(class_312.java:98) ~[client-intermediary.jar:?]
+    //	at net.minecraft.class_437.method_25412(class_437.java:409) ~[client-intermediary.jar:?]
 }
