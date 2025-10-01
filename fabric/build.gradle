@@ -133,7 +133,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("kiwi-boi")
     mainFile.addOptional("snow-pig-fabric")
     mainFile.addOptional("snuffles-fabric")
-    mainFile.addOptional("steves-vanilla")
+    mainFile.addOptional("steves-vanilla-fabric")
     mainFile.addOptional("the-twilight-forest")
     mainFile.addOptional("frozen-up")
     mainFile.addOptional("caracal-mod")

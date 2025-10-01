@@ -2,6 +2,7 @@ package com.christofmeg.justenoughbreeding;
 
 import com.christofmeg.justenoughbreeding.recipe.*;
 import com.christofmeg.justenoughbreeding.serializer.*;
+import com.christofmeg.justenoughbreeding.utils.RecipeFilter;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.Registry;
@@ -63,7 +64,9 @@ public class JustEnoughBreeding implements ModInitializer {
     public static final List<TrustingRecipe> trustingRecipes = new ArrayList<>();
 
     @Override
-    public void onInitialize() {}
+    public void onInitialize() {
+        RecipeFilter.init();
+    }
 
     public static Item getItemFromLoaderRegistries(ResourceLocation resourceLocation) {
         return BuiltInRegistries.ITEM.get(resourceLocation);

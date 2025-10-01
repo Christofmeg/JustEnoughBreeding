@@ -164,7 +164,6 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("frostrealm")
     mainFile.addOptional("caracal-mod")
     mainFile.addOptional("kiwi-boi")
-    mainFile.addOptional("steves-vanilla")
     mainFile.addOptional("snuffles")
     mainFile.addOptional("lil-wings")
     mainFile.addOptional("ecologics")

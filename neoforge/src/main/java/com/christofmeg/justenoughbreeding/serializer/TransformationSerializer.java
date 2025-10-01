@@ -34,11 +34,11 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
     public @NotNull TransformationRecipe fromNetwork(@NotNull ResourceLocation id, @NotNull FriendlyByteBuf buf) {
         ResourceLocation inputEntityId = buf.readResourceLocation();
         EntityType<?> inputEntityType = JustEnoughBreeding.getEntityFromLoaderRegistries(inputEntityId);
-        if (inputEntityType == null) throw new IllegalStateException("Unknown input EntityType in TransformationRecipe#fromNetwork: " + inputEntityId);
+        if (inputEntityType == null) throw new JsonParseException("Unknown input EntityType in TransformationRecipe#fromNetwork: " + inputEntityId);
 
         ResourceLocation outputEntityId = buf.readResourceLocation();
         EntityType<?> outputEntityType = JustEnoughBreeding.getEntityFromLoaderRegistries(outputEntityId);
-        if (outputEntityType == null) throw new IllegalStateException("Unknown output EntityType in TransformationRecipe#fromNetwork: " + outputEntityId);
+        if (outputEntityType == null) throw new JsonParseException("Unknown output EntityType in TransformationRecipe#fromNetwork: " + outputEntityId);
 
         Ingredient inputStack = Ingredient.fromNetwork(buf);
         Ingredient inputSpawnEgg = Ingredient.fromNetwork(buf);
@@ -71,9 +71,6 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                 inputColor,
                 outputColor
         );
-        if (r == null) {
-            return null;
-        }
         return r;
     }
 
@@ -81,7 +78,7 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
     public void toNetwork(@NotNull FriendlyByteBuf buf, @NotNull TransformationRecipe recipe) {
         ResourceLocation inKey = JustEnoughBreeding.getKeyLoaderRegistries(recipe.inputEntityType);
         ResourceLocation outKey = JustEnoughBreeding.getKeyLoaderRegistries(recipe.outputEntityType);
-        if (inKey == null || outKey == null) throw new IllegalStateException("Unknown EntityType in TransformationRecipe: " + recipe.inputEntityType + " / " + recipe.outputEntityType);
+        if (inKey == null || outKey == null) throw new JsonParseException("Unknown EntityType in TransformationRecipe: " + recipe.inputEntityType + " / " + recipe.outputEntityType);
         buf.writeResourceLocation(inKey);
         buf.writeResourceLocation(outKey);
 
@@ -113,7 +110,7 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
             modFolder = jsonPath.getPath().split("/")[1];
         }
         if (!JustEnoughBreeding.isModLoaded(modFolder) || !JustEnoughBreeding.isModLoaded(jsonModID)) {
-            return null;
+            return new TransformationRecipe.DummyRecipe(jsonModID, modFolder, fileName);
         }
 
         List<Ingredient> inputIngredients = new ArrayList<>();
@@ -167,7 +164,7 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
         DyeColor inputColor = json.has("input_color") ? DyeColor.valueOf(json.get("input_color").getAsString().toUpperCase()) : null;
         DyeColor outputColor = json.has("output_color") ? DyeColor.valueOf(json.get("output_color").getAsString().toUpperCase()) : null;
 
-        TransformationRecipe transformationRecipe = new TransformationRecipe(
+        TransformationRecipe r = new TransformationRecipe(
                 inputEntityType,
                 Utils.deduplicateIngredients(inputIngredients),
                 Utils.deduplicateIngredients(inputSpawnEggs),
@@ -181,7 +178,7 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                 inputColor,
                 outputColor
         );
-        JustEnoughBreeding.transformationRecipes.add(transformationRecipe);
-        return transformationRecipe;
+        JustEnoughBreeding.transformationRecipes.add(r);
+        return r;
     }
 }

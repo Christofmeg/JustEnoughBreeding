@@ -137,10 +137,27 @@ public class Utils {
             modFolder = jsonPath.getPath().split("/")[1];
         }
 
-        // If a required mod isn't present, skip the file cleanly with a clear message.
         if (!JustEnoughBreeding.isModLoaded(modFolder) || !JustEnoughBreeding.isModLoaded(jsonModID)) {
-            throw new JsonParseException("Skipping recipe because mod not loaded: file=" + jsonPath +
-                    " mods=" + modFolder + "," + jsonModID);
+            switch (recipeType) {
+                case "allay_duplication" -> {
+                    return new AllayDuplicationRecipe.DummyRecipe(jsonModID, jsonAnimalID, modFolder, fileName);
+                }
+                case "breeding" -> {
+                    return new BreedingRecipe.DummyRecipe(jsonModID, jsonAnimalID, modFolder, fileName);
+                }
+                case "taming" -> {
+                    return new TamingRecipe.DummyRecipe(jsonModID, jsonAnimalID, modFolder, fileName);
+                }
+                case "temper" -> {
+                    return new TemperRecipe.DummyRecipe(jsonModID, jsonAnimalID, modFolder, fileName);
+                }
+                case "transformation" -> {
+                    return new TransformationRecipe.DummyRecipe(jsonModID, modFolder, fileName);
+                }
+                case "trusting" -> {
+                    return new TrustingRecipe.DummyRecipe(jsonModID, jsonAnimalID, modFolder, fileName);
+                }
+            }
         }
 
         EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(new ResourceLocation(jsonModID, jsonAnimalID));

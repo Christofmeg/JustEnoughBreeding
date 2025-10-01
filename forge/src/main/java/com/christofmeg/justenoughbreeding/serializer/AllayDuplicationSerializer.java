@@ -5,6 +5,7 @@ import com.christofmeg.justenoughbreeding.recipe.AllayDuplicationRecipe;
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import com.christofmeg.justenoughbreeding.utils.Utils;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -16,21 +17,14 @@ public class AllayDuplicationSerializer implements RecipeSerializer<AllayDuplica
 
         @Override
         public @NotNull AllayDuplicationRecipe fromJson(@NotNull ResourceLocation jsonPath, @NotNull JsonObject json) {
-            AllayDuplicationRecipe r = (AllayDuplicationRecipe) Utils.readJsonContents(jsonPath, json, "allay_duplication");
-            if (r == null) {
-                return null;
-            }
-            if (r.entityType == null || r.inputStack == null || r.spawnEgg == null) {
-                throw new com.google.gson.JsonParseException("AllayDuplicationRecipe invalid/null fields: " + jsonPath);
-            }
-            return r;
+            return (AllayDuplicationRecipe) Utils.readJsonContents(jsonPath, json, "allay_duplication");
         }
 
         @Override
         public @NotNull AllayDuplicationRecipe fromNetwork(@NotNull ResourceLocation resourceLocation, @NotNull FriendlyByteBuf buf) {
             ResourceLocation entityId = buf.readResourceLocation();
             EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(entityId);
-            if (entityType == null) throw new IllegalStateException("Unknown EntityType in AllayDuplicationRecipe#fromNetwork: " + entityId);
+            if (entityType == null) throw new JsonParseException("Unknown EntityType in AllayDuplicationRecipe#fromNetwork: " + entityId);
 
             Ingredient inputStack = Ingredient.fromNetwork(buf);
             Ingredient spawnEgg = Ingredient.fromNetwork(buf);
@@ -46,7 +40,7 @@ public class AllayDuplicationSerializer implements RecipeSerializer<AllayDuplica
         @Override
         public void toNetwork(@NotNull FriendlyByteBuf buf, @NotNull AllayDuplicationRecipe recipe) {
             ResourceLocation entityKey = JustEnoughBreeding.getKeyLoaderRegistries(recipe.entityType);
-            if (entityKey == null) throw new IllegalStateException("Unknown EntityType in AllayDuplicationRecipe: " + recipe.entityType);
+            if (entityKey == null) throw new JsonParseException("Unknown EntityType in AllayDuplicationRecipe: " + recipe.entityType);
             buf.writeResourceLocation(entityKey);
 
             CommonUtils.safe(recipe.inputStack).toNetwork(buf);

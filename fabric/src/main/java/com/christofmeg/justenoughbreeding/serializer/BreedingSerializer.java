@@ -5,6 +5,7 @@ import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import com.christofmeg.justenoughbreeding.utils.Utils;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -16,14 +17,7 @@ public class BreedingSerializer implements RecipeSerializer<BreedingRecipe> {
 
     @Override
     public @NotNull BreedingRecipe fromJson(@NotNull ResourceLocation jsonPath, @NotNull JsonObject json) {
-        BreedingRecipe r = (BreedingRecipe) Utils.readJsonContents(jsonPath, json, "breeding");
-        if (r.entityType == null) {
-            throw new com.google.gson.JsonParseException("BreedingRecipe missing entityType: " + jsonPath);
-        }
-        if (r.inputStack == null || r.spawnEgg == null) {
-            throw new com.google.gson.JsonParseException("BreedingRecipe has null ingredients: " + jsonPath);
-        }
-        return r;
+        return (BreedingRecipe) Utils.readJsonContents(jsonPath, json, "breeding");
     }
 
     @Override
@@ -31,7 +25,7 @@ public class BreedingSerializer implements RecipeSerializer<BreedingRecipe> {
         ResourceLocation entityRL = buf.readResourceLocation();
         EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(entityRL);
         if (entityType == null) {
-            throw new IllegalStateException("Unknown EntityType in BreedingRecipe#fromNetwork: " + entityRL);
+            throw new JsonParseException("Unknown EntityType in BreedingRecipe#fromNetwork: " + entityRL);
         }
 
         Ingredient inputStack = Ingredient.fromNetwork(buf);    // never null
@@ -70,7 +64,7 @@ public class BreedingSerializer implements RecipeSerializer<BreedingRecipe> {
     public void toNetwork(@NotNull FriendlyByteBuf buf, @NotNull BreedingRecipe recipe) {
         ResourceLocation entityKey = JustEnoughBreeding.getKeyLoaderRegistries(recipe.entityType);
         if (entityKey == null) {
-            throw new IllegalStateException("Unknown EntityType in BreedingRecipe: " + recipe.entityType);
+            throw new JsonParseException("Unknown EntityType in BreedingRecipe: " + recipe.entityType);
         }
         buf.writeResourceLocation(entityKey);
 

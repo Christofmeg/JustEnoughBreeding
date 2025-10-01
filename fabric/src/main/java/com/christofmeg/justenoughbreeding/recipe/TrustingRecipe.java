@@ -23,15 +23,8 @@ public class TrustingRecipe extends BaseRecipe {
     public final String modFolder;
     public final String fileName;
 
-    public TrustingRecipe(EntityType<?> entityType,
-                          Ingredient inputStack,
-                          Ingredient spawnEgg,
-                          Ingredient extraInputStack,
-                          String jsonModID,
-                          String jsonAnimalID,
-                          String modFolder,
-                          String fileName) {
-        this.entityType = Objects.requireNonNull(entityType, "entityType");
+    public TrustingRecipe(EntityType<?> entityType, Ingredient inputStack, Ingredient spawnEgg, Ingredient extraInputStack, String jsonModID, String jsonAnimalID, String modFolder, String fileName) {
+        this.entityType = entityType;
         this.inputStack = CommonUtils.safe(inputStack);
         this.spawnEgg = CommonUtils.safe(spawnEgg);
         this.extraInputStack = CommonUtils.safe(extraInputStack);
@@ -39,40 +32,19 @@ public class TrustingRecipe extends BaseRecipe {
         this.jsonAnimalID = Objects.requireNonNull(jsonAnimalID, "jsonAnimalID");
         this.modFolder = Objects.requireNonNull(modFolder, "modFolder");
         this.fileName = Objects.requireNonNull(fileName, "fileName");
-        validateRequired();
     }
 
-    public void validateRequired() {
-        if (entityType == null) {
-            throw new IllegalStateException("TrustingRecipe " + getId() + " has null entityType");
-        }
-
-        if (inputStack == null || spawnEgg == null) {
-            throw new IllegalStateException("TrustingRecipe " + getId() + " has null ingredients");
-        }
-
-        if (inputStack == Ingredient.EMPTY) {
-            throw new IllegalStateException("TrustingRecipe " + getId() + " has completely missing input ingredient");
-        }
-
-        if (spawnEgg == Ingredient.EMPTY) {
-            throw new IllegalStateException("TrustingRecipe " + getId() + " has completely missing spawn egg ingredient");
-        }
-    }
-
-    @Override
-    public @NotNull ResourceLocation getId() {
-        return new ResourceLocation(CommonConstants.MOD_ID, "trusting" + "/" + this.modFolder + "/" + this.fileName + "/" + this.jsonModID + "/" + this.jsonAnimalID);
-    }
-
-    @Override
-    public @NotNull RecipeSerializer<?> getSerializer() { return JustEnoughBreeding.TRUSTING_PROVIDER_SERIALIZER; }
-
-    @Override
-    public @NotNull RecipeType<?> getType() { return JustEnoughBreeding.TRUSTING_PROVIDER_TYPE; }
+    @Override public @NotNull ResourceLocation getId() { return new ResourceLocation(CommonConstants.MOD_ID, "trusting" + "/" + this.modFolder + "/" + this.fileName + "/" + this.jsonModID + "/" + this.jsonAnimalID); }
+    @Override public @NotNull RecipeSerializer<?> getSerializer() { return JustEnoughBreeding.TRUSTING_PROVIDER_SERIALIZER; }
+    @Override public @NotNull RecipeType<?> getType() { return JustEnoughBreeding.TRUSTING_PROVIDER_TYPE; }
 
     public void setInputIngredient(Ingredient ingredient) { this.inputStack = CommonUtils.safe(ingredient); }
     public void setExtraInputIngredient(Ingredient ingredient) { this.extraInputStack = CommonUtils.safe(ingredient); }
     public void setSpawnEggs(Ingredient ingredient) { this.spawnEgg = CommonUtils.safe(ingredient); }
 
+    public static class DummyRecipe extends TrustingRecipe {
+        public DummyRecipe(String jsonModID, String jsonAnimalID, String  modFolder, String fileName) {
+            super(null,null,null,null, jsonModID, jsonAnimalID, modFolder, fileName);
+        }
+    }
 }

@@ -114,7 +114,26 @@ public class Utils {
         }
 
         if (!JustEnoughBreeding.isModLoaded(modFolder) || !JustEnoughBreeding.isModLoaded(jsonModID)) {
-            return null;
+            switch (recipeType) {
+                case "allay_duplication" -> {
+                    return new AllayDuplicationRecipe.DummyRecipe(jsonModID, jsonAnimalID, modFolder, fileName);
+                }
+                case "breeding" -> {
+                    return new BreedingRecipe.DummyRecipe(jsonModID, jsonAnimalID, modFolder, fileName);
+                }
+                case "taming" -> {
+                    return new TamingRecipe.DummyRecipe(jsonModID, jsonAnimalID, modFolder, fileName);
+                }
+                case "temper" -> {
+                    return new TemperRecipe.DummyRecipe(jsonModID, jsonAnimalID, modFolder, fileName);
+                }
+                case "transformation" -> {
+                    return new TransformationRecipe.DummyRecipe(jsonModID, modFolder, fileName);
+                }
+                case "trusting" -> {
+                    return new TrustingRecipe.DummyRecipe(jsonModID, jsonAnimalID, modFolder, fileName);
+                }
+            }
         }
 
         EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(new ResourceLocation(jsonModID, jsonAnimalID));

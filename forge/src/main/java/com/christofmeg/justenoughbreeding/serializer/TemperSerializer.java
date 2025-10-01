@@ -34,8 +34,8 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
         JsonArray mobs = json.getAsJsonArray("mobs");
         JsonObject mobObject = mobs.get(0).getAsJsonObject();
         Map.Entry<String, JsonElement> mobEntry = mobObject.entrySet().iterator().next();
-        String modID = json.get("mod").getAsString();
-        String mobName = mobEntry.getKey();
+        String jsonModID = json.get("mod").getAsString();
+        String jsonAnimalID = mobEntry.getKey();
         String modFolder = jsonPath.getNamespace();
         String fileName = jsonPath.getPath().substring(jsonPath.getPath().lastIndexOf('/') + 1);
 
@@ -43,14 +43,16 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
             modFolder = jsonPath.getPath().split("/")[1];
         }
 
-        if (!JustEnoughBreeding.isModLoaded(modFolder) || !JustEnoughBreeding.isModLoaded(modID)) {
-            return null;
+        if (!JustEnoughBreeding.isModLoaded(modFolder) || !JustEnoughBreeding.isModLoaded(jsonModID)) {
+            return new TemperRecipe.DummyRecipe(jsonModID, jsonAnimalID, modFolder, fileName);
         }
 
-        EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(new ResourceLocation(modID, mobName));
-        if (entityType == null) throw new JsonParseException("Unknown entity: " + modID + ":" + mobName + " in " + jsonPath);
-        if (!mobName.equals(entityType.toShortString())) {
-            throw new JsonParseException("Entity id mismatch. jsonAnimalID=" + mobName + " != " + entityType.toShortString() + " in " + jsonPath);
+        EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(new ResourceLocation(jsonModID, jsonAnimalID));
+        if (entityType == null) {
+            throw new JsonParseException("Unknown entity: " + jsonModID + ":" + jsonAnimalID + " in " + jsonPath);
+        }
+        if (!jsonAnimalID.equals(entityType.toShortString())) {
+            throw new JsonParseException("Entity id mismatch. jsonAnimalID=" + jsonAnimalID + " != " + entityType.toShortString() + " in " + jsonPath);
         }
 
         List<Ingredient> inputIngredients = new ArrayList<>();
@@ -71,7 +73,7 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
         }
 
         for (TemperRecipe existingRecipe : JustEnoughBreeding.temperRecipes) {
-            if (existingRecipe.jsonModID.equals(modID) && existingRecipe.jsonAnimalID.equals(mobName)) {
+            if (existingRecipe.jsonModID.equals(jsonModID) && existingRecipe.jsonAnimalID.equals(jsonAnimalID)) {
                 inputIngredients.add(existingRecipe.inputStack);
                 spawnEggs.add(existingRecipe.spawnEgg);
                 extraInputIngredients.add(existingRecipe.extraInputStack);
@@ -83,28 +85,25 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
             }
         }
 
-        TemperRecipe newRecipe = new TemperRecipe(
+        TemperRecipe r = new TemperRecipe(
                 entityType,
                 Utils.deduplicateIngredients(inputIngredients),
                 Utils.deduplicateIngredients(spawnEggs),
-                Utils.deduplicateIngredients(extraInputIngredients),
-                modID,
-                mobName,
+                CommonUtils.safe(Utils.deduplicateIngredients(extraInputIngredients)),
+                jsonModID,
+                jsonAnimalID,
                 modFolder,
                 fileName
         );
-        JustEnoughBreeding.temperRecipes.add(newRecipe);
-        if (newRecipe == null) {
-            return null;
-        }
-        return newRecipe;
+        JustEnoughBreeding.temperRecipes.add(r);
+        return r;
     }
 
     @Override
     public @NotNull TemperRecipe fromNetwork(@NotNull ResourceLocation id, @NotNull FriendlyByteBuf buf) {
         ResourceLocation entityId = buf.readResourceLocation();
         EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(entityId);
-        if (entityType == null) throw new IllegalStateException("Unknown EntityType in TemperRecipe#fromNetwork: " + entityId);
+        if (entityType == null) throw new JsonParseException("Unknown EntityType in TemperRecipe#fromNetwork: " + entityId);
 
         Ingredient inputStack = Ingredient.fromNetwork(buf);
         Ingredient spawnEgg = Ingredient.fromNetwork(buf);
@@ -123,7 +122,7 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
     @Override
     public void toNetwork(@NotNull FriendlyByteBuf buf, @NotNull TemperRecipe recipe) {
         ResourceLocation entityKey = JustEnoughBreeding.getKeyLoaderRegistries(recipe.entityType);
-        if (entityKey == null) throw new IllegalStateException("Unknown EntityType in TemperRecipe: " + recipe.entityType);
+        if (entityKey == null) throw new JsonParseException("Unknown EntityType in TemperRecipe: " + recipe.entityType);
         buf.writeResourceLocation(entityKey);
 
         CommonUtils.safe(recipe.inputStack).toNetwork(buf);
