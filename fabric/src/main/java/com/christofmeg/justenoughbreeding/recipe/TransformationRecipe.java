@@ -54,11 +54,8 @@ public class TransformationRecipe extends BaseRecipe {
     public void setOutputSpawnEggs(Ingredient ingredient) { this.outputSpawnEgg = CommonUtils.safe(ingredient); }
 
     public static class DummyRecipe extends TransformationRecipe {
-        public DummyRecipe(String jsonAnimalID, String  modFolder, String fileName) {
-            super(null,null,null,null,null,null,null, jsonAnimalID, modFolder, fileName, null, null);
-        }
-        public DummyRecipe() {
-            super(null,null,null,null,null,null,null,"dummymod", "dummyfolder", "dummyfile", null, null);
+        public DummyRecipe(String jsonModID, String modFolder, String fileName) {
+            super(null,null,null,null,null,null,null, jsonModID, modFolder, fileName, null, null);
         }
     }
 }

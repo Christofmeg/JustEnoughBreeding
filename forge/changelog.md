@@ -6,4 +6,4 @@
 - Fix [#40](https://github.com/Christofmeg/JustEnoughBreeding/issues/40)
 - Fix empty tag in Untamed Wilds Aaardwark
 - Fix empty tag in Untamed Wilds Spadefish
-- Fix emtpy tag in Critters and Companions Red Panda
+- Fix empty tag in Critters and Companions Red Panda

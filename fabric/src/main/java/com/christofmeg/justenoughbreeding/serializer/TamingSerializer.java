@@ -17,8 +17,7 @@ public class TamingSerializer implements RecipeSerializer<TamingRecipe> {
 
     @Override
     public @NotNull TamingRecipe fromJson(@NotNull ResourceLocation jsonPath, @NotNull JsonObject json) {
-        TamingRecipe r = (TamingRecipe) Utils.readJsonContents(jsonPath, json, "taming");
-        return r;
+        return (TamingRecipe) Utils.readJsonContents(jsonPath, json, "taming");
     }
 
     @Override

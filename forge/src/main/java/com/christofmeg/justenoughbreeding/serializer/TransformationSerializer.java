@@ -71,9 +71,6 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                 inputColor,
                 outputColor
         );
-        if (r == null) {
-            return null;
-        }
         return r;
     }
 
@@ -113,7 +110,7 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
             modFolder = jsonPath.getPath().split("/")[1];
         }
         if (!JustEnoughBreeding.isModLoaded(modFolder) || !JustEnoughBreeding.isModLoaded(jsonModID)) {
-            return null;
+            return new TransformationRecipe.DummyRecipe(jsonModID, modFolder, fileName);
         }
 
         List<Ingredient> inputIngredients = new ArrayList<>();
@@ -171,7 +168,7 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                 inputEntityType,
                 Utils.deduplicateIngredients(inputIngredients),
                 Utils.deduplicateIngredients(inputSpawnEggs),
-                CommonUtils.safe(Utils.deduplicateIngredients(extraInputIngredients)),
+                Utils.deduplicateIngredients(extraInputIngredients),
                 outputEntityType,
                 Utils.deduplicateIngredients(outputSpawnEggs),
                 isTamed,
@@ -182,9 +179,6 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                 outputColor
         );
         JustEnoughBreeding.transformationRecipes.add(r);
-        if (r.inputEntityType == null || r.inputStack == null || r.inputSpawnEgg == null || r.outputEntityType == null || r.outputSpawnEgg == null) {
-            throw new JsonParseException("TransformationRecipe invalid/null fields: " + jsonPath);
-        }
         return r;
     }
 }

@@ -3,7 +3,6 @@ package com.christofmeg.justenoughbreeding.serializer;
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.recipe.BaseRecipe;
-import com.christofmeg.justenoughbreeding.recipe.TemperRecipe;
 import com.christofmeg.justenoughbreeding.recipe.TransformationRecipe;
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import com.christofmeg.justenoughbreeding.utils.Utils;
@@ -27,8 +26,7 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
 
     @Override
     public @NotNull TransformationRecipe fromJson(@NotNull ResourceLocation jsonPath, @NotNull JsonObject json) {
-        TransformationRecipe r = (TransformationRecipe) readJsonContents(jsonPath, json);
-        return r;
+        return (TransformationRecipe) readJsonContents(jsonPath, json);
     }
 
     @Override
@@ -110,7 +108,7 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
             modFolder = jsonPath.getPath().split("/")[1];
         }
         if (!JustEnoughBreeding.isModLoaded(modFolder) || !JustEnoughBreeding.isModLoaded(jsonModID)) {
-            throw new JsonParseException("Skipping Transformation recipe because mod not loaded: file=" + jsonPath + " mods=" + modFolder + "," + jsonModID);
+            return new TransformationRecipe.DummyRecipe(jsonModID, modFolder, fileName);
         }
 
         List<Ingredient> inputIngredients = new ArrayList<>();

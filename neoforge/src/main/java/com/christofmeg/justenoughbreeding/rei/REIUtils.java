@@ -26,7 +26,7 @@ public class REIUtils {
         List<AllayDuplicationRecipe> allayDuplicationRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.ALLAY_DUPLICATION_PROVIDER_TYPE.get()));
         allayDuplicationRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
         for (AllayDuplicationRecipe recipe : allayDuplicationRecipes) {
-            if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
+            if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
                 registration.add(new AllayDuplicationDisplay(recipe));
             }
         }
@@ -34,7 +34,7 @@ public class REIUtils {
         List<BreedingRecipe> breedingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.BREEDING_PROVIDER_TYPE.get()));
         breedingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
         for (BreedingRecipe recipe : breedingRecipes) {
-            if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
+            if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
                 registration.add(new BreedingDisplay(recipe));
             }
         }
@@ -42,7 +42,7 @@ public class REIUtils {
         List<TamingRecipe> tamingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TAMING_PROVIDER_TYPE.get()));
         tamingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
         for (TamingRecipe recipe : tamingRecipes) {
-            if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
+            if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
                 registration.add(new TamingDisplay(recipe));
             }
         }
@@ -50,7 +50,7 @@ public class REIUtils {
         List<TemperRecipe> temperRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TEMPER_PROVIDER_TYPE.get()));
         temperRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
         for (TemperRecipe recipe : temperRecipes) {
-            if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
+            if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
                 registration.add(new TemperDisplay(recipe));
             }
         }
@@ -58,7 +58,7 @@ public class REIUtils {
         List<TransformationRecipe> transformationRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE.get()));
         transformationRecipes.sort(Comparator.comparing(r -> r.outputEntityType == null ? r.fileName : r.outputEntityType.toShortString()));
         for (TransformationRecipe recipe : transformationRecipes) {
-            if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.inputEntityType != null && recipe.outputEntityType != null) {
+            if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.inputEntityType != null && recipe.outputEntityType != null && !recipe.inputStack.isEmpty()) {
                 registration.add(new TransformationDisplay(recipe));
             }
         }
@@ -66,7 +66,7 @@ public class REIUtils {
         List<TrustingRecipe> trustingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TRUSTING_PROVIDER_TYPE.get()));
         trustingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
         for (TrustingRecipe recipe : trustingRecipes) {
-            if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
+            if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
                 registration.add(new TrustingDisplay(recipe));
             }
         }

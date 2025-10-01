@@ -17,8 +17,7 @@ public class AllayDuplicationSerializer implements RecipeSerializer<AllayDuplica
 
     @Override
     public @NotNull AllayDuplicationRecipe fromJson(@NotNull ResourceLocation jsonPath, @NotNull JsonObject json) {
-        AllayDuplicationRecipe r = (AllayDuplicationRecipe) Utils.readJsonContents(jsonPath, json, "allay_duplication");
-        return r;
+        return (AllayDuplicationRecipe) Utils.readJsonContents(jsonPath, json, "allay_duplication");
     }
 
     @Override

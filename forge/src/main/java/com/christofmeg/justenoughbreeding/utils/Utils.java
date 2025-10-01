@@ -114,7 +114,26 @@ public class Utils {
         }
 
         if (!JustEnoughBreeding.isModLoaded(modFolder) || !JustEnoughBreeding.isModLoaded(jsonModID)) {
-            return null;
+            switch (recipeType) {
+                case "allay_duplication" -> {
+                    return new AllayDuplicationRecipe.DummyRecipe(jsonModID, jsonAnimalID, modFolder, fileName);
+                }
+                case "breeding" -> {
+                    return new BreedingRecipe.DummyRecipe(jsonModID, jsonAnimalID, modFolder, fileName);
+                }
+                case "taming" -> {
+                    return new TamingRecipe.DummyRecipe(jsonModID, jsonAnimalID, modFolder, fileName);
+                }
+                case "temper" -> {
+                    return new TemperRecipe.DummyRecipe(jsonModID, jsonAnimalID, modFolder, fileName);
+                }
+                case "transformation" -> {
+                    return new TransformationRecipe.DummyRecipe(jsonModID, modFolder, fileName);
+                }
+                case "trusting" -> {
+                    return new TrustingRecipe.DummyRecipe(jsonModID, jsonAnimalID, modFolder, fileName);
+                }
+            }
         }
 
         EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(new ResourceLocation(jsonModID, jsonAnimalID));
@@ -160,7 +179,7 @@ public class Utils {
                         entityType,
                         Utils.deduplicateIngredients(inputIngredients),
                         Utils.deduplicateIngredients(spawnEggs),
-                        CommonUtils.safe(Utils.deduplicateIngredients(extraInputIngredients)),
+                        Utils.deduplicateIngredients(extraInputIngredients),
                         jsonModID,
                         jsonAnimalID,
                         modFolder,
@@ -185,7 +204,7 @@ public class Utils {
                         entityType,
                         Utils.deduplicateIngredients(inputIngredients),
                         Utils.deduplicateIngredients(spawnEggs),
-                        CommonUtils.safe(Utils.deduplicateIngredients(extraInputIngredients)),
+                        Utils.deduplicateIngredients(extraInputIngredients),
                         jsonModID,
                         jsonAnimalID,
                         modFolder,
@@ -238,7 +257,7 @@ public class Utils {
                         Utils.deduplicateIngredients(spawnEggs),
                         isTamed,
                         Utils.deduplicateIngredients(outputIngredients),
-                        CommonUtils.safe(Utils.deduplicateIngredients(extraInputIngredients)),
+                        Utils.deduplicateIngredients(extraInputIngredients),
                         isTrusting,
                         jsonModID,
                         jsonAnimalID,

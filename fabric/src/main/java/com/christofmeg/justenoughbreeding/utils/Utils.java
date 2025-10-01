@@ -137,12 +137,7 @@ public class Utils {
             modFolder = jsonPath.getPath().split("/")[1];
         }
 
-        // If a required mod isn't present, skip the file cleanly with a clear message.
         if (!JustEnoughBreeding.isModLoaded(modFolder) || !JustEnoughBreeding.isModLoaded(jsonModID)) {
-            CommonConstants.LOGGER.debug(
-                    "Skipping {} recipe {} because required mod(s) not loaded: {}, {}",
-                    recipeType, jsonPath, modFolder, jsonModID
-            );
             switch (recipeType) {
                 case "allay_duplication" -> {
                     return new AllayDuplicationRecipe.DummyRecipe(jsonModID, jsonAnimalID, modFolder, fileName);
@@ -157,7 +152,7 @@ public class Utils {
                     return new TemperRecipe.DummyRecipe(jsonModID, jsonAnimalID, modFolder, fileName);
                 }
                 case "transformation" -> {
-                    return new TransformationRecipe.DummyRecipe(jsonAnimalID, modFolder, fileName);
+                    return new TransformationRecipe.DummyRecipe(jsonModID, modFolder, fileName);
                 }
                 case "trusting" -> {
                     return new TrustingRecipe.DummyRecipe(jsonModID, jsonAnimalID, modFolder, fileName);

@@ -17,11 +17,7 @@ public class TrustingSerializer implements RecipeSerializer<TrustingRecipe> {
 
     @Override
     public @NotNull TrustingRecipe fromJson(@NotNull ResourceLocation jsonPath, @NotNull JsonObject json) {
-        TrustingRecipe r = (TrustingRecipe) Utils.readJsonContents(jsonPath, json, "trusting");
-        if (r.entityType == null || r.inputStack == null || r.spawnEgg == null) {
-            throw new JsonParseException("TrustingRecipe invalid/null fields: " + jsonPath);
-        }
-        return r;
+        return (TrustingRecipe) Utils.readJsonContents(jsonPath, json, "trusting");
     }
 
     @Override

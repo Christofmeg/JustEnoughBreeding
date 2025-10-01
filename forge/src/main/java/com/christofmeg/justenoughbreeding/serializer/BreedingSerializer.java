@@ -17,11 +17,7 @@ public class BreedingSerializer implements RecipeSerializer<BreedingRecipe> {
 
     @Override
     public @NotNull BreedingRecipe fromJson(@NotNull ResourceLocation jsonPath, @NotNull JsonObject json) {
-        BreedingRecipe r = (BreedingRecipe) Utils.readJsonContents(jsonPath, json, "breeding");
-        if (r.entityType == null || r.inputStack == null || r.spawnEgg == null) {
-            throw new JsonParseException("BreedingRecipe invalid/null fields: " + jsonPath);
-        }
-        return r;
+        return (BreedingRecipe) Utils.readJsonContents(jsonPath, json, "breeding");
     }
 
     @Override

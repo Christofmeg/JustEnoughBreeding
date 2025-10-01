@@ -44,7 +44,7 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
         }
 
         if (!JustEnoughBreeding.isModLoaded(modFolder) || !JustEnoughBreeding.isModLoaded(jsonModID)) {
-            return null;
+            return new TemperRecipe.DummyRecipe(jsonModID, jsonAnimalID, modFolder, fileName);
         }
 
         EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(new ResourceLocation(jsonModID, jsonAnimalID));
@@ -96,9 +96,6 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
                 fileName
         );
         JustEnoughBreeding.temperRecipes.add(r);
-        if (r.entityType == null || r.inputStack == null || r.spawnEgg == null) {
-            throw new JsonParseException("TemperRecipe invalid/null fields: " + jsonPath);
-        }
         return r;
     }
 

@@ -17,8 +17,7 @@ public class TrustingSerializer implements RecipeSerializer<TrustingRecipe> {
 
     @Override
     public @NotNull TrustingRecipe fromJson(@NotNull ResourceLocation jsonPath, @NotNull JsonObject json) {
-        TrustingRecipe r = (TrustingRecipe) Utils.readJsonContents(jsonPath, json, "trusting");
-        return r;
+        return (TrustingRecipe) Utils.readJsonContents(jsonPath, json, "trusting");
     }
 
     @Override

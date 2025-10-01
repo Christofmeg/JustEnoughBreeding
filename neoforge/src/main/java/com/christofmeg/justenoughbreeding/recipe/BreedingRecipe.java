@@ -29,7 +29,7 @@ public class BreedingRecipe extends BaseRecipe {
     public final String fileName;
 
     public BreedingRecipe(EntityType<?> entityType, @Nullable Ingredient inputStack, @Nullable Ingredient spawnEgg, @Nullable Boolean needsToBeTamed, @Nullable Ingredient resultItemStack, @Nullable Ingredient extraInputStack, @Nullable Boolean animalTrusting, String jsonModID, String jsonAnimalID, String modFolder, String fileName) {
-        this.entityType = Objects.requireNonNull(entityType, "entityType");
+        this.entityType = entityType;
         this.inputStack = CommonUtils.safe(inputStack);
         this.spawnEgg = CommonUtils.safe(spawnEgg);
         this.needsToBeTamed = needsToBeTamed;
@@ -50,5 +50,11 @@ public class BreedingRecipe extends BaseRecipe {
     public void setExtraInputIngredient(Ingredient ingredient) { this.extraInputStack = CommonUtils.safe(ingredient); }
     public void setOutputIngredient(Ingredient ingredient) { this.resultItemStack = CommonUtils.safe(ingredient); }
     public void setSpawnEggs(Ingredient ingredient) { this.spawnEgg = CommonUtils.safe(ingredient); }
+
+    public static class DummyRecipe extends BreedingRecipe {
+        public DummyRecipe(String jsonModID, String jsonAnimalID, String  modFolder, String fileName) {
+            super(null, null, null, null, null, null, null, jsonModID, jsonAnimalID, modFolder, fileName);
+        }
+    }
 
 }

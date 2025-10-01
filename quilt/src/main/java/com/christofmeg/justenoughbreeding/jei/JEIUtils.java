@@ -4,7 +4,6 @@ import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.client.ClientUtils;
 import com.christofmeg.justenoughbreeding.recipe.*;
 import com.christofmeg.justenoughbreeding.utils.CommonClientUtils;
-import com.mojang.blaze3d.platform.NativeImage;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
@@ -13,14 +12,10 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.DyeColor;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -34,7 +29,7 @@ public class JEIUtils {
             List<AllayDuplicationRecipe> allayDuplicationRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.ALLAY_DUPLICATION_PROVIDER_TYPE));
             allayDuplicationRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
             for (AllayDuplicationRecipe recipe : allayDuplicationRecipes) {
-                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
+                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
                     registration.addRecipes(AllayDuplicationCategory.TYPE, Collections.singletonList(recipe));
                 }
             }
@@ -42,7 +37,7 @@ public class JEIUtils {
             List<BreedingRecipe> breedingRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.BREEDING_PROVIDER_TYPE));
             breedingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
             for (BreedingRecipe recipe : breedingRecipes) {
-                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
+                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
                     registration.addRecipes(BreedingCategory.TYPE, Collections.singletonList(recipe));
                 }
             }
@@ -50,7 +45,7 @@ public class JEIUtils {
             List<TamingRecipe> tamingRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TAMING_PROVIDER_TYPE));
             tamingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
             for (TamingRecipe recipe : tamingRecipes) {
-                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
+                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
                     registration.addRecipes(TamingCategory.TYPE, Collections.singletonList(recipe));
                 }
             }
@@ -58,7 +53,7 @@ public class JEIUtils {
             List<TemperRecipe> temperRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TEMPER_PROVIDER_TYPE));
             temperRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
             for (TemperRecipe recipe : temperRecipes) {
-                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
+                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
                     registration.addRecipes(TemperCategory.TYPE, Collections.singletonList(recipe));
                 }
             }
@@ -66,7 +61,7 @@ public class JEIUtils {
             List<TransformationRecipe> transformationRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE));
             transformationRecipes.sort(Comparator.comparing(r -> r.outputEntityType == null ? r.fileName : r.outputEntityType.toShortString()));
             for (TransformationRecipe recipe : transformationRecipes) {
-                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.inputEntityType != null && recipe.outputEntityType != null) {
+                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.inputEntityType != null && recipe.outputEntityType != null && !recipe.inputStack.isEmpty()) {
                     registration.addRecipes(TransformationCategory.TYPE, Collections.singletonList(recipe));
                 }
             }
@@ -74,7 +69,7 @@ public class JEIUtils {
             List<TrustingRecipe> trustingRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TRUSTING_PROVIDER_TYPE));
             trustingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
             for (TrustingRecipe recipe : trustingRecipes) {
-                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
+                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
                     registration.addRecipes(TrustingCategory.TYPE, Collections.singletonList(recipe));
                 }
             }
@@ -104,38 +99,18 @@ public class JEIUtils {
         draw(bigSlot, stack, mobSlotX + 24, mobSlotY + 55, bigSlot.getHeight(), 1, 25, 24, 1);
         draw(bigSlot, stack, mobSlotX + 35, mobSlotY + 55, bigSlot.getHeight(), 14, 25, 11, 1);
 
-        int color = getPixelColor(new ResourceLocation("jei", "textures/jei/atlas/gui/output_slot.png"), 13 ,13);
+        int color = CommonClientUtils.getPixelColor(new ResourceLocation("jei", "textures/jei/atlas/gui/output_slot.png"), 13 ,13);
         int startX = mobSlotX + 1;
         int startY = mobSlotY + 1;
         int width  = 59;
         int height = 79;
-        fillSolidColor(stack, startX, startY, width, height, color);
+        CommonClientUtils.fillSolidColor(stack, startX, startY, width, height, color);
     }
 
     private static void draw(IDrawableStatic slot, GuiGraphics stack, int mobSlotX, int mobSlotY, int textureSize, int removeFromLeft, int removeFromTop, int selectionX, int selectionY) {
         int removeFromBottom = textureSize - (removeFromTop + selectionY);
         int removeFromRight = textureSize - (removeFromLeft + selectionX);
         slot.draw(stack, mobSlotX, mobSlotY, removeFromTop, removeFromBottom, removeFromLeft, removeFromRight);
-    }
-
-    private static void fillSolidColor(GuiGraphics guiGraphics, int x, int y, int width, int height, int color) {
-        guiGraphics.fill(x, y, x + width, y + height, color);
-    }
-
-    private static int getPixelColor(ResourceLocation texture, int px, int py) {
-        ResourceManager resourceManager = Minecraft.getInstance().getResourceManager();
-        try {
-            Resource resource = resourceManager.getResource(texture).orElse(null);
-            if (resource == null) return 0xFFFFFFFF; // fallback
-
-            try (InputStream is = resource.open()) { // use resource.open(), not getInputStream
-                NativeImage image = NativeImage.read(is);
-                return image.getPixelRGBA(px, py);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return 0xFFFFFFFF; // fallback color
     }
 
     public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, BaseRecipe recipe) {

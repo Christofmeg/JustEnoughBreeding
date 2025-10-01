@@ -24,7 +24,7 @@ public class AllayDuplicationRecipe extends BaseRecipe {
     public final String fileName;
 
     public AllayDuplicationRecipe(EntityType<?> entityType, Ingredient inputStack, Ingredient spawnEgg, String jsonModID, String jsonAnimalID, String modFolder, String fileName) {
-        this.entityType = Objects.requireNonNull(entityType, "entityType");
+        this.entityType = entityType;
         this.inputStack = CommonUtils.safe(inputStack);
         this.spawnEgg = CommonUtils.safe(spawnEgg);
         this.jsonModID = Objects.requireNonNull(jsonModID, "jsonModID");
@@ -39,5 +39,11 @@ public class AllayDuplicationRecipe extends BaseRecipe {
 
     public void setInputIngredient(Ingredient ingredient) { this.inputStack = CommonUtils.safe(ingredient); }
     public void setSpawnEggs(Ingredient ingredient) { this.spawnEgg = CommonUtils.safe(ingredient); }
+
+    public static class DummyRecipe extends AllayDuplicationRecipe {
+        public DummyRecipe(String jsonModID, String jsonAnimalID, String  modFolder, String fileName) {
+            super(null, null, null, jsonModID, jsonAnimalID, modFolder, fileName);
+        }
+    }
 
 }

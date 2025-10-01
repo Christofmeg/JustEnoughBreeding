@@ -54,8 +54,5 @@ public class BreedingRecipe extends BaseRecipe {
         public DummyRecipe(String jsonModID, String jsonAnimalID, String  modFolder, String fileName) {
             super(null, null, null, null, null, null, null, jsonModID, jsonAnimalID, modFolder, fileName);
         }
-        public DummyRecipe() {
-            super(null, null, null, null, null, null, null, "dummymod", "dummyanimal", "dummyfolder", "dummyfile");
-        }
     }
 }

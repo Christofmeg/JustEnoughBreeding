@@ -17,14 +17,7 @@ public class TamingSerializer implements RecipeSerializer<TamingRecipe> {
 
     @Override
     public @NotNull TamingRecipe fromJson(@NotNull ResourceLocation jsonPath, @NotNull JsonObject json) {
-        TamingRecipe r = (TamingRecipe) Utils.readJsonContents(jsonPath, json, "taming");
-        if (r == null) {
-            return null;
-        }
-        if (r.entityType == null || r.inputStack == null || r.spawnEgg == null) {
-            throw new JsonParseException("TamingRecipe invalid/null fields: " + jsonPath);
-        }
-        return new TamingRecipe(r.entityType, r.inputStack, r.spawnEgg, CommonUtils.safe(r.extraInputStack), r.jsonModID, r.jsonAnimalID, r.modFolder, r.fileName);
+        return (TamingRecipe) Utils.readJsonContents(jsonPath, json, "taming");
     }
 
     @Override

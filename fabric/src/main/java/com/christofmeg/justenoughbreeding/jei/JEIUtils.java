@@ -29,7 +29,7 @@ public class JEIUtils {
             List<AllayDuplicationRecipe> allayDuplicationRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.ALLAY_DUPLICATION_PROVIDER_TYPE));
             allayDuplicationRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
             for (AllayDuplicationRecipe recipe : allayDuplicationRecipes) {
-                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
+                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
                     registration.addRecipes(AllayDuplicationCategory.TYPE, Collections.singletonList(recipe));
                 }
             }
@@ -37,7 +37,7 @@ public class JEIUtils {
             List<BreedingRecipe> breedingRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.BREEDING_PROVIDER_TYPE));
             breedingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
             for (BreedingRecipe recipe : breedingRecipes) {
-                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
+                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
                     registration.addRecipes(BreedingCategory.TYPE, Collections.singletonList(recipe));
                 }
             }
@@ -45,7 +45,7 @@ public class JEIUtils {
             List<TamingRecipe> tamingRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TAMING_PROVIDER_TYPE));
             tamingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
             for (TamingRecipe recipe : tamingRecipes) {
-                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
+                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
                     registration.addRecipes(TamingCategory.TYPE, Collections.singletonList(recipe));
                 }
             }
@@ -53,7 +53,7 @@ public class JEIUtils {
             List<TemperRecipe> temperRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TEMPER_PROVIDER_TYPE));
             temperRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
             for (TemperRecipe recipe : temperRecipes) {
-                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
+                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
                     registration.addRecipes(TemperCategory.TYPE, Collections.singletonList(recipe));
                 }
             }
@@ -61,7 +61,7 @@ public class JEIUtils {
             List<TransformationRecipe> transformationRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE));
             transformationRecipes.sort(Comparator.comparing(r -> r.outputEntityType == null ? r.fileName : r.outputEntityType.toShortString()));
             for (TransformationRecipe recipe : transformationRecipes) {
-                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.inputEntityType != null && recipe.outputEntityType != null) {
+                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.inputEntityType != null && recipe.outputEntityType != null && !recipe.inputStack.isEmpty()) {
                     registration.addRecipes(TransformationCategory.TYPE, Collections.singletonList(recipe));
                 }
             }
@@ -69,7 +69,7 @@ public class JEIUtils {
             List<TrustingRecipe> trustingRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TRUSTING_PROVIDER_TYPE));
             trustingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
             for (TrustingRecipe recipe : trustingRecipes) {
-                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null) {
+                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
                     registration.addRecipes(TrustingCategory.TYPE, Collections.singletonList(recipe));
                 }
             }
