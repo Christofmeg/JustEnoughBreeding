@@ -43,7 +43,7 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
         }
 
         if (!JustEnoughBreeding.isModLoaded(modFolder) || !JustEnoughBreeding.isModLoaded(modID)) {
-            throw new JsonParseException("Skipping Temper recipe because mod not loaded: file=" + jsonPath + " mods=" + modFolder + "," + modID);
+   //         throw new JsonParseException("Skipping Temper recipe because mod not loaded: file=" + jsonPath + " mods=" + modFolder + "," + modID);
         }
 
         EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(new ResourceLocation(modID, mobName));
@@ -82,7 +82,7 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
             }
         }
 
-        TemperRecipe newRecipe = new TemperRecipe(
+        TemperRecipe r = new TemperRecipe(
                 entityType,
                 Utils.deduplicateIngredients(inputIngredients),
                 Utils.deduplicateIngredients(spawnEggs),
@@ -92,20 +92,15 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
                 modFolder,
                 fileName
         );
-        JustEnoughBreeding.temperRecipes.add(newRecipe);
-
-        if (newRecipe == null) {
-            return new TemperRecipe.DummyRecipe();
-        }
-
-        return newRecipe;
+        JustEnoughBreeding.temperRecipes.add(r);
+        return r;
     }
 
     @Override
     public @NotNull TemperRecipe fromNetwork(@NotNull ResourceLocation id, @NotNull FriendlyByteBuf buf) {
         ResourceLocation entityId = buf.readResourceLocation();
         EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(entityId);
-        if (entityType == null) throw new IllegalStateException("Unknown EntityType in TemperRecipe#fromNetwork: " + entityId);
+        if (entityType == null) throw new JsonParseException("Unknown EntityType in TemperRecipe#fromNetwork: " + entityId);
 
         Ingredient inputStack = Ingredient.fromNetwork(buf);
         Ingredient spawnEgg = Ingredient.fromNetwork(buf);
@@ -124,7 +119,7 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
     @Override
     public void toNetwork(@NotNull FriendlyByteBuf buf, @NotNull TemperRecipe recipe) {
         ResourceLocation entityKey = JustEnoughBreeding.getKeyLoaderRegistries(recipe.entityType);
-        if (entityKey == null) throw new IllegalStateException("Unknown EntityType in TemperRecipe: " + recipe.entityType);
+        if (entityKey == null) throw new JsonParseException("Unknown EntityType in TemperRecipe: " + recipe.entityType);
         buf.writeResourceLocation(entityKey);
 
         CommonUtils.safe(recipe.inputStack).toNetwork(buf);

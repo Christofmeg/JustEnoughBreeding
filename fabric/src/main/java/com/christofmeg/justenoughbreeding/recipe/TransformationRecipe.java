@@ -29,18 +29,7 @@ public class TransformationRecipe extends BaseRecipe {
     public final @Nullable DyeColor inputColor;
     public final @Nullable DyeColor outputColor;
 
-    public TransformationRecipe(EntityType<?> inputEntityType,
-                                Ingredient inputStack,
-                                Ingredient inputSpawnEgg,
-                                Ingredient extraInputStack,
-                                EntityType<?> outputEntityType,
-                                Ingredient outputSpawnEgg,
-                                @Nullable Boolean needsToBeTamed,
-                                String jsonModID,
-                                String modFolder,
-                                String fileName,
-                                @Nullable DyeColor inputColor,
-                                @Nullable DyeColor outputColor) {
+    public TransformationRecipe(EntityType<?> inputEntityType, Ingredient inputStack, Ingredient inputSpawnEgg, Ingredient extraInputStack, EntityType<?> outputEntityType, Ingredient outputSpawnEgg, @Nullable Boolean needsToBeTamed, String jsonModID, String modFolder, String fileName, @Nullable DyeColor inputColor, @Nullable DyeColor outputColor) {
         this.inputEntityType = inputEntityType;
         this.inputStack = CommonUtils.safe(inputStack);
         this.inputSpawnEgg = CommonUtils.safe(inputSpawnEgg);
@@ -55,16 +44,9 @@ public class TransformationRecipe extends BaseRecipe {
         this.outputColor = outputColor;
     }
 
-    @Override
-    public @NotNull ResourceLocation getId() {
-        return new ResourceLocation(CommonConstants.MOD_ID, "transformation" + "/" + this.modFolder + "/" + this.fileName + "/" + this.jsonModID);
-    }
-
-    @Override
-    public @NotNull RecipeSerializer<?> getSerializer() { return JustEnoughBreeding.TRANSFORMATION_PROVIDER_SERIALIZER; }
-
-    @Override
-    public @NotNull RecipeType<?> getType() { return JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE; }
+    @Override public @NotNull ResourceLocation getId() { return new ResourceLocation(CommonConstants.MOD_ID, "transformation" + "/" + this.modFolder + "/" + this.fileName + "/" + this.jsonModID); }
+    @Override public @NotNull RecipeSerializer<?> getSerializer() { return JustEnoughBreeding.TRANSFORMATION_PROVIDER_SERIALIZER; }
+    @Override public @NotNull RecipeType<?> getType() { return JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE; }
 
     public void setInputIngredient(Ingredient ingredient) { this.inputStack = CommonUtils.safe(ingredient); }
     public void setExtraInputIngredient(Ingredient ingredient) { this.extraInputStack = CommonUtils.safe(ingredient); }
@@ -72,6 +54,9 @@ public class TransformationRecipe extends BaseRecipe {
     public void setOutputSpawnEggs(Ingredient ingredient) { this.outputSpawnEgg = CommonUtils.safe(ingredient); }
 
     public static class DummyRecipe extends TransformationRecipe {
+        public DummyRecipe(String jsonAnimalID, String  modFolder, String fileName) {
+            super(null,null,null,null,null,null,null, jsonAnimalID, modFolder, fileName, null, null);
+        }
         public DummyRecipe() {
             super(null,null,null,null,null,null,null,"dummymod", "dummyfolder", "dummyfile", null, null);
         }

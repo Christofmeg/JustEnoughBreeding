@@ -18,20 +18,14 @@ public class TrustingSerializer implements RecipeSerializer<TrustingRecipe> {
     @Override
     public @NotNull TrustingRecipe fromJson(@NotNull ResourceLocation jsonPath, @NotNull JsonObject json) {
         TrustingRecipe r = (TrustingRecipe) Utils.readJsonContents(jsonPath, json, "trusting");
-        if (r == null) {
-            return new TrustingRecipe.DummyRecipe();
-        }
-        if (r.entityType == null || r.inputStack == null || r.spawnEgg == null) {
-            throw new JsonParseException("TrustingRecipe invalid/null fields: " + jsonPath);
-        }
-        return new TrustingRecipe(r.entityType, r.inputStack, r.spawnEgg, CommonUtils.safe(r.extraInputStack), r.jsonModID, r.jsonAnimalID, r.modFolder, r.fileName);
+        return r;
     }
 
     @Override
     public @NotNull TrustingRecipe fromNetwork(@NotNull ResourceLocation id, @NotNull FriendlyByteBuf buf) {
         ResourceLocation entityRL = buf.readResourceLocation();
         EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(entityRL);
-        if (entityType == null) throw new IllegalStateException("Unknown EntityType in TrustingRecipe#fromNetwork: " + entityRL);
+        if (entityType == null) throw new JsonParseException("Unknown EntityType in TrustingRecipe#fromNetwork: " + entityRL);
 
         Ingredient inputStack = Ingredient.fromNetwork(buf);
         Ingredient spawnEgg = Ingredient.fromNetwork(buf);
@@ -50,7 +44,7 @@ public class TrustingSerializer implements RecipeSerializer<TrustingRecipe> {
     @Override
     public void toNetwork(@NotNull FriendlyByteBuf buf, @NotNull TrustingRecipe recipe) {
         ResourceLocation entityKey = JustEnoughBreeding.getKeyLoaderRegistries(recipe.entityType);
-        if (entityKey == null) throw new IllegalStateException("Unknown EntityType in TrustingRecipe: " + recipe.entityType);
+        if (entityKey == null) throw new JsonParseException("Unknown EntityType in TrustingRecipe: " + recipe.entityType);
         buf.writeResourceLocation(entityKey);
 
         CommonUtils.safe(recipe.inputStack).toNetwork(buf);

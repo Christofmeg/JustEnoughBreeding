@@ -23,14 +23,7 @@ public class TrustingRecipe extends BaseRecipe {
     public final String modFolder;
     public final String fileName;
 
-    public TrustingRecipe(EntityType<?> entityType,
-                          Ingredient inputStack,
-                          Ingredient spawnEgg,
-                          Ingredient extraInputStack,
-                          String jsonModID,
-                          String jsonAnimalID,
-                          String modFolder,
-                          String fileName) {
+    public TrustingRecipe(EntityType<?> entityType, Ingredient inputStack, Ingredient spawnEgg, Ingredient extraInputStack, String jsonModID, String jsonAnimalID, String modFolder, String fileName) {
         this.entityType = entityType;
         this.inputStack = CommonUtils.safe(inputStack);
         this.spawnEgg = CommonUtils.safe(spawnEgg);
@@ -41,22 +34,18 @@ public class TrustingRecipe extends BaseRecipe {
         this.fileName = Objects.requireNonNull(fileName, "fileName");
     }
 
-    @Override
-    public @NotNull ResourceLocation getId() {
-        return new ResourceLocation(CommonConstants.MOD_ID, "trusting" + "/" + this.modFolder + "/" + this.fileName + "/" + this.jsonModID + "/" + this.jsonAnimalID);
-    }
-
-    @Override
-    public @NotNull RecipeSerializer<?> getSerializer() { return JustEnoughBreeding.TRUSTING_PROVIDER_SERIALIZER; }
-
-    @Override
-    public @NotNull RecipeType<?> getType() { return JustEnoughBreeding.TRUSTING_PROVIDER_TYPE; }
+    @Override public @NotNull ResourceLocation getId() { return new ResourceLocation(CommonConstants.MOD_ID, "trusting" + "/" + this.modFolder + "/" + this.fileName + "/" + this.jsonModID + "/" + this.jsonAnimalID); }
+    @Override public @NotNull RecipeSerializer<?> getSerializer() { return JustEnoughBreeding.TRUSTING_PROVIDER_SERIALIZER; }
+    @Override public @NotNull RecipeType<?> getType() { return JustEnoughBreeding.TRUSTING_PROVIDER_TYPE; }
 
     public void setInputIngredient(Ingredient ingredient) { this.inputStack = CommonUtils.safe(ingredient); }
     public void setExtraInputIngredient(Ingredient ingredient) { this.extraInputStack = CommonUtils.safe(ingredient); }
     public void setSpawnEggs(Ingredient ingredient) { this.spawnEgg = CommonUtils.safe(ingredient); }
 
     public static class DummyRecipe extends TrustingRecipe {
+        public DummyRecipe(String jsonModID, String jsonAnimalID, String  modFolder, String fileName) {
+            super(null,null,null,null, jsonModID, jsonAnimalID, modFolder, fileName);
+        }
         public DummyRecipe() {
             super(null,null,null,null, "dummymod", "dummyanimal", "dummyfolder", "dummyfile");
         }

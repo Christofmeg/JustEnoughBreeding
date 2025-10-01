@@ -27,19 +27,7 @@ public class BreedingRecipe extends BaseRecipe {
     public final String modFolder;
     public final String fileName;
 
-    public BreedingRecipe(
-            EntityType<?> entityType,
-            @Nullable Ingredient inputStack,
-            @Nullable Ingredient spawnEgg,
-            @Nullable Boolean needsToBeTamed,
-            @Nullable Ingredient resultItemStack,
-            @Nullable Ingredient extraInputStack,
-            @Nullable Boolean animalTrusting,
-            String jsonModID,
-            String jsonAnimalID,
-            String modFolder,
-            String fileName
-    ) {
+    public BreedingRecipe(EntityType<?> entityType, @Nullable Ingredient inputStack, @Nullable Ingredient spawnEgg, @Nullable Boolean needsToBeTamed, @Nullable Ingredient resultItemStack, @Nullable Ingredient extraInputStack, @Nullable Boolean animalTrusting, String jsonModID, String jsonAnimalID, String modFolder, String fileName) {
         this.entityType = entityType;
         this.inputStack = CommonUtils.safe(inputStack);
         this.spawnEgg = CommonUtils.safe(spawnEgg);
@@ -53,23 +41,9 @@ public class BreedingRecipe extends BaseRecipe {
         this.fileName = Objects.requireNonNull(fileName, "fileName");
     }
 
-    @Override
-    public @NotNull ResourceLocation getId() {
-        return new ResourceLocation(
-                CommonConstants.MOD_ID,
-                "breeding" + "/" + this.modFolder + "/" + this.fileName + "/" + this.jsonModID + "/" + this.jsonAnimalID
-        );
-    }
-
-    @Override
-    public @NotNull RecipeSerializer<?> getSerializer() {
-        return JustEnoughBreeding.BREEDING_PROVIDER_SERIALIZER;
-    }
-
-    @Override
-    public @NotNull RecipeType<?> getType() {
-        return JustEnoughBreeding.BREEDING_PROVIDER_TYPE;
-    }
+    @Override public @NotNull ResourceLocation getId() { return new ResourceLocation(CommonConstants.MOD_ID, "breeding" + "/" + this.modFolder + "/" + this.fileName + "/" + this.jsonModID + "/" + this.jsonAnimalID); }
+    @Override public @NotNull RecipeSerializer<?> getSerializer() { return JustEnoughBreeding.BREEDING_PROVIDER_SERIALIZER; }
+    @Override public @NotNull RecipeType<?> getType() { return JustEnoughBreeding.BREEDING_PROVIDER_TYPE; }
 
     public void setInputIngredient(Ingredient ingredient) { this.inputStack = CommonUtils.safe(ingredient); }
     public void setExtraInputIngredient(Ingredient ingredient) { this.extraInputStack = CommonUtils.safe(ingredient); }
@@ -77,6 +51,9 @@ public class BreedingRecipe extends BaseRecipe {
     public void setSpawnEggs(Ingredient ingredient) { this.spawnEgg = CommonUtils.safe(ingredient); }
 
     public static class DummyRecipe extends BreedingRecipe {
+        public DummyRecipe(String jsonModID, String jsonAnimalID, String  modFolder, String fileName) {
+            super(null, null, null, null, null, null, null, jsonModID, jsonAnimalID, modFolder, fileName);
+        }
         public DummyRecipe() {
             super(null, null, null, null, null, null, null, "dummymod", "dummyanimal", "dummyfolder", "dummyfile");
         }

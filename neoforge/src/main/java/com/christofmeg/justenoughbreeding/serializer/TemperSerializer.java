@@ -104,7 +104,7 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
     public @NotNull TemperRecipe fromNetwork(@NotNull ResourceLocation id, @NotNull FriendlyByteBuf buf) {
         ResourceLocation entityId = buf.readResourceLocation();
         EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(entityId);
-        if (entityType == null) throw new IllegalStateException("Unknown EntityType in TemperRecipe#fromNetwork: " + entityId);
+        if (entityType == null) throw new JsonParseException("Unknown EntityType in TemperRecipe#fromNetwork: " + entityId);
 
         Ingredient inputStack = Ingredient.fromNetwork(buf);
         Ingredient spawnEgg = Ingredient.fromNetwork(buf);
@@ -123,7 +123,7 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
     @Override
     public void toNetwork(@NotNull FriendlyByteBuf buf, @NotNull TemperRecipe recipe) {
         ResourceLocation entityKey = JustEnoughBreeding.getKeyLoaderRegistries(recipe.entityType);
-        if (entityKey == null) throw new IllegalStateException("Unknown EntityType in TemperRecipe: " + recipe.entityType);
+        if (entityKey == null) throw new JsonParseException("Unknown EntityType in TemperRecipe: " + recipe.entityType);
         buf.writeResourceLocation(entityKey);
 
         CommonUtils.safe(recipe.inputStack).toNetwork(buf);

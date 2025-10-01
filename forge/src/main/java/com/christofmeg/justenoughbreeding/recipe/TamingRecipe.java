@@ -33,12 +33,6 @@ public class TamingRecipe extends BaseRecipe {
         this.jsonAnimalID = Objects.requireNonNull(jsonAnimalID, "jsonAnimalID");
         this.modFolder = Objects.requireNonNull(modFolder, "modFolder");
         this.fileName = Objects.requireNonNull(fileName, "fileName");
-        validateRequired();
-    }
-
-    private void validateRequired() {
-        if (inputStack.isEmpty()) throw new IllegalStateException("TamingRecipe " + getId() + " has empty input ingredient.");
-        if (spawnEgg.isEmpty()) throw new IllegalStateException("TamingRecipe " + getId() + " has empty spawnEgg ingredient.");
     }
 
     @Override public @NotNull ResourceLocation getId() { return new ResourceLocation(CommonConstants.MOD_ID, "taming" + "/" + this.modFolder + "/" + this.fileName + "/" + this.jsonModID + "/" + this.jsonAnimalID); }

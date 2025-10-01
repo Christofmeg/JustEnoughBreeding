@@ -28,19 +28,7 @@ public class BreedingRecipe extends BaseRecipe {
     public final String modFolder;
     public final String fileName;
 
-    public BreedingRecipe(
-            EntityType<?> entityType,
-            @Nullable Ingredient inputStack,
-            @Nullable Ingredient spawnEgg,
-            @Nullable Boolean needsToBeTamed,
-            @Nullable Ingredient resultItemStack,
-            @Nullable Ingredient extraInputStack,
-            @Nullable Boolean animalTrusting,
-            String jsonModID,
-            String jsonAnimalID,
-            String modFolder,
-            String fileName
-    ) {
+    public BreedingRecipe(EntityType<?> entityType, @Nullable Ingredient inputStack, @Nullable Ingredient spawnEgg, @Nullable Boolean needsToBeTamed, @Nullable Ingredient resultItemStack, @Nullable Ingredient extraInputStack, @Nullable Boolean animalTrusting, String jsonModID, String jsonAnimalID, String modFolder, String fileName) {
         this.entityType = Objects.requireNonNull(entityType, "entityType");
         this.inputStack = CommonUtils.safe(inputStack);
         this.spawnEgg = CommonUtils.safe(spawnEgg);
@@ -52,35 +40,11 @@ public class BreedingRecipe extends BaseRecipe {
         this.jsonAnimalID = Objects.requireNonNull(jsonAnimalID, "jsonAnimalID");
         this.modFolder = Objects.requireNonNull(modFolder, "modFolder");
         this.fileName = Objects.requireNonNull(fileName, "fileName");
-        validateRequired();
     }
 
-    private void validateRequired() {
-        if (this.inputStack.isEmpty()) {
-            throw new IllegalStateException("BreedingRecipe " + getId() + " has empty input ingredient.");
-        }
-        if (this.spawnEgg.isEmpty()) {
-            throw new IllegalStateException("BreedingRecipe " + getId() + " has empty spawnEgg ingredient.");
-        }
-    }
-
-    @Override
-    public @NotNull ResourceLocation getId() {
-        return new ResourceLocation(
-                CommonConstants.MOD_ID,
-                "breeding" + "/" + this.modFolder + "/" + this.fileName + "/" + this.jsonModID + "/" + this.jsonAnimalID
-        );
-    }
-
-    @Override
-    public @NotNull RecipeSerializer<?> getSerializer() {
-        return JustEnoughBreeding.BREEDING_PROVIDER_SERIALIZER.get();
-    }
-
-    @Override
-    public @NotNull RecipeType<?> getType() {
-        return JustEnoughBreeding.BREEDING_PROVIDER_TYPE.get();
-    }
+    @Override public @NotNull ResourceLocation getId() { return new ResourceLocation(CommonConstants.MOD_ID, "breeding" + "/" + this.modFolder + "/" + this.fileName + "/" + this.jsonModID + "/" + this.jsonAnimalID); }
+    @Override public @NotNull RecipeSerializer<?> getSerializer() { return JustEnoughBreeding.BREEDING_PROVIDER_SERIALIZER.get(); }
+    @Override public @NotNull RecipeType<?> getType() { return JustEnoughBreeding.BREEDING_PROVIDER_TYPE.get(); }
 
     public void setInputIngredient(Ingredient ingredient) { this.inputStack = CommonUtils.safe(ingredient); }
     public void setExtraInputIngredient(Ingredient ingredient) { this.extraInputStack = CommonUtils.safe(ingredient); }

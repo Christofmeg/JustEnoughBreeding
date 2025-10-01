@@ -3,6 +3,7 @@ package com.christofmeg.justenoughbreeding.serializer;
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.recipe.BaseRecipe;
+import com.christofmeg.justenoughbreeding.recipe.TemperRecipe;
 import com.christofmeg.justenoughbreeding.recipe.TransformationRecipe;
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import com.christofmeg.justenoughbreeding.utils.Utils;
@@ -22,15 +23,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@SuppressWarnings("removal")
 public class TransformationSerializer implements RecipeSerializer<TransformationRecipe> {
 
     @Override
     public @NotNull TransformationRecipe fromJson(@NotNull ResourceLocation jsonPath, @NotNull JsonObject json) {
         TransformationRecipe r = (TransformationRecipe) readJsonContents(jsonPath, json);
-        if (r == null) {
-            return new TransformationRecipe.DummyRecipe();
-        }
         return r;
     }
 
@@ -38,11 +35,11 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
     public @NotNull TransformationRecipe fromNetwork(@NotNull ResourceLocation id, @NotNull FriendlyByteBuf buf) {
         ResourceLocation inputEntityId = buf.readResourceLocation();
         EntityType<?> inputEntityType = JustEnoughBreeding.getEntityFromLoaderRegistries(inputEntityId);
-        if (inputEntityType == null) throw new IllegalStateException("Unknown input EntityType in TransformationRecipe#fromNetwork: " + inputEntityId);
+        if (inputEntityType == null) throw new JsonParseException("Unknown input EntityType in TransformationRecipe#fromNetwork: " + inputEntityId);
 
         ResourceLocation outputEntityId = buf.readResourceLocation();
         EntityType<?> outputEntityType = JustEnoughBreeding.getEntityFromLoaderRegistries(outputEntityId);
-        if (outputEntityType == null) throw new IllegalStateException("Unknown output EntityType in TransformationRecipe#fromNetwork: " + outputEntityId);
+        if (outputEntityType == null) throw new JsonParseException("Unknown output EntityType in TransformationRecipe#fromNetwork: " + outputEntityId);
 
         Ingredient inputStack = Ingredient.fromNetwork(buf);
         Ingredient inputSpawnEgg = Ingredient.fromNetwork(buf);
@@ -81,7 +78,7 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
     public void toNetwork(@NotNull FriendlyByteBuf buf, @NotNull TransformationRecipe recipe) {
         ResourceLocation inKey = JustEnoughBreeding.getKeyLoaderRegistries(recipe.inputEntityType);
         ResourceLocation outKey = JustEnoughBreeding.getKeyLoaderRegistries(recipe.outputEntityType);
-        if (inKey == null || outKey == null) throw new IllegalStateException("Unknown EntityType in TransformationRecipe: " + recipe.inputEntityType + " / " + recipe.outputEntityType);
+        if (inKey == null || outKey == null) throw new JsonParseException("Unknown EntityType in TransformationRecipe: " + recipe.inputEntityType + " / " + recipe.outputEntityType);
         buf.writeResourceLocation(inKey);
         buf.writeResourceLocation(outKey);
 

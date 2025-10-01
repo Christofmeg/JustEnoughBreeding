@@ -145,22 +145,22 @@ public class Utils {
             );
             switch (recipeType) {
                 case "allay_duplication" -> {
-                    return new AllayDuplicationRecipe.DummyRecipe();
+                    return new AllayDuplicationRecipe.DummyRecipe(jsonModID, jsonAnimalID, modFolder, fileName);
                 }
                 case "breeding" -> {
-                    return new BreedingRecipe.DummyRecipe();
+                    return new BreedingRecipe.DummyRecipe(jsonModID, jsonAnimalID, modFolder, fileName);
                 }
                 case "taming" -> {
-                    return new TamingRecipe.DummyRecipe();
+                    return new TamingRecipe.DummyRecipe(jsonModID, jsonAnimalID, modFolder, fileName);
                 }
                 case "temper" -> {
-                    return new TemperRecipe.DummyRecipe();
+                    return new TemperRecipe.DummyRecipe(jsonModID, jsonAnimalID, modFolder, fileName);
                 }
                 case "transformation" -> {
-                    return new TransformationRecipe.DummyRecipe();
+                    return new TransformationRecipe.DummyRecipe(jsonAnimalID, modFolder, fileName);
                 }
                 case "trusting" -> {
-                    return new TrustingRecipe.DummyRecipe();
+                    return new TrustingRecipe.DummyRecipe(jsonModID, jsonAnimalID, modFolder, fileName);
                 }
             }
         }

@@ -31,7 +31,7 @@ public class TrustingSerializer implements RecipeSerializer<TrustingRecipe> {
     public @NotNull TrustingRecipe fromNetwork(@NotNull ResourceLocation id, @NotNull FriendlyByteBuf buf) {
         ResourceLocation entityRL = buf.readResourceLocation();
         EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(entityRL);
-        if (entityType == null) throw new IllegalStateException("Unknown EntityType in TrustingRecipe#fromNetwork: " + entityRL);
+        if (entityType == null) throw new JsonParseException("Unknown EntityType in TrustingRecipe#fromNetwork: " + entityRL);
 
         Ingredient inputStack = Ingredient.fromNetwork(buf);
         Ingredient spawnEgg = Ingredient.fromNetwork(buf);
@@ -50,7 +50,7 @@ public class TrustingSerializer implements RecipeSerializer<TrustingRecipe> {
     @Override
     public void toNetwork(@NotNull FriendlyByteBuf buf, @NotNull TrustingRecipe recipe) {
         ResourceLocation entityKey = JustEnoughBreeding.getKeyLoaderRegistries(recipe.entityType);
-        if (entityKey == null) throw new IllegalStateException("Unknown EntityType in TrustingRecipe: " + recipe.entityType);
+        if (entityKey == null) throw new JsonParseException("Unknown EntityType in TrustingRecipe: " + recipe.entityType);
         buf.writeResourceLocation(entityKey);
 
         CommonUtils.safe(recipe.inputStack).toNetwork(buf);

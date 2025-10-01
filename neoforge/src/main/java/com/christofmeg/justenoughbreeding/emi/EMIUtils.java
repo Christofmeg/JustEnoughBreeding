@@ -132,14 +132,16 @@ public class EMIUtils {
         widgets.addTexture(RIGHT, mobSlotX + 61, mobSlotY + 56);
 
         int color = CommonClientUtils.getPixelColor(new ResourceLocation("emi", "textures/gui/widgets.png"), 30 ,12);
+        if (color == 0) color = -7631989;
         int startX = mobSlotX + 1;
         int startY = mobSlotY - 4;
         int width  = 59;
         int height = 79;
+        int finalColor = color;
         widgets.addDrawable(startX, startY, width, height, (guiGraphics, mouseX, mouseY, delta) -> {
-            guiGraphics.fill(startX, startY, startX + width, startY + height, color);
+            guiGraphics.fill(startX, startY, startX + width, startY + height, finalColor);
         });
-
+        
         widgets.addTexture(CORNER, mobSlotX + 1, mobSlotY + 81);
         widgets.addTexture(BOTTOM, mobSlotX + 2, mobSlotY + 81);
         widgets.addTexture(BOTTOM, mobSlotX + 27, mobSlotY + 81);

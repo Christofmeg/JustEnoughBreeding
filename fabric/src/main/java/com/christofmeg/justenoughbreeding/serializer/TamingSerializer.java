@@ -5,6 +5,7 @@ import com.christofmeg.justenoughbreeding.recipe.TamingRecipe;
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import com.christofmeg.justenoughbreeding.utils.Utils;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -17,19 +18,13 @@ public class TamingSerializer implements RecipeSerializer<TamingRecipe> {
     @Override
     public @NotNull TamingRecipe fromJson(@NotNull ResourceLocation jsonPath, @NotNull JsonObject json) {
         TamingRecipe r = (TamingRecipe) Utils.readJsonContents(jsonPath, json, "taming");
-        if (r == null) {
-            return new TamingRecipe.DummyRecipe();
-        }
-        if (r.entityType == null || r.inputStack == null || r.spawnEgg == null) {
-            throw new com.google.gson.JsonParseException("TamingRecipe invalid/null fields: " + jsonPath);
-        }
-        return new TamingRecipe(r.entityType, r.inputStack, r.spawnEgg, CommonUtils.safe(r.extraInputStack), r.jsonModID, r.jsonAnimalID, r.modFolder, r.fileName);
+        return r;
     }
 
     @Override
     public @NotNull TamingRecipe fromNetwork(@NotNull ResourceLocation resourceLocation, @NotNull FriendlyByteBuf buf) {
         EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(buf.readResourceLocation());
-        if (entityType == null) throw new IllegalStateException("Unknown EntityType in TamingRecipe#fromNetwork");
+        if (entityType == null) throw new JsonParseException("Unknown EntityType in TamingRecipe#fromNetwork");
 
         Ingredient inputStack = Ingredient.fromNetwork(buf);
         Ingredient spawnEgg = Ingredient.fromNetwork(buf);
@@ -48,7 +43,7 @@ public class TamingSerializer implements RecipeSerializer<TamingRecipe> {
     @Override
     public void toNetwork(@NotNull FriendlyByteBuf buf, @NotNull TamingRecipe recipe) {
         ResourceLocation entityKey = JustEnoughBreeding.getKeyLoaderRegistries(recipe.entityType);
-        if (entityKey == null) throw new IllegalStateException("Unknown EntityType in TamingRecipe: " + recipe.entityType);
+        if (entityKey == null) throw new JsonParseException("Unknown EntityType in TamingRecipe: " + recipe.entityType);
         buf.writeResourceLocation(entityKey);
 
         CommonUtils.safe(recipe.inputStack).toNetwork(buf);

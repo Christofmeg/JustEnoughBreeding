@@ -30,18 +30,7 @@ public class TransformationRecipe extends BaseRecipe {
     public final @Nullable DyeColor inputColor;
     public final @Nullable DyeColor outputColor;
 
-    public TransformationRecipe(EntityType<?> inputEntityType,
-                                Ingredient inputStack,
-                                Ingredient inputSpawnEgg,
-                                Ingredient extraInputStack,
-                                EntityType<?> outputEntityType,
-                                Ingredient outputSpawnEgg,
-                                @Nullable Boolean needsToBeTamed,
-                                String jsonModID,
-                                String modFolder,
-                                String fileName,
-                                @Nullable DyeColor inputColor,
-                                @Nullable DyeColor outputColor) {
+    public TransformationRecipe(EntityType<?> inputEntityType, Ingredient inputStack, Ingredient inputSpawnEgg, Ingredient extraInputStack, EntityType<?> outputEntityType, Ingredient outputSpawnEgg, @Nullable Boolean needsToBeTamed, String jsonModID, String modFolder, String fileName, @Nullable DyeColor inputColor, @Nullable DyeColor outputColor) {
         this.inputEntityType = Objects.requireNonNull(inputEntityType, "inputEntityType");
         this.inputStack = CommonUtils.safe(inputStack);
         this.inputSpawnEgg = CommonUtils.safe(inputSpawnEgg);
@@ -54,25 +43,11 @@ public class TransformationRecipe extends BaseRecipe {
         this.fileName = Objects.requireNonNull(fileName, "fileName");
         this.inputColor = inputColor;
         this.outputColor = outputColor;
-        validateRequired();
     }
 
-    private void validateRequired() {
-        if (inputStack.isEmpty()) throw new IllegalStateException("TransformationRecipe " + getId() + " has empty input ingredient.");
-        if (inputSpawnEgg.isEmpty()) throw new IllegalStateException("TransformationRecipe " + getId() + " has empty inputSpawnEgg ingredient.");
-        if (outputSpawnEgg.isEmpty()) throw new IllegalStateException("TransformationRecipe " + getId() + " has empty outputSpawnEgg ingredient.");
-    }
-
-    @Override
-    public @NotNull ResourceLocation getId() {
-        return new ResourceLocation(CommonConstants.MOD_ID, "transformation" + "/" + this.modFolder + "/" + this.fileName + "/" + this.jsonModID);
-    }
-
-    @Override
-    public @NotNull RecipeSerializer<?> getSerializer() { return JustEnoughBreeding.TRANSFORMATION_PROVIDER_SERIALIZER.get(); }
-
-    @Override
-    public @NotNull RecipeType<?> getType() { return JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE.get(); }
+    @Override public @NotNull ResourceLocation getId() { return new ResourceLocation(CommonConstants.MOD_ID, "transformation" + "/" + this.modFolder + "/" + this.fileName + "/" + this.jsonModID); }
+    @Override public @NotNull RecipeSerializer<?> getSerializer() { return JustEnoughBreeding.TRANSFORMATION_PROVIDER_SERIALIZER.get(); }
+    @Override public @NotNull RecipeType<?> getType() { return JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE.get(); }
 
     public void setInputIngredient(Ingredient ingredient) { this.inputStack = CommonUtils.safe(ingredient); }
     public void setExtraInputIngredient(Ingredient ingredient) { this.extraInputStack = CommonUtils.safe(ingredient); }

@@ -34,11 +34,11 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
     public @NotNull TransformationRecipe fromNetwork(@NotNull ResourceLocation id, @NotNull FriendlyByteBuf buf) {
         ResourceLocation inputEntityId = buf.readResourceLocation();
         EntityType<?> inputEntityType = JustEnoughBreeding.getEntityFromLoaderRegistries(inputEntityId);
-        if (inputEntityType == null) throw new IllegalStateException("Unknown input EntityType in TransformationRecipe#fromNetwork: " + inputEntityId);
+        if (inputEntityType == null) throw new JsonParseException("Unknown input EntityType in TransformationRecipe#fromNetwork: " + inputEntityId);
 
         ResourceLocation outputEntityId = buf.readResourceLocation();
         EntityType<?> outputEntityType = JustEnoughBreeding.getEntityFromLoaderRegistries(outputEntityId);
-        if (outputEntityType == null) throw new IllegalStateException("Unknown output EntityType in TransformationRecipe#fromNetwork: " + outputEntityId);
+        if (outputEntityType == null) throw new JsonParseException("Unknown output EntityType in TransformationRecipe#fromNetwork: " + outputEntityId);
 
         Ingredient inputStack = Ingredient.fromNetwork(buf);
         Ingredient inputSpawnEgg = Ingredient.fromNetwork(buf);
@@ -81,7 +81,7 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
     public void toNetwork(@NotNull FriendlyByteBuf buf, @NotNull TransformationRecipe recipe) {
         ResourceLocation inKey = JustEnoughBreeding.getKeyLoaderRegistries(recipe.inputEntityType);
         ResourceLocation outKey = JustEnoughBreeding.getKeyLoaderRegistries(recipe.outputEntityType);
-        if (inKey == null || outKey == null) throw new IllegalStateException("Unknown EntityType in TransformationRecipe: " + recipe.inputEntityType + " / " + recipe.outputEntityType);
+        if (inKey == null || outKey == null) throw new JsonParseException("Unknown EntityType in TransformationRecipe: " + recipe.inputEntityType + " / " + recipe.outputEntityType);
         buf.writeResourceLocation(inKey);
         buf.writeResourceLocation(outKey);
 
@@ -182,6 +182,9 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                 outputColor
         );
         JustEnoughBreeding.transformationRecipes.add(transformationRecipe);
+        if (transformationRecipe == null) {
+            return null;
+        }
         return transformationRecipe;
     }
 }

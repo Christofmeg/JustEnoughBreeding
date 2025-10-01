@@ -91,7 +91,13 @@ dependencies {
 //    runtimeOnly fg.deobf("maven.modrinth:tag-tooltips:a0H0FGkF")
 //    runtimeOnly fg.deobf("curse.maven:item-nbt-viewer-514135:4578522")
 
-    runtimeOnly fg.deobf("curse.maven:prehistoric-fauna-311600:6302778")
+//    runtimeOnly fg.deobf("curse.maven:prehistoric-fauna-311600:6302778")
+
+    runtimeOnly fg.deobf("maven.modrinth:critters-and-companions:CqRKYvja")
+    runtimeOnly fg.deobf("maven.modrinth:geckolib:maatiOOo")
+
+    runtimeOnly fg.deobf("curse.maven:untamedwilds-457252:4779746")
+    runtimeOnly fg.deobf("curse.maven:citadel-331936:6702068")
 
 }
 
