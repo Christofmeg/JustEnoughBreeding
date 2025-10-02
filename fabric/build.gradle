@@ -58,6 +58,8 @@ dependencies {
         modRuntimeOnly("curse.maven:catalogue-667377:${catalogue_version}")
     }
 
+    modRuntimeOnly "curse.maven:lets-do-meadow-821483:6467345"
+
 }
 
 loom {
