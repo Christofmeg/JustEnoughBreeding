@@ -1,2 +1,2 @@
 1.6.1:
-- Update Catalogue icon size from 16px to 256px
+- Update JEI integration to 21.9

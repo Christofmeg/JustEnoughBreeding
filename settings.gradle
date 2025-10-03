@@ -49,5 +49,4 @@ plugins {
 
 rootProject.name = 'JustEnoughBreeding'
 include('common')
-include('fabric')
 include('neoforge')
