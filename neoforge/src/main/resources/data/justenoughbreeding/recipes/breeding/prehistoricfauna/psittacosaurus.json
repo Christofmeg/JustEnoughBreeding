@@ -1,0 +1,29 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "mobs": [
+    {
+      "psittacosaurus": {
+        "inputs": [
+          {
+            "item": "prehistoricfauna:leefructus"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "prehistoricfauna:psittacosaurus_egg",
+            "amount": {
+              "min": 1,
+              "max": 4
+            }
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "prehistoricfauna:psittacosaurus_spawn_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

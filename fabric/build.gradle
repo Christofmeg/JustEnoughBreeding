@@ -58,7 +58,9 @@ dependencies {
         modRuntimeOnly("curse.maven:catalogue-667377:${catalogue_version}")
     }
 
-    modRuntimeOnly "curse.maven:lets-do-meadow-821483:6467345"
+//    modRuntimeOnly "curse.maven:entity-model-features-844662:6922713"
+//    modRuntimeOnly "curse.maven:entity-texture-features-fabric-568563:6954760"
+    modRuntimeOnly "curse.maven:optifabric-322385:5025647"
 
 }
 

@@ -1,0 +1,29 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "mobs": [
+    {
+      "ischigualastia": {
+        "inputs": [
+          {
+            "item": "prehistoricfauna:cladophlebis"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "prehistoricfauna:ischigualastia_egg",
+            "amount": {
+              "min": 1,
+              "max": 4
+            }
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "prehistoricfauna:ischigualastia_spawn_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

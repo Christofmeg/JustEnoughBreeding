@@ -91,10 +91,6 @@ dependencies {
 //    runtimeOnly fg.deobf("maven.modrinth:tag-tooltips:a0H0FGkF")
 //    runtimeOnly fg.deobf("curse.maven:item-nbt-viewer-514135:4578522")
 
-//    runtimeOnly fg.deobf("curse.maven:prehistoric-fauna-311600:6302778")
-
-    runtimeOnly fg.deobf("curse.maven:lets-do-meadow-821483:6467344")
-
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -214,6 +210,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("endergetic")
     mainFile.addOptional("brazilian-expansion")
     mainFile.addOptional("mineageries-plus")
+    mainFile.addOptional("prehistoric-fauna")
 }
 
 modrinth {
@@ -287,5 +284,6 @@ modrinth {
         optional.project "endergetic"
         optional.project "brazilian-expansion"
         optional.project "mineageries-plus"
+        optional.project "prehistoric-fauna"
     }
 }
