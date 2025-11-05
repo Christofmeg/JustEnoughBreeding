@@ -1,0 +1,18 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "unearthed_journey",
+  "mobs": [
+    {
+      "alligator_mississippiensis": {
+        "inputs": [
+          {
+            "item": "unearthed_journey:raw_meat"
+          },
+          {
+            "item": "unearthed_journey:cooked_meat"
+          }
+        ]
+      }
+    }
+  ]
+}

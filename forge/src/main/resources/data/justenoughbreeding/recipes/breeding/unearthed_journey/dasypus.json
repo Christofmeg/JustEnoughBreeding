@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "unearthed_journey",
+  "mobs": [
+    {
+      "dasypus": {
+        "inputs": [
+          {
+            "item": "unearthed_journey:larvae"
+          }
+        ]
+      }
+    }
+  ]
+}

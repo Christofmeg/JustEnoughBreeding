@@ -91,6 +91,9 @@ dependencies {
 //    runtimeOnly fg.deobf("maven.modrinth:tag-tooltips:a0H0FGkF")
 //    runtimeOnly fg.deobf("curse.maven:item-nbt-viewer-514135:4578522")
 
+    runtimeOnly fg.deobf("maven.modrinth:unearthed-journey:O9xJ0NwG")
+    runtimeOnly fg.deobf("curse.maven:geckolib-388172:7025129")
+
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -211,6 +214,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("brazilian-expansion")
     mainFile.addOptional("mineageries-plus")
     mainFile.addOptional("prehistoric-fauna")
+    mainFile.addOptional("unearthed-journey")
 }
 
 modrinth {
@@ -285,5 +289,6 @@ modrinth {
         optional.project "brazilian-expansion"
         optional.project "mineageries-plus"
         optional.project "prehistoric-fauna"
+        optional.project "unearthed-journey"
     }
 }

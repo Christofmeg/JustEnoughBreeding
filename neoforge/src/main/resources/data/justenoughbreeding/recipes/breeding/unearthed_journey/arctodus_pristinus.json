@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "unearthed_journey",
+  "mobs": [
+    {
+      "arctodus_pristinus": {
+        "inputs": [
+          {
+            "item": "unearthed_journey:raw_meat"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "unearthed_journey",
+  "mobs": [
+    {
+      "pseudoprepotherium": {
+        "inputs": [
+          {
+            "item": "unearthed_journey:pouch_of_grass"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -213,6 +213,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("brazilian-expansion")
     mainFile.addOptional("mineageries-plus")
     mainFile.addOptional("prehistoric-fauna")
+    mainFile.addOptional("unearthed-journey")
 }
 
 modrinth {
@@ -286,5 +287,6 @@ modrinth {
         optional.project "brazilian-expansion"
         optional.project "mineageries-plus"
         optional.project "prehistoric-fauna"
+        optional.project "unearthed-journey"
     }
 }

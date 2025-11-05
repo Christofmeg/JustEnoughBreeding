@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "unearthed_journey",
+  "mobs": [
+    {
+      "tuatara": {
+        "inputs": [
+          {
+            "item": "minecraft:egg"
+          }
+        ]
+      }
+    }
+  ]
+}
