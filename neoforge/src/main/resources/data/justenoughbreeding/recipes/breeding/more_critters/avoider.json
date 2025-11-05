@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "more_critters",
+  "mobs": [
+    {
+      "avoider": {
+        "inputs": [
+          {
+            "item": "minecraft:kelp"
+          }
+        ]
+      }
+    }
+  ]
+}

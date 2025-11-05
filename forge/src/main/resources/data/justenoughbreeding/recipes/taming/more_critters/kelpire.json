@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "more_critters",
+  "mobs": [
+    {
+      "kelpire": {
+        "inputs": [
+          {
+            "item": "more_critters:raw_blubberfish"
+          }
+        ]
+      }
+    }
+  ]
+}

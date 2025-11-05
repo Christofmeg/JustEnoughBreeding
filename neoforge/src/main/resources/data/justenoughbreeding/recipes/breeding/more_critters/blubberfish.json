@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "more_critters",
+  "mobs": [
+    {
+      "blubberfish": {
+        "inputs": [
+          {
+            "item": "minecraft:gravel"
+          }
+        ]
+      }
+    }
+  ]
+}

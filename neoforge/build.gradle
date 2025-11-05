@@ -214,6 +214,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("mineageries-plus")
     mainFile.addOptional("prehistoric-fauna")
     mainFile.addOptional("unearthed-journey")
+    mainFile.addOptional("more-critters")
 }
 
 modrinth {
@@ -288,5 +289,6 @@ modrinth {
         optional.project "mineageries-plus"
         optional.project "prehistoric-fauna"
         optional.project "unearthed-journey"
+        optional.project "more-critters"
     }
 }
