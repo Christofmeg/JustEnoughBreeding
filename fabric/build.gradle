@@ -58,10 +58,6 @@ dependencies {
         modRuntimeOnly("curse.maven:catalogue-667377:${catalogue_version}")
     }
 
-//    modRuntimeOnly "curse.maven:entity-model-features-844662:6922713"
-//    modRuntimeOnly "curse.maven:entity-texture-features-fabric-568563:6954760"
-    modRuntimeOnly "curse.maven:optifabric-322385:5025647"
-
 }
 
 loom {
@@ -205,5 +201,6 @@ modrinth {
         optional.project "promenade"
         optional.project "untitled-duck-mod"
         optional.project "lets-do-wildernature"
+        optional.project "randoms-wildlife"
     }
 }

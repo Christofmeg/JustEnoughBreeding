@@ -1,2 +1,2 @@
-2.2.1:
-- Update removed Let's Do Meadow mobs
+2.3.0:
+- Integration to Random's Wildlife

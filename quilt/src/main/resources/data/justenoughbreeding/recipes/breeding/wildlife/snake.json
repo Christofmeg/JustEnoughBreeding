@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "wildlife",
+  "mobs": [
+    {
+      "snake": {
+        "inputs": [
+          {
+            "item": "minecraft:rabbit_foot"
+          }
+        ]
+      }
+    }
+  ]
+}

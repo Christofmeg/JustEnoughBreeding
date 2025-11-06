@@ -204,5 +204,6 @@ modrinth {
         optional.project "promenade"
         optional.project "untitled-duck-mod"
         optional.project "lets-do-wildernature"
+        optional.project "randoms-wildlife"
     }
 }
