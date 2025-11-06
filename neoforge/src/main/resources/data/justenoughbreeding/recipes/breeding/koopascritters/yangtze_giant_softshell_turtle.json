@@ -1,0 +1,18 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "koopascritters",
+  "mobs": [
+    {
+      "yangtze_giant_softshell_turtle": {
+        "inputs": [
+          {
+            "item": "minecraft:cod"
+          },
+          {
+            "item": "minecraft:salmon"
+          }
+        ]
+      }
+    }
+  ]
+}

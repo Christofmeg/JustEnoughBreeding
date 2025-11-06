@@ -1,0 +1,21 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "koopascritters",
+  "mobs": [
+    {
+      "pink_land_iguana": {
+        "inputs": [
+          {
+            "item": "minecraft:cactus"
+          },
+          {
+            "item": "minecraft:sweet_berries"
+          },
+          {
+            "item": "minecraft:glow_berries"
+          }
+        ]
+      }
+    }
+  ]
+}

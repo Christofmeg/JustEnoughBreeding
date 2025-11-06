@@ -215,6 +215,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("prehistoric-fauna")
     mainFile.addOptional("unearthed-journey")
     mainFile.addOptional("more-critters")
+    mainFile.addOptional("koopas-critters")
 }
 
 modrinth {

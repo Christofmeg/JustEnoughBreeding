@@ -1,0 +1,24 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "koopascritters",
+  "mobs": [
+    {
+      "pallas_cat": {
+        "inputs": [
+          {
+            "item": "minecraft:chicken"
+          },
+          {
+            "item": "minecraft:cooked_chicken"
+          },
+          {
+            "item": "koopascritters:raw_wild_bird"
+          },
+          {
+            "item": "koopascritters:cooked_wild_bird"
+          }
+        ]
+      }
+    }
+  ]
+}
