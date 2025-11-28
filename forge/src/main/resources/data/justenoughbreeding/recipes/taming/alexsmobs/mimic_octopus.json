@@ -1,6 +1,6 @@
 {
   "type": "justenoughbreeding:taming",
-  "mod": "alexmobs",
+  "mod": "alexsmobs",
   "mobs": [
     {
       "mimic_octopus": {
@@ -14,7 +14,7 @@
         ],
         "spawn_eggs": [
           {
-            "item": "alexscaves:spawn_egg_mimic_octopus"
+            "item": "alexsmobs:spawn_egg_mimic_octopus"
           }
         ]
       }

@@ -1,17 +1,17 @@
 {
   "type": "justenoughbreeding:taming",
-  "mod": "alexmobs",
+  "mod": "alexsmobs",
   "mobs": [
     {
       "capuchin_monkey": {
         "inputs": [
           {
-            "tag": "alexmobs:bananas"
+            "tag": "alexsmobs:bananas"
           }
         ],
         "spawn_eggs": [
           {
-            "item": "alexscaves:spawn_egg_capuchin_monkey"
+            "item": "alexsmobs:spawn_egg_capuchin_monkey"
           }
         ]
       }
