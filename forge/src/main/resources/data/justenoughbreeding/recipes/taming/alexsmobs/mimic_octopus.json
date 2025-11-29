@@ -6,10 +6,7 @@
       "mimic_octopus": {
         "inputs": [
           {
-            "item": "alexsmobs:cooked_lobster_tail"
-          },
-          {
-            "item": "alexsmobs:lobster_tail"
+            "tag": "alexsmobs:mimic_octopus_tameables"
           }
         ],
         "spawn_eggs": [

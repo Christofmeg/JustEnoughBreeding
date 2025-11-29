@@ -6,7 +6,7 @@
       "mantis_shrimp": {
         "inputs": [
           {
-            "item": "minecraft:tropical_fish"
+            "tag": "alexsmobs:mantis_shrimp_tameables"
           }
         ],
         "spawn_eggs": [
