@@ -1,6 +1,6 @@
 {
   "type": "justenoughbreeding:taming",
-  "mod": "alexmobs",
+  "mod": "alexsmobs",
   "mobs": [
     {
       "grizzly_bear": {
@@ -16,7 +16,7 @@
         ],
         "spawn_eggs": [
           {
-            "item": "alexscaves:spawn_egg_grizzly_bear"
+            "item": "alexsmobs:spawn_egg_grizzly_bear"
           }
         ]
       }

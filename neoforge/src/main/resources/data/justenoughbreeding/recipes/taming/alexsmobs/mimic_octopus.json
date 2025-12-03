@@ -1,20 +1,17 @@
 {
   "type": "justenoughbreeding:taming",
-  "mod": "alexmobs",
+  "mod": "alexsmobs",
   "mobs": [
     {
       "mimic_octopus": {
         "inputs": [
           {
-            "item": "alexsmobs:cooked_lobster_tail"
-          },
-          {
-            "item": "alexsmobs:lobster_tail"
+            "tag": "alexsmobs:mimic_octopus_tameables"
           }
         ],
         "spawn_eggs": [
           {
-            "item": "alexscaves:spawn_egg_mimic_octopus"
+            "item": "alexsmobs:spawn_egg_mimic_octopus"
           }
         ]
       }

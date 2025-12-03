@@ -1,17 +1,17 @@
 {
   "type": "justenoughbreeding:taming",
-  "mod": "alexmobs",
+  "mod": "alexsmobs",
   "mobs": [
     {
       "bald_eagle": {
         "inputs": [
           {
-            "tag": "alexmobs:bald_eagle_tameables"
+            "tag": "alexsmobs:bald_eagle_tameables"
           }
         ],
         "spawn_eggs": [
           {
-            "item": "alexscaves:spawn_egg_bald_eagle"
+            "item": "alexsmobs:spawn_egg_bald_eagle"
           }
         ]
       }

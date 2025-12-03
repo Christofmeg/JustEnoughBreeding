@@ -6,10 +6,7 @@
       "mantis_shrimp": {
         "inputs": [
           {
-            "item": "alexsmobs:cooked_lobster_tail"
-          },
-          {
-            "item": "alexsmobs:lobster_tail"
+            "tag": "alexsmobs:mantis_shrimp_breedables"
           }
         ],
         "spawn_eggs": [

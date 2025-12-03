@@ -3,15 +3,15 @@
   "mod": "alexsmobs",
   "mobs": [
     {
-      "raccoon": {
+      "mudskipper": {
         "inputs": [
           {
-            "item": "minecraft:egg"
+            "tag": "alexsmobs:mudskipper_tameables"
           }
         ],
         "spawn_eggs": [
           {
-            "item": "alexsmobs:spawn_egg_raccoon"
+            "item": "alexsmobs:spawn_egg_mudskipper"
           }
         ]
       }

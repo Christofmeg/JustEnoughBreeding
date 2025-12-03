@@ -1,6 +1,6 @@
 {
   "type": "justenoughbreeding:taming",
-  "mod": "alexmobs",
+  "mod": "alexsmobs",
   "mobs": [
     {
       "komodo_dragon": {
@@ -11,7 +11,7 @@
         ],
         "spawn_eggs": [
           {
-            "item": "alexscaves:spawn_egg_komodo_dragon"
+            "item": "alexsmobs:spawn_egg_komodo_dragon"
           }
         ]
       }

@@ -1,17 +1,17 @@
 {
   "type": "justenoughbreeding:taming",
-  "mod": "alexmobs",
+  "mod": "alexsmobs",
   "mobs": [
     {
       "mantis_shrimp": {
         "inputs": [
           {
-            "item": "minecraft:tropical_fish"
+            "tag": "alexsmobs:mantis_shrimp_tameables"
           }
         ],
         "spawn_eggs": [
           {
-            "item": "alexscaves:spawn_egg_mantis_shrimp"
+            "item": "alexsmobs:spawn_egg_mantis_shrimp"
           }
         ]
       }

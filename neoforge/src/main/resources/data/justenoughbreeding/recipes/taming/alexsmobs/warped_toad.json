@@ -1,17 +1,17 @@
 {
   "type": "justenoughbreeding:taming",
-  "mod": "alexmobs",
+  "mod": "alexsmobs",
   "mobs": [
     {
       "warped_toad": {
         "inputs": [
           {
-            "item": "alexsmobs:mosquito_larva"
+            "item": "alexsmobs:warped_toad_tameables"
           }
         ],
         "spawn_eggs": [
           {
-            "item": "alexscaves:spawn_egg_warped_toad"
+            "item": "alexsmobs:spawn_egg_warped_toad"
           }
         ]
       }
