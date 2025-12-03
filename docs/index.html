@@ -149,30 +149,33 @@
   <option value="taming">taming</option>
   <option value="temper">temper</option>
   <option value="trusting">trusting</option>
+  <option value="transformation">transformation</option>
 </select>
 
 <label for="modId">Mod ID:</label>
 <input type="text" id="modId" value="minecraft" />
 
-<label for="mobId">Mob ID:</label>
-<input type="text" id="mobId" value="bee" />
+<div class="group" id="mobIdGroup">
+  <label for="mobId">Mob ID:</label>
+  <input type="text" id="mobId" value="bee" />
+</div>
 
 <div class="group">
   <div id="inputs"></div>
   <button type="button" onclick="addInput('inputs')">+ Input</button>
 </div>
 
-<div class="group">
+<div class="group" id="extraInputsGroup">
   <div id="extraInputs"></div>
   <button type="button" onclick="addInput('extraInputs')">+ Additional Input</button>
 </div>
 
-<div class="group">
+<div class="group" id="outputsGroup">
   <div id="outputs"></div>
   <button type="button" onclick="addInput('outputs')">+ Output</button>
 </div>
 
-<div class="group">
+<div class="group" id="spawnEggsGroup">
   <div id="spawn_eggs"></div>
   <button type="button" onclick="addInput('spawn_eggs')">+ Custom Spawn Egg</button>
 </div>
@@ -187,6 +190,26 @@
   <label class="checkbox-button" id="trustingLabel">
     <input type="checkbox" id="trustingCheckbox" /> Needs to trust player
   </label>
+</div>
+
+<div class="group hidden" id="inputEntityGroup">
+  <label for="inputEntity">Input Entity:</label>
+  <input type="text" id="inputEntity" placeholder="minecraft:bee" />
+</div>
+
+<div class="group hidden" id="inputSpawnEggsGroup">
+  <div id="input_spawn_eggs"></div>
+  <button type="button" onclick="addInput('input_spawn_eggs')">+ Input Spawn Eggs</button>
+</div>
+
+<div class="group hidden" id="outputEntityGroup">
+  <label for="outputEntity">Output Entity:</label>
+  <input type="text" id="outputEntity" placeholder="minecraft:pig" />
+</div>
+
+<div class="group hidden" id="outputSpawnEggsGroup">
+  <div id="output_spawn_eggs"></div>
+  <button type="button" onclick="addInput('output_spawn_eggs')">+ Output Spawn Eggs</button>
 </div>
 
 <button onclick="generateRecipe()">Generate</button>
@@ -219,9 +242,11 @@
     });
 
     const valueInput = document.createElement('input');
-    valueInput.placeholder = containerId === 'spawn_eggs'
-      ? 'minecraft:bee_spawn_egg'
-      : 'minecraft:carrot';
+    if (containerId === 'spawn_eggs' || containerId === 'input_spawn_eggs' || containerId === 'output_spawn_eggs') {
+      valueInput.placeholder = 'minecraft:bee_spawn_egg'
+    } else {
+      valueInput.placeholder = 'minecraft:carrot'
+    }
 
     typeSelect.addEventListener('change', () => {
       if (typeSelect.value === 'meat') {
@@ -229,9 +254,11 @@
       } else if (typeSelect.value === 'tag') {
         valueInput.placeholder = 'minecraft:flowers';
       } else if (typeSelect.value === 'item') {
-        valueInput.placeholder = containerId === 'spawn_eggs'
-          ? 'minecraft:bee_spawn_egg'
-          : 'minecraft:carrot';
+        if (containerId === 'spawn_eggs' || containerId === 'input_spawn_eggs' || containerId === 'output_spawn_eggs') {
+          valueInput.placeholder = 'minecraft:bee_spawn_egg'
+        } else {
+          valueInput.placeholder = 'minecraft:carrot'
+        }
       }
     });
 
@@ -339,6 +366,26 @@
       trusting.checked = false;
     }
 
+	if (provider === 'transformation') {
+	  mobIdGroup.classList.add('hidden');
+		extraInputsGroup.classList.add('hidden');
+		spawnEggsGroup.classList.add('hidden');
+		outputsGroup.classList.add('hidden');
+		inputEntityGroup.classList.remove('hidden');
+		inputSpawnEggsGroup.classList.remove('hidden');
+		outputEntityGroup.classList.remove('hidden');
+		outputSpawnEggsGroup.classList.remove('hidden');
+	} else {
+	  mobIdGroup.classList.remove('hidden');
+		extraInputsGroup.classList.remove('hidden');
+		spawnEggsGroup.classList.remove('hidden');
+		outputsGroup.classList.remove('hidden');
+		inputEntityGroup.classList.add('hidden');
+		inputSpawnEggsGroup.classList.add('hidden');
+		outputEntityGroup.classList.add('hidden');
+		outputSpawnEggsGroup.classList.add('hidden');
+	}
+
     // ✅ ensure label styles update too
     document.getElementById('tamedLabel').classList.toggle('active', tamed.checked);
     document.getElementById('trustingLabel').classList.toggle('active', trusting.checked);
@@ -385,25 +432,42 @@
     const spawnEggs = collectInputs('spawn_eggs'); // 👈 add this
 
     const mobData = {};
-    if (inputs.length) mobData.inputs = inputs;
-    if (extraInputs.length) mobData.extra_inputs = extraInputs;
-    if (outputs.length) mobData.outputs = outputs;
-    if (spawnEggs.length) mobData.spawn_eggs = spawnEggs; // 👈 include in recipe
+		if (inputs.length) mobData.inputs = inputs;
+		if (extraInputs.length) mobData.extra_inputs = extraInputs;
+		if (outputs.length) mobData.outputs = outputs;
+		if (spawnEggs.length) mobData.spawn_eggs = spawnEggs; // 👈 include in recipe
 
-    if (document.getElementById('tamedCheckbox').checked) {
-      mobData.tamed = true;
-    }
-    if (document.getElementById('trustingCheckbox').checked) {
-      mobData.trusting = true;
-    }
+		if (document.getElementById('tamedCheckbox').checked) {
+		  mobData.tamed = true;
+		}
+		if (document.getElementById('trustingCheckbox').checked) {
+		  mobData.trusting = true;
+		}
 
-    const recipe = {
+		let recipe = {
+		  type: 'justenoughbreeding:' + provider,
+		  mod: modId,
+		  mobs: [
+			{ [mobId]: mobData }
+		  ]
+		};
+
+	if (provider === 'transformation') {
+    const inputEntityId = document.getElementById('inputEntity').value.trim();
+    const spawnEggInputs = collectInputs('input_spawn_eggs');
+    const outputEntityId = document.getElementById('outputEntity').value.trim();
+    const spawnEggOutputs = collectInputs('output_spawn_eggs');
+
+    recipe = {
       type: 'justenoughbreeding:' + provider,
       mod: modId,
-      mobs: [
-        { [mobId]: mobData }
-      ]
+      inputs: inputs,
+      input_entity: inputEntityId,
+      input_spawn_eggs: spawnEggInputs,
+      output_entity: outputEntityId,
+      output_spawn_eggs: spawnEggOutputs
     };
+  }
 
     const outputArea = document.getElementById('outputArea');
     outputArea.value = JSON.stringify(recipe, null, 2);
@@ -413,8 +477,20 @@
     function downloadRecipe() {
       generateRecipe();
       const content = document.getElementById('outputArea').value;
-      const mobId = document.getElementById('mobId').value.trim() || "recipe";
+      let filename = document.getElementById('mobId').value.trim() || "recipe";
       const provider = document.getElementById('providerType').value;
+
+      if (provider === 'transformation') {
+          try {
+            const json = JSON.parse(content);
+            if (json.output_entity) {
+              const parts = json.output_entity.split(':');
+              filename = parts.length > 1 ? parts[1] : json.output_entity;
+            }
+          } catch (e) {
+            // fallback: keep current filename
+          }
+        }
 
       if (!content.trim()) {
         alert("Please generate a recipe first!");
@@ -426,7 +502,7 @@
 
       const a = document.createElement("a");
       a.href = url;
-      a.download = mobId + ".json";
+      a.download = filename + ".json";
       a.click();
 
       URL.revokeObjectURL(url);
