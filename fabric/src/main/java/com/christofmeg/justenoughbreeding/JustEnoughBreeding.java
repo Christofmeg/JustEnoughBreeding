@@ -19,8 +19,6 @@ import java.util.List;
 
 public class JustEnoughBreeding implements ModInitializer {
 
-    //TODO look at EMI widget addDrawable for EMI transformation recipe
-
     public static final RecipeType<AllayDuplicationRecipe> ALLAY_DUPLICATION_PROVIDER_TYPE = RecipeType.register(new ResourceLocation(CommonConstants.MOD_ID, "allay_duplication").toString());
     public static final RecipeType<BreedingRecipe> BREEDING_PROVIDER_TYPE = RecipeType.register(new ResourceLocation(CommonConstants.MOD_ID, "breeding").toString());
     public static final RecipeType<TamingRecipe> TAMING_PROVIDER_TYPE = RecipeType.register(new ResourceLocation(CommonConstants.MOD_ID, "taming").toString());

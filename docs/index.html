@@ -207,6 +207,11 @@
   <input type="text" id="outputEntity" placeholder="minecraft:pig" />
 </div>
 
+<div class="group hidden" id="outputEntityNBTGroup">
+  <div id="output_entity_nbt"></div>
+  <button type="button" onclick="addNBTInput('output_entity_nbt')">+ Output Entity NBT</button>
+</div>
+
 <div class="group hidden" id="outputSpawnEggsGroup">
   <div id="output_spawn_eggs"></div>
   <button type="button" onclick="addInput('output_spawn_eggs')">+ Output Spawn Eggs</button>
@@ -294,6 +299,34 @@
       createInputRow(containerId);
     }
 
+  function addNBTInput(containerId) {
+    const div = document.createElement('div');
+    div.className = 'inline-flex';
+
+    // NBT KEY input
+    const keyInput = document.createElement('input');
+    keyInput.placeholder = 'NBT Key (e.g. Color)';
+    keyInput.style.maxWidth = '140px';
+
+    // NBT VALUE input
+    const valueInput = document.createElement('input');
+    valueInput.placeholder = 'Value (e.g. 2, "Bob", true)';
+    valueInput.style.maxWidth = '180px';
+
+    // Remove button
+    const removeBtn = document.createElement('button');
+    removeBtn.textContent = '✕';
+    removeBtn.className = 'remove-button';
+    removeBtn.onclick = () => div.remove();
+
+    // Append in correct order
+    div.appendChild(keyInput);
+    div.appendChild(valueInput);
+    div.appendChild(removeBtn);
+
+    document.getElementById(containerId).appendChild(div);
+  }
+
   function collectInputs(containerId) {
     const result = [];
     const container = document.getElementById(containerId);
@@ -349,6 +382,36 @@
     return result;
   }
 
+  function collectNBT(containerId) {
+    const container = document.getElementById(containerId);
+    const rows = container.querySelectorAll('div');
+
+    const nbt = {}; // <── return ONE object
+
+    rows.forEach(div => {
+      const [keyInput, valueInput] = div.querySelectorAll('input');
+      const key = keyInput.value.trim();
+      let value = valueInput.value.trim();
+
+      if (!key) return;
+
+      // Parse value → number, boolean, or string
+      if (value === 'true') value = true;
+      else if (value === 'false') value = false;
+      else if (!isNaN(value)) value = Number(value);
+      else if (
+        (value.startsWith('"') && value.endsWith('"')) ||
+        (value.startsWith("'") && value.endsWith("'"))
+      ) {
+        value = value.slice(1, -1);
+      }
+
+      nbt[key] = value; // <── merge into ONE object
+    });
+
+    return nbt;
+  }
+
   function toggleOptionalFields() {
     const provider = document.getElementById('providerType').value;
     const tamingGroup = document.getElementById('tamingGroup');
@@ -356,7 +419,7 @@
     const tamed = document.getElementById('tamedCheckbox');
     const trusting = document.getElementById('trustingCheckbox');
 
-    if (provider === 'breeding') {
+    if (provider === 'breeding' || provider === 'transformation') {
       tamingGroup.classList.remove('hidden');
       trustingGroup.classList.remove('hidden');
     } else {
@@ -374,6 +437,7 @@
 		inputEntityGroup.classList.remove('hidden');
 		inputSpawnEggsGroup.classList.remove('hidden');
 		outputEntityGroup.classList.remove('hidden');
+		outputEntityNBTGroup.classList.remove('hidden');
 		outputSpawnEggsGroup.classList.remove('hidden');
 	} else {
 	  mobIdGroup.classList.remove('hidden');
@@ -383,15 +447,14 @@
 		inputEntityGroup.classList.add('hidden');
 		inputSpawnEggsGroup.classList.add('hidden');
 		outputEntityGroup.classList.add('hidden');
+		outputEntityNBTGroup.classList.add('hidden');
 		outputSpawnEggsGroup.classList.add('hidden');
 	}
 
-    // ✅ ensure label styles update too
     document.getElementById('tamedLabel').classList.toggle('active', tamed.checked);
     document.getElementById('trustingLabel').classList.toggle('active', trusting.checked);
   }
 
-  // 🔄 Make checkboxes mutually exclusive
   function setupExclusiveCheckboxes() {
     const tamed = document.getElementById('tamedCheckbox');
     const trusting = document.getElementById('trustingCheckbox');
@@ -428,14 +491,14 @@
     const mobId = document.getElementById('mobId').value.trim();
     const inputs = collectInputs('inputs');
     const extraInputs = collectInputs('extraInputs');
-    const outputs = collectInputs('outputs');
-    const spawnEggs = collectInputs('spawn_eggs'); // 👈 add this
+    const outputs = collectNBT('output_entity_nbt');
+    const spawnEggs = collectInputs('spawn_eggs');
 
     const mobData = {};
 		if (inputs.length) mobData.inputs = inputs;
 		if (extraInputs.length) mobData.extra_inputs = extraInputs;
 		if (outputs.length) mobData.outputs = outputs;
-		if (spawnEggs.length) mobData.spawn_eggs = spawnEggs; // 👈 include in recipe
+		if (spawnEggs.length) mobData.spawn_eggs = spawnEggs;
 
 		if (document.getElementById('tamedCheckbox').checked) {
 		  mobData.tamed = true;
@@ -456,6 +519,7 @@
     const inputEntityId = document.getElementById('inputEntity').value.trim();
     const spawnEggInputs = collectInputs('input_spawn_eggs');
     const outputEntityId = document.getElementById('outputEntity').value.trim();
+    const outputEntityNBT = collectInputs('output_entity_nbt');
     const spawnEggOutputs = collectInputs('output_spawn_eggs');
 
     recipe = {
@@ -465,7 +529,9 @@
       input_entity: inputEntityId,
       input_spawn_eggs: spawnEggInputs,
       output_entity: outputEntityId,
-      output_spawn_eggs: spawnEggOutputs
+      output_entity_nbt: outputEntityNBT,
+      output_spawn_eggs: spawnEggOutputs,
+      ...mobData
     };
   }
 
@@ -511,7 +577,7 @@
     window.onload = () => {
       addInput('inputs');
       toggleOptionalFields();
-      setupExclusiveCheckboxes(); // 👈 activate mutual exclusivity
+      setupExclusiveCheckboxes();
     };
 </script>
 </body>
