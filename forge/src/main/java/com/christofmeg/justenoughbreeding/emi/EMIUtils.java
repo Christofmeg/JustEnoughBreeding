@@ -138,10 +138,10 @@ public class EMIUtils {
         int width  = 59;
         int height = 79;
         int finalColor = color;
-        widgets.addDrawable(startX, startY, width, height, (guiGraphics, mouseX, mouseY, delta) -> {
+        widgets.addDrawable(1, startY, width, height, (guiGraphics, mouseX, mouseY, delta) -> {
             guiGraphics.fill(startX, startY, startX + width, startY + height, finalColor);
         });
-        
+
         widgets.addTexture(CORNER, mobSlotX + 1, mobSlotY + 81);
         widgets.addTexture(BOTTOM, mobSlotX + 2, mobSlotY + 81);
         widgets.addTexture(BOTTOM, mobSlotX + 27, mobSlotY + 81);
@@ -200,6 +200,13 @@ public class EMIUtils {
                 public void render(@NotNull GuiGraphics stack, int mouseX, int mouseY, float delta) {
                     LivingEntity currentLivingEntity = recipe instanceof TransformationRecipe ? ClientUtils.doRendering(entityType, input, color) : ClientUtils.doRendering(entityType);
                     if (currentLivingEntity != null) {
+                        if (!input) {
+                            if (recipe instanceof TransformationRecipe transformationRecipe) {
+                                if (transformationRecipe.outputEntityNbt != null) {
+                                    currentLivingEntity.load(transformationRecipe.outputEntityNbt);
+                                }
+                            }
+                        }
                         CommonClientUtils.renderEntity(stack.pose(), mouseX, currentLivingEntity, 31 + extraX, 89);
                     }
                 }

@@ -1,0 +1,24 @@
+{
+  "type": "justenoughbreeding:transformation",
+  "mod": "minecraft",
+  "inputs": [
+    {
+      "tag": "forge:dyes/black"
+    }
+  ],
+  "input_entity": "minecraft:sheep",
+  "input_spawn_eggs": [
+    {
+      "item": "minecraft:sheep_spawn_egg"
+    }
+  ],
+  "output_entity": "minecraft:sheep",
+  "output_entity_nbt": {
+    "Color": 15
+  },
+  "output_spawn_eggs": [
+    {
+      "item": "minecraft:sheep_spawn_egg"
+    }
+  ]
+}

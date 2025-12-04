@@ -158,8 +158,25 @@ public class JEIUtils {
                 stack.drawString(font, abbreviatedEntityName, extraX, 0, DyeColor.BLACK.getTextColor(), false);
             }
 
-            LivingEntity currentLivingEntity = recipe instanceof TransformationRecipe ? ClientUtils.doRendering(entityType, input, color) : ClientUtils.doRendering(entityType);
+            LivingEntity currentLivingEntity;
+            if (recipe instanceof TransformationRecipe transformationRecipe) {
+                if (input) {
+                    currentLivingEntity = ClientUtils.doRendering(transformationRecipe.inputEntityType, input, color);
+                } else {
+                    currentLivingEntity = ClientUtils.doRendering(transformationRecipe.outputEntityType, input, color);
+                }
+            } else {
+                currentLivingEntity = ClientUtils.doRendering(entityType);
+            }
+
             if (currentLivingEntity != null) {
+                if (!input) {
+                    if (recipe instanceof TransformationRecipe transformationRecipe) {
+                        if (transformationRecipe.outputEntityNbt != null) {
+                            currentLivingEntity.load(transformationRecipe.outputEntityNbt);
+                        }
+                    }
+                }
                 CommonClientUtils.renderEntity(stack.pose(), mouseX, currentLivingEntity, 31 + extraX, 89);
             }
         }

@@ -1,6 +1,7 @@
 package com.christofmeg.justenoughbreeding.client;
 
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
+import com.christofmeg.justenoughbreeding.recipe.TransformationRecipe;
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.EntityType;
