@@ -159,6 +159,13 @@ public class JEIUtils {
 
             LivingEntity currentLivingEntity = recipe instanceof TransformationRecipe ? ClientUtils.doRendering(entityType, input, color) : ClientUtils.doRendering(entityType);
             if (currentLivingEntity != null) {
+                if (!input) {
+                    if (recipe instanceof TransformationRecipe transformationRecipe) {
+                        if (transformationRecipe.outputEntityNbt != null) {
+                            currentLivingEntity.load(transformationRecipe.outputEntityNbt);
+                        }
+                    }
+                }
                 CommonClientUtils.renderEntity(stack.pose(), mouseX, currentLivingEntity, 31 + extraX, 89);
             }
         }

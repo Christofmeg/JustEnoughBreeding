@@ -138,9 +138,7 @@ public class EMIUtils {
         int width  = 59;
         int height = 79;
         int finalColor = color;
-        widgets.addDrawable(1, startY, width, height, (guiGraphics, mouseX, mouseY, delta) -> {
-            guiGraphics.fill(startX, startY, startX + width, startY + height, finalColor);
-        });
+        widgets.addDrawable(1, startY, width, height, (guiGraphics, mouseX, mouseY, delta) -> guiGraphics.fill(startX, startY, startX + width, startY + height, finalColor));
 
         widgets.addTexture(CORNER, mobSlotX + 1, mobSlotY + 81);
         widgets.addTexture(BOTTOM, mobSlotX + 2, mobSlotY + 81);

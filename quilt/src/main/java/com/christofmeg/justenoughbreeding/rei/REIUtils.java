@@ -123,6 +123,13 @@ public class REIUtils {
             LivingEntity currentLivingEntity = recipe instanceof TransformationRecipe ? ClientUtils.doRendering(entityType, input, color) : ClientUtils.doRendering(entityType);
             widgets.add(Widgets.withTranslate(Widgets.createDrawableWidget((graphics, mouseX, mouseY, v) -> {
                         if (currentLivingEntity != null) {
+                            if (!input) {
+                                if (recipe instanceof TransformationRecipe transformationRecipe) {
+                                    if (transformationRecipe.outputEntityNbt != null) {
+                                        currentLivingEntity.load(transformationRecipe.outputEntityNbt);
+                                    }
+                                }
+                            }
                             CommonClientUtils.renderEntity(graphics.pose(), mouseX, currentLivingEntity, 31 + extraX, 89);
                         }
                     }
