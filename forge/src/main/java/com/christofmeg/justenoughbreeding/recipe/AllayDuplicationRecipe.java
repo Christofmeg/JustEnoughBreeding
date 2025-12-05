@@ -3,12 +3,14 @@ package com.christofmeg.justenoughbreeding.recipe;
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
@@ -22,8 +24,9 @@ public class AllayDuplicationRecipe extends BaseRecipe {
     public final String jsonAnimalID;
     public final String modFolder;
     public final String fileName;
+    public final @Nullable CompoundTag outputEntityNbt;
 
-    public AllayDuplicationRecipe(EntityType<?> entityType, Ingredient inputStack, Ingredient spawnEgg, String jsonModID, String jsonAnimalID, String modFolder, String fileName) {
+    public AllayDuplicationRecipe(EntityType<?> entityType, Ingredient inputStack, Ingredient spawnEgg, String jsonModID, String jsonAnimalID, String modFolder, String fileName, @Nullable CompoundTag outputEntityNbt) {
         this.entityType = entityType;
         this.inputStack = CommonUtils.safe(inputStack);
         this.spawnEgg = CommonUtils.safe(spawnEgg);
@@ -31,6 +34,7 @@ public class AllayDuplicationRecipe extends BaseRecipe {
         this.jsonAnimalID = Objects.requireNonNull(jsonAnimalID, "jsonAnimalID");
         this.modFolder = Objects.requireNonNull(modFolder, "modFolder");
         this.fileName = Objects.requireNonNull(fileName, "fileName");
+        this.outputEntityNbt = outputEntityNbt;
     }
 
     @Override public @NotNull ResourceLocation getId() { return new ResourceLocation(CommonConstants.MOD_ID, "allay_duplication" + "/" + this.modFolder + "/" + this.fileName + "/" + this.jsonModID + "/" + this.jsonAnimalID); }
@@ -42,7 +46,7 @@ public class AllayDuplicationRecipe extends BaseRecipe {
 
     public static class DummyRecipe extends AllayDuplicationRecipe {
         public DummyRecipe(String jsonModID, String jsonAnimalID, String  modFolder, String fileName) {
-            super(null, null, null, jsonModID, jsonAnimalID, modFolder, fileName);
+            super(null, null, null, jsonModID, jsonAnimalID, modFolder, fileName, null);
         }
     }
 

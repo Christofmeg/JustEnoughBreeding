@@ -6,6 +6,7 @@ import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import com.christofmeg.justenoughbreeding.utils.Utils;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -34,7 +35,9 @@ public class AllayDuplicationSerializer implements RecipeSerializer<AllayDuplica
             String modFolder = buf.readUtf();
             String fileName = buf.readUtf();
 
-            return new AllayDuplicationRecipe(entityType, inputStack, spawnEgg, jsonModID, jsonAnimalID, modFolder, fileName);
+            CompoundTag outputEntityNbt = buf.readBoolean() ? buf.readNbt() : null;
+
+            return new AllayDuplicationRecipe(entityType, inputStack, spawnEgg, jsonModID, jsonAnimalID, modFolder, fileName, outputEntityNbt);
         }
 
         @Override
@@ -50,5 +53,12 @@ public class AllayDuplicationSerializer implements RecipeSerializer<AllayDuplica
             buf.writeUtf(recipe.jsonAnimalID);
             buf.writeUtf(recipe.modFolder);
             buf.writeUtf(recipe.fileName);
+
+            if (recipe.outputEntityNbt != null) {
+                buf.writeBoolean(true);
+                buf.writeNbt(recipe.outputEntityNbt);
+            } else {
+                buf.writeBoolean(false);
+            }
         }
 }

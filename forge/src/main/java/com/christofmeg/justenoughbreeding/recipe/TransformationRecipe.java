@@ -21,7 +21,7 @@ public class TransformationRecipe extends BaseRecipe {
     public final EntityType<?> inputEntityType;
     public @NotNull Ingredient inputStack;
     public @NotNull Ingredient inputSpawnEgg;
-    public @NotNull Ingredient extraInputStack; // EMPTY if absent
+    public @NotNull Ingredient extraInputStack;
     public final EntityType<?> outputEntityType;
     public @NotNull Ingredient outputSpawnEgg;
     public final @Nullable Boolean needsToBeTamed;
@@ -30,9 +30,10 @@ public class TransformationRecipe extends BaseRecipe {
     public final String fileName;
     public final @Nullable DyeColor inputColor;
     public final @Nullable DyeColor outputColor;
+    public final @Nullable CompoundTag inputEntityNbt;
     public final @Nullable CompoundTag outputEntityNbt;
 
-    public TransformationRecipe(EntityType<?> inputEntityType, Ingredient inputStack, Ingredient inputSpawnEgg, Ingredient extraInputStack, EntityType<?> outputEntityType, Ingredient outputSpawnEgg, @Nullable Boolean needsToBeTamed, String jsonModID, String modFolder, String fileName, @Nullable DyeColor inputColor, @Nullable DyeColor outputColor, @Nullable CompoundTag outputEntityNbt) {
+    public TransformationRecipe(EntityType<?> inputEntityType, Ingredient inputStack, Ingredient inputSpawnEgg, Ingredient extraInputStack, EntityType<?> outputEntityType, Ingredient outputSpawnEgg, @Nullable Boolean needsToBeTamed, String jsonModID, String modFolder, String fileName, @Nullable DyeColor inputColor, @Nullable DyeColor outputColor, @Nullable CompoundTag inputEntityNbt, @Nullable CompoundTag outputEntityNbt) {
         this.inputEntityType = inputEntityType;
         this.inputStack = CommonUtils.safe(inputStack);
         this.inputSpawnEgg = CommonUtils.safe(inputSpawnEgg);
@@ -45,6 +46,7 @@ public class TransformationRecipe extends BaseRecipe {
         this.fileName = Objects.requireNonNull(fileName, "fileName");
         this.inputColor = inputColor;
         this.outputColor = outputColor;
+        this.inputEntityNbt = inputEntityNbt;
         this.outputEntityNbt = outputEntityNbt;
     }
 
@@ -59,7 +61,7 @@ public class TransformationRecipe extends BaseRecipe {
 
     public static class DummyRecipe extends TransformationRecipe {
         public DummyRecipe(String jsonModID, String  modFolder, String fileName) {
-            super(null,null,null,null,null,null,null, jsonModID, modFolder, fileName, null, null, null);
+            super(null,null,null,null,null,null,null, jsonModID, modFolder, fileName, null, null, null, null);
         }
     }
 

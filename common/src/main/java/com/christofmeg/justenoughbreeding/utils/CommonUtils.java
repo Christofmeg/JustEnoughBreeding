@@ -1,7 +1,12 @@
 package com.christofmeg.justenoughbreeding.utils;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.TagParser;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
@@ -48,6 +53,39 @@ public class CommonUtils {
 
     public static @NotNull Ingredient safe(Ingredient ing) {
         return ing == null ? Ingredient.EMPTY : ing;
+    }
+
+    public static CompoundTag parseJsonNBT(JsonElement element) {
+        if (element == null || element.isJsonNull()) return null;
+
+        // Case 1: SNBT string (already valid)
+        if (element.isJsonPrimitive() && element.getAsJsonPrimitive().isString()) {
+            try {
+                return TagParser.parseTag(element.getAsString());
+            } catch (CommandSyntaxException e) {
+                throw new RuntimeException("Invalid SNBT: " + element, e);
+            }
+        }
+
+        // Case 2: A single JSON object → convert to SNBT
+        if (element.isJsonObject()) {
+            String snbt = element.toString().replace("\"", "\\\"");
+            snbt = element.toString();
+            try {
+                return TagParser.parseTag(snbt);
+            } catch (CommandSyntaxException e) {
+                throw new RuntimeException("Invalid JSON-as-NBT: " + element, e);
+            }
+        }
+
+        // Case 3: Array — take first element (your format)
+        if (element.isJsonArray()) {
+            JsonArray arr = element.getAsJsonArray();
+            if (arr.isEmpty()) return null;
+            return parseJsonNBT(arr.get(0)); // recursive parse
+        }
+
+        throw new RuntimeException("Unsupported NBT JSON format: " + element);
     }
 
 }

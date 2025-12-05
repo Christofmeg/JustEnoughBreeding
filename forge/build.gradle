@@ -91,6 +91,10 @@ dependencies {
 //    runtimeOnly fg.deobf("maven.modrinth:tag-tooltips:a0H0FGkF")
 //    runtimeOnly fg.deobf("curse.maven:item-nbt-viewer-514135:4578522")
 
+    runtimeOnly fg.deobf("maven.modrinth:companions-mod:p0AjmImh")
+    runtimeOnly fg.deobf("maven.modrinth:geckolib:aVW7Z5da")
+    runtimeOnly fg.deobf("maven.modrinth:knight-lib:pUsHCs18")
+
 }
 
 tasks.withType(JavaCompile).configureEach {

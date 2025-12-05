@@ -123,10 +123,41 @@ public class REIUtils {
             LivingEntity currentLivingEntity = recipe instanceof TransformationRecipe ? ClientUtils.doRendering(entityType, input, color) : ClientUtils.doRendering(entityType);
             widgets.add(Widgets.withTranslate(Widgets.createDrawableWidget((graphics, mouseX, mouseY, v) -> {
                         if (currentLivingEntity != null) {
-                            if (!input) {
+                            if (input) {
+                                if (recipe instanceof TransformationRecipe transformationRecipe) {
+                                    if (transformationRecipe.inputEntityNbt != null) {
+                                        currentLivingEntity.load(transformationRecipe.inputEntityNbt);
+                                    }
+                                }
+                            } else {
+                                if (recipe instanceof AllayDuplicationRecipe allayDuplicationRecipe) {
+                                    if (allayDuplicationRecipe.outputEntityNbt != null) {
+                                        currentLivingEntity.load(allayDuplicationRecipe.outputEntityNbt);
+                                    }
+                                }
+                                if (recipe instanceof BreedingRecipe breedingRecipe) {
+                                    if (breedingRecipe.outputEntityNbt != null) {
+                                        currentLivingEntity.load(breedingRecipe.outputEntityNbt);
+                                    }
+                                }
+                                if (recipe instanceof TamingRecipe tamingRecipe) {
+                                    if (tamingRecipe.outputEntityNbt != null) {
+                                        currentLivingEntity.load(tamingRecipe.outputEntityNbt);
+                                    }
+                                }
+                                if (recipe instanceof TemperRecipe temperRecipe) {
+                                    if (temperRecipe.outputEntityNbt != null) {
+                                        currentLivingEntity.load(temperRecipe.outputEntityNbt);
+                                    }
+                                }
                                 if (recipe instanceof TransformationRecipe transformationRecipe) {
                                     if (transformationRecipe.outputEntityNbt != null) {
                                         currentLivingEntity.load(transformationRecipe.outputEntityNbt);
+                                    }
+                                }
+                                if (recipe instanceof TrustingRecipe trustingRecipe) {
+                                    if (trustingRecipe.outputEntityNbt != null) {
+                                        currentLivingEntity.load(trustingRecipe.outputEntityNbt);
                                     }
                                 }
                             }

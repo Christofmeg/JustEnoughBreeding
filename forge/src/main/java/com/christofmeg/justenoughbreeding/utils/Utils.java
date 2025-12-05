@@ -162,6 +162,10 @@ public class Utils {
             spawnEggs = new ArrayList<>(List.of(Ingredient.of(spawnEgg)));
         }
 
+        CompoundTag outputEntityNbt = json.has("output_entity_nbt")
+                ? CommonUtils.parseJsonNBT(json.get("output_entity_nbt"))
+                : null;
+
         switch (recipeType) {
             case "trusting" -> {
                 for (TrustingRecipe existingRecipe : JustEnoughBreeding.trustingRecipes) {
@@ -183,7 +187,8 @@ public class Utils {
                         jsonModID,
                         jsonAnimalID,
                         modFolder,
-                        fileName
+                        fileName,
+                        outputEntityNbt
                 );
                 JustEnoughBreeding.trustingRecipes.add(trustingRecipe);
                 return trustingRecipe;
@@ -208,7 +213,8 @@ public class Utils {
                         jsonModID,
                         jsonAnimalID,
                         modFolder,
-                        fileName
+                        fileName,
+                        outputEntityNbt
                 );
                 JustEnoughBreeding.tamingRecipes.add(tamingRecipe);
                 return tamingRecipe;
@@ -230,7 +236,8 @@ public class Utils {
                         jsonModID,
                         jsonAnimalID,
                         modFolder,
-                        fileName
+                        fileName,
+                        outputEntityNbt
                 );
                 JustEnoughBreeding.allayDuplicationRecipes.add(allayDuplicationRecipe);
                 return allayDuplicationRecipe;
@@ -262,7 +269,8 @@ public class Utils {
                         jsonModID,
                         jsonAnimalID,
                         modFolder,
-                        fileName
+                        fileName,
+                        outputEntityNbt
                 );
                 JustEnoughBreeding.breedingRecipes.add(breedingRecipe);
                 return breedingRecipe;

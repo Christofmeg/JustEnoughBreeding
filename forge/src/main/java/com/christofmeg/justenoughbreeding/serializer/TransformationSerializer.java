@@ -8,9 +8,7 @@ import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import com.christofmeg.justenoughbreeding.utils.Utils;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.TagParser;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -60,9 +58,10 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
         DyeColor inputColor = buf.readBoolean() ? DyeColor.byId(buf.readVarInt()) : null;
         DyeColor outputColor = buf.readBoolean() ? DyeColor.byId(buf.readVarInt()) : null;
 
+        CompoundTag inputEntityNbt = buf.readBoolean() ? buf.readNbt() : null;
         CompoundTag outputEntityNbt = buf.readBoolean() ? buf.readNbt() : null;
 
-        TransformationRecipe r = new TransformationRecipe(
+        return new TransformationRecipe(
                 inputEntityType,
                 inputStack,
                 inputSpawnEgg,
@@ -75,9 +74,9 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                 fileName,
                 inputColor,
                 outputColor,
+                inputEntityNbt,
                 outputEntityNbt
         );
-        return r;
     }
 
     @Override
@@ -105,6 +104,12 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
 
         if (recipe.inputColor != null) { buf.writeBoolean(true); buf.writeVarInt(recipe.inputColor.getId()); } else { buf.writeBoolean(false); }
         if (recipe.outputColor != null) { buf.writeBoolean(true); buf.writeVarInt(recipe.outputColor.getId()); } else { buf.writeBoolean(false); }
+        if (recipe.inputEntityNbt != null) {
+            buf.writeBoolean(true);
+            buf.writeNbt(recipe.inputEntityNbt);
+        } else {
+            buf.writeBoolean(false);
+        }
         if (recipe.outputEntityNbt != null) {
             buf.writeBoolean(true);
             buf.writeNbt(recipe.outputEntityNbt);
@@ -176,14 +181,13 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
         DyeColor inputColor = json.has("input_color") ? DyeColor.valueOf(json.get("input_color").getAsString().toUpperCase()) : null;
         DyeColor outputColor = json.has("output_color") ? DyeColor.valueOf(json.get("output_color").getAsString().toUpperCase()) : null;
 
-        CompoundTag outputEntityNbt = null;
-        if (json.has("output_entity_nbt")) {
-            try {
-                outputEntityNbt = TagParser.parseTag(json.get("output_entity_nbt").toString());
-            } catch (CommandSyntaxException e) {
-                throw new RuntimeException(e);
-            }
-        }
+        CompoundTag inputEntityNbt = json.has("input_entity_nbt")
+                ? CommonUtils.parseJsonNBT(json.get("input_entity_nbt"))
+                : null;
+
+        CompoundTag outputEntityNbt = json.has("output_entity_nbt")
+                ? CommonUtils.parseJsonNBT(json.get("output_entity_nbt"))
+                : null;
 
         TransformationRecipe r = new TransformationRecipe(
                 inputEntityType,
@@ -198,9 +202,11 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                 fileName,
                 inputColor,
                 outputColor,
+                inputEntityNbt,
                 outputEntityNbt
         );
         JustEnoughBreeding.transformationRecipes.add(r);
         return r;
     }
+
 }
