@@ -3,15 +3,15 @@
   "mod": "alexsmobs",
   "mobs": [
     {
-      "cosmaw": {
+      "tarantula_hawk": {
         "inputs": [
           {
-            "tag": "alexsmobs:cosmaw_tameables"
+            "tag": "alexsmobs:tarantula_hawk_tameables"
           }
         ],
         "spawn_eggs": [
           {
-            "item": "alexsmobs:spawn_egg_cosmaw"
+            "item": "alexsmobs:spawn_egg_tarantula_hawk"
           }
         ]
       }

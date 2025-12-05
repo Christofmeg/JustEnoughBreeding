@@ -6,7 +6,7 @@
       "elephant": {
         "inputs": [
           {
-            "item": "alexsmobs:acacia_blossom"
+            "tag": "alexsmobs:elephant_tameables"
           }
         ],
         "spawn_eggs": [
