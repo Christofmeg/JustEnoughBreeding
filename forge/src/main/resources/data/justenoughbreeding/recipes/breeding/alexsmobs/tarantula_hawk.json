@@ -14,7 +14,7 @@
         ],
         "inputs": [
           {
-            "item": "minecraft:fermented_spider_eye"
+            "tag": "alexsmobs:tarantula_hawk_breedables"
           }
         ],
         "spawn_eggs": [

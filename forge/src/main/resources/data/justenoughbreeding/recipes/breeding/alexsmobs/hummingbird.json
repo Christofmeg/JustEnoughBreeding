@@ -6,7 +6,7 @@
       "hummingbird": {
         "inputs": [
           {
-            "tag": "minecraft:flowers"
+            "tag": "alexsmobs:hummingbird_breedables"
           }
         ],
         "spawn_eggs": [

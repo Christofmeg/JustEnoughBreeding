@@ -6,15 +6,12 @@
       "caiman": {
         "inputs": [
           {
-            "item": "alexsmobs:raw_catfish"
-          },
-          {
-            "item": "alexsmobs:cooked_catfish"
+            "tag": "alexsmobs:caiman_breedables"
           }
         ],
         "outputs": [
           {
-            "item": "alexmobs:caiman_egg",
+            "item": "alexsmobs:caiman_egg",
             "amount": {
               "min": 1,
               "max": 4

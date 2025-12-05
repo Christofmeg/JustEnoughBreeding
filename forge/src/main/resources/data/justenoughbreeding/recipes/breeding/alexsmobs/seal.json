@@ -6,7 +6,7 @@
       "seal": {
         "inputs": [
           {
-            "item": "alexsmobs:lobster_tail"
+            "tag": "alexsmobs:seal_breedables"
           }
         ],
         "spawn_eggs": [

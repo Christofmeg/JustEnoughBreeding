@@ -6,7 +6,7 @@
       "cockroach": {
         "inputs": [
           {
-            "item": "minecraft:sugar"
+            "tag": "alexsmobs:cockroach_breedables"
           }
         ],
         "spawn_eggs": [

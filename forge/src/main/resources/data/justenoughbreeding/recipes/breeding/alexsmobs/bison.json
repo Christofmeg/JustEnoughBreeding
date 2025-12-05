@@ -6,7 +6,7 @@
       "bison": {
         "inputs": [
           {
-            "item": "minecraft:wheat"
+            "tag": "alexsmobs:bison_breedables"
           }
         ],
         "spawn_eggs": [
