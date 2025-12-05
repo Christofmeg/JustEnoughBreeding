@@ -1,0 +1,13 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "zawa",
+  "mobs": [
+    {
+      "giraffe": {
+        "inputs": [{
+            "item": "minecraft:acacia_leaves"
+        }]
+      }
+    }
+  ]
+}

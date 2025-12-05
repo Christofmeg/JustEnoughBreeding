@@ -1,0 +1,13 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "lilcritters",
+  "mobs": [
+    {
+      "opossum": {
+        "inputs": [{
+            "item": "zawa:omnivore_kibble"
+        }]
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "lilcritters",
+  "mobs": [
+    {
+      "raccoon": {
+        "inputs": [{
+            "item": "zawa:small_meat"
+        }]
+      }
+    }
+  ]
+}

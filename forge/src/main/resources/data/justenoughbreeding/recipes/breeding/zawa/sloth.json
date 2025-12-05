@@ -1,0 +1,13 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "zawa",
+  "mobs": [
+    {
+      "sloth": {
+        "inputs": [{
+            "item": "minecraft:jungle_leaves"
+        }]
+      }
+    }
+  ]
+}
