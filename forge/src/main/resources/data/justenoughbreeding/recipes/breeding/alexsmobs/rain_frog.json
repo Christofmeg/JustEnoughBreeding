@@ -6,7 +6,7 @@
       "rain_frog": {
         "inputs": [
           {
-            "tag": "alexsmobs:insect_items"
+            "tag": "alexsmobs:rain_frog_breedables"
           }
         ],
         "spawn_eggs": [

@@ -6,10 +6,7 @@
       "froststalker": {
         "inputs": [
           {
-            "item": "minecraft:porkchop"
-          },
-          {
-            "item": "minecraft:cooked_porkchop"
+            "tag": "alexsmobs:froststalker_breedables"
           }
         ],
         "extra_inputs": [

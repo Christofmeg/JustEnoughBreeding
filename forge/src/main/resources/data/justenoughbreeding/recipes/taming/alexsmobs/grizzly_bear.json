@@ -6,7 +6,7 @@
       "grizzly_bear": {
         "extra_inputs": [
           {
-            "item": "minecraft:salmon"
+            "tag": "alexsmobs:grizzly_tameables"
           }
         ],
         "inputs": [

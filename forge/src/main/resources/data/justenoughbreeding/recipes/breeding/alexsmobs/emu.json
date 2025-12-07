@@ -6,7 +6,7 @@
       "emu": {
         "inputs": [
           {
-            "item": "minecraft:wheat"
+            "tag": "alexsmobs:emu_breedables"
           }
         ],
         "spawn_eggs": [

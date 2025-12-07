@@ -6,7 +6,7 @@
       "seagull": {
         "inputs": [
           {
-            "item": "minecraft:cod"
+            "tag": "alexsmobs:seagull_breedables"
           }
         ],
         "spawn_eggs": [

@@ -6,7 +6,7 @@
       "gelada_monkey": {
         "inputs": [
           {
-            "item": "minecraft:dead_bush"
+            "tag": "alexsmobs:gelada_monkey_breedables"
           }
         ],
         "spawn_eggs": [

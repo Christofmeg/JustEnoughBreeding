@@ -6,7 +6,7 @@
       "endergrade": {
         "inputs": [
           {
-            "item": "minecraft:chorus_fruit"
+            "tag": "alexsmobs:endergrade_breedables"
           }
         ],
         "spawn_eggs": [

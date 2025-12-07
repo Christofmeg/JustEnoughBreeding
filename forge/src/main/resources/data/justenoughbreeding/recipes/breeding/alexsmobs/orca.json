@@ -6,7 +6,7 @@
       "orca": {
         "inputs": [
           {
-            "item": "minecraft:salmon"
+            "tag": "alexsmobs:orca_breedables"
           }
         ],
         "spawn_eggs": [

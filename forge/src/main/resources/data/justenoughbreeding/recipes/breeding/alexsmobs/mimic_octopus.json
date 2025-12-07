@@ -6,7 +6,7 @@
       "mimic_octopus": {
         "inputs": [
           {
-            "item": "minecraft:tropical_fish"
+            "tag": "alexsmobs:mimic_octopus_breedables"
           }
         ],
         "spawn_eggs": [

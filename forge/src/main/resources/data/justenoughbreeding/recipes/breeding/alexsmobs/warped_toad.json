@@ -6,7 +6,7 @@
       "warped_toad": {
         "inputs": [
           {
-            "item": "alexsmobs:mosquito_larva"
+            "tag": "alexsmobs:warped_toad_breedables"
           }
         ],
         "spawn_eggs": [

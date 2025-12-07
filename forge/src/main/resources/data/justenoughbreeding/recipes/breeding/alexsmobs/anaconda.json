@@ -6,10 +6,7 @@
       "anaconda": {
         "inputs": [
           {
-            "item": "minecraft:chicken"
-          },
-          {
-            "item": "minecraft:cooked_chicken"
+            "tag": "alexsmobs:anaconda_breedables"
           }
         ],
         "spawn_eggs": [

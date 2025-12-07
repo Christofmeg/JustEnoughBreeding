@@ -6,7 +6,7 @@
       "cosmaw": {
         "inputs": [
           {
-            "item": "alexsmobs:cosmic_cod"
+            "tag": "alexsmobs:cosmaw_breedables"
           }
         ],
         "spawn_eggs": [

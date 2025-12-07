@@ -6,7 +6,7 @@
       "raccoon": {
         "inputs": [
           {
-            "item": "minecraft:egg"
+            "tag": "alexsmobs:raccoon_tameables"
           }
         ],
         "spawn_eggs": [

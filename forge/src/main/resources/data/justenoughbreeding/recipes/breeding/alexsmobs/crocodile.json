@@ -6,12 +6,12 @@
       "crocodile": {
         "inputs": [
           {
-            "item": "minecraft:rotten_flesh"
+            "tag": "alexsmobs:crocodile_breedables"
           }
         ],
         "outputs": [
           {
-            "item": "alexmobs:crocodile_egg"
+            "item": "alexsmobs:crocodile_egg"
           }
         ],
         "spawn_eggs": [

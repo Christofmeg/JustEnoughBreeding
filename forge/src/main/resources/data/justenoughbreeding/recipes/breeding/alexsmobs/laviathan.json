@@ -6,7 +6,7 @@
       "laviathan": {
         "inputs": [
           {
-            "item": "alexsmobs:mosquito_larva"
+            "tag": "alexsmobs:laviathan_breedables"
           }
         ],
         "spawn_eggs": [

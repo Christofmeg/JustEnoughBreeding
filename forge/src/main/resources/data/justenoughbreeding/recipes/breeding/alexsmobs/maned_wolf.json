@@ -6,16 +6,7 @@
       "maned_wolf": {
         "inputs": [
           {
-            "item": "minecraft:chicken"
-          },
-          {
-            "item": "minecraft:cooked_chicken"
-          },
-          {
-            "item": "minecraft:cooked_rabbit"
-          },
-          {
-            "item": "minecraft:rabbit"
+            "tag": "alexsmobs:maned_wolf_breedables"
           }
         ],
         "spawn_eggs": [

@@ -6,7 +6,7 @@
       "tusklin": {
         "inputs": [
           {
-            "item": "minecraft:red_mushroom"
+            "tag": "alexsmobs:tusklin_breedables"
           }
         ],
         "spawn_eggs": [
