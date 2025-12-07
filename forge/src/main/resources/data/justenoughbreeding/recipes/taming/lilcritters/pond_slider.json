@@ -1,0 +1,13 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "lilcritters",
+  "mobs": [
+    {
+      "pond_slider": {
+        "inputs": [{
+            "item": "zawa:omnivore_kibble"
+        }]
+      }
+    }
+  ]
+}

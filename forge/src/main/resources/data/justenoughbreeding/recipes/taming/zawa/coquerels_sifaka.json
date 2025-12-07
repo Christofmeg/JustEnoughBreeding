@@ -1,0 +1,13 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "zawa",
+  "mobs": [
+    {
+      "coquerels_sifaka": {
+        "inputs": [{
+            "item": "zawa:herbivore_kibble"
+        }]
+      }
+    }
+  ]
+}
