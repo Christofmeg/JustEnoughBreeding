@@ -6,10 +6,7 @@
       "rhinoceros": {
         "inputs": [
           {
-            "item": "minecraft:dead_bush"
-          },
-          {
-            "item": "minecraft:grass"
+            "tag": "alexsmobs:rhinoceros_breedables"
           }
         ],
         "spawn_eggs": [

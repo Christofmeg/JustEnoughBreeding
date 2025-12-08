@@ -1,0 +1,13 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "lilcritters",
+  "mobs": [
+    {
+      "pumpkin_toadlet": {
+        "inputs": [{
+            "item": "zawa:leafcutter_ant"
+        }]
+      }
+    }
+  ]
+}

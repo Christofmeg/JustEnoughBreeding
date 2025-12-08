@@ -6,7 +6,7 @@
       "fly": {
         "inputs": [
           {
-            "item": "minecraft:rotten_flesh"
+            "tag": "alexsmobs:fly_breedables"
           }
         ],
         "spawn_eggs": [

@@ -1,0 +1,13 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "zawa",
+  "mobs": [
+    {
+      "sumatran_orangutan": {
+        "inputs": [{
+            "item": "miencraft:melon"
+        }]
+      }
+    }
+  ]
+}

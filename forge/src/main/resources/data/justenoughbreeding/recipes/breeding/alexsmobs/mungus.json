@@ -6,7 +6,7 @@
       "mungus": {
         "inputs": [
           {
-            "item": "alexsmobs:mungal_spores"
+            "tag": "alexsmobs:mungus_breedables"
           }
         ],
         "spawn_eggs": [

@@ -1,0 +1,13 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "zawa",
+  "mobs": [
+    {
+      "polar_bear": {
+        "inputs": [{
+            "item": "zawa:salmon"
+        }]
+      }
+    }
+  ]
+}

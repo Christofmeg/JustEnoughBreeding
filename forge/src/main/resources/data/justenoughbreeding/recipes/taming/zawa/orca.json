@@ -1,0 +1,13 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "zawa",
+  "mobs": [
+    {
+      "orca": {
+        "inputs": [{
+            "item": "zawa:piscivore_kibble"
+        }]
+      }
+    }
+  ]
+}

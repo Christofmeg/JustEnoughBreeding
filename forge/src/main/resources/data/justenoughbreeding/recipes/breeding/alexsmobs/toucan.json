@@ -6,7 +6,7 @@
       "toucan": {
         "inputs": [
           {
-            "item": "minecraft:egg"
+            "tag": "alexsmobs:toucan_breedables"
           }
         ],
         "spawn_eggs": [

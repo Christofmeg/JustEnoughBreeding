@@ -6,7 +6,7 @@
       "banana_slug": {
         "inputs": [
           {
-            "item": "minecraft:brown_mushroom"
+            "tag": "alexsmobs:banana_slug_breedables"
           }
         ],
         "spawn_eggs": [

@@ -6,7 +6,7 @@
       "crow": {
         "inputs": [
           {
-            "item": "minecraft:pumpkin_seeds"
+            "tag": "alexsmobs:crow_breedables"
           }
         ],
         "spawn_eggs": [

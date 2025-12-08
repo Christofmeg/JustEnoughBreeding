@@ -6,7 +6,7 @@
       "capuchin_monkey": {
         "inputs": [
           {
-            "tag": "alexsmobs:insect_items"
+            "tag": "alexsmobs:capuchin_monkey_breedables"
           }
         ],
         "spawn_eggs": [

@@ -6,7 +6,7 @@
       "sugar_glider": {
         "inputs": [
           {
-            "item": "minecraft:honeycomb"
+            "tag": "alexsmobs:sugar_glider_breedables"
           }
         ],
         "spawn_eggs": [

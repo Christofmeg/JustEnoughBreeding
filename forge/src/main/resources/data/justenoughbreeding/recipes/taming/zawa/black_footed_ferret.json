@@ -1,0 +1,13 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "zawa",
+  "mobs": [
+    {
+      "black_footed_ferret": {
+        "inputs": [{
+            "item": "zawa:carnivore_kibble"
+        }]
+      }
+    }
+  ]
+}

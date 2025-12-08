@@ -6,7 +6,7 @@
       "moose": {
         "inputs": [
           {
-            "item": "minecraft:dandelion"
+            "tag": "alexsmobs:moose_breedables"
           }
         ],
         "spawn_eggs": [

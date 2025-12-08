@@ -6,10 +6,7 @@
       "snow_leopard": {
         "inputs": [
           {
-            "item": "alexsmobs:cooked_moose_ribs"
-          },
-          {
-            "item": "alexsmobs:moose_ribs"
+            "tag": "alexsmobs:snow_leopard_breedables"
           }
         ],
         "spawn_eggs": [

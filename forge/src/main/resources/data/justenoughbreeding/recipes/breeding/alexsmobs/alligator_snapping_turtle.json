@@ -6,7 +6,7 @@
       "alligator_snapping_turtle": {
         "inputs": [
           {
-            "item": "minecraft:cod"
+            "tag": "alexsmobs:alligator_snapping_turtle_breedables"
           }
         ],
         "spawn_eggs": [

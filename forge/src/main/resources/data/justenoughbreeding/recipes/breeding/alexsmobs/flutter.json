@@ -6,7 +6,7 @@
       "flutter": {
         "inputs": [
           {
-            "item": "minecraft:bone_meal"
+            "tag": "alexsmobs:flutter_breedables"
           }
         ],
         "spawn_eggs": [

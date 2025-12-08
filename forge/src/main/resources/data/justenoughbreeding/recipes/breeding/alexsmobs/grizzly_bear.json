@@ -6,7 +6,7 @@
       "grizzly_bear": {
         "inputs": [
           {
-            "item": "minecraft:salmon"
+            "tag": "alexsmobs:grizzly_bear_breedables"
           }
         ],
         "spawn_eggs": [

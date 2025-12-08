@@ -6,7 +6,7 @@
       "skunk": {
         "inputs": [
           {
-            "item": "minecraft:sweet_berries"
+            "tag": "alexsmobs:skunk_breedables"
           }
         ],
         "spawn_eggs": [

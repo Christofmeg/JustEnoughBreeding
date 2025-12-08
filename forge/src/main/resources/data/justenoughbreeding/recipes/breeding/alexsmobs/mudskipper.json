@@ -6,13 +6,7 @@
       "mudskipper": {
         "inputs": [
           {
-            "item": "alexsmobs:cooked_lobster_tail"
-          },
-          {
-            "item": "alexsmobs:lobster_tail"
-          },
-          {
-            "tag": "alexsmobs:insect_items"
+            "tag": "alexsmobs:mudskipper_breedables"
           }
         ],
         "spawn_eggs": [

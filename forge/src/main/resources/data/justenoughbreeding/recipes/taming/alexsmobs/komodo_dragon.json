@@ -6,7 +6,7 @@
       "komodo_dragon": {
         "inputs": [
           {
-            "item": "minecraft:rotten_flesh"
+            "tag": "alexsmobs:komodo_dragon_tameables"
           }
         ],
         "spawn_eggs": [

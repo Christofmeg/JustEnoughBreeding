@@ -6,15 +6,12 @@
       "platypus": {
         "inputs": [
           {
-            "item": "alexsmobs:cooked_lobster_tail"
-          },
-          {
-            "item": "alexsmobs:lobster_tail"
+            "tag": "alexsmobs:platypus_breedables"
           }
         ],
         "outputs": [
           {
-            "item": "alexmobs:platypus_egg"
+            "item": "alexsmobs:platypus_egg"
           }
         ],
         "spawn_eggs": [

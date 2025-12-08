@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "zawaessentials",
+  "mobs": [
+    {
+      "budgerigar": {
+        "inputs": [
+          {
+            "item": "zawa:herbivore_kibble"
+          }
+        ]
+      }
+    }
+  ]
+}
