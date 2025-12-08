@@ -11,7 +11,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -47,8 +46,8 @@ public class CommonUtils {
         return Ingredient.of(TagKey.create(Registries.ITEM, tagLocation));
     }
 
-    public static String makeKey(EntityType<?> type, boolean input, DyeColor color) {
-        return type.toString() + ":" + input + ":" + (color != null ? color.getName() : "none");
+    public static String makeKey(EntityType<?> type, boolean input) {
+        return type.toString() + ":" + input;
     }
 
     public static @NotNull Ingredient safe(Ingredient ing) {

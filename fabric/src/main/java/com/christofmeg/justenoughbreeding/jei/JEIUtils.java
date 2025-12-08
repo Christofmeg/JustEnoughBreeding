@@ -118,10 +118,10 @@ public class JEIUtils {
     }
 
     public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, BaseRecipe recipe, int availableWidth, int extraX) {
-        drawMobNameAndEntity(entityType, stack, mouseX, recipe, availableWidth, extraX, true, null);
+        drawMobNameAndEntity(entityType, stack, mouseX, recipe, availableWidth, extraX, true);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, BaseRecipe recipe, int availableWidth, int extraX, boolean input, DyeColor color) {
+    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, BaseRecipe recipe, int availableWidth, int extraX, boolean input) {
         if (entityType != null) {
             Font font = Minecraft.getInstance().font;
             Component entityName = Component.translatable(entityType.getDescriptionId());
@@ -157,7 +157,7 @@ public class JEIUtils {
                 stack.drawString(font, abbreviatedEntityName, extraX, 0, DyeColor.BLACK.getTextColor(), false);
             }
 
-            LivingEntity currentLivingEntity = recipe instanceof TransformationRecipe ? ClientUtils.doRendering(entityType, input, color) : ClientUtils.doRendering(entityType);
+            LivingEntity currentLivingEntity = recipe instanceof TransformationRecipe ? ClientUtils.doRendering(entityType, input) : ClientUtils.doRendering(entityType);
             if (currentLivingEntity != null) {
                 if (!input) {
                     if (recipe instanceof TransformationRecipe transformationRecipe) {

@@ -4,7 +4,6 @@ import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.client.ClientUtils;
 import com.christofmeg.justenoughbreeding.recipe.*;
-import com.christofmeg.justenoughbreeding.rei.TemperCategoryREI;
 import com.christofmeg.justenoughbreeding.utils.CommonClientUtils;
 import dev.emi.emi.EmiPort;
 import dev.emi.emi.EmiRenderHelper;
@@ -20,7 +19,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.DyeColor;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -152,10 +150,10 @@ public class EMIUtils {
     }
 
     public static void drawMobNameAndEntity(EntityType<?> entityType, WidgetHolder widgets, BaseRecipe recipe, int availableWidth, int extraX) {
-        drawMobNameAndEntity(entityType, widgets, recipe, availableWidth, extraX, true, null);
+        drawMobNameAndEntity(entityType, widgets, recipe, availableWidth, extraX, true);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, WidgetHolder widgets, BaseRecipe recipe, int availableWidth, int extraX, boolean input, DyeColor color) {
+    public static void drawMobNameAndEntity(EntityType<?> entityType, WidgetHolder widgets, BaseRecipe recipe, int availableWidth, int extraX, boolean input) {
         if (entityType != null) {
             Font font = Minecraft.getInstance().font;
             Component entityName = Component.translatable(entityType.getDescriptionId());
@@ -197,7 +195,7 @@ public class EMIUtils {
 
                 @Override
                 public void render(@NotNull GuiGraphics stack, int mouseX, int mouseY, float delta) {
-                    LivingEntity currentLivingEntity = recipe instanceof TransformationRecipe ? ClientUtils.doRendering(entityType, input, color) : ClientUtils.doRendering(entityType);
+                    LivingEntity currentLivingEntity = recipe instanceof TransformationRecipe ? ClientUtils.doRendering(entityType, input) : ClientUtils.doRendering(entityType);
                     if (currentLivingEntity != null) {
                         if (input) {
                             if (recipe instanceof TransformationRecipe transformationRecipe) {

@@ -57,9 +57,9 @@ public class TransformationCategoryREI extends AbstractRecipeCategoryREI<Transfo
 
         TransformationRecipe recipe = display.recipe;
         REIUtils.drawMobSlot(widgets, bounds,0, 10);
-        REIUtils.drawMobNameAndEntity(widgets, bounds, recipe.inputEntityType, recipe, 99, 0, true, recipe.inputColor);
+        REIUtils.drawMobNameAndEntity(widgets, bounds, recipe.inputEntityType, recipe, 99, 0, true);
         REIUtils.drawMobSlot(widgets, bounds,105, 10);
-        REIUtils.drawMobNameAndEntity(widgets, bounds, recipe.outputEntityType, recipe, 61, 105, false, recipe.outputColor);
+        REIUtils.drawMobNameAndEntity(widgets, bounds, recipe.outputEntityType, recipe, 61, 105, false);
 
         return widgets;
     }

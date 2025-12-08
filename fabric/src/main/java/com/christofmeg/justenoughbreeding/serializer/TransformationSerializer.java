@@ -72,8 +72,6 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                 jsonModID,
                 modFolder,
                 fileName,
-                inputColor,
-                outputColor,
                 outputEntityNbt
         );
     }
@@ -101,8 +99,6 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
         buf.writeUtf(recipe.modFolder);
         buf.writeUtf(recipe.fileName);
 
-        if (recipe.inputColor != null) { buf.writeBoolean(true); buf.writeVarInt(recipe.inputColor.getId()); } else { buf.writeBoolean(false); }
-        if (recipe.outputColor != null) { buf.writeBoolean(true); buf.writeVarInt(recipe.outputColor.getId()); } else { buf.writeBoolean(false); }
         if (recipe.outputEntityNbt != null) {
             buf.writeBoolean(true);
             buf.writeNbt(recipe.outputEntityNbt);
@@ -171,8 +167,6 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
         }
 
         boolean isTamed = json.has("tamed") && json.get("tamed").getAsBoolean();
-        DyeColor inputColor = json.has("input_color") ? DyeColor.valueOf(json.get("input_color").getAsString().toUpperCase()) : null;
-        DyeColor outputColor = json.has("output_color") ? DyeColor.valueOf(json.get("output_color").getAsString().toUpperCase()) : null;
 
         CompoundTag outputEntityNbt = null;
         if (json.has("output_entity_nbt")) {
@@ -194,8 +188,6 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                 jsonModID,
                 modFolder,
                 fileName,
-                inputColor,
-                outputColor,
                 outputEntityNbt
         );
         JustEnoughBreeding.transformationRecipes.add(transformationRecipe);

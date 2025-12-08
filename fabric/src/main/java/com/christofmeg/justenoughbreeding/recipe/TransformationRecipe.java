@@ -6,7 +6,6 @@ import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -27,11 +26,9 @@ public class TransformationRecipe extends BaseRecipe {
     public final String jsonModID;
     public final String modFolder;
     public final String fileName;
-    public final @Nullable DyeColor inputColor;
-    public final @Nullable DyeColor outputColor;
     public final @Nullable CompoundTag outputEntityNbt;
 
-    public TransformationRecipe(EntityType<?> inputEntityType, Ingredient inputStack, Ingredient inputSpawnEgg, Ingredient extraInputStack, EntityType<?> outputEntityType, Ingredient outputSpawnEgg, @Nullable Boolean needsToBeTamed, String jsonModID, String modFolder, String fileName, @Nullable DyeColor inputColor, @Nullable DyeColor outputColor, @Nullable CompoundTag outputEntityNbt) {
+    public TransformationRecipe(EntityType<?> inputEntityType, Ingredient inputStack, Ingredient inputSpawnEgg, Ingredient extraInputStack, EntityType<?> outputEntityType, Ingredient outputSpawnEgg, @Nullable Boolean needsToBeTamed, String jsonModID, String modFolder, String fileName, @Nullable CompoundTag outputEntityNbt) {
         this.inputEntityType = inputEntityType;
         this.inputStack = CommonUtils.safe(inputStack);
         this.inputSpawnEgg = CommonUtils.safe(inputSpawnEgg);
@@ -42,8 +39,6 @@ public class TransformationRecipe extends BaseRecipe {
         this.jsonModID = Objects.requireNonNull(jsonModID, "jsonModID");
         this.modFolder = Objects.requireNonNull(modFolder, "modFolder");
         this.fileName = Objects.requireNonNull(fileName, "fileName");
-        this.inputColor = inputColor;
-        this.outputColor = outputColor;
         this.outputEntityNbt = outputEntityNbt;
     }
 
@@ -58,7 +53,7 @@ public class TransformationRecipe extends BaseRecipe {
 
     public static class DummyRecipe extends TransformationRecipe {
         public DummyRecipe(String jsonModID, String modFolder, String fileName) {
-            super(null,null,null,null,null,null,null, jsonModID, modFolder, fileName, null, null, null);
+            super(null,null,null,null,null,null,null, jsonModID, modFolder, fileName, null);
         }
     }
 }

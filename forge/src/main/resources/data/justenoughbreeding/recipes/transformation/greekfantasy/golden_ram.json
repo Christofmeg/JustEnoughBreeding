@@ -7,12 +7,14 @@
     }
   ],
   "input_entity": "minecraft:sheep",
+  "input_entity_nbt": {
+    "Color": 4
+  },
   "input_spawn_eggs": [
     {
       "item": "minecraft:sheep_spawn_egg"
     }
   ],
-  "input_color": "yellow",
   "output_entity": "greekfantasy:golden_ram",
   "output_spawn_eggs": [
     {

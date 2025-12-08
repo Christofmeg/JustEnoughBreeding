@@ -68,9 +68,9 @@ public class TransformationCategoryEMI extends AbstractRecipeCategoryEMI {
 
         widgets.addTexture(EmiTexture.EMPTY_ARROW, 72, 49);
         EMIUtils.drawMobSlot(0, 10, widgets);
-        EMIUtils.drawMobNameAndEntity(recipe.inputEntityType, widgets, recipe, 99, 0, true, recipe.inputColor);
+        EMIUtils.drawMobNameAndEntity(recipe.inputEntityType, widgets, recipe, 99, 0, true);
         EMIUtils.drawMobSlot(105, 10, widgets);
-        EMIUtils.drawMobNameAndEntity(recipe.outputEntityType, widgets, recipe, 61, 105, false, recipe.outputColor);
+        EMIUtils.drawMobNameAndEntity(recipe.outputEntityType, widgets, recipe, 61, 105, false);
     }
 
     public static class Builder {

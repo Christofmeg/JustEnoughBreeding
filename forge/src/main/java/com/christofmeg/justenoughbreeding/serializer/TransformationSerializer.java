@@ -12,7 +12,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -55,9 +54,6 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
         String modFolder = buf.readUtf();
         String fileName = buf.readUtf();
 
-        DyeColor inputColor = buf.readBoolean() ? DyeColor.byId(buf.readVarInt()) : null;
-        DyeColor outputColor = buf.readBoolean() ? DyeColor.byId(buf.readVarInt()) : null;
-
         CompoundTag inputEntityNbt = buf.readBoolean() ? buf.readNbt() : null;
         CompoundTag outputEntityNbt = buf.readBoolean() ? buf.readNbt() : null;
 
@@ -72,8 +68,6 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                 jsonModID,
                 modFolder,
                 fileName,
-                inputColor,
-                outputColor,
                 inputEntityNbt,
                 outputEntityNbt
         );
@@ -102,8 +96,6 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
         buf.writeUtf(recipe.modFolder);
         buf.writeUtf(recipe.fileName);
 
-        if (recipe.inputColor != null) { buf.writeBoolean(true); buf.writeVarInt(recipe.inputColor.getId()); } else { buf.writeBoolean(false); }
-        if (recipe.outputColor != null) { buf.writeBoolean(true); buf.writeVarInt(recipe.outputColor.getId()); } else { buf.writeBoolean(false); }
         if (recipe.inputEntityNbt != null) {
             buf.writeBoolean(true);
             buf.writeNbt(recipe.inputEntityNbt);
@@ -178,8 +170,6 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
         }
 
         boolean isTamed = json.has("tamed") && json.get("tamed").getAsBoolean();
-        DyeColor inputColor = json.has("input_color") ? DyeColor.valueOf(json.get("input_color").getAsString().toUpperCase()) : null;
-        DyeColor outputColor = json.has("output_color") ? DyeColor.valueOf(json.get("output_color").getAsString().toUpperCase()) : null;
 
         CompoundTag inputEntityNbt = json.has("input_entity_nbt")
                 ? CommonUtils.parseJsonNBT(json.get("input_entity_nbt"))
@@ -200,8 +190,6 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                 jsonModID,
                 modFolder,
                 fileName,
-                inputColor,
-                outputColor,
                 inputEntityNbt,
                 outputEntityNbt
         );
