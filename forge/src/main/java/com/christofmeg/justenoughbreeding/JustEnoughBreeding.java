@@ -26,6 +26,10 @@ import java.util.List;
 @Mod(CommonConstants.MOD_ID)
 public class JustEnoughBreeding {
 
+    //TODO fix swapping from category with nbt to a category without nbt. It takes a few seconds to "recreate" the animal and nbt hangs
+    //TODO make nbt available on other categories than transformation
+    //TODO test transformation input nbt
+
     private static final DeferredRegister<RecipeSerializer<?>> RECIPES_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, CommonConstants.MOD_ID);
     private static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(ForgeRegistries.RECIPE_TYPES, CommonConstants.MOD_ID);
 
