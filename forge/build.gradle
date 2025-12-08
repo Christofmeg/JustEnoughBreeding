@@ -214,6 +214,9 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("unearthed-journey")
     mainFile.addOptional("more-critters")
     mainFile.addOptional("koopas-critters")
+    mainFile.addOptional("zawa-evolved")
+    mainFile.addOptional("zawa-essentials")
+    mainFile.addOptional("lil-critters")
 }
 
 modrinth {
@@ -229,7 +232,7 @@ modrinth {
     changelog = file('changelog.md').text
     uploadFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")
     gameVersions = "${forge_release_versions}".split(",") as List<String>
-    loaders = ["${project.name}"]
+    loaders = ["${project.name},neoforge"].split(",") as List<String>
     dependencies {
         if (project.hasProperty('jei_version')) {
             optional.project "jei"
@@ -290,5 +293,8 @@ modrinth {
         optional.project "prehistoric-fauna"
         optional.project "unearthed-journey"
         optional.project "more-critters"
+        optional.project "zawa-evolved"
+        optional.project "zawa-essentials"
+        optional.project "lil-critters"
     }
 }
