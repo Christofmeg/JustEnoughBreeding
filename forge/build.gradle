@@ -236,7 +236,7 @@ modrinth {
     changelog = file('changelog.md').text
     uploadFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")
     gameVersions = "${forge_release_versions}".split(",") as List<String>
-    loaders = ["${project.name},neoforge"].split(",") as List<String>
+    loaders = ["forge","neoforge"]
     dependencies {
         if (project.hasProperty('jei_version')) {
             optional.project "jei"
