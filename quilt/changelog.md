@@ -1,2 +1,2 @@
-2.3.0:
-- Integration to Random's Wildlife
+2.4.0:
+- Added colored sheep to transformation category
