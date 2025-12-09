@@ -38,9 +38,9 @@ public class TrustingSerializer implements RecipeSerializer<TrustingRecipe> {
         String modFolder = buf.readUtf();
         String fileName = buf.readUtf();
 
-        CompoundTag outputEntityNbt = buf.readBoolean() ? buf.readNbt() : null;
+        CompoundTag inputEntityNbt = buf.readBoolean() ? buf.readNbt() : null;
 
-        return new TrustingRecipe(entityType, inputStack, spawnEgg, extraInputStack, jsonModID, jsonAnimalID, modFolder, fileName, outputEntityNbt);
+        return new TrustingRecipe(entityType, inputStack, spawnEgg, extraInputStack, jsonModID, jsonAnimalID, modFolder, fileName, inputEntityNbt);
     }
 
     @Override
@@ -61,9 +61,9 @@ public class TrustingSerializer implements RecipeSerializer<TrustingRecipe> {
         buf.writeUtf(recipe.modFolder);
         buf.writeUtf(recipe.fileName);
 
-        if (recipe.outputEntityNbt != null) {
+        if (recipe.inputEntityNbt != null) {
             buf.writeBoolean(true);
-            buf.writeNbt(recipe.outputEntityNbt);
+            buf.writeNbt(recipe.inputEntityNbt);
         } else {
             buf.writeBoolean(false);
         }

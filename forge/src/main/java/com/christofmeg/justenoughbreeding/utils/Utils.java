@@ -162,8 +162,8 @@ public class Utils {
             spawnEggs = new ArrayList<>(List.of(Ingredient.of(spawnEgg)));
         }
 
-        CompoundTag outputEntityNbt = json.has("output_entity_nbt")
-                ? CommonUtils.parseJsonNBT(json.get("output_entity_nbt"))
+        CompoundTag inputEntityNbt = json.has("input_entity_nbt")
+                ? CommonUtils.parseJsonNBT(json.get("input_entity_nbt"))
                 : null;
 
         switch (recipeType) {
@@ -188,7 +188,7 @@ public class Utils {
                         jsonAnimalID,
                         modFolder,
                         fileName,
-                        outputEntityNbt
+                        inputEntityNbt
                 );
                 JustEnoughBreeding.trustingRecipes.add(trustingRecipe);
                 return trustingRecipe;
@@ -214,7 +214,7 @@ public class Utils {
                         jsonAnimalID,
                         modFolder,
                         fileName,
-                        outputEntityNbt
+                        inputEntityNbt
                 );
                 JustEnoughBreeding.tamingRecipes.add(tamingRecipe);
                 return tamingRecipe;
@@ -237,7 +237,7 @@ public class Utils {
                         jsonAnimalID,
                         modFolder,
                         fileName,
-                        outputEntityNbt
+                        inputEntityNbt
                 );
                 JustEnoughBreeding.allayDuplicationRecipes.add(allayDuplicationRecipe);
                 return allayDuplicationRecipe;
@@ -270,7 +270,7 @@ public class Utils {
                         jsonAnimalID,
                         modFolder,
                         fileName,
-                        outputEntityNbt
+                        inputEntityNbt
                 );
                 JustEnoughBreeding.breedingRecipes.add(breedingRecipe);
                 return breedingRecipe;

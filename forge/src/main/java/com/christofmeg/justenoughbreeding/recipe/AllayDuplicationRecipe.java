@@ -24,9 +24,9 @@ public class AllayDuplicationRecipe extends BaseRecipe {
     public final String jsonAnimalID;
     public final String modFolder;
     public final String fileName;
-    public final @Nullable CompoundTag outputEntityNbt;
+    public final @Nullable CompoundTag inputEntityNbt;
 
-    public AllayDuplicationRecipe(EntityType<?> entityType, Ingredient inputStack, Ingredient spawnEgg, String jsonModID, String jsonAnimalID, String modFolder, String fileName, @Nullable CompoundTag outputEntityNbt) {
+    public AllayDuplicationRecipe(EntityType<?> entityType, Ingredient inputStack, Ingredient spawnEgg, String jsonModID, String jsonAnimalID, String modFolder, String fileName, @Nullable CompoundTag inputEntityNbt) {
         this.entityType = entityType;
         this.inputStack = CommonUtils.safe(inputStack);
         this.spawnEgg = CommonUtils.safe(spawnEgg);
@@ -34,7 +34,7 @@ public class AllayDuplicationRecipe extends BaseRecipe {
         this.jsonAnimalID = Objects.requireNonNull(jsonAnimalID, "jsonAnimalID");
         this.modFolder = Objects.requireNonNull(modFolder, "modFolder");
         this.fileName = Objects.requireNonNull(fileName, "fileName");
-        this.outputEntityNbt = outputEntityNbt;
+        this.inputEntityNbt = inputEntityNbt;
     }
 
     @Override public @NotNull ResourceLocation getId() { return new ResourceLocation(CommonConstants.MOD_ID, "allay_duplication" + "/" + this.modFolder + "/" + this.fileName + "/" + this.jsonModID + "/" + this.jsonAnimalID); }

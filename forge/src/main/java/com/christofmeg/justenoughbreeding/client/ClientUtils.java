@@ -3,6 +3,7 @@ package com.christofmeg.justenoughbreeding.client;
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.TamableAnimal;
@@ -17,11 +18,14 @@ public class ClientUtils {
     private static final Map<String, LivingEntity> ENTITY_CACHE = new HashMap<>();
     private static final Map<String, Long> CREATION_TIMES = new HashMap<>();
 
-    public static LivingEntity doRendering(EntityType<?> entityType, boolean input) {
+    public static LivingEntity doRendering(EntityType<?> entityType, CompoundTag nbt, boolean input) {
         Level level = Minecraft.getInstance().level;
         if (level == null) return null;
 
         String key = CommonUtils.makeKey(entityType, input);
+        if (nbt != null) {
+            key += "|" + nbt;
+        }
         long currentTime = System.currentTimeMillis();
 
         LivingEntity entity = ENTITY_CACHE.get(key);
@@ -53,7 +57,7 @@ public class ClientUtils {
     }
 
     public static LivingEntity doRendering(EntityType<?> entityType) {
-        return doRendering(entityType, false);
+        return doRendering(entityType, null, false);
     }
 
 }

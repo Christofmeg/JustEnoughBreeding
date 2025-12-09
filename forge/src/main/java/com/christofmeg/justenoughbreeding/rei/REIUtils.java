@@ -119,7 +119,17 @@ public class REIUtils {
                 widgets.add(Widgets.createLabel(new Point(bounds.x + extraX + 5, bounds.y + 5), abbreviatedEntityName).leftAligned().noShadow().color(0xFF404040, 0xFFBBBBBB));
             }
 
-            LivingEntity currentLivingEntity = recipe instanceof TransformationRecipe ? ClientUtils.doRendering(entityType, input) : ClientUtils.doRendering(entityType);
+            LivingEntity currentLivingEntity;
+            if (recipe instanceof TransformationRecipe transformationRecipe) {
+                if (input) {
+                    currentLivingEntity = ClientUtils.doRendering(transformationRecipe.inputEntityType, transformationRecipe.inputEntityNbt, true);
+                } else {
+                    currentLivingEntity = ClientUtils.doRendering(transformationRecipe.outputEntityType, transformationRecipe.outputEntityNbt, false);
+                }
+            } else {
+                currentLivingEntity = ClientUtils.doRendering(entityType);
+            }
+
             widgets.add(Widgets.withTranslate(Widgets.createDrawableWidget((graphics, mouseX, mouseY, v) -> {
                         if (currentLivingEntity != null) {
                             if (input) {
@@ -128,35 +138,35 @@ public class REIUtils {
                                         currentLivingEntity.load(transformationRecipe.inputEntityNbt);
                                     }
                                 }
-                            } else {
                                 if (recipe instanceof AllayDuplicationRecipe allayDuplicationRecipe) {
-                                    if (allayDuplicationRecipe.outputEntityNbt != null) {
-                                        currentLivingEntity.load(allayDuplicationRecipe.outputEntityNbt);
+                                    if (allayDuplicationRecipe.inputEntityNbt != null) {
+                                        currentLivingEntity.load(allayDuplicationRecipe.inputEntityNbt);
                                     }
                                 }
                                 if (recipe instanceof BreedingRecipe breedingRecipe) {
-                                    if (breedingRecipe.outputEntityNbt != null) {
-                                        currentLivingEntity.load(breedingRecipe.outputEntityNbt);
+                                    if (breedingRecipe.inputEntityNbt != null) {
+                                        currentLivingEntity.load(breedingRecipe.inputEntityNbt);
                                     }
                                 }
                                 if (recipe instanceof TamingRecipe tamingRecipe) {
-                                    if (tamingRecipe.outputEntityNbt != null) {
-                                        currentLivingEntity.load(tamingRecipe.outputEntityNbt);
+                                    if (tamingRecipe.inputEntityNbt != null) {
+                                        currentLivingEntity.load(tamingRecipe.inputEntityNbt);
                                     }
                                 }
                                 if (recipe instanceof TemperRecipe temperRecipe) {
-                                    if (temperRecipe.outputEntityNbt != null) {
-                                        currentLivingEntity.load(temperRecipe.outputEntityNbt);
-                                    }
-                                }
-                                if (recipe instanceof TransformationRecipe transformationRecipe) {
-                                    if (transformationRecipe.outputEntityNbt != null) {
-                                        currentLivingEntity.load(transformationRecipe.outputEntityNbt);
+                                    if (temperRecipe.inputEntityNbt != null) {
+                                        currentLivingEntity.load(temperRecipe.inputEntityNbt);
                                     }
                                 }
                                 if (recipe instanceof TrustingRecipe trustingRecipe) {
-                                    if (trustingRecipe.outputEntityNbt != null) {
-                                        currentLivingEntity.load(trustingRecipe.outputEntityNbt);
+                                    if (trustingRecipe.inputEntityNbt != null) {
+                                        currentLivingEntity.load(trustingRecipe.inputEntityNbt);
+                                    }
+                                }
+                            } else {
+                                if (recipe instanceof TransformationRecipe transformationRecipe) {
+                                    if (transformationRecipe.outputEntityNbt != null) {
+                                        currentLivingEntity.load(transformationRecipe.outputEntityNbt);
                                     }
                                 }
                             }

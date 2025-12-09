@@ -28,9 +28,9 @@ public class BreedingRecipe extends BaseRecipe {
     public final String jsonAnimalID;
     public final String modFolder;
     public final String fileName;
-    public final @Nullable CompoundTag outputEntityNbt;
+    public final @Nullable CompoundTag inputEntityNbt;
 
-    public BreedingRecipe(EntityType<?> entityType, @Nullable Ingredient inputStack, @Nullable Ingredient spawnEgg, @Nullable Boolean needsToBeTamed, @Nullable Ingredient resultItemStack, @Nullable Ingredient extraInputStack, @Nullable Boolean animalTrusting, String jsonModID, String jsonAnimalID, String modFolder, String fileName, @Nullable CompoundTag outputEntityNbt) {
+    public BreedingRecipe(EntityType<?> entityType, @Nullable Ingredient inputStack, @Nullable Ingredient spawnEgg, @Nullable Boolean needsToBeTamed, @Nullable Ingredient resultItemStack, @Nullable Ingredient extraInputStack, @Nullable Boolean animalTrusting, String jsonModID, String jsonAnimalID, String modFolder, String fileName, @Nullable CompoundTag inputEntityNbt) {
         this.entityType = entityType;
         this.inputStack = CommonUtils.safe(inputStack);
         this.spawnEgg = CommonUtils.safe(spawnEgg);
@@ -42,7 +42,7 @@ public class BreedingRecipe extends BaseRecipe {
         this.jsonAnimalID = Objects.requireNonNull(jsonAnimalID, "jsonAnimalID");
         this.modFolder = Objects.requireNonNull(modFolder, "modFolder");
         this.fileName = Objects.requireNonNull(fileName, "fileName");
-        this.outputEntityNbt = outputEntityNbt;
+        this.inputEntityNbt = inputEntityNbt;
     }
 
     @Override public @NotNull ResourceLocation getId() { return new ResourceLocation(CommonConstants.MOD_ID, "breeding" + "/" + this.modFolder + "/" + this.fileName + "/" + this.jsonModID + "/" + this.jsonAnimalID); }
