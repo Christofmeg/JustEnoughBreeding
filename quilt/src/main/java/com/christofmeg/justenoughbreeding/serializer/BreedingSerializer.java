@@ -6,6 +6,7 @@ import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import com.christofmeg.justenoughbreeding.utils.Utils;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -45,6 +46,8 @@ public class BreedingSerializer implements RecipeSerializer<BreedingRecipe> {
         String modFolder = buf.readUtf();
         String fileName = buf.readUtf();
 
+        CompoundTag inputEntityNbt = buf.readBoolean() ? buf.readNbt() : null;
+
         return new BreedingRecipe(
                 entityType,
                 inputStack,
@@ -56,7 +59,8 @@ public class BreedingSerializer implements RecipeSerializer<BreedingRecipe> {
                 jsonModID,
                 jsonAnimalID,
                 modFolder,
-                fileName
+                fileName,
+                inputEntityNbt
         );
     }
 
@@ -101,5 +105,12 @@ public class BreedingSerializer implements RecipeSerializer<BreedingRecipe> {
         buf.writeUtf(recipe.jsonAnimalID);
         buf.writeUtf(recipe.modFolder);
         buf.writeUtf(recipe.fileName);
+
+        if (recipe.inputEntityNbt != null) {
+            buf.writeBoolean(true);
+            buf.writeNbt(recipe.inputEntityNbt);
+        } else {
+            buf.writeBoolean(false);
+        }
     }
 }

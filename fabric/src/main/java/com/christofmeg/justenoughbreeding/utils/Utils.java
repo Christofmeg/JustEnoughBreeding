@@ -186,6 +186,10 @@ public class Utils {
             spawnEggs = new ArrayList<>(List.of(Ingredient.of(spawnEgg)));
         }
 
+        CompoundTag inputEntityNbt = json.has("input_entity_nbt")
+                ? CommonUtils.parseJsonNBT(json.get("input_entity_nbt"))
+                : null;
+
         switch (recipeType) {
             case "trusting" -> {
                 for (TrustingRecipe existingRecipe : JustEnoughBreeding.trustingRecipes) {
@@ -207,7 +211,8 @@ public class Utils {
                         jsonModID,
                         jsonAnimalID,
                         modFolder,
-                        fileName
+                        fileName,
+                        inputEntityNbt
                 );
                 JustEnoughBreeding.trustingRecipes.add(trustingRecipe);
                 return trustingRecipe;
@@ -232,7 +237,8 @@ public class Utils {
                         jsonModID,
                         jsonAnimalID,
                         modFolder,
-                        fileName
+                        fileName,
+                        inputEntityNbt
                 );
                 JustEnoughBreeding.tamingRecipes.add(tamingRecipe);
                 return tamingRecipe;
@@ -254,7 +260,8 @@ public class Utils {
                         jsonModID,
                         jsonAnimalID,
                         modFolder,
-                        fileName
+                        fileName,
+                        inputEntityNbt
                 );
                 JustEnoughBreeding.allayDuplicationRecipes.add(allayDuplicationRecipe);
                 return allayDuplicationRecipe;
@@ -286,7 +293,8 @@ public class Utils {
                         jsonModID,
                         jsonAnimalID,
                         modFolder,
-                        fileName
+                        fileName,
+                        inputEntityNbt
                 );
                 JustEnoughBreeding.breedingRecipes.add(breedingRecipe);
                 return breedingRecipe;

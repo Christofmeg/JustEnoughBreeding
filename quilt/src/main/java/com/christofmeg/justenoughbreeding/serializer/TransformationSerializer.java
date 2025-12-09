@@ -8,13 +8,10 @@ import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import com.christofmeg.justenoughbreeding.utils.Utils;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.TagParser;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -56,9 +53,7 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
         String modFolder = buf.readUtf();
         String fileName = buf.readUtf();
 
-        DyeColor inputColor = buf.readBoolean() ? DyeColor.byId(buf.readVarInt()) : null;
-        DyeColor outputColor = buf.readBoolean() ? DyeColor.byId(buf.readVarInt()) : null;
-
+        CompoundTag inputEntityNbt = buf.readBoolean() ? buf.readNbt() : null;
         CompoundTag outputEntityNbt = buf.readBoolean() ? buf.readNbt() : null;
 
         return new TransformationRecipe(
@@ -72,6 +67,7 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                 jsonModID,
                 modFolder,
                 fileName,
+                inputEntityNbt,
                 outputEntityNbt
         );
     }
@@ -99,6 +95,12 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
         buf.writeUtf(recipe.modFolder);
         buf.writeUtf(recipe.fileName);
 
+        if (recipe.inputEntityNbt != null) {
+            buf.writeBoolean(true);
+            buf.writeNbt(recipe.inputEntityNbt);
+        } else {
+            buf.writeBoolean(false);
+        }
         if (recipe.outputEntityNbt != null) {
             buf.writeBoolean(true);
             buf.writeNbt(recipe.outputEntityNbt);
@@ -168,14 +170,13 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
 
         boolean isTamed = json.has("tamed") && json.get("tamed").getAsBoolean();
 
-        CompoundTag outputEntityNbt = null;
-        if (json.has("output_entity_nbt")) {
-            try {
-                outputEntityNbt = TagParser.parseTag(json.get("output_entity_nbt").toString());
-            } catch (CommandSyntaxException e) {
-                throw new RuntimeException(e);
-            }
-        }
+        CompoundTag inputEntityNbt = json.has("input_entity_nbt")
+                ? CommonUtils.parseJsonNBT(json.get("input_entity_nbt"))
+                : null;
+
+        CompoundTag outputEntityNbt = json.has("output_entity_nbt")
+                ? CommonUtils.parseJsonNBT(json.get("output_entity_nbt"))
+                : null;
 
         TransformationRecipe transformationRecipe = new TransformationRecipe(
                 inputEntityType,
@@ -188,6 +189,7 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                 jsonModID,
                 modFolder,
                 fileName,
+                inputEntityNbt,
                 outputEntityNbt
         );
         JustEnoughBreeding.transformationRecipes.add(transformationRecipe);

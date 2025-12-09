@@ -6,6 +6,7 @@ import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import com.christofmeg.justenoughbreeding.utils.Utils;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -37,7 +38,9 @@ public class TrustingSerializer implements RecipeSerializer<TrustingRecipe> {
         String modFolder = buf.readUtf();
         String fileName = buf.readUtf();
 
-        return new TrustingRecipe(entityType, inputStack, spawnEgg, extraInputStack, jsonModID, jsonAnimalID, modFolder, fileName);
+        CompoundTag inputEntityNbt = buf.readBoolean() ? buf.readNbt() : null;
+
+        return new TrustingRecipe(entityType, inputStack, spawnEgg, extraInputStack, jsonModID, jsonAnimalID, modFolder, fileName, inputEntityNbt);
     }
 
     @Override
@@ -57,5 +60,12 @@ public class TrustingSerializer implements RecipeSerializer<TrustingRecipe> {
         buf.writeUtf(recipe.jsonAnimalID);
         buf.writeUtf(recipe.modFolder);
         buf.writeUtf(recipe.fileName);
+
+        if (recipe.inputEntityNbt != null) {
+            buf.writeBoolean(true);
+            buf.writeNbt(recipe.inputEntityNbt);
+        } else {
+            buf.writeBoolean(false);
+        }
     }
 }

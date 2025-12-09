@@ -79,6 +79,10 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
             }
         }
 
+        CompoundTag outputEntityNbt = json.has("output_entity_nbt")
+                ? CommonUtils.parseJsonNBT(json.get("output_entity_nbt"))
+                : null;
+
         TemperRecipe r = new TemperRecipe(
                 entityType,
                 Utils.deduplicateIngredients(inputIngredients),
@@ -87,7 +91,8 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
                 jsonModID,
                 jsonAnimalID,
                 modFolder,
-                fileName
+                fileName,
+                outputEntityNbt
         );
         JustEnoughBreeding.temperRecipes.add(r);
         return r;
@@ -110,7 +115,9 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
         String modFolder = buf.readUtf();
         String fileName = buf.readUtf();
 
-        return new TemperRecipe(entityType, inputStack, spawnEgg, extraInputStack, jsonModID, jsonAnimalID, modFolder, fileName);
+        CompoundTag inputEntityNbt = buf.readBoolean() ? buf.readNbt() : null;
+
+        return new TemperRecipe(entityType, inputStack, spawnEgg, extraInputStack, jsonModID, jsonAnimalID, modFolder, fileName, inputEntityNbt);
     }
 
     @Override
@@ -130,6 +137,13 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
         buf.writeUtf(recipe.jsonAnimalID);
         buf.writeUtf(recipe.modFolder);
         buf.writeUtf(recipe.fileName);
+
+        if (recipe.inputEntityNbt != null) {
+            buf.writeBoolean(true);
+            buf.writeNbt(recipe.inputEntityNbt);
+        } else {
+            buf.writeBoolean(false);
+        }
     }
 
     private void addIngredients(JsonObject mobData, List<Ingredient> ingredientList, String memberName) {
