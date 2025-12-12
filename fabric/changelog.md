@@ -1,2 +1,4 @@
-1.6.1:
-- Update Catalogue icon size from 16px to 256px
+1.6.3:
+- Update catalogue icon
+- Update JEI integration to 21.9 and 21.10
+- Update REI integration to 21.9 and 21.10

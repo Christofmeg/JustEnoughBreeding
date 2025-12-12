@@ -138,10 +138,10 @@ modrinth {
         token = ""
     }
     projectId = "${modrinth_id}"
-    versionName = getArchivesBaseName() + "-" + getVersion()
+    versionName = project.projectDir.name + "-" + getVersion()
     versionType = "${release_type}"
     changelog = file('changelog.md').text
-    uploadFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")
+    uploadFile = file("${project.buildDir}/libs/${mod_id}-${project.name}-${fabric_supported_versions}-${version}.jar")
     gameVersions = "${fabric_release_versions}".split(",") as List<String>
     loaders = ["${project.name}"]
     dependencies {
