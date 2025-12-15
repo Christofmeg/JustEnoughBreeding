@@ -1,10 +1,10 @@
-package com.christofmeg.justenoughbreeding.rei;
+package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
 import com.christofmeg.justenoughbreeding.utils.Utils;
-import me.shedaniel.rei.api.client.registry.display.DisplayRegistry;
+import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
@@ -14,11 +14,10 @@ import net.minecraft.world.item.crafting.Ingredient;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
-public class REIUtils {
+public class JEIUtils {
 
-    public static void registerMobBreedingRecipes(DisplayRegistry registration) {
+    public static void registerMobBreedingRecipes(IRecipeRegistration registration) {
         List<String> sortedMobNames = new ArrayList<>(CommonConstants.breedingIngredients.keySet());
         Collections.sort(sortedMobNames);
 
@@ -35,7 +34,7 @@ public class REIUtils {
 
                             if (mobIngredients != null && mobSpawnEgg != null) {
                                 Ingredient combinedIngredient = Utils.createCombinedIngredient(mobIngredients);
-                                List<Ingredient> combinedResultIngredient = Objects.equals(mobResultItem, "") ? null : Utils.createCombinedResultIngredients(mobResultItem, mobMinResultCount, mobMaxResultCount);
+                                List<Ingredient> combinedResultIngredient = Utils.createCombinedResultIngredients(mobResultItem, mobMinResultCount, mobMaxResultCount);
                                 Item spawnEggItem = JustEnoughBreeding.getItemFromLoaderRegistries(ResourceLocation.parse(mobSpawnEgg.trim()));
 
                                 if (spawnEggItem instanceof SpawnEggItem spawnEgg) {
@@ -54,7 +53,7 @@ public class REIUtils {
                                     }
 
                                     BreedingRecipe breedingRecipe = Utils.createBreedingRecipe(entityType, combinedIngredient, spawnEggItem, needsToBeTamed, combinedResultIngredient, animalTrusting, combinedExtraIngredient);
-                                    registration.add(new BreedingDisplay(breedingRecipe));
+                                    registration.addRecipes(BreedingCategory.TYPE, Collections.singletonList(breedingRecipe));
                                 }
                             }
                         }
@@ -85,7 +84,7 @@ public class REIUtils {
                                 }
 
                                 BreedingRecipe breedingRecipe = Utils.createBreedingRecipe(entityType, combinedIngredient, spawnEggItem, needsToBeTamed, combinedResultIngredient, animalTrusting, combinedExtraIngredient);
-                                registration.add(new BreedingDisplay(breedingRecipe));
+                                registration.addRecipes(BreedingCategory.TYPE, Collections.singletonList(breedingRecipe));
                             }
                         }
                     }

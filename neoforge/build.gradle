@@ -8,7 +8,7 @@ plugins {
 }
 
 base {
-    archivesName = "${mod_id}-${project.name}-${neoforge_supported_versions}"
+    archivesName = "${mod_id}-neoforge-${neoforge_supported_versions}"
 }
 
 neoForge {
@@ -90,7 +90,7 @@ dependencies {
 tasks.register('publishCurseForge', TaskPublishCurseForge) {
     apiToken = file('../../API Tokens/justenoughbreeding.md')
     def projectId = "${cf_id}".toString()
-    def mainFile = upload(projectId, file("${project.buildDir}/libs/${mod_id}-${project.name}-${neoforge_supported_versions}-${version}.jar")) as Object
+    def mainFile = upload(projectId, file(tasks.named("jar").flatMap { it.archiveFile })) as Object
     mainFile.changelogType = 'markdown'
     mainFile.changelog = file('changelog.md')
     mainFile.addGameVersion('Client', 'Server')
@@ -174,10 +174,10 @@ modrinth {
         token = ""
     }
     projectId = "${modrinth_id}"
-    versionName = project.projectDir.name + "-" + getVersion()
+    versionName = "${mod_id}-neoforge-${neoforge_supported_versions}" + "-" + getVersion()
     versionType = "${release_type}"
     changelog = file('changelog.md').text
-    uploadFile = file("${project.buildDir}/libs/${mod_id}-${project.name}-${neoforge_supported_versions}-${version}.jar")
+    uploadFile = tasks.named("jar").flatMap { it.archiveFile }
     gameVersions = "${neoforge_release_versions}".split(",") as List<String>
     loaders = ["${project.name}"]
     dependencies {
