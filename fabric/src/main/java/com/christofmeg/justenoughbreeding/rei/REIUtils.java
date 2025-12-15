@@ -5,8 +5,6 @@ import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
 import com.christofmeg.justenoughbreeding.utils.Utils;
 import me.shedaniel.rei.api.client.registry.display.DisplayRegistry;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
@@ -41,8 +39,7 @@ public class REIUtils {
                                 Item spawnEggItem = JustEnoughBreeding.getItemFromLoaderRegistries(ResourceLocation.parse(mobSpawnEgg.trim()));
 
                                 if (spawnEggItem instanceof SpawnEggItem spawnEgg) {
-                                    HolderLookup.Provider holderProvider = Minecraft.getInstance().level.registryAccess();
-                                    EntityType<?> entityType = spawnEgg.getType(holderProvider, spawnEggItem.getDefaultInstance());
+                                    EntityType<?> entityType = spawnEgg.getType(spawnEggItem.getDefaultInstance());
                                     Boolean needsToBeTamed = CommonConstants.breedingNeedsToBeTamed.get(mobName);
                                     Boolean animalTrusting = CommonConstants.breedingNeedsToBeTrusting.get(mobName);
 
