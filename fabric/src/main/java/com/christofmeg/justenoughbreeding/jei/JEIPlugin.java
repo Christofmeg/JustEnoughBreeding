@@ -10,7 +10,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import org.jetbrains.annotations.NotNull;
 
-@SuppressWarnings("unused")
 @JeiPlugin
 public class JEIPlugin implements IModPlugin {
 
@@ -24,11 +23,6 @@ public class JEIPlugin implements IModPlugin {
         IJeiHelpers helper = registration.getJeiHelpers();
         registration.addRecipeCategories(
                 new BreedingCategory(helper, Items.WHEAT)
-//                ,new TamingCategory(helper, Items.BONE),
-//                new TemperCategory(helper, Items.GOLDEN_CARROT),
-//                new TransformationCategory(helper, Items.GOLDEN_CARROT),
-//                new TrustingCategory(helper, Items.SWEET_BERRIES)
-
         );
     }
 
