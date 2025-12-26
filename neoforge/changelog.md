@@ -1,2 +1,2 @@
-1.6.3:
-- Update REI integration to 21.9 and 21.10
+1.6.5:
+- Update to 21.11

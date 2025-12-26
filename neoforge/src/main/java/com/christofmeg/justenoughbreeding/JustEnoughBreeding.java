@@ -2,7 +2,7 @@ package com.christofmeg.justenoughbreeding;
 
 import com.christofmeg.justenoughbreeding.config.JEBIntegration;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.neoforged.api.distmarker.Dist;
@@ -20,12 +20,12 @@ public class JustEnoughBreeding {
         }
     }
 
-    public static Item getItemFromLoaderRegistries(ResourceLocation resourceLocation) {
-        return BuiltInRegistries.ITEM.getValue(resourceLocation);
+    public static Item getItemFromLoaderRegistries(Identifier Identifier) {
+        return BuiltInRegistries.ITEM.getValue(Identifier);
     }
 
-    public static EntityType<?> getEntityFromLoaderRegistries(ResourceLocation resourceLocation) {
-        return BuiltInRegistries.ENTITY_TYPE.getValue(resourceLocation);
+    public static EntityType<?> getEntityFromLoaderRegistries(Identifier Identifier) {
+        return BuiltInRegistries.ENTITY_TYPE.getValue(Identifier);
     }
 
 }

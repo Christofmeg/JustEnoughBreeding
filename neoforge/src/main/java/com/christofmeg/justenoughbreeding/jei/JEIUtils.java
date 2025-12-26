@@ -5,7 +5,7 @@ import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
 import com.christofmeg.justenoughbreeding.utils.Utils;
 import mezz.jei.api.registration.IRecipeRegistration;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
@@ -35,7 +35,7 @@ public class JEIUtils {
                             if (mobIngredients != null && mobSpawnEgg != null) {
                                 Ingredient combinedIngredient = Utils.createCombinedIngredient(mobIngredients);
                                 List<Ingredient> combinedResultIngredient = Utils.createCombinedResultIngredients(mobResultItem, mobMinResultCount, mobMaxResultCount);
-                                Item spawnEggItem = JustEnoughBreeding.getItemFromLoaderRegistries(ResourceLocation.parse(mobSpawnEgg.trim()));
+                                Item spawnEggItem = JustEnoughBreeding.getItemFromLoaderRegistries(Identifier.parse(mobSpawnEgg.trim()));
 
                                 if (spawnEggItem instanceof SpawnEggItem spawnEgg) {
                                     EntityType<?> entityType = spawnEgg.getType(spawnEggItem.getDefaultInstance());
@@ -68,8 +68,8 @@ public class JEIUtils {
                             if (mobIngredients != null && mobSpawnEggItem != null && mobEntityName != null) {
                                 Ingredient combinedIngredient = Utils.createCombinedIngredient(mobIngredients);
                                 List<Ingredient> combinedResultIngredient = Utils.createCombinedResultIngredients(mobResultItem, mobMinResultCount, mobMaxResultCount);
-                                Item spawnEggItem = JustEnoughBreeding.getItemFromLoaderRegistries(ResourceLocation.parse(mobSpawnEggItem.trim()));
-                                EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(ResourceLocation.parse(mobEntityName.trim()));
+                                Item spawnEggItem = JustEnoughBreeding.getItemFromLoaderRegistries(Identifier.parse(mobSpawnEggItem.trim()));
+                                EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(Identifier.parse(mobEntityName.trim()));
                                 Boolean needsToBeTamed = CommonConstants.breedingNeedsToBeTamed.get(mobName);
                                 Boolean animalTrusting = CommonConstants.breedingNeedsToBeTrusting.get(mobName);
 

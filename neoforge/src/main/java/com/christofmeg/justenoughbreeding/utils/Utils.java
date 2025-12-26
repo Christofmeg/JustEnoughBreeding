@@ -4,7 +4,7 @@ import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -24,8 +24,8 @@ public class Utils {
 
         for (int count = minCount; count <= maxCount; count++) {
             for (String ingredientId : ingredientIds) {
-                // Validate ResourceLocation and the fetched Item
-                ResourceLocation resourceLocation = ResourceLocation.tryParse(ingredientId.trim());
+                // Validate Identifier and the fetched Item
+                Identifier resourceLocation = Identifier.tryParse(ingredientId.trim());
                 Item ingredientItem = JustEnoughBreeding.getItemFromLoaderRegistries(resourceLocation);
                 if (resourceLocation == null || ingredientItem == Items.AIR) {
                     continue;
@@ -83,7 +83,7 @@ public class Utils {
             if (ingredientId.trim().startsWith("#")) {
                 combinedIngredients.add(CommonUtils.createTagIngredient(ingredientId));
             } else {
-                Item ingredientItem = JustEnoughBreeding.getItemFromLoaderRegistries(ResourceLocation.parse(ingredientId.trim()));
+                Item ingredientItem = JustEnoughBreeding.getItemFromLoaderRegistries(Identifier.parse(ingredientId.trim()));
                 combinedIngredients.add(Ingredient.of(new ItemStack(ingredientItem).getItem()));
             }
         }

@@ -24,7 +24,7 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.navigation.ScreenPosition;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.DyeColor;
@@ -34,7 +34,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> implements IRecipeCategory<BreedingRecipe> {
 
-    public static final IRecipeType<BreedingRecipe> TYPE = IRecipeType.create(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "breeding"), BreedingRecipe.class);
+    public static final IRecipeType<BreedingRecipe> TYPE = IRecipeType.create(Identifier.fromNamespaceAndPath(CommonConstants.MOD_ID, "breeding"), BreedingRecipe.class);
 
     private final IDrawableStatic bigSlot;
     final int inputSlotItemX = 69;
