@@ -21,7 +21,7 @@
   "output_entity": "companions:soul_mage",
   "output_spawn_eggs": [
     {
-        "item": "companions:soul_mage_spawn_egg"
+        "item": "companions:golden_allay_spawn_egg"
     }
   ]
 }

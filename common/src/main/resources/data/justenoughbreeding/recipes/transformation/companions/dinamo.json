@@ -27,7 +27,7 @@
   "output_entity": "companions:dinamo",
   "output_spawn_eggs": [
     {
-        "item": "companions:dinamo_spawn_egg"
+        "item": "companions:broken_dinamo_spawn_egg"
     }
   ]
 }
