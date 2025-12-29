@@ -1,0 +1,26 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "tameablebeasts",
+  "mobs": [
+    {
+      "graptera": {
+        "inputs": [
+          {
+            "tag": "tameablebeasts:graptera_food"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "tameablebeasts:grapteradon_egg"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "tameablebeasts:graptera_spawn_egg"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

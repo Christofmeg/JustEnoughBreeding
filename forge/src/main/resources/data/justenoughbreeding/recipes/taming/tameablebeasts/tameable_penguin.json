@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "tameablebeasts",
+  "mobs": [
+    {
+      "tameable_penguin": {
+        "inputs": [
+          {
+            "item": "tameablebeasts:frozen_fish"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "tameablebeasts:penguin_spawn_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

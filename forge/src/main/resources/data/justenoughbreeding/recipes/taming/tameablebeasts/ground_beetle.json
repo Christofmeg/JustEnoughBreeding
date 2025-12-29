@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "tameablebeasts",
+  "mobs": [
+    {
+      "ground_beetle": {
+        "inputs": [
+          {
+            "tag": "tameablebeasts:ground_beetle_food"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "tameablebeasts:ground_beetle_spawn_egg"
+          }
+        ]
+      }
+    }
+  ]
+}
