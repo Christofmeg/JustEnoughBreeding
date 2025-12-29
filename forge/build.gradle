@@ -229,6 +229,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("tameable-beasts")
     mainFile.addOptional("species")
     mainFile.addOptional("nethers-exoticism")
+    mainFile.addOptional("jadens-nether-expansion")
 }
 
 modrinth {
@@ -316,5 +317,6 @@ modrinth {
         optional.project "tameable-beasts"
         optional.project "species"
         optional.project "nethers-exoticism"
+        optional.project "jadens-nether-expansion"
     }
 }
