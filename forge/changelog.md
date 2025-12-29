@@ -1,10 +1,26 @@
-2.4.0:
-- Added colored sheep to transformation category
-- All json recipes now support top level "input_entity_nbt", in here you can specify what nbt the rendered animal should have
-- Transformation recips support both "input_entity_nbt" and "output_entity_nbt"
-- Removed experimental "color" serializer
-- Updated Alex's Mobs integration by [bitflora](https://github.com/bitflora)
-- Integration to Zoo and Wild Animals: Evolved (ZAWA) by [bitflora](https://github.com/bitflora)
-- Integration to Essentials - A ZAWA Addon by [bitflora](https://github.com/bitflora)
-- Integration to Essentials - A ZAWA Addon by [bitflora](https://github.com/bitflora)
-- Implement [#43 NBT for transforming entities](https://github.com/Christofmeg/JustEnoughBreeding/issues/43)
+2.5.0:
+- Added more minecraft transformations
+- Alexs Caves integration updated by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Alexs Mobs integration updated by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Blast from the Past integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Companions! integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Creeper Overhaul integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Critters and Companions integration updated by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Etcetera integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Friends&Foes integration updated by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Galosphere integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Ghosts integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Jaden's Nether Expansion integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Minecraft integration updated by [TwoBluDogs](https://github.com/TwoBluDogs)
+- More Critters integration updated by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Naturalist integration updated by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Nether's Exoticism integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Spawn integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Species integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Supplementaries integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Tameable Beasts integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
+- The Endergetic Expansion integration updated by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Wan's Ancient Beasts integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Windswept integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
+- YUNG's Cave Biomes integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
+- zh_tw translation added by [xz123456xz](https://github.com/xz123456xz)

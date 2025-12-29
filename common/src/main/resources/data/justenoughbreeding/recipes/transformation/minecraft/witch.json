@@ -6,19 +6,16 @@
       "item": "minecraft:lightning_rod"
     }
   ],
-  "input_entity": "minecraft:mooshroom",
-  "input_entity_nbt": {
-    "Type": "brown"
-  },
+  "input_entity": "minecraft:villager",
   "input_spawn_eggs": [
     {
-      "item": "minecraft:mooshroom_spawn_egg"
+      "item": "minecraft:villager_spawn_egg"
     }
   ],
-  "output_entity": "minecraft:mooshroom",
+  "output_entity": "minecraft:witch",
   "output_spawn_eggs": [
     {
-      "item": "minecraft:mooshroom_spawn_egg"
+      "item": "minecraft:witch_spawn_egg"
     }
   ]
 }

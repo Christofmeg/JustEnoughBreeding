@@ -3,7 +3,7 @@
   "mod": "minecraft",
   "inputs": [
     {
-      "item": "minecraft:lightning_rod"
+      "item": "minecraft:shears"
     }
   ],
   "input_entity": "minecraft:mooshroom",
@@ -15,10 +15,10 @@
       "item": "minecraft:mooshroom_spawn_egg"
     }
   ],
-  "output_entity": "minecraft:mooshroom",
+  "output_entity": "minecraft:cow",
   "output_spawn_eggs": [
     {
-      "item": "minecraft:mooshroom_spawn_egg"
+      "item": "minecraft:cow_spawn_egg"
     }
   ]
 }

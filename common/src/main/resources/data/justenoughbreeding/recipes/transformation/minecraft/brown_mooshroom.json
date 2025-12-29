@@ -7,15 +7,15 @@
     }
   ],
   "input_entity": "minecraft:mooshroom",
-  "input_entity_nbt": {
-    "Type": "brown"
-  },
   "input_spawn_eggs": [
     {
       "item": "minecraft:mooshroom_spawn_egg"
     }
   ],
   "output_entity": "minecraft:mooshroom",
+  "output_entity_nbt": {
+    "Type": "brown"
+  },
   "output_spawn_eggs": [
     {
       "item": "minecraft:mooshroom_spawn_egg"

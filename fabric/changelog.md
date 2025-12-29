@@ -1,5 +1,16 @@
-2.4.0:
-- Added colored sheep to transformation category
-- All json recipes now support top level "input_entity_nbt", in here you can specify what nbt the rendered animal should have
-- Transformation recips support both "input_entity_nbt" and "output_entity_nbt"
-- Removed experimental "color" serializer
+2.5.0:
+- Added more minecraft transformations
+- Companions! integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Creeper Overhaul integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Critters and Companions integration updated by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Etcetera integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Friends&Foes integration updated by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Galosphere integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Ghosts integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Jaden's Nether Expansion integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Naturalist integration updated by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Spawn integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Species integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
+- Supplementaries integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
+- YUNG's Cave Biomes integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
+- zh_tw translation by [xz123456xz](https://github.com/xz123456xz)
