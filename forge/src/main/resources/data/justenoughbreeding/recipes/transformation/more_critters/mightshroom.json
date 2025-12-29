@@ -1,0 +1,22 @@
+{
+  "type": "justenoughbreeding:transformation",
+  "mod": "more_critters",
+  "inputs": [
+    {
+      "item": "more_critters:purgatorial_mixture"
+    }
+  ],
+  "input_entity": "more_critters:ancient_skeleton",
+  "input_spawn_eggs": [
+    {
+      "item": "more_critters:ancient_skeleton_item"
+    }
+  ],
+  "output_entity": "more_critters:mightshroom",
+  "output_entity_nbt": [],
+  "output_spawn_eggs": [
+    {
+      "item": "more_critters:mightshroom_spawn_egg"
+    }
+  ]
+}
