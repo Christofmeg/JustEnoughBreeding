@@ -223,6 +223,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("lil-critters")
     mainFile.addOptional("windsweptmod")
     mainFile.addOptional("supplementaries")
+    mainFile.addOptional("bftp")
 }
 
 modrinth {
@@ -304,5 +305,6 @@ modrinth {
         optional.project "lil-critters"
         optional.project "windswept"
         optional.project "supplementaries"
+        optional.project "blast-from-the-past"
     }
 }

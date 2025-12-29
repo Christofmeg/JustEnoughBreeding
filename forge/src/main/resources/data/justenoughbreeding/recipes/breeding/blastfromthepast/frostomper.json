@@ -1,0 +1,16 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "blastfromthepast",
+  "mobs": [
+    {
+      "frostomper": {
+        "inputs": [
+          {
+            "item": "blastfromthepast:sap_ice_cream"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

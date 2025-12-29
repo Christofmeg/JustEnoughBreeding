@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "blastfromthepast",
+  "mobs": [
+    {
+      "burrel": {
+        "inputs": [
+          {
+            "item": "blastfromthepast:pinecone"
+          }
+        ]
+      }
+    }
+  ]
+}
