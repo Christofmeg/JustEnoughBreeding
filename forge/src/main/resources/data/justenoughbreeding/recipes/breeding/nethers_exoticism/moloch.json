@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "nethers_exoticism",
+  "mobs": [
+    {
+      "moloch": {
+        "inputs": [
+          {
+            "item": "nethers_exoticism:kiwano"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "nethers_exoticism:moloch_spawn_egg"
+          }
+        ]
+      }
+    }
+  ]
+}
