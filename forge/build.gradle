@@ -233,6 +233,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("companions-mod")
     mainFile.addOptional("spawn-mod")
     mainFile.addOptional("etcetera")
+    mainFile.addOptional("galosphere")
 }
 
 modrinth {
@@ -324,5 +325,6 @@ modrinth {
         optional.project "companions-mod"
         optional.project "spawn-mod"
         optional.project "etcetera"
+        optional.project "galosphere"
     }
 }
