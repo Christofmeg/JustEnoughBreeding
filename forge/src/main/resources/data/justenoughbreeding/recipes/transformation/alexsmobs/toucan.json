@@ -1,0 +1,27 @@
+{
+  "type": "justenoughbreeding:transformation",
+  "mod": "alexsmobs",
+  "inputs": [
+    {
+      "item": "minecraft:golden_apple"
+    },
+    {
+      "item": "minecraft:enchanted_golden_apple"
+    }
+  ],
+  "input_entity": "alexsmobs:toucan",
+  "input_spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_toucan"
+    }
+  ],
+  "output_entity": "alexsmobs:toucan",
+  "output_entity_nbt": {
+    "GoldenTime": 12000
+  },
+  "output_spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_toucan"
+    }
+  ]
+}
