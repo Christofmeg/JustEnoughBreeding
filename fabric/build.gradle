@@ -161,6 +161,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("spawn-mod")
     mainFile.addOptional("etcetera")
     mainFile.addOptional("galosphere")
+    mainFile.addOptional("yungs-cave-biomes-fabric")
 }
 
 modrinth {
@@ -218,5 +219,6 @@ modrinth {
         optional.project "spawn-mod"
         optional.project "etcetera"
         optional.project "galosphere"
+        optional.project "yungs-cave-biomes"
     }
 }
