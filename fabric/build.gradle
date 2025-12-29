@@ -159,6 +159,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("jadens-nether-expansion")
     mainFile.addOptional("companions-mod")
     mainFile.addOptional("spawn-mod")
+    mainFile.addOptional("etcetera")
 }
 
 modrinth {
@@ -214,5 +215,6 @@ modrinth {
         optional.project "jadens-nether-expansion"
         optional.project "companions-mod"
         optional.project "spawn-mod"
+        optional.project "etcetera"
     }
 }
