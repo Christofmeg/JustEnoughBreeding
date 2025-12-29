@@ -225,6 +225,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("supplementaries")
     mainFile.addOptional("bftp")
     mainFile.addOptional("wans-ancient-beasts")
+    mainFile.addOptional("creeper-overhaul")
 }
 
 modrinth {
@@ -308,5 +309,6 @@ modrinth {
         optional.project "supplementaries"
         optional.project "blast-from-the-past"
         optional.project "wab"
+        optional.project "creeper-overhaul"
     }
 }
