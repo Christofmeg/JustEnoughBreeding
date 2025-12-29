@@ -224,6 +224,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("windsweptmod")
     mainFile.addOptional("supplementaries")
     mainFile.addOptional("bftp")
+    mainFile.addOptional("wans-ancient-beasts")
 }
 
 modrinth {
@@ -306,5 +307,6 @@ modrinth {
         optional.project "windswept"
         optional.project "supplementaries"
         optional.project "blast-from-the-past"
+        optional.project "wab"
     }
 }

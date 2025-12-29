@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "wan_ancient_beasts",
+  "mobs": [
+    {
+      "walker": {
+        "inputs": [
+          {
+            "item": "minecraft:spore_blossom"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "wan_ancient_beasts:walker_spawn_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

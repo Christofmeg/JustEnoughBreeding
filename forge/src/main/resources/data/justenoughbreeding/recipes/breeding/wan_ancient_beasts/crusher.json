@@ -1,0 +1,25 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "wan_ancient_beasts",
+  "mobs": [
+    {
+      "crusher": {
+        "inputs": [
+          {
+            "item": "minecraft:hanging_roots"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "wan_ancient_beasts:crusher_egg"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "wan_ancient_beasts:crusher_spawn_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

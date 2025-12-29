@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "wan_ancient_beasts",
+  "mobs": [
+    {
+      "glider": {
+        "inputs": [
+          {
+            "item": "minecraft:pufferfish"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "wan_ancient_beasts:glider_spawn_egg"
+          }
+        ]
+      }
+    }
+  ]
+}
