@@ -1,0 +1,27 @@
+{
+  "type": "justenoughbreeding:transformation",
+  "mod": "companions",
+  "inputs": [
+    {
+        "item": "companions:mage_coat"
+    },
+    {
+        "item": "companions:mage_hat"
+    },
+    {
+        "item": "companions:mage_staff"
+    }
+  ],
+  "input_entity": "companions:golden_allay",
+  "input_spawn_eggs": [
+    {
+        "item": "companions:golden_allay_spawn_egg"
+    }
+  ],
+  "output_entity": "companions:soul_mage",
+  "output_spawn_eggs": [
+    {
+        "item": "companions:soul_mage_spawn_egg"
+    }
+  ]
+}

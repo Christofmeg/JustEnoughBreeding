@@ -160,6 +160,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("creeper-overhaul")
     mainFile.addOptional("species")
     mainFile.addOptional("jadens-nether-expansion")
+    mainFile.addOptional("companions-mod")
 }
 
 modrinth {
@@ -213,5 +214,6 @@ modrinth {
         optional.project "creeper-overhaul"
         optional.project "species"
         optional.project "jadens-nether-expansion"
+        optional.project "companions-mod"
     }
 }
