@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexscaves",
+  "mobs": [
+    {
+      "candicorn": {
+        "inputs": [
+          {
+            "item": "alexscaves:candy_cane"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexscaves:spawn_egg_candicorn"
+          }
+        ]
+      }
+    }
+  ]
+}

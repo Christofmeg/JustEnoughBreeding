@@ -1,0 +1,21 @@
+{
+  "type": "justenoughbreeding:transformation",
+  "mod": "alexscaves",
+  "inputs": [
+    {
+        "item": "alexscaves:spawn_egg_underzealot"
+    }
+  ],
+  "input_entity": "alexscaves:gloomoth",
+  "input_spawn_eggs": [
+    {
+        "item": "alexscaves:spawn_egg_gloomoth"
+    }
+  ],
+  "output_entity": "alexscaves:watcher",
+  "output_spawn_eggs": [
+    {
+        "item": "alexscaves:spawn_egg_watcher"
+    }
+  ]
+}

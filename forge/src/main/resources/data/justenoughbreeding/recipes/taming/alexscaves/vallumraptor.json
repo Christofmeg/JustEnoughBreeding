@@ -3,15 +3,23 @@
   "mod": "alexscaves",
   "mobs": [
     {
-      "tremorsaurus.json": {
+      "vallumraptor": {
         "inputs": [
+          {
+            "item": "alexscaves:dinosaur_nugget"
+          }
+        ],
+        "extra_inputs": [
+          {
+            "item": "minecraft:chest"
+          },
           {
             "item": "alexscaves:serene_salad"
           }
         ],
         "spawn_eggs": [
           {
-            "item": "alexscaves:spawn_egg_tremorsaurus.json"
+            "item": "alexscaves:spawn_egg_vallumraptor"
           }
         ]
       }
