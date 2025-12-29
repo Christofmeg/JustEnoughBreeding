@@ -222,6 +222,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("zawa-essentials")
     mainFile.addOptional("lil-critters")
     mainFile.addOptional("windsweptmod")
+    mainFile.addOptional("supplementaries")
 }
 
 modrinth {
@@ -302,5 +303,6 @@ modrinth {
         optional.project "zawa-essentials"
         optional.project "lil-critters"
         optional.project "windswept"
+        optional.project "supplementaries"
     }
 }
