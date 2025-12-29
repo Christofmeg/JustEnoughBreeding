@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "species",
+  "mobs": [
+    {
+      "wraptor": {
+        "inputs": [
+          {
+            "item": "minecraft:shroomlight"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "species:wraptor_spawn_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

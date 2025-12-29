@@ -1,0 +1,25 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "species",
+  "mobs": [
+    {
+      "goober": {
+        "inputs": [
+          {
+            "tag": "species:goober_breed_items"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "species:goober_egg"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "species:goober_spawn_egg"
+          }
+        ]
+      }
+    }
+  ]
+}
