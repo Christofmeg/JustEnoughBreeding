@@ -1,30 +1,29 @@
 package com.christofmeg.justenoughbreeding.utils;
 
 import com.mojang.blaze3d.platform.NativeImage;
+import com.mojang.blaze3d.platform.Window;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
+import net.minecraft.client.gui.navigation.ScreenRectangle;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
+import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.animal.*;
-import net.minecraft.world.entity.animal.axolotl.Axolotl;
-import net.minecraft.world.entity.animal.frog.Frog;
-import net.minecraft.world.entity.animal.horse.Horse;
-import net.minecraft.world.entity.animal.sniffer.Sniffer;
-import net.minecraft.world.entity.monster.hoglin.Hoglin;
-import net.minecraft.world.phys.AABB;
-import org.joml.Quaternionf;
+import org.joml.Matrix4f;
+import org.joml.Vector4f;
 
 import java.io.IOException;
 import java.io.InputStream;
 
 public class CommonClientUtils {
 
+    private static final int WIDGET_SIZE = 36;
+/*
     public static void renderEntity(PoseStack stack, double mouseX, LivingEntity currentLivingEntity, int entityPosX, int entityPosY) {
         // Set the desired position of the entity on the screen
         int ENTITY_RENDER_DISTANCE = 15728880;
@@ -97,6 +96,157 @@ public class CommonClientUtils {
         entityRenderDispatcher.setRenderShadow(true); // Re-enable rendering shadows
 
         stack.popPose(); // Pop the pose from the stack to revert transformations
+    }
+*/
+    public static void renderEntity(GuiGraphics guiGraphics, int mouseX, LivingEntity currentLivingEntity, Rect bounds, int fullWidth) {
+        Minecraft minecraft = Minecraft.getInstance();
+        Window window = minecraft.getWindow();
+        PoseStack poseStack = guiGraphics.pose();
+
+        // Get the model-view matrix (combined) from the PoseStack
+        Matrix4f modelViewMatrix = new Matrix4f(poseStack.last().pose());
+        // Get the projection matrix
+        Matrix4f projectionMatrix = new Matrix4f(RenderSystem.getProjectionMatrix());
+        // Combine model-view and projection
+        Matrix4f mvpMatrix = projectionMatrix.mul(modelViewMatrix);
+        // Define the 3D coordinates of the top-left and bottom-right corners of your element
+        // Since it's a 2D element in GUI, Z can be 0.
+        Vector4f topLeftWorld = new Vector4f(0, 0, 0, 1);
+        // Project to clip space
+        Vector4f topLeftClip = mvpMatrix.transform(topLeftWorld);
+        // Perspective divide
+        Vector4f topLeftNDC = new Vector4f(topLeftClip.x / topLeftClip.w, topLeftClip.y / topLeftClip.w, 0, 1);
+
+        // Convert to screen coordinates (pixels)
+        int screenX = Math.round((topLeftNDC.x + 1) / 2f * window.getGuiScaledWidth());
+        int screenY = Math.round((1 - topLeftNDC.y) / 2f * window.getGuiScaledHeight());
+
+        guiGraphics.pose().pushPose();
+        /*
+        guiGraphics.blit(
+                null,
+                bounds.x(),
+                bounds.y(),
+                bounds.width(),
+                bounds.height(),
+                0,
+                36,
+                36,
+                36,
+                256,
+                256
+        );*/
+
+    //    guiGraphics.enableScissor(screenX + bounds.x() + 1, screenY + bounds.y() + 1, screenX + bounds.right() - 1, screenY + bounds.bottom() - 1);
+
+        EntityDimensions dimensions = currentLivingEntity.getType().getDimensions();
+
+        /*
+        InventoryScreen.renderEntityInInventoryFollowsMouse(
+                guiGraphics,
+                bounds.x() + bounds.width() / 2,
+                bounds.y() + WIDGET_SIZE - 5,
+                (int) (Math.min(20 / dimensions.height, 20 / dimensions.width)),
+                -mouseX + ((float) fullWidth / 2),
+                mouseX,
+                currentLivingEntity
+        );
+         */
+
+        renderEntityInInventoryFollowsMouse(guiGraphics, 0, 0, 0, 0, (int) (Math.min(20 / dimensions.height, 20 / dimensions.width)), mouseX, currentLivingEntity, bounds);
+
+        guiGraphics.pose().popPose();
+    }
+
+    public static void renderEntityInInventoryFollowsMouse(GuiGraphics guiGraphics, int left, int top, int right, int bottom, int size, float mouseX, LivingEntity entity, Rect bounds) {
+        int x = bounds.x();
+        int y = bounds.y();
+        int renderLeft   = left + x;
+        int renderTop    = top + y + 19;
+        int renderRight  = right + x;
+        int renderBottom = bottom + y + 19;
+        int centerY = (renderTop + renderBottom) / 2;
+        float entityScale = entity.getScale();
+        float renderScale = size / entityScale;
+        float yOffset = entity.getBbHeight() / 2.0F;
+     //   guiGraphics.fill(1, 11, 60, 90, -65536);
+    //    guiGraphics.fill(1 + 105, 11, 60 + 105, 90, -35536);
+
+    //    guiGraphics.enableScissor(0, 0, guiGraphics.guiWidth(), guiGraphics.guiHeight());
+
+
+/*
+        int guiWidth = guiGraphics.guiWidth();
+        int guiHeight = guiGraphics.guiHeight();
+
+        Screen screen = Minecraft.getInstance().screen;
+
+        int screenWidth = screen.width;
+        int screenHeight = screen.height;
+
+        Window window = Minecraft.getInstance().getWindow();
+        int windowWidth = window.getWidth();
+        int windowHeight = window.getHeight();
+        double windowGUIScale = window.getGuiScale();
+        int getGuiScaledWidth = window.getGuiScaledWidth();
+        int getGuiScaledHeight = window.getGuiScaledHeight();
+        int getScreenWidth = window.getScreenWidth();
+        int getScreenHeight = window.getScreenHeight();
+
+        System.out.println("--------------------------------------------------");
+        System.out.println("guiWidth: " + guiWidth);
+        System.out.println("screenWidth: " + screenWidth);
+        System.out.println("getGuiScaledWidth: " + getGuiScaledWidth);
+
+        System.out.println("guiHeight: " + guiHeight);
+        System.out.println("screenHeight: " + screenHeight);
+        System.out.println("getGuiScaledHeight: " + getGuiScaledHeight);
+
+        System.out.println("windowWidth: " + windowWidth);
+        System.out.println("getScreenWidth: " + getScreenWidth);
+
+        System.out.println("windowHeight: " + windowHeight);
+        System.out.println("getScreenHeight: " + getScreenHeight);
+
+        System.out.println("windowGUIScale: " + windowGUIScale);
+        System.out.println("--------------------------------------------------");
+        */
+
+        Minecraft minecraft = Minecraft.getInstance();
+        Window window = minecraft.getWindow();
+        Screen screen = minecraft.screen;
+        PoseStack poseStack = guiGraphics.pose();
+
+        // Get the model-view matrix (combined) from the PoseStack
+        Matrix4f modelViewMatrix = new Matrix4f(poseStack.last().pose());
+        // Get the projection matrix
+        Matrix4f projectionMatrix = new Matrix4f(RenderSystem.getProjectionMatrix());
+        // Combine model-view and projection
+        Matrix4f mvpMatrix = projectionMatrix.mul(modelViewMatrix);
+        // Define the 3D coordinates of the top-left and bottom-right corners of your element
+        // Since it's a 2D element in GUI, Z can be 0.
+        Vector4f topLeftWorld = new Vector4f(0, 0, 0, 1);
+        // Project to clip space
+        Vector4f topLeftClip = mvpMatrix.transform(topLeftWorld);
+        // Perspective divide
+        Vector4f topLeftNDC = new Vector4f(topLeftClip.x / topLeftClip.w, topLeftClip.y / topLeftClip.w, 0, 1);
+
+        // Convert to screen coordinates (pixels)
+        int screenX = Math.round((topLeftNDC.x + 1) / 2f * window.getGuiScaledWidth());
+        int screenY = Math.round((1 - topLeftNDC.y) / 2f * window.getGuiScaledHeight());
+
+        guiGraphics.enableScissor(screenX + bounds.x() + 1, screenY + bounds.y() + 1, screenX + bounds.right() - 1, screenY + bounds.bottom() - 1);
+
+        guiGraphics.fill(-guiGraphics.guiWidth(), -guiGraphics.guiHeight(), guiGraphics.guiWidth(), guiGraphics.guiHeight(), -15536);
+        guiGraphics.disableScissor();
+
+
+
+
+
+     //   guiGraphics.fill(-111, 11, 60, 90, -65536);
+    //    InventoryScreen.renderEntityInInventoryFollowsMouse(guiGraphics, renderLeft, renderTop, renderRight, renderBottom, mouseX, entity);
+
     }
 
     public static int getPixelColor(ResourceLocation texture, int px, int py) {

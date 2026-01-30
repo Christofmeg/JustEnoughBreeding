@@ -89,7 +89,7 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
                 ? CommonUtils.parseJsonNBT(json.get("output_entity_nbt"))
                 : null;
 
-        TemperRecipe r = new TemperRecipe(
+        return new TemperRecipe(
                 entityType,
                 Utils.deduplicateIngredients(inputIngredients),
                 Utils.deduplicateIngredients(spawnEggs),
@@ -100,8 +100,6 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
                 fileName,
                 outputEntityNbt
         );
-        JustEnoughBreeding.temperRecipes.add(r);
-        return r;
     }
 
     @Override

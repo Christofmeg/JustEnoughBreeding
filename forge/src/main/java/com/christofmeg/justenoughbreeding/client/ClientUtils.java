@@ -24,7 +24,7 @@ public class ClientUtils {
 
         String key = CommonUtils.makeKey(entityType, input);
         if (nbt != null) {
-            key += "|" + nbt;
+            key += "|" + nbt.getAsString();
         }
         long currentTime = System.currentTimeMillis();
 

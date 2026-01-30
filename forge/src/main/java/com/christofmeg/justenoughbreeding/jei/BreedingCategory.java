@@ -26,10 +26,12 @@ public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> {
 
     public static final RecipeType<BreedingRecipe> TYPE = new RecipeType<>(new ResourceLocation("justenoughbreeding", "breeding"), BreedingRecipe.class);
     private final IDrawableStatic bigSlot;
+    private final int CATEGORY_WIDTH;
 
     public BreedingCategory(IGuiHelper helper, ItemLike itemStack) {
         super(TYPE, Component.translatable("translation.justenoughbreeding.breeding"), helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(itemStack)), 166, 91);
         bigSlot = helper.getOutputSlot();
+        this.CATEGORY_WIDTH = this.getWidth();
     }
 
     @Override
@@ -63,7 +65,7 @@ public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> {
     @Override
     public void draw(@NotNull BreedingRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics stack, double mouseX, double mouseY) {
         JEIUtils.drawMobSlot(0, 10, bigSlot, stack);
-        JEIUtils.drawMobNameAndEntity(recipe.entityType, stack, mouseX, recipe);
+        JEIUtils.drawMobNameAndEntity(recipe.entityType, stack, mouseX, recipe, CATEGORY_WIDTH);
     }
 
 }

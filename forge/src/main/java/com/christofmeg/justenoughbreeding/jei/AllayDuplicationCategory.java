@@ -26,10 +26,12 @@ public class AllayDuplicationCategory extends AbstractRecipeCategory<AllayDuplic
 
     public static final RecipeType<AllayDuplicationRecipe> TYPE = new RecipeType<>(new ResourceLocation(CommonConstants.MOD_ID, "allay_duplication"), AllayDuplicationRecipe.class);
     private final IDrawableStatic bigSlot;
+    private final int CATEGORY_WIDTH;
 
     public AllayDuplicationCategory(IGuiHelper helper, ItemLike itemStack) {
         super(TYPE, Component.translatable("translation.justenoughbreeding.allay_duplication"), helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(itemStack)), 166, 91);
         bigSlot = helper.getOutputSlot();
+        this.CATEGORY_WIDTH = this.getWidth();
     }
 
     @Override
@@ -44,7 +46,7 @@ public class AllayDuplicationCategory extends AbstractRecipeCategory<AllayDuplic
     @Override
     public void draw(@NotNull AllayDuplicationRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics stack, double mouseX, double mouseY) {
         JEIUtils.drawMobSlot(0, 10, bigSlot, stack);
-        JEIUtils.drawMobNameAndEntity(recipe.entityType, stack, mouseX, recipe, 99, 0);
+        JEIUtils.drawMobNameAndEntity(recipe.entityType, stack, mouseX, recipe, 99, 0, CATEGORY_WIDTH);
     }
 
 }

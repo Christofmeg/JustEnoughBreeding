@@ -179,7 +179,7 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                 ? CommonUtils.parseJsonNBT(json.get("output_entity_nbt"))
                 : null;
 
-        TransformationRecipe r = new TransformationRecipe(
+        return new TransformationRecipe(
                 inputEntityType,
                 Utils.deduplicateIngredients(inputIngredients),
                 Utils.deduplicateIngredients(inputSpawnEggs),
@@ -193,8 +193,6 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                 inputEntityNbt,
                 outputEntityNbt
         );
-        JustEnoughBreeding.transformationRecipes.add(r);
-        return r;
     }
 
 }

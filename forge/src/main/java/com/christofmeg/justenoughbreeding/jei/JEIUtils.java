@@ -4,6 +4,7 @@ import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.client.ClientUtils;
 import com.christofmeg.justenoughbreeding.recipe.*;
 import com.christofmeg.justenoughbreeding.utils.CommonClientUtils;
+import com.christofmeg.justenoughbreeding.utils.Rect;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
@@ -114,15 +115,15 @@ public class JEIUtils {
         slot.draw(stack, mobSlotX, mobSlotY, removeFromTop, removeFromBottom, removeFromLeft, removeFromRight);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, BaseRecipe recipe) {
-        drawMobNameAndEntity(entityType, stack, mouseX, recipe, 148, 0);
+    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, BaseRecipe recipe, int CATEGORY_WIDTH) {
+        drawMobNameAndEntity(entityType, stack, mouseX, recipe, 148, 0, CATEGORY_WIDTH);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, BaseRecipe recipe, int availableWidth, int extraX) {
-        drawMobNameAndEntity(entityType, stack, mouseX, recipe, availableWidth, extraX, true);
+    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, BaseRecipe recipe, int availableWidth, int extraX, int CATEGORY_WIDTH) {
+        drawMobNameAndEntity(entityType, stack, mouseX, recipe, availableWidth, extraX, true, CATEGORY_WIDTH);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, BaseRecipe recipe, int availableWidth, int extraX, boolean input) {
+    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, BaseRecipe recipe, int availableWidth, int extraX, boolean input, int CATEGORY_WIDTH) {
         if (entityType != null) {
             Font font = Minecraft.getInstance().font;
             Component entityName = Component.translatable(entityType.getDescriptionId());
@@ -208,8 +209,13 @@ public class JEIUtils {
                         }
                     }
                 }
-                CommonClientUtils.renderEntity(stack.pose(), mouseX, currentLivingEntity, 31 + extraX, 89);
+        //        CommonClientUtils.renderEntity(stack.pose(), mouseX, currentLivingEntity, 31 + extraX, 89);
+
+                final int WIDGET_SIZE = 59;
+                final Rect rect = new Rect((CATEGORY_WIDTH - WIDGET_SIZE) / 2, 10, WIDGET_SIZE, WIDGET_SIZE);
+                CommonClientUtils.renderEntity(stack, (int) mouseX, currentLivingEntity, rect, CATEGORY_WIDTH);
             }
         }
     }
+
 }

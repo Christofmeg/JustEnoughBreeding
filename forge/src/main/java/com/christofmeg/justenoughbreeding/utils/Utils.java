@@ -179,7 +179,7 @@ public class Utils {
                         return existingRecipe;
                     }
                 }
-                TrustingRecipe trustingRecipe = new TrustingRecipe(
+                return new TrustingRecipe(
                         entityType,
                         Utils.deduplicateIngredients(inputIngredients),
                         Utils.deduplicateIngredients(spawnEggs),
@@ -190,8 +190,6 @@ public class Utils {
                         fileName,
                         inputEntityNbt
                 );
-                JustEnoughBreeding.trustingRecipes.add(trustingRecipe);
-                return trustingRecipe;
             }
             case "taming" -> {
                 for (TamingRecipe existingRecipe : JustEnoughBreeding.tamingRecipes) {
@@ -205,7 +203,7 @@ public class Utils {
                         return existingRecipe;
                     }
                 }
-                TamingRecipe tamingRecipe = new TamingRecipe(
+                return new TamingRecipe(
                         entityType,
                         Utils.deduplicateIngredients(inputIngredients),
                         Utils.deduplicateIngredients(spawnEggs),
@@ -216,8 +214,6 @@ public class Utils {
                         fileName,
                         inputEntityNbt
                 );
-                JustEnoughBreeding.tamingRecipes.add(tamingRecipe);
-                return tamingRecipe;
             }
             case "allay_duplication" -> {
                 for (AllayDuplicationRecipe existingRecipe : JustEnoughBreeding.allayDuplicationRecipes) {
@@ -229,7 +225,7 @@ public class Utils {
                         return existingRecipe;
                     }
                 }
-                AllayDuplicationRecipe allayDuplicationRecipe = new AllayDuplicationRecipe(
+                return new AllayDuplicationRecipe(
                         entityType,
                         Utils.deduplicateIngredients(inputIngredients),
                         Utils.deduplicateIngredients(spawnEggs),
@@ -239,8 +235,6 @@ public class Utils {
                         fileName,
                         inputEntityNbt
                 );
-                JustEnoughBreeding.allayDuplicationRecipes.add(allayDuplicationRecipe);
-                return allayDuplicationRecipe;
             }
             default -> {
                 for (BreedingRecipe existingRecipe : JustEnoughBreeding.breedingRecipes) {
@@ -258,7 +252,7 @@ public class Utils {
                 }
                 boolean isTamed = mobData.has("tamed") && mobData.get("tamed").getAsBoolean();
                 boolean isTrusting = mobData.has("trusting") && mobData.get("trusting").getAsBoolean();
-                BreedingRecipe breedingRecipe = new BreedingRecipe(
+                return new BreedingRecipe(
                         entityType,
                         Utils.deduplicateIngredients(inputIngredients),
                         Utils.deduplicateIngredients(spawnEggs),
@@ -272,8 +266,6 @@ public class Utils {
                         fileName,
                         inputEntityNbt
                 );
-                JustEnoughBreeding.breedingRecipes.add(breedingRecipe);
-                return breedingRecipe;
             }
         }
     }

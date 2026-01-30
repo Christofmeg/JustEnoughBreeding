@@ -24,10 +24,12 @@ public class TransformationCategory extends AbstractRecipeCategory<Transformatio
 
     public static final RecipeType<TransformationRecipe> TYPE = new RecipeType<>(new ResourceLocation(CommonConstants.MOD_ID, "transformation"), TransformationRecipe.class);
     private final IDrawableStatic bigSlot;
+    private final int CATEGORY_WIDTH;
 
     public TransformationCategory(IGuiHelper helper, ItemLike itemStack) {
         super(TYPE, Component.translatable("translation.justenoughbreeding.transformation"), helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(itemStack)), 166, 91);
         bigSlot = helper.getOutputSlot();
+        this.CATEGORY_WIDTH = this.getWidth();
     }
 
     @Override
@@ -50,9 +52,9 @@ public class TransformationCategory extends AbstractRecipeCategory<Transformatio
     @Override
     public void draw(@NotNull TransformationRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics stack, double mouseX, double mouseY) {
         JEIUtils.drawMobSlot(0, 10, bigSlot, stack);
-        JEIUtils.drawMobNameAndEntity(recipe.inputEntityType, stack, mouseX, recipe, 99, 0, true);
+        JEIUtils.drawMobNameAndEntity(recipe.inputEntityType, stack, mouseX, recipe, 99, 0, true, CATEGORY_WIDTH);
         JEIUtils.drawMobSlot(105, 10, bigSlot, stack);
-        JEIUtils.drawMobNameAndEntity(recipe.outputEntityType, stack, mouseX, recipe, 61, 105, false);
+        JEIUtils.drawMobNameAndEntity(recipe.outputEntityType, stack, mouseX, recipe, 61, 105, false, CATEGORY_WIDTH);
     }
 
 }
