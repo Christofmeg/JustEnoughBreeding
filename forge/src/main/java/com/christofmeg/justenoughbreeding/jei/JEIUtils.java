@@ -4,7 +4,7 @@ import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.client.ClientUtils;
 import com.christofmeg.justenoughbreeding.recipe.*;
 import com.christofmeg.justenoughbreeding.utils.CommonClientUtils;
-import com.christofmeg.justenoughbreeding.utils.Rect;
+import com.christofmeg.justenoughbreeding.utils.Utils;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
@@ -169,52 +169,7 @@ public class JEIUtils {
             } else {
                 currentLivingEntity = ClientUtils.doRendering(entityType);
             }
-
-            if (currentLivingEntity != null) {
-                if (input) {
-                    if (recipe instanceof TransformationRecipe transformationRecipe) {
-                        if (transformationRecipe.inputEntityNbt != null) {
-                            currentLivingEntity.load(transformationRecipe.inputEntityNbt);
-                        }
-                    }
-                    if (recipe instanceof AllayDuplicationRecipe allayDuplicationRecipe) {
-                        if (allayDuplicationRecipe.inputEntityNbt != null) {
-                            currentLivingEntity.load(allayDuplicationRecipe.inputEntityNbt);
-                        }
-                    }
-                    if (recipe instanceof BreedingRecipe breedingRecipe) {
-                        if (breedingRecipe.inputEntityNbt != null) {
-                            currentLivingEntity.load(breedingRecipe.inputEntityNbt);
-                        }
-                    }
-                    if (recipe instanceof TamingRecipe tamingRecipe) {
-                        if (tamingRecipe.inputEntityNbt != null) {
-                            currentLivingEntity.load(tamingRecipe.inputEntityNbt);
-                        }
-                    }
-                    if (recipe instanceof TemperRecipe temperRecipe) {
-                        if (temperRecipe.inputEntityNbt != null) {
-                            currentLivingEntity.load(temperRecipe.inputEntityNbt);
-                        }
-                    }
-                    if (recipe instanceof TrustingRecipe trustingRecipe) {
-                        if (trustingRecipe.inputEntityNbt != null) {
-                            currentLivingEntity.load(trustingRecipe.inputEntityNbt);
-                        }
-                    }
-                } else {
-                    if (recipe instanceof TransformationRecipe transformationRecipe) {
-                        if (transformationRecipe.outputEntityNbt != null) {
-                            currentLivingEntity.load(transformationRecipe.outputEntityNbt);
-                        }
-                    }
-                }
-        //        CommonClientUtils.renderEntity(stack.pose(), mouseX, currentLivingEntity, 31 + extraX, 89);
-
-                final int WIDGET_SIZE = 59;
-                final Rect rect = new Rect((CATEGORY_WIDTH - WIDGET_SIZE) / 2, 10, WIDGET_SIZE, WIDGET_SIZE);
-                CommonClientUtils.renderEntity(stack, (int) mouseX, currentLivingEntity, rect, CATEGORY_WIDTH);
-            }
+            Utils.renderEntityWithBounds(currentLivingEntity, input, recipe, CATEGORY_WIDTH, stack, mouseX);
         }
     }
 

@@ -169,7 +169,7 @@ public class REIUtils {
                                     }
                                 }
                             }
-                            CommonClientUtils.renderEntity(graphics.pose(), mouseX, currentLivingEntity, 31 + extraX, 89);
+                            CommonClientUtils.renderEntity(graphics.pose(), mouseX, currentLivingEntity, 31 + extraX);
                         }
                     }
             ), bounds.x + 5, bounds.y + 5, 0));

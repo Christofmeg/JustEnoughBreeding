@@ -8,12 +8,14 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.TagParser;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
@@ -322,5 +324,53 @@ public class Utils {
         JsonArray result = new JsonArray();
         uniqueJson.forEach(result::add);
         return Ingredient.fromJson(result);
+    }
+
+    public static void renderEntityWithBounds(LivingEntity currentLivingEntity, boolean input, BaseRecipe recipe, int CATEGORY_WIDTH, GuiGraphics stack, double mouseX) {
+        if (currentLivingEntity != null) {
+            Rect rect;
+            final int WIDGET_SIZE = 61;
+            if (input) {
+                rect = new Rect(((CATEGORY_WIDTH - WIDGET_SIZE) / 2) - 52, 10, WIDGET_SIZE, WIDGET_SIZE + 20);
+                if (recipe instanceof TransformationRecipe transformationRecipe) {
+                    if (transformationRecipe.inputEntityNbt != null) {
+                        currentLivingEntity.load(transformationRecipe.inputEntityNbt);
+                    }
+                }
+                if (recipe instanceof AllayDuplicationRecipe allayDuplicationRecipe) {
+                    if (allayDuplicationRecipe.inputEntityNbt != null) {
+                        currentLivingEntity.load(allayDuplicationRecipe.inputEntityNbt);
+                    }
+                }
+                if (recipe instanceof BreedingRecipe breedingRecipe) {
+                    if (breedingRecipe.inputEntityNbt != null) {
+                        currentLivingEntity.load(breedingRecipe.inputEntityNbt);
+                    }
+                }
+                if (recipe instanceof TamingRecipe tamingRecipe) {
+                    if (tamingRecipe.inputEntityNbt != null) {
+                        currentLivingEntity.load(tamingRecipe.inputEntityNbt);
+                    }
+                }
+                if (recipe instanceof TemperRecipe temperRecipe) {
+                    if (temperRecipe.inputEntityNbt != null) {
+                        currentLivingEntity.load(temperRecipe.inputEntityNbt);
+                    }
+                }
+                if (recipe instanceof TrustingRecipe trustingRecipe) {
+                    if (trustingRecipe.inputEntityNbt != null) {
+                        currentLivingEntity.load(trustingRecipe.inputEntityNbt);
+                    }
+                }
+            } else {
+                rect = new Rect(((CATEGORY_WIDTH - WIDGET_SIZE) / 2) + 53, 10, WIDGET_SIZE, WIDGET_SIZE + 20);
+                if (recipe instanceof TransformationRecipe transformationRecipe) {
+                    if (transformationRecipe.outputEntityNbt != null) {
+                        currentLivingEntity.load(transformationRecipe.outputEntityNbt);
+                    }
+                }
+            }
+            CommonClientUtils.renderEntity(stack, (int) mouseX, currentLivingEntity, rect);
+        }
     }
 }

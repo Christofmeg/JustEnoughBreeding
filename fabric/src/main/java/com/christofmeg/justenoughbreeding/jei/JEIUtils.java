@@ -4,6 +4,8 @@ import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.client.ClientUtils;
 import com.christofmeg.justenoughbreeding.recipe.*;
 import com.christofmeg.justenoughbreeding.utils.CommonClientUtils;
+import com.christofmeg.justenoughbreeding.utils.Rect;
+import com.christofmeg.justenoughbreeding.utils.Utils;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
@@ -113,15 +115,15 @@ public class JEIUtils {
         slot.draw(stack, mobSlotX, mobSlotY, removeFromTop, removeFromBottom, removeFromLeft, removeFromRight);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, BaseRecipe recipe) {
-        drawMobNameAndEntity(entityType, stack, mouseX, recipe, 148, 0);
+    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, BaseRecipe recipe, int CATEGORY_WIDTH) {
+        drawMobNameAndEntity(entityType, stack, mouseX, recipe, 148, 0, CATEGORY_WIDTH);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, BaseRecipe recipe, int availableWidth, int extraX) {
-        drawMobNameAndEntity(entityType, stack, mouseX, recipe, availableWidth, extraX, true);
+    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, BaseRecipe recipe, int availableWidth, int extraX, int CATEGORY_WIDTH) {
+        drawMobNameAndEntity(entityType, stack, mouseX, recipe, availableWidth, extraX, true, CATEGORY_WIDTH);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, BaseRecipe recipe, int availableWidth, int extraX, boolean input) {
+    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, BaseRecipe recipe, int availableWidth, int extraX, boolean input, int CATEGORY_WIDTH) {
         if (entityType != null) {
             Font font = Minecraft.getInstance().font;
             Component entityName = Component.translatable(entityType.getDescriptionId());
@@ -167,47 +169,7 @@ public class JEIUtils {
             } else {
                 currentLivingEntity = ClientUtils.doRendering(entityType);
             }
-            if (currentLivingEntity != null) {
-                if (input) {
-                    if (recipe instanceof TransformationRecipe transformationRecipe) {
-                        if (transformationRecipe.inputEntityNbt != null) {
-                            currentLivingEntity.load(transformationRecipe.inputEntityNbt);
-                        }
-                    }
-                    if (recipe instanceof AllayDuplicationRecipe allayDuplicationRecipe) {
-                        if (allayDuplicationRecipe.inputEntityNbt != null) {
-                            currentLivingEntity.load(allayDuplicationRecipe.inputEntityNbt);
-                        }
-                    }
-                    if (recipe instanceof BreedingRecipe breedingRecipe) {
-                        if (breedingRecipe.inputEntityNbt != null) {
-                            currentLivingEntity.load(breedingRecipe.inputEntityNbt);
-                        }
-                    }
-                    if (recipe instanceof TamingRecipe tamingRecipe) {
-                        if (tamingRecipe.inputEntityNbt != null) {
-                            currentLivingEntity.load(tamingRecipe.inputEntityNbt);
-                        }
-                    }
-                    if (recipe instanceof TemperRecipe temperRecipe) {
-                        if (temperRecipe.inputEntityNbt != null) {
-                            currentLivingEntity.load(temperRecipe.inputEntityNbt);
-                        }
-                    }
-                    if (recipe instanceof TrustingRecipe trustingRecipe) {
-                        if (trustingRecipe.inputEntityNbt != null) {
-                            currentLivingEntity.load(trustingRecipe.inputEntityNbt);
-                        }
-                    }
-                } else {
-                    if (recipe instanceof TransformationRecipe transformationRecipe) {
-                        if (transformationRecipe.outputEntityNbt != null) {
-                            currentLivingEntity.load(transformationRecipe.outputEntityNbt);
-                        }
-                    }
-                }
-                CommonClientUtils.renderEntity(stack.pose(), mouseX, currentLivingEntity, 31 + extraX, 89);
-            }
+            Utils.renderEntityWithBounds(currentLivingEntity, input, recipe, CATEGORY_WIDTH, stack, mouseX);
         }
     }
 }

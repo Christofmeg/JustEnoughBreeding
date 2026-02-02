@@ -249,7 +249,7 @@ public class EMIUtils {
                                 }
                             }
                         }
-                        CommonClientUtils.renderEntity(stack.pose(), mouseX, currentLivingEntity, 31 + extraX, 89);
+                        CommonClientUtils.renderEntity(stack.pose(), mouseX, currentLivingEntity, 31 + extraX);
                     }
                 }
             });

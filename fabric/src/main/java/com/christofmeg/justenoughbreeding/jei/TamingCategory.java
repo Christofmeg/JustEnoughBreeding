@@ -23,10 +23,12 @@ public class TamingCategory extends AbstractRecipeCategory<TamingRecipe> {
 
     public static final RecipeType<TamingRecipe> TYPE = new RecipeType<>(new ResourceLocation("justenoughbreeding", "taming"), TamingRecipe.class);
     private final IDrawableStatic bigSlot;
+    private final int CATEGORY_WIDTH;
 
     public TamingCategory(IGuiHelper helper, ItemLike itemStack) {
         super(TYPE, Component.translatable("translation.justenoughbreeding.taming"), helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(itemStack)), 166, 91);
         bigSlot = helper.getOutputSlot();
+        this.CATEGORY_WIDTH = this.getWidth();
     }
 
     @Override
@@ -43,7 +45,7 @@ public class TamingCategory extends AbstractRecipeCategory<TamingRecipe> {
     @Override
     public void draw(@NotNull TamingRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics stack, double mouseX, double mouseY) {
         JEIUtils.drawMobSlot(0, 10, bigSlot, stack);
-        JEIUtils.drawMobNameAndEntity(recipe.entityType, stack, mouseX, recipe);
+        JEIUtils.drawMobNameAndEntity(recipe.entityType, stack, mouseX, recipe, CATEGORY_WIDTH);
     }
 
 }

@@ -23,10 +23,12 @@ public class TemperCategory extends AbstractRecipeCategory<TemperRecipe> {
 
     public static final RecipeType<TemperRecipe> TYPE = new RecipeType<>(new ResourceLocation("justenoughbreeding", "temper"), TemperRecipe.class);
     private final IDrawableStatic bigSlot;
+    private final int CATEGORY_WIDTH;
 
     public TemperCategory(IGuiHelper helper, ItemLike itemStack) {
         super(TYPE, Component.translatable("translation.justenoughbreeding.temper"), helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(itemStack)), 166, 91);
         bigSlot = helper.getOutputSlot();
+        this.CATEGORY_WIDTH = this.getWidth();
     }
 
     @Override
@@ -43,7 +45,7 @@ public class TemperCategory extends AbstractRecipeCategory<TemperRecipe> {
     @Override
     public void draw(@NotNull TemperRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics stack, double mouseX, double mouseY) {
         JEIUtils.drawMobSlot(0, 10, bigSlot, stack);
-        JEIUtils.drawMobNameAndEntity(recipe.entityType, stack, mouseX, recipe);
+        JEIUtils.drawMobNameAndEntity(recipe.entityType, stack, mouseX, recipe, CATEGORY_WIDTH);
     }
 
 }

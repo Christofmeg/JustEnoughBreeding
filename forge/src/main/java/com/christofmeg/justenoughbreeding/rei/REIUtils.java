@@ -4,6 +4,7 @@ import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.client.ClientUtils;
 import com.christofmeg.justenoughbreeding.recipe.*;
 import com.christofmeg.justenoughbreeding.utils.CommonClientUtils;
+import com.christofmeg.justenoughbreeding.utils.Rect;
 import me.shedaniel.math.Point;
 import me.shedaniel.math.Rectangle;
 import me.shedaniel.rei.api.client.gui.widgets.Widget;
@@ -75,15 +76,15 @@ public class REIUtils {
         widgets.add(Widgets.createSlotBase(new Rectangle(bounds.x + 5 + mobSlotX, bounds.y + 5 + mobSlotY, 61, 81)));
     }
 
-    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, BaseRecipe recipe) {
-        drawMobNameAndEntity(widgets, bounds, entityType, recipe, 148, 0);
+    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, BaseRecipe recipe, int CATEGORY_WIDTH) {
+        drawMobNameAndEntity(widgets, bounds, entityType, recipe, 148, 0, CATEGORY_WIDTH);
     }
 
-    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, BaseRecipe recipe, int availableWidth, int extraX) {
-        drawMobNameAndEntity(widgets, bounds, entityType, recipe, availableWidth, extraX, true);
+    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, BaseRecipe recipe, int availableWidth, int extraX, int CATEGORY_WIDTH) {
+        drawMobNameAndEntity(widgets, bounds, entityType, recipe, availableWidth, extraX, true, CATEGORY_WIDTH);
     }
 
-    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, BaseRecipe recipe, int availableWidth, int extraX, boolean input) {
+    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, BaseRecipe recipe, int availableWidth, int extraX, boolean input, int CATEGORY_WIDTH) {
         if (entityType != null) {
             Font font = Minecraft.getInstance().font;
             Component entityName = Component.translatable(entityType.getDescriptionId());
@@ -131,8 +132,12 @@ public class REIUtils {
             }
 
             widgets.add(Widgets.withTranslate(Widgets.createDrawableWidget((graphics, mouseX, mouseY, v) -> {
+
                         if (currentLivingEntity != null) {
+                            Rect rect;
+                            final int WIDGET_SIZE = 61;
                             if (input) {
+                                rect = new Rect(((CATEGORY_WIDTH - WIDGET_SIZE) / 2) - 52, 10, WIDGET_SIZE, WIDGET_SIZE + 20);
                                 if (recipe instanceof TransformationRecipe transformationRecipe) {
                                     if (transformationRecipe.inputEntityNbt != null) {
                                         currentLivingEntity.load(transformationRecipe.inputEntityNbt);
@@ -164,13 +169,14 @@ public class REIUtils {
                                     }
                                 }
                             } else {
+                                rect = new Rect(((CATEGORY_WIDTH - WIDGET_SIZE) / 2) + 53, 10, WIDGET_SIZE, WIDGET_SIZE + 20);
                                 if (recipe instanceof TransformationRecipe transformationRecipe) {
                                     if (transformationRecipe.outputEntityNbt != null) {
                                         currentLivingEntity.load(transformationRecipe.outputEntityNbt);
                                     }
                                 }
                             }
-                   //         CommonClientUtils.renderEntity(graphics.pose(), mouseX, currentLivingEntity, 31 + extraX, 89);
+                            CommonClientUtils.renderEntity(graphics, (int) mouseX, currentLivingEntity, rect);
                         }
                     }
             ), bounds.x + 5, bounds.y + 5, 0));

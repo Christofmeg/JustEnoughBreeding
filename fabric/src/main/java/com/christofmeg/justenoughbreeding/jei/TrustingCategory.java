@@ -23,10 +23,12 @@ public class TrustingCategory extends AbstractRecipeCategory<TrustingRecipe> {
 
     public static final RecipeType<TrustingRecipe> TYPE = new RecipeType<>(new ResourceLocation("justenoughbreeding", "trusting"), TrustingRecipe.class);
     private final IDrawableStatic bigSlot;
+    private final int CATEGORY_WIDTH;
 
     public TrustingCategory(IGuiHelper helper, ItemLike itemStack) {
         super(TYPE, Component.translatable("translation.justenoughbreeding.trusting"), helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(itemStack)), 166, 91);
         bigSlot = helper.getOutputSlot();
+        this.CATEGORY_WIDTH = this.getWidth();
     }
 
     @Override
@@ -43,7 +45,7 @@ public class TrustingCategory extends AbstractRecipeCategory<TrustingRecipe> {
     @Override
     public void draw(@NotNull TrustingRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics stack, double mouseX, double mouseY) {
         JEIUtils.drawMobSlot(0, 10, bigSlot, stack);
-        JEIUtils.drawMobNameAndEntity(recipe.entityType, stack, mouseX, recipe);
+        JEIUtils.drawMobNameAndEntity(recipe.entityType, stack, mouseX, recipe, CATEGORY_WIDTH);
     }
 
 }
