@@ -3,6 +3,8 @@ package com.christofmeg.justenoughbreeding.rei;
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.client.ClientUtils;
 import com.christofmeg.justenoughbreeding.recipe.*;
+import com.christofmeg.justenoughbreeding.utils.CommonClientUtils;
+import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import com.christofmeg.justenoughbreeding.utils.Utils;
 import me.shedaniel.math.Point;
 import me.shedaniel.math.Rectangle;
@@ -129,9 +131,12 @@ public class REIUtils {
             } else {
                 currentLivingEntity = ClientUtils.doRendering(entityType);
             }
-            widgets.add(Widgets.withTranslate(Widgets.createDrawableWidget((graphics, mouseX, mouseY, v) ->
-                    Utils.renderEntityWithBounds(currentLivingEntity, input, recipe, CATEGORY_WIDTH, graphics, mouseX)
-            ), bounds.x + 5, bounds.y + 5, 0));
+            widgets.add(Widgets.withTranslate(Widgets.createDrawableWidget((graphics, mouseX, mouseY, v) -> {
+                LivingEntity livingEntity = Utils.getLivingEntity(currentLivingEntity, input, recipe);
+                if (livingEntity != null) {
+                    CommonClientUtils.renderEntityInInventoryFollowsMouse(graphics, 0, 0, 0, 0, (float) mouseX, livingEntity, CommonUtils.getRect(input, CATEGORY_WIDTH, 5, 0));
+                }
+            }), bounds.x + 5, bounds.y + 5, 0));
         }
     }
 

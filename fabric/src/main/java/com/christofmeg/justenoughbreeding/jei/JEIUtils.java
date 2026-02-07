@@ -4,7 +4,7 @@ import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.client.ClientUtils;
 import com.christofmeg.justenoughbreeding.recipe.*;
 import com.christofmeg.justenoughbreeding.utils.CommonClientUtils;
-import com.christofmeg.justenoughbreeding.utils.Rect;
+import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import com.christofmeg.justenoughbreeding.utils.Utils;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.registration.IRecipeRegistration;
@@ -78,52 +78,52 @@ public class JEIUtils {
         }
     }
 
-    public static void drawMobSlot(int mobSlotX, int mobSlotY, IDrawableStatic bigSlot, GuiGraphics stack) {
+    public static void drawMobSlot(int mobSlotX, int mobSlotY, IDrawableStatic bigSlot, GuiGraphics graphics) {
         // Left
-        draw(bigSlot, stack, mobSlotX, mobSlotY, bigSlot.getHeight(), 0, 0, 1, 25);
-        draw(bigSlot, stack, mobSlotX, mobSlotY + 25, bigSlot.getHeight(), 0, 0, 1, 25);
-        draw(bigSlot, stack, mobSlotX, mobSlotY + 50, bigSlot.getHeight(), 0, 0, 1, 25);
-        draw(bigSlot, stack, mobSlotX, mobSlotY + 55, bigSlot.getHeight(), 0, 20, 1, 6);
+        draw(bigSlot, graphics, mobSlotX, mobSlotY, bigSlot.getHeight(), 0, 0, 1, 25);
+        draw(bigSlot, graphics, mobSlotX, mobSlotY + 25, bigSlot.getHeight(), 0, 0, 1, 25);
+        draw(bigSlot, graphics, mobSlotX, mobSlotY + 50, bigSlot.getHeight(), 0, 0, 1, 25);
+        draw(bigSlot, graphics, mobSlotX, mobSlotY + 55, bigSlot.getHeight(), 0, 20, 1, 6);
 
         // Right
-        draw(bigSlot, stack, mobSlotX + 35, mobSlotY, bigSlot.getHeight(), 25, 0, 1, 25);
-        draw(bigSlot, stack, mobSlotX + 35, mobSlotY + 24, bigSlot.getHeight(), 25, 1, 1, 25);
-        draw(bigSlot, stack, mobSlotX + 35, mobSlotY + 49, bigSlot.getHeight(), 25, 1, 1, 25);
-        draw(bigSlot, stack, mobSlotX + 35, mobSlotY + 55, bigSlot.getHeight(), 25, 19, 1, 6);
+        draw(bigSlot, graphics, mobSlotX + 35, mobSlotY, bigSlot.getHeight(), 25, 0, 1, 25);
+        draw(bigSlot, graphics, mobSlotX + 35, mobSlotY + 24, bigSlot.getHeight(), 25, 1, 1, 25);
+        draw(bigSlot, graphics, mobSlotX + 35, mobSlotY + 49, bigSlot.getHeight(), 25, 1, 1, 25);
+        draw(bigSlot, graphics, mobSlotX + 35, mobSlotY + 55, bigSlot.getHeight(), 25, 19, 1, 6);
 
         // Top
-        draw(bigSlot, stack, mobSlotX, mobSlotY, bigSlot.getHeight(), 1, 0, 24, 1);
-        draw(bigSlot, stack, mobSlotX + 24, mobSlotY, bigSlot.getHeight(), 1, 0, 24, 1);
-        draw(bigSlot, stack, mobSlotX + 35, mobSlotY, bigSlot.getHeight(), 14, 0, 11, 1);
+        draw(bigSlot, graphics, mobSlotX, mobSlotY, bigSlot.getHeight(), 1, 0, 24, 1);
+        draw(bigSlot, graphics, mobSlotX + 24, mobSlotY, bigSlot.getHeight(), 1, 0, 24, 1);
+        draw(bigSlot, graphics, mobSlotX + 35, mobSlotY, bigSlot.getHeight(), 14, 0, 11, 1);
 
         // Bottom
-        draw(bigSlot, stack, mobSlotX, mobSlotY + 55, bigSlot.getHeight(), 1, 25, 24, 1);
-        draw(bigSlot, stack, mobSlotX + 24, mobSlotY + 55, bigSlot.getHeight(), 1, 25, 24, 1);
-        draw(bigSlot, stack, mobSlotX + 35, mobSlotY + 55, bigSlot.getHeight(), 14, 25, 11, 1);
+        draw(bigSlot, graphics, mobSlotX, mobSlotY + 55, bigSlot.getHeight(), 1, 25, 24, 1);
+        draw(bigSlot, graphics, mobSlotX + 24, mobSlotY + 55, bigSlot.getHeight(), 1, 25, 24, 1);
+        draw(bigSlot, graphics, mobSlotX + 35, mobSlotY + 55, bigSlot.getHeight(), 14, 25, 11, 1);
 
         int color = CommonClientUtils.getPixelColor(new ResourceLocation("jei", "textures/jei/atlas/gui/output_slot.png"), 13 ,13);
         int startX = mobSlotX + 1;
         int startY = mobSlotY + 1;
         int width  = 59;
         int height = 79;
-        CommonClientUtils.fillSolidColor(stack, startX, startY, width, height, color);
+        CommonClientUtils.fillSolidColor(graphics, startX, startY, width, height, color);
     }
 
-    private static void draw(IDrawableStatic slot, GuiGraphics stack, int mobSlotX, int mobSlotY, int textureSize, int removeFromLeft, int removeFromTop, int selectionX, int selectionY) {
+    private static void draw(IDrawableStatic slot, GuiGraphics graphics, int mobSlotX, int mobSlotY, int textureSize, int removeFromLeft, int removeFromTop, int selectionX, int selectionY) {
         int removeFromBottom = textureSize - (removeFromTop + selectionY);
         int removeFromRight = textureSize - (removeFromLeft + selectionX);
-        slot.draw(stack, mobSlotX, mobSlotY, removeFromTop, removeFromBottom, removeFromLeft, removeFromRight);
+        slot.draw(graphics, mobSlotX, mobSlotY, removeFromTop, removeFromBottom, removeFromLeft, removeFromRight);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, BaseRecipe recipe, int CATEGORY_WIDTH) {
-        drawMobNameAndEntity(entityType, stack, mouseX, recipe, 148, 0, CATEGORY_WIDTH);
+    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics graphics, double mouseX, BaseRecipe recipe, int CATEGORY_WIDTH) {
+        drawMobNameAndEntity(entityType, graphics, mouseX, recipe, 148, 0, CATEGORY_WIDTH);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, BaseRecipe recipe, int availableWidth, int extraX, int CATEGORY_WIDTH) {
-        drawMobNameAndEntity(entityType, stack, mouseX, recipe, availableWidth, extraX, true, CATEGORY_WIDTH);
+    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics graphics, double mouseX, BaseRecipe recipe, int availableWidth, int extraX, int CATEGORY_WIDTH) {
+        drawMobNameAndEntity(entityType, graphics, mouseX, recipe, availableWidth, extraX, true, CATEGORY_WIDTH);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics stack, double mouseX, BaseRecipe recipe, int availableWidth, int extraX, boolean input, int CATEGORY_WIDTH) {
+    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics graphics, double mouseX, BaseRecipe recipe, int availableWidth, int extraX, boolean input, int CATEGORY_WIDTH) {
         if (entityType != null) {
             Font font = Minecraft.getInstance().font;
             Component entityName = Component.translatable(entityType.getDescriptionId());
@@ -156,7 +156,7 @@ public class JEIUtils {
 
             if (!entityNameString.isEmpty()) {
                 Component abbreviatedEntityName = Component.nullToEmpty(entityNameString);
-                stack.drawString(font, abbreviatedEntityName, extraX, 0, DyeColor.BLACK.getTextColor(), false);
+                graphics.drawString(font, abbreviatedEntityName, extraX, 0, DyeColor.BLACK.getTextColor(), false);
             }
 
             LivingEntity currentLivingEntity;
@@ -169,7 +169,10 @@ public class JEIUtils {
             } else {
                 currentLivingEntity = ClientUtils.doRendering(entityType);
             }
-            Utils.renderEntityWithBounds(currentLivingEntity, input, recipe, CATEGORY_WIDTH, stack, mouseX);
+            LivingEntity livingEntity = Utils.getLivingEntity(currentLivingEntity, input, recipe);
+            if (livingEntity != null) {
+                CommonClientUtils.renderEntityInInventoryFollowsMouse(graphics, 0, 0, 0, 0, (float) mouseX, livingEntity, CommonUtils.getRect(input, CATEGORY_WIDTH));
+            }
         }
     }
 }

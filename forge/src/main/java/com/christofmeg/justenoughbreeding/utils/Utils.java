@@ -8,7 +8,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.TagParser;
@@ -294,12 +293,9 @@ public class Utils {
         return Ingredient.fromJson(result);
     }
 
-    public static void renderEntityWithBounds(LivingEntity currentLivingEntity, boolean input, BaseRecipe recipe, int CATEGORY_WIDTH, GuiGraphics stack, double mouseX) {
+    public static LivingEntity getLivingEntity(LivingEntity currentLivingEntity, boolean input, BaseRecipe recipe) {
         if (currentLivingEntity != null) {
-            Rect rect;
-            final int WIDGET_SIZE = 61;
             if (input) {
-                rect = new Rect(((CATEGORY_WIDTH - WIDGET_SIZE) / 2) - 52, 10, WIDGET_SIZE, WIDGET_SIZE + 20);
                 if (recipe instanceof TransformationRecipe transformationRecipe) {
                     if (transformationRecipe.inputEntityNbt != null) {
                         currentLivingEntity.load(transformationRecipe.inputEntityNbt);
@@ -331,15 +327,14 @@ public class Utils {
                     }
                 }
             } else {
-                rect = new Rect(((CATEGORY_WIDTH - WIDGET_SIZE) / 2) + 53, 10, WIDGET_SIZE, WIDGET_SIZE + 20);
                 if (recipe instanceof TransformationRecipe transformationRecipe) {
                     if (transformationRecipe.outputEntityNbt != null) {
                         currentLivingEntity.load(transformationRecipe.outputEntityNbt);
                     }
                 }
             }
-            CommonClientUtils.renderEntity(stack, mouseX, currentLivingEntity, rect);
         }
+        return currentLivingEntity;
     }
 
 }

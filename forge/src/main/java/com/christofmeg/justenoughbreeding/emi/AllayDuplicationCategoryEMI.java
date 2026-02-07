@@ -62,7 +62,7 @@ public class AllayDuplicationCategoryEMI extends AbstractRecipeCategoryEMI {
         widgets.addSlot(EmiIngredient.of(Ingredient.of(ItemTags.MUSIC_DISCS)), 97, 52);
         widgets.addSlot(EmiIngredient.of(Ingredient.of(Items.JUKEBOX)), 117, 52);
         EMIUtils.drawMobSlot(0, 10, widgets);
-        EMIUtils.drawMobNameAndEntity(recipe.entityType, widgets, recipe);
+        EMIUtils.drawMobNameAndEntity(recipe.entityType, widgets, recipe, getDisplayWidth());
     }
 
     public static class Builder {

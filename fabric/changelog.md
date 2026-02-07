@@ -1,16 +1,3 @@
-2.5.0:
-- Added more minecraft transformations
-- Companions! integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
-- Creeper Overhaul integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
-- Critters and Companions integration updated by [TwoBluDogs](https://github.com/TwoBluDogs)
-- Etcetera integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
-- Friends&Foes integration updated by [TwoBluDogs](https://github.com/TwoBluDogs)
-- Galosphere integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
-- Ghosts integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
-- Jaden's Nether Expansion integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
-- Naturalist integration updated by [TwoBluDogs](https://github.com/TwoBluDogs)
-- Spawn integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
-- Species integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
-- Supplementaries integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
-- YUNG's Cave Biomes integration added by [TwoBluDogs](https://github.com/TwoBluDogs)
-- zh_tw translation by [xz123456xz](https://github.com/xz123456xz)
+2.6.0:
+- Render rework, large mobs can no longer clip outside the rendering box
+- Added snow golem shearing to transformation category

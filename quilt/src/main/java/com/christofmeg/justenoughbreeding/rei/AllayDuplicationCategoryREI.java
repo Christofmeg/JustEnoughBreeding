@@ -47,7 +47,7 @@ public class AllayDuplicationCategoryREI extends AbstractRecipeCategoryREI<Allay
 
         AllayDuplicationRecipe recipe = display.recipe;
         REIUtils.drawMobSlot(widgets, bounds,0, 10);
-        REIUtils.drawMobNameAndEntity(widgets, bounds, recipe.entityType, recipe);
+        REIUtils.drawMobNameAndEntity(widgets, bounds, recipe.entityType, recipe, getDisplayWidth(display));
 
         return widgets;
     }

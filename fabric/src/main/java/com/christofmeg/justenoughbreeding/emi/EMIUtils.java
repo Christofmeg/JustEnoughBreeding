@@ -5,6 +5,8 @@ import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.client.ClientUtils;
 import com.christofmeg.justenoughbreeding.recipe.*;
 import com.christofmeg.justenoughbreeding.utils.CommonClientUtils;
+import com.christofmeg.justenoughbreeding.utils.CommonUtils;
+import com.christofmeg.justenoughbreeding.utils.Utils;
 import dev.emi.emi.EmiPort;
 import dev.emi.emi.EmiRenderHelper;
 import dev.emi.emi.api.EmiRegistry;
@@ -150,15 +152,15 @@ public class EMIUtils {
         widgets.addTexture(BOTTOM, mobSlotX + 37, mobSlotY + 81);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, WidgetHolder widgets, BaseRecipe recipe) {
-        drawMobNameAndEntity(entityType, widgets, recipe, 148, 0);
+    public static void drawMobNameAndEntity(EntityType<?> entityType, WidgetHolder widgets, BaseRecipe recipe, int CATEGORY_WIDTH) {
+        drawMobNameAndEntity(entityType, widgets, recipe, 148, 0, CATEGORY_WIDTH);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, WidgetHolder widgets, BaseRecipe recipe, int availableWidth, int extraX) {
-        drawMobNameAndEntity(entityType, widgets, recipe, availableWidth, extraX, true);
+    public static void drawMobNameAndEntity(EntityType<?> entityType, WidgetHolder widgets, BaseRecipe recipe, int availableWidth, int extraX, int CATEGORY_WIDTH) {
+        drawMobNameAndEntity(entityType, widgets, recipe, availableWidth, extraX, true, CATEGORY_WIDTH);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, WidgetHolder widgets, BaseRecipe recipe, int availableWidth, int extraX, boolean input) {
+    public static void drawMobNameAndEntity(EntityType<?> entityType, WidgetHolder widgets, BaseRecipe recipe, int availableWidth, int extraX, boolean input, int CATEGORY_WIDTH) {
         if (entityType != null) {
             Font font = Minecraft.getInstance().font;
             Component entityName = Component.translatable(entityType.getDescriptionId());
@@ -199,7 +201,7 @@ public class EMIUtils {
                 public Bounds getBounds() { return new Bounds(100, 0, 60, 80); }
 
                 @Override
-                public void render(@NotNull GuiGraphics stack, int mouseX, int mouseY, float delta) {
+                public void render(@NotNull GuiGraphics graphics, int mouseX, int mouseY, float delta) {
                     LivingEntity currentLivingEntity;
                     if (recipe instanceof TransformationRecipe transformationRecipe) {
                         if (input) {
@@ -210,46 +212,9 @@ public class EMIUtils {
                     } else {
                         currentLivingEntity = ClientUtils.doRendering(entityType);
                     }
-                    if (currentLivingEntity != null) {
-                        if (input) {
-                            if (recipe instanceof TransformationRecipe transformationRecipe) {
-                                if (transformationRecipe.inputEntityNbt != null) {
-                                    currentLivingEntity.load(transformationRecipe.inputEntityNbt);
-                                }
-                            }
-                            if (recipe instanceof AllayDuplicationRecipe allayDuplicationRecipe) {
-                                if (allayDuplicationRecipe.inputEntityNbt != null) {
-                                    currentLivingEntity.load(allayDuplicationRecipe.inputEntityNbt);
-                                }
-                            }
-                            if (recipe instanceof BreedingRecipe breedingRecipe) {
-                                if (breedingRecipe.inputEntityNbt != null) {
-                                    currentLivingEntity.load(breedingRecipe.inputEntityNbt);
-                                }
-                            }
-                            if (recipe instanceof TamingRecipe tamingRecipe) {
-                                if (tamingRecipe.inputEntityNbt != null) {
-                                    currentLivingEntity.load(tamingRecipe.inputEntityNbt);
-                                }
-                            }
-                            if (recipe instanceof TemperRecipe temperRecipe) {
-                                if (temperRecipe.inputEntityNbt != null) {
-                                    currentLivingEntity.load(temperRecipe.inputEntityNbt);
-                                }
-                            }
-                            if (recipe instanceof TrustingRecipe trustingRecipe) {
-                                if (trustingRecipe.inputEntityNbt != null) {
-                                    currentLivingEntity.load(trustingRecipe.inputEntityNbt);
-                                }
-                            }
-                        } else {
-                            if (recipe instanceof TransformationRecipe transformationRecipe) {
-                                if (transformationRecipe.outputEntityNbt != null) {
-                                    currentLivingEntity.load(transformationRecipe.outputEntityNbt);
-                                }
-                            }
-                        }
-                        CommonClientUtils.renderEntity(stack.pose(), mouseX, currentLivingEntity, 31 + extraX);
+                    LivingEntity livingEntity = Utils.getLivingEntity(currentLivingEntity, input, recipe);
+                    if (livingEntity != null) {
+                        CommonClientUtils.renderEntityInInventoryFollowsMouse(graphics, 0, 0, 0, 0, (float) mouseX, livingEntity, CommonUtils.getRect(input, CATEGORY_WIDTH, 0, 1));
                     }
                 }
             });

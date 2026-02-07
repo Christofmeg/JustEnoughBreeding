@@ -69,7 +69,7 @@ public class TemperCategoryEMI extends AbstractRecipeCategoryEMI {
         }
 
         EMIUtils.drawMobSlot(0, 10, widgets);
-        EMIUtils.drawMobNameAndEntity(recipe.entityType, widgets, recipe);
+        EMIUtils.drawMobNameAndEntity(recipe.entityType, widgets, recipe, getDisplayWidth());
     }
 
     public static class Builder {

@@ -4,6 +4,8 @@ import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.client.ClientUtils;
 import com.christofmeg.justenoughbreeding.recipe.*;
 import com.christofmeg.justenoughbreeding.utils.CommonClientUtils;
+import com.christofmeg.justenoughbreeding.utils.CommonUtils;
+import com.christofmeg.justenoughbreeding.utils.Utils;
 import me.shedaniel.math.Point;
 import me.shedaniel.math.Rectangle;
 import me.shedaniel.rei.api.client.gui.widgets.Widget;
@@ -75,15 +77,15 @@ public class REIUtils {
         widgets.add(Widgets.createSlotBase(new Rectangle(bounds.x + 5 + mobSlotX, bounds.y + 5 + mobSlotY, 61, 81)));
     }
 
-    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, BaseRecipe recipe) {
-        drawMobNameAndEntity(widgets, bounds, entityType, recipe, 148, 0);
+    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, BaseRecipe recipe, int CATEGORY_WIDTH) {
+        drawMobNameAndEntity(widgets, bounds, entityType, recipe, 148, 0, CATEGORY_WIDTH);
     }
 
-    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, BaseRecipe recipe, int availableWidth, int extraX) {
-        drawMobNameAndEntity(widgets, bounds, entityType, recipe, availableWidth, extraX, true);
+    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, BaseRecipe recipe, int availableWidth, int extraX, int CATEGORY_WIDTH) {
+        drawMobNameAndEntity(widgets, bounds, entityType, recipe, availableWidth, extraX, true, CATEGORY_WIDTH);
     }
 
-    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, BaseRecipe recipe, int availableWidth, int extraX, boolean input) {
+    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, BaseRecipe recipe, int availableWidth, int extraX, boolean input, int CATEGORY_WIDTH) {
         if (entityType != null) {
             Font font = Minecraft.getInstance().font;
             Component entityName = Component.translatable(entityType.getDescriptionId());
@@ -130,49 +132,12 @@ public class REIUtils {
                 currentLivingEntity = ClientUtils.doRendering(entityType);
             }
             widgets.add(Widgets.withTranslate(Widgets.createDrawableWidget((graphics, mouseX, mouseY, v) -> {
-                        if (currentLivingEntity != null) {
-                            if (input) {
-                                if (recipe instanceof TransformationRecipe transformationRecipe) {
-                                    if (transformationRecipe.inputEntityNbt != null) {
-                                        currentLivingEntity.load(transformationRecipe.inputEntityNbt);
-                                    }
-                                }
-                                if (recipe instanceof AllayDuplicationRecipe allayDuplicationRecipe) {
-                                    if (allayDuplicationRecipe.inputEntityNbt != null) {
-                                        currentLivingEntity.load(allayDuplicationRecipe.inputEntityNbt);
-                                    }
-                                }
-                                if (recipe instanceof BreedingRecipe breedingRecipe) {
-                                    if (breedingRecipe.inputEntityNbt != null) {
-                                        currentLivingEntity.load(breedingRecipe.inputEntityNbt);
-                                    }
-                                }
-                                if (recipe instanceof TamingRecipe tamingRecipe) {
-                                    if (tamingRecipe.inputEntityNbt != null) {
-                                        currentLivingEntity.load(tamingRecipe.inputEntityNbt);
-                                    }
-                                }
-                                if (recipe instanceof TemperRecipe temperRecipe) {
-                                    if (temperRecipe.inputEntityNbt != null) {
-                                        currentLivingEntity.load(temperRecipe.inputEntityNbt);
-                                    }
-                                }
-                                if (recipe instanceof TrustingRecipe trustingRecipe) {
-                                    if (trustingRecipe.inputEntityNbt != null) {
-                                        currentLivingEntity.load(trustingRecipe.inputEntityNbt);
-                                    }
-                                }
-                            } else {
-                                if (recipe instanceof TransformationRecipe transformationRecipe) {
-                                    if (transformationRecipe.outputEntityNbt != null) {
-                                        currentLivingEntity.load(transformationRecipe.outputEntityNbt);
-                                    }
-                                }
-                            }
-                            CommonClientUtils.renderEntity(graphics.pose(), mouseX, currentLivingEntity, 31 + extraX);
-                        }
-                    }
-            ), bounds.x + 5, bounds.y + 5, 0));
+                LivingEntity livingEntity = Utils.getLivingEntity(currentLivingEntity, input, recipe);
+                if (livingEntity != null) {
+                    CommonClientUtils.renderEntityInInventoryFollowsMouse(graphics, 0, 0, 0, 0, (float) mouseX, livingEntity, CommonUtils.getRect(input, CATEGORY_WIDTH, 5, 0));
+                }
+            }), bounds.x + 5, bounds.y + 5, 0));
         }
     }
+
 }
