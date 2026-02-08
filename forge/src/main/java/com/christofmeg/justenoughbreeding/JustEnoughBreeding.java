@@ -9,6 +9,7 @@ import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.common.ForgeSpawnEggItem;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.IExtensionPoint;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -26,7 +27,8 @@ import java.util.List;
 @Mod(CommonConstants.MOD_ID)
 public class JustEnoughBreeding {
 
-    //TODO update recipe generator to match input_entity_nbt
+    //TODO update recipe generator to match input_entity_nbt on recipetypes
+    //TODO update recipe generator to match input entity nbt on transformation
 
     private static final DeferredRegister<RecipeSerializer<?>> RECIPES_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, CommonConstants.MOD_ID);
     private static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(ForgeRegistries.RECIPE_TYPES, CommonConstants.MOD_ID);
@@ -57,8 +59,9 @@ public class JustEnoughBreeding {
     public static List<TrustingRecipe> trustingRecipes = new ArrayList<>();
 
     public JustEnoughBreeding() {
-        RECIPES_SERIALIZERS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        RECIPE_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
+        RECIPES_SERIALIZERS.register(modBus);
+        RECIPE_TYPES.register(modBus);
 
         //Make sure the mod being absent on the other network side does not cause the client to display the server as incompatible
         ModLoadingContext.get().registerExtensionPoint(IExtensionPoint.DisplayTest.class, () -> new IExtensionPoint.DisplayTest(()-> NetworkConstants.IGNORESERVERONLY, (remote, isServer)-> true));
