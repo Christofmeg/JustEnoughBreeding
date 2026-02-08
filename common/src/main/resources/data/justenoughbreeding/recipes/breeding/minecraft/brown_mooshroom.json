@@ -1,0 +1,18 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "minecraft",
+  "mobs": [
+    {
+      "mooshroom": {
+        "inputs": [
+          {
+            "item": "minecraft:wheat"
+          }
+        ]
+      }
+    }
+  ],
+  "input_entity_nbt": {
+    "Type": "brown"
+  }
+}
