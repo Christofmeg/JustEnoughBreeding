@@ -21,6 +21,8 @@ public class ClientUtils {
     private static final Map<String, LivingEntity> ENTITY_CACHE = new HashMap<>();
     private static final Map<String, Long> CREATION_TIMES = new HashMap<>();
 
+    //TODO fix NBT tagged brown mooshroom not instantly updating when changing to next red mooshroom recipe
+
     public static LivingEntity doRendering(EntityType<?> entityType, CompoundTag nbt, boolean input) {
         Level level = Minecraft.getInstance().level;
         if (level == null) return null;
