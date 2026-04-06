@@ -60,12 +60,88 @@ public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> {
         if (hasOutput) {
             builder.addRecipeArrow().setPosition(70, 37, 78, 35, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
         }
+
+        JEIBookmarkButton button = JEIBookmarkButton.create(48, 13, 10, 10);
+        builder.addWidget(button);
+
+        /*
+        JeiToggleButtonWidget toggle = new JeiToggleButtonWidget(48, 13, 10, 10);
+        builder.addWidget(toggle);
+
+        builder.addInputHandler(new IJeiInputHandler() {
+
+            private boolean clickHandled = false;
+
+            @Override
+            public @NotNull ScreenRectangle getArea() {
+                return new ScreenRectangle(48, 13, 10, 10);
+            }
+
+            @Override
+            public boolean handleInput(double mouseX, double mouseY, @NotNull IJeiUserInput input) {
+
+                // Ignore simulated inputs
+                if (input.isSimulate()) {
+                    return false;
+                }
+
+                // Only react once per click
+                if (input.getKey().getValue() == InputConstants.MOUSE_BUTTON_LEFT) {
+
+                    if (!clickHandled) {
+                        clickHandled = true;
+                        toggle.toggle();
+
+                        Minecraft.getInstance().player.sendSystemMessage(
+                                Component.literal("JEI button clicked!")
+                        );
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+
+            @Override
+            public void handleMouseMoved(double mouseX, double mouseY) {
+                // Reset when mouse moves (i.e. next click cycle)
+                clickHandled = false;
+            }
+        });
+        for (int i = 0; i < 4; i++) {
+            int x = 48 + (i * 12);
+            int y = 28;
+
+            JeiChildButtonWidget child = new JeiChildButtonWidget(x, y, 10, 10, toggle, Component.literal("Option " + (i + 1)));
+            builder.addWidget(child);
+
+            int finalI = i;
+            builder.addInputHandler(new IJeiInputHandler() {
+                @Override
+                public @NotNull ScreenRectangle getArea() {
+                    return new ScreenRectangle(x, y, 10, 10);
+                }
+
+                @Override
+                public boolean handleInput(double mouseX, double mouseY, @NotNull IJeiUserInput input) {
+                    if (toggle.isToggled()) return false;
+                    if (input.isSimulate()) return false;
+
+                    if (input.getKey().getValue() == InputConstants.MOUSE_BUTTON_LEFT) {
+                        Minecraft.getInstance().player.sendSystemMessage(Component.literal("Clicked option " + (finalI + 1)));
+                        return true;
+                    }
+                    return false;
+                }
+            });
+        }*/
+
     }
 
     @Override
-    public void draw(@NotNull BreedingRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics stack, double mouseX, double mouseY) {
-        JEIUtils.drawMobSlot(0, 10, bigSlot, stack);
-        JEIUtils.drawMobNameAndEntity(recipe.entityType, stack, mouseX, recipe, CATEGORY_WIDTH);
+    public void draw(@NotNull BreedingRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics graphics, double mouseX, double mouseY) {
+        JEIUtils.drawMobSlot(0, 10, bigSlot, graphics);
+        JEIUtils.drawMobNameAndEntity(recipe.entityType, graphics, mouseX, recipe, CATEGORY_WIDTH);
     }
 
 }
