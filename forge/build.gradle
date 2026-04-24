@@ -3,11 +3,13 @@ import net.darkhax.curseforgegradle.TaskPublishCurseForge
 plugins {
     id 'net.minecraftforge.gradle' version '6.+'
     id 'idea'
-    id 'net.darkhax.curseforgegradle' version '1.+'
+    id 'net.darkhax.curseforgegradle' version '1.1.+'
     id 'com.modrinth.minotaur' version '2.+'
 }
 
-archivesBaseName = "${mod_id}-forge-${forge_supported_versions}"
+base {
+    archivesName = "${mod_id}-${project.name}-${forge_supported_versions}"
+}
 
 minecraft {
     mappings channel: 'official', version: forge_minecraft_version
@@ -244,7 +246,7 @@ modrinth {
         token = ""
     }
     projectId = "${modrinth_id}"
-    versionName = getArchivesBaseName() + "-" + getVersion()
+    versionName = "${mod_id}-forge-${forge_supported_versions}" + "-" + getVersion()
     versionType = "${release_type}"
     changelog = file('changelog.md').text
     uploadFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")

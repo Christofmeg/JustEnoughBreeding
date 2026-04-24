@@ -3,11 +3,13 @@ import net.darkhax.curseforgegradle.TaskPublishCurseForge
 plugins {
     id 'fabric-loom' version '1.9-SNAPSHOT'
     id 'idea'
-    id 'net.darkhax.curseforgegradle' version '1.+'
+    id 'net.darkhax.curseforgegradle' version '1.1.+'
     id 'com.modrinth.minotaur' version '2.+'
 }
 
-archivesBaseName = "${mod_id}-fabric-${fabric_supported_versions}"
+base {
+    archivesName = "${mod_id}-${project.name}-${fabric_supported_versions}"
+}
 
 dependencies {
     minecraft "com.mojang:minecraft:${fabric_minecraft_version}"
@@ -173,7 +175,7 @@ modrinth {
         token = ""
     }
     projectId = "${modrinth_id}"
-    versionName = getArchivesBaseName() + "-" + getVersion()
+    versionName = "${mod_id}-fabric-${fabric_supported_versions}" + "-" + getVersion()
     versionType = "${release_type}"
     changelog = file('changelog.md').text
     uploadFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")

@@ -3,11 +3,13 @@ import net.darkhax.curseforgegradle.TaskPublishCurseForge
 plugins {
     id 'org.quiltmc.loom' version '1.3.+'
     id 'idea'
-    id 'net.darkhax.curseforgegradle' version '1.+'
+    id 'net.darkhax.curseforgegradle' version '1.1.+'
     id 'com.modrinth.minotaur' version '2.+'
 }
 
-archivesBaseName = "${mod_id}-quilt-${quilt_supported_versions}"
+base {
+    archivesName = "${mod_id}-${project.name}-${quilt_supported_versions}"
+}
 
 project.configurations.configureEach {
     exclude(group: "net.fabricmc", module: "fabric-loader")
@@ -176,7 +178,7 @@ modrinth {
         token = ""
     }
     projectId = "${modrinth_id}"
-    versionName = getArchivesBaseName() + "-" + getVersion()
+    versionName = "${mod_id}-quilt-${quilt_supported_versions}" + "-" + getVersion()
     versionType = "${release_type}"
     changelog = file('changelog.md').text
     uploadFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")
