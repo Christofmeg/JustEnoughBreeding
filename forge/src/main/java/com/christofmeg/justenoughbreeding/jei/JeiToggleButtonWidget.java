@@ -12,7 +12,6 @@ public class JeiToggleButtonWidget implements IRecipeWidget {
     private final ScreenPosition pos;
     private final int w, h;
     private boolean toggled = false;
-    private boolean pressed;
 
     public JeiToggleButtonWidget(int x, int y, int w, int h) {
         this.pos = new ScreenPosition(x, y);
@@ -38,10 +37,8 @@ public class JeiToggleButtonWidget implements IRecipeWidget {
         boolean hovered = mouseX >= 0 && mouseX < w && mouseY >= 0 && mouseY < h;
 
         int color;
-        if (pressed) {
-            color = 0xA0000000;
-        } else if (toggled) {
-            color = 0x8000AA00;
+        if (toggled) {
+            color = 0x8080D580;
         } else {
             color = hovered ? 0x80FFFFFF : 0x40FFFFFF;
         }

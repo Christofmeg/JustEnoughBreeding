@@ -36,7 +36,7 @@ public class JeiChildButtonWidget implements IRecipeWidget {
         if (isVisible()) return;
 
         boolean hovered = mouseX >= 0 && mouseX < w && mouseY >= 0 && mouseY < h;
-        graphics.fill(0, 0, w, h, hovered ? 0x80FFD700 : 0x40FFD700);
+        graphics.fill(0, 0, w, h, hovered ? 0x80FFFFFF : 0x40FFFFFF);
     }
 
     @Override

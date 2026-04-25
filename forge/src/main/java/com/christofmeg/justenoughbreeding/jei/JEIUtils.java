@@ -6,17 +6,23 @@ import com.christofmeg.justenoughbreeding.recipe.*;
 import com.christofmeg.justenoughbreeding.utils.CommonClientUtils;
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import com.christofmeg.justenoughbreeding.utils.Utils;
+import com.mojang.blaze3d.platform.InputConstants;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
+import mezz.jei.api.gui.inputs.IJeiInputHandler;
+import mezz.jei.api.gui.inputs.IJeiUserInput;
+import mezz.jei.api.gui.widgets.IRecipeExtrasBuilder;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.navigation.ScreenRectangle;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.DyeColor;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -174,6 +180,55 @@ public class JEIUtils {
             if (livingEntity != null) {
                 CommonClientUtils.renderEntityInInventoryFollowsMouse(graphics, 0, 0, 0, 0, (float) mouseX, livingEntity, CommonUtils.getRect(input, CATEGORY_WIDTH));
             }
+        }
+    }
+
+    public static void addButton(IRecipeExtrasBuilder builder) {
+        JeiToggleButtonWidget button = new JeiToggleButtonWidget(48, 13, 10, 10);
+        builder.addWidget(button);
+
+        builder.addInputHandler(new IJeiInputHandler() {
+            @Override
+            public @NotNull ScreenRectangle getArea() {
+                return new ScreenRectangle(48, 13, 10, 10);
+            }
+            @Override
+            public boolean handleInput(double mouseX, double mouseY, @NotNull IJeiUserInput input) {
+                if (input.isSimulate()) return false;
+                if (input.getKey().getValue() == InputConstants.MOUSE_BUTTON_LEFT && input.getKey().getValue() == InputConstants.RELEASE) {
+                    button.toggle();
+                    Minecraft.getInstance().player.sendSystemMessage(Component.literal("JEI button clicked!"));
+                    return true;
+                }
+                return false;
+            }
+        });
+        for (int i = 0; i < 4; i++) {
+            int x = 3 + (i * 11);
+            int y = 13;
+
+            JeiChildButtonWidget child = new JeiChildButtonWidget(x, y, 10, 10, button, Component.literal("Option " + (i + 1)));
+            builder.addWidget(child);
+
+            int finalI = i;
+            builder.addInputHandler(new IJeiInputHandler() {
+                @Override
+                public @NotNull ScreenRectangle getArea() {
+                    return new ScreenRectangle(x, y, 10, 10);
+                }
+
+                @Override
+                public boolean handleInput(double mouseX, double mouseY, @NotNull IJeiUserInput input) {
+                    if (button.isToggled()) return false;
+                    if (input.isSimulate()) return false;
+
+                    if (input.getKey().getValue() == InputConstants.MOUSE_BUTTON_LEFT) {
+                        Minecraft.getInstance().player.sendSystemMessage(Component.literal("Clicked option " + (finalI + 1)));
+                        return true;
+                    }
+                    return false;
+                }
+            });
         }
     }
 

@@ -5,6 +5,7 @@ plugins {
     id 'idea'
     id 'net.darkhax.curseforgegradle' version '1.1.+'
     id 'com.modrinth.minotaur' version '2.+'
+    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
 
 base {
@@ -12,7 +13,8 @@ base {
 }
 
 minecraft {
-    mappings channel: 'official', version: forge_minecraft_version
+ //   mappings channel: 'official', version: forge_minecraft_version
+    mappings channel: 'parchment', version: '2023.09.03-1.20.1'
 
     runs {
         client {
