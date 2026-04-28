@@ -1,5 +1,10 @@
 {
   "minecraft:bee": {
+    "scale": 60.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  "minecraft:axolotl": {
     "scale": 40.0,
     "x": 0.0,
     "y": 0.0
