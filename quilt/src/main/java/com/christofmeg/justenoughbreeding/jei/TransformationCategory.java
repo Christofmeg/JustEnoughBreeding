@@ -46,6 +46,8 @@ public class TransformationCategory extends AbstractRecipeCategory<Transformatio
     @Override
     public void createRecipeExtras(@NotNull IRecipeExtrasBuilder builder, @NotNull TransformationRecipe recipe, @NotNull IFocusGroup focuses) {
         builder.addRecipeArrow().setPosition(72, 48);
+        JEIUtils.addButton(builder, recipe.inputEntityType);
+        JEIUtils.addButton(builder, recipe.outputEntityType, 105);
     }
 
     @Override

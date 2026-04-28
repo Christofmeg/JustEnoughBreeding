@@ -7,6 +7,7 @@ import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.gui.placement.HorizontalAlignment;
 import mezz.jei.api.gui.placement.VerticalAlignment;
+import mezz.jei.api.gui.widgets.IRecipeExtrasBuilder;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
@@ -40,6 +41,11 @@ public class TemperCategory extends AbstractRecipeCategory<TemperRecipe> {
         if (hasExtraInput) {
             builder.addInputSlot(69, 33).setStandardSlotBackground().addIngredients(recipe.extraInputStack).setPosition(63, 29, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
         }
+    }
+
+    @Override
+    public void createRecipeExtras(@NotNull IRecipeExtrasBuilder builder, @NotNull TemperRecipe recipe, @NotNull IFocusGroup focuses) {
+        JEIUtils.addButton(builder, recipe.entityType);
     }
 
     @Override

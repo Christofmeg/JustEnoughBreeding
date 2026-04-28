@@ -2,21 +2,28 @@ package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.client.ClientUtils;
+import com.christofmeg.justenoughbreeding.config.MobOffsetManager;
 import com.christofmeg.justenoughbreeding.recipe.*;
 import com.christofmeg.justenoughbreeding.utils.CommonClientUtils;
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import com.christofmeg.justenoughbreeding.utils.Utils;
+import com.mojang.blaze3d.platform.InputConstants;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
+import mezz.jei.api.gui.inputs.IJeiInputHandler;
+import mezz.jei.api.gui.inputs.IJeiUserInput;
+import mezz.jei.api.gui.widgets.IRecipeExtrasBuilder;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.navigation.ScreenRectangle;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.DyeColor;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -171,8 +178,79 @@ public class JEIUtils {
             }
             LivingEntity livingEntity = Utils.getLivingEntity(currentLivingEntity, input, recipe);
             if (livingEntity != null) {
-                CommonClientUtils.renderEntityInInventoryFollowsMouse(graphics, 0, 0, 0, 0, (float) mouseX, livingEntity, CommonUtils.getRect(input, CATEGORY_WIDTH));
+                Utils.renderEntityInInventoryFollowsMouse(graphics, 0, 0, (float) mouseX, livingEntity, CommonUtils.getRect(input, CATEGORY_WIDTH), entityType);
             }
         }
     }
+
+    public static void addButton(IRecipeExtrasBuilder builder, EntityType<?> entityType) {
+        addButton(builder, entityType, 0);
+    }
+
+    public static void addButton(IRecipeExtrasBuilder builder, EntityType<?> entityType, int xOffset) {
+        JeiToggleButtonWidget button = new JeiToggleButtonWidget(48 + xOffset, 13, 10, 10);
+        builder.addWidget(button);
+
+        builder.addInputHandler(new IJeiInputHandler() {
+            @Override
+            public @NotNull ScreenRectangle getArea() {
+                return new ScreenRectangle(48 + xOffset, 13, 10, 10);
+            }
+            @Override
+            public boolean handleInput(double mouseX, double mouseY, @NotNull IJeiUserInput input) {
+                if (input.isSimulate()) return false;
+                if (input.getKey().getValue() == InputConstants.MOUSE_BUTTON_LEFT && input.getKey().getValue() == InputConstants.RELEASE) {
+                    button.toggle();
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        for (int i = 0; i < 4; i++) {
+            int x = 3 + (i * 11);
+            int y = 13;
+
+            Component component = switch (i) {
+                case 0 -> Component.literal("Increase scale");
+                case 1 -> Component.literal("Decrease scale");
+                case 2 -> Component.literal("Move left");
+                default -> Component.literal("Move right");
+            };
+
+            JeiChildButtonWidget child = new JeiChildButtonWidget(x + xOffset, y, 10, 10, button, component);
+            builder.addWidget(child);
+
+            int finalI = i;
+            builder.addInputHandler(new IJeiInputHandler() {
+                @Override
+                public @NotNull ScreenRectangle getArea() {
+                    return new ScreenRectangle(x + xOffset, y, 10, 10);
+                }
+
+                @Override
+                public boolean handleInput(double mouseX, double mouseY, @NotNull IJeiUserInput input) {
+                    if (button.isToggled()) return false;
+                    if (input.isSimulate()) return false;
+                    ResourceLocation entity = JustEnoughBreeding.getKeyLoaderRegistries(entityType);
+                    if (input.getKey().getValue() == InputConstants.MOUSE_BUTTON_LEFT) {
+                        switch (finalI) {
+                            case 0 -> MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale() + 0.5f, MobOffsetManager.get(entity).x(), MobOffsetManager.get(entity).y());
+                            case 1 -> MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale() - 0.5f, MobOffsetManager.get(entity).x(), MobOffsetManager.get(entity).y());
+                            case 2 -> MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), MobOffsetManager.get(entity).x() - 1, MobOffsetManager.get(entity).y());
+                            default -> MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), MobOffsetManager.get(entity).x() + 1, MobOffsetManager.get(entity).y());
+                        }
+                        return true;
+                    } else if (input.getKey().getValue() == InputConstants.MOUSE_BUTTON_RIGHT) {
+                        switch (finalI) {
+                            case 0, 1 -> MobOffsetManager.updateOffset(entity, 0, MobOffsetManager.get(entity).x(), MobOffsetManager.get(entity).y());
+                            default -> MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), 0, MobOffsetManager.get(entity).y());
+                        }
+                    }
+                    return false;
+                }
+            });
+        }
+    }
+
 }

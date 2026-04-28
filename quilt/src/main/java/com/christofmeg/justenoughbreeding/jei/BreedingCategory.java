@@ -59,6 +59,7 @@ public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> {
         if (hasOutput) {
             builder.addRecipeArrow().setPosition(70, 37, 78, 35, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
         }
+        JEIUtils.addButton(builder, recipe.entityType);
     }
 
     @Override

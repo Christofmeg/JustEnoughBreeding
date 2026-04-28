@@ -58,8 +58,6 @@ dependencies {
         compileOnly fg.deobf("me.shedaniel:REIPluginCompatibilities-forge-annotations:${rei_plugin_comp_version}")
         if (project.hasProperty('enable_jei') && project.enable_jei.toBoolean()) {
             runtimeOnly(fg.deobf("mezz.jei:jei-${forge_minecraft_version}-forge:${jei_version}"))
-            runtimeOnly fg.deobf("curse.maven:just-enough-mekanism-multiblocks-898746:7176443")
-            runtimeOnly fg.deobf("curse.maven:mekanism-268560:6552911")
         }
     }
 

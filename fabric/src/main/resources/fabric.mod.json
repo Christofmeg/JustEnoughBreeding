@@ -21,6 +21,9 @@
     "main": [
       "com.christofmeg.justenoughbreeding.JustEnoughBreeding"
     ],
+    "client": [
+      "com.christofmeg.justenoughbreeding.client.ClientEvent"
+    ],
     "jei_mod_plugin": [
       "com.christofmeg.justenoughbreeding.jei.JEIPlugin"
     ],

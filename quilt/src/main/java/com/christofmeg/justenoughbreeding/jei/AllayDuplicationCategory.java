@@ -6,6 +6,7 @@ import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
+import mezz.jei.api.gui.widgets.IRecipeExtrasBuilder;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
@@ -40,6 +41,11 @@ public class AllayDuplicationCategory extends AbstractRecipeCategory<AllayDuplic
         builder.addInputSlot(107, 32).setStandardSlotBackground().addIngredients(recipe.inputStack);
         builder.addInputSlot(97, 52).setStandardSlotBackground().addIngredients(Ingredient.of(ItemTags.MUSIC_DISCS));
         builder.addInputSlot(117, 52).setStandardSlotBackground().addIngredients(Ingredient.of(Items.JUKEBOX));
+    }
+
+    @Override
+    public void createRecipeExtras(@NotNull IRecipeExtrasBuilder builder, @NotNull AllayDuplicationRecipe recipe, @NotNull IFocusGroup focuses) {
+        JEIUtils.addButton(builder, recipe.entityType);
     }
 
     @Override
