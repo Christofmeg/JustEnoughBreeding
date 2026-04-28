@@ -251,6 +251,41 @@ public class JEIUtils {
                 }
             });
         }
+
+        for (int i = 0; i < 2; i++) {
+            int x = 3 + 45;
+            int y = 13 + 12 + (i * 11);
+
+            Component component = i == 0 ? Component.literal("Move up") : Component.literal("Move down");
+            JeiChildButtonWidget child = new JeiChildButtonWidget(x + xOffset, y, 10, 10, button, component);
+            builder.addWidget(child);
+
+            int finalI = i;
+            builder.addInputHandler(new IJeiInputHandler() {
+                @Override
+                public @NotNull ScreenRectangle getArea() {
+                    return new ScreenRectangle(x + xOffset, y, 10, 10);
+                }
+
+                @Override
+                public boolean handleInput(double mouseX, double mouseY, @NotNull IJeiUserInput input) {
+                    if (button.isToggled()) return false;
+                    if (input.isSimulate()) return false;
+                    ResourceLocation entity = JustEnoughBreeding.getKeyLoaderRegistries(entityType);
+                    if (input.getKey().getValue() == InputConstants.MOUSE_BUTTON_LEFT) {
+                        if (finalI == 0) {
+                            MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), MobOffsetManager.get(entity).x(), MobOffsetManager.get(entity).y() - 1);
+                        } else {
+                            MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), MobOffsetManager.get(entity).x(), MobOffsetManager.get(entity).y() + 1);
+                        }
+                        return true;
+                    } else if (input.getKey().getValue() == InputConstants.MOUSE_BUTTON_RIGHT) {
+                        MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), MobOffsetManager.get(entity).x(), 0);
+                    }
+                    return false;
+                }
+            });
+        }
     }
 
 }
