@@ -212,10 +212,10 @@ public class JEIUtils {
             int y = 13;
 
             Component component = switch (i) {
-                case 0 -> Component.literal("Increase scale");
-                case 1 -> Component.literal("Decrease scale");
-                case 2 -> Component.literal("Move left");
-                default -> Component.literal("Move right");
+                case 0 -> Component.translatable("option.justenoughbreeding.increase_scale");
+                case 1 -> Component.translatable("option.justenoughbreeding.decrease_scale");
+                case 2 -> Component.translatable("option.justenoughbreeding.move_left");
+                default -> Component.translatable("option.justenoughbreeding.move_right");
             };
 
             JeiChildButtonWidget child = new JeiChildButtonWidget(x + xOffset, y, 10, 10, button, component);
@@ -256,7 +256,7 @@ public class JEIUtils {
             int x = 3 + 45;
             int y = 13 + 12 + (i * 11);
 
-            Component component = i == 0 ? Component.literal("Move up") : Component.literal("Move down");
+            Component component = i == 0 ? Component.translatable("option.justenoughbreeding.move_up") : Component.translatable("option.justenoughbreeding.move_down");
             JeiChildButtonWidget child = new JeiChildButtonWidget(x + xOffset, y, 10, 10, button, component);
             builder.addWidget(child);
 

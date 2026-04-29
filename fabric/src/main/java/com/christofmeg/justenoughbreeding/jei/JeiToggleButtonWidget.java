@@ -49,8 +49,8 @@ public class JeiToggleButtonWidget implements IRecipeWidget {
     @Override
     public void getTooltip(@NotNull ITooltipBuilder tooltip, double mouseX, double mouseY) {
         if (mouseX >= 0 && mouseX < w && mouseY >= 0 && mouseY < h) {
-            tooltip.add(Component.literal(
-                    toggled ? "Hide options" : "Show options"
+            tooltip.add(Component.translatable(
+                    toggled ? "option.justenoughbreeding.hide_options" : "option.justenoughbreeding.show_options"
             ));
         }
     }
