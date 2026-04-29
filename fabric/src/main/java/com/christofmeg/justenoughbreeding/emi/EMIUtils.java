@@ -3,20 +3,24 @@ package com.christofmeg.justenoughbreeding.emi;
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.client.ClientUtils;
+import com.christofmeg.justenoughbreeding.config.MobOffsetManager;
 import com.christofmeg.justenoughbreeding.recipe.*;
 import com.christofmeg.justenoughbreeding.utils.CommonClientUtils;
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import com.christofmeg.justenoughbreeding.utils.Utils;
+import com.mojang.blaze3d.platform.InputConstants;
 import dev.emi.emi.EmiPort;
 import dev.emi.emi.EmiRenderHelper;
 import dev.emi.emi.api.EmiRegistry;
 import dev.emi.emi.api.render.EmiTexture;
 import dev.emi.emi.api.widget.Bounds;
+import dev.emi.emi.api.widget.ButtonWidget;
 import dev.emi.emi.api.widget.Widget;
 import dev.emi.emi.api.widget.WidgetHolder;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -214,10 +218,75 @@ public class EMIUtils {
                     }
                     LivingEntity livingEntity = Utils.getLivingEntity(currentLivingEntity, input, recipe);
                     if (livingEntity != null) {
-                        CommonClientUtils.renderEntityInInventoryFollowsMouse(graphics, 0, 0, 0, 0, (float) mouseX, livingEntity, CommonUtils.getRect(input, CATEGORY_WIDTH, 0, 1));
+                        Utils.renderEntityInInventoryFollowsMouse(graphics, 0, 0, (float) mouseX, livingEntity, CommonUtils.getRect(input, CATEGORY_WIDTH, 0, 1), entityType);
                     }
                 }
             });
         }
     }
+
+    public static void addButton(WidgetHolder widgets, EntityType<?> entityType) {
+        addButton(widgets, entityType, 0);
+    }
+
+    public static void addButton(WidgetHolder widgets, EntityType<?> entityType, int xOffset) {
+        ResourceLocation entity = JustEnoughBreeding.getKeyLoaderRegistries(entityType);
+        widgets.add(new EMIToggleButtonWidget(4 + xOffset, 14, (mouseX1, mouseY1, button1) -> {
+            if (InputConstants.MOUSE_BUTTON_LEFT == button1) {
+                MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale() + 0.5f, MobOffsetManager.get(entity).x(), MobOffsetManager.get(entity).y());
+            } else {
+                MobOffsetManager.updateOffset(entity, 0, MobOffsetManager.get(entity).x(), MobOffsetManager.get(entity).y());
+            }
+        }, Component.translatable("option.justenoughbreeding.increase_scale")));
+
+        widgets.add(new EMIToggleButtonWidget(15 + xOffset, 14, (mouseX1, mouseY1, button1) -> {
+            if (InputConstants.MOUSE_BUTTON_LEFT == button1) {
+                MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale() - 0.5f, MobOffsetManager.get(entity).x(), MobOffsetManager.get(entity).y());
+            } else {
+                MobOffsetManager.updateOffset(entity, 0, MobOffsetManager.get(entity).x(), MobOffsetManager.get(entity).y());
+            }
+        }, Component.translatable("option.justenoughbreeding.decrease_scale")));
+
+        widgets.add(new EMIToggleButtonWidget(26 + xOffset, 14, (mouseX1, mouseY1, button1) -> {
+            if (InputConstants.MOUSE_BUTTON_LEFT == button1) {
+                MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), MobOffsetManager.get(entity).x() - 1, MobOffsetManager.get(entity).y());
+            } else {
+                MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), 0, MobOffsetManager.get(entity).y());
+            }
+        }, Component.translatable("option.justenoughbreeding.move_left")));
+
+        widgets.add(new EMIToggleButtonWidget(37 + xOffset, 14, (mouseX1, mouseY1, button1) -> {
+            if (InputConstants.MOUSE_BUTTON_LEFT == button1) {
+                MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), MobOffsetManager.get(entity).x() + 1, MobOffsetManager.get(entity).y());
+            } else {
+                MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), 0, MobOffsetManager.get(entity).y());
+            }
+        }, Component.translatable("option.justenoughbreeding.move_right")));
+
+        widgets.add(new EMIToggleButtonWidget(49 + xOffset, 25, (mouseX1, mouseY1, button1) -> {
+            if (InputConstants.MOUSE_BUTTON_LEFT == button1) {
+                MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), MobOffsetManager.get(entity).x(), MobOffsetManager.get(entity).y() - 1);
+            } else {
+                MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), MobOffsetManager.get(entity).x(), 0);
+            }
+        }, Component.translatable("option.justenoughbreeding.move_up")));
+
+        widgets.add(new EMIToggleButtonWidget(49 + xOffset, 36, (mouseX1, mouseY1, button1) -> {
+            if (InputConstants.MOUSE_BUTTON_LEFT == button1) {
+                MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), MobOffsetManager.get(entity).x(), MobOffsetManager.get(entity).y() + 1);
+            } else {
+                MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), MobOffsetManager.get(entity).x(), 0);
+            }
+        }, Component.translatable("option.justenoughbreeding.move_down")));
+
+        widgets.add(new ButtonWidget(49 + xOffset, 14, 10, 10, 0, 0, new ResourceLocation(CommonConstants.MOD_ID, "textures/emi_config_button.png"), () -> true, (mouseX, mouseY, button) -> EMIToggleButtonWidget.showChildButtons = !EMIToggleButtonWidget.showChildButtons) {
+            @Override
+            public List<ClientTooltipComponent> getTooltip(int mouseX, int mouseY) {
+                return EMIToggleButtonWidget.showChildButtons ?
+                        List.of(ClientTooltipComponent.create(EmiPort.ordered(Component.translatable("option.justenoughbreeding.hide_options")))) :
+                        List.of(ClientTooltipComponent.create(EmiPort.ordered(Component.translatable("option.justenoughbreeding.show_options"))));
+            }
+        });
+    }
+
 }

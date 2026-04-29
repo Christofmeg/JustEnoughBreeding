@@ -57,7 +57,6 @@ public class TemperCategoryEMI extends AbstractRecipeCategoryEMI {
     @Override
     public void addWidgets(WidgetHolder widgets) {
         widgets.addSlot(EmiIngredient.of(recipe.spawnEgg), 149, 1);
-
         int inputX = 69 + 5;
         int inputY = 48;
         boolean hasExtraInput = recipe.extraInputStack != null && !recipe.extraInputStack.isEmpty();
@@ -67,9 +66,9 @@ public class TemperCategoryEMI extends AbstractRecipeCategoryEMI {
         } else {
             widgets.addSlot(EmiIngredient.of(recipe.inputStack), inputX  + 33, inputY);
         }
-
         EMIUtils.drawMobSlot(0, 10, widgets);
         EMIUtils.drawMobNameAndEntity(recipe.entityType, widgets, recipe, getDisplayWidth());
+        EMIUtils.addButton(widgets, recipe.entityType);
     }
 
     public static class Builder {

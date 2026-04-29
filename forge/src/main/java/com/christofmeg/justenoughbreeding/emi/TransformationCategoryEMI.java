@@ -59,18 +59,18 @@ public class TransformationCategoryEMI extends AbstractRecipeCategoryEMI {
     public void addWidgets(WidgetHolder widgets) {
         widgets.addSlot(EmiIngredient.of(recipe.inputSpawnEgg), 65, 74);
         widgets.addSlot(EmiIngredient.of(recipe.outputSpawnEgg), 85, 74);
-
         boolean hasExtraInput = recipe.extraInputStack != null && !recipe.extraInputStack.isEmpty();
         widgets.addSlot(EmiIngredient.of(recipe.inputStack), hasExtraInput ? 65 : 75, 22);
         if (hasExtraInput) {
             widgets.addSlot(EmiIngredient.of(recipe.extraInputStack), 85, 22);
         }
-
         widgets.addTexture(EmiTexture.EMPTY_ARROW, 72, 49);
         EMIUtils.drawMobSlot(0, 10, widgets);
         EMIUtils.drawMobNameAndEntity(recipe.inputEntityType, widgets, recipe, 99, 0, true, getDisplayWidth());
         EMIUtils.drawMobSlot(105, 10, widgets);
         EMIUtils.drawMobNameAndEntity(recipe.outputEntityType, widgets, recipe, 61, 105, false, getDisplayWidth());
+        EMIUtils.addButton(widgets, recipe.inputEntityType);
+        EMIUtils.addButton(widgets, recipe.outputEntityType, 105);
     }
 
     public static class Builder {
