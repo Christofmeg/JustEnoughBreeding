@@ -2,26 +2,34 @@ package com.christofmeg.justenoughbreeding.rei;
 
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.client.ClientUtils;
+import com.christofmeg.justenoughbreeding.config.MobOffsetManager;
 import com.christofmeg.justenoughbreeding.recipe.*;
-import com.christofmeg.justenoughbreeding.utils.CommonClientUtils;
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import com.christofmeg.justenoughbreeding.utils.Utils;
+import com.mojang.blaze3d.platform.InputConstants;
 import me.shedaniel.math.Point;
 import me.shedaniel.math.Rectangle;
+import me.shedaniel.rei.api.client.gui.widgets.Button;
 import me.shedaniel.rei.api.client.gui.widgets.Widget;
 import me.shedaniel.rei.api.client.gui.widgets.Widgets;
 import me.shedaniel.rei.api.client.registry.display.DisplayRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
 public class REIUtils {
+
+    public static boolean showChildButtons = false;
 
     public static void registerRecipes(DisplayRegistry registration) {
         List<AllayDuplicationRecipe> allayDuplicationRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.ALLAY_DUPLICATION_PROVIDER_TYPE.get()));
@@ -135,10 +143,105 @@ public class REIUtils {
             widgets.add(Widgets.withTranslate(Widgets.createDrawableWidget((graphics, mouseX, mouseY, v) -> {
                 LivingEntity livingEntity = Utils.getLivingEntity(currentLivingEntity, input, recipe);
                 if (livingEntity != null) {
-                    CommonClientUtils.renderEntityInInventoryFollowsMouse(graphics, 0, 0, 0, 0, (float) mouseX, livingEntity, CommonUtils.getRect(input, CATEGORY_WIDTH, 5, 0));
+                    Utils.renderEntityInInventoryFollowsMouse(graphics, 0, 0, (float) mouseX, livingEntity, CommonUtils.getRect(input, CATEGORY_WIDTH, 5, 0), entityType);
                 }
                     }
             ), bounds.x + 5, bounds.y + 5, 0));
         }
     }
+
+    public static List<Widget> addButton(Rectangle bounds, EntityType<?> entityType, List<Widget> widgets) {
+        return addButton(bounds, entityType, widgets, 0);
+    }
+
+    public static List<Widget> addButton(Rectangle bounds, EntityType<?> entityType, List<Widget> widgets, int xOffset) {
+        Rectangle buttonRect = bounds.clone();
+        buttonRect.setSize(10, 10);
+        buttonRect.move(bounds.getLocation().x + 53 + xOffset, bounds.getLocation().y + 18);
+        ResourceLocation entity = JustEnoughBreeding.getKeyLoaderRegistries(entityType);
+
+        Rectangle button1 = buttonRect.clone();
+        button1.move(buttonRect.getLocation().x - 45, buttonRect.getLocation().y);
+        Button button_1 = Widgets.createButton(button1, Component.empty());
+        button_1.tooltipLine(Component.translatable("option.justenoughbreeding.increase_scale"));
+        button_1.onClick(button -> MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale() + 0.5f, MobOffsetManager.get(entity).x(), MobOffsetManager.get(entity).y()));
+
+        Rectangle button2 = buttonRect.clone();
+        button2.move(buttonRect.getLocation().x - 34, buttonRect.getLocation().y);
+        Button button_2 = Widgets.createButton(button2, Component.empty());
+        button_2.tooltipLine(Component.translatable("option.justenoughbreeding.decrease_scale"));
+        button_2.onClick(button -> MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale() - 0.5f, MobOffsetManager.get(entity).x(), MobOffsetManager.get(entity).y()));
+
+        Rectangle button3 = buttonRect.clone();
+        button3.move(buttonRect.getLocation().x - 23, buttonRect.getLocation().y);
+        Button button_3 = Widgets.createButton(button3, Component.empty());
+        button_3.tooltipLine(Component.translatable("option.justenoughbreeding.move_left"));
+        button_3.onClick(button -> MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), MobOffsetManager.get(entity).x() - 1, MobOffsetManager.get(entity).y()));
+
+        Rectangle button4 = buttonRect.clone();
+        button4.move(buttonRect.getLocation().x - 12, buttonRect.getLocation().y);
+        Button button_4 = Widgets.createButton(button4, Component.empty());
+        button_4.tooltipLine(Component.translatable("option.justenoughbreeding.move_right"));
+        button_4.onClick(button -> MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), MobOffsetManager.get(entity).x() + 1, MobOffsetManager.get(entity).y()));
+
+        Rectangle button5 = buttonRect.clone();
+        button5.move(buttonRect.getLocation().x, buttonRect.getLocation().y + 12);
+        Button button_5 = Widgets.createButton(button5, Component.empty());
+        button_5.tooltipLine(Component.translatable("option.justenoughbreeding.move_up"));
+        button_5.onClick(button -> MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), MobOffsetManager.get(entity).x(), MobOffsetManager.get(entity).y() - 1));
+
+        Rectangle button6 = buttonRect.clone();
+        button6.move(buttonRect.getLocation().x, buttonRect.getLocation().y + 23);
+        Button button_6 = Widgets.createButton(button6, Component.empty());
+        button_6.tooltipLine(Component.translatable("option.justenoughbreeding.move_down"));
+        button_6.onClick(button -> MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), MobOffsetManager.get(entity).x(), MobOffsetManager.get(entity).y() + 1));
+
+        widgets.add(new Widget() {
+            @Override
+            public void render(@NotNull GuiGraphics graphics, int mouseX, int mouseY, float delta) {
+                if (!REIUtils.showChildButtons) return;
+                button_1.render(graphics, mouseX, mouseY, delta);
+                button_2.render(graphics, mouseX, mouseY, delta);
+                button_3.render(graphics, mouseX, mouseY, delta);
+                button_4.render(graphics, mouseX, mouseY, delta);
+                button_5.render(graphics, mouseX, mouseY, delta);
+                button_6.render(graphics, mouseX, mouseY, delta);
+            }
+
+            @Override
+            public @NotNull List<? extends GuiEventListener> children() {
+                return REIUtils.showChildButtons ? List.of(button_1, button_2, button_3, button_4, button_5, button_6) : List.of();
+            }
+
+            @Override
+            public boolean mouseClicked(double pMouseX, double pMouseY, int pButton) {
+                this.getChildAt(pMouseX, pMouseY).ifPresent(child -> {
+                    if (pButton == InputConstants.MOUSE_BUTTON_RIGHT) {
+                        if (child.equals(button_1) || child.equals(button_2)) {
+                            MobOffsetManager.updateOffset(entity, 0, MobOffsetManager.get(entity).x(), MobOffsetManager.get(entity).y());
+                        }
+                        if (child.equals(button_3) || child.equals(button_4)) {
+                            MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), 0, MobOffsetManager.get(entity).y());
+                        }
+                        if (child.equals(button_5) || child.equals(button_6)) {
+                            MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), MobOffsetManager.get(entity).x(), 0);
+                        }
+                    }
+                });
+                return super.mouseClicked(pMouseX, pMouseY, pButton);
+            }
+        });
+
+        Button toggleButton = Widgets.createButton(buttonRect, Component.empty());
+        toggleButton.tooltipLine(REIUtils.showChildButtons ? Component.translatable("option.justenoughbreeding.hide_options") :
+                Component.translatable("option.justenoughbreeding.show_options"));
+        toggleButton.onClick(button -> {
+            REIUtils.showChildButtons = !REIUtils.showChildButtons;
+            toggleButton.tooltipLine(REIUtils.showChildButtons ? Component.translatable("option.justenoughbreeding.hide_options") :
+                    Component.translatable("option.justenoughbreeding.show_options"));
+        });
+        widgets.add(toggleButton);
+        return widgets;
+    }
+
 }

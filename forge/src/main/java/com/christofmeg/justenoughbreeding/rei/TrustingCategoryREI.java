@@ -50,6 +50,8 @@ public class TrustingCategoryREI extends AbstractRecipeCategoryREI<TrustingDispl
         REIUtils.drawMobSlot(widgets, bounds,0, 10);
         REIUtils.drawMobNameAndEntity(widgets, bounds, recipe.entityType, recipe, getDisplayWidth(display));
 
+        REIUtils.addButton(bounds, recipe.entityType, widgets);
+
         return widgets;
     }
 

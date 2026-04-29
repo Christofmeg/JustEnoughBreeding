@@ -61,6 +61,9 @@ public class TransformationCategoryREI extends AbstractRecipeCategoryREI<Transfo
         REIUtils.drawMobSlot(widgets, bounds,105, 10);
         REIUtils.drawMobNameAndEntity(widgets, bounds, recipe.outputEntityType, recipe, 61, 105, false, getDisplayWidth(display));
 
+        REIUtils.addButton(bounds, recipe.inputEntityType, widgets);
+        REIUtils.addButton(bounds, recipe.outputEntityType, widgets, 105);
+
         return widgets;
     }
 
