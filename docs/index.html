@@ -87,28 +87,8 @@
       margin-top: 1em;
     }
 
-    .inline-flex {
-      display: flex;
-      gap: 0.5em;
-      margin-bottom: 0.5em;
-    }
-
     .inline-flex > * {
       flex: 1;
-    }
-
-    .remove-button {
-      flex: 0 0 auto;
-      background-color: red;
-      color: white;
-      border: none;
-      padding: 0.4em 0.6em;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .remove-button:hover {
-      opacity: 0.8;
     }
 
     .checkbox-button {
@@ -134,9 +114,6 @@
       display: none; /* hide default checkbox */
     }
 
-    .checkbox-button.active {
-      background-color: #388e3c; /* darker green when active */
-    }
   </style>
 </head>
 <body>
@@ -222,7 +199,7 @@
 
 <div class="output">
   <h2>📝 Generated JSON:</h2>
-  <textarea id="outputArea" readonly></textarea>
+  <label for="outputArea"></label><textarea id="outputArea" readonly></textarea>
 </div>
 
 <script>
