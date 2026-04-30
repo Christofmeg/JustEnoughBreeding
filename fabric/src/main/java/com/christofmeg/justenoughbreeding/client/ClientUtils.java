@@ -6,7 +6,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.level.Level;
 
 import java.util.HashMap;
@@ -36,23 +35,19 @@ public class ClientUtils {
                         !JustEnoughBreeding.isModLoaded("optifine");
 
         if (entity == null) {
-            entity = createEntity(entityType, level);
+            entity = (LivingEntity) entityType.create(level);
+            ENTITY_CACHE.put(key, entity);
+            CREATION_TIMES.put(key, currentTime);
+        } else if (!entity.getEntityData().isEmpty()) {
+            entity = (LivingEntity) entityType.create(level);
             ENTITY_CACHE.put(key, entity);
             CREATION_TIMES.put(key, currentTime);
         } else if (refreshAllowed && (currentTime - lastTime >= ENTITY_CREATION_INTERVAL)) {
-            entity = createEntity(entityType, level);
+            entity = (LivingEntity) entityType.create(level);
             ENTITY_CACHE.put(key, entity);
             CREATION_TIMES.put(key, currentTime);
         }
 
-        return entity;
-    }
-
-    private static LivingEntity createEntity(EntityType<?> entityType, Level level) {
-        LivingEntity entity = (LivingEntity) entityType.create(level);
-        if (entity instanceof TamableAnimal tamable) {
-            tamable.setTame(true);
-        }
         return entity;
     }
 

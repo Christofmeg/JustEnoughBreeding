@@ -6,7 +6,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -20,8 +19,6 @@ public class ClientUtils {
     public static final int ENTITY_CREATION_INTERVAL = 3000;
     private static final Map<String, LivingEntity> ENTITY_CACHE = new HashMap<>();
     private static final Map<String, Long> CREATION_TIMES = new HashMap<>();
-
-    //TODO fix NBT tagged brown mooshroom not instantly updating when changing to next red mooshroom recipe
 
     public static LivingEntity doRendering(EntityType<?> entityType, CompoundTag nbt, boolean input) {
         Level level = Minecraft.getInstance().level;
@@ -41,23 +38,19 @@ public class ClientUtils {
                         !JustEnoughBreeding.isModLoaded("optifine");
 
         if (entity == null) {
-            entity = createEntity(entityType, level);
+            entity = (LivingEntity) entityType.create(level);
+            ENTITY_CACHE.put(key, entity);
+            CREATION_TIMES.put(key, currentTime);
+        } else if (!entity.getEntityData().isEmpty()) {
+            entity = (LivingEntity) entityType.create(level);
             ENTITY_CACHE.put(key, entity);
             CREATION_TIMES.put(key, currentTime);
         } else if (refreshAllowed && (currentTime - lastTime >= ENTITY_CREATION_INTERVAL)) {
-            entity = createEntity(entityType, level);
+            entity = (LivingEntity) entityType.create(level);
             ENTITY_CACHE.put(key, entity);
             CREATION_TIMES.put(key, currentTime);
         }
 
-        return entity;
-    }
-
-    private static LivingEntity createEntity(EntityType<?> entityType, Level level) {
-        LivingEntity entity = (LivingEntity) entityType.create(level);
-        if (entity instanceof TamableAnimal tamable) {
-            tamable.setTame(true);
-        }
         return entity;
     }
 
