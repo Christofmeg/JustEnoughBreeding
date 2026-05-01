@@ -2,8 +2,8 @@ import net.darkhax.curseforgegradle.TaskPublishCurseForge
 
 plugins {
     id 'multiloader-loader'
-    id 'fabric-loom' version '1.8-SNAPSHOT'
-    id 'net.darkhax.curseforgegradle' version '1.+'
+    id 'fabric-loom' version '1.9-SNAPSHOT'
+    id 'net.darkhax.curseforgegradle' version '1.1.+'
     id 'com.modrinth.minotaur' version '2.+'
 }
 
@@ -89,7 +89,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.changelog = file('changelog.md')
     mainFile.addGameVersion('Client', 'Server')
     mainFile.releaseType = "${release_type}"
-    mainFile.addModLoader("${project.name}")
+    mainFile.addModLoader("fabric","quilt")
     "${fabric_release_versions}".split(',').each {
         mainFile.addGameVersion("${it}")
     }
@@ -108,7 +108,7 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("kiwi-boi")
     mainFile.addOptional("snow-pig-fabric")
     mainFile.addOptional("snuffles-fabric")
-    mainFile.addOptional("steves-vanilla")
+    mainFile.addOptional("steves-vanilla-fabric")
     mainFile.addOptional("the-twilight-forest")
     mainFile.addOptional("frozen-up")
     mainFile.addOptional("caracal-mod")
@@ -126,6 +126,18 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("lets-do-meadow")
     mainFile.addOptional("fish-of-thieves")
     mainFile.addOptional("promenade")
+    mainFile.addOptional("untitled-duck-mod-fabric")
+    mainFile.addOptional("lets-do-wildernature")
+    mainFile.addOptional("supplementaries")
+    mainFile.addOptional("creeper-overhaul")
+    mainFile.addOptional("species")
+    mainFile.addOptional("jadens-nether-expansion")
+    mainFile.addOptional("companions-mod")
+    mainFile.addOptional("spawn-mod")
+    mainFile.addOptional("etcetera")
+    mainFile.addOptional("galosphere")
+    mainFile.addOptional("yungs-cave-biomes-fabric")
+    mainFile.addOptional("ghost")
 }
 
 modrinth {
@@ -136,12 +148,12 @@ modrinth {
         token = ""
     }
     projectId = "${modrinth_id}"
-    versionName = getArchivesBaseName() + "-" + getVersion()
+    versionName = "${mod_id}-fabric-${fabric_supported_versions}" + "-" + getVersion()
     versionType = "${release_type}"
     changelog = file('changelog.md').text
     uploadFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")
     gameVersions = "${fabric_release_versions}".split(",") as List<String>
-    loaders = ["${project.name}"]
+    loaders = ["fabric","quilt"]
     dependencies {
         if (project.hasProperty('jei_version')) {
             optional.project "jei"
@@ -172,5 +184,18 @@ modrinth {
         optional.project "lets-do-meadow"
         optional.project "fish-of-thieves"
         optional.project "promenade"
+        optional.project "untitled-duck-mod"
+        optional.project "lets-do-wildernature"
+        optional.project "randoms-wildlife"
+        optional.project "supplementaries"
+        optional.project "creeper-overhaul"
+        optional.project "species"
+        optional.project "jadens-nether-expansion"
+        optional.project "companions-mod"
+        optional.project "spawn-mod"
+        optional.project "etcetera"
+        optional.project "galosphere"
+        optional.project "yungs-cave-biomes"
+        optional.project "ghost"
     }
 }

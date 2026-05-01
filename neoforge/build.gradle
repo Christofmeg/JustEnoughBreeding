@@ -3,7 +3,7 @@ import net.darkhax.curseforgegradle.TaskPublishCurseForge
 plugins {
     id 'multiloader-loader'
     id 'net.neoforged.gradle.userdev' version '7.0.142'
-    id 'net.darkhax.curseforgegradle' version '1.+'
+    id 'net.darkhax.curseforgegradle' version '1.1.+'
     id 'com.modrinth.minotaur' version '2.+'
 }
 
@@ -111,7 +111,6 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("frostrealm")
     mainFile.addOptional("caracal-mod")
     mainFile.addOptional("kiwi-boi")
-    mainFile.addOptional("steves-vanilla")
     mainFile.addOptional("snuffles")
     mainFile.addOptional("lil-wings")
     mainFile.addOptional("ecologics")
@@ -152,6 +151,37 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("neapolitan")
     mainFile.addOptional("dracovita-farm-life")
     mainFile.addOptional("sullys-mod")
+    mainFile.addOptional("untitled-duck-mod-forge")
+    mainFile.addOptional("cold-sweat")
+    mainFile.addOptional("biodiverse")
+    mainFile.addOptional("lets-do-wildernature")
+    mainFile.addOptional("pet-cemetery")
+    mainFile.addOptional("critters-n-crawlers")
+    mainFile.addOptional("endergetic")
+    mainFile.addOptional("brazilian-expansion")
+    mainFile.addOptional("mineageries-plus")
+    mainFile.addOptional("prehistoric-fauna")
+    mainFile.addOptional("unearthed-journey")
+    mainFile.addOptional("more-critters")
+    mainFile.addOptional("koopas-critters")
+    mainFile.addOptional("zawa-evolved")
+    mainFile.addOptional("zawa-essentials")
+    mainFile.addOptional("lil-critters")
+    mainFile.addOptional("windsweptmod")
+    mainFile.addOptional("supplementaries")
+    mainFile.addOptional("bftp")
+    mainFile.addOptional("wans-ancient-beasts")
+    mainFile.addOptional("creeper-overhaul")
+    mainFile.addOptional("tameable-beasts")
+    mainFile.addOptional("species")
+    mainFile.addOptional("nethers-exoticism")
+    mainFile.addOptional("jadens-nether-expansion")
+    mainFile.addOptional("companions-mod")
+    mainFile.addOptional("spawn-mod")
+    mainFile.addOptional("etcetera")
+    mainFile.addOptional("galosphere")
+    mainFile.addOptional("yungs-cave-biomes")
+    mainFile.addOptional("ghost")
 }
 
 modrinth {
@@ -162,7 +192,7 @@ modrinth {
         token = ""
     }
     projectId = "${modrinth_id}"
-    versionName = getArchivesBaseName() + "-" + getVersion()
+    versionName = "${mod_id}-neoforge-${neoforge_supported_versions}" + "-" + getVersion()
     versionType = "${release_type}"
     changelog = file('changelog.md').text
     uploadFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")
@@ -215,5 +245,36 @@ modrinth {
         optional.project "fish-of-thieves"
         optional.project "neapolitan"
         optional.project "sullysmod"
+        optional.project "untitled-duck-mod"
+        optional.project "cold-sweat"
+        optional.project "biodiverse"
+        optional.project "lets-do-wildernature"
+        optional.project "creatures_squared"
+        optional.project "pet-cemetery"
+        optional.project "critters-n-crawlers"
+        optional.project "endergetic"
+        optional.project "brazilian-expansion"
+        optional.project "mineageries-plus"
+        optional.project "prehistoric-fauna"
+        optional.project "unearthed-journey"
+        optional.project "more-critters"
+        optional.project "zawa-evolved"
+        optional.project "zawa-essentials"
+        optional.project "lil-critters"
+        optional.project "windswept"
+        optional.project "supplementaries"
+        optional.project "blast-from-the-past"
+        optional.project "wab"
+        optional.project "creeper-overhaul"
+        optional.project "tameable-beasts"
+        optional.project "species"
+        optional.project "nethers-exoticism"
+        optional.project "jadens-nether-expansion"
+        optional.project "companions-mod"
+        optional.project "spawn-mod"
+        optional.project "etcetera"
+        optional.project "galosphere"
+        optional.project "yungs-cave-biomes"
+        optional.project "ghost"
     }
 }
