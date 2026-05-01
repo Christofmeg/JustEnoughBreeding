@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "lilwings",
+  "mobs": [
+    {
+      "painted_panther": {
+        "inputs": [
+          {
+            "item": "minecraft:end_stone"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "lilwings:painted_panther_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

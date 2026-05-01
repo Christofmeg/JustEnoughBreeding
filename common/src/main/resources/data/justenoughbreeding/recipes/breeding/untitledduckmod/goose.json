@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "untitledduckmod",
+  "mobs": [
+    {
+      "goose": {
+        "inputs": [
+          {
+            "tag": "untitledduckmod:goose_breeding_food"
+          }
+        ]
+      }
+    }
+  ]
+}

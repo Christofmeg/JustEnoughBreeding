@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "lilwings",
+  "mobs": [
+    {
+      "swamp_hopper": {
+        "inputs": [
+          {
+            "item": "minecraft:blue_orchid"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "lilwings:swamp_hopper_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "minecraft",
+  "mobs": [
+    {
+      "hoglin": {
+        "inputs": [
+          {
+            "item": "minecraft:crimson_fungus"
+          }
+        ]
+      }
+    }
+  ]
+}

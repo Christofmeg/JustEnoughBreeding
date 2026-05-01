@@ -1,0 +1,33 @@
+{
+  "type": "justenoughbreeding:transformation",
+  "mod": "companions",
+  "inputs": [
+    {
+        "tag": "minecraft:planks"
+    },
+    {
+        "item": "knightlib:homunculus"
+    },
+    {
+        "item": "companions:wrench"
+    },
+    {
+        "item": "minecraft:iron_ingot"
+    },
+    {
+        "item": "companions:tesla_coil_block"
+    }
+  ],
+  "input_entity": "companions:broken_dinamo",
+  "input_spawn_eggs": [
+    {
+        "item": "companions:broken_dinamo_spawn_egg"
+    }
+  ],
+  "output_entity": "companions:dinamo",
+  "output_spawn_eggs": [
+    {
+        "item": "companions:broken_dinamo_spawn_egg"
+    }
+  ]
+}

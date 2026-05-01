@@ -1,0 +1,24 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "naturalist",
+  "mobs": [
+    {
+      "alligator": {
+        "inputs": [
+          {
+            "tag": "naturalist:alligator_food_items"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "naturalist:alligator_egg",
+            "amount": {
+              "min": 1,
+              "max": 4
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

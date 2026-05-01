@@ -1,0 +1,16 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "ydms_redpanda",
+  "mobs": [
+    {
+      "redpanda": {
+        "inputs": [
+          {
+            "item": "minecraft:bamboo"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

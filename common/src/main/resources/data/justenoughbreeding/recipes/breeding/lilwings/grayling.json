@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "lilwings",
+  "mobs": [
+    {
+      "grayling": {
+        "inputs": [
+          {
+            "item": "minecraft:moss_block"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "lilwings:grayling_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

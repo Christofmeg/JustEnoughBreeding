@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "minecraft",
+  "mobs": [
+    {
+      "bee": {
+        "inputs": [
+          {
+            "tag": "minecraft:flowers"
+          }
+        ]
+      }
+    }
+  ]
+}

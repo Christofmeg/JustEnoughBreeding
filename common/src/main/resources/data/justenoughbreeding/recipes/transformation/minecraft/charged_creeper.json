@@ -1,0 +1,24 @@
+{
+  "type": "justenoughbreeding:transformation",
+  "mod": "minecraft",
+  "inputs": [
+    {
+      "item": "minecraft:lightning_rod"
+    }
+  ],
+  "input_entity": "minecraft:creeper",
+  "input_spawn_eggs": [
+    {
+      "item": "minecraft:creeper_spawn_egg"
+    }
+  ],
+  "output_entity": "minecraft:creeper",
+  "output_entity_nbt": {
+    "powered": 1
+  },
+  "output_spawn_eggs": [
+    {
+      "item": "minecraft:creeper_spawn_egg"
+    }
+  ]
+}

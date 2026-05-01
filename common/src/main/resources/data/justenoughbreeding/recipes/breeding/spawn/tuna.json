@@ -1,0 +1,25 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "spawn",
+  "mobs": [
+    {
+      "tuna": {
+        "inputs": [
+          {
+            "tag": "spawn:tuna_feeds"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "spawn:tuna_egg_bucket"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "spawn:tuna_spawn_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

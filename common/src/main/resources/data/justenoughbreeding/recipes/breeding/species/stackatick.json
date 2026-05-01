@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "species",
+  "mobs": [
+    {
+      "stackatick": {
+        "inputs": [
+          {
+            "item": "minecraft:honeycomb_block"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "species:stackatick_spawn_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

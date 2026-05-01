@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "crittersandcompanions",
+  "mobs": [
+    {
+      "red_panda": {
+        "inputs": [
+          {
+            "item": "minecraft:bamboo"
+          }
+        ]
+      }
+    }
+  ]
+}

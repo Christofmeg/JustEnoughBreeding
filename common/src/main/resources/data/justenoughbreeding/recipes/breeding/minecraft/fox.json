@@ -1,0 +1,16 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "minecraft",
+  "mobs": [
+    {
+      "fox": {
+        "inputs": [
+          {
+            "tag": "minecraft:fox_food"
+          }
+        ],
+        "trusting": true
+      }
+    }
+  ]
+}

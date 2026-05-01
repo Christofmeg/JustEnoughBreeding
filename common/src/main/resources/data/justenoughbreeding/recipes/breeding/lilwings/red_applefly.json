@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "lilwings",
+  "mobs": [
+    {
+      "red_applefly": {
+        "inputs": [
+          {
+            "item": "minecraft:apple"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "lilwings:red_applefly_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

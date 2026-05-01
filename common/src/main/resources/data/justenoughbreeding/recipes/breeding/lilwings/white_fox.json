@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "lilwings",
+  "mobs": [
+    {
+      "white_fox": {
+        "inputs": [
+          {
+            "item": "minecraft:lily_of_the_valley"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "lilwings:white_fox_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

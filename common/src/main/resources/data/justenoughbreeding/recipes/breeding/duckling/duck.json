@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "duckling",
+  "mobs": [
+    {
+      "duck": {
+        "inputs": [
+          {
+            "item": "minecraft:bread"
+          }
+        ]
+      }
+    }
+  ]
+}

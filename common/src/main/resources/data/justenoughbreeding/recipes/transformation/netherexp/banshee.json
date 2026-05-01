@@ -1,0 +1,21 @@
+{
+  "type": "justenoughbreeding:transformation",
+  "mod": "netherexp",
+  "inputs": [
+    {
+        "item": "netherexp:apparition_spawn_egg"
+    }
+  ],
+  "input_entity": "minecraft:blaze",
+  "input_spawn_eggs": [
+    {
+        "item": "minecraft:blaze_spawn_egg"
+    }
+  ],
+  "output_entity": "netherexp:banshee",
+  "output_spawn_eggs": [
+    {
+        "item": "netherexp:banshee_spawn_egg"
+    }
+  ]
+}

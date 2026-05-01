@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "lilwings",
+  "mobs": [
+    {
+      "ender_wing": {
+        "inputs": [
+          {
+            "item": "minecraft:lily_of_the_valley"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "lilwings:ender_wing_egg"
+          }
+        ]
+      }
+    }
+  ]
+}
