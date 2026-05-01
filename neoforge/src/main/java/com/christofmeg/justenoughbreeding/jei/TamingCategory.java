@@ -20,10 +20,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
-@SuppressWarnings("removal")
 public class TamingCategory extends AbstractRecipeCategory<TamingRecipe> {
 
-    public static final RecipeType<TamingRecipe> TYPE = new RecipeType<>(new ResourceLocation("justenoughbreeding", "taming"), TamingRecipe.class);
+    public static final RecipeType<TamingRecipe> TYPE = new RecipeType<>(ResourceLocation.fromNamespaceAndPath("justenoughbreeding", "taming"), TamingRecipe.class);
     private final IDrawableStatic bigSlot;
     private final int CATEGORY_WIDTH;
 

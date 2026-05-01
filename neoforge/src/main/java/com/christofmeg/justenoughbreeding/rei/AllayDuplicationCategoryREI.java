@@ -38,11 +38,11 @@ public class AllayDuplicationCategoryREI extends AbstractRecipeCategoryREI<Allay
             spawnEggs.add(EntryStacks.of(stack));
         }
         widgets.add(Widgets.createSlot(new Point(bounds.x + 154, bounds.y + 6)).entries(spawnEggs));
-        widgets.add(Widgets.createSlot(new Point(bounds.x + 112, bounds.y + 37)).entries(display.getInputEntries().get(0)));
+        widgets.add(Widgets.createSlot(new Point(bounds.x + 112, bounds.y + 37)).entries(display.getInputEntries().getFirst()));
 
         List<EntryIngredient> musicDiscs = new ArrayList<>();
-        musicDiscs.add(EntryIngredients.ofIngredient(Ingredient.of(ItemTags.MUSIC_DISCS)));
-        widgets.add(Widgets.createSlot(new Point(bounds.x + 102, bounds.y + 57)).entries(musicDiscs.get(0)));
+        musicDiscs.add(EntryIngredients.ofIngredient(Ingredient.of(ItemTags.CREEPER_DROP_MUSIC_DISCS)));
+        widgets.add(Widgets.createSlot(new Point(bounds.x + 102, bounds.y + 57)).entries(musicDiscs.getFirst()));
         widgets.add(Widgets.createSlot(new Point(bounds.x + 122, bounds.y + 57)).entries(List.of(EntryStacks.of(Items.JUKEBOX))));
 
         AllayDuplicationRecipe recipe = display.recipe;

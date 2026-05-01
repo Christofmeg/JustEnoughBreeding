@@ -36,25 +36,25 @@ public class BreedingCategoryREI extends AbstractRecipeCategoryREI<BreedingDispl
         widgets.add(Widgets.createSlot(new Point(bounds.x + 154, bounds.y + 6)).entries(entryStackList));
 
         boolean hasExtraInput = !display.getExtraInputEntries().isEmpty() &&
-                !display.getExtraInputEntries().get(0).isEmpty() &&
-                !display.getExtraInputEntries().get(0).get(0).isEmpty();
+                !display.getExtraInputEntries().getFirst().isEmpty() &&
+                !display.getExtraInputEntries().getFirst().getFirst().isEmpty();
 
-        boolean hasOutput = !display.getOutputEntries().get(0).isEmpty();
+        boolean hasOutput = !display.getOutputEntries().getFirst().isEmpty();
         if (hasExtraInput && hasOutput) {
-            widgets.add(Widgets.createSlot(new Point(bounds.getX() + 79, bounds.getCenterY() - 11)).entries(display.getInputEntries().get(0)));
-            widgets.add(Widgets.createSlot(new Point(bounds.getX() + 79, bounds.getCenterY() + 12)).entries(display.getExtraInputEntries().get(0)));
+            widgets.add(Widgets.createSlot(new Point(bounds.getX() + 79, bounds.getCenterY() - 11)).entries(display.getInputEntries().getFirst()));
+            widgets.add(Widgets.createSlot(new Point(bounds.getX() + 79, bounds.getCenterY() + 12)).entries(display.getExtraInputEntries().getFirst()));
         } else if (hasExtraInput) {
-            widgets.add(Widgets.createSlot(new Point(bounds.getX() + 112, bounds.getCenterY() - 11)).entries(display.getInputEntries().get(0)));
-            widgets.add(Widgets.createSlot(new Point(bounds.getX() + 112, bounds.getCenterY() + 12)).entries(display.getExtraInputEntries().get(0)));
+            widgets.add(Widgets.createSlot(new Point(bounds.getX() + 112, bounds.getCenterY() - 11)).entries(display.getInputEntries().getFirst()));
+            widgets.add(Widgets.createSlot(new Point(bounds.getX() + 112, bounds.getCenterY() + 12)).entries(display.getExtraInputEntries().getFirst()));
         } else if (!hasOutput) {
-            widgets.add(Widgets.createSlot(new Point(bounds.getX() + 112, bounds.getCenterY() + 3)).entries(display.getInputEntries().get(0)));
+            widgets.add(Widgets.createSlot(new Point(bounds.getX() + 112, bounds.getCenterY() + 3)).entries(display.getInputEntries().getFirst()));
         } else {
-            widgets.add(Widgets.createSlot(new Point(bounds.getX() + 79, bounds.getCenterY() + 3)).entries(display.getInputEntries().get(0)));
+            widgets.add(Widgets.createSlot(new Point(bounds.getX() + 79, bounds.getCenterY() + 3)).entries(display.getInputEntries().getFirst()));
         }
         if (hasOutput) {
             widgets.add(Widgets.createArrow(new Point(bounds.x + 102, bounds.getCenterY() + 2)));
             widgets.add(Widgets.createResultSlotBackground(new Point(bounds.x + 139, bounds.getCenterY() + 3)));
-            widgets.add(Widgets.createSlot(new Point(bounds.x + 139, bounds.getCenterY() + 3)).entries(display.getOutputEntries().get(0)).disableBackground().markOutput());
+            widgets.add(Widgets.createSlot(new Point(bounds.x + 139, bounds.getCenterY() + 3)).entries(display.getOutputEntries().getFirst()).disableBackground().markOutput());
         }
 
         BreedingRecipe recipe = display.recipe;

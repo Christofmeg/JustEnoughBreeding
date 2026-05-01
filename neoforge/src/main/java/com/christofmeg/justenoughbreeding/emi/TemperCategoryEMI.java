@@ -15,12 +15,11 @@ import net.minecraft.world.item.Items;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("removal")
 public class TemperCategoryEMI extends AbstractRecipeCategoryEMI {
 
     private final TemperRecipe recipe;
     public static EmiRecipeCategory TYPE = new EmiRecipeCategory(
-        new ResourceLocation(CommonConstants.MOD_ID + ":" + "temper"),
+        ResourceLocation.parse(CommonConstants.MOD_ID + ":" + "temper"),
         EmiStack.of(Items.GOLDEN_APPLE), EMIPlugin.simplifiedRenderer(), EmiRecipeSorting.none());
 
     protected TemperCategoryEMI(Builder builder, TemperRecipe temperRecipe) {

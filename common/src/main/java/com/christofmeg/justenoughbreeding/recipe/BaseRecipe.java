@@ -1,40 +1,32 @@
 package com.christofmeg.justenoughbreeding.recipe;
 
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistryAccess;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeInput;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 
-public abstract class BaseRecipe implements Recipe<CraftingContainer> {
+public abstract class BaseRecipe implements Recipe<CraftingInput> {
 
     @Override
-    public boolean matches(CraftingContainer craftingContainer, Level level) {
+    public boolean matches(CraftingInput craftingContainer, Level level) {
         return false;
     }
 
     @Override
-    public ItemStack assemble(CraftingContainer craftingContainer, RegistryAccess registryAccess) {
+    public ItemStack assemble(CraftingInput craftingContainer, HolderLookup.Provider provider) {
         return ItemStack.EMPTY;
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess registryAccess) {
+    public @NotNull ItemStack getResultItem(HolderLookup.@NotNull Provider provider) {
         return ItemStack.EMPTY;
     }
 
     @Override
     public boolean canCraftInDimensions(int i, int i1) {
         return false;
-    }
-
-    @Override
-    public ResourceLocation getId() {
-        return null;
     }
 
     @Override

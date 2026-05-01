@@ -15,12 +15,11 @@ import net.minecraft.world.item.Items;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("removal")
 public class TrustingCategoryEMI extends AbstractRecipeCategoryEMI {
 
     private final TrustingRecipe recipe;
     public static EmiRecipeCategory TYPE = new EmiRecipeCategory(
-        new ResourceLocation(CommonConstants.MOD_ID + ":" + "trusting"),
+        ResourceLocation.parse(CommonConstants.MOD_ID + ":" + "trusting"),
         EmiStack.of(Items.SWEET_BERRIES), EMIPlugin.simplifiedRenderer(), EmiRecipeSorting.none());
 
     protected TrustingCategoryEMI(Builder builder, TrustingRecipe trustingRecipe) {

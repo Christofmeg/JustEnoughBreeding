@@ -19,10 +19,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
-@SuppressWarnings("removal")
 public class TransformationCategory extends AbstractRecipeCategory<TransformationRecipe> {
 
-    public static final RecipeType<TransformationRecipe> TYPE = new RecipeType<>(new ResourceLocation(CommonConstants.MOD_ID, "transformation"), TransformationRecipe.class);
+    public static final RecipeType<TransformationRecipe> TYPE = new RecipeType<>(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "transformation"), TransformationRecipe.class);
     private final IDrawableStatic bigSlot;
     private final int CATEGORY_WIDTH;
 

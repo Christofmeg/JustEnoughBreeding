@@ -16,12 +16,11 @@ import net.minecraft.world.item.Items;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("removal")
 public class BreedingCategoryEMI extends AbstractRecipeCategoryEMI {
 
     private final BreedingRecipe recipe;
     public static final EmiRecipeCategory TYPE = new EmiRecipeCategory(
-            new ResourceLocation(CommonConstants.MOD_ID + ":" + "breeding"),
+            ResourceLocation.parse(CommonConstants.MOD_ID + ":" + "breeding"),
             EmiStack.of(Items.WHEAT), EMIPlugin.simplifiedRenderer(), EmiRecipeSorting.none());
 
     protected BreedingCategoryEMI(Builder builder, BreedingRecipe breedingRecipe) {

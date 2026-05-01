@@ -21,10 +21,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
-@SuppressWarnings("removal")
 public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> {
 
-    public static final RecipeType<BreedingRecipe> TYPE = new RecipeType<>(new ResourceLocation("justenoughbreeding", "breeding"), BreedingRecipe.class);
+    public static final RecipeType<BreedingRecipe> TYPE = new RecipeType<>(ResourceLocation.fromNamespaceAndPath("justenoughbreeding", "breeding"), BreedingRecipe.class);
     private final IDrawableStatic bigSlot;
     private final int CATEGORY_WIDTH;
 

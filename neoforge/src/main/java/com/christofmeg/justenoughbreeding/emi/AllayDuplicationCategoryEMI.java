@@ -17,12 +17,11 @@ import net.minecraft.world.item.crafting.Ingredient;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("removal")
 public class AllayDuplicationCategoryEMI extends AbstractRecipeCategoryEMI {
 
     private final AllayDuplicationRecipe recipe;
     public static final EmiRecipeCategory TYPE = new EmiRecipeCategory(
-            new ResourceLocation(CommonConstants.MOD_ID + ":" + "allay_duplication"),
+            ResourceLocation.parse(CommonConstants.MOD_ID + ":" + "allay_duplication"),
             EmiStack.of(Items.AMETHYST_SHARD), EMIPlugin.simplifiedRenderer(), EmiRecipeSorting.none());
 
     protected AllayDuplicationCategoryEMI(Builder builder, AllayDuplicationRecipe allayDuplicationRecipe) {
@@ -59,7 +58,7 @@ public class AllayDuplicationCategoryEMI extends AbstractRecipeCategoryEMI {
     public void addWidgets(WidgetHolder widgets) {
         widgets.addSlot(EmiIngredient.of(recipe.spawnEgg), 149, 1);
         widgets.addSlot(EmiIngredient.of(recipe.inputStack), 107, 32);
-        widgets.addSlot(EmiIngredient.of(Ingredient.of(ItemTags.MUSIC_DISCS)), 97, 52);
+        widgets.addSlot(EmiIngredient.of(Ingredient.of(ItemTags.CREEPER_DROP_MUSIC_DISCS)), 97, 52);
         widgets.addSlot(EmiIngredient.of(Ingredient.of(Items.JUKEBOX)), 117, 52);
         EMIUtils.drawMobSlot(0, 10, widgets);
         EMIUtils.drawMobNameAndEntity(recipe.entityType, widgets, recipe, getDisplayWidth());

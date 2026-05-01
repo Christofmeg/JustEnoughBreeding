@@ -20,10 +20,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
-@SuppressWarnings("removal")
 public class TrustingCategory extends AbstractRecipeCategory<TrustingRecipe> {
 
-    public static final RecipeType<TrustingRecipe> TYPE = new RecipeType<>(new ResourceLocation("justenoughbreeding", "trusting"), TrustingRecipe.class);
+    public static final RecipeType<TrustingRecipe> TYPE = new RecipeType<>(ResourceLocation.fromNamespaceAndPath("justenoughbreeding", "trusting"), TrustingRecipe.class);
     private final IDrawableStatic bigSlot;
     private final int CATEGORY_WIDTH;
 

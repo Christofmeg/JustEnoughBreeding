@@ -31,7 +31,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-@SuppressWarnings("removal")
 public class EMIUtils {
 
     public static void registerRecipes(EmiRegistry registration) {
@@ -41,7 +40,7 @@ public class EMIUtils {
             if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
                 registration.addRecipe(
                         AllayDuplicationCategoryEMI.builder()
-                                .id(new ResourceLocation(CommonConstants.MOD_ID, "/" + "allay_duplication" + "/" + recipe.jsonModID + "/" + recipe.jsonAnimalID))
+                                .id(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "/" + "allay_duplication" + "/" + recipe.jsonModID + "/" + recipe.jsonAnimalID))
                                 .recipe(recipe)
                                 .build()
                 );
@@ -54,7 +53,7 @@ public class EMIUtils {
             if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
                 registration.addRecipe(
                         BreedingCategoryEMI.builder()
-                                .id(new ResourceLocation(CommonConstants.MOD_ID, "/" + "breeding" + "/" + recipe.jsonModID + "/" + recipe.jsonAnimalID))
+                                .id(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "/" + "breeding" + "/" + recipe.jsonModID + "/" + recipe.jsonAnimalID))
                                 .recipe(recipe)
                                 .build()
                 );
@@ -67,7 +66,7 @@ public class EMIUtils {
             if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
                 registration.addRecipe(
                         TamingCategoryEMI.builder()
-                                .id(new ResourceLocation(CommonConstants.MOD_ID, "/" + "taming" + "/" + recipe.jsonModID + "/" + recipe.jsonAnimalID))
+                                .id(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "/" + "taming" + "/" + recipe.jsonModID + "/" + recipe.jsonAnimalID))
                                 .recipe(recipe)
                                 .build()
                 );
@@ -80,7 +79,7 @@ public class EMIUtils {
             if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
                 registration.addRecipe(
                         TemperCategoryEMI.builder()
-                                .id(new ResourceLocation(CommonConstants.MOD_ID, "/" + "temper" + "/" + recipe.jsonModID + "/" + recipe.jsonAnimalID))
+                                .id(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "/" + "temper" + "/" + recipe.jsonModID + "/" + recipe.jsonAnimalID))
                                 .recipe(recipe)
                                 .build()
                 );
@@ -93,7 +92,7 @@ public class EMIUtils {
             if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.inputEntityType != null && recipe.outputEntityType != null && !recipe.inputStack.isEmpty()) {
                 registration.addRecipe(
                         TransformationCategoryEMI.builder()
-                                .id(new ResourceLocation(CommonConstants.MOD_ID, "/" + "transformation" + "/" + recipe.jsonModID + "/" + recipe.modFolder + "/" + recipe.fileName))
+                                .id(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "/" + "transformation" + "/" + recipe.jsonModID + "/" + recipe.modFolder + "/" + recipe.fileName))
                                 .recipe(recipe)
                                 .build()
                 );
@@ -106,7 +105,7 @@ public class EMIUtils {
             if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
                 registration.addRecipe(
                         TrustingCategoryEMI.builder()
-                                .id(new ResourceLocation(CommonConstants.MOD_ID, "/" + "trusting" + "/" + recipe.jsonModID + "/" + recipe.jsonAnimalID))
+                                .id(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "/" + "trusting" + "/" + recipe.jsonModID + "/" + recipe.jsonAnimalID))
                                 .recipe(recipe)
                                 .build()
                 );
@@ -136,7 +135,7 @@ public class EMIUtils {
         widgets.addTexture(RIGHT, mobSlotX + 61, mobSlotY + 52);
         widgets.addTexture(RIGHT, mobSlotX + 61, mobSlotY + 56);
 
-        int color = CommonClientUtils.getPixelColor(new ResourceLocation("emi", "textures/gui/widgets.png"), 30 ,12);
+        int color = CommonClientUtils.getPixelColor(ResourceLocation.fromNamespaceAndPath("emi", "textures/gui/widgets.png"), 30 ,12);
         if (color == 0) color = -7631989;
         int startX = mobSlotX + 1;
         int startY = mobSlotY - 4;

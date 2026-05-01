@@ -15,12 +15,11 @@ import net.minecraft.world.item.Items;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("removal")
 public class TamingCategoryEMI extends AbstractRecipeCategoryEMI {
 
     private final TamingRecipe recipe;
     public static EmiRecipeCategory TYPE = new EmiRecipeCategory(
-        new ResourceLocation(CommonConstants.MOD_ID + ":" + "taming"),
+        ResourceLocation.parse(CommonConstants.MOD_ID + ":" + "taming"),
         EmiStack.of(Items.BONE), EMIPlugin.simplifiedRenderer(), EmiRecipeSorting.none());
 
     protected TamingCategoryEMI(Builder builder, TamingRecipe tamingRecipe) {

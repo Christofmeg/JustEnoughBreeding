@@ -5,6 +5,7 @@ import com.christofmeg.justenoughbreeding.serializer.*;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.animal.allay.Allay;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.crafting.Recipe;
@@ -12,9 +13,7 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.IExtensionPoint;
 import net.neoforged.fml.ModList;
-import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -49,21 +48,20 @@ public class JustEnoughBreeding {
     public static final DeferredHolder<RecipeType<?>, RecipeType<?>> TRANSFORMATION_PROVIDER_TYPE = RECIPE_TYPES.register("transformation", () -> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "transformation")));
     public static final DeferredHolder<RecipeSerializer<TransformationRecipe>, RecipeSerializer<TransformationRecipe>> TRANSFORMATION_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("transformation", TransformationSerializer::new);
 
-    public static List<RecipeHolder<Recipe<?>>> allayDuplicationRecipes = new ArrayList<net.minecraft.world.item.crafting.RecipeHolder<net.minecraft.world.item.crafting.Recipe<?>>>();
-    public static List<RecipeHolder<Recipe<?>>> breedingRecipes = new ArrayList<net.minecraft.world.item.crafting.RecipeHolder<net.minecraft.world.item.crafting.Recipe<?>>>();
-    public static List<RecipeHolder<Recipe<?>>> tamingRecipes = new ArrayList<net.minecraft.world.item.crafting.RecipeHolder<net.minecraft.world.item.crafting.Recipe<?>>>();
+    public static List<AllayDuplicationRecipe> allayDuplicationRecipes = new ArrayList<>();
+    public static List<BreedingRecipe> breedingRecipes = new ArrayList<>();
+    public static List<TamingRecipe> tamingRecipes = new ArrayList<>();
     public static List<TemperRecipe> temperRecipes = new ArrayList<>();
     public static List<TransformationRecipe> transformationRecipes = new ArrayList<>();
-    public static List<RecipeHolder<Recipe<?>>> trustingRecipes = new ArrayList<net.minecraft.world.item.crafting.RecipeHolder<net.minecraft.world.item.crafting.Recipe<?>>>();
+    public static List<TrustingRecipe> trustingRecipes = new ArrayList<>();
 
-    public JustEnoughBreeding() {
-        IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
+    public JustEnoughBreeding(IEventBus modBus) {
         RECIPES_SERIALIZERS.register(modBus);
         RECIPE_TYPES.register(modBus);
         modBus.register(this);
 
         //Make sure the mod being absent on the other network side does not cause the client to display the server as incompatible
-        ModLoadingContext.get().registerExtensionPoint(IExtensionPoint.DisplayTest.class, () -> new IExtensionPoint.DisplayTest(()-> NetworkConstants.IGNORESERVERONLY, (remote, isServer)-> true));
+    //    ModLoadingContext.get().registerExtensionPoint(IExtensionPoint.DisplayTest.class, () -> new IExtensionPoint.DisplayTest(()-> NetworkConstants.IGNORESERVERONLY, (remote, isServer)-> true));
     }
 
     public static Item getItemFromLoaderRegistries(ResourceLocation resourceLocation) {
@@ -79,7 +77,7 @@ public class JustEnoughBreeding {
     }
 
     public static SpawnEggItem getSpawnEggItem(EntityType<?> entityType) {
-        return ForgeSpawnEggItem.fromEntityType(entityType);
+        return SpawnEggItem.byId(entityType);
     }
 
     public static Boolean isModLoaded(String modID) {

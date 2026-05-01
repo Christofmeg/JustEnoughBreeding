@@ -22,10 +22,9 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
-@SuppressWarnings("removal")
 public class AllayDuplicationCategory extends AbstractRecipeCategory<AllayDuplicationRecipe> {
 
-    public static final RecipeType<AllayDuplicationRecipe> TYPE = new RecipeType<>(new ResourceLocation(CommonConstants.MOD_ID, "allay_duplication"), AllayDuplicationRecipe.class);
+    public static final RecipeType<AllayDuplicationRecipe> TYPE = new RecipeType<>(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "allay_duplication"), AllayDuplicationRecipe.class);
     private final IDrawableStatic bigSlot;
     private final int CATEGORY_WIDTH;
 
@@ -40,7 +39,7 @@ public class AllayDuplicationCategory extends AbstractRecipeCategory<AllayDuplic
         builder.addInputSlot(149, 1).setStandardSlotBackground().addIngredients(recipe.spawnEgg);
         builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).addIngredients(recipe.spawnEgg);
         builder.addInputSlot(107, 32).setStandardSlotBackground().addIngredients(recipe.inputStack);
-        builder.addInputSlot(97, 52).setStandardSlotBackground().addIngredients(Ingredient.of(ItemTags.MUSIC_DISCS));
+        builder.addInputSlot(97, 52).setStandardSlotBackground().addIngredients(Ingredient.of(ItemTags.CREEPER_DROP_MUSIC_DISCS));
         builder.addInputSlot(117, 52).setStandardSlotBackground().addIngredients(Ingredient.of(Items.JUKEBOX));
     }
 

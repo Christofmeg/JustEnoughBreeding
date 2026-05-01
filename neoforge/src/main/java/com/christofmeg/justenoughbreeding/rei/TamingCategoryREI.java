@@ -36,14 +36,14 @@ public class TamingCategoryREI extends AbstractRecipeCategoryREI<TamingDisplay> 
         widgets.add(Widgets.createSlot(new Point(bounds.x + 154, bounds.y + 6)).entries(entryStackList));
 
         boolean hasExtraInput = !display.getExtraInputEntries().isEmpty() &&
-                !display.getExtraInputEntries().get(0).isEmpty() &&
-                !display.getExtraInputEntries().get(0).get(0).isEmpty();
+                !display.getExtraInputEntries().getFirst().isEmpty() &&
+                !display.getExtraInputEntries().getFirst().getFirst().isEmpty();
 
         if (hasExtraInput) {
-            widgets.add(Widgets.createSlot(new Point(bounds.getX() + 112, bounds.getCenterY() - 11)).entries(display.getInputEntries().get(0)));
-            widgets.add(Widgets.createSlot(new Point(bounds.getX() + 112, bounds.getCenterY() + 12)).entries(display.getExtraInputEntries().get(0)));
+            widgets.add(Widgets.createSlot(new Point(bounds.getX() + 112, bounds.getCenterY() - 11)).entries(display.getInputEntries().getFirst()));
+            widgets.add(Widgets.createSlot(new Point(bounds.getX() + 112, bounds.getCenterY() + 12)).entries(display.getExtraInputEntries().getFirst()));
         } else {
-            widgets.add(Widgets.createSlot(new Point(bounds.getX() + 112, bounds.getCenterY() + 3)).entries(display.getInputEntries().get(0)));
+            widgets.add(Widgets.createSlot(new Point(bounds.getX() + 112, bounds.getCenterY() + 3)).entries(display.getInputEntries().getFirst()));
         }
 
         TamingRecipe recipe = display.recipe;

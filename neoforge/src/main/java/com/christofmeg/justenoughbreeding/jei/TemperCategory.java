@@ -20,10 +20,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
-@SuppressWarnings("removal")
 public class TemperCategory extends AbstractRecipeCategory<TemperRecipe> {
 
-    public static final RecipeType<TemperRecipe> TYPE = new RecipeType<>(new ResourceLocation("justenoughbreeding", "temper"), TemperRecipe.class);
+    public static final RecipeType<TemperRecipe> TYPE = new RecipeType<>(ResourceLocation.fromNamespaceAndPath("justenoughbreeding", "temper"), TemperRecipe.class);
     private final IDrawableStatic bigSlot;
     private final int CATEGORY_WIDTH;
 

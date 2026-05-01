@@ -3,11 +3,13 @@ package com.christofmeg.justenoughbreeding.utils;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.TagParser;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.food.FoodProperties;
@@ -25,14 +27,9 @@ public class CommonUtils {
         List<String> edibleMeatItemNames = new ArrayList<>();
         for (ResourceLocation key : BuiltInRegistries.ITEM.keySet()) {
             Item item = BuiltInRegistries.ITEM.get(key);
-            FoodProperties foodProperties = item.getFoodProperties();
-            if (includeRottenFlesh) {
-                if (foodProperties != null && item.isEdible() && foodProperties.isMeat()) {
-                    edibleMeatItemNames.add(key.toString());
-                }
-            }
-            else {
-                if (foodProperties != null && item.isEdible() && foodProperties.isMeat() && item != Items.ROTTEN_FLESH) {
+            FoodProperties foodProperties = item.components().get(DataComponents.FOOD);
+            if (foodProperties != null && item.builtInRegistryHolder().is(ItemTags.MEAT)) {
+                if (includeRottenFlesh || item != Items.ROTTEN_FLESH) {
                     edibleMeatItemNames.add(key.toString());
                 }
             }

@@ -1,10 +1,8 @@
 package com.christofmeg.justenoughbreeding.recipe;
 
-import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -38,7 +36,7 @@ public class TamingRecipe extends BaseRecipe {
         this.inputEntityNbt = inputEntityNbt;
     }
 
-    @Override public @NotNull ResourceLocation getId() { return ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "taming" + "/" + this.modFolder + "/" + this.fileName + "/" + this.jsonModID + "/" + this.jsonAnimalID); }
+//    @Override public @NotNull ResourceLocation getId() { return ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "taming" + "/" + this.modFolder + "/" + this.fileName + "/" + this.jsonModID + "/" + this.jsonAnimalID); }
     @Override public @NotNull RecipeSerializer<?> getSerializer() { return JustEnoughBreeding.TAMING_PROVIDER_SERIALIZER.get(); }
     @Override public @NotNull RecipeType<?> getType() { return JustEnoughBreeding.TAMING_PROVIDER_TYPE.get(); }
 

@@ -29,6 +29,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
@@ -119,7 +120,7 @@ public class Utils {
         }
     }
 
-    public static RecipeHolder<Recipe<?>> readJsonContents(@NotNull ResourceLocation jsonPath, @NotNull JsonObject json, String recipeType) {
+    public static RecipeHolder<BaseRecipe> readJsonContents(@NotNull ResourceLocation jsonPath, @NotNull JsonObject json, String recipeType) {
         JsonArray mobs = json.getAsJsonArray("mobs");
         JsonObject mobObject = mobs.get(0).getAsJsonObject();
         Map.Entry<String, JsonElement> mobEntry = mobObject.entrySet().iterator().next();
@@ -175,7 +176,7 @@ public class Utils {
         if (mobData.has("spawn_eggs")) {
             Utils.addIngredients(mobData, spawnEggs, "spawn_eggs");
         } else {
-            ItemStack spawnEgg = Optional.ofNullable(ForgeSpawnEggItem.fromEntityType(entityType))
+            ItemStack spawnEgg = Optional.ofNullable(SpawnEggItem.byId(entityType))
                     .map(SpawnEggItem::getDefaultInstance)
                     .orElse(ItemStack.EMPTY);
             spawnEggs = new ArrayList<>(List.of(Ingredient.of(spawnEgg)));
@@ -187,7 +188,7 @@ public class Utils {
 
         switch (recipeType) {
             case "trusting" -> {
-                for (RecipeHolder<Recipe<?>> existingRecipe : JustEnoughBreeding.trustingRecipes) {
+                for (TrustingRecipe existingRecipe : JustEnoughBreeding.trustingRecipes) {
                     if (existingRecipe.jsonModID.equals(jsonModID) && existingRecipe.jsonAnimalID.equals(jsonAnimalID)) {
                         inputIngredients.add(existingRecipe.inputStack);
                         spawnEggs.add(existingRecipe.spawnEgg);
@@ -211,7 +212,7 @@ public class Utils {
                 );
             }
             case "taming" -> {
-                for (RecipeHolder<Recipe<?>> existingRecipe : JustEnoughBreeding.tamingRecipes) {
+                for (TamingRecipe existingRecipe : JustEnoughBreeding.tamingRecipes) {
                     if (existingRecipe.jsonModID.equals(jsonModID) && existingRecipe.jsonAnimalID.equals(jsonAnimalID)) {
                         inputIngredients.add(existingRecipe.inputStack);
                         spawnEggs.add(existingRecipe.spawnEgg);
@@ -235,7 +236,7 @@ public class Utils {
                 );
             }
             case "allay_duplication" -> {
-                for (RecipeHolder<Recipe<?>> existingRecipe : JustEnoughBreeding.allayDuplicationRecipes) {
+                for (AllayDuplicationRecipe existingRecipe : JustEnoughBreeding.allayDuplicationRecipes) {
                     if (existingRecipe.jsonModID.equals(jsonModID) && existingRecipe.jsonAnimalID.equals(jsonAnimalID)) {
                         inputIngredients.add(existingRecipe.inputStack);
                         spawnEggs.add(existingRecipe.spawnEgg);
@@ -256,7 +257,7 @@ public class Utils {
                 );
             }
             default -> {
-                for (RecipeHolder<Recipe<?>> existingRecipe : JustEnoughBreeding.breedingRecipes) {
+                for (BreedingRecipe existingRecipe : JustEnoughBreeding.breedingRecipes) {
                     if (existingRecipe.jsonModID.equals(jsonModID) && existingRecipe.jsonAnimalID.equals(jsonAnimalID)) {
                         inputIngredients.add(existingRecipe.inputStack);
                         extraInputIngredients.add(existingRecipe.extraInputStack);

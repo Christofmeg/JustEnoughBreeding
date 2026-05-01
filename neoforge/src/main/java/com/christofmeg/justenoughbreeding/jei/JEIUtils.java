@@ -27,7 +27,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
-@SuppressWarnings("removal")
 public class JEIUtils {
 
     public static void registerRecipes(IRecipeRegistration registration) {
@@ -106,7 +105,7 @@ public class JEIUtils {
         draw(bigSlot, graphics, mobSlotX + 24, mobSlotY + 55, bigSlot.getHeight(), 1, 25, 24, 1);
         draw(bigSlot, graphics, mobSlotX + 35, mobSlotY + 55, bigSlot.getHeight(), 14, 25, 11, 1);
 
-        int color = CommonClientUtils.getPixelColor(new ResourceLocation("jei", "textures/jei/atlas/gui/output_slot.png"), 13 ,13);
+        int color = CommonClientUtils.getPixelColor(ResourceLocation.fromNamespaceAndPath("jei", "textures/jei/atlas/gui/output_slot.png"), 13 ,13);
         int startX = mobSlotX + 1;
         int startY = mobSlotY + 1;
         int width  = 59;

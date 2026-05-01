@@ -16,12 +16,11 @@ import net.minecraft.world.item.Items;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("removal")
 public class TransformationCategoryEMI extends AbstractRecipeCategoryEMI {
 
     private final TransformationRecipe recipe;
     public static final EmiRecipeCategory TYPE = new EmiRecipeCategory(
-            new ResourceLocation(CommonConstants.MOD_ID + ":" + "transformation"),
+            ResourceLocation.parse(CommonConstants.MOD_ID + ":" + "transformation"),
             EmiStack.of(Items.GOLDEN_CARROT), EMIPlugin.simplifiedRenderer(), EmiRecipeSorting.none());
 
     protected TransformationCategoryEMI(Builder builder, TransformationRecipe recipe) {

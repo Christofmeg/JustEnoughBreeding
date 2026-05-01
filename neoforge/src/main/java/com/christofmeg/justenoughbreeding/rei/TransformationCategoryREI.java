@@ -43,14 +43,14 @@ public class TransformationCategoryREI extends AbstractRecipeCategoryREI<Transfo
         widgets.add(Widgets.createSlot(new Point(bounds.x + 90, bounds.y + 79)).entries(outputSpawnEggs));
 
         boolean hasExtraInput = !display.getExtraInputEntries().isEmpty() &&
-                !display.getExtraInputEntries().get(0).isEmpty() &&
-                !display.getExtraInputEntries().get(0).get(0).isEmpty();
+                !display.getExtraInputEntries().getFirst().isEmpty() &&
+                !display.getExtraInputEntries().getFirst().getFirst().isEmpty();
 
         if (hasExtraInput) {
-            widgets.add(Widgets.createSlot(new Point(bounds.x + 70, bounds.y + 27)).entries(display.getInputEntries().get(0)));
-            widgets.add(Widgets.createSlot(new Point(bounds.x + 90, bounds.y + 27)).entries(display.getExtraInputEntries().get(0)));
+            widgets.add(Widgets.createSlot(new Point(bounds.x + 70, bounds.y + 27)).entries(display.getInputEntries().getFirst()));
+            widgets.add(Widgets.createSlot(new Point(bounds.x + 90, bounds.y + 27)).entries(display.getExtraInputEntries().getFirst()));
         } else {
-            widgets.add(Widgets.createSlot(new Point(bounds.x + 80, bounds.y + 27)).entries(display.getInputEntries().get(0)));
+            widgets.add(Widgets.createSlot(new Point(bounds.x + 80, bounds.y + 27)).entries(display.getInputEntries().getFirst()));
         }
 
         widgets.add(Widgets.createArrow(new Point(bounds.x + 76, bounds.getCenterY() + 3)));
