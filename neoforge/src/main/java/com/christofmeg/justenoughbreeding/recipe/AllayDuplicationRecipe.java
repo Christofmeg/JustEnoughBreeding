@@ -14,29 +14,21 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
-public class BreedingRecipe extends BaseRecipe {
+public class AllayDuplicationRecipe extends BaseRecipe {
 
     public final EntityType<?> entityType;
     public @NotNull Ingredient inputStack;
     public @NotNull Ingredient spawnEgg;
-    public final @Nullable Boolean needsToBeTamed;
-    public @NotNull Ingredient resultItemStack;
-    public @NotNull Ingredient extraInputStack;
-    public final @Nullable Boolean animalTrusting;
     public final String jsonModID;
     public final String jsonAnimalID;
     public final String modFolder;
     public final String fileName;
     public final @Nullable CompoundTag inputEntityNbt;
 
-    public BreedingRecipe(EntityType<?> entityType, @Nullable Ingredient inputStack, @Nullable Ingredient spawnEgg, @Nullable Boolean needsToBeTamed, @Nullable Ingredient resultItemStack, @Nullable Ingredient extraInputStack, @Nullable Boolean animalTrusting, String jsonModID, String jsonAnimalID, String modFolder, String fileName, @Nullable CompoundTag inputEntityNbt) {
+    public AllayDuplicationRecipe(EntityType<?> entityType, Ingredient inputStack, Ingredient spawnEgg, String jsonModID, String jsonAnimalID, String modFolder, String fileName, @Nullable CompoundTag inputEntityNbt) {
         this.entityType = entityType;
         this.inputStack = CommonUtils.safe(inputStack);
         this.spawnEgg = CommonUtils.safe(spawnEgg);
-        this.needsToBeTamed = needsToBeTamed;
-        this.resultItemStack = CommonUtils.safe(resultItemStack);
-        this.extraInputStack = CommonUtils.safe(extraInputStack);
-        this.animalTrusting = animalTrusting;
         this.jsonModID = Objects.requireNonNull(jsonModID, "jsonModID");
         this.jsonAnimalID = Objects.requireNonNull(jsonAnimalID, "jsonAnimalID");
         this.modFolder = Objects.requireNonNull(modFolder, "modFolder");
@@ -44,18 +36,16 @@ public class BreedingRecipe extends BaseRecipe {
         this.inputEntityNbt = inputEntityNbt;
     }
 
-    @Override public @NotNull ResourceLocation getId() { return ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "breeding" + "/" + this.modFolder + "/" + this.fileName + "/" + this.jsonModID + "/" + this.jsonAnimalID); }
-    @Override public @NotNull RecipeSerializer<?> getSerializer() { return JustEnoughBreeding.BREEDING_PROVIDER_SERIALIZER.get(); }
-    @Override public @NotNull RecipeType<?> getType() { return JustEnoughBreeding.BREEDING_PROVIDER_TYPE.get(); }
+    @Override public @NotNull ResourceLocation getId() { return ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "allay_duplication" + "/" + this.modFolder + "/" + this.fileName + "/" + this.jsonModID + "/" + this.jsonAnimalID); }
+    @Override public @NotNull RecipeSerializer<?> getSerializer() { return JustEnoughBreeding.ALLAY_DUPLICATION_PROVIDER_SERIALIZER.get(); }
+    @Override public @NotNull RecipeType<?> getType() { return JustEnoughBreeding.ALLAY_DUPLICATION_PROVIDER_TYPE.get(); }
 
     public void setInputIngredient(Ingredient ingredient) { this.inputStack = CommonUtils.safe(ingredient); }
-    public void setExtraInputIngredient(Ingredient ingredient) { this.extraInputStack = CommonUtils.safe(ingredient); }
-    public void setOutputIngredient(Ingredient ingredient) { this.resultItemStack = CommonUtils.safe(ingredient); }
     public void setSpawnEggs(Ingredient ingredient) { this.spawnEgg = CommonUtils.safe(ingredient); }
 
-    public static class DummyRecipe extends BreedingRecipe {
+    public static class DummyRecipe extends AllayDuplicationRecipe {
         public DummyRecipe(String jsonModID, String jsonAnimalID, String  modFolder, String fileName) {
-            super(null, null, null, null, null, null, null, jsonModID, jsonAnimalID, modFolder, fileName, null);
+            super(null, null, null, jsonModID, jsonAnimalID, modFolder, fileName, null);
         }
     }
 

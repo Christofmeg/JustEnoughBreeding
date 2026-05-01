@@ -1,11 +1,10 @@
 package com.christofmeg.justenoughbreeding.emi;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
-import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
+import com.christofmeg.justenoughbreeding.recipe.TrustingRecipe;
 import dev.emi.emi.api.recipe.EmiRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
 import dev.emi.emi.api.recipe.EmiRecipeSorting;
-import dev.emi.emi.api.render.EmiTexture;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.api.widget.WidgetHolder;
@@ -17,16 +16,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("removal")
-public class BreedingCategoryEMI extends AbstractRecipeCategoryEMI {
+public class TrustingCategoryEMI extends AbstractRecipeCategoryEMI {
 
-    private final BreedingRecipe recipe;
-    public static final EmiRecipeCategory TYPE = new EmiRecipeCategory(
-            new ResourceLocation(CommonConstants.MOD_ID + ":" + "breeding"),
-            EmiStack.of(Items.WHEAT), EMIPlugin.simplifiedRenderer(), EmiRecipeSorting.none());
+    private final TrustingRecipe recipe;
+    public static EmiRecipeCategory TYPE = new EmiRecipeCategory(
+        new ResourceLocation(CommonConstants.MOD_ID + ":" + "trusting"),
+        EmiStack.of(Items.SWEET_BERRIES), EMIPlugin.simplifiedRenderer(), EmiRecipeSorting.none());
 
-    protected BreedingCategoryEMI(Builder builder, BreedingRecipe breedingRecipe) {
+    protected TrustingCategoryEMI(Builder builder, TrustingRecipe trustingRecipe) {
         super(TYPE, 168, 93, builder.id);
-        this.recipe = breedingRecipe;
+        this.recipe = trustingRecipe;
     }
 
     public static Builder builder() {
@@ -49,13 +48,8 @@ public class BreedingCategoryEMI extends AbstractRecipeCategoryEMI {
     @Override
     public List<EmiStack> getOutputs() {
         List<EmiStack> list = new ArrayList<>();
-        if (recipe.resultItemStack != null) {
-            for (ItemStack item : recipe.resultItemStack.getItems()) {
-                list.add(EmiStack.of(item));
-            }
-            for (ItemStack item : recipe.spawnEgg.getItems()) {
-                list.add(EmiStack.of(item));
-            }
+        for (ItemStack item : recipe.spawnEgg.getItems()) {
+            list.add(EmiStack.of(item));
         }
         return list;
     }
@@ -66,21 +60,11 @@ public class BreedingCategoryEMI extends AbstractRecipeCategoryEMI {
         int inputX = 69 + 5;
         int inputY = 48;
         boolean hasExtraInput = recipe.extraInputStack != null && !recipe.extraInputStack.isEmpty();
-        boolean hasOutput = recipe.resultItemStack != null && !recipe.resultItemStack.isEmpty();
-        if (hasExtraInput && hasOutput) {
-            widgets.addSlot(EmiIngredient.of(recipe.inputStack), inputX, 38);
-            widgets.addSlot(EmiIngredient.of(recipe.extraInputStack), inputX, 57);
-        } else if (hasExtraInput) {
+        if (hasExtraInput) {
             widgets.addSlot(EmiIngredient.of(recipe.inputStack), inputX + 33, 38);
             widgets.addSlot(EmiIngredient.of(recipe.extraInputStack), inputX + 33, 57);
-        } else if (!hasOutput) {
-            widgets.addSlot(EmiIngredient.of(recipe.inputStack), inputX  + 33, inputY);
         } else {
-            widgets.addSlot(EmiIngredient.of(recipe.inputStack), inputX, inputY);
-        }
-        if (hasOutput) {
-            widgets.addTexture(EmiTexture.EMPTY_ARROW, 94 + 4, 48);
-            widgets.addSlot(EmiIngredient.of(recipe.resultItemStack), 126 + 4, 44).large(true).recipeContext(this);
+            widgets.addSlot(EmiIngredient.of(recipe.inputStack), inputX  + 33, inputY);
         }
         EMIUtils.drawMobSlot(0, 10, widgets);
         EMIUtils.drawMobNameAndEntity(recipe.entityType, widgets, recipe, getDisplayWidth());
@@ -89,12 +73,12 @@ public class BreedingCategoryEMI extends AbstractRecipeCategoryEMI {
 
     public static class Builder {
         private ResourceLocation id;
-        private BreedingRecipe recipe;
+        private TrustingRecipe recipe;
 
         private Builder() {}
 
         public EmiRecipe build() {
-            return new BreedingCategoryEMI(this, recipe);
+            return new TrustingCategoryEMI(this, recipe);
         }
 
         public Builder id(ResourceLocation id) {
@@ -102,7 +86,7 @@ public class BreedingCategoryEMI extends AbstractRecipeCategoryEMI {
             return this;
         }
 
-        public Builder recipe(BreedingRecipe recipe) {
+        public Builder recipe(TrustingRecipe recipe) {
             this.recipe = recipe;
             return this;
         }

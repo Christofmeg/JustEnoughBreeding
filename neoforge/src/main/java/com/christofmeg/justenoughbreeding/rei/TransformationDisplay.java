@@ -1,6 +1,6 @@
 package com.christofmeg.justenoughbreeding.rei;
 
-import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
+import com.christofmeg.justenoughbreeding.recipe.TransformationRecipe;
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;
 import me.shedaniel.rei.api.common.display.basic.BasicDisplay;
 import me.shedaniel.rei.api.common.entry.EntryIngredient;
@@ -10,14 +10,14 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 
-public class BreedingDisplay extends BasicDisplay {
+public class TransformationDisplay extends BasicDisplay {
 
     protected List<EntryIngredient> extraInputs;
-    public BreedingRecipe recipe;
+    public TransformationRecipe recipe;
 
-    public BreedingDisplay(BreedingRecipe recipe) {
-        super(List.of(EntryIngredients.ofIngredient(recipe.inputStack), EntryIngredients.ofIngredient(recipe.spawnEgg)),
-                List.of(EntryIngredients.ofIngredient(recipe.resultItemStack), EntryIngredients.ofIngredient(recipe.spawnEgg))
+    public TransformationDisplay(TransformationRecipe recipe) {
+        super(List.of(EntryIngredients.ofIngredient(recipe.inputStack), EntryIngredients.ofIngredient(recipe.inputSpawnEgg)),
+                List.of(EntryIngredients.ofIngredient(recipe.outputSpawnEgg))
         );
         this.recipe = recipe;
         if (recipe.extraInputStack != null) {
@@ -29,7 +29,7 @@ public class BreedingDisplay extends BasicDisplay {
 
     @Override
     public CategoryIdentifier<?> getCategoryIdentifier() {
-        return BreedingCategoryREI.TYPE;
+        return TransformationCategoryREI.TYPE;
     }
 
     public List<EntryIngredient> getExtraInputEntries() {
