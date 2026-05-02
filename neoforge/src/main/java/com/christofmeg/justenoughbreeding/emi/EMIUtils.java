@@ -25,6 +25,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -34,9 +35,11 @@ import java.util.List;
 public class EMIUtils {
 
     public static void registerRecipes(EmiRegistry registration) {
-        List<AllayDuplicationRecipe> allayDuplicationRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.ALLAY_DUPLICATION_PROVIDER_TYPE.get()));
-        allayDuplicationRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
-        for (AllayDuplicationRecipe recipe : allayDuplicationRecipes) {
+
+        ArrayList<RecipeHolder<AllayDuplicationRecipe>> allayDuplicationRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.ALLAY_DUPLICATION_PROVIDER_TYPE.get()));
+        allayDuplicationRecipes.sort(Comparator.comparing(r -> r.value().jsonAnimalID == null ? "" : r.value().jsonAnimalID));
+        for (RecipeHolder<AllayDuplicationRecipe> recipeHold : allayDuplicationRecipes) {
+            AllayDuplicationRecipe recipe = recipeHold.value();
             if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
                 registration.addRecipe(
                         AllayDuplicationCategoryEMI.builder()
@@ -47,9 +50,10 @@ public class EMIUtils {
             }
         }
 
-        List<BreedingRecipe> breedingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.BREEDING_PROVIDER_TYPE.get()));
-        breedingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
-        for (BreedingRecipe recipe : breedingRecipes) {
+        ArrayList<RecipeHolder<BreedingRecipe>> breedingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.BREEDING_PROVIDER_TYPE.get()));
+        breedingRecipes.sort(Comparator.comparing(r -> r.value().jsonAnimalID == null ? "" : r.value().jsonAnimalID));
+        for (RecipeHolder<BreedingRecipe> recipeHold : breedingRecipes) {
+            BreedingRecipe recipe = recipeHold.value();
             if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
                 registration.addRecipe(
                         BreedingCategoryEMI.builder()
@@ -60,9 +64,10 @@ public class EMIUtils {
             }
         }
 
-        List<TamingRecipe> tamingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TAMING_PROVIDER_TYPE.get()));
-        tamingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
-        for (TamingRecipe recipe : tamingRecipes) {
+        ArrayList<RecipeHolder<TamingRecipe>> tamingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TAMING_PROVIDER_TYPE.get()));
+        tamingRecipes.sort(Comparator.comparing(r -> r.value().jsonAnimalID == null ? "" : r.value().jsonAnimalID));
+        for (RecipeHolder<TamingRecipe> recipeHold : tamingRecipes) {
+            TamingRecipe recipe = recipeHold.value();
             if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
                 registration.addRecipe(
                         TamingCategoryEMI.builder()
@@ -73,9 +78,10 @@ public class EMIUtils {
             }
         }
 
-        List<TemperRecipe> temperRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TEMPER_PROVIDER_TYPE.get()));
-        temperRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
-        for (TemperRecipe recipe : temperRecipes) {
+        ArrayList<RecipeHolder<TemperRecipe>> temperRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TEMPER_PROVIDER_TYPE.get()));
+        temperRecipes.sort(Comparator.comparing(r -> r.value().jsonAnimalID == null ? "" : r.value().jsonAnimalID));
+        for (RecipeHolder<TemperRecipe> recipeHold : temperRecipes) {
+            TemperRecipe recipe = recipeHold.value();
             if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
                 registration.addRecipe(
                         TemperCategoryEMI.builder()
@@ -86,9 +92,10 @@ public class EMIUtils {
             }
         }
 
-        List<TransformationRecipe> transformationRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE.get()));
-        transformationRecipes.sort(Comparator.comparing(r -> r.outputEntityType == null ? r.fileName : r.outputEntityType.toShortString()));
-        for (TransformationRecipe recipe : transformationRecipes) {
+        ArrayList<RecipeHolder<TransformationRecipe>> transformationRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE.get()));
+        transformationRecipes.sort(Comparator.comparing(r -> r.value().outputEntityType == null ? r.value().fileName : r.value().outputEntityType.toShortString()));
+        for (RecipeHolder<TransformationRecipe> recipeHold : transformationRecipes) {
+            TransformationRecipe recipe = recipeHold.value();
             if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.inputEntityType != null && recipe.outputEntityType != null && !recipe.inputStack.isEmpty()) {
                 registration.addRecipe(
                         TransformationCategoryEMI.builder()
@@ -99,9 +106,10 @@ public class EMIUtils {
             }
         }
 
-        List<TrustingRecipe> trustingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TRUSTING_PROVIDER_TYPE.get()));
-        trustingRecipes.sort(Comparator.comparing(r -> r.jsonAnimalID == null ? "" : r.jsonAnimalID));
-        for (TrustingRecipe recipe : trustingRecipes) {
+        ArrayList<RecipeHolder<TrustingRecipe>>trustingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TRUSTING_PROVIDER_TYPE.get()));
+        trustingRecipes.sort(Comparator.comparing(r -> r.value().jsonAnimalID == null ? "" : r.value().jsonAnimalID));
+        for (RecipeHolder<TrustingRecipe> recipeHold : trustingRecipes) {
+            TrustingRecipe recipe = recipeHold.value();
             if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
                 registration.addRecipe(
                         TrustingCategoryEMI.builder()

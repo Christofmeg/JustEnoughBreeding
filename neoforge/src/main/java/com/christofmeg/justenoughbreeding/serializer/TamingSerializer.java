@@ -6,8 +6,11 @@ import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import com.christofmeg.justenoughbreeding.utils.Utils;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -15,7 +18,16 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import org.jetbrains.annotations.NotNull;
 
 public class TamingSerializer implements RecipeSerializer<TamingRecipe> {
+    @Override
+    public MapCodec<TamingRecipe> codec() {
+        return null;
+    }
 
+    @Override
+    public StreamCodec<RegistryFriendlyByteBuf, TamingRecipe> streamCodec() {
+        return null;
+    }
+/*
     @Override
     public @NotNull TamingRecipe fromJson(@NotNull ResourceLocation jsonPath, @NotNull JsonObject json) {
         return (TamingRecipe) Utils.readJsonContents(jsonPath, json, "taming");
@@ -68,5 +80,5 @@ public class TamingSerializer implements RecipeSerializer<TamingRecipe> {
         } else {
             buf.writeBoolean(false);
         }
-    }
+    }*/
 }

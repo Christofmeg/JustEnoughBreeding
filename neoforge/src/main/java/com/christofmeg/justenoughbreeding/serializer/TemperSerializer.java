@@ -10,9 +10,12 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.TagParser;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.ItemStack;
@@ -28,7 +31,16 @@ import java.util.Optional;
 
 @SuppressWarnings("removal")
 public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
+    @Override
+    public MapCodec<TemperRecipe> codec() {
+        return null;
+    }
 
+    @Override
+    public StreamCodec<RegistryFriendlyByteBuf, TemperRecipe> streamCodec() {
+        return null;
+    }
+/*
     @Override
     public @NotNull TemperRecipe fromJson(@NotNull ResourceLocation jsonPath, @NotNull JsonObject json) {
         JsonArray mobs = json.getAsJsonArray("mobs");
@@ -168,5 +180,5 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
                 }
             }
         }
-    }
+    }*/
 }

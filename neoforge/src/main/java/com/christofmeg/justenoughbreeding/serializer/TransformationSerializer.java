@@ -8,8 +8,11 @@ import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import com.christofmeg.justenoughbreeding.utils.Utils;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.ItemStack;
@@ -24,7 +27,17 @@ import java.util.Optional;
 
 @SuppressWarnings("removal")
 public class TransformationSerializer implements RecipeSerializer<TransformationRecipe> {
+    @Override
+    public MapCodec<TransformationRecipe> codec() {
+        return null;
+    }
 
+    @Override
+    public StreamCodec<RegistryFriendlyByteBuf, TransformationRecipe> streamCodec() {
+        return null;
+    }
+
+    /*
     @Override
     public @NotNull TransformationRecipe fromJson(@NotNull ResourceLocation jsonPath, @NotNull JsonObject json) {
         return (TransformationRecipe) readJsonContents(jsonPath, json);
@@ -193,6 +206,6 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                 inputEntityNbt,
                 outputEntityNbt
         );
-    }
+    }*/
 
 }

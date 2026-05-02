@@ -21,6 +21,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("deprecation")
 public class CommonUtils {
 
     public static String getEdibleMeatItemNames(boolean includeRottenFlesh) {

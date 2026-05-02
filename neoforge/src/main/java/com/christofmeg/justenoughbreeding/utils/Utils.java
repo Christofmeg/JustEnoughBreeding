@@ -38,6 +38,7 @@ import org.joml.Matrix4f;
 import org.joml.Vector4f;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Utils {
 
@@ -119,8 +120,8 @@ public class Utils {
             }
         }
     }
-
-    public static RecipeHolder<BaseRecipe> readJsonContents(@NotNull ResourceLocation jsonPath, @NotNull JsonObject json, String recipeType) {
+/*
+    public static BaseRecipe readJsonContents(@NotNull ResourceLocation jsonPath, @NotNull JsonObject json, String recipeType) {
         JsonArray mobs = json.getAsJsonArray("mobs");
         JsonObject mobObject = mobs.get(0).getAsJsonObject();
         Map.Entry<String, JsonElement> mobEntry = mobObject.entrySet().iterator().next();
@@ -289,27 +290,12 @@ public class Utils {
             }
         }
     }
-
+*/
     public static Ingredient deduplicateIngredients(List<Ingredient> ingredientList) {
-        Ingredient ingredient = merge(ingredientList);
-        Set<JsonElement> seen = new HashSet<>();
-        List<JsonElement> uniqueJson = new ArrayList<>();
-
-        JsonElement json = ingredient.toJson();
-        if (json.isJsonArray()) {
-            for (JsonElement el : json.getAsJsonArray()) {
-                if (seen.add(el)) {
-                    uniqueJson.add(el);
-                }
-            }
-        } else {
-            seen.add(json);
-            uniqueJson.add(json);
-        }
-
-        JsonArray result = new JsonArray();
-        uniqueJson.forEach(result::add);
-        return Ingredient.fromJson(result);
+        Set<ItemStack> uniqueStacks = ingredientList.stream()
+                .flatMap(ing -> Arrays.stream(ing.getItems()))
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+        return Ingredient.of(uniqueStacks.stream());
     }
 
     public static LivingEntity getLivingEntity(LivingEntity currentLivingEntity, boolean input, BaseRecipe recipe) {
@@ -386,7 +372,7 @@ public class Utils {
         int screenY = Math.round((1 - topLeftNDC.y) / 2f * window.getGuiScaledHeight());
 
         EntityDimensions dimensions = entity.getType().getDimensions();
-        int scale = (int) (Math.min(50 / dimensions.height, 50 / dimensions.width));
+        int scale = (int) (Math.min(50 / dimensions.height(), 50 / dimensions.width()));
 
         float yaw = 60 - mouseX;
         float yawRadians = -(yaw / 40.F) * 20.0F;
@@ -395,12 +381,27 @@ public class Utils {
         //        guiGraphics.fill(-guiGraphics.guiWidth(), -guiGraphics.guiHeight(), guiGraphics.guiWidth(), guiGraphics.guiHeight(), -15536);
         MobOffset mobOffset = MobOffsetManager.get(JustEnoughBreeding.getKeyLoaderRegistries(entityType));
         InventoryScreen.renderEntityInInventoryFollowsMouse(guiGraphics,
-                renderLeft+ (int) mobOffset.x(),
+                renderLeft + (int) mobOffset.x(),
                 renderBottom + (int) mobOffset.y(),
+                0,
+                0,
                 scale + (int) mobOffset.scale(),
-                -yawRadians, 0, entity);
+                0, 0, -yawRadians, entity);
         guiGraphics.disableScissor();
         guiGraphics.pose().popPose();
     }
+
+    /*
+    GuiGraphics pGuiGraphics,
+        int pX1,
+        int pY1,
+        int pX2,
+        int pY2,
+        int pScale,
+        float pYOffset,
+        float pMouseX,
+        float pMouseY,
+        LivingEntity pEntity
+     */
 
 }

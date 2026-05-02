@@ -1,10 +1,10 @@
-import net.darkhax.curseforgegradle.TaskPublishCurseForge
+//import net.darkhax.curseforgegradle.TaskPublishCurseForge
 
 plugins {
     id 'multiloader-loader'
-    id 'net.neoforged.gradle.userdev' version '7.0.142'
-    id 'net.darkhax.curseforgegradle' version '1.1.+'
-    id 'com.modrinth.minotaur' version '2.+'
+    id 'net.neoforged.gradle.userdev' version '7.1.26'
+//    id 'net.darkhax.curseforgegradle' version '1.1.+'
+//    id 'com.modrinth.minotaur' version '2.+'
 }
 
 base {
@@ -73,11 +73,11 @@ dependencies {
         runtimeOnly "curse.maven:catalogue-459701:${catalogue_version}"
     }
 }
-
+/*
 tasks.register('publishCurseForge', TaskPublishCurseForge) {
     apiToken = file('../../API Tokens/justenoughbreeding.md')
     def projectId = "${cf_id}".toString()
-    def mainFile = upload(projectId, file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")) as Object
+    def mainFile = upload(projectId, layout.buildDirectory.file("libs/${base.archivesName.get()}-${version}.jar").get().asFile) as Object
     mainFile.changelogType = 'markdown'
     mainFile.changelog = file('changelog.md')
     mainFile.addGameVersion('Client', 'Server')
@@ -195,7 +195,7 @@ modrinth {
     versionName = "${mod_id}-neoforge-${neoforge_supported_versions}" + "-" + getVersion()
     versionType = "${release_type}"
     changelog = file('changelog.md').text
-    uploadFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")
+    uploadFile = layout.buildDirectory.file("libs/${base.archivesName.get()}-${version}.jar").get().asFile
     gameVersions = "${neoforge_release_versions}".split(",") as List<String>
     loaders = ["${project.name}"]
     dependencies {
@@ -277,4 +277,4 @@ modrinth {
         optional.project "yungs-cave-biomes"
         optional.project "ghost"
     }
-}
+}*/
