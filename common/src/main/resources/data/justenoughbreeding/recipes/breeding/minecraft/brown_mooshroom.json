@@ -8,11 +8,14 @@
           {
             "item": "minecraft:wheat"
           }
-        ]
+        ],
+        "input_entity_nbt": {
+          "Type": "brown"
+        }
       }
     }
   ],
-  "input_entity_nbt": {
-    "Type": "brown"
-  }
+  "animal_id": "brown_mooshroom",
+  "mod_folder": "minecraft_animals",
+  "file_name": "mooshroom_breeding"
 }

@@ -25,6 +25,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import org.jetbrains.annotations.NotNull;
 
@@ -49,12 +52,21 @@ public class EMIUtils {
                 );
             }
         }
-
+        System.out.println("JEB started EMI UTILS");
         ArrayList<RecipeHolder<BreedingRecipe>> breedingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.BREEDING_PROVIDER_TYPE.get()));
         breedingRecipes.sort(Comparator.comparing(r -> r.value().jsonAnimalID == null ? "" : r.value().jsonAnimalID));
         for (RecipeHolder<BreedingRecipe> recipeHold : breedingRecipes) {
+
+            System.out.println("JEB started breedingRecipes");
+
             BreedingRecipe recipe = recipeHold.value();
             if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
+
+                System.out.println("registered" + BreedingCategoryEMI.builder()
+                        .id(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "/" + "breeding" + "/" + recipe.jsonModID + "/" + recipe.jsonAnimalID))
+                        .recipe(recipe)
+                        .build());
+
                 registration.addRecipe(
                         BreedingCategoryEMI.builder()
                                 .id(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "/" + "breeding" + "/" + recipe.jsonModID + "/" + recipe.jsonAnimalID))
@@ -63,6 +75,18 @@ public class EMIUtils {
                 );
             }
         }
+
+        registration.addRecipe(BreedingCategoryEMI.builder()
+                .id(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "/" + "breeding" + "/" + "test"))
+                .recipe(new BreedingRecipe(EntityType.ZOMBIE, Ingredient.of(Items.APPLE), Ingredient.of(Items.DIAMOND), false, null, null, false, "1", "2", "3", "4", null))
+                .build()
+        );
+
+        registration.addRecipe(BreedingCategoryEMI.builder()
+                .id(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "/" + "breeding" + "/" + "test2"))
+                .recipe(new BreedingRecipe(EntityType.BEE, Ingredient.of(Items.ACACIA_BOAT), Ingredient.of(Items.EMERALD), false, null, null, false, "1", "2", "3", "4", null))
+                .build()
+        );
 
         ArrayList<RecipeHolder<TamingRecipe>> tamingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TAMING_PROVIDER_TYPE.get()));
         tamingRecipes.sort(Comparator.comparing(r -> r.value().jsonAnimalID == null ? "" : r.value().jsonAnimalID));

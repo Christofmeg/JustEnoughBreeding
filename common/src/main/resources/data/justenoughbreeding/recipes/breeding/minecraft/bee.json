@@ -1,15 +1,30 @@
 {
-  "type": "justenoughbreeding:breeding",
   "mod": "minecraft",
   "mobs": [
     {
-      "bee": {
+      "minecraft:wolf": {
         "inputs": [
-          {
-            "tag": "minecraft:flowers"
-          }
-        ]
+          { "item": "minecraft:bone" },
+          { "item": "minecraft:porkchop" }
+        ],
+        "extra_inputs": [
+          { "item": "minecraft:rotten_flesh" }
+        ],
+        "outputs": [
+          { "item": "minecraft:wolf_spawn_egg" }
+        ],
+        "spawn_eggs": [
+          { "item": "minecraft:wolf_spawn_egg" }
+        ],
+        "tamed": true,
+        "trusting": false,
+        "input_entity_nbt": {
+          "Variant": "minecraft:pale"
+        }
       }
     }
-  ]
+  ],
+  "animal_id": "wolf_pale",
+  "mod_folder": "minecraft_animals",
+  "file_name": "pale_wolf_recipe"
 }
