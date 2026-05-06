@@ -25,9 +25,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import org.jetbrains.annotations.NotNull;
 
@@ -52,41 +49,20 @@ public class EMIUtils {
                 );
             }
         }
-        System.out.println("JEB started EMI UTILS");
+
         ArrayList<RecipeHolder<BreedingRecipe>> breedingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.BREEDING_PROVIDER_TYPE.get()));
-        breedingRecipes.sort(Comparator.comparing(r -> r.value().jsonAnimalID == null ? "" : r.value().jsonAnimalID));
+        breedingRecipes.sort(Comparator.comparing(r -> r.value().inputEntity == null ? "" : r.value().inputEntity));
         for (RecipeHolder<BreedingRecipe> recipeHold : breedingRecipes) {
-
-            System.out.println("JEB started breedingRecipes");
-
             BreedingRecipe recipe = recipeHold.value();
-            if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
-
-                System.out.println("registered" + BreedingCategoryEMI.builder()
-                        .id(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "/" + "breeding" + "/" + recipe.jsonModID + "/" + recipe.jsonAnimalID))
-                        .recipe(recipe)
-                        .build());
-
+            if (JustEnoughBreeding.isModLoaded(recipe.mod) && recipe.entityType != null && !recipe.inputIngredient.isEmpty()) {
                 registration.addRecipe(
                         BreedingCategoryEMI.builder()
-                                .id(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "/" + "breeding" + "/" + recipe.jsonModID + "/" + recipe.jsonAnimalID))
+                                .id(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "/" + "breeding" + "/" + recipeHold.id()))
                                 .recipe(recipe)
                                 .build()
                 );
             }
         }
-
-        registration.addRecipe(BreedingCategoryEMI.builder()
-                .id(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "/" + "breeding" + "/" + "test"))
-                .recipe(new BreedingRecipe(EntityType.ZOMBIE, Ingredient.of(Items.APPLE), Ingredient.of(Items.DIAMOND), false, null, null, false, "1", "2", "3", "4", null))
-                .build()
-        );
-
-        registration.addRecipe(BreedingCategoryEMI.builder()
-                .id(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "/" + "breeding" + "/" + "test2"))
-                .recipe(new BreedingRecipe(EntityType.BEE, Ingredient.of(Items.ACACIA_BOAT), Ingredient.of(Items.EMERALD), false, null, null, false, "1", "2", "3", "4", null))
-                .build()
-        );
 
         ArrayList<RecipeHolder<TamingRecipe>> tamingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TAMING_PROVIDER_TYPE.get()));
         tamingRecipes.sort(Comparator.comparing(r -> r.value().jsonAnimalID == null ? "" : r.value().jsonAnimalID));
@@ -202,7 +178,7 @@ public class EMIUtils {
                 } else if (breedingRecipe.animalTrusting != null && breedingRecipe.animalTrusting) {
                     Component trusting = Component.translatable("translation.justenoughbreeding.trusting");
                     entityNameString += " (" + trusting.getString() + ")";
-                } else if ("tfc".equals(breedingRecipe.jsonModID)) {
+                } else if ("tfc".equals(breedingRecipe.mod)) {
                     Component familiarity = Component.translatable("tfc.jade.familiarity");
                     String tfc = familiarity.getString().replaceAll(":[^:]*$", "");
                     entityNameString += " (" + tfc + " > 30" + ")";
@@ -244,7 +220,7 @@ public class EMIUtils {
                     }
                     LivingEntity livingEntity = Utils.getLivingEntity(currentLivingEntity, input, recipe);
                     if (livingEntity != null) {
-                        Utils.renderEntityInInventoryFollowsMouse(graphics, 0, 0, (float) mouseX, livingEntity, CommonUtils.getRect(input, CATEGORY_WIDTH, 0, 1), entityType);
+                        Utils.renderEntityInInventoryFollowsMouse(graphics, (float) mouseX, livingEntity, CommonUtils.getRect(input, CATEGORY_WIDTH, 0, 1), entityType);
                     }
                 }
             });

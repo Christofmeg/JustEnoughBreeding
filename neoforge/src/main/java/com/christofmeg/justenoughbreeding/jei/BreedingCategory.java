@@ -35,37 +35,37 @@ public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> {
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, BreedingRecipe recipe, @NotNull IFocusGroup focuses) {
-        builder.addInputSlot(149, 1).setStandardSlotBackground().addIngredients(recipe.spawnEgg);
-        builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).addIngredients(recipe.spawnEgg);
-        IRecipeSlotBuilder inputSlot = builder.addInputSlot(69, 58).setStandardSlotBackground().addIngredients(recipe.inputStack).setPosition(63, 20, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
-        boolean hasExtraInput = recipe.extraInputStack != null && !recipe.extraInputStack.isEmpty();
-        boolean hasOutput = recipe.resultItemStack != null && !recipe.resultItemStack.isEmpty();
+        builder.addInputSlot(149, 1).setStandardSlotBackground().addIngredients(recipe.spawnEgg());
+        builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).addIngredients(recipe.spawnEgg());
+        IRecipeSlotBuilder inputSlot = builder.addInputSlot(69, 58).setStandardSlotBackground().addIngredients(recipe.inputs()).setPosition(63, 20, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
+        boolean hasExtraInput = recipe.extraInputs() != null && !recipe.extraInputs().isEmpty();
+        boolean hasOutput = recipe.outputs() != null && !recipe.outputs().isEmpty();
         if (hasOutput) {
             inputSlot.setPosition(74, 38, 78, 35, HorizontalAlignment.LEFT, VerticalAlignment.CENTER);
-            builder.addOutputSlot(130, 48).setOutputSlotBackground().addIngredients(recipe.resultItemStack).setPosition(72, 38, 78, 35, HorizontalAlignment.RIGHT, VerticalAlignment.CENTER);
+            builder.addOutputSlot(130, 48).setOutputSlotBackground().addIngredients(recipe.outputs()).setPosition(72, 38, 78, 35, HorizontalAlignment.RIGHT, VerticalAlignment.CENTER);
             if (hasExtraInput) {
                 inputSlot.setPosition(74, 38, 78, 35, HorizontalAlignment.LEFT, VerticalAlignment.BOTTOM);
-                builder.addInputSlot(69, 33).setStandardSlotBackground().addIngredients(recipe.extraInputStack).setPosition(74, 38, 78, 35, HorizontalAlignment.LEFT, VerticalAlignment.TOP);
+                builder.addInputSlot(69, 33).setStandardSlotBackground().addIngredients(recipe.extraInputs()).setPosition(74, 38, 78, 35, HorizontalAlignment.LEFT, VerticalAlignment.TOP);
             }
         } else if (hasExtraInput) {
             inputSlot.setPosition(63, 10, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
-            builder.addInputSlot(69, 33).setStandardSlotBackground().addIngredients(recipe.extraInputStack).setPosition(63, 29, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
+            builder.addInputSlot(69, 33).setStandardSlotBackground().addIngredients(recipe.extraInputs()).setPosition(63, 29, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
         }
     }
 
     @Override
     public void createRecipeExtras(@NotNull IRecipeExtrasBuilder builder, @NotNull BreedingRecipe recipe, @NotNull IFocusGroup focuses) {
-        boolean hasOutput = recipe.resultItemStack != null && !recipe.resultItemStack.isEmpty();
+        boolean hasOutput = recipe.outputs() != null && !recipe.outputs().isEmpty();
         if (hasOutput) {
             builder.addRecipeArrow().setPosition(70, 37, 78, 35, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
         }
-        JEIUtils.addButton(builder, recipe.entityType);
+        JEIUtils.addButton(builder, recipe.entityType());
     }
 
     @Override
     public void draw(@NotNull BreedingRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics graphics, double mouseX, double mouseY) {
         JEIUtils.drawMobSlot(0, 10, bigSlot, graphics);
-        JEIUtils.drawMobNameAndEntity(recipe.entityType, graphics, mouseX, recipe, CATEGORY_WIDTH);
+        JEIUtils.drawMobNameAndEntity(recipe.entityType(), graphics, mouseX, recipe, CATEGORY_WIDTH);
     }
 
 }

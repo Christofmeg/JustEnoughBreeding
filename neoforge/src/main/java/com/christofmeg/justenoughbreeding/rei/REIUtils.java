@@ -21,6 +21,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import org.jetbrains.annotations.NotNull;
 
@@ -44,10 +45,10 @@ public class REIUtils {
         }
 
         ArrayList<RecipeHolder<BreedingRecipe>> breedingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.BREEDING_PROVIDER_TYPE.get()));
-        breedingRecipes.sort(Comparator.comparing(r -> r.value().jsonAnimalID == null ? "" : r.value().jsonAnimalID));
+        breedingRecipes.sort(Comparator.comparing(r -> r.value().inputEntity() == null ? "" : r.value().inputEntity()));
         for (RecipeHolder<BreedingRecipe> recipeHold : breedingRecipes) {
             BreedingRecipe recipe = recipeHold.value();
-            if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
+            if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.entityType() != null && !recipe.inputs().isEmpty()) {
                 registration.add(new BreedingDisplay(recipe));
             }
         }
@@ -93,27 +94,27 @@ public class REIUtils {
         widgets.add(Widgets.createSlotBase(new Rectangle(bounds.x + 5 + mobSlotX, bounds.y + 5 + mobSlotY, 61, 81)));
     }
 
-    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, BaseRecipe recipe, int CATEGORY_WIDTH) {
+    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, Recipe<?> recipe, int CATEGORY_WIDTH) {
         drawMobNameAndEntity(widgets, bounds, entityType, recipe, 148, 0, CATEGORY_WIDTH);
     }
 
-    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, BaseRecipe recipe, int availableWidth, int extraX, int CATEGORY_WIDTH) {
+    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, Recipe<?> recipe, int availableWidth, int extraX, int CATEGORY_WIDTH) {
         drawMobNameAndEntity(widgets, bounds, entityType, recipe, availableWidth, extraX, true, CATEGORY_WIDTH);
     }
 
-    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, BaseRecipe recipe, int availableWidth, int extraX, boolean input, int CATEGORY_WIDTH) {
+    public static void drawMobNameAndEntity(List<Widget> widgets, Rectangle bounds, EntityType<?> entityType, Recipe<?> recipe, int availableWidth, int extraX, boolean input, int CATEGORY_WIDTH) {
         if (entityType != null) {
             Font font = Minecraft.getInstance().font;
             Component entityName = Component.translatable(entityType.getDescriptionId());
             String entityNameString = entityName.getString();
             if (recipe instanceof BreedingRecipe breedingRecipe) {
-                if (breedingRecipe.needsToBeTamed != null && breedingRecipe.needsToBeTamed) {
+                if (breedingRecipe.tamed() != null && breedingRecipe.tamed()) {
                     Component tamed = Component.translatable("translation.justenoughbreeding.tamed");
                     entityNameString += " (" + tamed.getString() + ")";
-                } else if (breedingRecipe.animalTrusting != null && breedingRecipe.animalTrusting) {
+                } else if (breedingRecipe.trusting() != null && breedingRecipe.trusting()) {
                     Component trusting = Component.translatable("translation.justenoughbreeding.trusting");
                     entityNameString += " (" + trusting.getString() + ")";
-                } else if ("tfc".equals(breedingRecipe.jsonModID)) {
+                } else if ("tfc".equals(breedingRecipe.mod())) {
                     Component familiarity = Component.translatable("tfc.jade.familiarity");
                     String tfc = familiarity.getString().replaceAll(":[^:]*$", "");
                     entityNameString += " (" + tfc + " > 30" + ")";
@@ -151,7 +152,7 @@ public class REIUtils {
             widgets.add(Widgets.withTranslate(Widgets.createDrawableWidget((graphics, mouseX, mouseY, v) -> {
                 LivingEntity livingEntity = Utils.getLivingEntity(currentLivingEntity, input, recipe);
                 if (livingEntity != null) {
-                    Utils.renderEntityInInventoryFollowsMouse(graphics, 0, 0, (float) mouseX, livingEntity, CommonUtils.getRect(input, CATEGORY_WIDTH, 5, 0), entityType);
+                    Utils.renderEntityInInventoryFollowsMouse(graphics, (float) mouseX, livingEntity, CommonUtils.getRect(input, CATEGORY_WIDTH, 5, 0), entityType);
                 }
                     }
             ), bounds.x + 5, bounds.y + 5, 0));

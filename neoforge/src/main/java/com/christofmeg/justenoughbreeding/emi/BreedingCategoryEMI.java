@@ -34,25 +34,25 @@ public class BreedingCategoryEMI extends AbstractRecipeCategoryEMI {
 
     @Override
     public List<EmiIngredient> getInputs() {
-        return List.of(EmiIngredient.of(recipe.inputStack));
+        return List.of(EmiIngredient.of(recipe.inputs()));
     }
 
     @Override
     public List<EmiIngredient> getCatalysts() {
-        return List.of(EmiIngredient.of(recipe.inputStack),
-                EmiIngredient.of(recipe.extraInputStack),
-                EmiIngredient.of(recipe.spawnEgg)
+        return List.of(EmiIngredient.of(recipe.inputs()),
+                EmiIngredient.of(recipe.extraInputs()),
+                EmiIngredient.of(recipe.spawnEgg())
         );
     }
 
     @Override
     public List<EmiStack> getOutputs() {
         List<EmiStack> list = new ArrayList<>();
-        if (recipe.resultItemStack != null) {
-            for (ItemStack item : recipe.resultItemStack.getItems()) {
+        if (recipe.outputs() != null) {
+            for (ItemStack item : recipe.outputs().getItems()) {
                 list.add(EmiStack.of(item));
             }
-            for (ItemStack item : recipe.spawnEgg.getItems()) {
+            for (ItemStack item : recipe.spawnEgg().getItems()) {
                 list.add(EmiStack.of(item));
             }
         }
@@ -61,29 +61,29 @@ public class BreedingCategoryEMI extends AbstractRecipeCategoryEMI {
 
     @Override
     public void addWidgets(WidgetHolder widgets) {
-        widgets.addSlot(EmiIngredient.of(recipe.spawnEgg), 149, 1);
+        widgets.addSlot(EmiIngredient.of(recipe.spawnEgg()), 149, 1);
         int inputX = 69 + 5;
         int inputY = 48;
-        boolean hasExtraInput = recipe.extraInputStack != null && !recipe.extraInputStack.isEmpty();
-        boolean hasOutput = recipe.resultItemStack != null && !recipe.resultItemStack.isEmpty();
+        boolean hasExtraInput = recipe.extraInputs() != null && !recipe.extraInputs().isEmpty();
+        boolean hasOutput = recipe.outputs() != null && !recipe.outputs().isEmpty();
         if (hasExtraInput && hasOutput) {
-            widgets.addSlot(EmiIngredient.of(recipe.inputStack), inputX, 38);
-            widgets.addSlot(EmiIngredient.of(recipe.extraInputStack), inputX, 57);
+            widgets.addSlot(EmiIngredient.of(recipe.inputs()), inputX, 38);
+            widgets.addSlot(EmiIngredient.of(recipe.extraInputs()), inputX, 57);
         } else if (hasExtraInput) {
-            widgets.addSlot(EmiIngredient.of(recipe.inputStack), inputX + 33, 38);
-            widgets.addSlot(EmiIngredient.of(recipe.extraInputStack), inputX + 33, 57);
+            widgets.addSlot(EmiIngredient.of(recipe.inputs()), inputX + 33, 38);
+            widgets.addSlot(EmiIngredient.of(recipe.extraInputs()), inputX + 33, 57);
         } else if (!hasOutput) {
-            widgets.addSlot(EmiIngredient.of(recipe.inputStack), inputX  + 33, inputY);
+            widgets.addSlot(EmiIngredient.of(recipe.inputs()), inputX  + 33, inputY);
         } else {
-            widgets.addSlot(EmiIngredient.of(recipe.inputStack), inputX, inputY);
+            widgets.addSlot(EmiIngredient.of(recipe.inputs()), inputX, inputY);
         }
         if (hasOutput) {
             widgets.addTexture(EmiTexture.EMPTY_ARROW, 94 + 4, 48);
-            widgets.addSlot(EmiIngredient.of(recipe.resultItemStack), 126 + 4, 44).large(true).recipeContext(this);
+            widgets.addSlot(EmiIngredient.of(recipe.outputs()), 126 + 4, 44).large(true).recipeContext(this);
         }
         EMIUtils.drawMobSlot(0, 10, widgets);
-        EMIUtils.drawMobNameAndEntity(recipe.entityType, widgets, recipe, getDisplayWidth());
-        EMIUtils.addButton(widgets, recipe.entityType);
+        EMIUtils.drawMobNameAndEntity(recipe.entityType(), widgets, recipe, getDisplayWidth());
+        EMIUtils.addButton(widgets, recipe.entityType());
     }
 
     public static class Builder {

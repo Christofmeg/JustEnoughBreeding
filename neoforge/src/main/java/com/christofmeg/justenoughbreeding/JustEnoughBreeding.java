@@ -3,6 +3,7 @@ package com.christofmeg.justenoughbreeding;
 import com.christofmeg.justenoughbreeding.recipe.*;
 import com.christofmeg.justenoughbreeding.serializer.*;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
@@ -25,15 +26,14 @@ public class JustEnoughBreeding {
     //TODO update recipe generator to match input_entity_nbt on recipetypes
     //TODO update recipe generator to match input entity nbt on transformation
 
-    private static final DeferredRegister<RecipeSerializer<?>> RECIPES_SERIALIZERS = DeferredRegister.create(BuiltInRegistries.RECIPE_SERIALIZER, CommonConstants.MOD_ID);
-    private static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(BuiltInRegistries.RECIPE_TYPE, CommonConstants.MOD_ID);
+    private static final DeferredRegister<RecipeSerializer<?>> RECIPES_SERIALIZERS = DeferredRegister.create(Registries.RECIPE_SERIALIZER, CommonConstants.MOD_ID);
+    private static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(Registries.RECIPE_TYPE, CommonConstants.MOD_ID);
 
     public static final DeferredHolder<RecipeType<?>, RecipeType<AllayDuplicationRecipe>> ALLAY_DUPLICATION_PROVIDER_TYPE = RECIPE_TYPES.register("allay_duplication", () -> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "allay_duplication")));
     public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<AllayDuplicationRecipe>> ALLAY_DUPLICATION_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("allay_duplication", AllayDuplicationSerializer::new);
 
     public static final DeferredHolder<RecipeType<?>, RecipeType<BreedingRecipe>> BREEDING_PROVIDER_TYPE = RECIPE_TYPES.register("breeding", () -> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "breeding")));
     public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<BreedingRecipe>> BREEDING_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("breeding", BreedingSerializer::new);
-
     public static final DeferredHolder<RecipeType<?>, RecipeType<TamingRecipe>> TAMING_PROVIDER_TYPE = RECIPE_TYPES.register("taming", () -> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "taming")));
     public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<TamingRecipe>> TAMING_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("taming", TamingSerializer::new);
 
