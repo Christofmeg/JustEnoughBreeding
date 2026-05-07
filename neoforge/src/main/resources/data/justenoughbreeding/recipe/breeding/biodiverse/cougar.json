@@ -1,0 +1,21 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "biodiverse",
+  "mobs": [
+    {
+      "cougar": {
+        "inputs": [
+          {
+            "item": "minecraft:mutton"
+          },
+          {
+            "item": "minecraft:beef"
+          },
+          {
+            "item": "minecraft:chicken"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "ambientadditions",
+  "mobs": [
+    {
+      "leaf_frog": {
+        "inputs": [
+          {
+            "item": "minecraft:spider_eye"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "ambientadditions:leaf_frogspawn"
+          }
+        ]
+      }
+    }
+  ]
+}

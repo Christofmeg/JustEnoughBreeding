@@ -1,0 +1,21 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "mobs": [
+    {
+      "mantis_shrimp": {
+        "inputs": [
+          {
+            "tag": "alexsmobs:mantis_shrimp_breedables"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_mantis_shrimp"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

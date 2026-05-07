@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "mobs": [
+    {
+      "gelada_monkey": {
+        "inputs": [
+          {
+            "tag": "alexsmobs:gelada_monkey_breedables"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_gelada_monkey"
+          }
+        ]
+      }
+    }
+  ]
+}

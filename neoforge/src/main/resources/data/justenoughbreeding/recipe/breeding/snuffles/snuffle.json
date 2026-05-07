@@ -1,0 +1,18 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "snuffles",
+  "mobs": [
+    {
+      "snuffle": {
+        "inputs": [
+          {
+            "item": "minecraft:baked_potato"
+          },
+          {
+            "item": "minecraft:potato"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "tameablebeasts",
+  "mobs": [
+    {
+      "tameable_chikote": {
+        "inputs": [
+          {
+            "tag": "tameablebeasts:chikote_food"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "tameablebeasts:chikote_egg"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "tameablebeasts:chikote_spawn_egg"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

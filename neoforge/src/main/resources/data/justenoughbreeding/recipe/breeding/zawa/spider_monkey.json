@@ -1,0 +1,13 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "zawa",
+  "mobs": [
+    {
+      "spider_monkey": {
+        "inputs": [{
+            "item": "minecraft:melon"
+        }]
+      }
+    }
+  ]
+}

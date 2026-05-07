@@ -1,0 +1,16 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "quark",
+  "mobs": [
+    {
+      "foxhound": {
+        "inputs": [
+          {
+            "meat": "true"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

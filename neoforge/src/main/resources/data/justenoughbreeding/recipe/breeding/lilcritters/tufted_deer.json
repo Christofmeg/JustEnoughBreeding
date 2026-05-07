@@ -1,0 +1,13 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "lilcritters",
+  "mobs": [
+    {
+      "tufted_deer": {
+        "inputs": [{
+            "item": "minecraft:sweet_berries"
+        }]
+      }
+    }
+  ]
+}

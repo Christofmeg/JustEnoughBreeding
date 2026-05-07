@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "apple_cows",
+  "mobs": [
+    {
+      "enchanted_golden_apple_cow": {
+        "inputs": [
+          {
+            "item": "apple_cows:enchanted_golden_wheat"
+          }
+        ]
+      }
+    }
+  ]
+}

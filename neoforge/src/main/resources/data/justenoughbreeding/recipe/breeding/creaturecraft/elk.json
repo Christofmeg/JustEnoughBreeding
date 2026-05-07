@@ -1,0 +1,37 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "creaturecraft",
+  "mobs": [
+    {
+      "elk": {
+        "inputs": [
+          {
+            "item": "minecraft:grass"
+          },
+          {
+            "item": "minecraft:apple"
+          },
+          {
+            "item": "minecraft:golden_apple"
+          },
+          {
+            "item": "minecraft:enchanted_golden_apple"
+          },
+          {
+            "item": "minecraft:wheat"
+          },
+          {
+            "item": "minecraft:carrot"
+          },
+          {
+            "item": "minecraft:potato"
+          },
+          {
+            "item": "minecraft:baked_potato"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

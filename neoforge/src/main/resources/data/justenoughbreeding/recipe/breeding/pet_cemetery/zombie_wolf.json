@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "pet_cemetery",
+  "mobs": [
+    {
+      "zombie_wolf": {
+        "inputs": [
+          {
+            "meat": "true"
+          }
+        ]
+      }
+    }
+  ]
+}

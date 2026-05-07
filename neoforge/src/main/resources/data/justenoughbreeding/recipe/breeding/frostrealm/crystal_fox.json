@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "frostrealm",
+  "mobs": [
+    {
+      "crystal_fox": {
+        "inputs": [
+          {
+            "item": "frostrealm:bearberry"
+          }
+        ]
+      }
+    }
+  ]
+}

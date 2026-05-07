@@ -1,0 +1,19 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "creaturecraft",
+  "mobs": [
+    {
+      "bison": {
+        "inputs": [
+          {
+            "item": "minecraft:wheat_seeds"
+          },
+          {
+            "item": "minecraft:wheat"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

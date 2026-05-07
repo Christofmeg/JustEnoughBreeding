@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "ambientadditions",
+  "mobs": [
+    {
+      "marten": {
+        "inputs": [
+          {
+            "item": "minecraft:egg"
+          }
+        ]
+      }
+    }
+  ]
+}

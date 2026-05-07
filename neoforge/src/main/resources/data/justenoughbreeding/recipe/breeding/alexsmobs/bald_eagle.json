@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "mobs": [
+    {
+      "bald_eagle": {
+        "inputs": [
+          {
+            "tag": "alexsmobs:bald_eagle_breedables"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_bald_eagle"
+          }
+        ]
+      }
+    }
+  ]
+}

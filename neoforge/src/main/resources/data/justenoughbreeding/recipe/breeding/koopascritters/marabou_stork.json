@@ -1,0 +1,30 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "koopascritters",
+  "mobs": [
+    {
+      "marabou_stork": {
+        "inputs": [
+          {
+            "item": "minecraft:rotten_flesh"
+          },
+          {
+            "item": "minecraft:cod"
+          },
+          {
+            "item": "minecraft:salmon"
+          },
+          {
+            "item": "minecraft:tropical_fish"
+          },
+          {
+            "item": "minecraft:pufferfish"
+          },
+          {
+            "item": "koopascritters:raw_wild_bird"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "tameablebeasts",
+  "mobs": [
+    {
+      "argentavis": {
+        "inputs": [
+          {
+            "tag": "tameablebeasts:argentavis_food"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "tameablebeasts:argentavis_egg"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "tameablebeasts:argentavis_spawn_egg"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

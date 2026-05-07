@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "aquaculture",
+  "mobs": [
+    {
+      "arrau_turtle": {
+        "inputs": [
+          {
+            "tag": "aquaculture:turtle_edible"
+          }
+        ]
+      }
+    }
+  ]
+}

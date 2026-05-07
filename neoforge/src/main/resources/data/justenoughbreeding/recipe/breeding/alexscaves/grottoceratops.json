@@ -1,0 +1,25 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexscaves",
+  "mobs": [
+    {
+      "grottoceratops": {
+        "inputs": [
+          {
+            "item": "alexscaves:tree_star"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "alexscaves:grottoceratops_egg"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexscaves:spawn_egg_grottoceratops"
+          }
+        ]
+      }
+    }
+  ]
+}

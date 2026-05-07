@@ -1,0 +1,25 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "wan_ancient_beasts",
+  "mobs": [
+    {
+      "surfer": {
+        "inputs": [
+          {
+            "item": "minecraft:sea_pickle"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "wan_ancient_beasts:surfer_egg"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "wan_ancient_beasts:surfer_spawn_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

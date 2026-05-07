@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "kiwiboi",
+  "mobs": [
+    {
+      "kiwi": {
+        "inputs": [
+          {
+            "item": "kiwiboi:kiwicake"
+          }
+        ]
+      }
+    }
+  ]
+}

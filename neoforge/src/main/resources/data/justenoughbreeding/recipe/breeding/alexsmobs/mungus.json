@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "mobs": [
+    {
+      "mungus": {
+        "inputs": [
+          {
+            "tag": "alexsmobs:mungus_breedables"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_mungus"
+          }
+        ]
+      }
+    }
+  ]
+}

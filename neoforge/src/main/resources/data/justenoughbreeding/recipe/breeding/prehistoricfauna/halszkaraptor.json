@@ -1,0 +1,29 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "mobs": [
+    {
+      "halszkaraptor": {
+        "inputs": [
+          {
+            "item": "prehistoricfauna:raw_harenaichthys"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "prehistoricfauna:halszkaraptor_egg",
+            "amount": {
+              "min": 1,
+              "max": 4
+            }
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "prehistoricfauna:halszkaraptor_spawn_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

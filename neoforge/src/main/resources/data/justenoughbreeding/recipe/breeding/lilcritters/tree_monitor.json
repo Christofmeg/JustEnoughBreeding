@@ -1,0 +1,13 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "lilcritters",
+  "mobs": [
+    {
+      "tree_monitor": {
+        "inputs": [{
+            "item": "zawa:termites"
+        }]
+      }
+    }
+  ]
+}

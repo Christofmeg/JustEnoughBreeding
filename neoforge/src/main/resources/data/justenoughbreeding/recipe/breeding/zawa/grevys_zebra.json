@@ -1,0 +1,13 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "zawa",
+  "mobs": [
+    {
+      "grevys_zebra": {
+        "inputs": [{
+            "item": "minecraft:hay_bale"
+        }]
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "cnc",
+  "mobs": [
+    {
+      "beaver": {
+        "inputs": [
+          {
+            "item": "minecraft:apple"
+          }
+        ]
+      }
+    }
+  ]
+}

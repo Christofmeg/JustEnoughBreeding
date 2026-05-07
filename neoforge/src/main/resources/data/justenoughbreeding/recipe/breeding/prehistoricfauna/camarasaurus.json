@@ -1,0 +1,29 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "mobs": [
+    {
+      "camarasaurus": {
+        "inputs": [
+          {
+            "item": "prehistoricfauna:ptilophyllum_fronds"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "prehistoricfauna:camarasaurus_egg",
+            "amount": {
+              "min": 1,
+              "max": 4
+            }
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "prehistoricfauna:camarasaurus_spawn_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

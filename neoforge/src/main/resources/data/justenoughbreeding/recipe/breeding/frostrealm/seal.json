@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "frostrealm",
+  "mobs": [
+    {
+      "seal": {
+        "inputs": [
+          {
+            "tag": "minecraft:fishes"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "mobs": [
+    {
+      "scelidosaurus": {
+        "inputs": [
+          {
+            "item": "prehistoricfauna:clathropteris"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "prehistoricfauna:scelidosaurus_egg",
+            "amount": {
+              "min": 1,
+              "max": 4
+            }
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "prehistoricfauna:scelidosaurus_spawn_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "cnc",
+  "mobs": [
+    {
+      "goose": {
+        "inputs": [
+          {
+            "item": "minecraft:kelp"
+          }
+        ]
+      }
+    }
+  ]
+}

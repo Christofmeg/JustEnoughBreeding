@@ -1,0 +1,13 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "zawa",
+  "mobs": [
+    {
+      "cheetah": {
+        "inputs": [{
+            "item": "zawa:large_meat"
+        }]
+      }
+    }
+  ]
+}

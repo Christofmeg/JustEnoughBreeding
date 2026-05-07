@@ -1,0 +1,26 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "tameablebeasts",
+  "mobs": [
+    {
+      "crested_gecko": {
+        "inputs": [
+          {
+            "tag": "tameablebeasts:crested_gecko_food"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "tameablebeasts:crested_gecko_egg"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "tameablebeasts:crested_gecko_spawn_egg"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

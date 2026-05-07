@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "blastfromthepast",
+  "mobs": [
+    {
+      "glaceros": {
+        "inputs": [
+          {
+            "item": "blastfromthepast:shiver_larkspur"
+          }
+        ]
+      }
+    }
+  ]
+}

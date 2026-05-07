@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "brazilian_expansion",
+  "mobs": [
+    {
+      "iguana": {
+        "inputs": [
+          {
+            "item": "minecraft:apple"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "brazilian_expansion:iguana_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

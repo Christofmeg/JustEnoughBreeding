@@ -1,0 +1,19 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "creaturecraft",
+  "mobs": [
+    {
+      "iberian_lynx": {
+        "inputs": [
+          {
+            "item": "minecraft:beef"
+          },
+          {
+            "item": "minecraft:cooked_beef"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

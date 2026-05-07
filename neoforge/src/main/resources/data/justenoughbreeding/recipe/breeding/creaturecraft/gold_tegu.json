@@ -1,0 +1,22 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "creaturecraft",
+  "mobs": [
+    {
+      "gold_tegu": {
+        "inputs": [
+          {
+            "item": "minecraft:apple"
+          },
+          {
+            "item": "minecraft:golden_apple"
+          },
+          {
+            "item": "minecraft:enchanted_golden_apple"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}

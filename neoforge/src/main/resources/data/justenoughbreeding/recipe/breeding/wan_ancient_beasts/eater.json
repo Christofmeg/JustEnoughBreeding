@@ -1,0 +1,25 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "wan_ancient_beasts",
+  "mobs": [
+    {
+      "eater": {
+        "inputs": [
+          {
+            "tag": "wan_ancient_beasts:eater_food"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "wan_ancient_beasts:eater_egg"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "wan_ancient_beasts:eater_spawn_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

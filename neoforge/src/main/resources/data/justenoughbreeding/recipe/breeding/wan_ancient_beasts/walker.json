@@ -1,0 +1,25 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "wan_ancient_beasts",
+  "mobs": [
+    {
+      "walker": {
+        "inputs": [
+          {
+            "item": "minecraft:spore_blossom"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "wan_ancient_beasts:walker_egg"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "wan_ancient_beasts:walker_spawn_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

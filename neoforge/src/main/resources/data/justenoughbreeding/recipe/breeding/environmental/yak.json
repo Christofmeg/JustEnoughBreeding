@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "environmental",
+  "mobs": [
+    {
+      "yak": {
+        "inputs": [
+          {
+            "tag": "environmental:yak_food"
+          }
+        ]
+      }
+    }
+  ]
+}

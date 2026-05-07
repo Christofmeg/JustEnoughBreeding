@@ -1,0 +1,26 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "tameablebeasts",
+  "mobs": [
+    {
+      "tameable_beetle": {
+        "inputs": [
+          {
+            "tag": "tameablebeasts:shiny_beetle_tame_food"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "tameablebeasts:beetle_egg"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "tameablebeasts:beetle_spawn_egg"
+          }
+        ],
+        "tamed": true
+      }
+    }
+  ]
+}
