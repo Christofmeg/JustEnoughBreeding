@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "biomemakeover",
-  "mobs": [
+  "input_entity": "biomemakeover:scuttler",
+  "inputs": [
     {
-      "scuttler": {
-        "inputs": [
-          {
-            "tag": "biomemakeover:scuttler_food"
-          }
-        ]
-      }
+      "tag": "biomemakeover:scuttler_food"
     }
   ]
 }

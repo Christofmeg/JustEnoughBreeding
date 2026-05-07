@@ -1,25 +1,20 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "species",
-  "mobs": [
+  "input_entity": "species:springling",
+  "inputs": [
     {
-      "springling": {
-        "inputs": [
-          {
-            "tag": "species:springling_breed_items"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "species:springling_egg"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "species:springling_spawn_egg"
-          }
-        ]
-      }
+      "tag": "species:springling_breed_items"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "species:springling_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "species:springling_spawn_egg"
     }
   ]
 }

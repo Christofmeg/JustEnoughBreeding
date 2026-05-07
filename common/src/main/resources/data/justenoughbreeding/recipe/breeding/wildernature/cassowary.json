@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "wildernature",
-  "mobs": [
+  "input_entity": "wildernature:cassowary",
+  "inputs": [
     {
-      "cassowary": {
-        "inputs": [
-          {
-            "item": "minecraft:wheat"
-          }
-        ]
-      }
+      "item": "minecraft:wheat"
     }
   ]
 }

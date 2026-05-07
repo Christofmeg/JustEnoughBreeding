@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "frozenup",
-  "mobs": [
+  "input_entity": "frozenup:chilloo",
+  "inputs": [
     {
-      "chilloo": {
-        "inputs": [
-          {
-            "tag": "frozenup:chilloo_breed_items"
-          }
-        ]
-      }
+      "tag": "frozenup:chilloo_breed_items"
     }
   ]
 }

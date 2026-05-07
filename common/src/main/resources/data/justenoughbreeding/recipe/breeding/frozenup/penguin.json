@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "frozenup",
-  "mobs": [
+  "input_entity": "frozenup:penguin",
+  "inputs": [
     {
-      "penguin": {
-        "inputs": [
-          {
-            "tag": "minecraft:fishes"
-          }
-        ]
-      }
+      "tag": "minecraft:fishes"
     }
   ]
 }

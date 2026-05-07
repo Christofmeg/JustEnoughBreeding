@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
-  "mod": "minecraft",
-  "mobs": [
+  "mod": "fishofthieves",
+  "input_entity": "minecraft:chicken",
+  "inputs": [
     {
-      "chicken": {
-        "inputs": [
-          {
-            "tag": "fishofthieves:worms"
-          }
-        ]
-      }
+      "tag": "fishofthieves:worms"
     }
   ]
 }

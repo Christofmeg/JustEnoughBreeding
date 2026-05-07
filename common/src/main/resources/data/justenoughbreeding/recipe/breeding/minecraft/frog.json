@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "minecraft",
-  "mobs": [
+  "input_entity": "minecraft:frog",
+  "inputs": [
     {
-      "frog": {
-        "inputs": [
-          {
-            "item": "minecraft:slime_ball"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "minecraft:frogspawn"
-          }
-        ]
-      }
+      "tag": "minecraft:frog_food"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "minecraft:frogspawn"
     }
   ]
 }

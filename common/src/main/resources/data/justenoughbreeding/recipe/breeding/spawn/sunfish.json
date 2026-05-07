@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "spawn",
-  "mobs": [
+  "input_entity": "spawn:sunfish",
+  "inputs": [
     {
-      "sunfish": {
-        "inputs": [
-          {
-            "tag": "spawn:sunfish_feeds"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "spawn:sunfish_spawn_egg"
-          }
-        ]
-      }
+      "tag": "spawn:sunfish_feeds"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "spawn:sunfish_spawn_egg"
     }
   ]
 }

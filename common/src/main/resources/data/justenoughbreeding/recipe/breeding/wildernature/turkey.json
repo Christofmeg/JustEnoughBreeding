@@ -1,27 +1,22 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "wildernature",
-  "mobs": [
+  "input_entity": "wildernature:turkey",
+  "inputs": [
     {
-      "turkey": {
-        "inputs": [
-          {
-            "item": "minecraft:wheat_seeds"
-          },
-          {
-            "item": "minecraft:melon_seeds"
-          },
-          {
-            "item": "minecraft:pumpkin_seeds"
-          },
-          {
-            "item": "minecraft:beetroot_seeds"
-          },
-          {
-            "item": "minecraft:bread"
-          }
-        ]
-      }
+      "item": "minecraft:wheat_seeds"
+    },
+    {
+      "item": "minecraft:melon_seeds"
+    },
+    {
+      "item": "minecraft:pumpkin_seeds"
+    },
+    {
+      "item": "minecraft:beetroot_seeds"
+    },
+    {
+      "item": "minecraft:bread"
     }
   ]
 }

@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "minecraft",
-  "mobs": [
+  "input_entity": "minecraft:wolf",
+  "inputs": [
     {
-      "wolf": {
-        "inputs": [
-          {
-            "meat": "true"
-          }
-        ]
-      }
+      "tag": "minecraft:wolf_food"
     }
   ]
 }

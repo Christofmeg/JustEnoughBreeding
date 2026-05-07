@@ -1,23 +1,18 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "friendsandfoes",
-  "mobs": [
+  "input_entity": "friendsandfoes:crab",
+  "inputs": [
     {
-      "crab": {
-        "inputs": [
-          {
-            "item": "minecraft:kelp"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "friendsandfoes:crab_egg",
-            "amount": {
-              "min": 1,
-              "max": 4
-            }
-          }
-        ]
+      "item": "minecraft:kelp"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "friendsandfoes:crab_egg",
+      "amount": {
+        "min": 1,
+        "max": 4
       }
     }
   ]

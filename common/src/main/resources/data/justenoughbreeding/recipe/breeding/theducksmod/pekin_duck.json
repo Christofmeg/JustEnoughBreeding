@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "theducksmod",
-  "mobs": [
+  "input_entity": "theducksmod:pekin_duck",
+  "inputs": [
     {
-      "pekin_duck": {
-        "inputs": [
-          {
-            "item": "minecraft:seagrass"
-          }
-        ]
-      }
+      "item": "minecraft:seagrass"
     }
   ]
 }

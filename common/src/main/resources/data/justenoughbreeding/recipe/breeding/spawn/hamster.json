@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "spawn",
-  "mobs": [
+  "input_entity": "spawn:hamster",
+  "inputs": [
     {
-      "hamster": {
-        "inputs": [
-          {
-            "tag": "spawn:hamster_tempts"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "spawn:hamster_spawn_egg"
-          }
-        ]
-      }
+      "tag": "spawn:hamster_tempts"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "spawn:hamster_spawn_egg"
     }
   ]
 }

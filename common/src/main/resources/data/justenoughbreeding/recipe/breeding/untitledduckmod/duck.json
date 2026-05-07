@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "untitledduckmod",
-  "mobs": [
+  "input_entity": "untitledduckmod:duck",
+  "inputs": [
     {
-      "duck": {
-        "inputs": [
-          {
-            "tag": "untitledduckmod:duck_breeding_food"
-          }
-        ]
-      }
+      "tag": "untitledduckmod:duck_breeding_food"
     }
   ]
 }

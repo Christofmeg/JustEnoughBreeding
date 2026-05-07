@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "wildernature",
-  "mobs": [
+  "input_entity": "wildernature:hedgehog",
+  "inputs": [
     {
-      "hedgehog": {
-        "inputs": [
-          {
-            "item": "minecraft:rotten_flesh"
-          }
-        ]
-      }
+      "item": "minecraft:rotten_flesh"
     }
   ]
 }

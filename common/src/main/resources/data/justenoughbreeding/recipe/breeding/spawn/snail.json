@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "spawn",
-  "mobs": [
+  "input_entity": "spawn:snail",
+  "inputs": [
     {
-      "snail": {
-        "inputs": [
-          {
-            "tag": "spawn:snail_feeds"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "spawn:snail_spawn_egg"
-          }
-        ]
-      }
+      "tag": "spawn:snail_feeds"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "spawn:snail_spawn_egg"
     }
   ]
 }

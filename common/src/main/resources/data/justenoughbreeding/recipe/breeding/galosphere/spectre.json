@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "galosphere",
-  "mobs": [
+  "input_entity": "galosphere:spectre",
+  "inputs": [
     {
-      "spectre": {
-        "inputs": [
-          {
-            "item": "galosphere:lichen_cordyceps"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "galosphere:spectre_spawn_egg"
-          }
-        ]
-      }
+      "item": "galosphere:lichen_cordyceps"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "galosphere:spectre_spawn_egg"
     }
   ]
 }

@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "naturalist",
-  "mobs": [
+  "input_entity": "minecraft:boar",
+  "inputs": [
     {
-      "boar": {
-        "inputs": [
-          {
-            "tag": "naturalist:boar_food_items"
-          }
-        ]
-      }
+      "tag": "naturalist:boar_food_items"
     }
   ]
 }

@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "naturalist",
-  "mobs": [
+  "input_entity": "naturalist:deer",
+  "inputs": [
     {
-      "deer": {
-        "inputs": [
-          {
-            "item": "minecraft:apple"
-          }
-        ]
-      }
+      "item": "minecraft:apple"
     }
   ]
 }

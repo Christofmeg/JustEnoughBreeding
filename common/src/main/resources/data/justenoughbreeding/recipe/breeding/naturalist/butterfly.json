@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "naturalist",
-  "mobs": [
+  "input_entity": "naturalist:butterfly",
+  "inputs": [
     {
-      "butterfly": {
-        "inputs": [
-          {
-            "tag": "minecraft:flowers"
-          }
-        ]
-      }
+      "tag": "minecraft:flowers"
     }
   ]
 }

@@ -1,21 +1,13 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "minecraft",
-  "mobs": [
+  "input_entity": "minecraft:mooshroom",
+  "inputs": [
     {
-      "mooshroom": {
-        "inputs": [
-          {
-            "item": "minecraft:wheat"
-          }
-        ],
-        "input_entity_nbt": {
-          "Type": "brown"
-        }
-      }
+      "tag": "minecraft:cow_food"
     }
   ],
-  "animal_id": "brown_mooshroom",
-  "mod_folder": "minecraft_animals",
-  "file_name": "mooshroom_breeding"
+  "input_entity_nbt": {
+    "Type": "brown"
+  }
 }

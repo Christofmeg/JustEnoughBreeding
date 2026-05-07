@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "minecraft",
-  "mobs": [
+  "input_entity": "minecraft:sniffer",
+  "inputs": [
     {
-      "sniffer": {
-        "inputs": [
-          {
-            "item": "minecraft:torchflower_seeds"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "minecraft:sniffer_egg"
-          }
-        ]
-      }
+      "tag": "minecraft:sniffer_food"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "minecraft:sniffer_egg"
     }
   ]
 }

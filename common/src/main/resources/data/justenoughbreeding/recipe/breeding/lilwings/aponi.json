@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "lilwings",
-  "mobs": [
+  "input_entity": "lilwings:aponi",
+  "inputs": [
     {
-      "aponi": {
-        "inputs": [
-          {
-            "item": "minecraft:brown_mushroom"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "lilwings:aponi_egg"
-          }
-        ]
-      }
+      "item": "minecraft:brown_mushroom"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "lilwings:aponi_egg"
     }
   ]
 }

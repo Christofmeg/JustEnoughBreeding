@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "meadow",
-  "mobs": [
+  "input_entity": "meadow:wooly_cow",
+  "inputs": [
     {
-      "wooly_cow": {
-        "inputs": [
-          {
-            "item": "minecraft:wheat"
-          }
-        ]
-      }
+      "item": "minecraft:wheat"
     }
   ]
 }

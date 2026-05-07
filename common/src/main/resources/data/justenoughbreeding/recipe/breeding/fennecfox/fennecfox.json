@@ -1,21 +1,16 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "fennecfox",
-  "mobs": [
+  "input_entity": "fennecfox:fennecfox",
+  "inputs": [
     {
-      "fennecfox": {
-        "inputs": [
-          {
-            "item": "minecraft:glow_berries"
-          },
-          {
-            "item": "minecraft:rabbit_foot"
-          },
-          {
-            "item": "minecraft:sweet_berries"
-          }
-        ]
-      }
+      "item": "minecraft:glow_berries"
+    },
+    {
+      "item": "minecraft:rabbit_foot"
+    },
+    {
+      "item": "minecraft:sweet_berries"
     }
   ]
 }

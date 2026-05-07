@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "ecologics",
-  "mobs": [
+  "input_entity": "ecologics:squirrel",
+  "inputs": [
     {
-      "squirrel": {
-        "inputs": [
-          {
-            "tag": "ecologics:squirrel_tempt_items"
-          }
-        ]
-      }
+      "tag": "ecologics:squirrel_tempt_items"
     }
   ]
 }

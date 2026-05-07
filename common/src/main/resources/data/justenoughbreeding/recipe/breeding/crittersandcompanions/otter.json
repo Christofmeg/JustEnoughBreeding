@@ -1,18 +1,13 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "crittersandcompanions",
-  "mobs": [
+  "input_entity": "crittersandcompanions:otter",
+  "inputs": [
     {
-      "otter": {
-        "inputs": [
-          {
-            "tag": "minecraft:fishes"
-          },
-          {
-            "item": "crittersandcompanions:clam"
-          }
-        ]
-      }
+      "tag": "minecraft:fishes"
+    },
+    {
+      "item": "crittersandcompanions:clam"
     }
   ]
 }

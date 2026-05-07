@@ -1,25 +1,20 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "species",
-  "mobs": [
+  "input_entity": "species:cruncher",
+  "inputs": [
     {
-      "cruncher": {
-        "inputs": [
-          {
-            "tag": "species:cruncher_eats"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "species:cruncher_egg"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "species:cruncher_spawn_egg"
-          }
-        ]
-      }
+      "tag": "species:cruncher_eats"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "species:cruncher_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "species:cruncher_spawn_egg"
     }
   ]
 }

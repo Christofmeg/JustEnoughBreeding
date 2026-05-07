@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "lilwings",
-  "mobs": [
+  "input_entity": "lilwings:swallow_tail",
+  "inputs": [
     {
-      "swallow_tail": {
-        "inputs": [
-          {
-            "item": "minecraft:wheat_seeds"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "lilwings:swallow_tail_egg"
-          }
-        ]
-      }
+      "item": "minecraft:wheat_seeds"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "lilwings:swallow_tail_egg"
     }
   ]
 }

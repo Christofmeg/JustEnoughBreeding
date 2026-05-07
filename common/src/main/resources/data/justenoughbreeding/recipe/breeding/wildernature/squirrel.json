@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "wildernature",
-  "mobs": [
+  "input_entity": "wildernature:squirrel",
+  "inputs": [
     {
-      "squirrel": {
-        "inputs": [
-          {
-            "item": "wildernature:hazelnut"
-          }
-        ]
-      }
+      "item": "wildernature:hazelnut"
     }
   ]
 }

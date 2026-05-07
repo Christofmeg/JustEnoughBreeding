@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "theducksmod",
-  "mobs": [
+  "input_entity": "theducksmod:mallard_duck",
+  "inputs": [
     {
-      "mallard_duck": {
-        "inputs": [
-          {
-            "item": "minecraft:seagrass"
-          }
-        ]
-      }
+      "item": "minecraft:seagrass"
     }
   ]
 }

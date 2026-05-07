@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "meadow",
-  "mobs": [
+  "input_entity": "meadow:water_buffalo",
+  "inputs": [
     {
-      "water_buffalo": {
-        "inputs": [
-          {
-            "item": "minecraft:wheat"
-          }
-        ]
-      }
+      "item": "minecraft:wheat"
     }
   ]
 }

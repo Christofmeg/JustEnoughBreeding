@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "minecraft",
-  "mobs": [
+  "input_entity": "minecraft:strider",
+  "inputs": [
     {
-      "strider": {
-        "inputs": [
-          {
-            "item": "minecraft:warped_fungus"
-          }
-        ]
-      }
+      "tag": "minecraft:strider_food"
     }
   ]
 }

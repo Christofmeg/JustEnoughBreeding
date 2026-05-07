@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "crittersandcompanions",
-  "mobs": [
+  "input_entity": "crittersandcompanions:ferret",
+  "inputs": [
     {
-      "ferret": {
-        "inputs": [
-          {
-            "tag": "crittersandcompanions:ferret_food"
-          }
-        ]
-      }
+      "tag": "crittersandcompanions:ferret_food"
     }
   ]
 }

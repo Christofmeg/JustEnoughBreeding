@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "twilightforest",
-  "mobs": [
+  "input_entity": "twilightforest:deer",
+  "inputs": [
     {
-      "deer": {
-        "inputs": [
-          {
-            "item": "minecraft:wheat"
-          }
-        ]
-      }
+      "item": "minecraft:wheat"
     }
   ]
 }

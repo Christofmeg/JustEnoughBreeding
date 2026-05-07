@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "minecraft",
-  "mobs": [
+  "input_entity": "minecraft:axolotl",
+  "inputs": [
     {
-      "axolotl": {
-        "inputs": [
-          {
-            "item": "minecraft:tropical_fish_bucket"
-          }
-        ]
-      }
+      "tag": "minecraft:axolotl_food"
     }
   ]
 }

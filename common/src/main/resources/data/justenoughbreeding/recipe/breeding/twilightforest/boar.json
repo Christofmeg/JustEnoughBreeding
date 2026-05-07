@@ -1,21 +1,16 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "twilightforest",
-  "mobs": [
+  "input_entity": "twilightforest:boar",
+  "inputs": [
     {
-      "boar": {
-        "inputs": [
-          {
-            "item": "minecraft:carrot"
-          },
-          {
-            "item": "minecraft:potato"
-          },
-          {
-            "item": "minecraft:beetroot"
-          }
-        ]
-      }
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "minecraft:beetroot"
     }
   ]
 }

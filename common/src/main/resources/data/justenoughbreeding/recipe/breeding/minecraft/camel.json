@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "minecraft",
-  "mobs": [
+  "input_entity": "minecraft:camel",
+  "inputs": [
     {
-      "camel": {
-        "inputs": [
-          {
-            "item": "minecraft:cactus"
-          }
-        ]
-      }
+      "tag": "minecraft:camel_food"
     }
   ]
 }

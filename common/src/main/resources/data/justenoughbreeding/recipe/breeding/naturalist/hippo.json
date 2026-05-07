@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "naturalist",
-  "mobs": [
+  "input_entity": "naturalist:hippo",
+  "inputs": [
     {
-      "hippo": {
-        "inputs": [
-          {
-            "item": "minecraft:melon"
-          }
-        ],
-        "extra_inputs": [
-          {
-            "item": "minecraft:water_bucket"
-          }
-        ]
-      }
+      "item": "minecraft:melon"
+    }
+  ],
+  "extra_inputs": [
+    {
+      "item": "minecraft:water_bucket"
     }
   ]
 }

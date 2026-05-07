@@ -1,21 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "minecraft",
-  "mobs": [
+  "input_entity": "minecraft:pig",
+  "inputs": [
     {
-      "pig": {
-        "inputs": [
-          {
-            "item": "minecraft:carrot"
-          },
-          {
-            "item": "minecraft:potato"
-          },
-          {
-            "item": "minecraft:beetroot"
-          }
-        ]
-      }
+      "tag": "minecraft:pig_food"
     }
   ]
 }

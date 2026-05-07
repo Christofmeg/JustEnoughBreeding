@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "naturalist",
-  "mobs": [
+  "input_entity": "naturalist:bear",
+  "inputs": [
     {
-      "bear": {
-        "inputs": [
-          {
-            "tag": "naturalist:bear_tempt_items"
-          }
-        ]
-      }
+      "tag": "naturalist:bear_tempt_items"
     }
   ]
 }

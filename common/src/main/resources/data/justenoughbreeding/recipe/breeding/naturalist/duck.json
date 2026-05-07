@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "naturalist",
-  "mobs": [
+  "input_entity": "naturalist:duck",
+  "inputs": [
     {
-      "duck": {
-        "inputs": [
-          {
-            "tag": "naturalist:duck_food_items"
-          }
-        ]
-      }
+      "tag": "naturalist:duck_food_items"
     }
   ]
 }

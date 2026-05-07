@@ -1,19 +1,11 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "minecraft",
-  "mobs": [
+  "input_entity": "minecraft:llama",
+  "inputs": [
     {
-      "llama": {
-        "inputs": [
-          {
-            "item": "minecraft:wheat"
-          },
-          {
-            "item": "minecraft:hay_block"
-          }
-        ],
-        "tamed": true
-      }
+      "tag": "minecraft:llama_food"
     }
-  ]
+  ],
+  "tamed": true
 }

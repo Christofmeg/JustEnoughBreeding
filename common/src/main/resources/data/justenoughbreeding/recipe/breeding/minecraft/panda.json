@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "minecraft",
-  "mobs": [
+  "input_entity": "minecraft:panda",
+  "inputs": [
     {
-      "panda": {
-        "inputs": [
-          {
-            "item": "minecraft:bamboo"
-          }
-        ]
-      }
+      "tag": "minecraft:panda_food"
     }
   ]
 }

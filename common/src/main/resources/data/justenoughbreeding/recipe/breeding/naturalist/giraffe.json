@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "naturalist",
-  "mobs": [
+  "input_entity": "naturalist:giraffe",
+  "inputs": [
     {
-      "giraffe": {
-        "inputs": [
-          {
-            "item": "minecraft:hay_block"
-          }
-        ]
-      }
+      "item": "minecraft:hay_block"
     }
   ]
 }

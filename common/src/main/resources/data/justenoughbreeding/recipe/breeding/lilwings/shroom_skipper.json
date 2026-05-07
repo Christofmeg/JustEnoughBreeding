@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "lilwings",
-  "mobs": [
+  "input_entity": "lilwings:shroom_skipper",
+  "inputs": [
     {
-      "shroom_skipper": {
-        "inputs": [
-          {
-            "item": "minecraft:red_mushroom"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "lilwings:shroom_skipper_egg"
-          }
-        ]
-      }
+      "item": "minecraft:red_mushroom"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "lilwings:shroom_skipper_egg"
     }
   ]
 }

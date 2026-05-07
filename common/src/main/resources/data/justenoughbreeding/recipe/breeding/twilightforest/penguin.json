@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "twilightforest",
-  "mobs": [
+  "input_entity": "twilightforest:penguin",
+  "inputs": [
     {
-      "penguin": {
-        "inputs": [
-          {
-            "item": "minecraft:cod"
-          }
-        ]
-      }
+      "item": "minecraft:cod"
     }
   ]
 }

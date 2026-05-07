@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "lilwings",
-  "mobs": [
+  "input_entity": "lilwings:butter_gold",
+  "inputs": [
     {
-      "butter_gold": {
-        "inputs": [
-          {
-            "item": "minecraft:dandelion"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "lilwings:butter_gold_egg"
-          }
-        ]
-      }
+      "item": "minecraft:dandelion"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "lilwings:butter_gold_egg"
     }
   ]
 }

@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "biomemakeover",
-  "mobs": [
+  "input_entity": "biomemakeover:helmit_crab",
+  "inputs": [
     {
-      "helmit_crab": {
-        "inputs": [
-          {
-            "tag": "minecraft:fishes"
-          }
-        ]
-      }
+      "tag": "minecraft:fishes"
     }
   ]
 }

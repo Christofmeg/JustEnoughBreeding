@@ -1,23 +1,18 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "naturalist",
-  "mobs": [
+  "input_entity": "naturalist:zebra",
+  "inputs": [
     {
-      "zebra": {
-        "inputs": [
-          {
-            "item": "minecraft:golden_apple"
-          },
-          {
-            "item": "minecraft:enchanted_golden_apple"
-          },
-          {
-            "item": "minecraft:golden_carrot"
-          }
-
-        ],
-        "tamed": true
-      }
+      "item": "minecraft:golden_apple"
+    },
+    {
+      "item": "minecraft:enchanted_golden_apple"
+    },
+    {
+      "item": "minecraft:golden_carrot"
     }
-  ]
+
+  ],
+  "tamed": true
 }

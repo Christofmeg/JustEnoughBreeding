@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "friendsandfoes",
-  "mobs": [
+  "input_entity": "friendsandfoes:moobloom",
+  "inputs": [
     {
-      "moobloom": {
-        "inputs": [
-          {
-            "item": "minecraft:wheat"
-          }
-        ]
-      }
+      "item": "minecraft:wheat"
     }
   ]
 }

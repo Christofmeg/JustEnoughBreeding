@@ -1,18 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "minecraft",
-  "mobs": [
+  "input_entity": "minecraft:ocelot",
+  "inputs": [
     {
-      "ocelot": {
-        "inputs": [
-          {
-            "item": "minecraft:cod"
-          },
-          {
-            "item": "minecraft:salmon"
-          }
-        ]
-      }
+      "tag": "minecraft:ocelot_food"
     }
   ]
 }

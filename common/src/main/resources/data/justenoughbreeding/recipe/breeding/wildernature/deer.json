@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "wildernature",
-  "mobs": [
+  "input_entity": "wildernature:deer",
+  "inputs": [
     {
-      "deer": {
-        "inputs": [
-          {
-            "item": "minecraft:grass"
-          }
-        ]
-      }
+      "item": "minecraft:grass"
     }
   ]
 }

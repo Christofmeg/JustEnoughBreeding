@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "lilwings",
-  "mobs": [
+  "input_entity": "lilwings:cloudy_puff",
+  "inputs": [
     {
-      "cloudy_puff": {
-        "inputs": [
-          {
-            "item": "minecraft:azure_bluet"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "lilwings:cloudy_puff_egg"
-          }
-        ]
-      }
+      "item": "minecraft:azure_bluet"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "lilwings:cloudy_puff_egg"
     }
   ]
 }
