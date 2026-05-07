@@ -12,6 +12,7 @@ import net.neoforged.api.distmarker.OnlyIn;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 @OnlyIn(Dist.CLIENT)
 public class ClientUtils {
@@ -25,33 +26,39 @@ public class ClientUtils {
         if (level == null) return null;
 
         String key = CommonUtils.makeKey(entityType, input);
-        if (nbt != null) {
-            key += "|" + nbt.getAsString();
-        }
-        long currentTime = System.currentTimeMillis();
+        LivingEntity cachedEntity = ENTITY_CACHE.get(key);
 
-        LivingEntity entity = ENTITY_CACHE.get(key);
+        boolean nbtChanged = false;
+        if (cachedEntity != null) {
+            CompoundTag cachedNbt = new CompoundTag();
+            cachedEntity.saveWithoutId(cachedNbt);
+
+            if (nbt == null) {
+                nbtChanged = !cachedNbt.isEmpty();
+            } else {
+                nbtChanged = !nbt.equals(cachedNbt);
+            }
+        }
+
+        long currentTime = System.currentTimeMillis();
         long lastTime = CREATION_TIMES.getOrDefault(key, 0L);
 
-        boolean refreshAllowed =
-                !JustEnoughBreeding.isModLoaded("entity_model_features") &&
-                        !JustEnoughBreeding.isModLoaded("optifine");
+        boolean refreshAllowed = !JustEnoughBreeding.isModLoaded("entity_model_features") &&
+                !JustEnoughBreeding.isModLoaded("optifine");
 
-        if (entity == null) {
-            entity = (LivingEntity) entityType.create(level);
-            ENTITY_CACHE.put(key, entity);
-            CREATION_TIMES.put(key, currentTime);
-        } else if (!entity.getPersistentData().isEmpty()) {
-            entity = (LivingEntity) entityType.create(level);
-            ENTITY_CACHE.put(key, entity);
-            CREATION_TIMES.put(key, currentTime);
-        } else if (refreshAllowed && (currentTime - lastTime >= ENTITY_CREATION_INTERVAL)) {
-            entity = (LivingEntity) entityType.create(level);
-            ENTITY_CACHE.put(key, entity);
+        if (cachedEntity == null || nbtChanged || (refreshAllowed && (currentTime - lastTime >= ENTITY_CREATION_INTERVAL))) {
+            cachedEntity = (LivingEntity) entityType.create(level);
+            if (cachedEntity != null) {
+                if (nbt != null) {
+                    cachedEntity.load(nbt);
+                }
+                cachedEntity.setUUID(UUID.randomUUID());
+            }
+            ENTITY_CACHE.put(key, cachedEntity);
             CREATION_TIMES.put(key, currentTime);
         }
 
-        return entity;
+        return cachedEntity;
     }
 
     public static LivingEntity doRendering(EntityType<?> entityType) {

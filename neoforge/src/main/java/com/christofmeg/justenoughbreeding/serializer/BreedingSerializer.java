@@ -23,10 +23,10 @@ public class BreedingSerializer implements RecipeSerializer<BreedingRecipe> {
     @Override
     public @NotNull MapCodec<BreedingRecipe> codec() {
         return RecordCodecBuilder.mapCodec(instance -> instance.group(
-                        Codec.STRING.fieldOf("mod").forGetter(r -> r.mod()),
-                        Codec.STRING.fieldOf("input_entity").forGetter(r -> r.inputEntity()),
+                        Codec.STRING.fieldOf("mod").forGetter(BreedingRecipe::mod),
+                        Codec.STRING.fieldOf("input_entity").forGetter(BreedingRecipe::inputEntity),
                         CompoundTag.CODEC.optionalFieldOf("input_entity_nbt").forGetter(r -> Optional.ofNullable(r.inputEntityNbt())),
-                        Ingredient.CODEC.fieldOf("inputs").forGetter(r -> r.inputs()),
+                        Ingredient.CODEC.fieldOf("inputs").forGetter(BreedingRecipe::inputs),
                         Ingredient.CODEC.optionalFieldOf("extra_inputs").forGetter(r -> Optional.of(r.extraInputs())),
                         Ingredient.CODEC.optionalFieldOf("outputs").forGetter(r -> Optional.of(r.outputs())),
                         Ingredient.CODEC.optionalFieldOf("spawn_eggs").forGetter(r -> Optional.of(r.spawnEgg())),

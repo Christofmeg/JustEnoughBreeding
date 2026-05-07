@@ -45,7 +45,7 @@ public class REIUtils {
         }
 
         ArrayList<RecipeHolder<BreedingRecipe>> breedingRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.BREEDING_PROVIDER_TYPE.get()));
-        breedingRecipes.sort(Comparator.comparing(r -> r.value().inputEntity() == null ? "" : r.value().inputEntity()));
+        breedingRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
         for (RecipeHolder<BreedingRecipe> recipeHold : breedingRecipes) {
             BreedingRecipe recipe = recipeHold.value();
             if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.entityType() != null && !recipe.inputs().isEmpty()) {

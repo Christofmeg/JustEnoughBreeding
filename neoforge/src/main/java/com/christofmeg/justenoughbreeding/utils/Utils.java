@@ -93,12 +93,12 @@ public class Utils {
         renderEntityInInventoryFollowsMouse(guiGraphics, //left, top, right, bottom
                 bounds.x(), bounds.y() + 15, (int) (bounds.right() + mobOffset.x()), (int) (bounds.bottom() + mobOffset.y()),
                 scale + (int) mobOffset.scale(),
-                0, -yawRadians, 0, entity);
+                0, -yawRadians, entity);
         guiGraphics.disableScissor();
         guiGraphics.pose().popPose();
     }
 
-    public static void renderEntityInInventoryFollowsMouse(GuiGraphics guiGraphics, int x1, int y1, int x2, int y2, int scale, float yOffset, float mouseX, float mouseY, LivingEntity entity) {
+    public static void renderEntityInInventoryFollowsMouse(GuiGraphics guiGraphics, int x1, int y1, int x2, int y2, int scale, float yOffset, float mouseX, LivingEntity entity) {
         float f = (float)(x1 + x2) / 2.0F;
         float f2 = (float)Math.atan((f - mouseX) / 40.0F);
         renderEntityInInventoryFollowsAngle(guiGraphics, x1, y1, x2, y2, scale, yOffset, f2, entity);
