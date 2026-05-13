@@ -1,0 +1,18 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "earthmobsmod",
+  "mobs": [
+    {
+      "wither_skelton_wolf": {
+        "inputs": [
+          {
+            "item": "minecraft:bone"
+          },
+          {
+            "item": "minecraft:rotten_flesh"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "ghosts",
+  "mobs": [
+    {
+      "ghost": {
+        "inputs": [
+          {
+            "item": "minecraft:glow_berries"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "ghosts:ghost_spawn_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

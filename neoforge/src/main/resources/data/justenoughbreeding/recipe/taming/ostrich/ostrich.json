@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "ostrich",
+  "mobs": [
+    {
+      "ostrich": {
+        "inputs": [
+          {
+            "item": "minecraft:apple"
+          }
+        ]
+      }
+    }
+  ]
+}

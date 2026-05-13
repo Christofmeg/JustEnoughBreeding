@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "alexsmobs",
+  "mobs": [
+    {
+      "kangaroo": {
+        "inputs": [
+          {
+            "tag": "alexsmobs:kangaroo_tameables"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_kangaroo"
+          }
+        ]
+      }
+    }
+  ]
+}

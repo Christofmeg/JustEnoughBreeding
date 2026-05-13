@@ -1,0 +1,25 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "tameablebeasts",
+  "mobs": [
+    {
+      "argentavis": {
+        "inputs": [
+          {
+            "item": "tameablebeasts:bird_bait_arrow"
+          }
+        ],
+        "extra_inputs": [
+          {
+            "tag": "c:bows"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "tameablebeasts:argentavis_spawn_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

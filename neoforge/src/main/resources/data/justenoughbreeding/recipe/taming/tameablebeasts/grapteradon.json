@@ -1,0 +1,25 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "tameablebeasts",
+  "mobs": [
+    {
+      "graptera": {
+        "inputs": [
+          {
+            "item": "tameablebeasts:ptera_meal_arrow"
+          }
+        ],
+        "extra_inputs": [
+          {
+            "tag": "c:bows"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "tameablebeasts:graptera_spawn_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

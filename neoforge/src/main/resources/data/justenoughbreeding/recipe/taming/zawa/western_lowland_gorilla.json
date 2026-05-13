@@ -1,0 +1,13 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "zawa",
+  "mobs": [
+    {
+      "western_lowland_gorilla": {
+        "inputs": [{
+            "item": "zawa:herbivore_kibble"
+        }]
+      }
+    }
+  ]
+}

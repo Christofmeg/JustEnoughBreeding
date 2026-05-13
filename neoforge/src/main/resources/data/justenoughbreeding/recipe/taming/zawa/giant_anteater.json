@@ -1,0 +1,13 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "zawa",
+  "mobs": [
+    {
+      "giant_anteater": {
+        "inputs": [{
+            "item": "zawa:insectivore_kibble"
+        }]
+      }
+    }
+  ]
+}

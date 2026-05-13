@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "alexscaves",
+  "mobs": [
+    {
+      "candicorn": {
+        "inputs": [
+          {
+            "item": "alexscaves:caramel_apple"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexscaves:spawn_egg_candicorn"
+          }
+        ]
+      }
+    }
+  ]
+}

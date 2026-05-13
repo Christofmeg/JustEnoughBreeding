@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "iceandfire",
+  "mobs": [
+    {
+      "hippocampus": {
+        "inputs": [
+          {
+            "item": "minecraft:kelp"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "iceandfire:spawn_egg_hippocampus"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "tameablebeasts",
+  "mobs": [
+    {
+      "giant_grasshopper": {
+        "inputs": [
+          {
+            "tag": "tameablebeasts:grasshopper_tame_food"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "tameablebeasts:giant_grasshopper_spawn_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

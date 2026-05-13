@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "iceandfire",
+  "mobs": [
+    {
+      "ice_dragon": {
+        "inputs": [
+          {
+            "item": "iceandfire:creative_dragon_meal"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "iceandfire:spawn_egg_ice_dragon"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "ambientadditions",
+  "mobs": [
+    {
+      "cardigan_corgi": {
+        "inputs": [
+          {
+            "item": "minecraft:pumpkin_pie"
+          }
+        ]
+      }
+    }
+  ]
+}

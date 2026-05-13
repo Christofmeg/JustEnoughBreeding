@@ -1,0 +1,18 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "creaturecraft",
+  "mobs": [
+    {
+      "lynx": {
+        "inputs": [
+          {
+            "item": "minecraft:beef"
+          },
+          {
+            "item": "minecraft:cooked_beef"
+          }
+        ]
+      }
+    }
+  ]
+}

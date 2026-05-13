@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "cnc",
+  "mobs": [
+    {
+      "ringtail": {
+        "inputs": [
+          {
+            "item": "minecraft:glow_berries"
+          }
+        ]
+      }
+    }
+  ]
+}

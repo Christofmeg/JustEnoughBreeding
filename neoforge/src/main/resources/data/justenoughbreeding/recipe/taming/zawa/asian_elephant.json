@@ -1,0 +1,13 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "zawa",
+  "mobs": [
+    {
+      "asian_elephant": {
+        "inputs": [{
+            "item": "zawa:herbivore_kibble"
+        }]
+      }
+    }
+  ]
+}

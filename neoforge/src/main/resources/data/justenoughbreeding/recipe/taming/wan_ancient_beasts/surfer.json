@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "wan_ancient_beasts",
+  "mobs": [
+    {
+      "surfer": {
+        "inputs": [
+          {
+            "tag": "wan_ancient_beasts:surfer_food"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "wan_ancient_beasts:surfer_spawn_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "chileancraft",
+  "mobs": [
+    {
+      "chinchilla": {
+        "inputs": [
+          {
+            "item": "minecraft:carrot"
+          }
+        ]
+      }
+    }
+  ]
+}

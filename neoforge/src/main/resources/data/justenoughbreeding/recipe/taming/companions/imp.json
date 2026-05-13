@@ -1,0 +1,26 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "companions",
+  "mobs": [
+    {
+      "hostile_imp": {
+        "inputs": [
+          {
+            "item": "companions:copper_coin"
+          },
+          {
+            "item": "companions:nether_coin"
+          },
+          {
+            "item": "companions:end_coin"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "companions:hostile_imp_spawn_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

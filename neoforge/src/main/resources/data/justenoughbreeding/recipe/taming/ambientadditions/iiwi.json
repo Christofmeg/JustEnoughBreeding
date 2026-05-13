@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "ambientadditions",
+  "mobs": [
+    {
+      "iiwi": {
+        "inputs": [
+          {
+            "tag": "minecraft:flowers"
+          }
+        ]
+      }
+    }
+  ]
+}

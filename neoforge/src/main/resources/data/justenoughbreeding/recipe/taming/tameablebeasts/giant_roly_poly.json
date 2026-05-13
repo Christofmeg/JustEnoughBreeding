@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "tameablebeasts",
+  "mobs": [
+    {
+      "giant_roly_poly": {
+        "inputs": [
+          {
+            "tag": "tameablebeasts:roly_poly_tame_food"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "tameablebeasts:giant_roly_poly_spawn_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "blastfromthepast",
+  "mobs": [
+    {
+      "speartooth": {
+        "inputs": [
+          {
+            "item": "blastfromthepast:raw_beast_chops"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "blastfromthepast:speartooth_tiger_spawn_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

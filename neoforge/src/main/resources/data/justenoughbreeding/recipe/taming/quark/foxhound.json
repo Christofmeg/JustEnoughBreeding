@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "quark",
+  "mobs": [
+    {
+      "foxhound": {
+        "inputs": [
+          {
+            "item": "minecraft:coal"
+          }
+        ]
+      }
+    }
+  ]
+}

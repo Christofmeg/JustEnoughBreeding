@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "friendsandfoes",
+  "mobs": [
+    {
+      "glare": {
+        "inputs": [
+          {
+            "item": "minecraft:glow_berries"
+          }
+        ]
+      }
+    }
+  ]
+}

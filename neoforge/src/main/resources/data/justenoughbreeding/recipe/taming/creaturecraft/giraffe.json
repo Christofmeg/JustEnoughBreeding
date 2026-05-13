@@ -1,0 +1,27 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "creaturecraft",
+  "mobs": [
+    {
+      "giraffe": {
+        "inputs": [
+          {
+            "item": "creaturecraft:baobab_leaves"
+          },
+          {
+            "item": "creaturecraft:savannah_bush_tall"
+          },
+          {
+            "item": "creaturecraft:savannah_bush_short"
+          },
+          {
+            "item": "minecraft:acacia_sapling"
+          },
+          {
+            "item": "minecraft:acacia_leaves"
+          }
+        ]
+      }
+    }
+  ]
+}
