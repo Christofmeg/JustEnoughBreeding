@@ -34,7 +34,7 @@ public class AllayDuplicationCategoryREI extends AbstractRecipeCategoryREI<Allay
         widgets.add(Widgets.createRecipeBase(bounds));
 
         List<EntryStack<?>> spawnEggs = new ArrayList<>();
-        for (ItemStack stack : display.recipe.spawnEgg.getItems()) {
+        for (ItemStack stack : display.recipe.spawnEgg().getItems()) {
             spawnEggs.add(EntryStacks.of(stack));
         }
         widgets.add(Widgets.createSlot(new Point(bounds.x + 154, bounds.y + 6)).entries(spawnEggs));
@@ -47,9 +47,9 @@ public class AllayDuplicationCategoryREI extends AbstractRecipeCategoryREI<Allay
 
         AllayDuplicationRecipe recipe = display.recipe;
         REIUtils.drawMobSlot(widgets, bounds,0, 10);
-        REIUtils.drawMobNameAndEntity(widgets, bounds, recipe.entityType, recipe, getDisplayWidth(display));
+        REIUtils.drawMobNameAndEntity(widgets, bounds, recipe.entityType(), recipe, getDisplayWidth(display));
 
-        REIUtils.addButton(bounds, recipe.entityType, widgets);
+        REIUtils.addButton(bounds, recipe.entityType(), widgets);
 
         return widgets;
     }

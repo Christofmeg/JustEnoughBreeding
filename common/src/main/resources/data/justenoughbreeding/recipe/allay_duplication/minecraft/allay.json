@@ -1,0 +1,10 @@
+{
+  "type": "justenoughbreeding:allay_duplication",
+  "mod": "minecraft",
+  "input_entity": "minecraft:allay",
+  "inputs": [
+    {
+      "item": "minecraft:amethyst_shard"
+    }
+  ]
+}

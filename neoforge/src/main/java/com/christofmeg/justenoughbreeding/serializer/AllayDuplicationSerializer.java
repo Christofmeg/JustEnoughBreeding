@@ -2,13 +2,13 @@ package com.christofmeg.justenoughbreeding.serializer;
 
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.recipe.AllayDuplicationRecipe;
-import com.christofmeg.justenoughbreeding.utils.Utils;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.serialization.DataResult;
+import com.christofmeg.justenoughbreeding.utils.CommonUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -16,55 +16,68 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Optional;
+
 public class AllayDuplicationSerializer implements RecipeSerializer<AllayDuplicationRecipe> {
-/*
-    public AllayDuplicationRecipe fromNetwork(ResourceLocation id, RegistryFriendlyByteBuf buf) {
-        ResourceLocation entityId = buf.readResourceLocation();
-        EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(entityId);
-        if (entityType == null) throw new JsonParseException("Unknown EntityType: " + entityId);
 
-        Ingredient inputStack = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
-        Ingredient spawnEgg = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
-
-        String jsonModID = buf.readUtf();
-        String jsonAnimalID = buf.readUtf();
-        String modFolder = buf.readUtf();
-        String fileName = buf.readUtf();
-
-        CompoundTag inputEntityNbt = buf.readBoolean() ? buf.readNbt() : null;
-
-        return new AllayDuplicationRecipe(entityType, inputStack, spawnEgg, jsonModID, jsonAnimalID, modFolder, fileName, inputEntityNbt);
-    }
-
-    public void toNetwork(RegistryFriendlyByteBuf buf, AllayDuplicationRecipe recipe) {
-        ResourceLocation entityKey = JustEnoughBreeding.getKeyLoaderRegistries(recipe.entityType);
-        if (entityKey == null) throw new JsonParseException("Unknown EntityType: " + recipe.entityType);
-
-        buf.writeResourceLocation(entityKey);
-
-        Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.inputStack);
-        Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.spawnEgg);
-
-        buf.writeUtf(recipe.jsonModID);
-        buf.writeUtf(recipe.jsonAnimalID);
-        buf.writeUtf(recipe.modFolder);
-        buf.writeUtf(recipe.fileName);
-
-        if (recipe.inputEntityNbt != null) {
-            buf.writeBoolean(true);
-            buf.writeNbt(recipe.inputEntityNbt);
-        } else {
-            buf.writeBoolean(false);
-        }
-    }
-*/
     @Override
     public @NotNull MapCodec<AllayDuplicationRecipe> codec() {
-        return null;
+        return RecordCodecBuilder.mapCodec(instance -> instance.group(
+                        Codec.STRING.fieldOf("mod").forGetter(AllayDuplicationRecipe::mod),
+                        Codec.STRING.fieldOf("input_entity").forGetter(AllayDuplicationRecipe::inputEntity),
+                        CompoundTag.CODEC.optionalFieldOf("input_entity_nbt").forGetter(r -> Optional.ofNullable(r.inputEntityNbt())),
+                        Ingredient.CODEC.fieldOf("inputs").forGetter(AllayDuplicationRecipe::inputs),
+                        Ingredient.CODEC.optionalFieldOf("spawn_eggs").forGetter(r -> Optional.of(r.spawnEgg()))
+                ).apply(instance, (
+                        mod,
+                        input_entity,
+                        input_entity_nbt,
+                        inputs,
+                        spawn_eggs
+                ) -> {
+                    EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(ResourceLocation.parse(input_entity));
+                    return new AllayDuplicationRecipe(
+                            entityType,
+                            CommonUtils.safe(inputs),
+                            spawn_eggs.orElse(CommonUtils.safe(Ingredient.of(JustEnoughBreeding.getSpawnEggItem(entityType)))),
+                            mod,
+                            JustEnoughBreeding.getKeyLoaderRegistries(entityType).getNamespace(),
+                            input_entity_nbt.orElse(null)
+                    );
+                })
+        );
     }
 
     @Override
     public @NotNull StreamCodec<RegistryFriendlyByteBuf, AllayDuplicationRecipe> streamCodec() {
-        return null;
+        return new StreamCodec<>() {
+            @Override
+            public @NotNull AllayDuplicationRecipe decode(@NotNull RegistryFriendlyByteBuf buf) {
+                ResourceLocation entityRL = ResourceLocation.STREAM_CODEC.decode(buf);
+                Ingredient inputIngredient = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
+                Ingredient spawnEggIngredient = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
+                String modId = ByteBufCodecs.STRING_UTF8.decode(buf);
+                String entity = ByteBufCodecs.STRING_UTF8.decode(buf);
+                CompoundTag inputEntityNbt = ByteBufCodecs.optional(ByteBufCodecs.COMPOUND_TAG).decode(buf).orElse(null);
+                return new AllayDuplicationRecipe(
+                        JustEnoughBreeding.getEntityFromLoaderRegistries(entityRL),
+                        inputIngredient,
+                        spawnEggIngredient,
+                        modId,
+                        entity,
+                        inputEntityNbt
+                );
+            }
+
+            @Override
+            public void encode(@NotNull RegistryFriendlyByteBuf buf, @NotNull AllayDuplicationRecipe recipe) {
+                ResourceLocation.STREAM_CODEC.encode(buf, JustEnoughBreeding.getKeyLoaderRegistries(recipe.entityType()));
+                Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.inputs());
+                Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.spawnEgg());
+                ByteBufCodecs.STRING_UTF8.encode(buf, recipe.mod());
+                ByteBufCodecs.STRING_UTF8.encode(buf, recipe.inputEntity());
+                ByteBufCodecs.optional(ByteBufCodecs.COMPOUND_TAG).encode(buf, Optional.ofNullable(recipe.inputEntityNbt()));
+            }
+        };
     }
 }

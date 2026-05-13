@@ -36,22 +36,22 @@ public class AllayDuplicationCategory extends AbstractRecipeCategory<AllayDuplic
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, AllayDuplicationRecipe recipe, @NotNull IFocusGroup focuses) {
-        builder.addInputSlot(149, 1).setStandardSlotBackground().addIngredients(recipe.spawnEgg);
-        builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).addIngredients(recipe.spawnEgg);
-        builder.addInputSlot(107, 32).setStandardSlotBackground().addIngredients(recipe.inputStack);
+        builder.addInputSlot(149, 1).setStandardSlotBackground().addIngredients(recipe.spawnEgg());
+        builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).addIngredients(recipe.spawnEgg());
+        builder.addInputSlot(107, 32).setStandardSlotBackground().addIngredients(recipe.inputs());
         builder.addInputSlot(97, 52).setStandardSlotBackground().addIngredients(Ingredient.of(ItemTags.CREEPER_DROP_MUSIC_DISCS));
         builder.addInputSlot(117, 52).setStandardSlotBackground().addIngredients(Ingredient.of(Items.JUKEBOX));
     }
 
     @Override
     public void createRecipeExtras(@NotNull IRecipeExtrasBuilder builder, @NotNull AllayDuplicationRecipe recipe, @NotNull IFocusGroup focuses) {
-        JEIUtils.addButton(builder, recipe.entityType);
+        JEIUtils.addButton(builder, recipe.entityType());
     }
 
     @Override
     public void draw(@NotNull AllayDuplicationRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics stack, double mouseX, double mouseY) {
         JEIUtils.drawMobSlot(0, 10, bigSlot, stack);
-        JEIUtils.drawMobNameAndEntity(recipe.entityType, stack, mouseX, recipe, 99, 0, CATEGORY_WIDTH);
+        JEIUtils.drawMobNameAndEntity(recipe.entityType(), stack, mouseX, recipe, 99, 0, CATEGORY_WIDTH);
     }
 
 }

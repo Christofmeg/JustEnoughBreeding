@@ -30,8 +30,8 @@ public class Utils {
                     }
                 }
                 if (recipe instanceof AllayDuplicationRecipe allayDuplicationRecipe) {
-                    if (allayDuplicationRecipe.inputEntityNbt != null) {
-                        currentLivingEntity.load(allayDuplicationRecipe.inputEntityNbt);
+                    if (allayDuplicationRecipe.inputEntityNbt() != null) {
+                        currentLivingEntity.load(allayDuplicationRecipe.inputEntityNbt());
                     }
                 }
                 if (recipe instanceof BreedingRecipe breedingRecipe) {

@@ -35,10 +35,10 @@ public class JEIUtils {
         ClientLevel clientLevel = Minecraft.getInstance().level;
         if (clientLevel != null) {
             ArrayList<RecipeHolder<AllayDuplicationRecipe>> allayDuplicationRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.ALLAY_DUPLICATION_PROVIDER_TYPE.get()));
-            allayDuplicationRecipes.sort(Comparator.comparing(r -> r.value().jsonAnimalID == null ? "" : r.value().jsonAnimalID));
+            allayDuplicationRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
             for (RecipeHolder<AllayDuplicationRecipe> recipeHold : allayDuplicationRecipes) {
                 AllayDuplicationRecipe recipe = recipeHold.value();
-                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
+                if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.entityType() != null && !recipe.inputs().isEmpty()) {
                     registration.addRecipes(AllayDuplicationCategory.TYPE, Collections.singletonList(recipe));
                 }
             }
