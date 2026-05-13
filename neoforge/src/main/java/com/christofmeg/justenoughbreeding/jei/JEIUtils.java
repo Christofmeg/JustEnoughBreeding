@@ -53,10 +53,10 @@ public class JEIUtils {
             }
 
             ArrayList<RecipeHolder<TamingRecipe>> tamingRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TAMING_PROVIDER_TYPE.get()));
-            tamingRecipes.sort(Comparator.comparing(r -> r.value().jsonAnimalID == null ? "" : r.value().jsonAnimalID));
+            tamingRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
             for (RecipeHolder<TamingRecipe> recipeHold : tamingRecipes) {
                 TamingRecipe recipe = recipeHold.value();
-                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
+                if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.entityType() != null && !recipe.inputs().isEmpty()) {
                     registration.addRecipes(TamingCategory.TYPE, Collections.singletonList(recipe));
                 }
             }

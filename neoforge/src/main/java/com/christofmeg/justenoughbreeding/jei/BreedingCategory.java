@@ -38,8 +38,8 @@ public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> {
         builder.addInputSlot(149, 1).setStandardSlotBackground().addIngredients(recipe.spawnEgg());
         builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).addIngredients(recipe.spawnEgg());
         IRecipeSlotBuilder inputSlot = builder.addInputSlot(69, 58).setStandardSlotBackground().addIngredients(recipe.inputs()).setPosition(63, 20, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
-        boolean hasExtraInput = recipe.extraInputs() != null && !recipe.extraInputs().isEmpty();
-        boolean hasOutput = recipe.outputs() != null && !recipe.outputs().isEmpty();
+        boolean hasExtraInput = !recipe.extraInputs().isEmpty();
+        boolean hasOutput = !recipe.outputs().isEmpty();
         if (hasOutput) {
             inputSlot.setPosition(74, 38, 78, 35, HorizontalAlignment.LEFT, VerticalAlignment.CENTER);
             builder.addOutputSlot(130, 48).setOutputSlotBackground().addIngredients(recipe.outputs()).setPosition(72, 38, 78, 35, HorizontalAlignment.RIGHT, VerticalAlignment.CENTER);
@@ -55,7 +55,7 @@ public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> {
 
     @Override
     public void createRecipeExtras(@NotNull IRecipeExtrasBuilder builder, @NotNull BreedingRecipe recipe, @NotNull IFocusGroup focuses) {
-        boolean hasOutput = recipe.outputs() != null && !recipe.outputs().isEmpty();
+        boolean hasOutput = !recipe.outputs().isEmpty();
         if (hasOutput) {
             builder.addRecipeArrow().setPosition(70, 37, 78, 35, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
         }

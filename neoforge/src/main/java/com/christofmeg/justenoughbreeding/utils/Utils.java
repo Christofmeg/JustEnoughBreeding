@@ -40,8 +40,8 @@ public class Utils {
                     }
                 }
                 if (recipe instanceof TamingRecipe tamingRecipe) {
-                    if (tamingRecipe.inputEntityNbt != null) {
-                        currentLivingEntity.load(tamingRecipe.inputEntityNbt);
+                    if (tamingRecipe.inputEntityNbt() != null) {
+                        currentLivingEntity.load(tamingRecipe.inputEntityNbt());
                     }
                 }
                 if (recipe instanceof TemperRecipe temperRecipe) {

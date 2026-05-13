@@ -48,7 +48,7 @@ public class BreedingCategoryEMI extends AbstractRecipeCategoryEMI {
     @Override
     public List<EmiStack> getOutputs() {
         List<EmiStack> list = new ArrayList<>();
-        if (recipe.outputs() != null) {
+        if (!recipe.outputs().isEmpty()) {
             for (ItemStack item : recipe.outputs().getItems()) {
                 list.add(EmiStack.of(item));
             }
@@ -64,8 +64,8 @@ public class BreedingCategoryEMI extends AbstractRecipeCategoryEMI {
         widgets.addSlot(EmiIngredient.of(recipe.spawnEgg()), 149, 1);
         int inputX = 69 + 5;
         int inputY = 48;
-        boolean hasExtraInput = recipe.extraInputs() != null && !recipe.extraInputs().isEmpty();
-        boolean hasOutput = recipe.outputs() != null && !recipe.outputs().isEmpty();
+        boolean hasExtraInput = !recipe.extraInputs().isEmpty();
+        boolean hasOutput = !recipe.outputs().isEmpty();
         if (hasExtraInput && hasOutput) {
             widgets.addSlot(EmiIngredient.of(recipe.inputs()), inputX, 38);
             widgets.addSlot(EmiIngredient.of(recipe.extraInputs()), inputX, 57);

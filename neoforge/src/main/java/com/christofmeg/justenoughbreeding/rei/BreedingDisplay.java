@@ -20,7 +20,7 @@ public class BreedingDisplay extends BasicDisplay {
                 List.of(EntryIngredients.ofIngredient(recipe.outputs()), EntryIngredients.ofIngredient(recipe.spawnEgg()))
         );
         this.recipe = recipe;
-        if (recipe.extraInputs() != null) {
+        if (!recipe.extraInputs().isEmpty()) {
             extraInputs = List.of(EntryIngredients.ofIngredient(recipe.extraInputs()));
         } else {
             extraInputs = List.of(EntryIngredient.of(EntryStacks.of(ItemStack.EMPTY)));

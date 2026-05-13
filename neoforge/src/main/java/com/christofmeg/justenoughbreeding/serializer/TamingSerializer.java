@@ -3,13 +3,12 @@ package com.christofmeg.justenoughbreeding.serializer;
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.recipe.TamingRecipe;
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;
-import com.christofmeg.justenoughbreeding.utils.Utils;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -17,68 +16,74 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Optional;
+
 public class TamingSerializer implements RecipeSerializer<TamingRecipe> {
+
     @Override
-    public MapCodec<TamingRecipe> codec() {
-        return null;
+    public @NotNull MapCodec<TamingRecipe> codec() {
+        return RecordCodecBuilder.mapCodec(instance -> instance.group(
+                        Codec.STRING.fieldOf("mod").forGetter(TamingRecipe::mod),
+                        Codec.STRING.fieldOf("input_entity").forGetter(TamingRecipe::inputEntity),
+                        CompoundTag.CODEC.optionalFieldOf("input_entity_nbt").forGetter(r -> Optional.ofNullable(r.inputEntityNbt())),
+                        Ingredient.CODEC.fieldOf("inputs").forGetter(TamingRecipe::inputs),
+                        Ingredient.CODEC.optionalFieldOf("extra_inputs").forGetter(r -> Optional.of(r.extraInputs())),
+                        Ingredient.CODEC.optionalFieldOf("spawn_eggs").forGetter(r -> Optional.of(r.spawnEgg()))
+                ).apply(instance, (
+                        mod,
+                        input_entity,
+                        input_entity_nbt,
+                        inputs,
+                        extra_inputs,
+                        spawn_eggs
+                ) -> {
+                    EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(ResourceLocation.parse(input_entity));
+                    return new TamingRecipe(
+                            entityType,
+                            CommonUtils.safe(inputs),
+                            spawn_eggs.orElse(CommonUtils.safe(Ingredient.of(JustEnoughBreeding.getSpawnEggItem(entityType)))),
+                            extra_inputs.orElse(Ingredient.EMPTY),
+                            mod,
+                            JustEnoughBreeding.getKeyLoaderRegistries(entityType).getNamespace(),
+                            input_entity_nbt.orElse(null)
+                    );
+                })
+        );
     }
 
     @Override
-    public StreamCodec<RegistryFriendlyByteBuf, TamingRecipe> streamCodec() {
-        return null;
+    public @NotNull StreamCodec<RegistryFriendlyByteBuf, TamingRecipe> streamCodec() {
+        return new StreamCodec<>() {
+            @Override
+            public @NotNull TamingRecipe decode(@NotNull RegistryFriendlyByteBuf buf) {
+                ResourceLocation entityRL = ResourceLocation.STREAM_CODEC.decode(buf);
+                Ingredient inputIngredient = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
+                Ingredient extraInputIngredient = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
+                Ingredient spawnEggIngredient = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
+                String modId = ByteBufCodecs.STRING_UTF8.decode(buf);
+                String entity = ByteBufCodecs.STRING_UTF8.decode(buf);
+                CompoundTag inputEntityNbt = ByteBufCodecs.optional(ByteBufCodecs.COMPOUND_TAG).decode(buf).orElse(null);
+                return new TamingRecipe(
+                        JustEnoughBreeding.getEntityFromLoaderRegistries(entityRL),
+                        inputIngredient,
+                        spawnEggIngredient,
+                        extraInputIngredient,
+                        modId,
+                        entity,
+                        inputEntityNbt
+                );
+            }
+
+            @Override
+            public void encode(@NotNull RegistryFriendlyByteBuf buf, @NotNull TamingRecipe recipe) {
+                ResourceLocation.STREAM_CODEC.encode(buf, JustEnoughBreeding.getKeyLoaderRegistries(recipe.entityType()));
+                Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.inputs());
+                Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.extraInputs());
+                Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.spawnEgg());
+                ByteBufCodecs.STRING_UTF8.encode(buf, recipe.mod());
+                ByteBufCodecs.STRING_UTF8.encode(buf, recipe.inputEntity());
+                ByteBufCodecs.optional(ByteBufCodecs.COMPOUND_TAG).encode(buf, Optional.ofNullable(recipe.inputEntityNbt()));
+            }
+        };
     }
-/*
-    @Override
-    public @NotNull TamingRecipe fromJson(@NotNull ResourceLocation jsonPath, @NotNull JsonObject json) {
-        return (TamingRecipe) Utils.readJsonContents(jsonPath, json, "taming");
-    }
-
-    @Override
-    public @NotNull TamingRecipe fromNetwork(@NotNull ResourceLocation resourceLocation, @NotNull FriendlyByteBuf buf) {
-        EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(buf.readResourceLocation());
-        if (entityType == null) throw new JsonParseException("Unknown EntityType in TamingRecipe#fromNetwork");
-
-        Ingredient inputStack = Ingredient.fromNetwork(buf);
-        Ingredient spawnEgg = Ingredient.fromNetwork(buf);
-
-        boolean hasExtra = buf.readBoolean();
-        Ingredient extraInputStack = hasExtra ? Ingredient.fromNetwork(buf) : Ingredient.EMPTY;
-
-        String jsonModID = buf.readUtf();
-        String jsonAnimalID = buf.readUtf();
-        String modFolder = buf.readUtf();
-        String fileName = buf.readUtf();
-
-        CompoundTag inputEntityNbt = buf.readBoolean() ? buf.readNbt() : null;
-
-        return new TamingRecipe(entityType, inputStack, spawnEgg, extraInputStack, jsonModID, jsonAnimalID, modFolder, fileName, inputEntityNbt);
-    }
-
-    @Override
-    public void toNetwork(@NotNull FriendlyByteBuf buf, @NotNull TamingRecipe recipe) {
-        ResourceLocation entityKey = JustEnoughBreeding.getKeyLoaderRegistries(recipe.entityType);
-        if (entityKey == null) throw new JsonParseException("Unknown EntityType in TamingRecipe: " + recipe.entityType);
-        buf.writeResourceLocation(entityKey);
-
-        CommonUtils.safe(recipe.inputStack).toNetwork(buf);
-        CommonUtils.safe(recipe.spawnEgg).toNetwork(buf);
-
-        boolean hasExtra = recipe.extraInputStack != null && !recipe.extraInputStack.isEmpty();
-        buf.writeBoolean(hasExtra);
-        if (hasExtra) {
-            recipe.extraInputStack.toNetwork(buf);
-        }
-
-        buf.writeUtf(recipe.jsonModID);
-        buf.writeUtf(recipe.jsonAnimalID);
-        buf.writeUtf(recipe.modFolder);
-        buf.writeUtf(recipe.fileName);
-
-        if (recipe.inputEntityNbt != null) {
-            buf.writeBoolean(true);
-            buf.writeNbt(recipe.inputEntityNbt);
-        } else {
-            buf.writeBoolean(false);
-        }
-    }*/
 }
