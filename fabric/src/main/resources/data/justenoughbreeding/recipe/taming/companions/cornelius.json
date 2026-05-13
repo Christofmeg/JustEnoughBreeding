@@ -1,0 +1,20 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "companions",
+  "mobs": [
+    {
+      "cornelius": {
+        "inputs": [
+          {
+            "item": "minecraft:bee_spawn_egg"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "companions:cornelius_spawn_egg"
+          }
+        ]
+      }
+    }
+  ]
+}

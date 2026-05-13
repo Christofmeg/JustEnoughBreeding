@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "crittersandcompanions",
+  "mobs": [
+    {
+      "shima_enaga": {
+        "inputs": [
+          {
+            "tag": "crittersandcompanions:shima_enaga_food"
+          }
+        ]
+      }
+    }
+  ]
+}

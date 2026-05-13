@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:taming",
+  "mod": "crittersandcompanions",
+  "mobs": [
+    {
+      "red_panda": {
+        "inputs": [
+          {
+            "item": "minecraft:sweet_berries"
+          }
+        ]
+      }
+    }
+  ]
+}
