@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "farmlife"
+    }
+  ],
   "type": "justenoughbreeding:breeding",
   "mod": "farmlife",
   "input_entity": "farmlife:galliraptor",

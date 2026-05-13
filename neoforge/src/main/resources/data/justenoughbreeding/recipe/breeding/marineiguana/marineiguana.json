@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "marineiguana"
+    }
+  ],
   "type": "justenoughbreeding:breeding",
   "mod": "marineiguana",
   "input_entity": "marineiguana:marineiguana",

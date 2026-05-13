@@ -6,9 +6,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
-import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.bus.api.IEventBus;
@@ -17,15 +15,11 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Mod(CommonConstants.MOD_ID)
 public class JustEnoughBreeding {
 
     //TODO update recipe generator to match input_entity_nbt on recipetypes
     //TODO update recipe generator to match input entity nbt on transformation
-    //TODO neoforge conditional on forge recipes
 
     private static final DeferredRegister<RecipeSerializer<?>> RECIPES_SERIALIZERS = DeferredRegister.create(Registries.RECIPE_SERIALIZER, CommonConstants.MOD_ID);
     private static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(Registries.RECIPE_TYPE, CommonConstants.MOD_ID);
@@ -47,23 +41,9 @@ public class JustEnoughBreeding {
     public static final DeferredHolder<RecipeType<?>, RecipeType<TrustingRecipe>> TRUSTING_PROVIDER_TYPE = RECIPE_TYPES.register("trusting", () -> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "trusting")));
     public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<TrustingRecipe>>TRUSTING_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("trusting", TrustingSerializer::new);
 
-    public static List<RecipeHolder<AllayDuplicationRecipe>> allayDuplicationRecipes = new ArrayList<>();
-    public static List<RecipeHolder<BreedingRecipe>> breedingRecipes = new ArrayList<>();
-    public static List<RecipeHolder<TamingRecipe>> tamingRecipes = new ArrayList<>();
-    public static List<RecipeHolder<TemperRecipe>> temperRecipes = new ArrayList<>();
-    public static List<RecipeHolder<TransformationRecipe>> transformationRecipes = new ArrayList<>();
-    public static List<RecipeHolder<TrustingRecipe>> trustingRecipes = new ArrayList<>();
-
     public JustEnoughBreeding(IEventBus modBus) {
         RECIPES_SERIALIZERS.register(modBus);
         RECIPE_TYPES.register(modBus);
-
-        //Make sure the mod being absent on the other network side does not cause the client to display the server as incompatible
-    //    ModLoadingContext.get().registerExtensionPoint(IExtensionPoint.DisplayTest.class, () -> new IExtensionPoint.DisplayTest(()-> NetworkConstants.IGNORESERVERONLY, (remote, isServer)-> true));
-    }
-
-    public static Item getItemFromLoaderRegistries(ResourceLocation resourceLocation) {
-        return BuiltInRegistries.ITEM.get(resourceLocation);
     }
 
     public static EntityType<?> getEntityFromLoaderRegistries(ResourceLocation resourceLocation) {

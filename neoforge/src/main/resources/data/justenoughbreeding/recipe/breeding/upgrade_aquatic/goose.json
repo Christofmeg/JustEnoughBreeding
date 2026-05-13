@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "upgrade_aquatic"
+    }
+  ],
   "type": "justenoughbreeding:breeding",
   "mod": "upgrade_aquatic",
   "input_entity": "upgrade_aquatic:goose",

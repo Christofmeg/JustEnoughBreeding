@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "steves_vanilla"
+    }
+  ],
   "type": "justenoughbreeding:breeding",
   "mod": "steves_vanilla",
   "input_entity": "steves_vanilla:boggord",

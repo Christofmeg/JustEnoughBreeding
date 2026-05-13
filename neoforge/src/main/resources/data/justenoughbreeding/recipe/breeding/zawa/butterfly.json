@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "zawa"
+    }
+  ],
   "type": "justenoughbreeding:breeding",
   "mod": "zawa",
   "input_entity": "zawa:butterfly",

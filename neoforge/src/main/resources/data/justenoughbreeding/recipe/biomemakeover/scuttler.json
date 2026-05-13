@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "biomemakeover"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "biomemakeover",
+  "input_entity": "biomemakeover:scuttler",
+  "inputs": [
+    {
+      "tag": "biomemakeover:scuttler_food"
+    }
+  ]
+}

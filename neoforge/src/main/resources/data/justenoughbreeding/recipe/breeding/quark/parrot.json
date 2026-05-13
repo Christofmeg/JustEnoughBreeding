@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "quark"
+    }
+  ],
   "type": "justenoughbreeding:breeding",
   "mod": "quark",
   "input_entity": "minecraft:parrot",

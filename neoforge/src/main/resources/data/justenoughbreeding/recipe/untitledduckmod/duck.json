@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "untitledduckmod"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "untitledduckmod",
+  "input_entity": "untitledduckmod:duck",
+  "inputs": [
+    {
+      "tag": "untitledduckmod:duck_breeding_food"
+    }
+  ]
+}

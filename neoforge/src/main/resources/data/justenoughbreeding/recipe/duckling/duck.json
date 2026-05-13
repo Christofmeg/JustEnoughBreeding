@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "duckling"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "duckling",
+  "input_entity": "duckling:duck",
+  "inputs": [
+    {
+      "item": "minecraft:bread"
+    }
+  ]
+}

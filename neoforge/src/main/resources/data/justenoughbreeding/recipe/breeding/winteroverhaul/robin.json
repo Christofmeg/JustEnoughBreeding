@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "winteroverhaul"
+    }
+  ],
   "type": "justenoughbreeding:breeding",
   "mod": "winteroverhaul",
   "input_entity": "winteroverhaul:robin",

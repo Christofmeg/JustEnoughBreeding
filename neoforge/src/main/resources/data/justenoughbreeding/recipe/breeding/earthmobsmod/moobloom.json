@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "earthmobsmod"
+    }
+  ],
   "type": "justenoughbreeding:breeding",
   "mod": "earthmobsmod",
   "input_entity": "earthmobsmod:moobloom",

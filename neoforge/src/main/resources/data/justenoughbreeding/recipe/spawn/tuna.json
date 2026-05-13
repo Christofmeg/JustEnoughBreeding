@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "spawn"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "spawn",
+  "input_entity": "spawn:tuna",
+  "inputs": [
+    {
+      "tag": "spawn:tuna_feeds"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "spawn:tuna_egg_bucket"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "spawn:tuna_spawn_egg"
+    }
+  ]
+}

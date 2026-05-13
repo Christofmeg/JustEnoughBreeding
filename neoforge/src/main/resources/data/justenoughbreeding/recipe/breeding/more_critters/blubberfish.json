@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "more_critters"
+    }
+  ],
   "type": "justenoughbreeding:breeding",
   "mod": "more_critters",
   "input_entity": "more_critters:blubberfish",

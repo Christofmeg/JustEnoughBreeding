@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "cnb"
+    }
+  ],
   "type": "justenoughbreeding:breeding",
   "mod": "cnb",
   "input_entity": "cnb:little_grebe",

@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
   "type": "justenoughbreeding:breeding",
   "mod": "prehistoricfauna",
   "input_entity": "prehistoricfauna:desmatosuchus",

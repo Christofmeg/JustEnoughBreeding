@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "deep_aether"
+    }
+  ],
   "type": "justenoughbreeding:breeding",
   "mod": "deep_aether",
   "input_entity": "deep_aether:quail",

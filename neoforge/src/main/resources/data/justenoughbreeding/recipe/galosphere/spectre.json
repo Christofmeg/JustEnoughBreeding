@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "galosphere"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "galosphere",
+  "input_entity": "galosphere:spectre",
+  "inputs": [
+    {
+      "item": "galosphere:lichen_cordyceps"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "galosphere:spectre_spawn_egg"
+    }
+  ]
+}

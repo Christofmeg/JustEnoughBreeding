@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "twilightforest"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "twilightforest",
+  "input_entity": "twilightforest:penguin",
+  "inputs": [
+    {
+      "item": "minecraft:cod"
+    }
+  ]
+}

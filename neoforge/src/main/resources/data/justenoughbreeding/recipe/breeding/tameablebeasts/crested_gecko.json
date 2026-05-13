@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tameablebeasts"
+    }
+  ],
   "type": "justenoughbreeding:breeding",
   "mod": "tameablebeasts",
   "input_entity": "tameablebeasts:crested_gecko",
