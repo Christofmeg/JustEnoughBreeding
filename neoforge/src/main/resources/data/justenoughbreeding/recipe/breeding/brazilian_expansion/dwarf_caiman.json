@@ -1,24 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "brazilian_expansion",
-  "mobs": [
+  "input_entity": "brazilian_expansion:dwarf_caiman",
+  "inputs": [
     {
-      "dwarf_caiman": {
-        "inputs": [
-          {
-            "tag": "brazilian_expansion:food_caimans"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "brazilian_expansion:dwcaiman_egg",
-            "amount": {
-              "min": 3,
-              "max": 3
-            }
-          }
-        ]
-      }
+      "tag": "brazilian_expansion:food_caimans"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "brazilian_expansion:dwcaiman_egg"
     }
   ]
 }

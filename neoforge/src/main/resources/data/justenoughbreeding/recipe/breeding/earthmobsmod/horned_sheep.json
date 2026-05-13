@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "earthmobsmod",
-  "mobs": [
+  "input_entity": "earthmobsmod:horned_sheep",
+  "inputs": [
     {
-      "horned_sheep": {
-        "inputs": [
-          {
-            "item": "minecraft:wheat"
-          }
-        ]
-      }
+      "item": "minecraft:wheat"
     }
   ]
 }

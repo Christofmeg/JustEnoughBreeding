@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:red_kangaroo",
+  "inputs": [
     {
-      "red_kangaroo": {
-        "inputs": [{
-            "item": "minecraft:hay_bale"
-        }]
-      }
+      "item": "minecraft:hay_bale"
     }
   ]
 }

@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "deep_aether",
-  "mobs": [
+  "input_entity": "deep_aether:quail",
+  "inputs": [
     {
-      "quail": {
-        "inputs": [
-          {
-            "item": "deep_aether:golden_grass_seeds"
-          }
-        ]
-      }
+      "item": "deep_aether:golden_grass_seeds"
     }
   ]
 }

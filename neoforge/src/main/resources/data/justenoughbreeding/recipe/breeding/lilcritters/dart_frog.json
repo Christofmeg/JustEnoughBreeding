@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "lilcritters",
-  "mobs": [
+  "input_entity": "lilcritters:dart_frog",
+  "inputs": [
     {
-      "dart_frog": {
-        "inputs": [{
-            "item": "zawa:leafcutter_ant"
-        }]
-      }
+      "item": "zawa:leafcutter_ant"
     }
   ]
 }

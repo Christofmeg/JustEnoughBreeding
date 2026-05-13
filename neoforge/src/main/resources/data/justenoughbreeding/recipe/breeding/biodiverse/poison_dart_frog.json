@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "biodiverse",
-  "mobs": [
+  "input_entity": "biodiverse:poison_dart_frog",
+  "inputs": [
     {
-      "poison_dart_frog": {
-        "inputs": [
-          {
-            "item": "minecraft:slimeball"
-          }
-        ]
-      }
+      "item": "minecraft:slimeball"
     }
   ]
 }

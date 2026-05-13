@@ -1,39 +1,34 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "creaturecraft",
-  "mobs": [
+  "input_entity": "creaturecraft:agama",
+  "inputs": [
     {
-      "agama": {
-        "inputs": [
-          {
-            "item": "minecraft:apple"
-          },
-          {
-            "item": "minecraft:golden_apple"
-          },
-          {
-            "item": "minecraft:wheat_seeds"
-          },
-          {
-            "item": "minecraft:carrot"
-          },
-          {
-            "item": "minecraft:potato"
-          },
-          {
-            "item": "minecraft:pumpkin_seeds"
-          },
-          {
-            "item": "minecraft:sugar_cane"
-          },
-          {
-            "item": "minecraft:melon_slice"
-          },
-          {
-            "item": "minecraft:sweet_berries"
-          }
-        ]
-      }
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "minecraft:golden_apple"
+    },
+    {
+      "item": "minecraft:wheat_seeds"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "minecraft:pumpkin_seeds"
+    },
+    {
+      "item": "minecraft:sugar_cane"
+    },
+    {
+      "item": "minecraft:melon_slice"
+    },
+    {
+      "item": "minecraft:sweet_berries"
     }
   ]
 }

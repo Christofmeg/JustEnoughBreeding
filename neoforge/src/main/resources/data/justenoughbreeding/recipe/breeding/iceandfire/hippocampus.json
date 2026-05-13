@@ -1,21 +1,16 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "iceandfire",
-  "mobs": [
+  "input_entity": "iceandfire:hippocampus",
+  "inputs": [
     {
-      "hippocampus": {
-        "inputs": [
-          {
-            "item": "minecraft:prismarine_crystals"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "iceandfire:spawn_egg_hippocampus"
-          }
-        ],
-        "tamed": true
-      }
+      "item": "minecraft:prismarine_crystals"
     }
-  ]
+  ],
+  "spawn_eggs": [
+    {
+      "item": "iceandfire:spawn_egg_hippocampus"
+    }
+  ],
+  "tamed": true
 }

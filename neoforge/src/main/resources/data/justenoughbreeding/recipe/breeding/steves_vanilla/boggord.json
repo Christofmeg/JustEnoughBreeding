@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "steves_vanilla",
-  "mobs": [
+  "input_entity": "steves_vanilla:boggord",
+  "inputs": [
     {
-      "boggord": {
-        "inputs": [
-          {
-            "item": "steves_vanilla:mountain_buds"
-          }
-        ]
-      }
+      "item": "steves_vanilla:mountain_buds"
     }
   ]
 }

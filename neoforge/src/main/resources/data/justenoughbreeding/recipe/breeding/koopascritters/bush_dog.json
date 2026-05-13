@@ -1,48 +1,43 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "koopascritters",
-  "mobs": [
+  "input_entity": "koopascritters:bush_dog",
+  "inputs": [
     {
-      "bush_dog": {
-        "inputs": [
-          {
-            "item": "koopascritters:raw_wild_bird"
-          },
-          {
-            "item": "minecraft:porkchop"
-          },
-          {
-            "item": "minecraft:cooked_porkchop"
-          },
-          {
-            "item": "minecraft:beef"
-          },
-          {
-            "item": "minecraft:cooked_beef"
-          },
-          {
-            "item": "minecraft:chicken"
-          },
-          {
-            "item": "minecraft:cooked_chicken"
-          },
-          {
-            "item": "minecraft:rabbit"
-          },
-          {
-            "item": "minecraft:cooked_rabbit"
-          },
-          {
-            "item": "minecraft:mutton"
-          },
-          {
-            "item": "minecraft:cooked_mutton"
-          },
-          {
-            "item": "minecraft:rotten_flesh"
-          }
-        ]
-      }
+      "item": "koopascritters:raw_wild_bird"
+    },
+    {
+      "item": "minecraft:porkchop"
+    },
+    {
+      "item": "minecraft:cooked_porkchop"
+    },
+    {
+      "item": "minecraft:beef"
+    },
+    {
+      "item": "minecraft:cooked_beef"
+    },
+    {
+      "item": "minecraft:chicken"
+    },
+    {
+      "item": "minecraft:cooked_chicken"
+    },
+    {
+      "item": "minecraft:rabbit"
+    },
+    {
+      "item": "minecraft:cooked_rabbit"
+    },
+    {
+      "item": "minecraft:mutton"
+    },
+    {
+      "item": "minecraft:cooked_mutton"
+    },
+    {
+      "item": "minecraft:rotten_flesh"
     }
   ]
 }

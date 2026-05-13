@@ -1,29 +1,20 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "prehistoricfauna",
-  "mobs": [
+  "input_entity": "prehistoricfauna:calsoyasuchus",
+  "inputs": [
     {
-      "calsoyasuchus": {
-        "inputs": [
-          {
-            "item": "prehistoricfauna:raw_ceratodus"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "prehistoricfauna:calsoyasuchus_egg",
-            "amount": {
-              "min": 1,
-              "max": 4
-            }
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "prehistoricfauna:calsoyasuchus_spawn_egg"
-          }
-        ]
-      }
+      "item": "prehistoricfauna:raw_ceratodus"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:calsoyasuchus_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:calsoyasuchus_spawn_egg"
     }
   ]
 }

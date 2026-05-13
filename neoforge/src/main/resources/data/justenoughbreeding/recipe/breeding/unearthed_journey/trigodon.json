@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "unearthed_journey",
-  "mobs": [
+  "input_entity": "unearthed_journey:trigodon",
+  "inputs": [
     {
-      "trigodon": {
-        "inputs": [
-          {
-            "item": "unearthed_journey:pouch_of_grass"
-          }
-        ]
-      }
+      "item": "unearthed_journey:pouch_of_grass"
     }
   ]
 }

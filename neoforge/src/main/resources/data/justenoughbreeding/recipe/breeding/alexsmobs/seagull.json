@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexsmobs:seagull",
+  "inputs": [
     {
-      "seagull": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:seagull_breedables"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_seagull"
-          }
-        ]
-      }
+      "tag": "alexsmobs:seagull_breedables"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_seagull"
     }
   ]
 }

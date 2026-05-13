@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexsmobs:emu",
+  "inputs": [
     {
-      "emu": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:emu_breedables"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_emu"
-          }
-        ]
-      }
+      "tag": "alexsmobs:emu_breedables"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_emu"
     }
   ]
 }

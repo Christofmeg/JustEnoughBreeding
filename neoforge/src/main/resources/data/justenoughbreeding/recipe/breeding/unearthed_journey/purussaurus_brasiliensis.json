@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "unearthed_journey",
-  "mobs": [
+  "input_entity": "unearthed_journey:purussaurus_brasiliensis",
+  "inputs": [
     {
-      "purussaurus_brasiliensis": {
-        "inputs": [
-          {
-            "item": "unearthed_journey:raw_meat"
-          }
-        ]
-      }
+      "item": "unearthed_journey:raw_meat"
     }
   ]
 }

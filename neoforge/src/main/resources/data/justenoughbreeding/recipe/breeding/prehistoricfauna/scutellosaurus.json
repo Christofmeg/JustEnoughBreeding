@@ -1,29 +1,20 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "prehistoricfauna",
-  "mobs": [
+  "input_entity": "prehistoricfauna:scutellosaurus",
+  "inputs": [
     {
-      "scutellosaurus": {
-        "inputs": [
-          {
-            "item": "prehistoricfauna:clathropteris"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "prehistoricfauna:scutellosaurus_egg",
-            "amount": {
-              "min": 1,
-              "max": 4
-            }
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "prehistoricfauna:scutellosaurus_spawn_egg"
-          }
-        ]
-      }
+      "item": "prehistoricfauna:clathropteris"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:scutellosaurus_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:scutellosaurus_spawn_egg"
     }
   ]
 }

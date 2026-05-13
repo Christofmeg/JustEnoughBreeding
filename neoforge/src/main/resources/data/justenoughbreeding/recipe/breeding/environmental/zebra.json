@@ -1,22 +1,17 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "environmental",
-  "mobs": [
+  "input_entity": "environmental:zebra",
+  "inputs": [
     {
-      "zebra": {
-        "inputs": [
-          {
-            "item": "minecraft:golden_apple"
-          },
-          {
-            "item": "minecraft:enchanted_golden_apple"
-          },
-          {
-            "item": "minecraft:golden_carrot"
-          }
-        ],
-        "tamed": true
-      }
+      "item": "minecraft:golden_apple"
+    },
+    {
+      "item": "minecraft:enchanted_golden_apple"
+    },
+    {
+      "item": "minecraft:golden_carrot"
     }
-  ]
+  ],
+  "tamed": true
 }

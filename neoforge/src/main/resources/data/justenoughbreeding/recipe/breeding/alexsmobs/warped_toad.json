@@ -1,21 +1,16 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexsmobs:warped_toad",
+  "inputs": [
     {
-      "warped_toad": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:warped_toad_breedables"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_warped_toad"
-          }
-        ],
-        "tamed": true
-      }
+      "tag": "alexsmobs:warped_toad_breedables"
     }
-  ]
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_warped_toad"
+    }
+  ],
+  "tamed": true
 }

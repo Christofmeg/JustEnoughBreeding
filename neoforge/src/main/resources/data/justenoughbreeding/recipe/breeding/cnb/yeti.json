@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "cnb",
-  "mobs": [
+  "input_entity": "cnb:yeti",
+  "inputs": [
     {
-      "yeti": {
-        "inputs": [
-          {
-            "item": "minecraft:sweet_berries"
-          }
-        ]
-      }
+      "item": "minecraft:sweet_berries"
     }
   ]
 }

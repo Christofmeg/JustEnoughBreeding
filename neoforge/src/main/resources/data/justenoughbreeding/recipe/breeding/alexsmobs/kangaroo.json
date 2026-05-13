@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexsmobs:kangaroo",
+  "inputs": [
     {
-      "kangaroo": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:kangaroo_breedables"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_kangaroo"
-          }
-        ]
-      }
+      "tag": "alexsmobs:kangaroo_breedables"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_kangaroo"
     }
   ]
 }

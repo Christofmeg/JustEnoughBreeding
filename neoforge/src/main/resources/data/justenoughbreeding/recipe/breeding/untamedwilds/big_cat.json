@@ -1,24 +1,19 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "untamedwilds",
-  "mobs": [
+  "input_entity": "untamedwilds:big_cat",
+  "inputs": [
     {
-      "big_cat": {
-        "inputs": [
-          {
-            "item": "minecraft:beef"
-          },
-          {
-            "item": "minecraft:porkchop"
-          },
-          {
-            "item": "minecraft:chicken"
-          },
-          {
-            "item": "minecraft:rabbit"
-          }
-        ]
-      }
+      "item": "minecraft:beef"
+    },
+    {
+      "item": "minecraft:porkchop"
+    },
+    {
+      "item": "minecraft:chicken"
+    },
+    {
+      "item": "minecraft:rabbit"
     }
   ]
 }

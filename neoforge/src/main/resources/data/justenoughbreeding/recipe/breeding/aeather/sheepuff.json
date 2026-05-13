@@ -1,15 +1,16 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "aether"
+    }
+  ],
   "type": "justenoughbreeding:breeding",
   "mod": "aether",
-  "mobs": [
+  "input_entity": "aether:sheepuff",
+  "inputs": [
     {
-      "sheepuff": {
-        "inputs": [
-          {
-            "tag": "aether:sheepuff_temptation_items"
-          }
-        ]
-      }
+      "tag": "aether:sheepuff_temptation_items"
     }
   ]
 }

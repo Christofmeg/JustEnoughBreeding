@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "biodiverse",
-  "mobs": [
+  "input_entity": "biodiverse:orangutan",
+  "inputs": [
     {
-      "orangutan": {
-        "inputs": [
-          {
-            "item": "minecraft:melon_slice"
-          }
-        ]
-      }
+      "item": "minecraft:melon_slice"
     }
   ]
 }

@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "untamedwilds",
-  "mobs": [
+  "input_entity": "untamedwilds:giant_salamander",
+  "inputs": [
     {
-      "giant_salamander": {
-        "inputs": [
-          {
-            "item": "untamedwilds:food_turtle_raw"
-          }
-        ]
-      }
+      "item": "untamedwilds:food_turtle_raw"
     }
   ]
 }

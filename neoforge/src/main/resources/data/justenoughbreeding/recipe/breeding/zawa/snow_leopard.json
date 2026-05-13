@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:snow_leopard",
+  "inputs": [
     {
-      "snow_leopard": {
-        "inputs": [{
-            "item": "zawa:mutton"
-        }]
-      }
+      "item": "zawa:mutton"
     }
   ]
 }

@@ -1,15 +1,16 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "aether_redux"
+    }
+  ],
   "type": "justenoughbreeding:breeding",
   "mod": "aether_redux",
-  "mobs": [
+  "input_entity": "aether_redux:mykapod",
+  "inputs": [
     {
-      "mykapod": {
-        "inputs": [
-          {
-            "tag": "aether_redux:mykapod_temptation_items"
-          }
-        ]
-      }
+      "tag": "aether_redux:mykapod_temptation_items"
     }
   ]
 }

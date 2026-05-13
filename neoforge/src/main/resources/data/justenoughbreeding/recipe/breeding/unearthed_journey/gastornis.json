@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "unearthed_journey",
-  "mobs": [
+  "input_entity": "unearthed_journey:gastornis",
+  "inputs": [
     {
-      "gastornis": {
-        "inputs": [
-          {
-            "item": "unearthed_journey:pouch_of_seeds"
-          }
-        ]
-      }
+      "item": "unearthed_journey:pouch_of_seeds"
     }
   ]
 }

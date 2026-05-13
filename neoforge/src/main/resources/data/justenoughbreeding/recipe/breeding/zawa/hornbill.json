@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:hornbill",
+  "inputs": [
     {
-      "hornbill": {
-        "inputs": [{
-            "item": "minecraft:apple"
-        }]
-      }
+      "item": "minecraft:apple"
     }
   ]
 }

@@ -1,21 +1,16 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexsmobs:flutter",
+  "inputs": [
     {
-      "flutter": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:flutter_breedables"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_flutter"
-          }
-        ],
-        "tamed": true
-      }
+      "tag": "alexsmobs:flutter_breedables"
     }
-  ]
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_flutter"
+    }
+  ],
+  "tamed": true
 }

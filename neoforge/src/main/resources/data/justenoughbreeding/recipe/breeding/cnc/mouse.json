@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "cnc",
-  "mobs": [
+  "input_entity": "cnc:mouse",
+  "inputs": [
     {
-      "mouse": {
-        "inputs": [
-          {
-            "item": "minecraft:pumpkin_seeds"
-          }
-        ]
-      }
+      "item": "minecraft:pumpkin_seeds"
     }
   ]
 }

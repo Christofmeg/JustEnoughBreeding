@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "zawaessentials",
-  "mobs": [
+  "input_entity": "zawaessentials:budgerigar",
+  "inputs": [
     {
-      "budgerigar": {
-        "inputs": [
-          {
-            "item": "minecraft:melon_seeds"
-          }
-        ]
-      }
+      "item": "minecraft:melon_seeds"
     }
   ]
 }

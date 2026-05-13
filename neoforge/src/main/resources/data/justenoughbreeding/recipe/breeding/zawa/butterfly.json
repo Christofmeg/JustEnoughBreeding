@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:butterfly",
+  "inputs": [
     {
-      "butterfly": {
-        "inputs": [{
-            "item": "minecraft:sugar"
-        }]
-      }
+      "item": "minecraft:sugar"
     }
   ]
 }

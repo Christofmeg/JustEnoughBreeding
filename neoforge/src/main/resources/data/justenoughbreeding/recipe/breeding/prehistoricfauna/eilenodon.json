@@ -1,29 +1,20 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "prehistoricfauna",
-  "mobs": [
+  "input_entity": "prehistoricfauna:eilenodon",
+  "inputs": [
     {
-      "eilenodon": {
-        "inputs": [
-          {
-            "item": "prehistoricfauna:horsetail"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "prehistoricfauna:eilenodon_egg",
-            "amount": {
-              "min": 1,
-              "max": 4
-            }
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "prehistoricfauna:eilenodon_spawn_egg"
-          }
-        ]
-      }
+      "item": "prehistoricfauna:horsetail"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:eilenodon_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:eilenodon_spawn_egg"
     }
   ]
 }

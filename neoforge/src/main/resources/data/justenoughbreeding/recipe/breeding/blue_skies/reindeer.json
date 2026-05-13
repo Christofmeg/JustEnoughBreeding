@@ -1,16 +1,11 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "blue_skies",
-  "mobs": [
+  "input_entity": "blue_skies:reindeer",
+  "inputs": [
     {
-      "reindeer": {
-        "inputs": [
-          {
-            "item": "blue_skies:pine_fruit"
-          }
-        ],
-        "tamed": true
-      }
+      "item": "blue_skies:pine_fruit"
     }
-  ]
+  ],
+  "tamed": true
 }

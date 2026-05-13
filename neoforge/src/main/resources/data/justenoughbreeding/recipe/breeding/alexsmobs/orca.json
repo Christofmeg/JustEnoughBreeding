@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexsmobs:orca",
+  "inputs": [
     {
-      "orca": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:orca_breedables"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_orca"
-          }
-        ]
-      }
+      "tag": "alexsmobs:orca_breedables"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_orca"
     }
   ]
 }

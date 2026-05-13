@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "ambientadditions",
-  "mobs": [
+  "input_entity": "ambientadditions:pancake_slug",
+  "inputs": [
     {
-      "pancake_slug": {
-        "inputs": [
-          {
-            "tag": "minecraft:leaves"
-          }
-        ]
-      }
+      "tag": "minecraft:leaves"
     }
   ]
 }

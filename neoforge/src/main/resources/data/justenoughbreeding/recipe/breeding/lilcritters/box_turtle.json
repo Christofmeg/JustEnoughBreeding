@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "lilcritters",
-  "mobs": [
+  "input_entity": "lilcritters:box_turtle",
+  "inputs": [
     {
-      "box_turtle": {
-        "inputs": [{
-            "item": "zawa:earthworm"
-        }]
-      }
+      "item": "zawa:earthworm"
     }
   ]
 }

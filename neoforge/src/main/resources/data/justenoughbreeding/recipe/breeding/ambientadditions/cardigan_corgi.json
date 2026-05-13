@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "ambientadditions",
-  "mobs": [
+  "input_entity": "ambientadditions:cardigan_corgi",
+  "inputs": [
     {
-      "cardigan_corgi": {
-        "inputs": [
-          {
-            "meat": "true"
-          }
-        ]
-      }
+      "meat": "true"
     }
   ]
 }

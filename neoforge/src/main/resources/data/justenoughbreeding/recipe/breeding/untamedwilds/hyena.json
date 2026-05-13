@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "untamedwilds",
-  "mobs": [
+  "input_entity": "untamedwilds:hyena",
+  "inputs": [
     {
-      "hyena": {
-        "inputs": [
-          {
-            "item": "minecraft:rotten_flesh"
-          }
-        ]
-      }
+      "item": "minecraft:rotten_flesh"
     }
   ]
 }

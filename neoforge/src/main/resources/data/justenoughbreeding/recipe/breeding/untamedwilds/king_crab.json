@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "untamedwilds",
-  "mobs": [
+  "input_entity": "untamedwilds:king_crab",
+  "inputs": [
     {
-      "king_crab": {
-        "inputs": [
-          {
-            "item": "minecraft:cod"
-          }
-        ]
-      }
+      "item": "minecraft:cod"
     }
   ]
 }

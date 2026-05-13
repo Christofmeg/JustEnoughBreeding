@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexsmobs:rain_frog",
+  "inputs": [
     {
-      "rain_frog": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:rain_frog_breedables"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_rain_frog"
-          }
-        ]
-      }
+      "tag": "alexsmobs:rain_frog_breedables"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_rain_frog"
     }
   ]
 }

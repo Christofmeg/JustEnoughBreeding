@@ -1,18 +1,13 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "biodiverse",
-  "mobs": [
+  "input_entity": "biodiverse:grizzly_bear",
+  "inputs": [
     {
-      "grizzly_bear": {
-        "inputs": [
-          {
-            "item": "minecraft:honeycomb"
-          },
-          {
-            "item": "minecraft:sweet_berry"
-          }
-        ]
-      }
+      "item": "minecraft:honeycomb"
+    },
+    {
+      "item": "minecraft:sweet_berry"
     }
   ]
 }

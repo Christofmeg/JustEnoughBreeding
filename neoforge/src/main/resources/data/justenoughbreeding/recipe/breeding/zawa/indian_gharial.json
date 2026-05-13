@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:indian_gharial",
+  "inputs": [
     {
-      "indian_gharial": {
-        "inputs": [{
-            "item": "minecraft:tropical_fish"
-        }]
-      }
+      "item": "minecraft:tropical_fish"
     }
   ]
 }

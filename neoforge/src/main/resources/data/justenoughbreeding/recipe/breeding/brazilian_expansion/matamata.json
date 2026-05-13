@@ -1,24 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "brazilian_expansion",
-  "mobs": [
+  "input_entity": "brazilian_expansion:matamata",
+  "inputs": [
     {
-      "matamata": {
-        "inputs": [
-          {
-            "item": "brazilian_expansion:piraputanga_raw"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "brazilian_expansion:matamata_egg",
-            "amount": {
-              "min": 1,
-              "max": 4
-            }
-          }
-        ]
-      }
+      "item": "brazilian_expansion:piraputanga_raw"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "brazilian_expansion:matamata_egg"
     }
   ]
 }

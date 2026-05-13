@@ -1,16 +1,11 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "blastfromthepast",
-  "mobs": [
+  "input_entity": "blastfromthepast:frostomper",
+  "inputs": [
     {
-      "frostomper": {
-        "inputs": [
-          {
-            "item": "blastfromthepast:sap_ice_cream"
-          }
-        ],
-        "tamed": true
-      }
+      "item": "blastfromthepast:sap_ice_cream"
     }
-  ]
+  ],
+  "tamed": true
 }

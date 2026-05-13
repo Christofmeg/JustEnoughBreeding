@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "untamedwilds",
-  "mobs": [
+  "input_entity": "untamedwilds:wildebeest",
+  "inputs": [
     {
-      "wildebeest": {
-        "inputs": [
-          {
-            "item": "minecraft:grass"
-          }
-        ]
-      }
+      "item": "minecraft:grass"
     }
   ]
 }

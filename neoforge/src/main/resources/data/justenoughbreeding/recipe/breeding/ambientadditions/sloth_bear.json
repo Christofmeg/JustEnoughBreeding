@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "ambientadditions",
-  "mobs": [
+  "input_entity": "ambientadditions:sloth_bear",
+  "inputs": [
     {
-      "sloth_bear": {
-        "inputs": [
-          {
-            "item": "ambientadditions:worm"
-          }
-        ]
-      }
+      "item": "ambientadditions:worm"
     }
   ]
 }

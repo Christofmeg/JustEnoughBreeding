@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "steves_vanilla",
-  "mobs": [
+  "input_entity": "steves_vanilla:chest_toad",
+  "inputs": [
     {
-      "chest_toad": {
-        "inputs": [
-          {
-            "item": "minecraft:slime_ball"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "steves_vanilla:chest_toad_eggs"
-          }
-        ]
-      }
+      "item": "minecraft:slime_ball"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "steves_vanilla:chest_toad_eggs"
     }
   ]
 }

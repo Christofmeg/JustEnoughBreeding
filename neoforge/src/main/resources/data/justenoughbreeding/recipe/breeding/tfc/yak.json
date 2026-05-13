@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "tfc",
-  "mobs": [
+  "input_entity": "tfc:yak",
+  "inputs": [
     {
-      "yak": {
-        "inputs": [
-          {
-            "tag": "tfc:yak_food"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "tfc:spawn_egg/yak"
-          }
-        ]
-      }
+      "tag": "tfc:yak_food"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "tfc:spawn_egg/yak"
     }
   ]
 }

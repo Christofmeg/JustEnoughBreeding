@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "blue_skies",
-  "mobs": [
+  "input_entity": "blue_skies:stardust_ram",
+  "inputs": [
     {
-      "stardust_ram": {
-        "inputs": [
-          {
-            "item": "blue_skies:pine_fruit"
-          }
-        ]
-      }
+      "item": "blue_skies:pine_fruit"
     }
   ]
 }

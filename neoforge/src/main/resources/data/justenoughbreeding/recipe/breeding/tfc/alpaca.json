@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "tfc",
-  "mobs": [
+  "input_entity": "tfc:alpaca",
+  "inputs": [
     {
-      "alpaca": {
-        "inputs": [
-          {
-            "tag": "tfc:alpaca_food"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "tfc:spawn_egg/alpaca"
-          }
-        ]
-      }
+      "tag": "tfc:alpaca_food"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "tfc:spawn_egg/alpaca"
     }
   ]
 }

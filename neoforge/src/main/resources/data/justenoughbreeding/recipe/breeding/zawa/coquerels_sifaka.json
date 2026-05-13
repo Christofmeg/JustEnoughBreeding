@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:coquerels_sifaka",
+  "inputs": [
     {
-      "coquerels_sifaka": {
-        "inputs": [{
-            "item": "zawa:prickly_pear"
-        }]
-      }
+      "item": "zawa:prickly_pear"
     }
   ]
 }

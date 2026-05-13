@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "frostrealm",
-  "mobs": [
+  "input_entity": "frostrealm:crystal_fox",
+  "inputs": [
     {
-      "crystal_fox": {
-        "inputs": [
-          {
-            "item": "frostrealm:bearberry"
-          }
-        ]
-      }
+      "item": "frostrealm:bearberry"
     }
   ]
 }

@@ -1,25 +1,20 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "creaturecraft",
-  "mobs": [
+  "input_entity": "creaturecraft:rhea",
+  "inputs": [
     {
-      "rhea": {
-        "inputs": [
-          {
-            "item": "minecraft:wheat_seeds"
-          },
-          {
-            "item": "minecraft:pumpkin_seeds"
-          },
-          {
-            "item": "minecraft:melon_seeds"
-          },
-          {
-            "item": "minecraft:beetroot_seeds"
-          }
-        ],
-        "tamed": true
-      }
+      "item": "minecraft:wheat_seeds"
+    },
+    {
+      "item": "minecraft:pumpkin_seeds"
+    },
+    {
+      "item": "minecraft:melon_seeds"
+    },
+    {
+      "item": "minecraft:beetroot_seeds"
     }
-  ]
+  ],
+  "tamed": true
 }

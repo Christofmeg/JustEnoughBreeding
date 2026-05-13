@@ -1,16 +1,11 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "cnc",
-  "mobs": [
+  "input_entity": "cnc:ringtail",
+  "inputs": [
     {
-      "ringtail": {
-        "inputs": [
-          {
-            "item": "minecraft:glow_berries"
-          }
-        ],
-        "tamed": true
-      }
+      "item": "minecraft:glow_berries"
     }
-  ]
+  ],
+  "tamed": true
 }

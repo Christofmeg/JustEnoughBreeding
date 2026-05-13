@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "zawaessentials",
-  "mobs": [
+  "input_entity": "zawaessentials:australian_ringneck_parrot",
+  "inputs": [
     {
-      "australian_ringneck_parrot": {
-        "inputs": [
-          {
-            "item": "minecraft:wheat"
-          }
-        ]
-      }
+      "item": "minecraft:wheat"
     }
   ]
 }

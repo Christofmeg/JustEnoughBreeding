@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "creaturecraft",
-  "mobs": [
+  "input_entity": "creaturecraft:red_panda",
+  "inputs": [
     {
-      "red_panda": {
-        "inputs": [
-          {
-            "item": "minecraft:bamboo"
-          }
-        ]
-      }
+      "item": "minecraft:bamboo"
     }
   ]
 }

@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "cnc",
-  "mobs": [
+  "input_entity": "cnc:mule_deer",
+  "inputs": [
     {
-      "mule_deer": {
-        "inputs": [
-          {
-            "item": "minecraft:wheat"
-          }
-        ]
-      }
+      "item": "minecraft:wheat"
     }
   ]
 }

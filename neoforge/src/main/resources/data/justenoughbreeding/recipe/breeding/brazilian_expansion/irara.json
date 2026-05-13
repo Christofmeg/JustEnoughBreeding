@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "brazilian_expansion",
-  "mobs": [
+  "input_entity": "brazilian_expansion:irara",
+  "inputs": [
     {
-      "irara": {
-        "inputs": [
-          {
-            "tag": "brazilian_expansion:food_irara"
-          }
-        ]
-      }
+      "tag": "brazilian_expansion:food_irara"
     }
   ]
 }

@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexsmobs:bison",
+  "inputs": [
     {
-      "bison": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:bison_breedables"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_bison"
-          }
-        ]
-      }
+      "tag": "alexsmobs:bison_breedables"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_bison"
     }
   ]
 }

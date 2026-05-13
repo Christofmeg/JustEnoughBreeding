@@ -1,16 +1,11 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "quark",
-  "mobs": [
+  "input_entity": "quark:foxhound",
+  "inputs": [
     {
-      "foxhound": {
-        "inputs": [
-          {
-            "meat": "true"
-          }
-        ],
-        "tamed": true
-      }
+      "tag": "minecraft:meat"
     }
-  ]
+  ],
+  "tamed": true
 }

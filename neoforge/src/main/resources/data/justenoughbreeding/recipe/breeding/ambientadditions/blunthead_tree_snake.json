@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "ambientadditions",
-  "mobs": [
+  "input_entity": "ambientadditions:blunthead_tree_snake",
+  "inputs": [
     {
-      "blunthead_tree_snake": {
-        "inputs": [
-          {
-            "item": "ambientadditions:pinocchio_anole_pot"
-          }
-        ]
-      }
+      "item": "ambientadditions:pinocchio_anole_pot"
     }
   ]
 }

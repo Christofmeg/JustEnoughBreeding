@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "environmental",
-  "mobs": [
+  "input_entity": "environmental:slabfish",
+  "inputs": [
     {
-      "slabfish": {
-        "inputs": [
-          {
-            "tag": "environmental:slabfish_food"
-          }
-        ]
-      }
+      "tag": "environmental:slabfish_food"
     }
   ]
 }

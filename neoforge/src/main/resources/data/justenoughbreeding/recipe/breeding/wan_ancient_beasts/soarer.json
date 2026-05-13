@@ -1,25 +1,20 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "wan_ancient_beasts",
-  "mobs": [
+  "input_entity": "wan_ancient_beasts:soarer",
+  "inputs": [
     {
-      "soarer": {
-        "inputs": [
-          {
-            "item": "minecraft:pufferfish"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "wan_ancient_beasts:soarer_egg"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "wan_ancient_beasts:soarer_spawn_egg"
-          }
-        ]
-      }
+      "item": "minecraft:pufferfish"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "wan_ancient_beasts:soarer_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "wan_ancient_beasts:soarer_spawn_egg"
     }
   ]
 }

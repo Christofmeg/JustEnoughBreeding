@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "endergetic",
-  "mobs": [
+  "input_entity": "endergetic:puff_bug",
+  "inputs": [
     {
-      "puff_bug": {
-        "inputs": [
-          {
-            "item": "endergetic:tall_poise_bush"
-          }
-        ]
-      }
+      "item": "endergetic:tall_poise_bush"
     }
   ]
 }

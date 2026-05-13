@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexsmobs:raccoon",
+  "inputs": [
     {
-      "raccoon": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:raccoon_breedables"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_raccoon"
-          }
-        ]
-      }
+      "tag": "alexsmobs:raccoon_breedables"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_raccoon"
     }
   ]
 }

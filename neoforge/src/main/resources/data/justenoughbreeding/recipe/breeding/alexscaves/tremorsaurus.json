@@ -1,28 +1,29 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "alexscaves"
+    }
+  ],
   "type": "justenoughbreeding:breeding",
   "mod": "alexscaves",
-  "mobs": [
+  "input_entity": "alexscaves:tremorsaurus",
+  "inputs": [
     {
-      "tremorsaurus": {
-        "inputs": [
-          {
-            "item": "alexscaves:cooked_dinosaur_chop"
-          },
-          {
-            "item": "alexscaves:dinosaur_chop"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "alexscaves:tremorsaurus_egg"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexscaves:spawn_egg_tremorsaurus"
-          }
-        ]
-      }
+      "item": "alexscaves:cooked_dinosaur_chop"
+    },
+    {
+      "item": "alexscaves:dinosaur_chop"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "alexscaves:tremorsaurus_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexscaves:spawn_egg_tremorsaurus"
     }
   ]
 }

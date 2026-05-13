@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "lilcritters",
-  "mobs": [
+  "input_entity": "lilcritters:banded_penguin",
+  "inputs": [
     {
-      "banded_penguin": {
-        "inputs": [{
-            "item": "zawa:corydoras"
-        }]
-      }
+    "item": "zawa:corydoras"
     }
   ]
 }

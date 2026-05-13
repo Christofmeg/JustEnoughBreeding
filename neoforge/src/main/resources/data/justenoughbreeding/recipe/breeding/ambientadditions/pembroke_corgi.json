@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "ambientadditions",
-  "mobs": [
+  "input_entity": "ambientadditions:pembroke_corgi",
+  "inputs": [
     {
-      "pembroke_corgi": {
-        "inputs": [
-          {
-            "meat": "true"
-          }
-        ]
-      }
+      "meat": "true"
     }
   ]
 }

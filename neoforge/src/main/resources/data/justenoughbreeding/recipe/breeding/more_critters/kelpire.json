@@ -1,16 +1,11 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "more_critters",
-  "mobs": [
+  "input_entity": "more_critters:kelpire",
+  "inputs": [
     {
-      "kelpire": {
-        "inputs": [
-          {
-            "item": "more_critters:raw_blubberfish"
-          }
-        ],
-        "tamed": true
-      }
+      "item": "more_critters:raw_blubberfish"
     }
-  ]
+  ],
+  "tamed": true
 }

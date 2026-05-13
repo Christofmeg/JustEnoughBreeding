@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:common_chimpanzee",
+  "inputs": [
     {
-      "common_chimpanzee": {
-        "inputs": [{
-            "item": "minecraft:melon"
-        }]
-      }
+      "item": "minecraft:melon"
     }
   ]
 }

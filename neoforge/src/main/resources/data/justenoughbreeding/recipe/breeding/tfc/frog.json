@@ -1,25 +1,20 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "tfc",
-  "mobs": [
+  "input_entity": "tfc:frog",
+  "inputs": [
     {
-      "frog": {
-        "inputs": [
-          {
-            "tag": "tfc:frog_food"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "minecraft:frogspawn"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "tfc:spawn_egg/frog"
-          }
-        ]
-      }
+      "tag": "tfc:frog_food"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "minecraft:frogspawn"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "tfc:spawn_egg/frog"
     }
   ]
 }

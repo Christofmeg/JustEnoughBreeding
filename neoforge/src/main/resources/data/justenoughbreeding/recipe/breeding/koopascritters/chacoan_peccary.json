@@ -1,21 +1,16 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "koopascritters",
-  "mobs": [
+  "input_entity": "koopascritters:chacoan_peccary",
+  "inputs": [
     {
-      "chacoan_peccary": {
-        "inputs": [
-          {
-            "item": "minecraft:cactus"
-          },
-          {
-            "item": "minecraft:sweet_berries"
-          },
-          {
-            "item": "minecraft:glow_berries"
-          }
-        ]
-      }
+      "item": "minecraft:cactus"
+    },
+    {
+      "item": "minecraft:sweet_berries"
+    },
+    {
+      "item": "minecraft:glow_berries"
     }
   ]
 }

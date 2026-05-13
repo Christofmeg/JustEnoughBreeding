@@ -1,16 +1,11 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "creaturecraft",
-  "mobs": [
+  "input_entity": "creaturecraft:pangolin",
+  "inputs": [
     {
-      "pangolin": {
-        "inputs": [
-          {
-            "item": "creaturecraft:termite_drop"
-          }
-        ],
-        "tamed": true
-      }
+      "item": "creaturecraft:termite_drop"
     }
-  ]
+  ],
+  "tamed": true
 }

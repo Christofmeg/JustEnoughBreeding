@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "neapolitan",
-  "mobs": [
+  "input_entity": "neapolitan:chimpanzee",
+  "inputs": [
     {
-      "chimpanzee": {
-        "inputs": [
-          {
-            "tag": "neapolitan:chimpanzee_food"
-          }
-        ]
-      }
+      "tag": "neapolitan:chimpanzee_food"
     }
   ]
 }

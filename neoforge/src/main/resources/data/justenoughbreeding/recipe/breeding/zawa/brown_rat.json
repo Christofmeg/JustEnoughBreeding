@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:brown_rat",
+  "inputs": [
     {
-      "brown_rat": {
-        "inputs": [{
-            "item": "minecraft:wheat_seeds"
-        }]
-      }
+      "item": "minecraft:wheat_seeds"
     }
   ]
 }

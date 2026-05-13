@@ -25,6 +25,7 @@ public class JustEnoughBreeding {
 
     //TODO update recipe generator to match input_entity_nbt on recipetypes
     //TODO update recipe generator to match input entity nbt on transformation
+    //TODO neoforge conditional on forge recipes
 
     private static final DeferredRegister<RecipeSerializer<?>> RECIPES_SERIALIZERS = DeferredRegister.create(Registries.RECIPE_SERIALIZER, CommonConstants.MOD_ID);
     private static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(Registries.RECIPE_TYPE, CommonConstants.MOD_ID);

@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "tfc",
-  "mobs": [
+  "input_entity": "tfc:horse",
+  "inputs": [
     {
-      "horse": {
-        "inputs": [
-          {
-            "tag": "tfc:horse_food"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "tfc:spawn_egg/horse"
-          }
-        ]
-      }
+      "tag": "tfc:horse_food"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "tfc:spawn_egg/horse"
     }
   ]
 }

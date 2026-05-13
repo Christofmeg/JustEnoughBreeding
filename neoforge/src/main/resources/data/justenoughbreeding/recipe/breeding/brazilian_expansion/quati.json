@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "brazilian_expansion",
-  "mobs": [
+  "input_entity": "brazilian_expansion:quati",
+  "inputs": [
     {
-      "quati": {
-        "inputs": [
-          {
-            "tag": "brazilian_expansion:food_quati"
-          }
-        ]
-      }
+      "tag": "brazilian_expansion:food_quati"
     }
   ]
 }

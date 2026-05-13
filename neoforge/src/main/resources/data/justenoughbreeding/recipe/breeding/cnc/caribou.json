@@ -1,16 +1,11 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "cnc",
-  "mobs": [
+  "input_entity": "cnc:caribou",
+  "inputs": [
     {
-      "caribou": {
-        "inputs": [
-          {
-            "item": "minecraft:red_mushroom"
-          }
-        ],
-        "tamed": true
-      }
+      "item": "minecraft:red_mushroom"
     }
-  ]
+  ],
+  "tamed": true
 }

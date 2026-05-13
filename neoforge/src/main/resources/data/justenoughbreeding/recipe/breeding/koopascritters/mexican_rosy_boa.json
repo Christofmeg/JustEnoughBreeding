@@ -1,18 +1,13 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "koopascritters",
-  "mobs": [
+  "input_entity": "koopascritters:mexican_rosy_boa",
+  "inputs": [
     {
-      "mexican_rosy_boa": {
-        "inputs": [
-          {
-            "item": "minecraft:rabbit"
-          },
-          {
-            "item": "minecraft:cooked_rabbit"
-          }
-        ]
-      }
+      "item": "minecraft:rabbit"
+    },
+    {
+      "item": "minecraft:cooked_rabbit"
     }
   ]
 }

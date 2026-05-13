@@ -1,18 +1,13 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "koopascritters",
-  "mobs": [
+  "input_entity": "koopascritters:upside_down_jellyfish",
+  "inputs": [
     {
-      "upside_down_jellyfish": {
-        "inputs": [
-          {
-            "item": "minecraft:ink_sac"
-          },
-          {
-            "item": "minecraft:glow_ink_sac"
-          }
-        ]
-      }
+      "item": "minecraft:ink_sac"
+    },
+    {
+      "item": "minecraft:glow_ink_sac"
     }
   ]
 }

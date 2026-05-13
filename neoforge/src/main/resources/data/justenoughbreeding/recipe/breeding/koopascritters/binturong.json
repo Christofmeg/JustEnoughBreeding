@@ -1,18 +1,13 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "koopascritters",
-  "mobs": [
+  "input_entity": "koopascritters:binturong",
+  "inputs": [
     {
-      "binturong": {
-        "inputs": [
-          {
-            "item": "koopascritters:fig_kc"
-          },
-          {
-            "item": "koopascritters:wasp_fig_kc"
-          }
-        ]
-      }
+      "item": "koopascritters:fig_kc"
+    },
+    {
+      "item": "koopascritters:wasp_fig_kc"
     }
   ]
 }

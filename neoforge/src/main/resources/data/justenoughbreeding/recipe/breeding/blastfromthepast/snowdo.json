@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "blastfromthepast",
-  "mobs": [
+  "input_entity": "blastfromthepast:snowdo",
+  "inputs": [
     {
-      "snowdo": {
-        "inputs": [
-          {
-            "item": "blastfromthepast:melon_ice_cream"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "blastfromthepast:snowdo_egg"
-          }
-        ]
-      }
+      "item": "blastfromthepast:melon_ice_cream"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "blastfromthepast:snowdo_egg"
     }
   ]
 }

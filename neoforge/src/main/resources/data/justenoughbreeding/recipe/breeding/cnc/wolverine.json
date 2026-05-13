@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "cnc",
-  "mobs": [
+  "input_entity": "cnc:wolverine",
+  "inputs": [
     {
-      "wolverine": {
-        "inputs": [
-          {
-            "item": "cnc:raw_venison"
-          }
-        ]
-      }
+      "item": "cnc:raw_venison"
     }
   ]
 }

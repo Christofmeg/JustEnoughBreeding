@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "ambientadditions",
-  "mobs": [
+  "input_entity": "ambientadditions:spider_tailed_adder",
+  "inputs": [
     {
-      "spider_tailed_adder": {
-        "inputs": [
-          {
-            "item": "minecraft:chicken"
-          }
-        ]
-      }
+      "item": "minecraft:chicken"
     }
   ]
 }

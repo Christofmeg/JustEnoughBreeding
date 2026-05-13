@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "brazilian_expansion",
-  "mobs": [
+  "input_entity": "brazilian_expansion:garca_real",
+  "inputs": [
     {
-      "garca_real": {
-        "inputs": [
-          {
-            "item": "brazilian_expansion:apaiari_raw"
-          }
-        ]
-      }
+      "item": "brazilian_expansion:apaiari_raw"
     }
   ]
 }

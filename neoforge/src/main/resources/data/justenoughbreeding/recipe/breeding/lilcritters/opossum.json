@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "lilcritters",
-  "mobs": [
+  "input_entity": "lilcritters:opossum",
+  "inputs": [
     {
-      "opossum": {
-        "inputs": [{
-            "item": "lilcritters:mystery_snail"
-        }]
-      }
+      "item": "lilcritters:mystery_snail"
     }
   ]
 }

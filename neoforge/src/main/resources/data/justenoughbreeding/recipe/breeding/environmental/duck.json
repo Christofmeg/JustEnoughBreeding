@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "environmental",
-  "mobs": [
+  "input_entity": "environmental:duck",
+  "inputs": [
     {
-      "duck": {
-        "inputs": [
-          {
-            "tag": "environmental:duck_food"
-          }
-        ]
-      }
+      "tag": "environmental:duck_food"
     }
   ]
 }

@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "untamedwilds",
-  "mobs": [
+  "input_entity": "untamedwilds:shark",
+  "inputs": [
     {
-      "shark": {
-        "inputs": [
-          {
-            "item": "untamedwilds:chum"
-          }
-        ]
-      }
+      "item": "untamedwilds:chum"
     }
   ]
 }

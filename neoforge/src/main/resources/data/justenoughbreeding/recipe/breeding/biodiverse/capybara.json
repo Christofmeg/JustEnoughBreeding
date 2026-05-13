@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "biodiverse",
-  "mobs": [
+  "input_entity": "biodiverse:capybara",
+  "inputs": [
     {
-      "capybara": {
-        "inputs": [
-          {
-            "item": "minecraft:melon_slice"
-          }
-        ]
-      }
+      "item": "minecraft:melon_slice"
     }
   ]
 }

@@ -1,29 +1,20 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "prehistoricfauna",
-  "mobs": [
+  "input_entity": "prehistoricfauna:sinosauropteryx",
+  "inputs": [
     {
-      "sinosauropteryx": {
-        "inputs": [
-          {
-            "item": "prehistoricfauna:ephedra_berries"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "prehistoricfauna:sinosauropteryx_egg",
-            "amount": {
-              "min": 1,
-              "max": 4
-            }
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "prehistoricfauna:sinosauropteryx_spawn_egg"
-          }
-        ]
-      }
+      "item": "prehistoricfauna:ephedra_berries"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:sinosauropteryx_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:sinosauropteryx_spawn_egg"
     }
   ]
 }

@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "blue_skies",
-  "mobs": [
+  "input_entity": "blue_skies:shade_monitor",
+  "inputs": [
     {
-      "shade_monitor": {
-        "inputs": [
-          {
-            "tag": "minecraft:fishes"
-          }
-        ]
-      }
+      "tag": "minecraft:fishes"
     }
   ]
 }

@@ -1,16 +1,11 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "cold_sweat",
-  "mobs": [
+  "input_entity": "cold_sweat:chameleon",
+  "inputs": [
     {
-      "chameleon": {
-        "inputs": [
-          {
-            "tag": "cold_sweat:chameleon/taming"
-          }
-        ],
-        "tamed": true
-      }
+      "tag": "cold_sweat:chameleon/taming"
     }
-  ]
+  ],
+  "tamed": true
 }

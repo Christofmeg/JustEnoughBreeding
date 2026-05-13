@@ -1,18 +1,13 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "blue_skies",
-  "mobs": [
+  "input_entity": "blue_skies:azulfo",
+  "inputs": [
     {
-      "azulfo": {
-        "inputs": [
-          {
-            "item": "minecraft:wheat"
-          },
-          {
-            "item": "blue_skies:pine_fruit"
-          }
-        ]
-      }
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "blue_skies:pine_fruit"
     }
   ]
 }

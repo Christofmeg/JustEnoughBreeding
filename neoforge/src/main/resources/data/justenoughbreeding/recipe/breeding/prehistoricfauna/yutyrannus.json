@@ -1,29 +1,20 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "prehistoricfauna",
-  "mobs": [
+  "input_entity": "prehistoricfauna:yutyrannus",
+  "inputs": [
     {
-      "yutyrannus": {
-        "inputs": [
-          {
-            "item": "prehistoricfauna:raw_large_sauropod_meat"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "prehistoricfauna:yutyrannus_egg",
-            "amount": {
-              "min": 1,
-              "max": 4
-            }
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "prehistoricfauna:yutyrannus_spawn_egg"
-          }
-        ]
-      }
+      "item": "prehistoricfauna:raw_large_sauropod_meat"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:yutyrannus_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:yutyrannus_spawn_egg"
     }
   ]
 }

@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "biome_backlog",
-  "mobs": [
+  "input_entity": "biome_backlog:ostrich",
+  "inputs": [
     {
-      "ostrich": {
-        "inputs": [
-          {
-            "item": "minecraft:wheat"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "biome_backlog:ostrich_egg"
-          }
-        ]
-      }
+      "item": "minecraft:wheat"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "biome_backlog:ostrich_egg"
     }
   ]
 }

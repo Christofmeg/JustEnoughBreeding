@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:macaw",
+  "inputs": [
     {
-      "macaw": {
-        "inputs": [{
-            "item": "minecraft:melon_seeds"
-        }]
-      }
+      "item": "minecraft:melon_seeds"
     }
   ]
 }

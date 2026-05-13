@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "unearthed_journey",
-  "mobs": [
+  "input_entity": "unearthed_journey:masillosteus",
+  "inputs": [
     {
-      "masillosteus": {
-        "inputs": [
-          {
-            "item": "unearthed_journey:raw_fillet"
-          }
-        ]
-      }
+      "item": "unearthed_journey:raw_fillet"
     }
   ]
 }

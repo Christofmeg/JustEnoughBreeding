@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "lilcritters",
-  "mobs": [
+  "input_entity": "lilcritters:bullfrog",
+  "inputs": [
     {
-      "bullfrog": {
-        "inputs": [{
-            "item": "zawa:brown_rat"
-        }]
-      }
+      "item": "zawa:brown_rat"
     }
   ]
 }

@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "more_critters",
-  "mobs": [
+  "input_entity": "more_critters:bunbug",
+  "inputs": [
     {
-      "bunbug": {
-        "inputs": [
-          {
-            "item": "minecraft:dead_bush"
-          }
-        ]
-      }
+      "item": "minecraft:dead_bush"
     }
   ]
 }

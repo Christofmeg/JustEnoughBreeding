@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "biodiverse",
-  "mobs": [
+  "input_entity": "biodiverse:big_horn_sheep",
+  "inputs": [
     {
-      "big_horn_sheep": {
-        "inputs": [
-          {
-            "item": "minecraft:wheat"
-          }
-        ]
-      }
+      "item": "minecraft:wheat"
     }
   ]
 }

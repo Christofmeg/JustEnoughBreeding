@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "creatures_squared",
-  "mobs": [
+  "input_entity": "creatures_squared:ocean_sunfish",
+  "inputs": [
     {
-      "ocean_sunfish": {
-        "inputs": [
-          {
-            "item": "minecraft:kelp"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "creatures_squared:ocean_sunfish_eggs"
-          }
-        ]
-      }
+      "item": "minecraft:kelp"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "creatures_squared:ocean_sunfish_eggs"
     }
   ]
 }

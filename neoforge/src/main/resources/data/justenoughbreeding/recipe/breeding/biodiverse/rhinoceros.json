@@ -1,16 +1,11 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "biodiverse",
-  "mobs": [
+  "input_entity": "biodiverse:rhinoceros",
+  "inputs": [
     {
-      "rhinoceros": {
-        "inputs": [
-          {
-            "item": "minecraft:wheat"
-          }
-        ],
-        "tamed": true
-      }
+      "item": "minecraft:wheat"
     }
-  ]
+  ],
+  "tamed": true
 }

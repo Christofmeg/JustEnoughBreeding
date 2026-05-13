@@ -1,28 +1,23 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "creaturecraft",
-  "mobs": [
+  "input_entity": "creaturecraft:white_rhino",
+  "inputs": [
     {
-      "white_rhino": {
-        "inputs": [
-          {
-            "item": "creaturecraft:buff_grass"
-          },
-          {
-            "item": "creaturecraft:sav_grass_short"
-          },
-          {
-            "item": "creaturecraft:sav_grass_tall"
-          },
-          {
-            "item": "minecraft:wheat"
-          },
-          {
-            "item": "minecraft:wheat"
-          }
-        ],
-        "tamed": true
-      }
+      "item": "creaturecraft:buff_grass"
+    },
+    {
+      "item": "creaturecraft:sav_grass_short"
+    },
+    {
+      "item": "creaturecraft:sav_grass_tall"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:wheat"
     }
-  ]
+  ],
+  "tamed": true
 }

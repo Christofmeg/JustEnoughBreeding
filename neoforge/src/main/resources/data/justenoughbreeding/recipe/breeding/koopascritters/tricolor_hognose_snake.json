@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "koopascritters",
-  "mobs": [
+  "input_entity": "koopascritters:tricolor_hognose_snake",
+  "inputs": [
     {
-      "tricolor_hognose_snake": {
-        "inputs": [
-          {
-            "item": "minecraft:rabbit"
-          }
-        ]
-      }
+      "item": "minecraft:rabbit"
     }
   ]
 }

@@ -1,21 +1,16 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "creaturecraft",
-  "mobs": [
+  "input_entity": "creaturecraft:termite",
+  "inputs": [
     {
-      "termite": {
-        "inputs": [
-          {
-            "item": "creaturecraft:buff_grass"
-          },
-          {
-            "item": "creaturecraft:sav_grass_short"
-          },
-          {
-            "item": "creaturecraft:sav_grass_tall"
-          }
-        ]
-      }
+      "item": "creaturecraft:buff_grass"
+    },
+    {
+      "item": "creaturecraft:sav_grass_short"
+    },
+    {
+      "item": "creaturecraft:sav_grass_tall"
     }
   ]
 }

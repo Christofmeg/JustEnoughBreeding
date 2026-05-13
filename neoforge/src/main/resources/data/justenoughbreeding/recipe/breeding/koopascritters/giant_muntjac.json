@@ -1,18 +1,13 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "koopascritters",
-  "mobs": [
+  "input_entity": "koopascritters:giant_muntjac",
+  "inputs": [
     {
-      "giant_muntjac": {
-        "inputs": [
-          {
-            "item": "minecraft:wheat"
-          },
-          {
-            "item": "minecraft:wheat_seeds"
-          }
-        ]
-      }
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:wheat_seeds"
     }
   ]
 }

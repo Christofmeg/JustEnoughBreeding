@@ -1,25 +1,20 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexsmobs:crocodile",
+  "inputs": [
     {
-      "crocodile": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:crocodile_breedables"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "alexsmobs:crocodile_egg"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_crocodile"
-          }
-        ]
-      }
+      "tag": "alexsmobs:crocodile_breedables"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "alexsmobs:crocodile_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_crocodile"
     }
   ]
 }

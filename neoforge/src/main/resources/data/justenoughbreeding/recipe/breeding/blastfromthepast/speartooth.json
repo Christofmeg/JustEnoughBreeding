@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "blastfromthepast",
-  "mobs": [
+  "input_entity": "blastfromthepast:speartooth",
+  "inputs": [
     {
-      "speartooth": {
-        "inputs": [
-          {
-            "meat": "blastfromthepast:raw_venison"
-          }
-        ]
-      }
+      "meat": "blastfromthepast:raw_venison"
     }
   ]
 }

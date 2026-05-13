@@ -1,16 +1,11 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "unearthed_journey",
-  "mobs": [
+  "input_entity": "unearthed_journey:carbonemys",
+  "inputs": [
     {
-      "carbonemys": {
-        "inputs": [
-          {
-            "item": "unearthed_journey:clams_block"
-          }
-        ],
-        "tamed": true
-      }
+      "item": "unearthed_journey:clams_block"
     }
-  ]
+  ],
+  "tamed": true
 }

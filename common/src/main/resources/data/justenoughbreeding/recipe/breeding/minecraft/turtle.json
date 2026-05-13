@@ -9,8 +9,7 @@
   ],
   "outputs": [
     {
-      "item": "minecraft:turtle_egg",
-      "amount": 4
+      "item": "minecraft:turtle_egg"
     }
   ]
 }

@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:flamingo",
+  "inputs": [
     {
-      "flamingo": {
-        "inputs": [{
-            "item": "zawa:mussels"
-        }]
-      }
+      "item": "zawa:mussels"
     }
   ]
 }

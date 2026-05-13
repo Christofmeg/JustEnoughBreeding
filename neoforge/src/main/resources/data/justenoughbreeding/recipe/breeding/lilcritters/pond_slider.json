@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "lilcritters",
-  "mobs": [
+  "input_entity": "lilcritters:pond_slider",
+  "inputs": [
     {
-      "pond_slider": {
-        "inputs": [{
-            "item": "zawa:water_lettuce"
-        }]
-      }
+      "item": "zawa:water_lettuce"
     }
   ]
 }

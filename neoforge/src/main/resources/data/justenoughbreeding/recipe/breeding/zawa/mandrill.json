@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:mandrill",
+  "inputs": [
     {
-      "mandrill": {
-        "inputs": [{
-            "item": "minecraft:melon"
-        }]
-      }
+      "item": "minecraft:melon"
     }
   ]
 }

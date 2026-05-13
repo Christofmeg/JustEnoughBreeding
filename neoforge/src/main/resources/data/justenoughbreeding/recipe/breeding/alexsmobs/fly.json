@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexsmobs:fly",
+  "inputs": [
     {
-      "fly": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:fly_breedables"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_fly"
-          }
-        ]
-      }
+      "tag": "alexsmobs:fly_breedables"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_fly"
     }
   ]
 }

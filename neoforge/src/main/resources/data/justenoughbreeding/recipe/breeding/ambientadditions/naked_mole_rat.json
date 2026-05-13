@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "ambientadditions",
-  "mobs": [
+  "input_entity": "ambientadditions:naked_mole_rat",
+  "inputs": [
     {
-      "naked_mole_rat": {
-        "inputs": [
-          {
-            "item": "minecraft:potato"
-          }
-        ]
-      }
+      "item": "minecraft:potato"
     }
   ]
 }

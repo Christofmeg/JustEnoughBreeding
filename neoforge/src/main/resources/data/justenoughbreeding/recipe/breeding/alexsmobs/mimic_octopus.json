@@ -1,21 +1,16 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexsmobs:mimic_octopus",
+  "inputs": [
     {
-      "mimic_octopus": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:mimic_octopus_breedables"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_mimic_octopus"
-          }
-        ],
-        "tamed": true
-      }
+      "tag": "alexsmobs:mimic_octopus_breedables"
     }
-  ]
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_mimic_octopus"
+    }
+  ],
+  "tamed": true
 }

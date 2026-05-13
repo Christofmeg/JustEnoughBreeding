@@ -1,30 +1,25 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "upgrade_aquatic",
-  "mobs": [
+  "input_entity": "upgrade_aquatic:goose",
+  "inputs": [
     {
-      "goose": {
-        "inputs": [
-          {
-            "item": "minecraft:wheat_seeds"
-          },
-          {
-            "item": "minecraft:pumpkin_seeds"
-          },
-          {
-            "item": "minecraft:melon_seeds"
-          },
-          {
-            "item": "minecraft:beetroot_seeds"
-          },
-          {
-            "item": "minecraft:torchflower_seeds"
-          },
-          {
-            "item": "minecraft:pitcher_pod"
-          }
-        ]
-      }
+      "item": "minecraft:wheat_seeds"
+    },
+    {
+      "item": "minecraft:pumpkin_seeds"
+    },
+    {
+      "item": "minecraft:melon_seeds"
+    },
+    {
+      "item": "minecraft:beetroot_seeds"
+    },
+    {
+      "item": "minecraft:torchflower_seeds"
+    },
+    {
+      "item": "minecraft:pitcher_pod"
     }
   ]
 }

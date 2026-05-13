@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "cnc",
-  "mobs": [
+  "input_entity": "cnc:pit_viper",
+  "inputs": [
     {
-      "pit_viper": {
-        "inputs": [
-          {
-            "item": "minecraft:rabbit"
-          }
-        ]
-      }
+      "item": "minecraft:rabbit"
     }
   ]
 }

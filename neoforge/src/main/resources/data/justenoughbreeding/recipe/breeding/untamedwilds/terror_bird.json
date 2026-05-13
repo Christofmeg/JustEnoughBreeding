@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "untamedwilds",
-  "mobs": [
+  "input_entity": "untamedwilds:terror_bird",
+  "inputs": [
     {
-      "terror_bird": {
-        "inputs": [
-          {
-            "item": "minecraft:rabbit"
-          }
-        ]
-      }
+      "item": "minecraft:rabbit"
     }
   ]
 }

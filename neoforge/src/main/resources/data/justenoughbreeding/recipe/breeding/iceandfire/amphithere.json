@@ -1,21 +1,16 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "iceandfire",
-  "mobs": [
+  "input_entity": "iceandfire:amphithere",
+  "inputs": [
     {
-      "amphithere": {
-        "inputs": [
-          {
-            "item": "minecraft:cookie"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "iceandfire:spawn_egg_amphithere"
-          }
-        ],
-        "tamed": true
-      }
+      "item": "minecraft:cookie"
     }
-  ]
+  ],
+  "spawn_eggs": [
+    {
+      "item": "iceandfire:spawn_egg_amphithere"
+    }
+  ],
+  "tamed": true
 }

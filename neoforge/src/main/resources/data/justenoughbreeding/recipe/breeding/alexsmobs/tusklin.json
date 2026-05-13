@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexsmobs:tusklin",
+  "inputs": [
     {
-      "tusklin": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:tusklin_breedables"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_tusklin"
-          }
-        ]
-      }
+      "tag": "alexsmobs:tusklin_breedables"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_tusklin"
     }
   ]
 }

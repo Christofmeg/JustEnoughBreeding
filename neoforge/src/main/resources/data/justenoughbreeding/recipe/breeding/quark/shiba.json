@@ -1,16 +1,11 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "quark",
-  "mobs": [
+  "input_entity": "quark:shiba",
+  "inputs": [
     {
-      "shiba": {
-        "inputs": [
-          {
-            "meat": "true"
-          }
-        ],
-        "tamed": true
-      }
+      "meat": "true"
     }
-  ]
+  ],
+  "tamed": true
 }

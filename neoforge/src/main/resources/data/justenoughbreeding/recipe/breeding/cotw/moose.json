@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "cotw",
-  "mobs": [
+  "input_entity": "cotw:moose",
+  "inputs": [
     {
-      "moose": {
-        "inputs": [
-          {
-            "tag": "minecraft:leaves"
-          }
-        ]
-      }
+      "tag": "minecraft:leaves"
     }
   ]
 }

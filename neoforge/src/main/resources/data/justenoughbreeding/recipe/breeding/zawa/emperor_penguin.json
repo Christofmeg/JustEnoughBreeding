@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:emperor_penguin",
+  "inputs": [
     {
-      "emperor_penguin": {
-        "inputs": [{
-            "item": "minecraft:salmon"
-        }]
-      }
+      "item": "minecraft:salmon"
     }
   ]
 }

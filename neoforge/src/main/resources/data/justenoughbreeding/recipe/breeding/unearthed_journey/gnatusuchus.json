@@ -1,16 +1,11 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "unearthed_journey",
-  "mobs": [
+  "input_entity": "unearthed_journey:gnatusuchus",
+  "inputs": [
     {
-      "gnatusuchus": {
-        "inputs": [
-          {
-            "item": "unearthed_journey:raw_fillet"
-          }
-        ],
-        "tamed": true
-      }
+      "item": "unearthed_journey:raw_fillet"
     }
-  ]
+  ],
+  "tamed": true
 }

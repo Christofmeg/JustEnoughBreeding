@@ -1,18 +1,13 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "cnc",
-  "mobs": [
+  "input_entity": "cnc:giant_boar",
+  "inputs": [
     {
-      "giant_boar": {
-        "inputs": [
-          {
-            "item": "minecraft:brown_mushroom"
-          },
-          {
-            "item": "minecraft:red_mushroom"
-          }
-        ]
-      }
+      "item": "minecraft:brown_mushroom"
+    },
+    {
+      "item": "minecraft:red_mushroom"
     }
   ]
 }

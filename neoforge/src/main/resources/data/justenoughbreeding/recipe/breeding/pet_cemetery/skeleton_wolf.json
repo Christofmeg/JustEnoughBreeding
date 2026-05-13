@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "pet_cemetery",
-  "mobs": [
+  "input_entity": "pet_cemetery:skeleton_wolf",
+  "inputs": [
     {
-      "skeleton_wolf": {
-        "inputs": [
-          {
-            "meat": "true"
-          }
-        ]
-      }
+      "meat": "true"
     }
   ]
 }

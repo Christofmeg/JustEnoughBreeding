@@ -1,18 +1,13 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "biodiverse",
-  "mobs": [
+  "input_entity": "biodiverse:reindeer",
+  "inputs": [
     {
-      "reindeer": {
-        "inputs": [
-          {
-            "item": "minecraft:wheat_seeds"
-          },
-          {
-            "item": "minecraft:wheat"
-          }
-        ]
-      }
+      "item": "minecraft:wheat_seeds"
+    },
+    {
+      "item": "minecraft:wheat"
     }
   ]
 }

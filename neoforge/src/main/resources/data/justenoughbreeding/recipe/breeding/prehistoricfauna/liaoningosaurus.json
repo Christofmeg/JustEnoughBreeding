@@ -1,29 +1,20 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "prehistoricfauna",
-  "mobs": [
+  "input_entity": "prehistoricfauna:liaoningosaurus",
+  "inputs": [
     {
-      "liaoningosaurus": {
-        "inputs": [
-          {
-            "item": "prehistoricfauna:ephedra"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "prehistoricfauna:liaoningosaurus_egg",
-            "amount": {
-              "min": 1,
-              "max": 4
-            }
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "prehistoricfauna:liaoningosaurus_spawn_egg"
-          }
-        ]
-      }
+      "item": "prehistoricfauna:ephedra"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:liaoningosaurus_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:liaoningosaurus_spawn_egg"
     }
   ]
 }

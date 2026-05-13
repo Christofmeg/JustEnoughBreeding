@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:leafcutter_ant",
+  "inputs": [
     {
-      "leafcutter_ant": {
-        "inputs": [{
-            "item": "minecraft:wheat_seeds"
-        }]
-      }
+      "item": "minecraft:wheat_seeds"
     }
   ]
 }

@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:koala",
+  "inputs": [
     {
-      "koala": {
-        "inputs": [{
-            "item": "zawa:eucalyptus"
-        }]
-      }
+      "item": "zawa:eucalyptus"
     }
   ]
 }

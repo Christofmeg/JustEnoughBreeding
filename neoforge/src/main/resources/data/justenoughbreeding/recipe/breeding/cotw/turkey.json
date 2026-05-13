@@ -1,24 +1,19 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "cotw",
-  "mobs": [
+  "input_entity": "cotw:turkey",
+  "inputs": [
     {
-      "turkey": {
-        "inputs": [
-          {
-            "item": "minecraft:wheat_seeds"
-          },
-          {
-            "item": "minecraft:pumpkin_seeds"
-          },
-          {
-            "item": "minecraft:melon_seeds"
-          },
-          {
-            "item": "minecraft:beetroot_seeds"
-          }
-        ]
-      }
+      "item": "minecraft:wheat_seeds"
+    },
+    {
+      "item": "minecraft:pumpkin_seeds"
+    },
+    {
+      "item": "minecraft:melon_seeds"
+    },
+    {
+      "item": "minecraft:beetroot_seeds"
     }
   ]
 }

@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "koopascritters",
-  "mobs": [
+  "input_entity": "koopascritters:pink_velvet_worm",
+  "inputs": [
     {
-      "pink_velvet_worm": {
-        "inputs": [
-          {
-            "item": "koopascritters:termite_raw_kc"
-          }
-        ]
-      }
+      "item": "koopascritters:termite_raw_kc"
     }
   ]
 }

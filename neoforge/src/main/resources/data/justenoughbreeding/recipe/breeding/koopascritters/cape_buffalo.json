@@ -1,18 +1,13 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "koopascritters",
-  "mobs": [
+  "input_entity": "koopascritters:cape_buffalo",
+  "inputs": [
     {
-      "cape_buffalo": {
-        "inputs": [
-          {
-            "item": "minecraft:wheat"
-          },
-          {
-            "item": "minecraft:wheat_seeds"
-          }
-        ]
-      }
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:wheat_seeds"
     }
   ]
 }

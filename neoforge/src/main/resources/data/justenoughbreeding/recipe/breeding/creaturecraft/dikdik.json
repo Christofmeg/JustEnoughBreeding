@@ -1,27 +1,22 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "creaturecraft",
-  "mobs": [
+  "input_entity": "creaturecraft:dikdik",
+  "inputs": [
     {
-      "dikdik": {
-        "inputs": [
-          {
-            "item": "minecraft:wheat_seeds"
-          },
-          {
-            "item": "minecraft:wheat"
-          },
-          {
-            "item": "minecraft:apple"
-          },
-          {
-            "item": "minecraft:golden_apple"
-          },
-          {
-            "item": "minecraft:golden_enchanted_apple"
-          }
-        ]
-      }
+      "item": "minecraft:wheat_seeds"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "minecraft:golden_apple"
+    },
+    {
+      "item": "minecraft:golden_enchanted_apple"
     }
   ]
 }

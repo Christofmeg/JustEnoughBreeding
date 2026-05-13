@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexsmobs:maned_wolf",
+  "inputs": [
     {
-      "maned_wolf": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:maned_wolf_breedables"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_maned_wolf"
-          }
-        ]
-      }
+      "tag": "alexsmobs:maned_wolf_breedables"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_maned_wolf"
     }
   ]
 }

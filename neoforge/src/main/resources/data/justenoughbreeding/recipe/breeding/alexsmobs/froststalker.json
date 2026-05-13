@@ -1,25 +1,20 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexsmobs:froststalker",
+  "inputs": [
     {
-      "froststalker": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:froststalker_breedables"
-          }
-        ],
-        "extra_inputs": [
-          {
-            "item": "alexsmobs:froststalker_helmet"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_froststalker"
-          }
-        ]
-      }
+      "tag": "alexsmobs:froststalker_breedables"
+    }
+  ],
+  "extra_inputs": [
+    {
+      "item": "alexsmobs:froststalker_helmet"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_froststalker"
     }
   ]
 }

@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "prehistoricfauna",
-  "mobs": [
+  "input_entity": "prehistoricfauna:repenomamus",
+  "inputs": [
     {
-      "repenomamus": {
-        "inputs": [
-          {
-            "item": "prehistoricfauna:raw_small_marginocephalian_meat"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "prehistoricfauna:repenomamus_spawn_egg"
-          }
-        ]
-      }
+      "item": "prehistoricfauna:raw_small_marginocephalian_meat"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:repenomamus_spawn_egg"
     }
   ]
 }

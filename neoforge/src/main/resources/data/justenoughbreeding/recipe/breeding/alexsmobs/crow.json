@@ -1,21 +1,16 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexsmobs:crow",
+  "inputs": [
     {
-      "crow": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:crow_breedables"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_crow"
-          }
-        ],
-        "tamed": true
-      }
+      "tag": "alexsmobs:crow_breedables"
     }
-  ]
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_crow"
+    }
+  ],
+  "tamed": true
 }

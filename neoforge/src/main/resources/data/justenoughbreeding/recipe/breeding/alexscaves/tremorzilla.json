@@ -1,20 +1,21 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "alexscaves"
+    }
+  ],
   "type": "justenoughbreeding:breeding",
   "mod": "alexscaves",
-  "mobs": [
+  "input_entity": "alexscaves:tremorzilla",
+  "inputs": [
     {
-      "tremorzilla": {
-        "inputs": [
-          {
-            "item": "alexscaves:nuclear_bomb"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexscaves:spawn_egg_tremorzilla"
-          }
-        ]
-      }
+      "item": "alexscaves:nuclear_bomb"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexscaves:spawn_egg_tremorzilla"
     }
   ]
 }

@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:african_lion",
+  "inputs": [
     {
-      "african_lion": {
-        "inputs": [{
-            "item": "zawa:large_meat"
-        }]
-      }
+      "item": "zawa:large_meat"
     }
   ]
 }

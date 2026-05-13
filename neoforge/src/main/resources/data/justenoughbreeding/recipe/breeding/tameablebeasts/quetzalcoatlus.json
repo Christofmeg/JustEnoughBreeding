@@ -1,26 +1,21 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "tameablebeasts",
-  "mobs": [
+  "input_entity": "tameablebeasts:quetzalcoatlus",
+  "inputs": [
     {
-      "quetzalcoatlus": {
-        "inputs": [
-          {
-            "tag": "tameablebeasts:quetzal_food"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "tameablebeasts:quetzalcoatlus_egg"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "tameablebeasts:quetzal_spawn_egg"
-          }
-        ],
-        "tamed": true
-      }
+      "tag": "tameablebeasts:quetzal_food"
     }
-  ]
+  ],
+  "outputs": [
+    {
+      "item": "tameablebeasts:quetzalcoatlus_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "tameablebeasts:quetzal_spawn_egg"
+    }
+  ],
+  "tamed": true
 }

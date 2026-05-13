@@ -1,24 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "sullysmod",
-  "mobs": [
+  "input_entity": "sullysmod:tortoise",
+  "inputs": [
     {
-      "tortoise": {
-        "inputs": [
-          {
-            "tag": "sullysmod:tortoise_food"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "sullysmod:tortoise_egg",
-            "amount": {
-              "min": 1,
-              "max": 4
-            }
-          }
-        ]
-      }
+      "tag": "sullysmod:tortoise_food"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "sullysmod:tortoise_egg"
     }
   ]
 }

@@ -1,36 +1,31 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "untamedwilds",
-  "mobs": [
+  "input_entity": "untamedwilds:bear",
+  "inputs": [
     {
-      "bear": {
-        "inputs": [
-          {
-            "item": "minecraft:sweet_berries"
-          },
-          {
-            "item": "minecraft:beef"
-          },
-          {
-            "item": "minecraft:salmon"
-          },
-          {
-            "item": "minecraft:potato"
-          },
-          {
-            "item": "minecraft:bamboo"
-          },
-          {
-            "item": "untamedwilds:material_blubber"
-          },
-          {
-            "item": "minecraft:apple"
-          },
-          {
-            "item": "minecraft:honeycomb"
-          }
-        ]
-      }
+      "item": "minecraft:sweet_berries"
+    },
+    {
+      "item": "minecraft:beef"
+    },
+    {
+      "item": "minecraft:salmon"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "minecraft:bamboo"
+    },
+    {
+      "item": "untamedwilds:material_blubber"
+    },
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "minecraft:honeycomb"
     }
   ]
 }

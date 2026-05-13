@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "zawaessentials",
-  "mobs": [
+  "input_entity": "zawaessentials:moho",
+  "inputs": [
     {
-      "moho": {
-        "inputs": [
-          {
-            "item": "minecraft:allium"
-          }
-        ]
-      }
+      "item": "minecraft:allium"
     }
   ]
 }

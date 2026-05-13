@@ -1,25 +1,20 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "aqcaracal",
-  "mobs": [
+  "input_entity": "aqcaracal:caracal",
+  "inputs": [
     {
-      "caracal": {
-        "inputs": [
-          {
-            "item": "minecraft:chicken"
-          },
-          {
-            "item": "minecraft:cod"
-          },
-          {
-            "item": "minecraft:rabbit"
-          },
-          {
-            "item": "minecraft:salmon"
-          }
-        ],
-        "tamed": true
-      }
+      "item": "minecraft:chicken"
+    },
+    {
+      "item": "minecraft:cod"
+    },
+    {
+      "item": "minecraft:rabbit"
+    },
+    {
+      "item": "minecraft:salmon"
     }
-  ]
+  ],
+  "tamed": true
 }

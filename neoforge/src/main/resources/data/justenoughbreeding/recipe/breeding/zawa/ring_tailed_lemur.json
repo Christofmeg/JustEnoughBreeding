@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:ring_tailed_lemur",
+  "inputs": [
     {
-      "ring_tailed_lemur": {
-        "inputs": [{
-            "item": "minecraft:apple"
-        }]
-      }
+      "item": "minecraft:apple"
     }
   ]
 }

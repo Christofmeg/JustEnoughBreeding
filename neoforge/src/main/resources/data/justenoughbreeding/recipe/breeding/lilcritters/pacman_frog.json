@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "lilcritters",
-  "mobs": [
+  "input_entity": "lilcritters:pacman_frog",
+  "inputs": [
     {
-      "pacman_frog": {
-        "inputs": [{
-            "item": "zawa:brown_rat"
-        }]
-      }
+      "item": "zawa:brown_rat"
     }
   ]
 }

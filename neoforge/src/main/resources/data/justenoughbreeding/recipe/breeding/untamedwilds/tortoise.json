@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "untamedwilds",
-  "mobs": [
+  "input_entity": "untamedwilds:tortoise",
+  "inputs": [
     {
-      "tortoise": {
-        "inputs": [
-          {
-            "item": "minecraft:apple"
-          }
-        ]
-      }
+      "item": "minecraft:apple"
     }
   ]
 }

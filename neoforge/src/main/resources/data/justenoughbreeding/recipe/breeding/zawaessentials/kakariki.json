@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "zawaessentials",
-  "mobs": [
+  "input_entity": "zawaessentials:kakariki",
+  "inputs": [
     {
-      "kakariki": {
-        "inputs": [
-          {
-            "item": "zawa:mealworms"
-          }
-        ]
-      }
+      "item": "zawa:mealworms"
     }
   ]
 }

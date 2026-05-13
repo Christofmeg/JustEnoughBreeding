@@ -1,29 +1,20 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "prehistoricfauna",
-  "mobs": [
+  "input_entity": "prehistoricfauna:jinzhousaurus",
+  "inputs": [
     {
-      "jinzhousaurus": {
-        "inputs": [
-          {
-            "item": "prehistoricfauna:ruffordia"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "prehistoricfauna:jinzhousaurus_egg",
-            "amount": {
-              "min": 1,
-              "max": 4
-            }
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "prehistoricfauna:jinzhousaurus_spawn_egg"
-          }
-        ]
-      }
+      "item": "prehistoricfauna:ruffordia"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:jinzhousaurus_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:jinzhousaurus_spawn_egg"
     }
   ]
 }

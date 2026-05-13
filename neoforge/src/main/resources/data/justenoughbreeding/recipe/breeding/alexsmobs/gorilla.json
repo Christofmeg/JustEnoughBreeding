@@ -1,21 +1,16 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexsmobs:gorilla",
+  "inputs": [
     {
-      "gorilla": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:gorilla_breedables"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_gorilla"
-          }
-        ],
-        "tamed": true
-      }
+      "tag": "alexsmobs:gorilla_breedables"
     }
-  ]
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_gorilla"
+    }
+  ],
+  "tamed": true
 }

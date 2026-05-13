@@ -1,29 +1,20 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "prehistoricfauna",
-  "mobs": [
+  "input_entity": "prehistoricfauna:dakotaraptor",
+  "inputs": [
     {
-      "dakotaraptor": {
-        "inputs": [
-          {
-            "item": "prehistoricfauna:raw_small_ornithischian_meat"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "prehistoricfauna:dakotaraptor_egg",
-            "amount": {
-              "min": 1,
-              "max": 4
-            }
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "prehistoricfauna:dakotaraptor_spawn_egg"
-          }
-        ]
-      }
+      "item": "prehistoricfauna:raw_small_ornithischian_meat"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:dakotaraptor_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:dakotaraptor_spawn_egg"
     }
   ]
 }

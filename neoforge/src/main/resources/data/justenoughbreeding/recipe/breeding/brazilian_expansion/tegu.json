@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "brazilian_expansion",
-  "mobs": [
+  "input_entity": "brazilian_expansion:tegu",
+  "inputs": [
     {
-      "tegu": {
-        "inputs": [
-          {
-            "tag": "brazilian_expansion:food_tegu"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "brazilian_expansion:tegu_egg"
-          }
-        ]
-      }
+      "tag": "brazilian_expansion:food_tegu"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "brazilian_expansion:tegu_egg"
     }
   ]
 }

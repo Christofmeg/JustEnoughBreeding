@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "biodiverse",
-  "mobs": [
+  "input_entity": "biodiverse:red_panda",
+  "inputs": [
     {
-      "red_panda": {
-        "inputs": [
-          {
-            "item": "minecraft:bamboo"
-          }
-        ]
-      }
+      "item": "minecraft:bamboo"
     }
   ]
 }

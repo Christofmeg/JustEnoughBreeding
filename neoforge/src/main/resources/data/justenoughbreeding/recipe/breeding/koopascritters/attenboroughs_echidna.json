@@ -1,18 +1,13 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "koopascritters",
-  "mobs": [
+  "input_entity": "koopascritters:attenboroughs_echidna",
+  "inputs": [
     {
-      "attenboroughs_echidna": {
-        "inputs": [
-          {
-            "item": "koopascritters:termite_raw_kc"
-          },
-          {
-            "item": "koopascritters:cooked_termite_kc"
-          }
-        ]
-      }
+      "item": "koopascritters:termite_raw_kc"
+    },
+    {
+      "item": "koopascritters:cooked_termite_kc"
     }
   ]
 }

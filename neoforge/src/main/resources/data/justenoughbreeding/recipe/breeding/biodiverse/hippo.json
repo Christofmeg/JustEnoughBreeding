@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "biodiverse",
-  "mobs": [
+  "input_entity": "biodiverse:hippo",
+  "inputs": [
     {
-      "hippo": {
-        "inputs": [
-          {
-            "item": "minecraft:melon"
-          }
-        ]
-      }
+      "item": "minecraft:melon"
     }
   ]
 }

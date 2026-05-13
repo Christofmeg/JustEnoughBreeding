@@ -1,16 +1,11 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "recrafted_creatures",
-  "mobs": [
+  "input_entity": "recrafted_creatures:mammoth",
+  "inputs": [
     {
-      "mammoth": {
-        "inputs": [
-          {
-            "item": "minecraft:hay_block"
-          }
-        ],
-        "tamed": true
-      }
+      "item": "minecraft:hay_block"
     }
-  ]
+  ],
+  "tamed": true
 }

@@ -1,29 +1,20 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "prehistoricfauna",
-  "mobs": [
+  "input_entity": "prehistoricfauna:beipiaosaurus",
+  "inputs": [
     {
-      "beipiaosaurus": {
-        "inputs": [
-          {
-            "item": "prehistoricfauna:taxus_berries"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "prehistoricfauna:beipiaosaurus_egg",
-            "amount": {
-              "min": 1,
-              "max": 4
-            }
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "prehistoricfauna:beipiaosaurus_spawn_egg"
-          }
-        ]
-      }
+      "item": "prehistoricfauna:taxus_berries"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:beipiaosaurus_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:beipiaosaurus_spawn_egg"
     }
   ]
 }

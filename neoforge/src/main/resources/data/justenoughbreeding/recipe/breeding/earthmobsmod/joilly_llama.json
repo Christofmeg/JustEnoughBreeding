@@ -1,19 +1,14 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "earthmobsmod",
-  "mobs": [
+  "input_entity": "earthmobsmod:jolly_llama",
+  "inputs": [
     {
-      "jolly_llama": {
-        "inputs": [
-          {
-            "item": "minecraft:wheat"
-          },
-          {
-            "item": "minecraft:hay_block"
-          }
-        ],
-        "tamed": true
-      }
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:hay_block"
     }
-  ]
+  ],
+  "tamed": true
 }

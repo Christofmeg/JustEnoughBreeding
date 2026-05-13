@@ -1,18 +1,13 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "koopascritters",
-  "mobs": [
+  "input_entity": "koopascritters:fire_salamander",
+  "inputs": [
     {
-      "fire_salamander": {
-        "inputs": [
-          {
-            "item": "koopascritters:termite_raw_kc"
-          },
-          {
-            "item": "koopascritters:cooked_termite_kc"
-          }
-        ]
-      }
+      "item": "koopascritters:termite_raw_kc"
+    },
+    {
+      "item": "koopascritters:cooked_termite_kc"
     }
   ]
 }

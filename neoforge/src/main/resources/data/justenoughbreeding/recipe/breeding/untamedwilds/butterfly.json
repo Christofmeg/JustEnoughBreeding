@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "untamedwilds",
-  "mobs": [
+  "input_entity": "untamedwilds:butterfly",
+  "inputs": [
     {
-      "butterfly": {
-        "inputs": [
-          {
-            "item": "minecraft:dandelion"
-          }
-        ]
-      }
+      "item": "minecraft:dandelion"
     }
   ]
 }

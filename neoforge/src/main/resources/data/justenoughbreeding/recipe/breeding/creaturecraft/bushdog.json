@@ -1,19 +1,14 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "creaturecraft",
-  "mobs": [
+  "input_entity": "creaturecraft:bushdog",
+  "inputs": [
     {
-      "bushdog": {
-        "inputs": [
-          {
-            "item": "minecraft:beef"
-          },
-          {
-            "item": "minecraft:mutton"
-          }
-        ],
-        "tamed": true
-      }
+      "item": "minecraft:beef"
+    },
+    {
+      "item": "minecraft:mutton"
     }
-  ]
+  ],
+  "tamed": true
 }

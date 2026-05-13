@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "ambientadditions",
-  "mobs": [
+  "input_entity": "ambientadditions:veiled_chameleon",
+  "inputs": [
     {
-      "veiled_chameleon": {
-        "inputs": [
-          {
-            "item": "minecraft:spider_eye"
-          }
-        ]
-      }
+      "item": "minecraft:spider_eye"
     }
   ]
 }

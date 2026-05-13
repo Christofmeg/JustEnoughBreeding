@@ -1,22 +1,17 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "creaturecraft",
-  "mobs": [
+  "input_entity": "creaturecraft:green_iguana",
+  "inputs": [
     {
-      "green_iguana": {
-        "inputs": [
-          {
-            "item": "minecraft:apple"
-          },
-          {
-            "item": "minecraft:golden_apple"
-          },
-          {
-            "item": "minecraft:enchanted_golden_apple"
-          }
-        ],
-        "tamed": true
-      }
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "minecraft:golden_apple"
+    },
+    {
+      "item": "minecraft:enchanted_golden_apple"
     }
-  ]
+  ],
+  "tamed": true
 }

@@ -1,26 +1,21 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "tameablebeasts",
-  "mobs": [
+  "input_entity": "tameablebeasts:tameable_penguin",
+  "inputs": [
     {
-      "tameable_penguin": {
-        "inputs": [
-          {
-            "tag": "tameablebeasts:penguin_food"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "tameablebeasts:penguin_egg"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "tameablebeasts:penguin_spawn_egg"
-          }
-        ],
-        "tamed": true
-      }
+      "tag": "tameablebeasts:penguin_food"
     }
-  ]
+  ],
+  "outputs": [
+    {
+      "item": "tameablebeasts:penguin_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "tameablebeasts:penguin_spawn_egg"
+    }
+  ],
+  "tamed": true
 }

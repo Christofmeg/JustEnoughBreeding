@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "lilcritters",
-  "mobs": [
+  "input_entity": "lilcritters:skunk",
+  "inputs": [
     {
-      "skunk": {
-        "inputs": [{
-            "item": "zawa:earthworm"
-        }]
-      }
+      "item": "zawa:earthworm"
     }
   ]
 }

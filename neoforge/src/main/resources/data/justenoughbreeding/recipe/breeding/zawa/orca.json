@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:orca",
+  "inputs": [
     {
-      "orca": {
-        "inputs": [{
-            "item": "zawa:large_meat"
-        }]
-      }
+      "item": "zawa:large_meat"
     }
   ]
 }

@@ -1,21 +1,16 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexsmobs:elephant",
+  "inputs": [
     {
-      "elephant": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:elephant_breedables"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_elephant"
-          }
-        ],
-        "tamed": true
-      }
+      "tag": "alexsmobs:elephant_breedables"
     }
-  ]
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_elephant"
+    }
+  ],
+  "tamed": true
 }

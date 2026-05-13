@@ -1,29 +1,20 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "prehistoricfauna",
-  "mobs": [
+  "input_entity": "prehistoricfauna:changyuraptor",
+  "inputs": [
     {
-      "changyuraptor": {
-        "inputs": [
-          {
-            "item": "prehistoricfauna:dead_spider"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "prehistoricfauna:changyuraptor_egg",
-            "amount": {
-              "min": 1,
-              "max": 4
-            }
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "prehistoricfauna:changyuraptor_spawn_egg"
-          }
-        ]
-      }
+      "item": "prehistoricfauna:dead_spider"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:changyuraptor_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:changyuraptor_spawn_egg"
     }
   ]
 }

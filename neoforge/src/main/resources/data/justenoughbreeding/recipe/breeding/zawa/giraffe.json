@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:giant_panda",
+  "inputs": [
     {
-      "giraffe": {
-        "inputs": [{
-            "item": "minecraft:acacia_leaves"
-        }]
-      }
+      "item": "minecraft:acacia_leaves"
     }
   ]
 }

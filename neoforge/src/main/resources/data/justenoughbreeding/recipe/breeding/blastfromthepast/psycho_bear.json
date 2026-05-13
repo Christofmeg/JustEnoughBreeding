@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "blastfromthepast",
-  "mobs": [
+  "input_entity": "blastfromthepast:psycho_bear",
+  "inputs": [
     {
-      "psycho_bear": {
-        "inputs": [
-          {
-            "tag": "blastfromthepast:psycho_bear_food"
-          }
-        ]
-      }
+      "tag": "blastfromthepast:psycho_bear_food"
     }
   ]
 }

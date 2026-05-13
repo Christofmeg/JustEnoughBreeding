@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "creatures_squared",
-  "mobs": [
+  "input_entity": "creatures_squared:tapir",
+  "inputs": [
     {
-      "tapir": {
-        "inputs": [
-          {
-            "item": "minecraft:apple"
-          }
-        ]
-      }
+      "item": "minecraft:apple"
     }
   ]
 }

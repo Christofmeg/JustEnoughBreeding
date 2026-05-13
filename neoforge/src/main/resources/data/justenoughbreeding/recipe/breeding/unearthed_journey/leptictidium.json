@@ -1,16 +1,11 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "unearthed_journey",
-  "mobs": [
+  "input_entity": "unearthed_journey:leptictidium",
+  "inputs": [
     {
-      "leptictidium": {
-        "inputs": [
-          {
-            "item": "unearthed_journey:pouch_of_seeds"
-          }
-        ],
-        "tamed": true
-      }
+      "item": "unearthed_journey:pouch_of_seeds"
     }
-  ]
+  ],
+  "tamed": true
 }

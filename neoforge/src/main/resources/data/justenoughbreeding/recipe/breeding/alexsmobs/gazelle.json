@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexsmobs:gazelle",
+  "inputs": [
     {
-      "gazelle": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:gazelle_breedables"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_gazelle"
-          }
-        ]
-      }
+      "tag": "alexsmobs:gazelle_breedables"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_gazelle"
     }
   ]
 }

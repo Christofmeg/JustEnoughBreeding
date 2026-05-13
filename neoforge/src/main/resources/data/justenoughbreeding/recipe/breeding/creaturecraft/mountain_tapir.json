@@ -1,46 +1,41 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "creaturecraft",
-  "mobs": [
+  "input_entity": "creaturecraft:mountain_tapir",
+  "inputs": [
     {
-      "mountain_tapir": {
-        "inputs": [
-          {
-            "item": "creaturecraft:buff_grass"
-          },
-          {
-            "item": "creaturecraft:sav_grass_short"
-          },
-          {
-            "item": "creaturecraft:sav_grass_tall"
-          },
-          {
-            "item": "minecraft:wheat_seeds"
-          },
-          {
-            "item": "minecraft:wheat"
-          },
-          {
-            "item": "minecraft:seagrass"
-          },
-          {
-            "item": "minecraft:tall_seagrass"
-          },
-          {
-            "item": "minecraft:apple"
-          },
-          {
-            "item": "minecraft:golden_apple"
-          },
-          {
-            "item": "minecraft:carrot"
-          },
-          {
-            "item": "minecraft:sugar_cane"
-          }
-        ],
-        "tamed": true
-      }
+      "item": "creaturecraft:buff_grass"
+    },
+    {
+      "item": "creaturecraft:sav_grass_short"
+    },
+    {
+      "item": "creaturecraft:sav_grass_tall"
+    },
+    {
+      "item": "minecraft:wheat_seeds"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:seagrass"
+    },
+    {
+      "item": "minecraft:tall_seagrass"
+    },
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "minecraft:golden_apple"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:sugar_cane"
     }
-  ]
+  ],
+  "tamed": true
 }

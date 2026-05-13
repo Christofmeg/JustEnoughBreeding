@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexsmobs:snow_leopard",
+  "inputs": [
     {
-      "snow_leopard": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:snow_leopard_breedables"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_snow_leopard"
-          }
-        ]
-      }
+      "tag": "alexsmobs:snow_leopard_breedables"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_snow_leopard"
     }
   ]
 }

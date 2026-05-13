@@ -1,29 +1,20 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "prehistoricfauna",
-  "mobs": [
+  "input_entity": "prehistoricfauna:brachychampsa",
+  "inputs": [
     {
-      "brachychampsa": {
-        "inputs": [
-          {
-            "item": "prehistoricfauna:crassostrea_oyster"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "prehistoricfauna:brachychampsa_egg",
-            "amount": {
-              "min": 1,
-              "max": 4
-            }
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "prehistoricfauna:brachychampsa_spawn_egg"
-          }
-        ]
-      }
+      "item": "prehistoricfauna:crassostrea_oyster"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:brachychampsa_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:brachychampsa_spawn_egg"
     }
   ]
 }

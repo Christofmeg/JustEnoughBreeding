@@ -1,18 +1,13 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "biodiverse",
-  "mobs": [
+  "input_entity": "biodiverse:cassowary",
+  "inputs": [
     {
-      "cassowary": {
-        "inputs": [
-          {
-            "item": "minecraft:melon_slice"
-          },
-          {
-            "item": "minecraft:apple"
-          }
-        ]
-      }
+      "item": "minecraft:melon_slice"
+    },
+    {
+      "item": "minecraft:apple"
     }
   ]
 }

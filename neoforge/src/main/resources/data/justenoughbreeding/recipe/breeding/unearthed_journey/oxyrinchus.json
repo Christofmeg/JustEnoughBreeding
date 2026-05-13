@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "unearthed_journey",
-  "mobs": [
+  "input_entity": "unearthed_journey:oxyrinchus",
+  "inputs": [
     {
-      "oxyrinchus": {
-        "inputs": [
-          {
-            "item": "unearthed_journey:larvae"
-          }
-        ]
-      }
+      "item": "unearthed_journey:larvae"
     }
   ]
 }

@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "untamedwilds",
-  "mobs": [
+  "input_entity": "untamedwilds:spadefish",
+  "inputs": [
     {
-      "spadefish": {
-        "inputs": [
-          {
-            "item": "minecraft:seagrass"
-          }
-        ]
-      }
+      "item": "minecraft:seagrass"
     }
   ]
 }

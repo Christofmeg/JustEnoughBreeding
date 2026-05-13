@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:asian_elephant",
+  "inputs": [
     {
-      "asian_elephant": {
-        "inputs": [{
-            "item": "minecraft:jungle_leaves"
-        }]
-      }
+      "item": "minecraft:jungle_leaves"
     }
   ]
 }

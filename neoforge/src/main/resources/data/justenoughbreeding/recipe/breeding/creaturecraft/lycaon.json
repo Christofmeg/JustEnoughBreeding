@@ -1,16 +1,11 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "creaturecraft",
-  "mobs": [
+  "input_entity": "creaturecraft:lycaon",
+  "inputs": [
     {
-      "lycaon": {
-        "inputs": [
-          {
-            "item": "minecraft:beef"
-          }
-        ],
-        "tamed": true
-      }
+      "item": "minecraft:beef"
     }
-  ]
+  ],
+  "tamed": true
 }

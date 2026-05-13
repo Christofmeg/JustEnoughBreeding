@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "earthmobsmod",
-  "mobs": [
+  "input_entity": "earthmobsmod:wooly_cow",
+  "inputs": [
     {
-      "wooly_cow": {
-        "inputs": [
-          {
-            "item": "minecraft:wheat"
-          }
-        ]
-      }
+      "item": "minecraft:wheat"
     }
   ]
 }

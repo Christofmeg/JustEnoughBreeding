@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "tfc",
-  "mobs": [
+  "input_entity": "tfc:mule",
+  "inputs": [
     {
-      "mule": {
-        "inputs": [
-          {
-            "tag": "tfc:mule_food"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "tfc:spawn_egg/mule"
-          }
-        ]
-      }
+      "tag": "tfc:mule_food"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "tfc:spawn_egg/mule"
     }
   ]
 }

@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "frostrealm",
-  "mobs": [
+  "input_entity": "frostrealm:crystal_tortoise",
+  "inputs": [
     {
-      "crystal_tortoise": {
-        "inputs": [
-          {
-            "item": "frostrealm:cold_grass"
-          }
-        ]
-      }
+      "item": "frostrealm:cold_grass"
     }
   ]
 }

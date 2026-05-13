@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "tfc",
-  "mobs": [
+  "input_entity": "tfc:rabbit",
+  "inputs": [
     {
-      "rabbit": {
-        "inputs": [
-          {
-            "tag": "tfc:rabbit_food"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "tfc:spawn_egg/rabbit"
-          }
-        ]
-      }
+      "tag": "tfc:rabbit_food"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "tfc:spawn_egg/rabbit"
     }
   ]
 }

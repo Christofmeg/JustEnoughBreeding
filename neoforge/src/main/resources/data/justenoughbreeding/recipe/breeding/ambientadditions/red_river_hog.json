@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "ambientadditions",
-  "mobs": [
+  "input_entity": "ambientadditions:red_river_hog",
+  "inputs": [
     {
-      "red_river_hog": {
-        "inputs": [
-          {
-            "item": "minecraft:apple"
-          }
-        ]
-      }
+      "item": "minecraft:apple"
     }
   ]
 }

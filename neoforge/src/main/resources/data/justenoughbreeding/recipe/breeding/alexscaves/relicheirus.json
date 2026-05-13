@@ -1,25 +1,26 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "alexscaves"
+    }
+  ],
   "type": "justenoughbreeding:breeding",
   "mod": "alexscaves",
-  "mobs": [
+  "input_entity": "alexscaves:relicheirus",
+  "inputs": [
     {
-      "relicheirus": {
-        "inputs": [
-          {
-            "item": "alexscaves:tree_star"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "alexscaves:relicheirus_egg"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexscaves:spawn_egg_relicheirus"
-          }
-        ]
-      }
+      "item": "alexscaves:tree_star"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "alexscaves:relicheirus_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexscaves:spawn_egg_relicheirus"
     }
   ]
 }

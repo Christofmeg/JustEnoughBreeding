@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "untamedwilds",
-  "mobs": [
+  "input_entity": "untamedwilds:baleen_whale",
+  "inputs": [
     {
-      "baleen_whale": {
-        "inputs": [
-          {
-            "item": "untamedwilds:chum"
-          }
-        ]
-      }
+      "item": "untamedwilds:chum"
     }
   ]
 }

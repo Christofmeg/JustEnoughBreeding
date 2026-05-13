@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:bald_eagle",
+  "inputs": [
     {
-      "bald_eagle": {
-        "inputs": [{
-            "item": "zawa:salmon"
-        }]
-      }
+      "item": "zawa:salmon"
     }
   ]
 }

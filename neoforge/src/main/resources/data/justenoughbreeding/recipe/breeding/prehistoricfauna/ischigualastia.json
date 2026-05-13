@@ -1,29 +1,20 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "prehistoricfauna",
-  "mobs": [
+  "input_entity": "prehistoricfauna:ischigualastia",
+  "inputs": [
     {
-      "ischigualastia": {
-        "inputs": [
-          {
-            "item": "prehistoricfauna:cladophlebis"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "prehistoricfauna:ischigualastia_egg",
-            "amount": {
-              "min": 1,
-              "max": 4
-            }
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "prehistoricfauna:ischigualastia_spawn_egg"
-          }
-        ]
-      }
+      "item": "prehistoricfauna:cladophlebis"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:ischigualastia_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:ischigualastia_spawn_egg"
     }
   ]
 }

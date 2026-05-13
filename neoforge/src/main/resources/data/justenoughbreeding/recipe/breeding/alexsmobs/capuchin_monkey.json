@@ -1,21 +1,16 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexsmobs:capuchin_monkey",
+  "inputs": [
     {
-      "capuchin_monkey": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:capuchin_monkey_breedables"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_capuchin_monkey"
-          }
-        ],
-        "tamed": true
-      }
+      "tag": "alexsmobs:capuchin_monkey_breedables"
     }
-  ]
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_capuchin_monkey"
+    }
+  ],
+  "tamed": true
 }

@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "tfc",
-  "mobs": [
+  "input_entity": "tfc:musk_ox",
+  "inputs": [
     {
-      "musk_ox": {
-        "inputs": [
-          {
-            "tag": "tfc:musk_ox_food"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "tfc:spawn_egg/musk_ox"
-          }
-        ]
-      }
+      "tag": "tfc:musk_ox_food"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "tfc:spawn_egg/musk_ox"
     }
   ]
 }

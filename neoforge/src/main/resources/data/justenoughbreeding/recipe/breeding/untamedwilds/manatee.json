@@ -1,18 +1,13 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "untamedwilds",
-  "mobs": [
+  "input_entity": "untamedwilds:manatee",
+  "inputs": [
     {
-      "manatee": {
-        "inputs": [
-          {
-            "item": "minecraft:sea_grass"
-          },
-          {
-            "item": "minecraft:kelp"
-          }
-        ]
-      }
+      "item": "minecraft:sea_grass"
+    },
+    {
+      "item": "minecraft:kelp"
     }
   ]
 }

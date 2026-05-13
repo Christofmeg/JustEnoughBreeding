@@ -1,18 +1,13 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "koopascritters",
-  "mobs": [
+  "input_entity": "koopascritters:burrowing_owl",
+  "inputs": [
     {
-      "burrowing_owl": {
-        "inputs": [
-          {
-            "item": "minecraft:rabbit"
-          },
-          {
-            "item": "minecraft:cooked_rabbit"
-          }
-        ]
-      }
+      "item": "minecraft:rabbit"
+    },
+    {
+      "item": "minecraft:cooked_rabbit"
     }
   ]
 }

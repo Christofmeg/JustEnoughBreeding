@@ -1,15 +1,16 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "aether"
+    }
+  ],
   "type": "justenoughbreeding:breeding",
   "mod": "aether",
-  "mobs": [
+  "input_entity": "aether:aerbunny",
+  "inputs": [
     {
-      "aerbunny": {
-        "inputs": [
-          {
-            "tag": "aether:aerbunny_temptation_items"
-          }
-        ]
-      }
+      "tag": "aether:aerbunny_temptation_items"
     }
   ]
 }

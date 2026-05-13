@@ -1,24 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "recrafted_creatures",
-  "mobs": [
+  "input_entity": "recrafted_creatures:owl",
+  "inputs": [
     {
-      "owl": {
-        "inputs": [
-          {
-            "item": "minecraft:rabbit"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "recrafted_creatures:owl_egg",
-            "amount": {
-              "min": 1,
-              "max": 3
-            }
-          }
-        ]
-      }
+      "item": "minecraft:rabbit"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "recrafted_creatures:owl_egg"
     }
   ]
 }

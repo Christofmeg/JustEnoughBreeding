@@ -1,24 +1,19 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "koopascritters",
-  "mobs": [
+  "input_entity": "koopascritters:asian_leopard_cat",
+  "inputs": [
     {
-      "asian_leopard_cat": {
-        "inputs": [
-          {
-            "item": "koopascritters:raw_wild_bird"
-          },
-          {
-            "item": "koopascritters:cooked_wild_bird"
-          },
-          {
-            "item": "minecraft:chicken"
-          },
-          {
-            "item": "minecraft:cooked_chicken"
-          }
-        ]
-      }
+      "item": "koopascritters:raw_wild_bird"
+    },
+    {
+      "item": "koopascritters:cooked_wild_bird"
+    },
+    {
+      "item": "minecraft:chicken"
+    },
+    {
+      "item": "minecraft:cooked_chicken"
     }
   ]
 }

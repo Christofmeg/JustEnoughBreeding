@@ -1,44 +1,35 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "cnb",
-  "mobs": [
+  "input_entity": "cnb:lizard",
+  "inputs": [
     {
-      "lizard": {
-        "inputs": [
-          {
-            "item": "cnb:apple_slice"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "cnb:lizard_egg",
-            "amount": {
-              "min": 1,
-              "max": 6
-            }
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "cnb:lizard_spawn_egg"
-          },
-          {
-            "item": "cnb:lizard_item_desert"
-          },
-          {
-            "item": "cnb:lizard_item_desert_2"
-          },
-          {
-            "item": "cnb:lizard_item_jungle"
-          },
-          {
-            "item": "cnb:lizard_item_jungle_2"
-          },
-          {
-            "item": "cnb:lizard_item_mushroom"
-          }
-        ]
-      }
+      "item": "cnb:apple_slice"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "cnb:lizard_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "cnb:lizard_spawn_egg"
+    },
+    {
+      "item": "cnb:lizard_item_desert"
+    },
+    {
+      "item": "cnb:lizard_item_desert_2"
+    },
+    {
+      "item": "cnb:lizard_item_jungle"
+    },
+    {
+      "item": "cnb:lizard_item_jungle_2"
+    },
+    {
+      "item": "cnb:lizard_item_mushroom"
     }
   ]
 }

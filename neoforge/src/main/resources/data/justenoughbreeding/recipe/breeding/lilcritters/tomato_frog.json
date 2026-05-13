@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "lilcritters",
-  "mobs": [
+  "input_entity": "lilcritters:tomato_frog",
+  "inputs": [
     {
-      "tomato_frog": {
-        "inputs": [{
-            "item": "zawa:brown_rat"
-        }]
-      }
+      "item": "zawa:brown_rat"
     }
   ]
 }

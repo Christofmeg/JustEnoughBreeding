@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:red_panda",
+  "inputs": [
     {
-      "red_panda": {
-        "inputs": [{
-            "item": "zawa:yellow_bamboo"
-        }]
-      }
+      "item": "zawa:yellow_bamboo"
     }
   ]
 }

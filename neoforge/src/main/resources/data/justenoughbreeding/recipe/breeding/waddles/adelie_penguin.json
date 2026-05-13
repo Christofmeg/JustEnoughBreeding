@@ -1,18 +1,13 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "waddles",
-  "mobs": [
+  "input_entity": "waddles:adelie_penguin",
+  "inputs": [
     {
-      "adelie_penguin": {
-        "inputs": [
-          {
-            "item": "minecraft:cod"
-          },
-          {
-            "item": "minecraft:salmon"
-          }
-        ]
-      }
+      "item": "minecraft:cod"
+    },
+    {
+      "item": "minecraft:salmon"
     }
   ]
 }

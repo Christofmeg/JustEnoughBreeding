@@ -1,22 +1,17 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "recrafted_creatures",
-  "mobs": [
+  "input_entity": "recrafted_creatures:zebra",
+  "inputs": [
     {
-      "zebra": {
-        "inputs": [
-          {
-            "item": "minecraft:golden_apple"
-          },
-          {
-            "item": "minecraft:enchanted_golden_apple"
-          },
-          {
-            "item": "minecraft:golden_carrot"
-          }
-        ],
-        "tamed": true
-      }
+      "item": "minecraft:golden_apple"
+    },
+    {
+      "item": "minecraft:enchanted_golden_apple"
+    },
+    {
+      "item": "minecraft:golden_carrot"
     }
-  ]
+  ],
+  "tamed": true
 }

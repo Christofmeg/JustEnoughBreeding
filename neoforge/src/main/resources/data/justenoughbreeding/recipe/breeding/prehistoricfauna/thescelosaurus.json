@@ -1,29 +1,20 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "prehistoricfauna",
-  "mobs": [
+  "input_entity": "prehistoricfauna:thescelosaurus",
+  "inputs": [
     {
-      "thescelosaurus": {
-        "inputs": [
-          {
-            "item": "prehistoricfauna:liverwort"
-          }
-        ],
-        "outputs": [
-          {
-            "item": "prehistoricfauna:thescelosaurus_egg",
-            "amount": {
-              "min": 1,
-              "max": 4
-            }
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "prehistoricfauna:thescelosaurus_spawn_egg"
-          }
-        ]
-      }
+      "item": "prehistoricfauna:liverwort"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:thescelosaurus_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:thescelosaurus_spawn_egg"
     }
   ]
 }

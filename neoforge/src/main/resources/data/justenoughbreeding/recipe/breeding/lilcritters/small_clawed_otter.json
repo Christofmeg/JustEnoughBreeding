@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "lilcritters",
-  "mobs": [
+  "input_entity": "lilcritters:small_clawed_otter",
+  "inputs": [
     {
-      "small_clawed_otter": {
-        "inputs": [{
-            "item": "zawa:mussels"
-        }]
-      }
+      "item": "zawa:mussels"
     }
   ]
 }

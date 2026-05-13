@@ -1,21 +1,22 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "alexscaves"
+    }
+  ],
   "type": "justenoughbreeding:breeding",
   "mod": "alexscaves",
-  "mobs": [
+  "input_entity": "alexscaves:raycat",
+  "inputs": [
     {
-      "raycat": {
-        "inputs": [
-          {
-            "item": "alexscaves:radgill"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexscaves:spawn_egg_raycat"
-          }
-        ],
-        "tamed": true
-      }
+      "item": "alexscaves:radgill"
     }
-  ]
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexscaves:spawn_egg_raycat"
+    }
+  ],
+  "tamed": true
 }

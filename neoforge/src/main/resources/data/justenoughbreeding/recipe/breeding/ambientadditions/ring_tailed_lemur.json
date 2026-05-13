@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "ambientadditions",
-  "mobs": [
+  "input_entity": "ambientadditions:ring_tailed_lemur",
+  "inputs": [
     {
-      "ring_tailed_lemur": {
-        "inputs": [
-          {
-            "item": "minecraft:dandelion"
-          }
-        ]
-      }
+      "item": "minecraft:dandelion"
     }
   ]
 }

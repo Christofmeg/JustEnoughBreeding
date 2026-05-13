@@ -1,21 +1,16 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "quark",
-  "mobs": [
+  "input_entity": "quark:crab",
+  "inputs": [
     {
-      "crab": {
-        "inputs": [
-          {
-            "item": "minecraft:wheat"
-          },
-          {
-            "item": "minecraft:chicken"
-          },
-          {
-            "tag": "minecraft:fishes"
-          }
-        ]
-      }
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:chicken"
+    },
+    {
+      "tag": "minecraft:fishes"
     }
   ]
 }

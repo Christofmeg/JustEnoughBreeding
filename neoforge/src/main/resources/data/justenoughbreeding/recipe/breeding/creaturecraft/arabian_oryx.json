@@ -1,18 +1,13 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "creaturecraft",
-  "mobs": [
+  "input_entity": "creaturecraft:arabian_oryx",
+  "inputs": [
     {
-      "arabian_oryx": {
-        "inputs": [
-          {
-            "item": "creaturecraft:buff_grass"
-          },
-          {
-            "item": "creaturecraft:sav_grass_short"
-          }
-        ]
-      }
+      "item": "creaturecraft:buff_grass"
+    },
+    {
+      "item": "creaturecraft:sav_grass_short"
     }
   ]
 }

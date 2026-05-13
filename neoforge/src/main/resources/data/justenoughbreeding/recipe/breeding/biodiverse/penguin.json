@@ -1,18 +1,13 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "biodiverse",
-  "mobs": [
+  "input_entity": "biodiverse:penguin",
+  "inputs": [
     {
-      "penguin": {
-        "inputs": [
-          {
-            "item": "minecraft:cod"
-          },
-          {
-            "item": "minecraft:salon"
-          }
-        ]
-      }
+      "item": "minecraft:cod"
+    },
+    {
+      "item": "minecraft:salon"
     }
   ]
 }

@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexsmobs:rhinoceros",
+  "inputs": [
     {
-      "rhinoceros": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:rhinoceros_breedables"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_rhinoceros"
-          }
-        ]
-      }
+      "tag": "alexsmobs:rhinoceros_breedables"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_rhinoceros"
     }
   ]
 }

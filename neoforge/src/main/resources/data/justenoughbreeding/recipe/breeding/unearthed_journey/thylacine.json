@@ -1,28 +1,23 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "unearthed_journey",
-  "mobs": [
+  "input_entity": "unearthed_journey:thylacine",
+  "inputs": [
     {
-      "thylacine": {
-        "inputs": [
-          {
-            "item": "minecraft:chicken"
-          },
-          {
-            "item": "unearthed_journey:large_bone"
-          },
-          {
-            "item": "minecraft:porkchop"
-          },
-          {
-            "item": "minecraft:mutton"
-          },
-          {
-            "item": "minecraft:beef"
-          }
-        ],
-        "tamed": true
-      }
+      "item": "minecraft:chicken"
+    },
+    {
+      "item": "unearthed_journey:large_bone"
+    },
+    {
+      "item": "minecraft:porkchop"
+    },
+    {
+      "item": "minecraft:mutton"
+    },
+    {
+      "item": "minecraft:beef"
     }
-  ]
+  ],
+  "tamed": true
 }

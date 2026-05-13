@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "more_critters",
-  "mobs": [
+  "input_entity": "more_critters:blubberfish",
+  "inputs": [
     {
-      "blubberfish": {
-        "inputs": [
-          {
-            "item": "minecraft:gravel"
-          }
-        ]
-      }
+      "item": "minecraft:gravel"
     }
   ]
 }

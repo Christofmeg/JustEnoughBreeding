@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "untamedwilds",
-  "mobs": [
+  "input_entity": "untamedwilds:opossum",
+  "inputs": [
     {
-      "opossum": {
-        "inputs": [
-          {
-            "item": "minecraft:chicken"
-          }
-        ]
-      }
+      "item": "minecraft:chicken"
     }
   ]
 }

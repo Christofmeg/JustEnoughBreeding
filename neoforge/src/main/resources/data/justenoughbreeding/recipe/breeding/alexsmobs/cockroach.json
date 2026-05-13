@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexsmobs:cockroach",
+  "inputs": [
     {
-      "cockroach": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:cockroach_breedables"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_cockroach"
-          }
-        ]
-      }
+      "tag": "alexsmobs:cockroach_breedables"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_cockroach"
     }
   ]
 }

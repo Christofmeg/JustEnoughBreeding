@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "lilcritters",
-  "mobs": [
+  "input_entity": "lilcritters:capybara",
+  "inputs": [
     {
-      "capybara": {
-        "inputs": [{
-            "item": "minecraft:melon_slice"
-        }]
-      }
+      "item": "minecraft:melon_slice"
     }
   ]
 }

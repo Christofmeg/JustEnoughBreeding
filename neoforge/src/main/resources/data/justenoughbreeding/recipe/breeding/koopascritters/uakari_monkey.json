@@ -1,18 +1,13 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "koopascritters",
-  "mobs": [
+  "input_entity": "koopascritters:uakari_monkey",
+  "inputs": [
     {
-      "uakari_monkey": {
-        "inputs": [
-          {
-            "item": "koopascritters:fig_kc"
-          },
-          {
-            "item": "minecraft:melon_slice"
-          }
-        ]
-      }
+      "item": "koopascritters:fig_kc"
+    },
+    {
+      "item": "minecraft:melon_slice"
     }
   ]
 }

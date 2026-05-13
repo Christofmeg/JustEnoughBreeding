@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:kakapo",
+  "inputs": [
     {
-      "kakapo": {
-        "inputs": [{
-            "item": "minecraft:sweet_berries"
-        }]
-      }
+      "item": "minecraft:sweet_berries"
     }
   ]
 }

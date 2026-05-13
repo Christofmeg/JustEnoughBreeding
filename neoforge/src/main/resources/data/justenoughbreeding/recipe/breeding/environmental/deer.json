@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "environmental",
-  "mobs": [
+  "input_entity": "environmental:deer",
+  "inputs": [
     {
-      "deer": {
-        "inputs": [
-          {
-            "tag": "environmental:deer_food"
-          }
-        ]
-      }
+      "tag": "environmental:deer_food"
     }
   ]
 }

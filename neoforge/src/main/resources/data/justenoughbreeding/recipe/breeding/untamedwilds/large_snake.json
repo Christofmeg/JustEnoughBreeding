@@ -1,18 +1,13 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "untamedwilds",
-  "mobs": [
+  "input_entity": "untamedwilds:large_snake",
+  "inputs": [
     {
-      "large_snake": {
-        "inputs": [
-          {
-            "item": "minecraft:beef"
-          },
-          {
-            "item": "minecraft:porkchop"
-          }
-        ]
-      }
+      "item": "minecraft:beef"
+    },
+    {
+      "item": "minecraft:porkchop"
     }
   ]
 }

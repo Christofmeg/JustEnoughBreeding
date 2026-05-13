@@ -1,18 +1,13 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "ambientadditions",
-  "mobs": [
+  "input_entity": "ambientadditions:siamang_gibbon",
+  "inputs": [
     {
-      "siamang_gibbon": {
-        "inputs": [
-          {
-            "item": "minecraft:carrot"
-          },
-          {
-            "item": "minecraft:apple"
-          }
-        ]
-      }
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:apple"
     }
   ]
 }
