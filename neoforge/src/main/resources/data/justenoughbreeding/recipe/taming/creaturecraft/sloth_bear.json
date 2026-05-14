@@ -1,27 +1,22 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "creaturecraft",
-  "mobs": [
+  "input_entity": "creaturecraft:sloth_bear",
+  "inputs": [
     {
-      "sloth_bear": {
-        "inputs": [
-          {
-            "item": "creaturecraft:termite_drop"
-          },
-          {
-            "item": "minecraft:honey_block"
-          },
-          {
-            "item": "minecraft:honeycomb_block"
-          },
-          {
-            "item": "minecraft:honeycomb"
-          },
-          {
-            "item": "minecraft:honey_bottle"
-          }
-        ]
-      }
+      "item": "creaturecraft:termite_drop"
+    },
+    {
+      "item": "minecraft:honey_block"
+    },
+    {
+      "item": "minecraft:honeycomb_block"
+    },
+    {
+      "item": "minecraft:honeycomb"
+    },
+    {
+      "item": "minecraft:honey_bottle"
     }
   ]
 }

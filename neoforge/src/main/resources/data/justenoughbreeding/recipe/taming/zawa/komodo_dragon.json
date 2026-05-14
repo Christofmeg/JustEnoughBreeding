@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:komodo_dragon",
+  "inputs": [
     {
-      "komodo_dragon": {
-        "inputs": [{
-            "item": "zawa:carnivore_kibble"
-        }]
-      }
+      "item": "zawa:carnivore_kibble"
     }
   ]
 }

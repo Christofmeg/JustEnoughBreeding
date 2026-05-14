@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "iceandfire",
-  "mobs": [
+  "input_entity": "iceandfire:pixie",
+  "inputs": [
     {
-      "pixie": {
-        "inputs": [
-          {
-            "item": "minecraft:cake"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "iceandfire:spawn_egg_pixie"
-          }
-        ]
-      }
+      "item": "minecraft:cake"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "iceandfire:spawn_egg_pixie"
     }
   ]
 }

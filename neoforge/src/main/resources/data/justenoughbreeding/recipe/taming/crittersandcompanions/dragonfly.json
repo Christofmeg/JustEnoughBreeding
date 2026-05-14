@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "crittersandcompanions",
-  "mobs": [
+  "input_entity": "crittersandcompanions:dragonfly",
+  "inputs": [
     {
-      "dragonfly": {
-        "inputs": [
-          {
-            "item": "minecraft:spider_eye"
-          }
-        ]
-      }
+      "item": "minecraft:spider_eye"
     }
   ]
 }

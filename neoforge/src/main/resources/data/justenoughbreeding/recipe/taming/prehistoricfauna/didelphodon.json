@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "prehistoricfauna",
-  "mobs": [
+  "input_entity": "prehistoricfauna:didelphodon",
+  "inputs": [
     {
-      "didelphodon": {
-        "inputs": [
-          {
-            "item": "prehistoricfauna:crassostrea_oyster"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "prehistoricfauna:didelphodon_spawn_egg"
-          }
-        ]
-      }
+      "item": "prehistoricfauna:crassostrea_oyster"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:didelphodon_spawn_egg"
     }
   ]
 }

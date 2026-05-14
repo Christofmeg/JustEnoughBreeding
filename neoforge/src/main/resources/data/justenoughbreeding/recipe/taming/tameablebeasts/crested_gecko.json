@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "tameablebeasts",
-  "mobs": [
+  "input_entity": "tameablebeasts:crested_gecko",
+  "inputs": [
     {
-      "crested_gecko": {
-        "inputs": [
-          {
-            "tag": "tameablebeasts:crested_gecko_tame_food"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "tameablebeasts:crested_gecko_spawn_egg"
-          }
-        ]
-      }
+      "tag": "tameablebeasts:crested_gecko_tame_food"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "tameablebeasts:crested_gecko_spawn_egg"
     }
   ]
 }

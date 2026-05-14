@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "spawn",
-  "mobs": [
+  "input_entity": "spawn:hamster",
+  "inputs": [
     {
-      "hamster": {
-        "inputs": [
-          {
-            "item": "spawn:sunflower_seeds"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "spawn:hamster_spawn_egg"
-          }
-        ]
-      }
+      "item": "spawn:sunflower_seeds"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "spawn:hamster_spawn_egg"
     }
   ]
 }

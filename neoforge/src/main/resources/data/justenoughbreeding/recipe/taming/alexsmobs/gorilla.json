@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexscaves:gorilla",
+  "inputs": [
     {
-      "gorilla": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:gorilla_tameables"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_gorilla"
-          }
-        ]
-      }
+      "tag": "alexsmobs:gorilla_tameables"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_gorilla"
     }
   ]
 }

@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:african_wild_dog",
+  "inputs": [
     {
-      "african_wild_dog": {
-        "inputs": [{
-            "item": "zawa:carnivore_kibble"
-        }]
-      }
+      "item": "zawa:carnivore_kibble"
     }
   ]
 }

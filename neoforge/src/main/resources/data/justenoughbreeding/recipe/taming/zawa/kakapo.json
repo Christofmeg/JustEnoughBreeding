@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:kakapo",
+  "inputs": [
     {
-      "kakapo": {
-        "inputs": [{
-            "item": "zawa:herbivore_kibble"
-        }]
-      }
+      "item": "zawa:herbivore_kibble"
     }
   ]
 }

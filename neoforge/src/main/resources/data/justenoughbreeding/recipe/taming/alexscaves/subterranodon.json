@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "alexscaves",
-  "mobs": [
+  "input_entity": "alexscaves:subterranodon",
+  "inputs": [
     {
-      "subterranodon": {
-        "inputs": [
-          {
-            "item": "alexscaves:cooked_trilocaris_tail"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexscaves:spawn_egg_subterranodon"
-          }
-        ]
-      }
+      "item": "alexscaves:cooked_trilocaris_tail"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexscaves:spawn_egg_subterranodon"
     }
   ]
 }

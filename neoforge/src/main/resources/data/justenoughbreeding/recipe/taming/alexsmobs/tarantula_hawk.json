@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexscaves:tarantula_hawk",
+  "inputs": [
     {
-      "tarantula_hawk": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:tarantula_hawk_tameables"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_tarantula_hawk"
-          }
-        ]
-      }
+      "tag": "alexsmobs:tarantula_hawk_tameables"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_tarantula_hawk"
     }
   ]
 }

@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "cnc",
-  "mobs": [
+  "input_entity": "cnc:black_bear",
+  "inputs": [
     {
-      "black_bear": {
-        "inputs": [
-          {
-            "item": "minecraft:sweet_berries"
-          }
-        ]
-      }
+      "item": "minecraft:sweet_berries"
     }
   ]
 }

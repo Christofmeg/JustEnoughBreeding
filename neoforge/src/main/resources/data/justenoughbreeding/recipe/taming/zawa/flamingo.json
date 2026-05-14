@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:flamingo",
+  "inputs": [
     {
-      "flamingo": {
-        "inputs": [{
-            "item": "zawa:piscivore_kibble"
-        }]
-      }
+      "item": "zawa:piscivore_kibble"
     }
   ]
 }

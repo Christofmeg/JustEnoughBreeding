@@ -1,28 +1,23 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "alexscaves",
-  "mobs": [
+  "input_entity": "alexscaves:vallumraptor",
+  "inputs": [
     {
-      "vallumraptor": {
-        "inputs": [
-          {
-            "item": "alexscaves:dinosaur_nugget"
-          }
-        ],
-        "extra_inputs": [
-          {
-            "item": "minecraft:chest"
-          },
-          {
-            "item": "alexscaves:serene_salad"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexscaves:spawn_egg_vallumraptor"
-          }
-        ]
-      }
+      "item": "alexscaves:dinosaur_nugget"
+    }
+  ],
+  "extra_inputs": [
+    {
+      "item": "minecraft:chest"
+    },
+    {
+      "item": "alexscaves:serene_salad"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexscaves:spawn_egg_vallumraptor"
     }
   ]
 }

@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "more_critters",
-  "mobs": [
+  "input_entity": "more_critters:balloon_rat",
+  "inputs": [
     {
-      "balloon_rat": {
-        "inputs": [
-          {
-            "item": "minecraft:spider_eye"
-          }
-        ]
-      }
+      "item": "minecraft:spider_eye"
     }
   ]
 }

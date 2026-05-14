@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "zawaessentials",
-  "mobs": [
+  "input_entity": "zawaessentials:australian_ringneck_parrot",
+  "inputs": [
     {
-      "australian_ringneck_parrot": {
-        "inputs": [
-          {
-            "item": "zawa:herbivore_kibble"
-          }
-        ]
-      }
+      "item": "zawa:herbivore_kibble"
     }
   ]
 }

@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "ydms_redpanda",
-  "mobs": [
+  "input_entity": "ydms_redpanda:redpanda",
+  "inputs": [
     {
-      "redpanda": {
-        "inputs": [
-          {
-            "item": "minecraft:sweet_berries"
-          }
-        ]
-      }
+      "item": "minecraft:sweet_berries"
     }
   ]
 }

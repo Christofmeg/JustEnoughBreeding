@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexscaves:sugar_glider",
+  "inputs": [
     {
-      "sugar_glider": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:sugar_glider_tameables"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_sugar_glider"
-          }
-        ]
-      }
+      "tag": "alexsmobs:sugar_glider_tameables"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_sugar_glider"
     }
   ]
 }

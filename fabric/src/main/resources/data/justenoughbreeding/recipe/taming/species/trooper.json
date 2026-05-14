@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "species",
-  "mobs": [
+  "input_entity": "species:trooper",
+  "inputs": [
     {
-      "trooper": {
-        "inputs": [
-          {
-            "item": "minecraft:bone_meal"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "species:trooper_spawn_egg"
-          }
-        ]
-      }
+      "item": "minecraft:bone_meal"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "species:trooper_spawn_egg"
     }
   ]
 }

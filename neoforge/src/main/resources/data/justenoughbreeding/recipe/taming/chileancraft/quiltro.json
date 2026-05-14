@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "chileancraft",
-  "mobs": [
+  "input_entity": "chileancraft:quiltro",
+  "inputs": [
     {
-      "quiltro": {
-        "inputs": [
-          {
-            "item": "chileancraft:empadana_de_pino"
-          }
-        ]
-      }
+      "item": "chileancraft:empadana_de_pino"
     }
   ]
 }

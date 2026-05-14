@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "alexscaves",
-  "mobs": [
+  "input_entity": "alexscaves:tremorzilla",
+  "inputs": [
     {
-      "tremorzilla": {
-        "inputs": [
-          {
-            "item": "alexscaves:waste_drum"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexscaves:spawn_egg_tremorzilla"
-          }
-        ]
-      }
+      "item": "alexscaves:waste_drum"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexscaves:spawn_egg_tremorzilla"
     }
   ]
 }

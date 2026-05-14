@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "lilcritters",
-  "mobs": [
+  "input_entity": "lilcritters:dwarf_crocodile",
+  "inputs": [
     {
-      "dwarf_crocodile": {
-        "inputs": [{
-            "item": "zawa:carnivore_kibble"
-        }]
-      }
+      "item": "zawa:carnivore_kibble"
     }
   ]
 }

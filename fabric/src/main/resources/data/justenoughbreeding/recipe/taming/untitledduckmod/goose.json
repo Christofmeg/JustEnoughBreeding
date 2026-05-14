@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "untitledduckmod",
-  "mobs": [
+  "input_entity": "untitledduckmod:goose",
+  "inputs": [
     {
-      "goose": {
-        "inputs": [
-          {
-            "tag": "untitledduckmod:goose_taming_food"
-          }
-        ]
-      }
+      "tag": "untitledduckmod:goose_taming_food"
     }
   ]
 }

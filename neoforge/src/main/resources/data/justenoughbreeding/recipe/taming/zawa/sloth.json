@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:sloth",
+  "inputs": [
     {
-      "sloth": {
-        "inputs": [{
-            "item": "zawa:herbivore_kibble"
-        }]
-      }
+      "item": "zawa:herbivore_kibble"
     }
   ]
 }

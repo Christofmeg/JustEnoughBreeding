@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "windswept",
-  "mobs": [
+  "input_entity": "windswept:frostbiter",
+  "inputs": [
     {
-      "frostbiter": {
-        "inputs": [
-          {
-            "item": "windswept:holly_berries"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "windswept:frostbiter_spawn_egg"
-          }
-        ]
-      }
+      "item": "windswept:holly_berries"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "windswept:frostbiter_spawn_egg"
     }
   ]
 }

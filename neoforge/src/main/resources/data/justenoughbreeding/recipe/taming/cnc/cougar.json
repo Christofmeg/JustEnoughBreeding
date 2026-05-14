@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "cnc",
-  "mobs": [
+  "input_entity": "cnc:cougar",
+  "inputs": [
     {
-      "cougar": {
-        "inputs": [
-          {
-            "item": "cnc:raw_venison"
-          }
-        ]
-      }
+      "item": "cnc:raw_venison"
     }
   ]
 }

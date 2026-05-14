@@ -1,25 +1,20 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "tameablebeasts",
-  "mobs": [
+  "input_entity": "tameablebeasts:quetzalcoatlus",
+  "inputs": [
     {
-      "quetzalcoatlus": {
-        "inputs": [
-          {
-            "item": "tameablebeasts:ptera_meal_arrow"
-          }
-        ],
-        "extra_inputs": [
-          {
-            "tag": "c:bows"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "tameablebeasts:quetzal_spawn_egg"
-          }
-        ]
-      }
+      "item": "tameablebeasts:ptera_meal_arrow"
+    }
+  ],
+  "extra_inputs": [
+    {
+      "tag": "c:bows"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "tameablebeasts:quetzal_spawn_egg"
     }
   ]
 }

@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "naturalist",
-  "mobs": [
+  "input_entity": "naturalist:lizard",
+  "inputs": [
     {
-      "lizard": {
-        "inputs": [
-          {
-            "tag": "naturalist:lizard_tempt_items"
-          }
-        ]
-      }
+      "tag": "naturalist:lizard_tempt_items"
     }
   ]
 }

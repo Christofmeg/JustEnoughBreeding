@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexscaves:mudskipper",
+  "inputs": [
     {
-      "mudskipper": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:mudskipper_tameables"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_mudskipper"
-          }
-        ]
-      }
+      "tag": "alexsmobs:mudskipper_tameables"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_mudskipper"
     }
   ]
 }

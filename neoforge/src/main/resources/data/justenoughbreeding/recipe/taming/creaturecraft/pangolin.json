@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "creaturecraft",
-  "mobs": [
+  "input_entity": "creaturecraft:okapi",
+  "inputs": [
     {
-      "pangolin": {
-        "inputs": [
-          {
-            "item": "creaturecraft:termite_drop"
-          }
-        ]
-      }
+      "item": "creaturecraft:termite_drop"
     }
   ]
 }

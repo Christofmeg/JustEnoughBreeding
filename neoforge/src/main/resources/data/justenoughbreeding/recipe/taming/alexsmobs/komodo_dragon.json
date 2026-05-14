@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexscaves:komodo_dragon",
+  "inputs": [
     {
-      "komodo_dragon": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:komodo_dragon_tameables"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_komodo_dragon"
-          }
-        ]
-      }
+      "tag": "alexsmobs:komodo_dragon_tameables"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_komodo_dragon"
     }
   ]
 }

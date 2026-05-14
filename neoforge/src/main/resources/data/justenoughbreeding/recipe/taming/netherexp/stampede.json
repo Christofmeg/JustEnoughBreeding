@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "netherexp",
-  "mobs": [
+  "input_entity": "netherexp:stampede",
+  "inputs": [
     {
-      "stampede": {
-        "inputs": [
-          {
-            "item": "netherexp:roasted_bone"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "netherexp:stampede_spawn_egg"
-          }
-        ]
-      }
+      "item": "netherexp:roasted_bone"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "netherexp:stampede_spawn_egg"
     }
   ]
 }

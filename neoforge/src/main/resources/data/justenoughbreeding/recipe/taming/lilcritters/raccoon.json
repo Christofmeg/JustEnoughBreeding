@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "lilcritters",
-  "mobs": [
+  "input_entity": "lilcritters:raccoon",
+  "inputs": [
     {
-      "raccoon": {
-        "inputs": [{
-            "item": "zawa:omnivore_kibble"
-        }]
-      }
+      "item": "zawa:omnivore_kibble"
     }
   ]
 }

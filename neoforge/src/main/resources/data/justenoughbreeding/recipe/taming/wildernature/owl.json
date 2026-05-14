@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "wildernature",
-  "mobs": [
+  "input_entity": "wildernature:owl",
+  "inputs": [
     {
-      "owl": {
-        "inputs": [
-          {
-            "meat": "true"
-          }
-        ]
-      }
+      "meat": "true"
     }
   ]
 }

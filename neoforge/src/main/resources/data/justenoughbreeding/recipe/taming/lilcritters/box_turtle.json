@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "lilcritters",
-  "mobs": [
+  "input_entity": "lilcritters:box_turtle",
+  "inputs": [
     {
-      "box_turtle": {
-        "inputs": [{
-            "item": "zawa:omnivore_kibble"
-        }]
-      }
+      "item": "zawa:omnivore_kibble"
     }
   ]
 }

@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:mandrill",
+  "inputs": [
     {
-      "mandrill": {
-        "inputs": [{
-            "item": "zawa:omnivore_kibble"
-        }]
-      }
+      "item": "zawa:omnivore_kibble"
     }
   ]
 }

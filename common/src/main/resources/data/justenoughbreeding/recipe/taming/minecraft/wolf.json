@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "minecraft",
-  "mobs": [
+  "input_entity": "minecraft:wolf",
+  "inputs": [
     {
-      "wolf": {
-        "inputs": [
-          {
-            "item": "minecraft:bone"
-          }
-        ]
-      }
+      "item": "minecraft:bone"
     }
   ]
 }

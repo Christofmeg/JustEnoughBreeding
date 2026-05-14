@@ -1,18 +1,13 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "minecraft",
-  "mobs": [
+  "input_entity": "minecraft:cat",
+  "inputs": [
     {
-      "cat": {
-        "inputs": [
-          {
-            "item": "minecraft:cod"
-          },
-          {
-            "item": "minecraft:salmon"
-          }
-        ]
-      }
+      "item": "minecraft:cod"
+    },
+    {
+      "item": "minecraft:salmon"
     }
   ]
 }

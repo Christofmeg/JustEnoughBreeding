@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "lilcritters",
-  "mobs": [
+  "input_entity": "lilcritters:guinea_pig",
+  "inputs": [
     {
-      "guinea_pig": {
-        "inputs": [{
-            "item": "zawa:herbivore_kibble"
-        }]
-      }
+      "item": "zawa:herbivore_kibble"
     }
   ]
 }

@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "blastfromthepast",
-  "mobs": [
+  "input_entity": "blastfromthepast:frostomper",
+  "inputs": [
     {
-      "frostomper": {
-        "inputs": [
-          {
-            "item": "blastfromthepast:sap_ice_cream"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "blastfromthepast:frostomper_spawn_egg"
-          }
-        ]
-      }
+      "item": "blastfromthepast:sap_ice_cream"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "blastfromthepast:frostomper_spawn_egg"
     }
   ]
 }

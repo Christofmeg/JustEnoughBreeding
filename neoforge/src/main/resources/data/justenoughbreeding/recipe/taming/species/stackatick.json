@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "species",
-  "mobs": [
+  "input_entity": "species:stackatick",
+  "inputs": [
     {
-      "stackatick": {
-        "inputs": [
-          {
-            "item": "minecraft:honeycomb"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "species:stackatick_spawn_egg"
-          }
-        ]
-      }
+      "item": "minecraft:honeycomb"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "species:stackatick_spawn_egg"
     }
   ]
 }

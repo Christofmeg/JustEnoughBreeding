@@ -1,18 +1,13 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "recrafted_creatures",
-  "mobs": [
+  "input_entity": "recrafted_creatures:red_panda",
+  "inputs": [
     {
-      "red_panda": {
-        "inputs": [
-          {
-            "item": "minecraft:bamboo"
-          },
-          {
-            "item": "recrafted_creatures:apple_slice"
-          }
-        ]
-      }
+      "item": "minecraft:bamboo"
+    },
+    {
+      "item": "recrafted_creatures:apple_slice"
     }
   ]
 }

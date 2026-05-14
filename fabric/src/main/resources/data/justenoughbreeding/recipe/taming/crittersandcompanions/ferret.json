@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "crittersandcompanions",
-  "mobs": [
+  "input_entity": "crittersandcompanions:ferret",
+  "inputs": [
     {
-      "ferret": {
-        "inputs": [
-          {
-            "item": "minecraft:rabbit"
-          }
-        ]
-      }
+      "item": "minecraft:rabbit"
     }
   ]
 }

@@ -1,21 +1,16 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "biodiverse",
-  "mobs": [
+  "input_entity": "biodiverse:cheetah",
+  "inputs": [
     {
-      "cheetah": {
-        "inputs": [
-          {
-            "item": "minecraft:mutton"
-          },
-          {
-            "item": "minecraft:beef"
-          },
-          {
-            "item": "minecraft:chicken"
-          }
-        ]
-      }
+      "item": "minecraft:mutton"
+    },
+    {
+      "item": "minecraft:beef"
+    },
+    {
+      "item": "minecraft:chicken"
     }
   ]
 }

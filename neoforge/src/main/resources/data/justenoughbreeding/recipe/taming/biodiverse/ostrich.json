@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "biodiverse",
-  "mobs": [
+  "input_entity": "biodiverse:ostrich",
+  "inputs": [
     {
-      "ostrich": {
-        "inputs": [
-          {
-            "item": "minecraft:melon_slice"
-          }
-        ]
-      }
+      "item": "minecraft:melon_slice"
     }
   ]
 }

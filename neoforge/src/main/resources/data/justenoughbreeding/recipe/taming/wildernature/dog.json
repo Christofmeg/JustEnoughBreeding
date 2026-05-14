@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "wildernature",
-  "mobs": [
+  "input_entity": "wildernature:dog",
+  "inputs": [
     {
-      "dog": {
-        "inputs": [
-          {
-            "item": "minecraft:bone"
-          }
-        ]
-      }
+      "item": "minecraft:bone"
     }
   ]
 }

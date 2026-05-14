@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "companions",
-  "mobs": [
+  "input_entity": "companions:antlion",
+  "inputs": [
     {
-      "antlion": {
-        "inputs": [
-          {
-            "item": "companions:crystallized_blood"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "companions:wild_antlion_spawn_egg"
-          }
-        ]
-      }
+      "item": "companions:crystallized_blood"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "companions:wild_antlion_spawn_egg"
     }
   ]
 }

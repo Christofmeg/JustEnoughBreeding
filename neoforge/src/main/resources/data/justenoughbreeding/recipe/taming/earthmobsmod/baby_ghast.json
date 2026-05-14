@@ -1,18 +1,13 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "earthmobsmod",
-  "mobs": [
+  "input_entity": "critterearthmobsmodsandcompanions:baby_ghast",
+  "inputs": [
     {
-      "baby_ghast": {
-        "inputs": [
-          {
-            "item": "minecraft:crimson_nylium"
-          },
-          {
-            "item": "minecraft:crimson_fungus"
-          }
-        ]
-      }
+      "item": "minecraft:crimson_nylium"
+    },
+    {
+      "item": "minecraft:crimson_fungus"
     }
   ]
 }

@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "endergetic",
-  "mobs": [
+  "input_entity": "endergetic:booflo",
+  "inputs": [
     {
-      "booflo": {
-        "inputs": [
-          {
-            "item": "endergetic:bolloom_fruit"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "endergetic:booflo_spawn_egg"
-          }
-        ]
-      }
+      "item": "endergetic:bolloom_fruit"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "endergetic:booflo_spawn_egg"
     }
   ]
 }

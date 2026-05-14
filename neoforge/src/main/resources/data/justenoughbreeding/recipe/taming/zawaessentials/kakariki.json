@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "zawaessentials",
-  "mobs": [
+  "input_entity": "zawaessentials:kakariki",
+  "inputs": [
     {
-      "kakariki": {
-        "inputs": [
-          {
-            "item": "zawa:herbivore_kibble"
-          }
-        ]
-      }
+      "item": "zawa:herbivore_kibble"
     }
   ]
 }

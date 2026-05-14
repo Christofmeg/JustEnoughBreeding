@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "lilcritters",
-  "mobs": [
+  "input_entity": "lilcritters:banded_penguin",
+  "inputs": [
     {
-      "banded_penguin": {
-        "inputs": [{
-            "item": "zawa:piscivore_kibble"
-        }]
-      }
+      "item": "zawa:piscivore_kibble"
     }
   ]
 }

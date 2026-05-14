@@ -1,25 +1,20 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "alexscaves",
-  "mobs": [
+  "input_entity": "alexscaves:tremorsaurus",
+  "extra_inputs": [
     {
-      "tremorsaurus": {
-        "extra_inputs": [
-          {
-            "item": "alexscaves:primitive_club"
-          }
-        ],
-        "inputs": [
-          {
-            "item": "alexscaves:serene_salad"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexscaves:spawn_egg_tremorsaurus"
-          }
-        ]
-      }
+      "item": "alexscaves:primitive_club"
+    }
+  ],
+  "inputs": [
+    {
+      "item": "alexscaves:serene_salad"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexscaves:spawn_egg_tremorsaurus"
     }
   ]
 }

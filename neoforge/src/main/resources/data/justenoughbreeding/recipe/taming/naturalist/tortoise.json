@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "naturalist",
-  "mobs": [
+  "input_entity": "naturalist:tortoise",
+  "inputs": [
     {
-      "tortoise": {
-        "inputs": [
-          {
-            "tag": "naturalist:tortoise_tempt_items"
-          }
-        ]
-      }
+      "tag": "naturalist:tortoise_tempt_items"
     }
   ]
 }

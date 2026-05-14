@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "ambientadditions",
-  "mobs": [
+  "input_entity": "ambientadditions:hoatzin",
+  "inputs": [
     {
-      "hoatzin": {
-        "inputs": [
-          {
-            "tag": "minecraft:flowers"
-          }
-        ]
-      }
+      "tag": "minecraft:flowers"
     }
   ]
 }

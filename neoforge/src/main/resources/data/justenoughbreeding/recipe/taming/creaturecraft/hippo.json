@@ -1,33 +1,28 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "creaturecraft",
-  "mobs": [
+  "input_entity": "creaturecraft:hippo",
+  "inputs": [
     {
-      "hippo": {
-        "inputs": [
-          {
-            "item": "creaturecraft:buff_grass"
-          },
-          {
-            "item": "creaturecraft:sav_grass_short"
-          },
-          {
-            "item": "creaturecraft:sav_grass_tall"
-          },
-          {
-            "item": "minecraft:wheat"
-          },
-          {
-            "item": "minecraft:wheat"
-          },
-          {
-            "item": "minecraft:seagrass"
-          },
-          {
-            "item": "minecraft:tall_seagrass"
-          }
-        ]
-      }
+      "item": "creaturecraft:buff_grass"
+    },
+    {
+      "item": "creaturecraft:sav_grass_short"
+    },
+    {
+      "item": "creaturecraft:sav_grass_tall"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:seagrass"
+    },
+    {
+      "item": "minecraft:tall_seagrass"
     }
   ]
 }

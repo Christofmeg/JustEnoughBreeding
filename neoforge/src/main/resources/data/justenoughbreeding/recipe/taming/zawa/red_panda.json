@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:red_panda",
+  "inputs": [
     {
-      "red_panda": {
-        "inputs": [{
-            "item": "zawa:herbivore_kibble"
-        }]
-      }
+      "item": "zawa:herbivore_kibble"
     }
   ]
 }

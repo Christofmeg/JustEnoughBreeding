@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "wildernature",
-  "mobs": [
+  "input_entity": "wildernature:red_wolf",
+  "inputs": [
     {
-      "red_wolf": {
-        "inputs": [
-          {
-            "meat": "minecraft:bone"
-          }
-        ]
-      }
+      "meat": "minecraft:bone"
     }
   ]
 }

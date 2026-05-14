@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "biomemakeover",
-  "mobs": [
+  "input_entity": "biomemakeover:owl",
+  "inputs": [
     {
-      "owl": {
-        "inputs": [
-          {
-            "meat": "true"
-          }
-        ]
-      }
+      "meat": "true"
     }
   ]
 }

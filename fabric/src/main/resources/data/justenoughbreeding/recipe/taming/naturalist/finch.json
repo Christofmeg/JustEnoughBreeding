@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "naturalist",
-  "mobs": [
+  "input_entity": "naturalist:finch",
+  "inputs": [
     {
-      "finch": {
-        "inputs": [
-          {
-            "tag": "naturalist:bird_food_items"
-          }
-        ]
-      }
+      "tag": "naturalist:bird_food_items"
     }
   ]
 }

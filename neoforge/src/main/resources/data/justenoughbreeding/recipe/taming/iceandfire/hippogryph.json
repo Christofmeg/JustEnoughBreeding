@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "iceandfire",
-  "mobs": [
+  "input_entity": "iceandfire:hippogryph",
+  "inputs": [
     {
-      "hippogryph": {
-        "inputs": [
-          {
-            "item": "minecraft:rabbit_foot"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "iceandfire:spawn_egg_hippogryph"
-          }
-        ]
-      }
+      "item": "minecraft:rabbit_foot"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "iceandfire:spawn_egg_hippogryph"
     }
   ]
 }

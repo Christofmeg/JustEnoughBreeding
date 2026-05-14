@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "lilcritters",
-  "mobs": [
+  "input_entity": "lilcritters:dart_frog",
+  "inputs": [
     {
-      "dart_frog": {
-        "inputs": [{
-            "item": "zawa:insectivore_kibble"
-        }]
-      }
+      "item": "zawa:insectivore_kibble"
     }
   ]
 }

@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "wan_ancient_beasts",
-  "mobs": [
+  "input_entity": "wan_ancient_beasts:soarer",
+  "inputs": [
     {
-      "soarer": {
-        "inputs": [
-          {
-            "item": "wan_ancient_beasts:toxlacanth"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "wan_ancient_beasts:soarer_spawn_egg"
-          }
-        ]
-      }
+      "item": "wan_ancient_beasts:toxlacanth"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "wan_ancient_beasts:soarer_spawn_egg"
     }
   ]
 }

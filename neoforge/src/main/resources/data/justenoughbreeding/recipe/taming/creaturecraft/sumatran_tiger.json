@@ -1,6 +1,7 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "creaturecraft",
+  "input_entity": "creaturecraft:sumatran_tiger",
   "mobs": [
     {
       "sumatran_tiger": {

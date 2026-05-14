@@ -1,27 +1,22 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "creaturecraft",
-  "mobs": [
+  "input_entity": "creaturecraft:rring_tailed_lemurhea",
+  "inputs": [
     {
-      "ring_tailed_lemur": {
-        "inputs": [
-          {
-            "item": "minecraft:apple"
-          },
-          {
-            "item": "minecraft:golden_apple"
-          },
-          {
-            "item": "minecraft:enchanted_golden_apple"
-          },
-          {
-            "item": "minecraft:melon_slice"
-          },
-          {
-            "item": "minecraft:sweet_berries"
-          }
-        ]
-      }
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "minecraft:golden_apple"
+    },
+    {
+      "item": "minecraft:enchanted_golden_apple"
+    },
+    {
+      "item": "minecraft:melon_slice"
+    },
+    {
+      "item": "minecraft:sweet_berries"
     }
   ]
 }

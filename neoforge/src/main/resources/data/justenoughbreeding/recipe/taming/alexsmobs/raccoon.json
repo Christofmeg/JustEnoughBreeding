@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexscaves:raccoon",
+  "inputs": [
     {
-      "raccoon": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:raccoon_tameables"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_raccoon"
-          }
-        ]
-      }
+      "tag": "alexsmobs:raccoon_tameables"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_raccoon"
     }
   ]
 }

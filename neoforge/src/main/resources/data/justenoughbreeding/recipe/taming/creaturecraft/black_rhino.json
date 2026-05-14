@@ -1,24 +1,19 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "creaturecraft",
-  "mobs": [
+  "input_entity": "creaturecraft:black_rhino",
+  "inputs": [
     {
-      "black_rhino": {
-        "inputs": [
-          {
-            "item": "creaturecraft:baobab_leaves"
-          },
-          {
-            "item": "creaturecraft:savannah_bush_tall"
-          },
-          {
-            "item": "creaturecraft:savannah_bush_short"
-          },
-          {
-            "item": "minecraft:acacia_sapling"
-          }
-        ]
-      }
+      "item": "creaturecraft:baobab_leaves"
+    },
+    {
+      "item": "creaturecraft:savannah_bush_tall"
+    },
+    {
+      "item": "creaturecraft:savannah_bush_short"
+    },
+    {
+      "item": "minecraft:acacia_sapling"
     }
   ]
 }

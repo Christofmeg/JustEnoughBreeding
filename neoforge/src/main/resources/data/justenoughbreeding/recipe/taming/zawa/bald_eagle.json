@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "zawa",
-  "mobs": [
+  "input_entity": "zawa:bald_eagle",
+  "inputs": [
     {
-      "bald_eagle": {
-        "inputs": [{
-            "item": "zawa:carnivore_kibble"
-        }]
-      }
+      "item": "zawa:carnivore_kibble"
     }
   ]
 }

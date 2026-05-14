@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "alexsmobs",
-  "mobs": [
+  "input_entity": "alexscaves:cosmaw",
+  "inputs": [
     {
-      "cosmaw": {
-        "inputs": [
-          {
-            "tag": "alexsmobs:cosmaw_tameables"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "alexsmobs:spawn_egg_cosmaw"
-          }
-        ]
-      }
+      "tag": "alexsmobs:cosmaw_tameables"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_cosmaw"
     }
   ]
 }

@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "blue_skies",
-  "mobs": [
+  "input_entity": "blue_skies:crystal_camel",
+  "inputs": [
     {
-      "crystal_camel": {
-        "inputs": [
-          {
-            "item": "blue_skies:scalefruit"
-          }
-        ]
-      }
+      "item": "blue_skies:scalefruit"
     }
   ]
 }

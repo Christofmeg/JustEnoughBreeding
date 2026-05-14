@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "recrafted_creatures",
-  "mobs": [
+  "input_entity": "recrafted_creatures:owl",
+  "inputs": [
     {
-      "owl": {
-        "inputs": [
-          {
-            "item": "minecraft:cooked_rabbit"
-          }
-        ]
-      }
+      "item": "minecraft:cooked_rabbit"
     }
   ]
 }

@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "companions",
-  "mobs": [
-    {
-      "teddy": {
-        "inputs": [
-          {
-            "item": "companions:needle"
-          }
-        ]
-      }
-    }
-  ],
-  "output_entity_nbt": [
+  "input_entity": "companions:teddy",
+  "input_entity_nbt": [
     {
       "Phase": 2
+    }
+  ],
+  "inputs": [
+    {
+      "item": "companions:needle"
     }
   ]
 }

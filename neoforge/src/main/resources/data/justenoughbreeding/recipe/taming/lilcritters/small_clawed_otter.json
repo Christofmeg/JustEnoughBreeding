@@ -1,13 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "lilcritters",
-  "mobs": [
+  "input_entity": "lilcritters:small_clawed_otter",
+  "inputs": [
     {
-      "small_clawed_otter": {
-        "inputs": [{
-            "item": "zawa:shellfish_kibble"
-        }]
-      }
+      "item": "zawa:shellfish_kibble"
     }
   ]
 }

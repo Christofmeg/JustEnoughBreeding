@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "greekfantasy",
-  "mobs": [
+  "input_entity": "greekfantasy:cerastes",
+  "inputs": [
     {
-      "cerastes": {
-        "inputs": [
-          {
-            "tag": "greekfantasy:cerastes_food"
-          }
-        ]
-      }
+      "tag": "greekfantasy:cerastes_food"
     }
   ]
 }

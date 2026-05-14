@@ -1,24 +1,19 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "creaturecraft",
-  "mobs": [
+  "input_entity": "creaturecraft:caribou",
+  "inputs": [
     {
-      "caribou": {
-        "inputs": [
-          {
-            "item": "minecraft:moss_block"
-          },
-          {
-            "item": "minecraft:moss_carpet"
-          },
-          {
-            "item": "minecraft:wheat_seeds"
-          },
-          {
-            "item": "minecraft:wheat"
-          }
-        ]
-      }
+      "item": "minecraft:moss_block"
+    },
+    {
+      "item": "minecraft:moss_carpet"
+    },
+    {
+      "item": "minecraft:wheat_seeds"
+    },
+    {
+      "item": "minecraft:wheat"
     }
   ]
 }

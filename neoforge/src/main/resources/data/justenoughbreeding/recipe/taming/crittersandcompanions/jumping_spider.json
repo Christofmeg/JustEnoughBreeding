@@ -1,15 +1,10 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "crittersandcompanions",
-  "mobs": [
+  "input_entity": "crittersandcompanions:jumping_spider",
+  "inputs": [
     {
-      "jumping_spider": {
-        "inputs": [
-          {
-            "item": "crittersandcompanions:dragonfly_wing"
-          }
-        ]
-      }
+      "item": "crittersandcompanions:dragonfly_wing"
     }
   ]
 }

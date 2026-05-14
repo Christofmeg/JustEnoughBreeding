@@ -1,20 +1,15 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "yungscavebiomes",
-  "mobs": [
+  "input_entity": "yungscavebiomes:sand_snapper",
+  "inputs": [
     {
-      "sand_snapper": {
-        "inputs": [
-          {
-            "item": "yungscavebiomes:prickly_peach"
-          }
-        ],
-        "spawn_eggs": [
-          {
-            "item": "yungscavebiomes:sand_snapper_spawn_egg"
-          }
-        ]
-      }
+      "item": "yungscavebiomes:prickly_peach"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "yungscavebiomes:sand_snapper_spawn_egg"
     }
   ]
 }

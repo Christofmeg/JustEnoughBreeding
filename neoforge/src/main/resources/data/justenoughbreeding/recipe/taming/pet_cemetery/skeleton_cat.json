@@ -1,18 +1,13 @@
 {
   "type": "justenoughbreeding:taming",
   "mod": "pet_cemetery",
-  "mobs": [
+  "input_entity": "pet_cemetery:skeleton_cat",
+  "inputs": [
     {
-      "skeleton_cat": {
-        "inputs": [
-          {
-            "item": "minecraft:cod"
-          },
-          {
-            "item": "minecraft:salmon"
-          }
-        ]
-      }
+      "item": "minecraft:cod"
+    },
+    {
+      "item": "minecraft:salmon"
     }
   ]
 }
