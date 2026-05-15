@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:temper",
+  "mod": "minecraft",
+  "input_entity": "minecraft:trader_llama",
+  "inputs": [
+    {
+      "item": "minecraft:wheat",
+      "count": 3
+    },
+    {
+      "item": "minecraft:hay_block",
+      "count": 6
+    }
+  ]
+}
