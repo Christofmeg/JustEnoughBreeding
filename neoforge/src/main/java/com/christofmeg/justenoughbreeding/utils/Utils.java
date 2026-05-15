@@ -50,8 +50,8 @@ public class Utils {
                     }
                 }
                 if (recipe instanceof TrustingRecipe trustingRecipe) {
-                    if (trustingRecipe.inputEntityNbt != null) {
-                        currentLivingEntity.load(trustingRecipe.inputEntityNbt);
+                    if (trustingRecipe.inputEntityNbt() != null) {
+                        currentLivingEntity.load(trustingRecipe.inputEntityNbt());
                     }
                 }
             } else {

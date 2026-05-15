@@ -80,10 +80,10 @@ public class JEIUtils {
             }
 
             ArrayList<RecipeHolder<TrustingRecipe>> trustingRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TRUSTING_PROVIDER_TYPE.get()));
-            trustingRecipes.sort(Comparator.comparing(r -> r.value().jsonAnimalID == null ? "" : r.value().jsonAnimalID));
+            trustingRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
             for (RecipeHolder<TrustingRecipe> recipeHold : trustingRecipes) {
                 TrustingRecipe recipe = recipeHold.value();
-                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
+                if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.entityType() != null && !recipe.inputs().isEmpty()) {
                     registration.addRecipes(TrustingCategory.TYPE, Collections.singletonList(recipe));
                 }
             }

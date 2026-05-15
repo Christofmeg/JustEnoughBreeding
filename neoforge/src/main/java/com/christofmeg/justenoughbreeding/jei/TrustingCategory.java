@@ -34,24 +34,24 @@ public class TrustingCategory extends AbstractRecipeCategory<TrustingRecipe> {
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, TrustingRecipe recipe, @NotNull IFocusGroup focuses) {
-        builder.addInputSlot(149, 1).setStandardSlotBackground().addIngredients(recipe.spawnEgg);
-        builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).addIngredients(recipe.spawnEgg);
-        builder.addInputSlot(69, 58).setStandardSlotBackground().addIngredients(recipe.inputStack).setPosition(63, 20, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
-        boolean hasExtraInput = recipe.extraInputStack != null && !recipe.extraInputStack.isEmpty();
+        builder.addInputSlot(149, 1).setStandardSlotBackground().addIngredients(recipe.spawnEgg());
+        builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).addIngredients(recipe.spawnEgg());
+        builder.addInputSlot(69, 58).setStandardSlotBackground().addIngredients(recipe.inputs()).setPosition(63, 20, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
+        boolean hasExtraInput = !recipe.extraInputs().isEmpty();
         if (hasExtraInput) {
-            builder.addInputSlot(69, 33).setStandardSlotBackground().addIngredients(recipe.extraInputStack).setPosition(63, 29, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
+            builder.addInputSlot(69, 33).setStandardSlotBackground().addIngredients(recipe.extraInputs()).setPosition(63, 29, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
         }
     }
 
     @Override
     public void createRecipeExtras(@NotNull IRecipeExtrasBuilder builder, @NotNull TrustingRecipe recipe, @NotNull IFocusGroup focuses) {
-        JEIUtils.addButton(builder, recipe.entityType);
+        JEIUtils.addButton(builder, recipe.entityType());
     }
 
     @Override
     public void draw(@NotNull TrustingRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics stack, double mouseX, double mouseY) {
         JEIUtils.drawMobSlot(0, 10, bigSlot, stack);
-        JEIUtils.drawMobNameAndEntity(recipe.entityType, stack, mouseX, recipe, CATEGORY_WIDTH);
+        JEIUtils.drawMobNameAndEntity(recipe.entityType(), stack, mouseX, recipe, CATEGORY_WIDTH);
     }
 
 }

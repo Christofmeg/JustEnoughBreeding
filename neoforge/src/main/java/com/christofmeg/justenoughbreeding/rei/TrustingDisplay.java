@@ -16,12 +16,12 @@ public class TrustingDisplay extends BasicDisplay {
     public TrustingRecipe recipe;
 
     public TrustingDisplay(TrustingRecipe recipe) {
-        super(List.of(EntryIngredients.ofIngredient(recipe.inputStack), EntryIngredients.ofIngredient(recipe.spawnEgg)),
-                List.of(EntryIngredients.ofIngredient(recipe.spawnEgg))
+        super(List.of(EntryIngredients.ofIngredient(recipe.inputs()), EntryIngredients.ofIngredient(recipe.spawnEgg())),
+                List.of(EntryIngredients.ofIngredient(recipe.spawnEgg()))
         );
         this.recipe = recipe;
-        if (recipe.extraInputStack != null) {
-            extraInputs = List.of(EntryIngredients.ofIngredient(recipe.extraInputStack));
+        if (!recipe.extraInputs().isEmpty()) {
+            extraInputs = List.of(EntryIngredients.ofIngredient(recipe.extraInputs()));
         } else {
             extraInputs = List.of(EntryIngredient.of(EntryStacks.of(ItemStack.EMPTY)));
         }
