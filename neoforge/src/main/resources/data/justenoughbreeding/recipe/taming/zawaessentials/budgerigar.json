@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "zawaessentials"
+    }
+  ],
   "type": "justenoughbreeding:taming",
   "mod": "zawaessentials",
   "input_entity": "zawaessentials:budgerigar",

@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "yungscavebiomes"
+    }
+  ],
   "type": "justenoughbreeding:taming",
   "mod": "yungscavebiomes",
   "input_entity": "yungscavebiomes:sand_snapper",

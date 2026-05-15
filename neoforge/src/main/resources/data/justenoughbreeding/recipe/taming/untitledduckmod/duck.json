@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "untitledduckmod"
+    }
+  ],
   "type": "justenoughbreeding:taming",
   "mod": "untitledduckmod",
   "input_entity": "untitledduckmod:duck",

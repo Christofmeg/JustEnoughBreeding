@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "aqcaracal"
+    }
+  ],
   "type": "justenoughbreeding:taming",
   "mod": "aqcaracal",
   "input_entity": "aqcaracal:caracal",

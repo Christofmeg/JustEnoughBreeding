@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "greekfantasy"
+    }
+  ],
   "type": "justenoughbreeding:taming",
   "mod": "greekfantasy",
   "input_entity": "greekfantasy:orthus",

@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "unearthed_journey"
+    }
+  ],
   "type": "justenoughbreeding:taming",
   "mod": "unearthed_journey",
   "input_entity": "unearthed_journey:thylacine",

@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "chococraft"
+    }
+  ],
   "type": "justenoughbreeding:taming",
   "mod": "chococraft",
   "input_entity": "chocobo:chocobo",

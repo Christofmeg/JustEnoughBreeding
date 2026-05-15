@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "pet_cemetery"
+    }
+  ],
   "type": "justenoughbreeding:taming",
   "mod": "pet_cemetery",
   "input_entity": "pet_cemetery:zombie_cat",

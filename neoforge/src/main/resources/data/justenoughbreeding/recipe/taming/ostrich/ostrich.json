@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ostrich"
+    }
+  ],
   "type": "justenoughbreeding:taming",
   "mod": "ostrich",
   "input_entity": "ostrich:ostrich",

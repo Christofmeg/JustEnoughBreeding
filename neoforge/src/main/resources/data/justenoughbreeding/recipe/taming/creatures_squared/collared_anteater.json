@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "creatures_squared"
+    }
+  ],
   "type": "justenoughbreeding:taming",
   "mod": "creatures_squared",
   "input_entity": "creaturecraft:collared_anteater",

@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "naturalist"
+    }
+  ],
   "type": "justenoughbreeding:taming",
   "mod": "naturalist",
   "input_entity": "naturalist:sparrow",

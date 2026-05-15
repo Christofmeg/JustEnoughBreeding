@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ghosts"
+    }
+  ],
   "type": "justenoughbreeding:taming",
   "mod": "ghosts",
   "input_entity": "ghosts:ghost",

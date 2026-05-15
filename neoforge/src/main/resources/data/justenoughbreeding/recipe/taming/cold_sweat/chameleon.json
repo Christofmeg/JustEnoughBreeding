@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "cold_sweat"
+    }
+  ],
   "type": "justenoughbreeding:taming",
   "mod": "cold_sweat",
   "input_entity": "cold_sweat:chameleon",

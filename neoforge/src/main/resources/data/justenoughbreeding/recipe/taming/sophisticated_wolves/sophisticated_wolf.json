@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "sophisticated_wolves"
+    }
+  ],
   "type": "justenoughbreeding:taming",
   "mod": "sophisticated_wolves",
   "input_entity": "sophisticated_wolves:sophisticated_wolf",

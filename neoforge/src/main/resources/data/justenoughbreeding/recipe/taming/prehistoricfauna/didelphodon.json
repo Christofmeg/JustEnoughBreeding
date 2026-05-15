@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
   "type": "justenoughbreeding:taming",
   "mod": "prehistoricfauna",
   "input_entity": "prehistoricfauna:didelphodon",

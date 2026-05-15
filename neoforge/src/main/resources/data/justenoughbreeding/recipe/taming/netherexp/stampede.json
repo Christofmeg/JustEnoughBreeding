@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "netherexp"
+    }
+  ],
   "type": "justenoughbreeding:taming",
   "mod": "netherexp",
   "input_entity": "netherexp:stampede",

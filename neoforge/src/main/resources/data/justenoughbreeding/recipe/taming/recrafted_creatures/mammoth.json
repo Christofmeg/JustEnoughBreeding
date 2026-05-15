@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "recrafted_creatures"
+    }
+  ],
   "type": "justenoughbreeding:taming",
   "mod": "recrafted_creatures",
   "input_entity": "recrafted_creatures:mammoth",

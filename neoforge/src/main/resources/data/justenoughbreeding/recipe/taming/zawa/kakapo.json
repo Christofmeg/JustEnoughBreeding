@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "zawa"
+    }
+  ],
   "type": "justenoughbreeding:taming",
   "mod": "zawa",
   "input_entity": "zawa:kakapo",
