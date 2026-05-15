@@ -80,13 +80,13 @@ public class EMIUtils {
         }
 
         ArrayList<RecipeHolder<TemperRecipe>> temperRecipes = new ArrayList<>(registration.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TEMPER_PROVIDER_TYPE.get()));
-        temperRecipes.sort(Comparator.comparing(r -> r.value().jsonAnimalID == null ? "" : r.value().jsonAnimalID));
+        temperRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
         for (RecipeHolder<TemperRecipe> recipeHold : temperRecipes) {
             TemperRecipe recipe = recipeHold.value();
-            if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.entityType != null && !recipe.inputStack.isEmpty()) {
+            if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.entityType() != null && !recipe.inputs().isEmpty()) {
                 registration.addRecipe(
                         TemperCategoryEMI.builder()
-                                .id(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "/" + "temper" + "/" + recipe.jsonModID + "/" + recipe.jsonAnimalID))
+                                .id(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "/" + recipeHold.id().getPath()))
                                 .recipe(recipe)
                                 .build()
                 );

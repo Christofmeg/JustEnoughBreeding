@@ -45,8 +45,8 @@ public class Utils {
                     }
                 }
                 if (recipe instanceof TemperRecipe temperRecipe) {
-                    if (temperRecipe.inputEntityNbt != null) {
-                        currentLivingEntity.load(temperRecipe.inputEntityNbt);
+                    if (temperRecipe.inputEntityNbt() != null) {
+                        currentLivingEntity.load(temperRecipe.inputEntityNbt());
                     }
                 }
                 if (recipe instanceof TrustingRecipe trustingRecipe) {
