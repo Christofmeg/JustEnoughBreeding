@@ -1,7 +1,7 @@
 {
   "type": "justenoughbreeding:temper",
-  "mod": "minecraft",
-  "input_entity": "minecraft:mule",
+  "mod": "naturalist",
+  "input_entity": "naturalist:zebra",
   "inputs": [
     {
       "item": "minecraft:sugar"

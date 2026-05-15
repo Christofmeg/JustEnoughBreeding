@@ -4,28 +4,22 @@
   "input_entity": "minecraft:horse",
   "inputs": [
     {
-      "item": "minecraft:sugar",
-      "count": 3
+      "item": "minecraft:sugar"
     },
     {
-      "item": "minecraft:wheat",
-      "count": 3
+      "item": "minecraft:wheat"
     },
     {
-      "item": "minecraft:apple",
-      "count": 3
+      "item": "minecraft:apple"
     },
     {
-      "item": "minecraft:golden_carrot",
-      "count": 5
+      "item": "minecraft:golden_carrot"
     },
     {
-      "item": "minecraft:golden_apple",
-      "count": 10
+      "item": "minecraft:golden_apple"
     },
     {
-      "item": "minecraft:enchanted_golden_apple",
-      "count": 10
+      "item": "minecraft:enchanted_golden_apple"
     }
   ]
 }

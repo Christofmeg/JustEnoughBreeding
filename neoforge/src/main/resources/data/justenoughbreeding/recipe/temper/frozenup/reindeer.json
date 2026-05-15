@@ -1,13 +1,22 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "frozenup"
+    }
+  ],
   "type": "justenoughbreeding:temper",
-  "mod": "minecraft",
-  "input_entity": "minecraft:mule",
+  "mod": "frozenup",
+  "input_entity": "frozenup:reindeer",
   "inputs": [
     {
       "item": "minecraft:sugar"
     },
     {
       "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:carrot"
     },
     {
       "item": "minecraft:apple"
@@ -20,6 +29,9 @@
     },
     {
       "item": "minecraft:enchanted_golden_apple"
+    },
+    {
+      "item": "minecraft:glow_lichen"
     }
   ]
 }
