@@ -16,8 +16,8 @@ public class TemperDisplay extends BasicDisplay {
     public TemperRecipe recipe;
 
     public TemperDisplay(TemperRecipe recipe) {
-        super(List.of(EntryIngredients.ofIngredient(recipe.inputs()), EntryIngredients.ofIngredient(recipe.spawnEgg())),
-                List.of(EntryIngredients.ofIngredient(recipe.spawnEgg()))
+        super(List.of(EntryIngredients.ofIngredient(recipe.inputs()), EntryIngredients.ofIngredient(recipe.spawnEggs())),
+                List.of(EntryIngredients.ofIngredient(recipe.spawnEggs()))
         );
         this.recipe = recipe;
         if (!recipe.extraInputs().isEmpty()) {

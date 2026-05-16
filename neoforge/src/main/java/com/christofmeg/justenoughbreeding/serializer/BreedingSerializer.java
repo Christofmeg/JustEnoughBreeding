@@ -29,7 +29,7 @@ public class BreedingSerializer implements RecipeSerializer<BreedingRecipe> {
                         Ingredient.CODEC.fieldOf("inputs").forGetter(BreedingRecipe::inputs),
                         Ingredient.CODEC.optionalFieldOf("extra_inputs").forGetter(r -> Optional.of(r.extraInputs())),
                         Ingredient.CODEC.optionalFieldOf("outputs").forGetter(r -> Optional.of(r.outputs())),
-                        Ingredient.CODEC.optionalFieldOf("spawn_eggs").forGetter(r -> Optional.of(r.spawnEgg())),
+                        Ingredient.CODEC.optionalFieldOf("spawn_eggs").forGetter(r -> Optional.of(r.spawnEggs())),
                         Codec.BOOL.optionalFieldOf("tamed").forGetter(r -> Optional.ofNullable(r.tamed())),
                         Codec.BOOL.optionalFieldOf("trusting").forGetter(r -> Optional.ofNullable(r.trusting()))
                 ).apply(instance, (
@@ -95,7 +95,7 @@ public class BreedingSerializer implements RecipeSerializer<BreedingRecipe> {
                 Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.inputs());
                 Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.extraInputs());
                 Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.outputs());
-                Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.spawnEgg());
+                Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.spawnEggs());
                 ByteBufCodecs.optional(ByteBufCodecs.BOOL).encode(buf, Optional.ofNullable(recipe.tamed()));
                 ByteBufCodecs.optional(ByteBufCodecs.BOOL).encode(buf, Optional.ofNullable(recipe.trusting()));
                 ByteBufCodecs.STRING_UTF8.encode(buf, recipe.mod());

@@ -10,7 +10,7 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public record TamingRecipe(EntityType<?> entityType, @NotNull Ingredient inputs, @NotNull Ingredient spawnEgg, @NotNull Ingredient extraInputs, String mod, String inputEntity, @Nullable CompoundTag inputEntityNbt) implements Recipe<CraftingInput> {
+public record TamingRecipe(EntityType<?> entityType, @NotNull Ingredient inputs, @NotNull Ingredient spawnEggs, @NotNull Ingredient extraInputs, String mod, String inputEntity, @Nullable CompoundTag inputEntityNbt) implements Recipe<CraftingInput> {
 
     @Override public boolean matches(@NotNull CraftingInput input, @NotNull Level level) { return false; }
     @Override public @NotNull ItemStack assemble(@NotNull CraftingInput input, HolderLookup.@NotNull Provider registries) { return ItemStack.EMPTY; }

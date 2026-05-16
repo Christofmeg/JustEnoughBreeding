@@ -36,8 +36,8 @@ public class AllayDuplicationCategory extends AbstractRecipeCategory<AllayDuplic
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, AllayDuplicationRecipe recipe, @NotNull IFocusGroup focuses) {
-        builder.addInputSlot(149, 1).setStandardSlotBackground().addIngredients(recipe.spawnEgg());
-        builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).addIngredients(recipe.spawnEgg());
+        builder.addInputSlot(149, 1).setStandardSlotBackground().addIngredients(recipe.spawnEggs());
+        builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).addIngredients(recipe.spawnEggs());
         builder.addInputSlot(107, 32).setStandardSlotBackground().addIngredients(recipe.inputs());
         builder.addInputSlot(97, 52).setStandardSlotBackground().addIngredients(Ingredient.of(ItemTags.CREEPER_DROP_MUSIC_DISCS));
         builder.addInputSlot(117, 52).setStandardSlotBackground().addIngredients(Ingredient.of(Items.JUKEBOX));

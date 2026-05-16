@@ -14,8 +14,8 @@ public class AllayDuplicationDisplay extends BasicDisplay {
     public AllayDuplicationRecipe recipe;
 
     public AllayDuplicationDisplay(AllayDuplicationRecipe recipe) {
-        super(List.of(EntryIngredients.ofIngredient(recipe.inputs()), EntryIngredients.ofIngredient(recipe.spawnEgg()), EntryIngredients.ofItemTag(ItemTags.CREEPER_DROP_MUSIC_DISCS), EntryIngredients.of(Items.JUKEBOX)),
-                List.of(EntryIngredients.ofIngredient(recipe.spawnEgg()))
+        super(List.of(EntryIngredients.ofIngredient(recipe.inputs()), EntryIngredients.ofIngredient(recipe.spawnEggs()), EntryIngredients.ofItemTag(ItemTags.CREEPER_DROP_MUSIC_DISCS), EntryIngredients.of(Items.JUKEBOX)),
+                List.of(EntryIngredients.ofIngredient(recipe.spawnEggs()))
         );
         this.recipe = recipe;
     }

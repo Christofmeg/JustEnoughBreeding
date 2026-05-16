@@ -27,7 +27,7 @@ public class AllayDuplicationSerializer implements RecipeSerializer<AllayDuplica
                         Codec.STRING.fieldOf("input_entity").forGetter(AllayDuplicationRecipe::inputEntity),
                         CompoundTag.CODEC.optionalFieldOf("input_entity_nbt").forGetter(r -> Optional.ofNullable(r.inputEntityNbt())),
                         Ingredient.CODEC.fieldOf("inputs").forGetter(AllayDuplicationRecipe::inputs),
-                        Ingredient.CODEC.optionalFieldOf("spawn_eggs").forGetter(r -> Optional.of(r.spawnEgg()))
+                        Ingredient.CODEC.optionalFieldOf("spawn_eggs").forGetter(r -> Optional.of(r.spawnEggs()))
                 ).apply(instance, (
                         mod,
                         input_entity,
@@ -73,7 +73,7 @@ public class AllayDuplicationSerializer implements RecipeSerializer<AllayDuplica
             public void encode(@NotNull RegistryFriendlyByteBuf buf, @NotNull AllayDuplicationRecipe recipe) {
                 ResourceLocation.STREAM_CODEC.encode(buf, JustEnoughBreeding.getKeyLoaderRegistries(recipe.entityType()));
                 Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.inputs());
-                Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.spawnEgg());
+                Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.spawnEggs());
                 ByteBufCodecs.STRING_UTF8.encode(buf, recipe.mod());
                 ByteBufCodecs.STRING_UTF8.encode(buf, recipe.inputEntity());
                 ByteBufCodecs.optional(ByteBufCodecs.COMPOUND_TAG).encode(buf, Optional.ofNullable(recipe.inputEntityNbt()));

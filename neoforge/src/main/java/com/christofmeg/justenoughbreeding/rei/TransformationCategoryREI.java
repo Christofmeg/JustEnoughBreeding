@@ -31,13 +31,13 @@ public class TransformationCategoryREI extends AbstractRecipeCategoryREI<Transfo
         widgets.add(Widgets.createRecipeBase(bounds));
 
         List<EntryStack<?>> inputSpawnEggs = new ArrayList<>();
-        for (ItemStack stack : display.recipe.inputSpawnEgg.getItems()) {
+        for (ItemStack stack : display.recipe.inputSpawnEggs().getItems()) {
             inputSpawnEggs.add(EntryStacks.of(stack));
         }
         widgets.add(Widgets.createSlot(new Point(bounds.x + 70, bounds.y + 79)).entries(inputSpawnEggs));
 
         List<EntryStack<?>> outputSpawnEggs = new ArrayList<>();
-        for (ItemStack stack : display.recipe.outputSpawnEgg.getItems()) {
+        for (ItemStack stack : display.recipe.outputSpawnEggs().getItems()) {
             outputSpawnEggs.add(EntryStacks.of(stack));
         }
         widgets.add(Widgets.createSlot(new Point(bounds.x + 90, bounds.y + 79)).entries(outputSpawnEggs));
@@ -57,12 +57,12 @@ public class TransformationCategoryREI extends AbstractRecipeCategoryREI<Transfo
 
         TransformationRecipe recipe = display.recipe;
         REIUtils.drawMobSlot(widgets, bounds,0, 10);
-        REIUtils.drawMobNameAndEntity(widgets, bounds, recipe.inputEntityType, recipe, 99, 0, true, getDisplayWidth(display));
+        REIUtils.drawMobNameAndEntity(widgets, bounds, recipe.inputEntityType(), recipe, 99, 0, true, getDisplayWidth(display));
         REIUtils.drawMobSlot(widgets, bounds,105, 10);
-        REIUtils.drawMobNameAndEntity(widgets, bounds, recipe.outputEntityType, recipe, 61, 105, false, getDisplayWidth(display));
+        REIUtils.drawMobNameAndEntity(widgets, bounds, recipe.outputEntityType(), recipe, 61, 105, false, getDisplayWidth(display));
 
-        REIUtils.addButton(bounds, recipe.inputEntityType, widgets);
-        REIUtils.addButton(bounds, recipe.outputEntityType, widgets, 105);
+        REIUtils.addButton(bounds, recipe.inputEntityType(), widgets);
+        REIUtils.addButton(bounds, recipe.outputEntityType(), widgets, 105);
 
         return widgets;
     }

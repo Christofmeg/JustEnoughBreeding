@@ -28,7 +28,7 @@ public class TamingSerializer implements RecipeSerializer<TamingRecipe> {
                         CompoundTag.CODEC.optionalFieldOf("input_entity_nbt").forGetter(r -> Optional.ofNullable(r.inputEntityNbt())),
                         Ingredient.CODEC.fieldOf("inputs").forGetter(TamingRecipe::inputs),
                         Ingredient.CODEC.optionalFieldOf("extra_inputs").forGetter(r -> Optional.of(r.extraInputs())),
-                        Ingredient.CODEC.optionalFieldOf("spawn_eggs").forGetter(r -> Optional.of(r.spawnEgg()))
+                        Ingredient.CODEC.optionalFieldOf("spawn_eggs").forGetter(r -> Optional.of(r.spawnEggs()))
                 ).apply(instance, (
                         mod,
                         input_entity,
@@ -79,7 +79,7 @@ public class TamingSerializer implements RecipeSerializer<TamingRecipe> {
                 ResourceLocation.STREAM_CODEC.encode(buf, JustEnoughBreeding.getKeyLoaderRegistries(recipe.entityType()));
                 Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.inputs());
                 Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.extraInputs());
-                Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.spawnEgg());
+                Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.spawnEggs());
                 ByteBufCodecs.STRING_UTF8.encode(buf, recipe.mod());
                 ByteBufCodecs.STRING_UTF8.encode(buf, recipe.inputEntity());
                 ByteBufCodecs.optional(ByteBufCodecs.COMPOUND_TAG).encode(buf, Optional.ofNullable(recipe.inputEntityNbt()));

@@ -16,12 +16,12 @@ public class TransformationDisplay extends BasicDisplay {
     public TransformationRecipe recipe;
 
     public TransformationDisplay(TransformationRecipe recipe) {
-        super(List.of(EntryIngredients.ofIngredient(recipe.inputStack), EntryIngredients.ofIngredient(recipe.inputSpawnEgg)),
-                List.of(EntryIngredients.ofIngredient(recipe.outputSpawnEgg))
+        super(List.of(EntryIngredients.ofIngredient(recipe.inputs()), EntryIngredients.ofIngredient(recipe.inputSpawnEggs())),
+                List.of(EntryIngredients.ofIngredient(recipe.outputSpawnEggs()))
         );
         this.recipe = recipe;
-        if (recipe.extraInputStack != null) {
-            extraInputs = List.of(EntryIngredients.ofIngredient(recipe.extraInputStack));
+        if (!recipe.extraInputs().isEmpty()) {
+            extraInputs = List.of(EntryIngredients.ofIngredient(recipe.extraInputs()));
         } else {
             extraInputs = List.of(EntryIngredient.of(EntryStacks.of(ItemStack.EMPTY)));
         }

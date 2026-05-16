@@ -25,8 +25,8 @@ public class Utils {
         if (currentLivingEntity != null) {
             if (input) {
                 if (recipe instanceof TransformationRecipe transformationRecipe) {
-                    if (transformationRecipe.inputEntityNbt != null) {
-                        currentLivingEntity.load(transformationRecipe.inputEntityNbt);
+                    if (transformationRecipe.inputEntityNbt() != null) {
+                        currentLivingEntity.load(transformationRecipe.inputEntityNbt());
                     }
                 }
                 if (recipe instanceof AllayDuplicationRecipe allayDuplicationRecipe) {
@@ -56,8 +56,8 @@ public class Utils {
                 }
             } else {
                 if (recipe instanceof TransformationRecipe transformationRecipe) {
-                    if (transformationRecipe.outputEntityNbt != null) {
-                        currentLivingEntity.load(transformationRecipe.outputEntityNbt);
+                    if (transformationRecipe.outputEntityNbt() != null) {
+                        currentLivingEntity.load(transformationRecipe.outputEntityNbt());
                     }
                 }
             }

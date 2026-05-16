@@ -71,10 +71,10 @@ public class JEIUtils {
             }
 
             ArrayList<RecipeHolder<TransformationRecipe>> transformationRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE.get()));
-            transformationRecipes.sort(Comparator.comparing(r -> r.value().outputEntityType == null ? r.value().fileName : r.value().outputEntityType.toShortString()));
+            transformationRecipes.sort(Comparator.comparing(r -> r.value().outputEntityType() == null ? "" : r.value().outputEntityType().toShortString()));
             for (RecipeHolder<TransformationRecipe> recipeHold : transformationRecipes) {
                 TransformationRecipe recipe = recipeHold.value();
-                if (JustEnoughBreeding.isModLoaded(recipe.jsonModID) && recipe.inputEntityType != null && recipe.outputEntityType != null && !recipe.inputStack.isEmpty()) {
+                if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.inputEntityType() != null && recipe.outputEntityType() != null && !recipe.inputs().isEmpty()) {
                     registration.addRecipes(TransformationCategory.TYPE, Collections.singletonList(recipe));
                 }
             }
@@ -153,7 +153,7 @@ public class JEIUtils {
                     entityNameString += " (" + tfc + " > 30" + ")";
                 }
             } else if (recipe instanceof TransformationRecipe transformationRecipe && input) {
-                if (transformationRecipe.needsToBeTamed != null && transformationRecipe.needsToBeTamed) {
+                if (transformationRecipe.tamed() != null && transformationRecipe.tamed()) {
                     Component tamed = Component.translatable("translation.justenoughbreeding.tamed");
                     entityNameString += " (" + tamed.getString() + ")";
                 }
@@ -174,9 +174,9 @@ public class JEIUtils {
             LivingEntity currentLivingEntity;
             if (recipe instanceof TransformationRecipe transformationRecipe) {
                 if (input) {
-                    currentLivingEntity = ClientUtils.doRendering(transformationRecipe.inputEntityType, transformationRecipe.inputEntityNbt, true);
+                    currentLivingEntity = ClientUtils.doRendering(transformationRecipe.inputEntityType(), transformationRecipe.inputEntityNbt(), true);
                 } else {
-                    currentLivingEntity = ClientUtils.doRendering(transformationRecipe.outputEntityType, transformationRecipe.outputEntityNbt, false);
+                    currentLivingEntity = ClientUtils.doRendering(transformationRecipe.outputEntityType(), transformationRecipe.outputEntityNbt(), false);
                 }
             } else {
                 currentLivingEntity = ClientUtils.doRendering(entityType);

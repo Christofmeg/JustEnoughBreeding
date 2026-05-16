@@ -40,14 +40,14 @@ public class TemperCategoryEMI extends AbstractRecipeCategoryEMI {
     public List<EmiIngredient> getCatalysts() {
         return List.of(EmiIngredient.of(recipe.inputs()),
                 EmiIngredient.of(recipe.extraInputs()),
-                EmiIngredient.of(recipe.spawnEgg())
+                EmiIngredient.of(recipe.spawnEggs())
         );
     }
 
     @Override
     public List<EmiStack> getOutputs() {
         List<EmiStack> list = new ArrayList<>();
-        for (ItemStack item : recipe.spawnEgg().getItems()) {
+        for (ItemStack item : recipe.spawnEggs().getItems()) {
             list.add(EmiStack.of(item));
         }
         return list;
@@ -55,7 +55,7 @@ public class TemperCategoryEMI extends AbstractRecipeCategoryEMI {
 
     @Override
     public void addWidgets(WidgetHolder widgets) {
-        widgets.addSlot(EmiIngredient.of(recipe.spawnEgg()), 149, 1);
+        widgets.addSlot(EmiIngredient.of(recipe.spawnEggs()), 149, 1);
         int inputX = 69 + 5;
         int inputY = 48;
         boolean hasExtraInput = !recipe.extraInputs().isEmpty();

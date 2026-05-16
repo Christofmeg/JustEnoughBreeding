@@ -34,8 +34,8 @@ public class TemperCategory extends AbstractRecipeCategory<TemperRecipe> {
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, TemperRecipe recipe, @NotNull IFocusGroup focuses) {
-        builder.addInputSlot(149, 1).setStandardSlotBackground().addIngredients(recipe.spawnEgg());
-        builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).addIngredients(recipe.spawnEgg());
+        builder.addInputSlot(149, 1).setStandardSlotBackground().addIngredients(recipe.spawnEggs());
+        builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).addIngredients(recipe.spawnEggs());
         builder.addInputSlot(69, 58).setStandardSlotBackground().addIngredients(recipe.inputs()).setPosition(63, 20, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
         boolean hasExtraInput = !recipe.extraInputs().isEmpty();
         if (hasExtraInput) {
