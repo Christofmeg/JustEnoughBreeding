@@ -1,0 +1,10 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "minecraft",
+  "input_entity": "minecraft:armadillo",
+  "inputs": [
+    {
+      "tag": "minecraft:armadillo_food"
+    }
+  ]
+}

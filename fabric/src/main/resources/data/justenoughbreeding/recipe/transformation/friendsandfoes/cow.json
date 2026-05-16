@@ -1,0 +1,21 @@
+{
+  "type": "justenoughbreeding:transformation",
+  "mod": "friendsandfoes",
+  "inputs": [
+    {
+      "item": "minecraft:shears"
+    }
+  ],
+  "input_entity": "friendsandfoes:moobloom",
+  "input_spawn_eggs": [
+    {
+      "item": "friendsandfoes:moobloom_spawn_egg"
+    }
+  ],
+  "output_entity": "minecraft:cow",
+  "output_spawn_eggs": [
+    {
+      "item": "minecraft:cow_spawn_egg"
+    }
+  ]
+}
