@@ -1,4 +1,10 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["chococraft"]
+    }
+  ],
   "type": "justenoughbreeding:taming",
   "mod": "chococraft",
   "input_entity": "chocobo:chocobo",

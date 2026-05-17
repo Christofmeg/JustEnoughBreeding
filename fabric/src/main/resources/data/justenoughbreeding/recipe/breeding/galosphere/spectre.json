@@ -1,4 +1,10 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["galosphere"]
+    }
+  ],
   "type": "justenoughbreeding:breeding",
   "mod": "galosphere",
   "input_entity": "galosphere:spectre",

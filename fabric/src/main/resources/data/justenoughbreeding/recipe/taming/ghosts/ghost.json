@@ -1,4 +1,10 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["ghosts"]
+    }
+  ],
   "type": "justenoughbreeding:taming",
   "mod": "ghosts",
   "input_entity": "ghosts:ghost",

@@ -1,4 +1,10 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["biomemakeover"]
+    }
+  ],
   "type": "justenoughbreeding:breeding",
   "mod": "biomemakeover",
   "input_entity": "biomemakeover:helmit_crab",

@@ -1,4 +1,10 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["meadow"]
+    }
+  ],
   "type": "justenoughbreeding:breeding",
   "mod": "meadow",
   "input_entity": "meadow:wooly_cow",
