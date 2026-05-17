@@ -1,10 +1,10 @@
-import net.darkhax.curseforgegradle.TaskPublishCurseForge
+//import net.darkhax.curseforgegradle.TaskPublishCurseForge
 
 plugins {
     id 'multiloader-loader'
-    id 'fabric-loom' version '1.9-SNAPSHOT'
-    id 'net.darkhax.curseforgegradle' version '1.1.+'
-    id 'com.modrinth.minotaur' version '2.+'
+    id 'fabric-loom' version '1.8.13'
+//    id 'net.darkhax.curseforgegradle' version '1.1.+'
+//    id 'com.modrinth.minotaur' version '2.+'
 }
 
 base {
@@ -80,7 +80,7 @@ loom {
         }
     }
 }
-
+/*
 tasks.register('publishCurseForge', TaskPublishCurseForge) {
     apiToken = file('../../API Tokens/justenoughbreeding.md')
     def projectId = "${cf_id}".toString()
@@ -198,4 +198,4 @@ modrinth {
         optional.project "yungs-cave-biomes"
         optional.project "ghost"
     }
-}
+}*/
