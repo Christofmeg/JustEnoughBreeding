@@ -18,8 +18,9 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 @Mod(CommonConstants.MOD_ID)
 public class JustEnoughBreeding {
 
-    //TODO update recipe generator to match input_entity_nbt on recipetypes
-    //TODO update recipe generator to match input entity nbt on transformation
+    //TODO update recipe generator to match new 1.21.1 format
+    //TODO fix output_entity mouseX rotation in transformation category
+    //TODO add support for /reload
 
     private static final DeferredRegister<RecipeSerializer<?>> RECIPES_SERIALIZERS = DeferredRegister.create(Registries.RECIPE_SERIALIZER, CommonConstants.MOD_ID);
     private static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(Registries.RECIPE_TYPE, CommonConstants.MOD_ID);
