@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "lilcritters"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "lilcritters",
+  "input_entity": "lilcritters:pond_slider",
+  "inputs": [
+    {
+      "item": "zawa:omnivore_kibble"
+    }
+  ]
+}

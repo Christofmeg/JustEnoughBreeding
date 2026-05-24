@@ -1,0 +1,33 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "alexsmobs"
+    }
+  ],
+  "type": "justenoughbreeding:transformation",
+  "mod": "alexsmobs",
+  "inputs": [
+    {
+      "item": "minecraft:crimson_fungus"
+    }
+  ],
+  "input_entity": "alexsmobs:mungus",
+  "input_spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_mungus"
+    }
+  ],
+  "output_entity": "alexsmobs:mungus",
+  "output_entity_nbt": {
+    "MushroomCount": 1,
+    "MushroomState": {
+      "Name": "minecraft:crimson_fungus"
+    }
+  },
+  "output_spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_mungus"
+    }
+  ]
+}

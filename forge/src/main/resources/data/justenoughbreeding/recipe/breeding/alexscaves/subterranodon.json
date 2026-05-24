@@ -1,0 +1,29 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "alexscaves"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexscaves",
+  "input_entity": "alexscaves:subterranodon",
+  "inputs": [
+    {
+      "item": "minecraft:cod"
+    },
+    {
+      "item": "minecraft:cooked_cod"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "alexscaves:subterranodon_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexscaves:spawn_egg_subterranodon"
+    }
+  ]
+}

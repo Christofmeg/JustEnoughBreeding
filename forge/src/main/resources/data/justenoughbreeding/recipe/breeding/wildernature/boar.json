@@ -1,0 +1,37 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "wildernature"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "wildernature",
+  "input_entity": "wildernature:boar",
+  "inputs": [
+    {
+      "item": "minecraft:beef"
+    },
+    {
+      "item": "minecraft:chicken"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:sweet_berries"
+    },
+    {
+      "item": "minecrafy:potato"
+    },
+    {
+      "item": "minecraft:cooked_cod"
+    },
+    {
+      "item": "minecraft:cooked_salmon"
+    },
+    {
+      "item": "minecraft:carrot"
+    }
+  ]
+}

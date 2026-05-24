@@ -1,0 +1,21 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "yungscavebiomes"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "yungscavebiomes",
+  "input_entity": "yungscavebiomes:sand_snapper",
+  "inputs": [
+    {
+      "item": "yungscavebiomes:prickly_peach"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "yungscavebiomes:sand_snapper_spawn_egg"
+    }
+  ]
+}

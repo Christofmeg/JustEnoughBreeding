@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "untamedwilds"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "untamedwilds",
+  "input_entity": "untamedwilds:giant_salamander",
+  "inputs": [
+    {
+      "item": "untamedwilds:food_turtle_raw"
+    }
+  ]
+}

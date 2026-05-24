@@ -1,0 +1,21 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "iceandfire"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "iceandfire",
+  "input_entity": "iceandfire:fire_dragon",
+  "inputs": [
+    {
+      "item": "iceandfire:creative_dragon_meal"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "iceandfire:spawn_egg_fire_dragon"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "aether"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "aether",
+  "input_entity": "aether:sheepuff",
+  "inputs": [
+    {
+      "tag": "aether:sheepuff_temptation_items"
+    }
+  ]
+}

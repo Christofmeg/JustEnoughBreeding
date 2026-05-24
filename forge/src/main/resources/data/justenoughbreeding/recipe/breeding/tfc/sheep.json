@@ -1,0 +1,21 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tfc"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "tfc",
+  "input_entity": "tfc:sheep",
+  "inputs": [
+    {
+      "tag": "tfc:sheep_food"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "tfc:spawn_egg/sheep"
+    }
+  ]
+}

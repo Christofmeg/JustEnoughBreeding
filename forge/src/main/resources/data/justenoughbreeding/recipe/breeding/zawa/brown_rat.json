@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "zawa"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "zawa",
+  "input_entity": "zawa:brown_rat",
+  "inputs": [
+    {
+      "item": "minecraft:wheat_seeds"
+    }
+  ]
+}

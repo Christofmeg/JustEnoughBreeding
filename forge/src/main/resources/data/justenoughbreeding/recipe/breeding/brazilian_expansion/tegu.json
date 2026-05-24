@@ -1,0 +1,21 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "brazilian_expansion"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "brazilian_expansion",
+  "input_entity": "brazilian_expansion:tegu",
+  "inputs": [
+    {
+      "tag": "brazilian_expansion:food_tegu"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "brazilian_expansion:tegu_egg"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "input_entity": "prehistoricfauna:pachycephalosaurus",
+  "inputs": [
+    {
+      "item": "prehistoricfauna:ginkgo_berry"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:pachycephalosaurus_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:pachycephalosaurus_spawn_egg"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "blastfromthepast"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "blastfromthepast",
+  "input_entity": "blastfromthepast:burrel",
+  "inputs": [
+    {
+      "item": "blastfromthepast:pinecone"
+    }
+  ]
+}

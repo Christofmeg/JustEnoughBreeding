@@ -1,0 +1,22 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "alexscaves"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexscaves",
+  "input_entity": "alexscaves:raycat",
+  "inputs": [
+    {
+      "item": "alexscaves:radgill"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexscaves:spawn_egg_raycat"
+    }
+  ],
+  "tamed": true
+}

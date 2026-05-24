@@ -1,0 +1,27 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "companions"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "companions",
+  "input_entity": "companions:hostile_imp",
+  "inputs": [
+    {
+      "item": "companions:copper_coin"
+    },
+    {
+      "item": "companions:nether_coin"
+    },
+    {
+      "item": "companions:end_coin"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "companions:hostile_imp_spawn_egg"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "recrafted_creatures"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "recrafted_creatures",
+  "input_entity": "recrafted_creatures:chameleon",
+  "inputs": [
+    {
+      "item": "minecraft:spider_eye"
+    },
+    {
+      "item": "minecraft:fermented_spider_eye"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "recrafted_creatures:chameleon_egg"
+    }
+  ]
+}

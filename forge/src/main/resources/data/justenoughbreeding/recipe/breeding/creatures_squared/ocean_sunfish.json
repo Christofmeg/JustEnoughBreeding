@@ -1,0 +1,21 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "creatures_squared"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "creatures_squared",
+  "input_entity": "creatures_squared:ocean_sunfish",
+  "inputs": [
+    {
+      "item": "minecraft:kelp"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "creatures_squared:ocean_sunfish_eggs"
+    }
+  ]
+}

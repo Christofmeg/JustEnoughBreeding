@@ -1,0 +1,21 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tameablebeasts"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "tameablebeasts",
+  "input_entity": "tameablebeasts:crested_gecko",
+  "inputs": [
+    {
+      "tag": "tameablebeasts:crested_gecko_tame_food"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "tameablebeasts:crested_gecko_spawn_egg"
+    }
+  ]
+}

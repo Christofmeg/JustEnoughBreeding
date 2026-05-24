@@ -1,0 +1,26 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "alexsmobs"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "input_entity": "alexsmobs:platypus",
+  "inputs": [
+    {
+      "tag": "alexsmobs:platypus_breedables"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "alexsmobs:platypus_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_platypus"
+    }
+  ]
+}

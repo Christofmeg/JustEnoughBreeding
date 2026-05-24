@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "aether"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "aether",
+  "input_entity": "aether:phyg",
+  "inputs": [
+    {
+      "tag": "aether:phyg_temptation_items"
+    }
+  ]
+}

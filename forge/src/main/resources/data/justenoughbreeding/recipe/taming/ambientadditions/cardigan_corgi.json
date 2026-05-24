@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "ambientadditions"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "ambientadditions",
+  "input_entity": "ambientadditions:cardigan_corgi",
+  "inputs": [
+    {
+      "item": "minecraft:pumpkin_pie"
+    }
+  ]
+}

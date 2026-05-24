@@ -1,0 +1,26 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "input_entity": "prehistoricfauna:thescelosaurus",
+  "inputs": [
+    {
+      "item": "prehistoricfauna:liverwort"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:thescelosaurus_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:thescelosaurus_spawn_egg"
+    }
+  ]
+}

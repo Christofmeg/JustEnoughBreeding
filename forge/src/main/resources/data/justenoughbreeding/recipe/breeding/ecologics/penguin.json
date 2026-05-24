@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "ecologics"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "ecologics",
+  "input_entity": "ecologics:penguin",
+  "inputs": [
+    {
+      "tag": "ecologics:penguin_tempt_items"
+    }
+  ]
+}

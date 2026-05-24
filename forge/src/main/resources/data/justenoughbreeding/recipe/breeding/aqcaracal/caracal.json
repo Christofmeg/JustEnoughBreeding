@@ -1,0 +1,26 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "aqcaracal"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "aqcaracal",
+  "input_entity": "aqcaracal:caracal",
+  "inputs": [
+    {
+      "item": "minecraft:chicken"
+    },
+    {
+      "item": "minecraft:cod"
+    },
+    {
+      "item": "minecraft:rabbit"
+    },
+    {
+      "item": "minecraft:salmon"
+    }
+  ],
+  "tamed": true
+}

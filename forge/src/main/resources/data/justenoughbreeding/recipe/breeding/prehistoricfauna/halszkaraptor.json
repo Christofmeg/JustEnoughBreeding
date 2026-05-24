@@ -1,0 +1,26 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "input_entity": "prehistoricfauna:halszkaraptor",
+  "inputs": [
+    {
+      "item": "prehistoricfauna:raw_harenaichthys"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:halszkaraptor_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:halszkaraptor_spawn_egg"
+    }
+  ]
+}

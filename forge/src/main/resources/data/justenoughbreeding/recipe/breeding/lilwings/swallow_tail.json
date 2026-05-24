@@ -1,0 +1,21 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "lilwings"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "lilwings",
+  "input_entity": "lilwings:swallow_tail",
+  "inputs": [
+    {
+      "item": "minecraft:wheat_seeds"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "lilwings:swallow_tail_egg"
+    }
+  ]
+}

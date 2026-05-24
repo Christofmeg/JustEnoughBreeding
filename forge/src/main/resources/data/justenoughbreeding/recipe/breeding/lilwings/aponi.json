@@ -1,0 +1,21 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "lilwings"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "lilwings",
+  "input_entity": "lilwings:aponi",
+  "inputs": [
+    {
+      "item": "minecraft:brown_mushroom"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "lilwings:aponi_egg"
+    }
+  ]
+}

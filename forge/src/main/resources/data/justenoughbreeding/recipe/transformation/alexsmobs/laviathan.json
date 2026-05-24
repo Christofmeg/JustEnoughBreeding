@@ -1,0 +1,30 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "alexsmobs"
+    }
+  ],
+  "type": "justenoughbreeding:transformation",
+  "mod": "alexsmobs",
+  "inputs": [
+    {
+      "item": "minecraft:water_bucket"
+    }
+  ],
+  "input_entity": "alexsmobs:laviathan",
+  "input_spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_laviathan"
+    }
+  ],
+  "output_entity": "alexsmobs:laviathan",
+  "output_entity_nbt": {
+    "Obsidian": 1
+  },
+  "output_spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_laviathan"
+    }
+  ]
+}

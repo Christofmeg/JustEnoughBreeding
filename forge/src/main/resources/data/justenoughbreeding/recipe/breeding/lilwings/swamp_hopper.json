@@ -1,0 +1,21 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "lilwings"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "lilwings",
+  "input_entity": "lilwings:swamp_hopper",
+  "inputs": [
+    {
+      "item": "minecraft:blue_orchid"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "lilwings:swamp_hopper_egg"
+    }
+  ]
+}

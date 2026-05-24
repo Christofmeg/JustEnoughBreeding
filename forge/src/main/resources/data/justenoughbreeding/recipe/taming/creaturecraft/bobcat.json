@@ -1,0 +1,19 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "creaturecraft"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "creaturecraft",
+  "input_entity": "creaturecraft:bobcat",
+  "inputs": [
+    {
+      "item": "minecraft:beef"
+    },
+    {
+      "item": "minecraft:cooked_beef"
+    }
+  ]
+}

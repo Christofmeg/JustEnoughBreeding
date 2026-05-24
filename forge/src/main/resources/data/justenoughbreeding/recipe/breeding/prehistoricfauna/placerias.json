@@ -1,0 +1,26 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "input_entity": "prehistoricfauna:placerias",
+  "inputs": [
+    {
+      "item": "prehistoricfauna:phlebopteris"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:placerias_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:placerias_spawn_egg"
+    }
+  ]
+}

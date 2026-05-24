@@ -1,0 +1,29 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "creaturecraft"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "creaturecraft",
+  "input_entity": "creaturecraft:sloth_bear",
+  "inputs": [
+    {
+      "item": "creaturecraft:termite_drop"
+    },
+    {
+      "item": "minecraft:honey_block"
+    },
+    {
+      "item": "minecraft:honeycomb_block"
+    },
+    {
+      "item": "minecraft:honeycomb"
+    },
+    {
+      "item": "minecraft:honey_bottle"
+    }
+  ],
+  "tamed": true
+}

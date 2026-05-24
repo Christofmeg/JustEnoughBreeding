@@ -1,0 +1,31 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tfc"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "tfc",
+  "input_entity": "tfc:chicken",
+  "inputs": [
+    {
+      "tag": "tfc:chicken_food"
+    }
+  ],
+  "extra_inputs": [
+    {
+      "item": "tfc:nest_box"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "minecraft:egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "tfc:spawn_egg/chicken"
+    }
+  ]
+}

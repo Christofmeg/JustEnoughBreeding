@@ -1,0 +1,26 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "input_entity": "prehistoricfauna:changyuraptor",
+  "inputs": [
+    {
+      "item": "prehistoricfauna:dead_spider"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:changyuraptor_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:changyuraptor_spawn_egg"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "creaturecraft"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "creaturecraft",
+  "input_entity": "creaturecraft:cheetah",
+  "inputs": [
+    {
+      "item": "minecraft:porkchop"
+    },
+    {
+      "item": "minecraft:cooked_porkchop"
+    },
+    {
+      "item": "minecraft:chicken"
+    },
+    {
+      "item": "minecraft:mutton"
+    },
+    {
+      "item": "minecraft:cooked_mutton"
+    }
+  ],
+  "tamed": true
+}

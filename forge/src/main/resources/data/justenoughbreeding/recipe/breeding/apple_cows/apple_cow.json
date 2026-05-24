@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "apple_cows"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "apple_cows",
+  "input_entity": "apple_cows:apple_cow",
+  "inputs": [
+    {
+      "item": "minecraft:wheat"
+    }
+  ]
+}

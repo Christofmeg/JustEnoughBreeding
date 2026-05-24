@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "frozenup"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "frozenup",
+  "input_entity": "frozenup:chilloo",
+  "inputs": [
+    {
+      "tag": "frozenup:chilloo_breed_items"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "naturalist"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "naturalist",
+  "input_entity": "naturalist:alligator",
+  "inputs": [
+    {
+      "tag": "naturalist:alligator_food_items"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "naturalist:alligator_egg",
+      "amount": {
+        "min": 1,
+        "max": 4
+      }
+    }
+  ]
+}

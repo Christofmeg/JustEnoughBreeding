@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "naturalist"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "naturalist",
+  "input_entity": "naturalist:tortoise",
+  "inputs": [
+    {
+      "tag": "naturalist:tortoise_tempt_items"
+    }
+  ]
+}

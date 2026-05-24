@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "creatures_squared"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "creatures_squared",
+  "input_entity": "creatures_squared:tapir",
+  "inputs": [
+    {
+      "item": "minecraft:apple"
+    }
+  ]
+}

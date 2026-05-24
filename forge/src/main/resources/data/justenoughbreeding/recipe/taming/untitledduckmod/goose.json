@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "untitledduckmod"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "untitledduckmod",
+  "input_entity": "untitledduckmod:goose",
+  "inputs": [
+    {
+      "tag": "untitledduckmod:goose_taming_food"
+    }
+  ]
+}

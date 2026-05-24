@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "biomemakeover"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "biomemakeover",
+  "input_entity": "biomemakeover:helmit_crab",
+  "inputs": [
+    {
+      "tag": "minecraft:fishes"
+    }
+  ]
+}

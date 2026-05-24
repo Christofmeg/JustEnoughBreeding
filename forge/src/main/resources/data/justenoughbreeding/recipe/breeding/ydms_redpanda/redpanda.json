@@ -1,0 +1,17 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "ydms_redpanda"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "ydms_redpanda",
+  "input_entity": "ydms_redpanda:redpanda",
+  "inputs": [
+    {
+      "item": "minecraft:bamboo"
+    }
+  ],
+  "tamed": true
+}

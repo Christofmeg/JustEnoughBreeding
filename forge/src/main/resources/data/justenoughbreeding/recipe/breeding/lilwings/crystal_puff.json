@@ -1,0 +1,21 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "lilwings"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "lilwings",
+  "input_entity": "lilwings:crystal_puff",
+  "inputs": [
+    {
+      "item": "minecraft:allium"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "lilwings:crystal_puff_egg"
+    }
+  ]
+}

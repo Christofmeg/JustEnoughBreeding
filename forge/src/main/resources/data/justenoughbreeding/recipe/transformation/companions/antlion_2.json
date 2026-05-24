@@ -1,0 +1,30 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "companions"
+    }
+  ],
+  "type": "justenoughbreeding:transformation",
+  "mod": "companions",
+  "inputs": [
+    {
+        "item": "companions:hourglass"
+    }
+  ],
+  "input_entity": "companions:antlion",
+  "input_spawn_eggs": [
+    {
+        "item": "companions:wild_antlion_spawn_egg"
+    }
+  ],
+  "output_entity": "companions:antlion",
+  "output_entity_nbt": {
+    "Variant": 2
+  },
+  "output_spawn_eggs": [
+    {
+        "item": "companions:wild_antlion_spawn_egg"
+    }
+  ]
+}

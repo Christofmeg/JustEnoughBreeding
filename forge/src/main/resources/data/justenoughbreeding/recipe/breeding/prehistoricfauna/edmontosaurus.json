@@ -1,0 +1,26 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "input_entity": "prehistoricfauna:edmontosaurus",
+  "inputs": [
+    {
+      "item": "prehistoricfauna:osmunda"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:edmontosaurus_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:edmontosaurus_spawn_egg"
+    }
+  ]
+}

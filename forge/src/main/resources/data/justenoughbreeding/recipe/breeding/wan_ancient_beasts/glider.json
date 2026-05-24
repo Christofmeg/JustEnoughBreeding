@@ -1,0 +1,26 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "wan_ancient_beasts"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "wan_ancient_beasts",
+  "input_entity": "wan_ancient_beasts:glider",
+  "inputs": [
+    {
+      "item": "minecraft:salmon"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "wan_ancient_beasts:glider_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "wan_ancient_beasts:glider_spawn_egg"
+    }
+  ]
+}

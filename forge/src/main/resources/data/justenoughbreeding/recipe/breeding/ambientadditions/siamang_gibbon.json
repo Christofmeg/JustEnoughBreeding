@@ -1,0 +1,19 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "ambientadditions"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "ambientadditions",
+  "input_entity": "ambientadditions:siamang_gibbon",
+  "inputs": [
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:apple"
+    }
+  ]
+}

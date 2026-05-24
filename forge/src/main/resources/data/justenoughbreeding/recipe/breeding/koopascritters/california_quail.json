@@ -1,0 +1,28 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "koopascritters"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "koopascritters",
+  "input_entity": "koopascritters:california_quail",
+  "inputs": [
+    {
+      "item": "minecraft:wheat_seeds"
+    },
+    {
+      "item": "minecraft:pumpkin_seeds"
+    },
+    {
+      "item": "minecraft:torchflower_seeds"
+    },
+    {
+      "item": "minecraft:melon_seeds"
+    },
+    {
+      "item": "minecraft:beetroot_seeds"
+    }
+  ]
+}

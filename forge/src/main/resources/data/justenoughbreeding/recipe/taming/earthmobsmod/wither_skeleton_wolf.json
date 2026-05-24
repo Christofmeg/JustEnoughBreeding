@@ -1,0 +1,19 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "earthmobsmod"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "earthmobsmod",
+  "input_entity": "earthmobsmod:wither_skelton_wolf",
+  "inputs": [
+    {
+      "item": "minecraft:bone"
+    },
+    {
+      "item": "minecraft:rotten_flesh"
+    }
+  ]
+}

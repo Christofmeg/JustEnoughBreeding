@@ -1,0 +1,22 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "ulterlands"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "ulterlands",
+  "input_entity": "ulterlands:mushogg",
+  "inputs": [
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "minecraft:beetroot"
+    }
+  ]
+}

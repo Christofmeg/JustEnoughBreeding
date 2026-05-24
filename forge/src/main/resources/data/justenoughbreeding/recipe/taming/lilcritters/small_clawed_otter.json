@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "lilcritters"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "lilcritters",
+  "input_entity": "lilcritters:small_clawed_otter",
+  "inputs": [
+    {
+      "item": "zawa:shellfish_kibble"
+    }
+  ]
+}

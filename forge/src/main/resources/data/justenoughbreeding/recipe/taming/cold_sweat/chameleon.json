@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cold_sweat"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "cold_sweat",
+  "input_entity": "cold_sweat:chameleon",
+  "inputs": [
+    {
+      "tag": "cold_sweat:chameleon/taming"
+    }
+  ]
+}

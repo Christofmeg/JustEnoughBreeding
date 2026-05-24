@@ -1,0 +1,26 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tameablebeasts"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "tameablebeasts",
+  "input_entity": "tameablebeasts:graptera",
+  "inputs": [
+    {
+      "item": "tameablebeasts:ptera_meal_arrow"
+    }
+  ],
+  "extra_inputs": [
+    {
+      "tag": "c:bows"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "tameablebeasts:graptera_spawn_egg"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "alexsmobs"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "input_entity": "alexsmobs:tusklin",
+  "inputs": [
+    {
+      "tag": "alexsmobs:tusklin_breedables"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_tusklin"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "input_entity": "prehistoricfauna:citipati",
+  "inputs": [
+    {
+      "item": "prehistoricfauna:raw_small_reptile_meat"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:citipati_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:citipati_spawn_egg"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "blue_skies"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "blue_skies",
+  "input_entity": "blue_skies:crystal_camel",
+  "inputs": [
+    {
+      "item": "blue_skies:scalefruit"
+    }
+  ],
+  "tamed": true
+}

@@ -1,0 +1,30 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "alexsmobs"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "input_entity": "alexsmobs:tarantula_hawk",
+  "extra_inputs": [
+    {
+      "item": "minecraft:cave_spider_spawn_egg"
+    },
+    {
+      "item": "minecraft:spider_spawn_egg"
+    }
+  ],
+  "inputs": [
+    {
+      "tag": "alexsmobs:tarantula_hawk_breedables"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_tarantula_hawk"
+    }
+  ],
+  "tamed": true
+}

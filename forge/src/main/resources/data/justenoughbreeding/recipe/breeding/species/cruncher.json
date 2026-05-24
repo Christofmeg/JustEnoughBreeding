@@ -1,0 +1,26 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "species"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "species",
+  "input_entity": "species:cruncher",
+  "inputs": [
+    {
+      "tag": "species:cruncher_eats"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "species:cruncher_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "species:cruncher_spawn_egg"
+    }
+  ]
+}

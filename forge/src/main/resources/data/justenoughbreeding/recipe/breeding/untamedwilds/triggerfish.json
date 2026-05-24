@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "untamedwilds"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "untamedwilds",
+  "input_entity": "untamedwilds:triggerfish",
+  "inputs": [
+    {
+      "item": "untamedwilds:chum"
+    }
+  ]
+}

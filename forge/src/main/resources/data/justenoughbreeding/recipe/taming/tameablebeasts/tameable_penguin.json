@@ -1,0 +1,21 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tameablebeasts"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "tameablebeasts",
+  "input_entity": "tameablebeasts:tameable_penguin",
+  "inputs": [
+    {
+      "item": "tameablebeasts:frozen_fish"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "tameablebeasts:penguin_spawn_egg"
+    }
+  ]
+}

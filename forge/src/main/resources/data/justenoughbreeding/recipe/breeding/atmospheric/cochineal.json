@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "atmospheric"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "atmospheric",
+  "input_entity": "atmospheric:cochineal",
+  "inputs": [
+    {
+      "tag": "atmospheric:cochineal_food"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "untamedwilds"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "untamedwilds",
+  "input_entity": "untamedwilds:big_cat",
+  "inputs": [
+    {
+      "item": "minecraft:beef"
+    },
+    {
+      "item": "minecraft:porkchop"
+    },
+    {
+      "item": "minecraft:chicken"
+    },
+    {
+      "item": "minecraft:rabbit"
+    }
+  ]
+}

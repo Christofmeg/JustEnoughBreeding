@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "kiwiboi"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "kiwiboi",
+  "input_entity": "kiwiboi:kiwi",
+  "inputs": [
+    {
+      "item": "kiwiboi:kiwicake"
+    }
+  ]
+}

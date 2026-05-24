@@ -1,0 +1,21 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "spawn"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "spawn",
+  "input_entity": "spawn:snail",
+  "inputs": [
+    {
+      "tag": "spawn:snail_feeds"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "spawn:snail_spawn_egg"
+    }
+  ]
+}

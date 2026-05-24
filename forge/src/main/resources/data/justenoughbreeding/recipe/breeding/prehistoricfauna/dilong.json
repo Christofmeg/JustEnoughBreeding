@@ -1,0 +1,26 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "input_entity": "prehistoricfauna:dilong",
+  "inputs": [
+    {
+      "item": "prehistoricfauna:raw_small_theropod_meat"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:dilong_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:dilong_spawn_egg"
+    }
+  ]
+}

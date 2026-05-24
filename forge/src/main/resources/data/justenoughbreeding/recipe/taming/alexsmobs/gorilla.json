@@ -1,0 +1,21 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "alexsmobs"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "alexsmobs",
+  "input_entity": "alexscaves:gorilla",
+  "inputs": [
+    {
+      "tag": "alexsmobs:gorilla_tameables"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_gorilla"
+    }
+  ]
+}

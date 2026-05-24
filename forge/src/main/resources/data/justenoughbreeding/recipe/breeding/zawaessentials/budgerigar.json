@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "zawaessentials"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "zawaessentials",
+  "input_entity": "zawaessentials:budgerigar",
+  "inputs": [
+    {
+      "item": "minecraft:melon_seeds"
+    }
+  ]
+}

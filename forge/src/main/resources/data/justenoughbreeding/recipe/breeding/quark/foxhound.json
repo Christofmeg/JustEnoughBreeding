@@ -1,0 +1,17 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "quark"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "quark",
+  "input_entity": "quark:foxhound",
+  "inputs": [
+    {
+      "tag": "minecraft:meat"
+    }
+  ],
+  "tamed": true
+}

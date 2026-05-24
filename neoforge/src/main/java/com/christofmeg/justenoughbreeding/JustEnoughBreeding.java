@@ -19,8 +19,6 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class JustEnoughBreeding {
 
     //TODO update recipe generator to match new 1.21.1 format
-    //TODO fix output_entity mouseX rotation in transformation category
-    //TODO add support for /reload
 
     private static final DeferredRegister<RecipeSerializer<?>> RECIPES_SERIALIZERS = DeferredRegister.create(Registries.RECIPE_SERIALIZER, CommonConstants.MOD_ID);
     private static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(Registries.RECIPE_TYPE, CommonConstants.MOD_ID);
@@ -41,7 +39,7 @@ public class JustEnoughBreeding {
     public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<TransformationRecipe>> TRANSFORMATION_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("transformation", TransformationSerializer::new);
 
     public static final DeferredHolder<RecipeType<?>, RecipeType<TrustingRecipe>> TRUSTING_PROVIDER_TYPE = RECIPE_TYPES.register("trusting", () -> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "trusting")));
-    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<TrustingRecipe>>TRUSTING_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("trusting", TrustingSerializer::new);
+    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<TrustingRecipe>> TRUSTING_PROVIDER_SERIALIZER = RECIPES_SERIALIZERS.register("trusting", TrustingSerializer::new);
 
     public JustEnoughBreeding(IEventBus modBus) {
         RECIPES_SERIALIZERS.register(modBus);

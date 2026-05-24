@@ -1,0 +1,26 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "alexsmobs"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "input_entity": "alexsmobs:caiman",
+  "inputs": [
+    {
+      "tag": "alexsmobs:caiman_breedables"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "alexsmobs:caiman_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_caiman"
+    }
+  ]
+}

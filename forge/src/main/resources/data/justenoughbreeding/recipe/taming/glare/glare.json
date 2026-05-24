@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "glare"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "glare",
+  "input_entity": "glare:glare",
+  "inputs": [
+    {
+      "item": "minecraft:glow_berries"
+    }
+  ]
+}
