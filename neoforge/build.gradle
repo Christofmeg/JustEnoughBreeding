@@ -1,10 +1,10 @@
-//import net.darkhax.curseforgegradle.TaskPublishCurseForge
+import net.darkhax.curseforgegradle.TaskPublishCurseForge
 
 plugins {
     id 'multiloader-loader'
     id 'net.neoforged.gradle.userdev' version '7.1.26'
-//    id 'net.darkhax.curseforgegradle' version '1.1.+'
-//    id 'com.modrinth.minotaur' version '2.+'
+    id 'net.darkhax.curseforgegradle' version '1.1.+'
+    id 'com.modrinth.minotaur' version '2.+'
 }
 
 base {
@@ -73,7 +73,7 @@ dependencies {
         runtimeOnly "curse.maven:catalogue-459701:${catalogue_version}"
     }
 }
-/*
+
 tasks.register('publishCurseForge', TaskPublishCurseForge) {
     apiToken = file('../../API Tokens/justenoughbreeding.md')
     def projectId = "${cf_id}".toString()
@@ -277,4 +277,4 @@ modrinth {
         optional.project "yungs-cave-biomes"
         optional.project "ghost"
     }
-}*/
+}
