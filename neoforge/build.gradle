@@ -72,6 +72,10 @@ dependencies {
     if (project.hasProperty('catalogue_version')) {
         runtimeOnly "curse.maven:catalogue-459701:${catalogue_version}"
     }
+
+    runtimeOnly "curse.maven:companions-mod-1300341:7558671"
+    runtimeOnly "curse.maven:geckolib-388172:7707149"
+    runtimeOnly "curse.maven:knight-lib-1105855:6942154"
 }
 
 tasks.register('publishCurseForge', TaskPublishCurseForge) {

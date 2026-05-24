@@ -2,6 +2,7 @@ package com.christofmeg.justenoughbreeding.utils;
 
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
 public class CommonUtils {
@@ -12,6 +13,10 @@ public class CommonUtils {
 
     public static @NotNull Ingredient safe(Ingredient ing) {
         return ing == null ? Ingredient.EMPTY : ing;
+    }
+
+    public static @NotNull Ingredient safe(ItemLike itemLike) {
+        return itemLike == null ? Ingredient.EMPTY : Ingredient.of(itemLike);
     }
 
     public static Rect getRect(boolean input, int CATEGORY_WIDTH) {

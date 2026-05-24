@@ -13,22 +13,18 @@
     }
   ],
   "input_entity": "companions:teddy",
-  "input_entity_nbt": [
-    {
-      "Phase": 1
-    }
-  ],
+  "input_entity_nbt": {
+    "Phase": 1
+  },
   "input_spawn_eggs": [
     {
       "item": "companions:teddy_spawn_egg"
     }
   ],
   "output_entity": "companions:teddy",
-  "output_entity_nbt": [
-    {
-      "Phase": 2
-    }
-  ],
+  "output_entity_nbt": {
+    "Phase": 2
+  },
   "output_spawn_eggs": [
     {
       "item": "companions:teddy_spawn_egg"

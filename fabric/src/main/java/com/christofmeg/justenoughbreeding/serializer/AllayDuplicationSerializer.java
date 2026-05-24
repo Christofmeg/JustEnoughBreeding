@@ -39,7 +39,7 @@ public class AllayDuplicationSerializer implements RecipeSerializer<AllayDuplica
                     return new AllayDuplicationRecipe(
                             entityType,
                             CommonUtils.safe(inputs),
-                            spawn_eggs.orElse(CommonUtils.safe(Ingredient.of(JustEnoughBreeding.getSpawnEggItem(entityType)))),
+                            CommonUtils.safe(spawn_eggs.orElse(CommonUtils.safe(JustEnoughBreeding.getSpawnEggItem(entityType)))),
                             mod,
                             JustEnoughBreeding.getKeyLoaderRegistries(entityType).getNamespace(),
                             input_entity_nbt.orElse(null)
@@ -61,8 +61,8 @@ public class AllayDuplicationSerializer implements RecipeSerializer<AllayDuplica
                 CompoundTag inputEntityNbt = ByteBufCodecs.optional(ByteBufCodecs.COMPOUND_TAG).decode(buf).orElse(null);
                 return new AllayDuplicationRecipe(
                         JustEnoughBreeding.getEntityFromLoaderRegistries(entityRL),
-                        inputIngredient,
-                        spawnEggIngredient,
+                        CommonUtils.safe(inputIngredient),
+                        CommonUtils.safe(spawnEggIngredient),
                         modId,
                         entity,
                         inputEntityNbt

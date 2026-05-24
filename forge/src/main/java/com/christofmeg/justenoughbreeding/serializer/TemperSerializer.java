@@ -41,7 +41,7 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
                     return new TemperRecipe(
                             entityType,
                             CommonUtils.safe(inputs),
-                            spawn_eggs.orElse(CommonUtils.safe(Ingredient.of(JustEnoughBreeding.getSpawnEggItem(entityType)))),
+                            CommonUtils.safe(spawn_eggs.orElse(CommonUtils.safe(JustEnoughBreeding.getSpawnEggItem(entityType)))),
                             extra_inputs.orElse(Ingredient.EMPTY),
                             mod,
                             JustEnoughBreeding.getKeyLoaderRegistries(entityType).getNamespace(),
@@ -65,9 +65,9 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
                 CompoundTag inputEntityNbt = ByteBufCodecs.optional(ByteBufCodecs.COMPOUND_TAG).decode(buf).orElse(null);
                 return new TemperRecipe(
                         JustEnoughBreeding.getEntityFromLoaderRegistries(entityRL),
-                        inputIngredient,
-                        spawnEggIngredient,
-                        extraInputIngredient,
+                        CommonUtils.safe(inputIngredient),
+                        CommonUtils.safe(spawnEggIngredient),
+                        CommonUtils.safe(extraInputIngredient),
                         modId,
                         entity,
                         inputEntityNbt

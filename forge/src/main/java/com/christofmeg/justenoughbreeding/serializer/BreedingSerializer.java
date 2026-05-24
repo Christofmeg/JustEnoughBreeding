@@ -47,7 +47,7 @@ public class BreedingSerializer implements RecipeSerializer<BreedingRecipe> {
                     return new BreedingRecipe(
                             entityType,
                             CommonUtils.safe(inputs),
-                            spawn_eggs.orElse(CommonUtils.safe(Ingredient.of(JustEnoughBreeding.getSpawnEggItem(entityType)))),
+                            CommonUtils.safe(spawn_eggs.orElse(CommonUtils.safe(JustEnoughBreeding.getSpawnEggItem(entityType)))),
                             tamed.orElse(null),
                             outputs.orElse(Ingredient.EMPTY),
                             extra_inputs.orElse(Ingredient.EMPTY),
@@ -77,11 +77,11 @@ public class BreedingSerializer implements RecipeSerializer<BreedingRecipe> {
                 CompoundTag inputEntityNbt = ByteBufCodecs.optional(ByteBufCodecs.COMPOUND_TAG).decode(buf).orElse(null);
                 return new BreedingRecipe(
                         JustEnoughBreeding.getEntityFromLoaderRegistries(entityRL),
-                        inputIngredient,
-                        spawnEggIngredient,
+                        CommonUtils.safe(inputIngredient),
+                        CommonUtils.safe(spawnEggIngredient),
                         needsToBeTamed,
-                        outputIngredient,
-                        extraInputIngredient,
+                        CommonUtils.safe(outputIngredient),
+                        CommonUtils.safe(extraInputIngredient),
                         animalTrusting,
                         modId,
                         entity,

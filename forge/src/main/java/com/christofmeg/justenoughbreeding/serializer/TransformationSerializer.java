@@ -50,10 +50,10 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                     return new TransformationRecipe(
                             inputEntityType,
                             CommonUtils.safe(inputs),
-                            input_spawn_eggs.orElse(CommonUtils.safe(Ingredient.of(JustEnoughBreeding.getSpawnEggItem(inputEntityType)))),
+                            CommonUtils.safe(input_spawn_eggs.orElse(CommonUtils.safe(JustEnoughBreeding.getSpawnEggItem(inputEntityType)))),
                             extra_inputs.orElse(Ingredient.EMPTY),
                             outputEntityType,
-                            output_spawn_eggs.orElse(CommonUtils.safe(Ingredient.of(JustEnoughBreeding.getSpawnEggItem(outputEntityType)))),
+                            CommonUtils.safe(output_spawn_eggs.orElse(CommonUtils.safe(JustEnoughBreeding.getSpawnEggItem(outputEntityType)))),
                             mod,
                             JustEnoughBreeding.getKeyLoaderRegistries(inputEntityType).getNamespace(),
                             input_entity_nbt.orElse(null),
@@ -84,11 +84,11 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                 Boolean needsToBeTamed = ByteBufCodecs.optional(ByteBufCodecs.BOOL).decode(buf).orElse(null);
                 return new TransformationRecipe(
                         JustEnoughBreeding.getEntityFromLoaderRegistries(inputEntityRL),
-                        inputs,
-                        inputSpawnEggs,
-                        extraInputs,
+                        CommonUtils.safe(inputs),
+                        CommonUtils.safe(inputSpawnEggs),
+                        CommonUtils.safe(extraInputs),
                         JustEnoughBreeding.getEntityFromLoaderRegistries(outputEntityRL),
-                        outputSpawnEggs,
+                        CommonUtils.safe(outputSpawnEggs),
                         modId,
                         inputEntity,
                         inputEntityNbt,

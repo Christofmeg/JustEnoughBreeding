@@ -12,6 +12,7 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -55,7 +56,7 @@ public class JustEnoughBreeding {
     }
 
     public static SpawnEggItem getSpawnEggItem(EntityType<?> entityType) {
-        return SpawnEggItem.byId(entityType);
+        return DeferredSpawnEggItem.byId(entityType);
     }
 
     public static Boolean isModLoaded(String modID) {
