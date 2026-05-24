@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "alexsmobs"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "input_entity": "alexsmobs:terrapin",
+  "inputs": [
+    {
+      "tag": "alexsmobs:terrapin_breedables"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "alexsmobs:terrapin_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_terrapin"
+    }
+  ]
+}

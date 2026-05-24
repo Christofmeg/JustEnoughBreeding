@@ -1,0 +1,23 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "biodiverse"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "biodiverse",
+  "input_entity": "biodiverse:cheetah",
+  "inputs": [
+    {
+      "item": "minecraft:mutton"
+    },
+    {
+      "item": "minecraft:beef"
+    },
+    {
+      "item": "minecraft:chicken"
+    }
+  ],
+  "tamed": true
+}

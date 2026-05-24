@@ -1,0 +1,21 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["species"]
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "species",
+  "input_entity": "species:trooper",
+  "inputs": [
+    {
+      "item": "minecraft:bone_meal"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "species:trooper_spawn_egg"
+    }
+  ]
+}

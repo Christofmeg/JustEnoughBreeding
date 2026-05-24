@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "meadow"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "meadow",
+  "input_entity": "meadow:wooly_sheep",
+  "inputs": [
+    {
+      "item": "minecraft:wheat"
+    }
+  ]
+}

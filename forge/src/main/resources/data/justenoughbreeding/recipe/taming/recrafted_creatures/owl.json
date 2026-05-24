@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "recrafted_creatures"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "recrafted_creatures",
+  "input_entity": "recrafted_creatures:owl",
+  "inputs": [
+    {
+      "item": "minecraft:cooked_rabbit"
+    }
+  ]
+}

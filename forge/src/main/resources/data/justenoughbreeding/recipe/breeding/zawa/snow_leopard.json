@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "zawa"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "zawa",
+  "input_entity": "zawa:snow_leopard",
+  "inputs": [
+    {
+      "item": "zawa:mutton"
+    }
+  ]
+}

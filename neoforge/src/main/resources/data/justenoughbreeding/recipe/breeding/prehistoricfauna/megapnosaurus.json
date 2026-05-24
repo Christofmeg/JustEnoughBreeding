@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "input_entity": "prehistoricfauna:megapnosaurus",
+  "inputs": [
+    {
+      "item": "prehistoricfauna:raw_small_thyreophoran_meat"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:megapnosaurus_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:megapnosaurus_spawn_egg"
+    }
+  ]
+}

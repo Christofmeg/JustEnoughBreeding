@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "untamedwilds"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "untamedwilds",
+  "input_entity": "untamedwilds:giant_clam",
+  "inputs": [
+    {
+      "item": "untamedwilds:chum"
+    }
+  ]
+}

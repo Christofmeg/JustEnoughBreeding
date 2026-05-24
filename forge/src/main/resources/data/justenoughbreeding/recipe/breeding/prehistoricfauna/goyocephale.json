@@ -1,0 +1,26 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "input_entity": "prehistoricfauna:goyocephale",
+  "inputs": [
+    {
+      "item": "prehistoricfauna:ginkgo_berry"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:goyocephale_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:goyocephale_spawn_egg"
+    }
+  ]
+}

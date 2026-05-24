@@ -1,0 +1,28 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "wildernature"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "wildernature",
+  "input_entity": "wildernature:pelican",
+  "inputs": [
+    {
+      "item": "minecraft:cod"
+    },
+    {
+      "item": "minecraft:salmon"
+    },
+    {
+      "item": "minecraft:pufferfish"
+    },
+    {
+      "item": "minecraft:cooked_cod"
+    },
+    {
+      "item": "minecraft:cooked_salmon"
+    }
+  ]
+}

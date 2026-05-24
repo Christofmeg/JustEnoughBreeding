@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tameablebeasts"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "tameablebeasts",
+  "input_entity": "tameablebeasts:quetzalcoatlus",
+  "inputs": [
+    {
+      "tag": "tameablebeasts:quetzal_food"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "tameablebeasts:quetzalcoatlus_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "tameablebeasts:quetzal_spawn_egg"
+    }
+  ],
+  "tamed": true
+}

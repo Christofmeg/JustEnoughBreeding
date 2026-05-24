@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "buzzier_bees"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "buzzier_bees",
+  "input_entity": "buzzier_bees:moobloom",
+  "inputs": [
+    {
+      "item": "minecraft:wheat"
+    }
+  ]
+}

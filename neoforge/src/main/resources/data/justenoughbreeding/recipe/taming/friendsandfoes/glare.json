@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "friendsandfoes"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "friendsandfoes",
+  "input_entity": "friendsandfoes:glare",
+  "inputs": [
+    {
+      "item": "minecraft:glow_berries"
+    }
+  ]
+}

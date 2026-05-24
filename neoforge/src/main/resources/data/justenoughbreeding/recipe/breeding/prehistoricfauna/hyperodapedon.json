@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "input_entity": "prehistoricfauna:hyperodapedon",
+  "inputs": [
+    {
+      "item": "prehistoricfauna:scytophyllum"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:hyperodapedon_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:hyperodapedon_spawn_egg"
+    }
+  ]
+}

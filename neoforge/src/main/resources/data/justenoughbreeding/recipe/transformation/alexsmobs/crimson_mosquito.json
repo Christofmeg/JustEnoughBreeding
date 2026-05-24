@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "alexsmobs"
+    }
+  ],
+  "type": "justenoughbreeding:transformation",
+  "mod": "alexsmobs",
+  "inputs": [
+    {
+      "item": "minecraft:netherrack"
+    }
+  ],
+  "input_entity": "alexsmobs:fly",
+  "input_spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_fly"
+    }
+  ],
+  "output_entity": "alexsmobs:crimson_mosquito",
+  "output_spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_crimson_mosquito"
+    }
+  ]
+}

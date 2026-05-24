@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "zawa"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "zawa",
+  "input_entity": "zawa:tree_frog",
+  "inputs": [
+    {
+      "item": "zawa:insectivore_kibble"
+    }
+  ]
+}

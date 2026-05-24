@@ -1,0 +1,31 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "recrafted_creatures"
+    }
+  ],
+  "type": "justenoughbreeding:temper",
+  "mod": "recrafted_creatures",
+  "input_entity": "recrafted_creatures:zebra",
+  "inputs": [
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "minecraft:golden_carrot"
+    },
+    {
+      "item": "minecraft:golden_apple"
+    },
+    {
+      "item": "minecraft:enchanted_golden_apple"
+    }
+  ]
+}

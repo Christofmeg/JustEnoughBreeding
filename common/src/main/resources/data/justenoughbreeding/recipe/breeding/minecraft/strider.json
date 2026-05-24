@@ -1,0 +1,10 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "minecraft",
+  "input_entity": "minecraft:strider",
+  "inputs": [
+    {
+      "tag": "minecraft:strider_food"
+    }
+  ]
+}

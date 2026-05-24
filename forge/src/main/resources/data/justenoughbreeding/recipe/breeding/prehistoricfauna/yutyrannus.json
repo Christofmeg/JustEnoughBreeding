@@ -1,0 +1,26 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "input_entity": "prehistoricfauna:yutyrannus",
+  "inputs": [
+    {
+      "item": "prehistoricfauna:raw_large_sauropod_meat"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:yutyrannus_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:yutyrannus_spawn_egg"
+    }
+  ]
+}

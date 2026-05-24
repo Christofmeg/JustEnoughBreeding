@@ -1,0 +1,21 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "sophisticated_wolves"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "sophisticated_wolves",
+  "input_entity": "sophisticated_wolves:sophisticated_wolf",
+  "inputs": [
+    {
+      "item": "minecraft:bone"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "sophisticated_wolves:dog_egg"
+    }
+  ]
+}

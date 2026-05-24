@@ -1,0 +1,48 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["chococraft"]
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "chococraft",
+  "input_entity": "chococraft:chocobo",
+  "inputs": [
+    {
+      "item": "chococraft:loverly_gysahl_green"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "chococraft:black_chocobo_spawn_egg"
+    },
+    {
+      "item": "chococraft:blue_chocobo_spawn_egg"
+    },
+    {
+      "item": "chococraft:flame_chocobo_spawn_egg"
+    },
+    {
+      "item": "chococraft:green_chocobo_spawn_egg"
+    },
+    {
+      "item": "chococraft:gold_chocobo_spawn_egg"
+    },
+    {
+      "item": "chococraft:pink_chocobo_spawn_egg"
+    },
+    {
+      "item": "chococraft:purple_chocobo_spawn_egg"
+    },
+    {
+      "item": "chococraft:red_chocobo_spawn_egg"
+    },
+    {
+      "item": "chococraft:white_chocobo_spawn_egg"
+    },
+    {
+      "item": "chococraft:yellow_chocobo_spawn_egg"
+    }
+  ]
+}

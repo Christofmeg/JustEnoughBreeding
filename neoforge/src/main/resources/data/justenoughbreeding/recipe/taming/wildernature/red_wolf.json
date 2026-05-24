@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "wildernature"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "wildernature",
+  "input_entity": "wildernature:red_wolf",
+  "inputs": [
+    {
+      "meat": "minecraft:bone"
+    }
+  ]
+}

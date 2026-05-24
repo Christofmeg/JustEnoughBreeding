@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "zawa"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "zawa",
+  "input_entity": "zawa:african_wild_dog",
+  "inputs": [
+    {
+      "item": "zawa:large_meat"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "aquaculture"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "aquaculture",
+  "input_entity": "aquaculture:box_turtle",
+  "inputs": [
+    {
+      "tag": "aquaculture:turtle_edible"
+    }
+  ]
+}

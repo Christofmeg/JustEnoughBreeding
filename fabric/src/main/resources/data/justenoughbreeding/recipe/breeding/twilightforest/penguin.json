@@ -1,0 +1,16 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["twilightforest"]
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "twilightforest",
+  "input_entity": "twilightforest:penguin",
+  "inputs": [
+    {
+      "item": "minecraft:cod"
+    }
+  ]
+}

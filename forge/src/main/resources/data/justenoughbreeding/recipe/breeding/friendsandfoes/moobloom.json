@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "friendsandfoes"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "friendsandfoes",
+  "input_entity": "friendsandfoes:moobloom",
+  "inputs": [
+    {
+      "item": "minecraft:wheat"
+    }
+  ]
+}

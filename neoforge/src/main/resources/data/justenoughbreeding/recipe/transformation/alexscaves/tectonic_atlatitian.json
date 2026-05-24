@@ -1,0 +1,30 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "alexscaves"
+    }
+  ],
+  "type": "justenoughbreeding:transformation",
+  "mod": "alexscaves",
+  "inputs": [
+    {
+      "item": "alexscaves:tectonic_shard"
+    }
+  ],
+  "input_entity": "alexscaves:atlatitan",
+  "input_spawn_eggs": [
+    {
+      "item": "alexscaves:spawn_egg_atlatitan"
+    }
+  ],
+  "output_entity": "alexscaves:atlatitan",
+  "output_entity_nbt": {
+    "AltSkin": 2
+  },
+  "output_spawn_eggs": [
+    {
+      "item": "alexscaves:spawn_egg_atlatitan"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "lilcritters"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "lilcritters",
+  "input_entity": "lilcritters:banded_penguin",
+  "inputs": [
+    {
+    "item": "zawa:corydoras"
+    }
+  ]
+}

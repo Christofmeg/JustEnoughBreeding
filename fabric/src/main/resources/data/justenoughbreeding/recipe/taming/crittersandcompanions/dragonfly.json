@@ -1,0 +1,16 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["crittersandcompanions"]
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "crittersandcompanions",
+  "input_entity": "crittersandcompanions:dragonfly",
+  "inputs": [
+    {
+      "item": "minecraft:spider_eye"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "creaturecraft"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "creaturecraft",
+  "input_entity": "creaturecraft:sable_antelope",
+  "inputs": [
+    {
+      "item": "creaturecraft:buff_grass"
+    },
+    {
+      "item": "creaturecraft:sav_grass_short"
+    },
+    {
+      "item": "creaturecraft:sav_grass_tall"
+    }
+  ],
+  "tamed": true
+}

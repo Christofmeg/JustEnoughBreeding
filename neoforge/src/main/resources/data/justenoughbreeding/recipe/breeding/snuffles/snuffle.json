@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "snuffles"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "snuffles",
+  "input_entity": "snuffles:snuffle",
+  "inputs": [
+    {
+      "item": "minecraft:baked_potato"
+    },
+    {
+      "item": "minecraft:potato"
+    }
+  ]
+}

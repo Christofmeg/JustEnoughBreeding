@@ -1,0 +1,19 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "koopascritters"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "koopascritters",
+  "input_entity": "koopascritters:cape_buffalo",
+  "inputs": [
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:wheat_seeds"
+    }
+  ]
+}

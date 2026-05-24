@@ -1,0 +1,31 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "alexsmobs"
+    }
+  ],
+  "type": "justenoughbreeding:transformation",
+  "mod": "alexsmobs",
+  "inputs": [
+    {
+      "item": "alexsmobs:spawn_egg_mungus"
+    },
+    {
+      "item": "minecraft:warped_fungus"
+    }
+  ],
+  "input_entity": "alexsmobs:crimson_mosquito",
+  "input_spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_crimson_mosquito"
+    }
+  ],
+  "output_entity": "alexsmobs:warped_mosco",
+  "output_entity_nbt": [],
+  "output_spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_warped_mosco"
+    }
+  ]
+}

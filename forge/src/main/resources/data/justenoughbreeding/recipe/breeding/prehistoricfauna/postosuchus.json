@@ -1,0 +1,26 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "input_entity": "prehistoricfauna:postosuchus",
+  "inputs": [
+    {
+      "item": "prehistoricfauna:raw_large_archosauromorph_meat"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:postosuchus_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:postosuchus_spawn_egg"
+    }
+  ]
+}

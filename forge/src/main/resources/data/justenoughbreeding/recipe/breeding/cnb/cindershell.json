@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cnb"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "cnb",
+  "input_entity": "cnb:cindershell",
+  "inputs": [
+    {
+      "tag": "cnb:cindershell_food"
+    }
+  ]
+}

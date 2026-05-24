@@ -1,0 +1,17 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "biomemakeover"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "biomemakeover",
+  "input_entity": "biomemakeover:owl",
+  "inputs": [
+    {
+      "meat": "true"
+    }
+  ],
+  "tamed": true
+}

@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tameablebeasts"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "tameablebeasts",
+  "input_entity": "tameablebeasts:crested_gecko",
+  "inputs": [
+    {
+      "tag": "tameablebeasts:crested_gecko_food"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "tameablebeasts:crested_gecko_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "tameablebeasts:crested_gecko_spawn_egg"
+    }
+  ],
+  "tamed": true
+}

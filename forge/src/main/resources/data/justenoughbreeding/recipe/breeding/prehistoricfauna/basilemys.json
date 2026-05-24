@@ -1,0 +1,26 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "input_entity": "prehistoricfauna:basilemys",
+  "inputs": [
+    {
+      "item": "prehistoricfauna:horsetail"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:basilemys_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:basilemys_spawn_egg"
+    }
+  ]
+}

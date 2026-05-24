@@ -1,0 +1,31 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "koopascritters"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "koopascritters",
+  "input_entity": "koopascritters:gentoo_penguin",
+  "inputs": [
+    {
+      "item": "minecraft:cod"
+    },
+    {
+      "item": "minecraft:salmon"
+    },
+    {
+      "item": "minecraft:tropical_fish"
+    },
+    {
+      "item": "minecraft:pufferfish"
+    },
+    {
+      "item": "minecraft:cooked_cod"
+    },
+    {
+      "item": "minecraft:cooked_salmon"
+    }
+  ]
+}

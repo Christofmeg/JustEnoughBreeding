@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "companions"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "companions",
+  "input_entity": "companions:teddy",
+  "input_entity_nbt": [
+    {
+      "Phase": 2
+    }
+  ],
+  "inputs": [
+    {
+      "item": "companions:needle"
+    }
+  ]
+}

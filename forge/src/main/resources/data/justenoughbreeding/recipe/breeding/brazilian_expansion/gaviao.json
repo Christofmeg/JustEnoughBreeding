@@ -1,0 +1,21 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "brazilian_expansion"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "brazilian_expansion",
+  "input_entity": "brazilian_expansion:gaviao",
+  "inputs": [
+    {
+      "tag": "brazilian_expansion:food_gaviao"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "brazilian_expansion:gaviao_de_penacho_spawn_egg"
+    }
+  ]
+}

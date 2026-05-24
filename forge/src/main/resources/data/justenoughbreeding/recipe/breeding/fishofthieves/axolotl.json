@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "fishofthieves"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "fishofthieves",
+  "input_entity": "minecraft:axolotl",
+  "inputs": [
+    {
+      "tag": "fishofthieves:worms"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["wildernature"]
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "wildernature",
+  "input_entity": "wildernature:minisheep",
+  "inputs": [
+    {
+      "item": "minecraft:wheat"
+    }
+  ]
+}

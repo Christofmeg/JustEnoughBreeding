@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "windswept"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "windswept",
+  "input_entity": "windswept:frostbiter",
+  "inputs": [
+    {
+      "item": "windswept:holly_berries"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "windswept:frostbiter_spawn_egg"
+    }
+  ],
+  "tamed": true
+}

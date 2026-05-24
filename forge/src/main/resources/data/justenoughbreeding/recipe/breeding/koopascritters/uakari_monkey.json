@@ -1,0 +1,19 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "koopascritters"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "koopascritters",
+  "input_entity": "koopascritters:uakari_monkey",
+  "inputs": [
+    {
+      "item": "koopascritters:fig_kc"
+    },
+    {
+      "item": "minecraft:melon_slice"
+    }
+  ]
+}

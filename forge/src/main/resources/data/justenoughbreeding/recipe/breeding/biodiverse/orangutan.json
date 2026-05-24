@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "biodiverse"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "biodiverse",
+  "input_entity": "biodiverse:orangutan",
+  "inputs": [
+    {
+      "item": "minecraft:melon_slice"
+    }
+  ]
+}

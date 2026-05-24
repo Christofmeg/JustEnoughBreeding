@@ -1,0 +1,26 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "input_entity": "prehistoricfauna:psittacosaurus",
+  "inputs": [
+    {
+      "item": "prehistoricfauna:leefructus"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:psittacosaurus_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:psittacosaurus_spawn_egg"
+    }
+  ]
+}

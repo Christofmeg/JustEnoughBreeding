@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "endergetic"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "endergetic",
+  "input_entity": "endergetic:booflo",
+  "inputs": [
+    {
+      "item": "endergetic:bolloom_fruit"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "endergetic:booflo_spawn_egg"
+    }
+  ]
+}

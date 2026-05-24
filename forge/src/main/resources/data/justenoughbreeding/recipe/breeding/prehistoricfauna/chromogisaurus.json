@@ -1,0 +1,26 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "input_entity": "prehistoricfauna:chromogisaurus",
+  "inputs": [
+    {
+      "item": "prehistoricfauna:johnstonia"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:chromogisaurus_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:chromogisaurus_spawn_egg"
+    }
+  ]
+}

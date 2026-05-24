@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "more_critters"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "more_critters",
+  "input_entity": "more_critters:bunbug",
+  "inputs": [
+    {
+      "item": "minecraft:dead_bush"
+    }
+  ]
+}

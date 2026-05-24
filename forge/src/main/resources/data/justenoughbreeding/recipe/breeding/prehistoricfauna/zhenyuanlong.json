@@ -1,0 +1,26 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "input_entity": "prehistoricfauna:zhenyuanlong",
+  "inputs": [
+    {
+      "item": "prehistoricfauna:raw_small_theropod_meat"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:zhenyuanlong_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:zhenyuanlong_spawn_egg"
+    }
+  ]
+}

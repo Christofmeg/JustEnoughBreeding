@@ -1,0 +1,30 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["creeperoverhaul"]
+    }
+  ],
+  "type": "justenoughbreeding:transformation",
+  "mod": "creeperoverhaul",
+  "inputs": [
+    {
+      "item": "minecraft:shears"
+    }
+  ],
+  "input_entity": "creeperoverhaul:desert_creeper",
+  "input_spawn_eggs": [
+    {
+      "item": "creeperoverhaul:desert_creeper_spawn_egg"
+    }
+  ],
+  "output_entity": "creeperoverhaul:desert_creeper",
+  "output_entity_nbt": {
+    "Sheared": 1
+  },
+  "output_spawn_eggs": [
+    {
+      "item": "creeperoverhaul:desert_creeper_spawn_egg"
+    }
+  ]
+}

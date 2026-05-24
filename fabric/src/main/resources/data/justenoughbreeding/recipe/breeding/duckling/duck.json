@@ -1,0 +1,16 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["duckling"]
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "duckling",
+  "input_entity": "duckling:duck",
+  "inputs": [
+    {
+      "item": "minecraft:bread"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "input_entity": "prehistoricfauna:brachychampsa",
+  "inputs": [
+    {
+      "item": "prehistoricfauna:crassostrea_oyster"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:brachychampsa_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:brachychampsa_spawn_egg"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "alexscaves"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexscaves",
+  "input_entity": "alexscaves:relicheirus",
+  "inputs": [
+    {
+      "item": "alexscaves:tree_star"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "alexscaves:relicheirus_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexscaves:spawn_egg_relicheirus"
+    }
+  ]
+}

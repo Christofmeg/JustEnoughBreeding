@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "blue_skies"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "blue_skies",
+  "input_entity": "blue_skies:reindeer",
+  "inputs": [
+    {
+      "item": "blue_skies:pine_fruit"
+    }
+  ],
+  "tamed": true
+}

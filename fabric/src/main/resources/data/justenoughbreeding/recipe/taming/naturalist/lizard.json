@@ -1,0 +1,16 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["naturalist"]
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "naturalist",
+  "input_entity": "naturalist:lizard",
+  "inputs": [
+    {
+      "tag": "naturalist:lizard_tempt_items"
+    }
+  ]
+}

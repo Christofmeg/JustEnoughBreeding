@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "crittersandcompanions"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "crittersandcompanions",
+  "input_entity": "crittersandcompanions:red_panda",
+  "inputs": [
+    {
+      "item": "minecraft:sweet_berries"
+    }
+  ]
+}

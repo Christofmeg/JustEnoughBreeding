@@ -1,0 +1,21 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "species"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "species",
+  "input_entity": "species:wraptor",
+  "inputs": [
+    {
+      "item": "minecraft:shroomlight"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "species:wraptor_spawn_egg"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "minecraft",
+  "input_entity": "minecraft:frog",
+  "inputs": [
+    {
+      "tag": "minecraft:frog_food"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "minecraft:frogspawn"
+    }
+  ]
+}

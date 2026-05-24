@@ -1,0 +1,28 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "more_critters"
+    }
+  ],
+  "type": "justenoughbreeding:transformation",
+  "mod": "more_critters",
+  "inputs": [
+    {
+      "item": "more_critters:death_stew"
+    }
+  ],
+  "input_entity": "more_critters:mightshroom",
+  "input_spawn_eggs": [
+    {
+      "item": "more_critters:mightshroom_spawn_egg"
+    }
+  ],
+  "output_entity": "more_critters:frightshroom",
+  "output_entity_nbt": [],
+  "output_spawn_eggs": [
+    {
+      "item": "more_critters:frightshroom_spawn_egg"
+    }
+  ]
+}

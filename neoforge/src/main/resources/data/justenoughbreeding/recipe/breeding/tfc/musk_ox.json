@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tfc"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "tfc",
+  "input_entity": "tfc:musk_ox",
+  "inputs": [
+    {
+      "tag": "tfc:musk_ox_food"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "tfc:spawn_egg/musk_ox"
+    }
+  ]
+}

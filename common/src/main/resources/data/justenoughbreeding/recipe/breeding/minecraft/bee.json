@@ -1,0 +1,10 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "minecraft",
+  "input_entity": "minecraft:bee",
+  "inputs": [
+    {
+      "tag": "minecraft:bee_food"
+    }
+  ]
+}

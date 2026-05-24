@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "nethers_exoticism"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "nethers_exoticism",
+  "input_entity": "nethers_exoticism:moloch",
+  "inputs": [
+    {
+      "item": "nethers_exoticism:kiwano"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "nethers_exoticism:moloch_spawn_egg"
+    }
+  ]
+}

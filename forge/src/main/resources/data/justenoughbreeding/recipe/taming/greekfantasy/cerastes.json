@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "greekfantasy"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "greekfantasy",
+  "input_entity": "greekfantasy:cerastes",
+  "inputs": [
+    {
+      "tag": "greekfantasy:cerastes_food"
+    }
+  ]
+}

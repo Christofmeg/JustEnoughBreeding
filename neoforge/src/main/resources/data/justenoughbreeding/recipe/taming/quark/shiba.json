@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "quark"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "quark",
+  "input_entity": "quark:shiba",
+  "inputs": [
+    {
+      "item": "minecraft:bone"
+    }
+  ]
+}

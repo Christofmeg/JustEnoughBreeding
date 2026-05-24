@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cnc"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "cnc",
+  "input_entity": "cnc:beaver",
+  "inputs": [
+    {
+      "item": "minecraft:apple"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["lilwings"]
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "lilwings",
+  "input_entity": "lilwings:red_applefly",
+  "inputs": [
+    {
+      "item": "minecraft:apple"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "lilwings:red_applefly_egg"
+    }
+  ]
+}

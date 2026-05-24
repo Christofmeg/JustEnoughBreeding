@@ -1,0 +1,21 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "steves_vanilla"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "steves_vanilla",
+  "input_entity": "steves_vanilla:chest_toad",
+  "inputs": [
+    {
+      "item": "minecraft:slime_ball"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "steves_vanilla:chest_toad_eggs"
+    }
+  ]
+}

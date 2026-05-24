@@ -1,0 +1,30 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["species"]
+    }
+  ],
+  "type": "justenoughbreeding:transformation",
+  "mod": "species",
+  "inputs": [
+    {
+        "item": "minecraft:shears"
+    }
+  ],
+  "input_entity": "species:wraptor",
+  "input_spawn_eggs": [
+    {
+        "item": "species:wraptor_spawn_egg"
+    }
+  ],
+  "output_entity": "species:wraptor",
+  "output_entity_nbt": {
+    "FeatherStage": 0
+  },
+  "output_spawn_eggs": [
+    {
+        "item": "species:wraptor_spawn_egg"
+    }
+  ]
+}

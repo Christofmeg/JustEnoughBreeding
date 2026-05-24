@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "aether"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "aether",
+  "input_entity": "aether:flying_cow",
+  "inputs": [
+    {
+      "tag": "aether:flying_cow_temptation_items"
+    }
+  ]
+}

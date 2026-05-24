@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "neapolitan"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "neapolitan",
+  "input_entity": "neapolitan:chimpanzee",
+  "inputs": [
+    {
+      "tag": "neapolitan:chimpanzee_food"
+    }
+  ]
+}

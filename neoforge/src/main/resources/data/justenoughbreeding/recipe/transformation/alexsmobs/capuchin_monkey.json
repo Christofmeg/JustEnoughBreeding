@@ -1,0 +1,30 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "alexsmobs"
+    }
+  ],
+  "type": "justenoughbreeding:transformation",
+  "mod": "alexsmobs",
+  "inputs": [
+    {
+      "item": "alexsmobs:ancient_dart"
+    }
+  ],
+  "input_entity": "alexsmobs:capuchin_monkey",
+  "input_spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_capuchin_monkey"
+    }
+  ],
+  "output_entity": "alexsmobs:capuchin_monkey",
+  "output_entity_nbt": {
+    "HasDart": 1
+  },
+  "output_spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_capuchin_monkey"
+    }
+  ]
+}

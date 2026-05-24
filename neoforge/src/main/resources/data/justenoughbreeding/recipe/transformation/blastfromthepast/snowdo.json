@@ -1,0 +1,30 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "blastfromthepast"
+    }
+  ],
+  "type": "justenoughbreeding:transformation",
+  "mod": "blastfromthepast",
+  "inputs": [
+    {
+      "item": "minecraft:shears"
+    }
+  ],
+  "input_entity": "blastfromthepast:snowdo",
+  "input_spawn_eggs": [
+    {
+      "item": "blastfromthepast:snowdo_spawn_egg"
+    }
+  ],
+  "output_entity": "blastfromthepast:snowdo",
+  "output_entity_nbt": {
+    "sheared": 1
+  },
+  "output_spawn_eggs": [
+    {
+      "item": "blastfromthepast:snowdo_spawn_egg"
+    }
+  ]
+}

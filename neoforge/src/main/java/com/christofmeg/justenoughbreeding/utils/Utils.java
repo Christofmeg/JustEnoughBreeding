@@ -1,164 +1,129 @@
 package com.christofmeg.justenoughbreeding.utils;
 
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
-import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
+import com.christofmeg.justenoughbreeding.config.MobOffset;
+import com.christofmeg.justenoughbreeding.config.MobOffsetManager;
+import com.christofmeg.justenoughbreeding.recipe.*;
+import com.mojang.blaze3d.platform.Window;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.inventory.InventoryScreen;
+import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.animal.*;
-import net.minecraft.world.entity.animal.axolotl.Axolotl;
-import net.minecraft.world.entity.animal.frog.Frog;
-import net.minecraft.world.entity.animal.horse.Horse;
-import net.minecraft.world.entity.animal.sniffer.Sniffer;
-import net.minecraft.world.entity.monster.hoglin.Hoglin;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.phys.AABB;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import net.minecraft.world.item.crafting.Recipe;
+import org.joml.Matrix4f;
 import org.joml.Quaternionf;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
 
 public class Utils {
 
-    public static List<Ingredient> createCombinedResultIngredients(String mobIngredients, int minCount, int maxCount) {
-        String[] ingredientIds = mobIngredients.split(",");
-        List<Ingredient> resultIngredients = new ArrayList<>();
-
-        List<ItemStack> combinedItemStacks = new ArrayList<>();
-        for (int count = minCount; count <= maxCount; count++) {
-            for (String ingredientId : ingredientIds) {
-                Item ingredientItem = JustEnoughBreeding.getItemFromLoaderRegistries(ResourceLocation.parse(ingredientId.trim()));
-                combinedItemStacks.add(new ItemStack(ingredientItem, count));
-            }
-        }
-
-        resultIngredients.add(Ingredient.of(combinedItemStacks.toArray(new ItemStack[0])));
-        return resultIngredients;
-    }
-
-    public static BreedingRecipe createBreedingRecipe(EntityType<?> entityType, Ingredient combinedIngredient, Item spawnEggItem, Boolean needsToBeTamed, List<Ingredient> resultItemStacks, Boolean animalTrusting, @Nullable Ingredient combinedExtraIngredient) {
-        List<ItemStack> mergedResultItemStacks = new ArrayList<>();
-
-        for (Ingredient resultItemStack : resultItemStacks) {
-            ItemStack[] stacks = resultItemStack.getItems();
-            mergedResultItemStacks.addAll(Arrays.asList(stacks));
-        }
-
-        return new BreedingRecipe(
-                entityType,
-                combinedIngredient,
-                new ItemStack(spawnEggItem),
-                needsToBeTamed,
-                Ingredient.of(mergedResultItemStacks.toArray(new ItemStack[0])),
-                combinedExtraIngredient,
-                animalTrusting
-        );
-    }
-
-    public static Ingredient createCombinedIngredient(String mobIngredients) {
-        String[] ingredientIds = mobIngredients.split(",");
-        List<Ingredient> combinedIngredients = new ArrayList<>();
-
-        for (String ingredientId : ingredientIds) {
-            if (ingredientId.trim().startsWith("#")) {
-                combinedIngredients.add(CommonUtils.createTagIngredient(ingredientId));
+    public static LivingEntity getLivingEntity(LivingEntity currentLivingEntity, boolean input, Recipe<?> recipe) {
+        if (currentLivingEntity != null) {
+            if (input) {
+                if (recipe instanceof TransformationRecipe transformationRecipe) {
+                    if (transformationRecipe.inputEntityNbt() != null) {
+                        currentLivingEntity.load(transformationRecipe.inputEntityNbt());
+                    }
+                }
+                if (recipe instanceof AllayDuplicationRecipe allayDuplicationRecipe) {
+                    if (allayDuplicationRecipe.inputEntityNbt() != null) {
+                        currentLivingEntity.load(allayDuplicationRecipe.inputEntityNbt());
+                    }
+                }
+                if (recipe instanceof BreedingRecipe breedingRecipe) {
+                    if (breedingRecipe.inputEntityNbt() != null) {
+                        currentLivingEntity.load(breedingRecipe.inputEntityNbt());
+                    }
+                }
+                if (recipe instanceof TamingRecipe tamingRecipe) {
+                    if (tamingRecipe.inputEntityNbt() != null) {
+                        currentLivingEntity.load(tamingRecipe.inputEntityNbt());
+                    }
+                }
+                if (recipe instanceof TemperRecipe temperRecipe) {
+                    if (temperRecipe.inputEntityNbt() != null) {
+                        currentLivingEntity.load(temperRecipe.inputEntityNbt());
+                    }
+                }
+                if (recipe instanceof TrustingRecipe trustingRecipe) {
+                    if (trustingRecipe.inputEntityNbt() != null) {
+                        currentLivingEntity.load(trustingRecipe.inputEntityNbt());
+                    }
+                }
             } else {
-                Item ingredientItem = JustEnoughBreeding.getItemFromLoaderRegistries(ResourceLocation.parse(ingredientId.trim()));
-                combinedIngredients.add(Ingredient.of(new ItemStack(ingredientItem)));
+                if (recipe instanceof TransformationRecipe transformationRecipe) {
+                    if (transformationRecipe.outputEntityNbt() != null) {
+                        currentLivingEntity.load(transformationRecipe.outputEntityNbt());
+                    }
+                }
             }
         }
-
-        return Ingredient.of(Arrays.stream(combinedIngredients.toArray(Ingredient[]::new))
-                .flatMap(ingredient -> Arrays.stream(ingredient.getItems()))
-                .distinct()
-                .toArray(ItemStack[]::new));
+        return currentLivingEntity;
     }
-    public static void renderEntity(@NotNull PoseStack stack, double mouseX, LivingEntity currentLivingEntity) {
-        // Set the desired position of the entity on the screen
-        int entityPosX = 31;
-        int entityPosY = 89;
-        int ENTITY_RENDER_DISTANCE = 15728880;
 
-        float yaw = (float) (60 - mouseX); // Calculate the yaw based on the mouse position
+    public static void renderEntityInInventoryFollowsMouse(GuiGraphics guiGraphics, float mouseX, LivingEntity entity, Rect bounds, EntityType<?> entityType) {
+        guiGraphics.pose().pushPose();
+        Minecraft minecraft = Minecraft.getInstance();
+        Window window = minecraft.getWindow();
+        PoseStack poseStack = guiGraphics.pose();
 
-        stack.pushPose(); // Push the current pose onto the stack
-        stack.translate((float) entityPosX, (float) entityPosY, 50f); // Translate the entity's position
+        Matrix4f modelViewMatrix = new Matrix4f(poseStack.last().pose());
+        Matrix4f projectionMatrix = new Matrix4f(RenderSystem.getProjectionMatrix());
+        Matrix4f mvpMatrix = projectionMatrix.mul(modelViewMatrix);
+        Vector4f topLeftWorld = new Vector4f(0, 0, 0, 1);
+        Vector4f topLeftClip = mvpMatrix.transform(topLeftWorld);
+        Vector4f topLeftNDC = new Vector4f(topLeftClip.x / topLeftClip.w, topLeftClip.y / topLeftClip.w, 0, 1);
 
-        // Calculate the scaling factor based on the bounding box's largest dimension
-        AABB boundingBox = currentLivingEntity.getBoundingBox();
-        double largestDimension = Math.max(boundingBox.getXsize(), Math.max(boundingBox.getYsize(), boundingBox.getZsize()));
+        int screenX = Math.round((topLeftNDC.x + 1) / 2f * window.getGuiScaledWidth());
+        int screenY = Math.round((1 - topLeftNDC.y) / 2f * window.getGuiScaledHeight());
 
-        float desiredWidth = 30.0F;
-        float desiredHeight = 40.0F;
+        EntityDimensions dimensions = entity.getType().getDimensions();
+        int scale = (int) (Math.min(50 / dimensions.height(), 50 / dimensions.width()));
 
-        // Calculate the scaling factors for width and height
-        float scaleX = desiredWidth / (float) largestDimension;
-        float scaleY = desiredHeight / (float) largestDimension;
+        float yaw = 60 - mouseX;
+        float yawRadians = -(yaw / 40.F) * 20.0F;
 
-        // Use the smaller of the two scaling factors to ensure the entity fits within the area
-        float scalingFactor = Math.min(scaleX, scaleY);
+        guiGraphics.enableScissor(screenX + bounds.x() + 1, screenY + bounds.y() + 1, screenX + bounds.right() - 1, screenY + bounds.bottom() - 1);
+    //            guiGraphics.fill(-guiGraphics.guiWidth(), -guiGraphics.guiHeight(<), guiGraphics.guiWidth(), guiGraphics.guiHeight(), -15536);
+        MobOffset mobOffset = MobOffsetManager.get(JustEnoughBreeding.getKeyLoaderRegistries(entityType));
+        renderEntityInInventoryFollowsMouse(guiGraphics, //left, top, right, bottom
+                bounds.x(), bounds.y() + 15, (int) (bounds.right() + mobOffset.x()), (int) (bounds.bottom() + mobOffset.y()),
+                scale + (int) mobOffset.scale(),
+                0, -yawRadians, entity);
+        guiGraphics.disableScissor();
+        guiGraphics.pose().popPose();
+    }
 
-        if (currentLivingEntity instanceof Frog) {
-            scalingFactor = 50;
-        }
+    public static void renderEntityInInventoryFollowsMouse(GuiGraphics guiGraphics, int x1, int y1, int x2, int y2, int scale, float yOffset, float mouseX, LivingEntity entity) {
+        float f = (float)(x1 + x2) / 2.0F;
+        float f2 = (float)Math.atan((f - mouseX) / 40.0F);
+        renderEntityInInventoryFollowsAngle(guiGraphics, x1, y1, x2, y2, scale, yOffset, f2, entity);
+    }
 
-        if (currentLivingEntity instanceof Axolotl || currentLivingEntity instanceof Cat ||
-                currentLivingEntity instanceof Pig || currentLivingEntity instanceof Wolf) {
-            scalingFactor = 25;
-        }
-
-        if (currentLivingEntity instanceof Ocelot || currentLivingEntity instanceof Fox
-                || currentLivingEntity instanceof Turtle) {
-            scalingFactor = 20;
-        }
-
-        if (currentLivingEntity instanceof Hoglin || currentLivingEntity instanceof Horse
-                || currentLivingEntity instanceof Panda) {
-            scalingFactor = 15;
-        }
-
-        if (currentLivingEntity instanceof Sniffer) {
-            scalingFactor = 10;
-        }
-
-        stack.scale(scalingFactor, scalingFactor, scalingFactor); // Scale the entity to fit within the desired area
-        stack.mulPose(Axis.ZP.rotationDegrees(180.0F)); // Rotate the entity to face a certain direction
-
-        float yawRadians = -(yaw / 40.F) * 20.0F; // Calculate the yaw angle in radians for the entity's rotation
-
-        // Apply the calculated yaw angle to the entity's rotation properties
-        currentLivingEntity.yBodyRot = yawRadians;
-        currentLivingEntity.setYRot(yawRadians);
-        currentLivingEntity.yHeadRot = yawRadians;
-        currentLivingEntity.yHeadRotO = yawRadians;
-
-//        stack.translate(0.0F, currentLivingEntity.getMyRidingOffset(currentLivingEntity), 0.0F); // Translate the entity vertically to adjust its position
-
-        Minecraft instance = Minecraft.getInstance();
-        EntityRenderDispatcher entityRenderDispatcher = instance.getEntityRenderDispatcher(); // Get the entity rendering dispatcher
-        entityRenderDispatcher.overrideCameraOrientation(new Quaternionf(0.0F, 0.0F, 0.0F, 1.0F)); // Override the camera orientation for rendering
-        entityRenderDispatcher.setRenderShadow(false); // Disable rendering shadows for the entity
-
-        // Get the buffer source for rendering
-        final MultiBufferSource.BufferSource bufferSource = instance.renderBuffers().bufferSource();
-
-        // Render the currentLivingEntity using the entityRenderDispatcher
-        entityRenderDispatcher.render(currentLivingEntity, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, stack, bufferSource, ENTITY_RENDER_DISTANCE);
-
-        bufferSource.endBatch(); // End the rendering batch
-        entityRenderDispatcher.setRenderShadow(true); // Re-enable rendering shadows
-
-        stack.popPose(); // Pop the pose from the stack to revert transformations
+    public static void renderEntityInInventoryFollowsAngle(GuiGraphics guiGraphics, int x1, int y1, int x2, int y2, int scale, float yOffset, float angleXComponent, LivingEntity livingEntity) {
+        float f = (float)(x1 + x2) / 2.0F;
+        float f1 = (float)(y1 + y2) / 2.0F;
+        Quaternionf quaternionf = new Quaternionf().rotateZ((float) Math.PI);
+        float f4 = livingEntity.yBodyRot;
+        float f5 = livingEntity.getYRot();
+        float f7 = livingEntity.yHeadRotO;
+        float f8 = livingEntity.yHeadRot;
+        livingEntity.yBodyRot = 180.0F - angleXComponent * 20.0F;
+        livingEntity.setYRot(180.0F - angleXComponent * 40.0F);
+        livingEntity.yHeadRot = livingEntity.getYRot();
+        livingEntity.yHeadRotO = livingEntity.getYRot();
+        float f9 = livingEntity.getScale();
+        Vector3f vector3f = new Vector3f(0.0F, livingEntity.getBbHeight() / 2.0F + yOffset * f9, 0.0F);
+        float f10 = (float)scale / f9;
+        InventoryScreen.renderEntityInInventory(guiGraphics, f, f1, f10, vector3f, quaternionf, new Quaternionf(), livingEntity);
+        livingEntity.yBodyRot = f4;
+        livingEntity.setYRot(f5);
+        livingEntity.yHeadRotO = f7;
+        livingEntity.yHeadRot = f8;
     }
 
 }

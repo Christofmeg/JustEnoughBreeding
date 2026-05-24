@@ -1,0 +1,22 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "snowpig"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "snowpig",
+  "input_entity": "snowpig:snow_pig",
+  "inputs": [
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "minecraft:beetroot"
+    }
+  ]
+}

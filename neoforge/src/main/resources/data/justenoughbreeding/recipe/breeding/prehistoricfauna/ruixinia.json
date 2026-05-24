@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "input_entity": "prehistoricfauna:ruixinia",
+  "inputs": [
+    {
+      "item": "prehistoricfauna:callianthus"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:ruixinia_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:ruixinia_spawn_egg"
+    }
+  ]
+}

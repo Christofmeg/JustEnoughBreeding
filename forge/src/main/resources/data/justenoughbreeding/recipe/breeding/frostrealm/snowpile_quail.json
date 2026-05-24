@@ -1,0 +1,33 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "frostrealm"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "frostrealm",
+  "input_entity": "frostrealm:snowpile_quail",
+  "inputs": [
+    {
+      "item": "minecraft:seeds"
+    },
+    {
+      "item": " minecraft:melon_seeds"
+    },
+    {
+      "item": "minecraft:pumpkin_seeds"
+    },
+    {
+      "item": "minecraft:beetroot_seeds"
+    },
+    {
+      "item": "frostrealm:sugarbeet_seeds"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "frostrealm:snowpile_quail_egg"
+    }
+  ]
+}

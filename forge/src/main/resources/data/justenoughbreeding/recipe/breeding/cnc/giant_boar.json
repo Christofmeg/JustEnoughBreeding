@@ -1,0 +1,19 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cnc"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "cnc",
+  "input_entity": "cnc:giant_boar",
+  "inputs": [
+    {
+      "item": "minecraft:brown_mushroom"
+    },
+    {
+      "item": "minecraft:red_mushroom"
+    }
+  ]
+}

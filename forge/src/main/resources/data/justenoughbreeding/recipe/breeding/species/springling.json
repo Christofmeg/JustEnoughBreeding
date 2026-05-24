@@ -1,0 +1,26 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "species"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "species",
+  "input_entity": "species:springling",
+  "inputs": [
+    {
+      "tag": "species:springling_breed_items"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "species:springling_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "species:springling_spawn_egg"
+    }
+  ]
+}

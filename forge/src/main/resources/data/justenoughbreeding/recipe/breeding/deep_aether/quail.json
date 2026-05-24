@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "deep_aether"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "deep_aether",
+  "input_entity": "deep_aether:quail",
+  "inputs": [
+    {
+      "item": "deep_aether:golden_grass_seeds"
+    }
+  ]
+}

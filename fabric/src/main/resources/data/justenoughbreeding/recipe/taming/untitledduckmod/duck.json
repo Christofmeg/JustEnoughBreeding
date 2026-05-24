@@ -1,0 +1,16 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["untitledduckmod"]
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "untitledduckmod",
+  "input_entity": "untitledduckmod:duck",
+  "inputs": [
+    {
+      "tag": "untitledduckmod:duck_taming_food"
+    }
+  ]
+}

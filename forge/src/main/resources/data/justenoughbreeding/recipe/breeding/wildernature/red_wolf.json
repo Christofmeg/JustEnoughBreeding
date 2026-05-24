@@ -1,0 +1,21 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "wildernature"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "wildernature",
+  "input_entity": "wildernature:red_wolf",
+  "inputs": [
+    {
+      "item": "minecraft:bone"
+    }
+  ],
+  "extra_inputs": [
+    {
+      "meat": "true"
+    }
+  ]
+}

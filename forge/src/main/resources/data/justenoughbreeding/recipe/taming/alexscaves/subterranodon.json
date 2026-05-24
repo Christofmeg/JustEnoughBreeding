@@ -1,0 +1,21 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "alexscaves"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "alexscaves",
+  "input_entity": "alexscaves:subterranodon",
+  "inputs": [
+    {
+      "item": "alexscaves:cooked_trilocaris_tail"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexscaves:spawn_egg_subterranodon"
+    }
+  ]
+}

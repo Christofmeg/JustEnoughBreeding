@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "apple_cows"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "apple_cows",
+  "input_entity": "apple_cows:golden_apple_cow",
+  "inputs": [
+    {
+      "item": "apple_cows:golden_wheat"
+    }
+  ]
+}

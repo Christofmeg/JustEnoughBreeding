@@ -1,0 +1,21 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "marineiguana"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "marineiguana",
+  "input_entity": "marineiguana:marineiguana",
+  "inputs": [
+    {
+      "item": "minecraft:seagrass"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "marineiguana:marineiguana_egg"
+    }
+  ]
+}

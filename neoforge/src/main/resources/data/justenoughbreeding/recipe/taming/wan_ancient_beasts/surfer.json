@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "wan_ancient_beasts"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "wan_ancient_beasts",
+  "input_entity": "wan_ancient_beasts:surfer",
+  "inputs": [
+    {
+      "tag": "wan_ancient_beasts:surfer_food"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "wan_ancient_beasts:surfer_spawn_egg"
+    }
+  ]
+}

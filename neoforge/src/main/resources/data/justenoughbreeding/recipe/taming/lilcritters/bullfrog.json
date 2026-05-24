@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "lilcritters"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "lilcritters",
+  "input_entity": "lilcritters:bullfrog",
+  "inputs": [
+    {
+      "item": "zawa:insectivore_kibble"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "frostrealm"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "frostrealm",
+  "input_entity": "frostrealm:frost_wolf",
+  "inputs": [
+    {
+      "meat": "true"
+    }
+  ]
+}

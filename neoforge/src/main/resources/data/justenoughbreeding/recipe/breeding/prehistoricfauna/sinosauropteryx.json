@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "input_entity": "prehistoricfauna:sinosauropteryx",
+  "inputs": [
+    {
+      "item": "prehistoricfauna:ephedra_berries"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:sinosauropteryx_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:sinosauropteryx_spawn_egg"
+    }
+  ]
+}

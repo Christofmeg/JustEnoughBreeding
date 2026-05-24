@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "endergetic"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "endergetic",
+  "input_entity": "endergetic:puff_bug",
+  "inputs": [
+    {
+      "item": "endergetic:tall_poise_bush"
+    }
+  ]
+}

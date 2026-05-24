@@ -1,0 +1,20 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "chileancraft"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "chileancraft",
+  "input_entity": "chileancraft:codorniz",
+  "inputs": [
+    {
+      "item": "chileancraft:semilla_de_tomate_limachino"
+    },
+    {
+      "item": "chileancraft:semilla_de_choclo"
+    }
+  ],
+  "tamed": true
+}

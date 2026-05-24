@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "input_entity": "prehistoricfauna:allosaurus",
+  "inputs": [
+    {
+      "item": "prehistoricfauna:raw_large_thyreophoran_meat"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:allosaurus_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:allosaurus_spawn_egg"
+    }
+  ]
+}

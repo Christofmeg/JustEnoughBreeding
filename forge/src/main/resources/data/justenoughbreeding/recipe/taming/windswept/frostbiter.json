@@ -1,0 +1,21 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "windswept"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "windswept",
+  "input_entity": "windswept:frostbiter",
+  "inputs": [
+    {
+      "item": "windswept:holly_berries"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "windswept:frostbiter_spawn_egg"
+    }
+  ]
+}

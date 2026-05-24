@@ -1,0 +1,21 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "iceandfire"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "iceandfire",
+  "input_entity": "iceandfire:hippocampus",
+  "inputs": [
+    {
+      "item": "minecraft:kelp"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "iceandfire:spawn_egg_hippocampus"
+    }
+  ]
+}

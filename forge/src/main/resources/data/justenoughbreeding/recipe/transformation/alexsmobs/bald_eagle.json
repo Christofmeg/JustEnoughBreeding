@@ -1,0 +1,30 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "alexsmobs"
+    }
+  ],
+  "type": "justenoughbreeding:transformation",
+  "mod": "alexsmobs",
+  "inputs": [
+    {
+      "item": "alexsmobs:falconry_hood"
+    }
+  ],
+  "input_entity": "alexsmobs:bald_eagle",
+  "input_spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_bald_eagle"
+    }
+  ],
+  "output_entity": "alexsmobs:bald_eagle",
+  "output_entity_nbt": {
+    "HasCap": 1
+  },
+  "output_spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_bald_eagle"
+    }
+  ]
+}

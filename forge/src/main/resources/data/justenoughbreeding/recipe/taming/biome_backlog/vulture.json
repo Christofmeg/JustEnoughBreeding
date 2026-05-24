@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "biome_backlog"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "biome_backlog",
+  "input_entity": "biome_backlog:vulture",
+  "inputs": [
+    {
+      "item": "minecraft:rotten_flesh"
+    }
+  ]
+}

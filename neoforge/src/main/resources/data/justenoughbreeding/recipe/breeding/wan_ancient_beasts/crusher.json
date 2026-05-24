@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "wan_ancient_beasts"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "wan_ancient_beasts",
+  "input_entity": "wan_ancient_beasts:crusher",
+  "inputs": [
+    {
+      "item": "minecraft:hanging_roots"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "wan_ancient_beasts:crusher_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "wan_ancient_beasts:crusher_spawn_egg"
+    }
+  ]
+}

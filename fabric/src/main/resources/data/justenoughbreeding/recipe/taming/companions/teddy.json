@@ -1,0 +1,21 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["companions"]
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "companions",
+  "input_entity": "companions:teddy",
+  "input_entity_nbt": [
+    {
+      "Phase": 2
+    }
+  ],
+  "inputs": [
+    {
+      "item": "companions:needle"
+    }
+  ]
+}

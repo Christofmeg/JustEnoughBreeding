@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "earthmobsmod"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "earthmobsmod",
+  "input_entity": "earthmobsmod:moobloom",
+  "inputs": [
+    {
+      "item": "minecraft:wheat"
+    }
+  ]
+}

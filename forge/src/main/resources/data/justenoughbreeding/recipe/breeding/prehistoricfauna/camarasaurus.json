@@ -1,0 +1,26 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "input_entity": "prehistoricfauna:camarasaurus",
+  "inputs": [
+    {
+      "item": "prehistoricfauna:ptilophyllum_fronds"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:camarasaurus_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:camarasaurus_spawn_egg"
+    }
+  ]
+}

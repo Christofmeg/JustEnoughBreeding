@@ -1,0 +1,21 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cnb"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "cnb",
+  "input_entity": "cnb:sporeling",
+  "inputs": [
+    {
+      "tag": "cnb:sporeling_food"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "cnb:sporeling_overworld_egg"
+    }
+  ]
+}

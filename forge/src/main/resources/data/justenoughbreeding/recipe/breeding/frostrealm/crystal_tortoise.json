@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "frostrealm"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "frostrealm",
+  "input_entity": "frostrealm:crystal_tortoise",
+  "inputs": [
+    {
+      "item": "frostrealm:cold_grass"
+    }
+  ]
+}

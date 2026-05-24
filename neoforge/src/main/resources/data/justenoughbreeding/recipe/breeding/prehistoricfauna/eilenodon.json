@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "input_entity": "prehistoricfauna:eilenodon",
+  "inputs": [
+    {
+      "item": "prehistoricfauna:horsetail"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:eilenodon_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:eilenodon_spawn_egg"
+    }
+  ]
+}

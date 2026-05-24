@@ -1,0 +1,22 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "quark"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "quark",
+  "input_entity": "quark:crab",
+  "inputs": [
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:chicken"
+    },
+    {
+      "tag": "minecraft:fishes"
+    }
+  ]
+}

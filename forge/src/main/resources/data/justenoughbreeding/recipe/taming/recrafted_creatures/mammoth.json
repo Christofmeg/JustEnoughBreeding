@@ -1,0 +1,19 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "recrafted_creatures"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "recrafted_creatures",
+  "input_entity": "recrafted_creatures:mammoth",
+  "inputs": [
+    {
+      "item": "minecraft:melon"
+    },
+    {
+      "item": "minecraft:pumpkin"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "creaturecraft"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "creaturecraft",
+  "input_entity": "creaturecraft:pangolin",
+  "inputs": [
+    {
+      "item": "creaturecraft:termite_drop"
+    }
+  ],
+  "tamed": true
+}

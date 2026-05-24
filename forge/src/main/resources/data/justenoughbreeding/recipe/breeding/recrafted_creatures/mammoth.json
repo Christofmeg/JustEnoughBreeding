@@ -1,0 +1,17 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "recrafted_creatures"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "recrafted_creatures",
+  "input_entity": "recrafted_creatures:mammoth",
+  "inputs": [
+    {
+      "item": "minecraft:hay_block"
+    }
+  ],
+  "tamed": true
+}

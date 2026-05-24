@@ -1,0 +1,26 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "input_entity": "prehistoricfauna:poposaurus",
+  "inputs": [
+    {
+      "item": "prehistoricfauna:raw_large_synapsid_meat"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:poposaurus_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:poposaurus_spawn_egg"
+    }
+  ]
+}

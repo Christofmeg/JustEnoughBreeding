@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "unearthed_journey"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "unearthed_journey",
+  "input_entity": "unearthed_journey:leptictidium",
+  "inputs": [
+    {
+      "item": "unearthed_journey:pouch_of_seeds"
+    }
+  ],
+  "tamed": true
+}

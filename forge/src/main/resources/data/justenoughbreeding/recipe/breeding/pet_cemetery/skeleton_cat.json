@@ -1,0 +1,20 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "pet_cemetery"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "pet_cemetery",
+  "input_entity": "pet_cemetery:skeleton_cat",
+  "inputs": [
+    {
+      "item": "minecraft:cod"
+    },
+    {
+      "item": "minecraft:salmon"
+    }
+  ],
+  "tamed": true
+}

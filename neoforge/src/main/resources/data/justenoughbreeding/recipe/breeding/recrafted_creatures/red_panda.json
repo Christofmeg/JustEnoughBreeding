@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "recrafted_creatures"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "recrafted_creatures",
+  "input_entity": "recrafted_creatures:red_panda",
+  "inputs": [
+    {
+      "item": "minecraft:bamboo"
+    }
+  ],
+  "tamed": true
+}

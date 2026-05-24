@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ambientadditions"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "ambientadditions",
+  "input_entity": "ambientadditions:leaf_frog",
+  "inputs": [
+    {
+      "item": "minecraft:spider_eye"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "ambientadditions:leaf_frogspawn"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["species"]
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "species",
+  "input_entity": "species:goober",
+  "inputs": [
+    {
+      "tag": "species:goober_breed_items"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "species:goober_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "species:goober_spawn_egg"
+    }
+  ]
+}

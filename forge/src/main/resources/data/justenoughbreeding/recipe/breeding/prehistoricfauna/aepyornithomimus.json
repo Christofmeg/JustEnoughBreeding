@@ -1,0 +1,26 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "input_entity": "prehistoricfauna:aepyornithomimus",
+  "inputs": [
+    {
+      "item": "prehistoricfauna:cobbania"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:aepyornithomimus_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:aepyornithomimus_spawn_egg"
+    }
+  ]
+}

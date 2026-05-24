@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "aquaculture"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "aquaculture",
+  "input_entity": "aquaculture:starshell_turtle",
+  "inputs": [
+    {
+      "tag": "aquaculture:turtle_edible"
+    }
+  ]
+}

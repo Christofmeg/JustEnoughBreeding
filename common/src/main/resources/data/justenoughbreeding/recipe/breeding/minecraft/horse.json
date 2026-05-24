@@ -1,0 +1,11 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "minecraft",
+  "input_entity": "minecraft:horse",
+  "inputs": [
+    {
+      "tag": "minecraft:horse_food"
+    }
+  ],
+  "tamed": true
+}

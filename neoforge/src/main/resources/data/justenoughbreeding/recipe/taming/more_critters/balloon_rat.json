@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "more_critters"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "more_critters",
+  "input_entity": "more_critters:balloon_rat",
+  "inputs": [
+    {
+      "item": "minecraft:spider_eye"
+    }
+  ]
+}

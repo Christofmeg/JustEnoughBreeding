@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "iceandfire"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "iceandfire",
+  "input_entity": "iceandfire:hippogryph",
+  "inputs": [
+    {
+      "item": "minecraft:rabbit_stew"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "iceandfire:hippogryph_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "iceandfire:spawn_egg_hippogryph"
+    }
+  ],
+  "tamed": true
+}

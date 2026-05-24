@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "lilcritters"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "lilcritters",
+  "input_entity": "lilcritters:pacman_frog",
+  "inputs": [
+    {
+      "item": "zawa:insectivore_kibble"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tameablebeasts"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "tameablebeasts",
+  "input_entity": "tameablebeasts:tameable_beetle",
+  "inputs": [
+    {
+      "tag": "tameablebeasts:shiny_beetle_tame_food"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "tameablebeasts:beetle_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "tameablebeasts:beetle_spawn_egg"
+    }
+  ],
+  "tamed": true
+}

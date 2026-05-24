@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "lilcritters"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "lilcritters",
+  "input_entity": "lilcritters:dwarf_crocodile",
+  "inputs": [
+    {
+      "item": "zawa:carnivore_kibble"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "friendsandfoes"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "friendsandfoes",
+  "input_entity": "friendsandfoes:crab",
+  "inputs": [
+    {
+      "item": "minecraft:kelp"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "friendsandfoes:crab_egg",
+      "amount": {
+        "min": 1,
+        "max": 4
+      }
+    }
+  ]
+}

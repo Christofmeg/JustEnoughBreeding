@@ -1,0 +1,16 @@
+{
+  "forge:conditional": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "naturalist"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "naturalist",
+  "input_entity": "naturalist:sparrow",
+  "inputs": [
+    {
+      "tag": "naturalist:bird_food_items"
+    }
+  ]
+}
