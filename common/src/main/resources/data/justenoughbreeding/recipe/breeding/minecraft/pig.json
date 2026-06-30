@@ -2,9 +2,5 @@
   "type": "justenoughbreeding:breeding",
   "mod": "minecraft",
   "input_entity": "minecraft:pig",
-  "inputs": [
-    {
-      "tag": "minecraft:pig_food"
-    }
-  ]
+  "inputs": "#minecraft:pig_food"
 }

@@ -2,14 +2,6 @@
   "type": "justenoughbreeding:breeding",
   "mod": "minecraft",
   "input_entity": "minecraft:turtle",
-  "inputs": [
-    {
-      "tag": "minecraft:turtle_food"
-    }
-  ],
-  "outputs": [
-    {
-      "item": "minecraft:turtle_egg"
-    }
-  ]
+  "inputs": "#minecraft:turtle_food",
+  "outputs": "minecraft:turtle_egg"
 }

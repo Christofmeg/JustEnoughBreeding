@@ -38,7 +38,7 @@ public class TamingCategory extends AbstractRecipeCategory<TamingRecipe> {
         builder.addInputSlot(149, 1).setStandardSlotBackground().add(recipe.spawnEggs());
         builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).add(recipe.spawnEggs());
         builder.addInputSlot(69, 58).setStandardSlotBackground().add(recipe.inputs()).setPosition(63, 20, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
-        boolean hasExtraInput = !recipe.extraInputs().isEmpty();
+        boolean hasExtraInput = recipe.extraInputs()!= null && !recipe.extraInputs().isEmpty();
         if (hasExtraInput) {
             builder.addInputSlot(69, 33).setStandardSlotBackground().add(recipe.extraInputs()).setPosition(63, 29, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
         }

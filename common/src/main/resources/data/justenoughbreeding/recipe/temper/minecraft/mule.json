@@ -2,24 +2,5 @@
   "type": "justenoughbreeding:temper",
   "mod": "minecraft",
   "input_entity": "minecraft:mule",
-  "inputs": [
-    {
-      "item": "minecraft:sugar"
-    },
-    {
-      "item": "minecraft:wheat"
-    },
-    {
-      "item": "minecraft:apple"
-    },
-    {
-      "item": "minecraft:golden_carrot"
-    },
-    {
-      "item": "minecraft:golden_apple"
-    },
-    {
-      "item": "minecraft:enchanted_golden_apple"
-    }
-  ]
+  "inputs": "#minecraft:horse_food"
 }

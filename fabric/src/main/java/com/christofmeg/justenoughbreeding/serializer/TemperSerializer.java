@@ -2,7 +2,6 @@ package com.christofmeg.justenoughbreeding.serializer;
 
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.recipe.TemperRecipe;
-import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -12,7 +11,6 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import org.jetbrains.annotations.NotNull;
@@ -28,7 +26,7 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
                         Codec.STRING.fieldOf("input_entity").forGetter(TemperRecipe::inputEntity),
                         CompoundTag.CODEC.optionalFieldOf("input_entity_nbt").forGetter(r -> Optional.ofNullable(r.inputEntityNbt())),
                         Ingredient.CODEC.fieldOf("inputs").forGetter(TemperRecipe::inputs),
-                        Ingredient.CODEC.optionalFieldOf("extra_inputs").forGetter(r -> Optional.of(r.extraInputs())),
+                        Ingredient.CODEC.optionalFieldOf("extra_inputs").forGetter(r -> Optional.ofNullable(r.extraInputs())),
                         Ingredient.CODEC.optionalFieldOf("spawn_eggs").forGetter(r -> Optional.of(r.spawnEggs()))
                 ).apply(instance, (
                         mod,
@@ -39,13 +37,14 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
                         spawn_eggs
                 ) -> {
                     EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(Identifier.parse(input_entity));
+                    Ingredient finalSpawnEggs = spawn_eggs.orElseGet(() -> Ingredient.of(JustEnoughBreeding.getSpawnEggItem(entityType)));
                     return new TemperRecipe(
                             entityType,
-                            CommonUtils.safe(inputs),
-                            CommonUtils.safe(spawn_eggs.orElse(CommonUtils.safe(JustEnoughBreeding.getSpawnEggItem(entityType)))),
-                            extra_inputs.orElse(Ingredient.of(Items.AIR)),
+                            inputs,
+                            finalSpawnEggs,
+                            extra_inputs.orElse(null),
                             mod,
-                            JustEnoughBreeding.getKeyLoaderRegistries(entityType).getNamespace(),
+                            JustEnoughBreeding.getKeyLoaderRegistries(entityType).toString(),
                             input_entity_nbt.orElse(null)
                     );
                 })
@@ -59,16 +58,16 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
             public @NotNull TemperRecipe decode(@NotNull RegistryFriendlyByteBuf buf) {
                 Identifier entityRL = Identifier.STREAM_CODEC.decode(buf);
                 Ingredient inputIngredient = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
-                Ingredient extraInputIngredient = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
+                Ingredient extraInputIngredient = Ingredient.OPTIONAL_CONTENTS_STREAM_CODEC.decode(buf).orElse(null);
                 Ingredient spawnEggIngredient = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
                 String modId = ByteBufCodecs.STRING_UTF8.decode(buf);
                 String entity = ByteBufCodecs.STRING_UTF8.decode(buf);
                 CompoundTag inputEntityNbt = ByteBufCodecs.optional(ByteBufCodecs.COMPOUND_TAG).decode(buf).orElse(null);
                 return new TemperRecipe(
                         JustEnoughBreeding.getEntityFromLoaderRegistries(entityRL),
-                        CommonUtils.safe(inputIngredient),
-                        CommonUtils.safe(spawnEggIngredient),
-                        CommonUtils.safe(extraInputIngredient),
+                        inputIngredient,
+                        spawnEggIngredient,
+                        extraInputIngredient,
                         modId,
                         entity,
                         inputEntityNbt
@@ -79,7 +78,7 @@ public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
             public void encode(@NotNull RegistryFriendlyByteBuf buf, @NotNull TemperRecipe recipe) {
                 Identifier.STREAM_CODEC.encode(buf, JustEnoughBreeding.getKeyLoaderRegistries(recipe.entityType()));
                 Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.inputs());
-                Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.extraInputs());
+                Ingredient.OPTIONAL_CONTENTS_STREAM_CODEC.encode(buf, Optional.ofNullable(recipe.extraInputs()));
                 Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.spawnEggs());
                 ByteBufCodecs.STRING_UTF8.encode(buf, recipe.mod());
                 ByteBufCodecs.STRING_UTF8.encode(buf, recipe.inputEntity());

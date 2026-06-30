@@ -11,7 +11,20 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jspecify.annotations.NonNull;
 
-public record TransformationRecipe(EntityType<?> inputEntityType, @NotNull Ingredient inputs, @NotNull Ingredient inputSpawnEggs, @NotNull Ingredient extraInputs, EntityType<?> outputEntityType, @NotNull Ingredient outputSpawnEggs, String mod, String inputEntity, @Nullable CompoundTag inputEntityNbt, String outputEntity, @Nullable CompoundTag outputEntityNbt, @Nullable Boolean tamed) implements Recipe<CraftingInput> {
+public record TransformationRecipe(
+        @Nullable EntityType<?> inputEntityType,
+        @NotNull Ingredient inputs,
+        @NotNull Ingredient inputSpawnEggs,
+        @Nullable Ingredient extraInputs,
+        @Nullable EntityType<?> outputEntityType,
+        @NotNull Ingredient outputSpawnEggs,
+        @NotNull String mod,
+        @NotNull String inputEntity,
+        @Nullable CompoundTag inputEntityNbt,
+        @NotNull String outputEntity,
+        @Nullable CompoundTag outputEntityNbt,
+        @Nullable Boolean tamed
+) implements Recipe<CraftingInput> {
 
     @Override public boolean matches(@NotNull CraftingInput input, @NotNull Level level) { return false; }
     @Override public @NotNull ItemStack assemble(@NotNull CraftingInput input, HolderLookup.@NotNull Provider registries) { return ItemStack.EMPTY; }
@@ -19,5 +32,7 @@ public record TransformationRecipe(EntityType<?> inputEntityType, @NotNull Ingre
     @Override public @NonNull RecipeType<? extends Recipe<CraftingInput>> getType() { return JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE; }
     @Override public @NonNull PlacementInfo placementInfo() { return PlacementInfo.NOT_PLACEABLE; }
     @Override public @NonNull RecipeBookCategory recipeBookCategory() { return RecipeBookCategories.CRAFTING_MISC; }
+    @Override public boolean isSpecial() { return true; }
+    @Override public boolean showNotification() { return false; }
 
 }

@@ -19,16 +19,6 @@ import java.lang.Math;
 
 public class Utils {
 
-    public static boolean isJEIAvailable() {
-        try {
-            Class.forName("mezz.jei.api.IModPlugin");
-
-            return true;
-        }catch(ClassNotFoundException e) {
-            return false;
-        }
-    }
-
     public static <T extends Recipe<?>> RecipeType<T> simple(final Identifier name) {
         final String toString = name.toString();
         return new RecipeType<T>() {

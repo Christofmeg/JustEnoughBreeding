@@ -11,9 +11,18 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jspecify.annotations.NonNull;
 
-import java.util.List;
-
-public record BreedingRecipe(EntityType<?> entityType, @NotNull Ingredient inputs, @NotNull Ingredient spawnEggs, @Nullable Boolean tamed, @Nullable Ingredient outputs, @Nullable Ingredient extraInputs, @Nullable Boolean trusting, String mod, String inputEntity, @Nullable CompoundTag inputEntityNbt) implements Recipe<CraftingInput> {
+public record BreedingRecipe(
+        @Nullable EntityType<?> entityType,
+        @NotNull Ingredient inputs,
+        @NotNull Ingredient spawnEggs,
+        @Nullable Boolean tamed,
+        @Nullable Ingredient outputs,
+        @Nullable Ingredient extraInputs,
+        @Nullable Boolean trusting,
+        @NotNull String mod,
+        @NotNull String inputEntity,
+        @Nullable CompoundTag inputEntityNbt
+) implements Recipe<CraftingInput> {
 
     @Override public boolean matches(@NotNull CraftingInput input, @NotNull Level level) { return false; }
     @Override public @NotNull ItemStack assemble(@NotNull CraftingInput input, HolderLookup.@NotNull Provider registries) { return ItemStack.EMPTY; }

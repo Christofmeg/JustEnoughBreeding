@@ -2,7 +2,5 @@
   "type": "justenoughbreeding:breeding",
   "mod": "minecraft",
   "input_entity": "minecraft:bee",
-  "inputs": [
-    "#minecraft:bee_food"
-  ]
+  "inputs": "#minecraft:bee_food"
 }

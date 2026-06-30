@@ -36,7 +36,7 @@ public class JustEnoughBreeding implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        if (Utils.isJEIAvailable()) {
+        if (isModLoaded("jei")) {
             RecipeSynchronization.synchronizeRecipeSerializer(JustEnoughBreeding.ALLAY_DUPLICATION_PROVIDER_SERIALIZER);
             RecipeSynchronization.synchronizeRecipeSerializer(JustEnoughBreeding.BREEDING_PROVIDER_SERIALIZER);
             RecipeSynchronization.synchronizeRecipeSerializer(JustEnoughBreeding.TAMING_PROVIDER_SERIALIZER);
@@ -45,6 +45,14 @@ public class JustEnoughBreeding implements ModInitializer {
             RecipeSynchronization.synchronizeRecipeSerializer(JustEnoughBreeding.TRUSTING_PROVIDER_SERIALIZER);
         }
     }
+
+    //TODO fix JEI/REI buttons not working
+    //TODO fix entity scaling
+    //TODO entity shearing (saddle off)
+    //TODO wolf armor, horse armor, nautilus armor
+    //TODO wolf dying + others?
+    //TODO cycle through mob variants (cold, normal, warm chicken)
+    //TODO fix JEI transformation category rendering mobs ontop of eachother
 
     public static EntityType<?> getEntityFromLoaderRegistries(Identifier identifier) {
         return BuiltInRegistries.ENTITY_TYPE.getValue(identifier);

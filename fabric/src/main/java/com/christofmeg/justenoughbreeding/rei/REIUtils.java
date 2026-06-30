@@ -13,12 +13,12 @@ import me.shedaniel.rei.api.client.gui.widgets.Button;
 import me.shedaniel.rei.api.client.gui.widgets.Widget;
 import me.shedaniel.rei.api.client.gui.widgets.Widgets;
 import me.shedaniel.rei.api.client.registry.display.DisplayRegistry;
+import net.fabricmc.fabric.api.recipe.v1.sync.SynchronizedRecipes;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EntityType;
@@ -37,9 +37,10 @@ public class REIUtils {
     public static boolean showChildButtons = false;
 
     public static void registerRecipes(DisplayRegistry registration) {
-        ClientLevel clientLevel = Minecraft.getInstance().level;
-        if (clientLevel != null) {
-            ArrayList<RecipeHolder<AllayDuplicationRecipe>> allayDuplicationRecipes = new ArrayList<>(clientLevel.recipeAccess().getSynchronizedRecipes().getAllOfType(JustEnoughBreeding.ALLAY_DUPLICATION_PROVIDER_TYPE));
+        if (Minecraft.getInstance().getConnection() != null) {
+            SynchronizedRecipes recipes = Minecraft.getInstance().getConnection().recipes().getSynchronizedRecipes();
+            
+            ArrayList<RecipeHolder<AllayDuplicationRecipe>> allayDuplicationRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.ALLAY_DUPLICATION_PROVIDER_TYPE));
             allayDuplicationRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
             for (RecipeHolder<AllayDuplicationRecipe> recipeHold : allayDuplicationRecipes) {
                 AllayDuplicationRecipe recipe = recipeHold.value();
@@ -48,7 +49,7 @@ public class REIUtils {
                 }
             }
 
-            ArrayList<RecipeHolder<BreedingRecipe>> breedingRecipes = new ArrayList<>(clientLevel.recipeAccess().getSynchronizedRecipes().getAllOfType(JustEnoughBreeding.BREEDING_PROVIDER_TYPE));
+            ArrayList<RecipeHolder<BreedingRecipe>> breedingRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.BREEDING_PROVIDER_TYPE));
             breedingRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
             for (RecipeHolder<BreedingRecipe> recipeHold : breedingRecipes) {
                 BreedingRecipe recipe = recipeHold.value();
@@ -57,7 +58,7 @@ public class REIUtils {
                 }
             }
 
-            ArrayList<RecipeHolder<TamingRecipe>> tamingRecipes = new ArrayList<>(clientLevel.recipeAccess().getSynchronizedRecipes().getAllOfType(JustEnoughBreeding.TAMING_PROVIDER_TYPE));
+            ArrayList<RecipeHolder<TamingRecipe>> tamingRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.TAMING_PROVIDER_TYPE));
             tamingRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
             for (RecipeHolder<TamingRecipe> recipeHold : tamingRecipes) {
                 TamingRecipe recipe = recipeHold.value();
@@ -66,7 +67,7 @@ public class REIUtils {
                 }
             }
 
-            ArrayList<RecipeHolder<TemperRecipe>> temperRecipes = new ArrayList<>(clientLevel.recipeAccess().getSynchronizedRecipes().getAllOfType(JustEnoughBreeding.TEMPER_PROVIDER_TYPE));
+            ArrayList<RecipeHolder<TemperRecipe>> temperRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.TEMPER_PROVIDER_TYPE));
             temperRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
             for (RecipeHolder<TemperRecipe> recipeHold : temperRecipes) {
                 TemperRecipe recipe = recipeHold.value();
@@ -75,7 +76,7 @@ public class REIUtils {
                 }
             }
 
-            ArrayList<RecipeHolder<TransformationRecipe>> transformationRecipes = new ArrayList<>(clientLevel.recipeAccess().getSynchronizedRecipes().getAllOfType(JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE));
+            ArrayList<RecipeHolder<TransformationRecipe>> transformationRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE));
             transformationRecipes.sort(Comparator.comparing(r -> r.value().outputEntityType() == null ? "" : r.value().outputEntityType().toShortString()));
             for (RecipeHolder<TransformationRecipe> recipeHold : transformationRecipes) {
                 TransformationRecipe recipe = recipeHold.value();
@@ -84,7 +85,7 @@ public class REIUtils {
                 }
             }
 
-            ArrayList<RecipeHolder<TrustingRecipe>>trustingRecipes = new ArrayList<>(clientLevel.recipeAccess().getSynchronizedRecipes().getAllOfType(JustEnoughBreeding.TRUSTING_PROVIDER_TYPE));
+            ArrayList<RecipeHolder<TrustingRecipe>>trustingRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.TRUSTING_PROVIDER_TYPE));
             trustingRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
             for (RecipeHolder<TrustingRecipe> recipeHold : trustingRecipes) {
                 TrustingRecipe recipe = recipeHold.value();

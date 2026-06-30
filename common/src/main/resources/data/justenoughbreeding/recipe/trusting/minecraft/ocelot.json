@@ -2,12 +2,5 @@
   "type": "justenoughbreeding:trusting",
   "mod": "minecraft",
   "input_entity": "minecraft:ocelot",
-  "inputs": [
-    {
-      "item": "minecraft:cod"
-    },
-    {
-      "item": "minecraft:salmon"
-    }
-  ]
+  "inputs": "#minecraft:ocelot_food"
 }

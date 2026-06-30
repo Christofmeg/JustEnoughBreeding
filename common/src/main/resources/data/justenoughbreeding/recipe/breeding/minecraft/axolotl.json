@@ -2,7 +2,5 @@
   "type": "justenoughbreeding:breeding",
   "mod": "minecraft",
   "input_entity": "minecraft:axolotl",
-  "inputs": [
-    "minecraft:emerald"
-  ]
+  "inputs": "#minecraft:axolotl_food"
 }

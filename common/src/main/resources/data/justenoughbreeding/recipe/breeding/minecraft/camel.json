@@ -2,11 +2,5 @@
   "type": "justenoughbreeding:breeding",
   "mod": "minecraft",
   "input_entity": "minecraft:camel",
-  "inputs": {
-   "values": [
-     {
-       "tag": "minecraft:camel_food"
-     }
-   ]
-  }
+  "inputs": "#minecraft:camel_food"
 }

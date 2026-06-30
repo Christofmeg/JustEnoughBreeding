@@ -2,10 +2,6 @@
   "type": "justenoughbreeding:breeding",
   "mod": "minecraft",
   "input_entity": "minecraft:donkey",
-  "inputs": [
-    {
-      "tag": "minecraft:horse_food"
-    }
-  ],
+  "inputs": "#minecraft:horse_tempt_items",
   "tamed": true
 }

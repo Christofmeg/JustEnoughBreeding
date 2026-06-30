@@ -36,7 +36,7 @@ public class TransformationCategory extends AbstractRecipeCategory<Transformatio
         builder.addInputSlot(65, 74).setStandardSlotBackground().add(recipe.inputSpawnEggs());
         builder.addOutputSlot(85, 74).setStandardSlotBackground().add(recipe.outputSpawnEggs());
         IRecipeSlotBuilder inputStack = builder.addInputSlot(75, 22).setStandardSlotBackground().add(recipe.inputs());
-        boolean hasExtraInput = !recipe.extraInputs().isEmpty();
+        boolean hasExtraInput = recipe.extraInputs()!= null && !recipe.extraInputs().isEmpty();
         if (hasExtraInput) {
             inputStack.setPosition(65, 22);
             builder.addInputSlot(69, 33).setStandardSlotBackground().add(recipe.extraInputs()).setPosition(85, 22);

@@ -2,7 +2,6 @@ package com.christofmeg.justenoughbreeding.serializer;
 
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.recipe.AllayDuplicationRecipe;
-import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -36,12 +35,13 @@ public class AllayDuplicationSerializer implements RecipeSerializer<AllayDuplica
                         spawn_eggs
                 ) -> {
                     EntityType<?> entityType = JustEnoughBreeding.getEntityFromLoaderRegistries(Identifier.parse(input_entity));
+                    Ingredient finalSpawnEggs = spawn_eggs.orElseGet(() -> Ingredient.of(JustEnoughBreeding.getSpawnEggItem(entityType)));
                     return new AllayDuplicationRecipe(
                             entityType,
-                            CommonUtils.safe(inputs),
-                            CommonUtils.safe(spawn_eggs.orElse(CommonUtils.safe(JustEnoughBreeding.getSpawnEggItem(entityType)))),
+                            inputs,
+                            finalSpawnEggs,
                             mod,
-                            JustEnoughBreeding.getKeyLoaderRegistries(entityType).getNamespace(),
+                            JustEnoughBreeding.getKeyLoaderRegistries(entityType).toString(),
                             input_entity_nbt.orElse(null)
                     );
                 })
@@ -61,8 +61,8 @@ public class AllayDuplicationSerializer implements RecipeSerializer<AllayDuplica
                 CompoundTag inputEntityNbt = ByteBufCodecs.optional(ByteBufCodecs.COMPOUND_TAG).decode(buf).orElse(null);
                 return new AllayDuplicationRecipe(
                         JustEnoughBreeding.getEntityFromLoaderRegistries(entityRL),
-                        CommonUtils.safe(inputIngredient),
-                        CommonUtils.safe(spawnEggIngredient),
+                        inputIngredient,
+                        spawnEggIngredient,
                         modId,
                         entity,
                         inputEntityNbt

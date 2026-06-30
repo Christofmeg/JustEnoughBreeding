@@ -1,7 +1,7 @@
 {
   "type": "justenoughbreeding:breeding",
   "mod": "minecraft",
-  "input_entity": "minecraft:horse",
-  "inputs": "#minecraft:horse_tempt_items",
+  "input_entity": "minecraft:nautilus",
+  "inputs": "#minecraft:nautilus_food",
   "tamed": true
 }

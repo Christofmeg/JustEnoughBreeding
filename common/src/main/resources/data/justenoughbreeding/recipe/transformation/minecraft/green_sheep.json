@@ -1,24 +1,12 @@
 {
   "type": "justenoughbreeding:transformation",
   "mod": "minecraft",
-  "inputs": [
-    {
-      "tag": "c:dyes/green"
-    }
-  ],
+  "inputs": "#c:dyes/green",
   "input_entity": "minecraft:sheep",
-  "input_spawn_eggs": [
-    {
-      "item": "minecraft:sheep_spawn_egg"
-    }
-  ],
+  "input_spawn_eggs": "minecraft:sheep_spawn_egg",
   "output_entity": "minecraft:sheep",
   "output_entity_nbt": {
     "Color": 13
   },
-  "output_spawn_eggs": [
-    {
-      "item": "minecraft:sheep_spawn_egg"
-    }
-  ]
+  "output_spawn_eggs": "minecraft:sheep_spawn_egg"
 }

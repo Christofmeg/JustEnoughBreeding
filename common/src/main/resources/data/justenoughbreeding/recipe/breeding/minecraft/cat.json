@@ -2,10 +2,6 @@
   "type": "justenoughbreeding:breeding",
   "mod": "minecraft",
   "input_entity": "minecraft:cat",
-  "inputs": [
-    {
-      "tag": "minecraft:cat_food"
-    }
-  ],
+  "inputs": "#minecraft:cat_food",
   "tamed": true
 }

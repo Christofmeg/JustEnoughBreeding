@@ -2,7 +2,6 @@ package com.christofmeg.justenoughbreeding.serializer;
 
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
-import com.christofmeg.justenoughbreeding.utils.LenientIngredientParse;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -26,7 +25,7 @@ public class BreedingSerializer implements RecipeSerializer<BreedingRecipe> {
                         Codec.STRING.fieldOf("mod").forGetter(BreedingRecipe::mod),
                         Codec.STRING.fieldOf("input_entity").forGetter(BreedingRecipe::inputEntity),
                         CompoundTag.CODEC.optionalFieldOf("input_entity_nbt").forGetter(r -> Optional.ofNullable(r.inputEntityNbt())),
-                        LenientIngredientParse.LENIENT_CODEC.fieldOf("inputs").forGetter(BreedingRecipe::inputs),
+                        Ingredient.CODEC.fieldOf("inputs").forGetter(BreedingRecipe::inputs),
                         Ingredient.CODEC.optionalFieldOf("extra_inputs").forGetter(r -> Optional.ofNullable(r.extraInputs())),
                         Ingredient.CODEC.optionalFieldOf("outputs").forGetter(r -> Optional.ofNullable(r.outputs())),
                         Ingredient.CODEC.optionalFieldOf("spawn_eggs").forGetter(r -> Optional.of(r.spawnEggs())),

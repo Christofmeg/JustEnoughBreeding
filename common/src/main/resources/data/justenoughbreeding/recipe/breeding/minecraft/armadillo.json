@@ -2,8 +2,5 @@
   "type": "justenoughbreeding:breeding",
   "mod": "minecraft",
   "input_entity": "minecraft:armadillo",
-  "inputs": [
-    "#minecraft:armadillo_food",
-    "#minecraft:axolotl_food"
-  ]
+  "inputs": "#minecraft:armadillo_food"
 }

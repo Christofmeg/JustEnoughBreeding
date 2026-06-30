@@ -11,7 +11,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jspecify.annotations.NonNull;
 
-public record AllayDuplicationRecipe(EntityType<?> entityType, @NotNull Ingredient inputs, @NotNull Ingredient spawnEggs, String mod, String inputEntity, @Nullable CompoundTag inputEntityNbt) implements Recipe<CraftingInput> {
+public record AllayDuplicationRecipe(
+        @Nullable EntityType<?> entityType,
+        @NotNull Ingredient inputs,
+        @NotNull Ingredient spawnEggs,
+        @NotNull String mod,
+        @NotNull String inputEntity,
+        @Nullable CompoundTag inputEntityNbt
+) implements Recipe<CraftingInput> {
 
     @Override public boolean matches(@NotNull CraftingInput input, @NotNull Level level) { return false; }
     @Override public @NotNull ItemStack assemble(@NotNull CraftingInput input, HolderLookup.@NotNull Provider registries) { return ItemStack.EMPTY; }
@@ -19,5 +26,7 @@ public record AllayDuplicationRecipe(EntityType<?> entityType, @NotNull Ingredie
     @Override public @NonNull RecipeType<? extends Recipe<CraftingInput>> getType() { return JustEnoughBreeding.ALLAY_DUPLICATION_PROVIDER_TYPE; }
     @Override public @NonNull PlacementInfo placementInfo() { return PlacementInfo.NOT_PLACEABLE; }
     @Override public @NonNull RecipeBookCategory recipeBookCategory() { return RecipeBookCategories.CRAFTING_MISC; }
+    @Override public boolean isSpecial() { return true; }
+    @Override public boolean showNotification() { return false; }
 
 }

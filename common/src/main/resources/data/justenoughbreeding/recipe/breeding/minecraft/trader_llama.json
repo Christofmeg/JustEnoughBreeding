@@ -2,10 +2,6 @@
   "type": "justenoughbreeding:breeding",
   "mod": "minecraft",
   "input_entity": "minecraft:trader_llama",
-  "inputs": [
-    {
-      "tag": "minecraft:llama_food"
-    }
-  ],
+  "inputs": "#minecraft:llama_tempt_items",
   "tamed": true
 }

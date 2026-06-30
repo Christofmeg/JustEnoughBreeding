@@ -2,7 +2,6 @@ package com.christofmeg.justenoughbreeding.serializer;
 
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.recipe.TransformationRecipe;
-import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -12,7 +11,6 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import org.jetbrains.annotations.NotNull;
@@ -30,7 +28,7 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                         Codec.STRING.fieldOf("output_entity").forGetter(TransformationRecipe::outputEntity),
                         CompoundTag.CODEC.optionalFieldOf("output_entity_nbt").forGetter(r -> Optional.ofNullable(r.inputEntityNbt())),
                         Ingredient.CODEC.fieldOf("inputs").forGetter(TransformationRecipe::inputs),
-                        Ingredient.CODEC.optionalFieldOf("extra_inputs").forGetter(r -> Optional.of(r.extraInputs())),
+                        Ingredient.CODEC.optionalFieldOf("extra_inputs").forGetter(r -> Optional.ofNullable(r.extraInputs())),
                         Ingredient.CODEC.optionalFieldOf("input_spawn_eggs").forGetter(r -> Optional.of(r.inputSpawnEggs())),
                         Ingredient.CODEC.optionalFieldOf("output_spawn_eggs").forGetter(r -> Optional.of(r.outputSpawnEggs())),
                         Codec.BOOL.optionalFieldOf("tamed").forGetter(r -> Optional.ofNullable(r.tamed()))
@@ -48,17 +46,19 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                 ) -> {
                     EntityType<?> inputEntityType = JustEnoughBreeding.getEntityFromLoaderRegistries(Identifier.parse(input_entity));
                     EntityType<?> outputEntityType = JustEnoughBreeding.getEntityFromLoaderRegistries(Identifier.parse(output_entity));
+                    Ingredient finalInputSpawnEggs = input_spawn_eggs.orElseGet(() -> Ingredient.of(JustEnoughBreeding.getSpawnEggItem(inputEntityType)));
+                    Ingredient finalOutputSpawnEggs = output_spawn_eggs.orElseGet(() -> Ingredient.of(JustEnoughBreeding.getSpawnEggItem(outputEntityType)));
                     return new TransformationRecipe(
                             inputEntityType,
-                            CommonUtils.safe(inputs),
-                            CommonUtils.safe(input_spawn_eggs.orElse(CommonUtils.safe(JustEnoughBreeding.getSpawnEggItem(inputEntityType)))),
-                            extra_inputs.orElse(Ingredient.of(Items.AIR)),
+                            inputs,
+                            finalInputSpawnEggs,
+                            extra_inputs.orElse(null),
                             outputEntityType,
-                            CommonUtils.safe(output_spawn_eggs.orElse(CommonUtils.safe(JustEnoughBreeding.getSpawnEggItem(outputEntityType)))),
+                            finalOutputSpawnEggs,
                             mod,
-                            JustEnoughBreeding.getKeyLoaderRegistries(inputEntityType).getNamespace(),
+                            JustEnoughBreeding.getKeyLoaderRegistries(inputEntityType).toString(),
                             input_entity_nbt.orElse(null),
-                            JustEnoughBreeding.getKeyLoaderRegistries(outputEntityType).getNamespace(),
+                            JustEnoughBreeding.getKeyLoaderRegistries(outputEntityType).toString(),
                             output_entity_nbt.orElse(null),
                             tamed.orElse(null)
                     );
@@ -74,7 +74,7 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                 Identifier inputEntityRL = Identifier.STREAM_CODEC.decode(buf);
                 Ingredient inputs = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
                 Ingredient inputSpawnEggs = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
-                Ingredient extraInputs = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
+                Ingredient extraInputs = Ingredient.OPTIONAL_CONTENTS_STREAM_CODEC.decode(buf).orElse(null);
                 Identifier outputEntityRL = Identifier.STREAM_CODEC.decode(buf);
                 Ingredient outputSpawnEggs = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
                 String modId = ByteBufCodecs.STRING_UTF8.decode(buf);
@@ -85,11 +85,11 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                 Boolean needsToBeTamed = ByteBufCodecs.optional(ByteBufCodecs.BOOL).decode(buf).orElse(null);
                 return new TransformationRecipe(
                         JustEnoughBreeding.getEntityFromLoaderRegistries(inputEntityRL),
-                        CommonUtils.safe(inputs),
-                        CommonUtils.safe(inputSpawnEggs),
-                        CommonUtils.safe(extraInputs),
+                        inputs,
+                        inputSpawnEggs,
+                        extraInputs,
                         JustEnoughBreeding.getEntityFromLoaderRegistries(outputEntityRL),
-                        CommonUtils.safe(outputSpawnEggs),
+                        outputSpawnEggs,
                         modId,
                         inputEntity,
                         inputEntityNbt,
@@ -104,7 +104,7 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                 Identifier.STREAM_CODEC.encode(buf, JustEnoughBreeding.getKeyLoaderRegistries(recipe.inputEntityType()));
                 Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.inputs());
                 Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.inputSpawnEggs());
-                Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.extraInputs());
+                Ingredient.OPTIONAL_CONTENTS_STREAM_CODEC.encode(buf, Optional.ofNullable(recipe.extraInputs()));
                 Identifier.STREAM_CODEC.encode(buf, JustEnoughBreeding.getKeyLoaderRegistries(recipe.outputEntityType()));
                 Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.outputSpawnEggs());
                 ByteBufCodecs.STRING_UTF8.encode(buf, recipe.mod());
