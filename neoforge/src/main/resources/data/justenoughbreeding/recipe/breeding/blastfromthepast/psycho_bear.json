@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "blastfromthepast"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "blastfromthepast",
+  "input_entity": "blastfromthepast:psycho_bear",
+  "inputs": [
+    {
+      "tag": "blastfromthepast:psycho_bear_food"
+    }
+  ]
+}

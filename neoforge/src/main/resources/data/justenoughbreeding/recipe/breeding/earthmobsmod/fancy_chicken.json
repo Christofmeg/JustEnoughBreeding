@@ -1,0 +1,31 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "earthmobsmod"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "earthmobsmod",
+  "input_entity": "earthmobsmod:fancy_chicken",
+  "inputs": [
+    {
+      "item": "minecraft:wheat_seeds"
+    },
+    {
+      "item": "minecraft:pumpkin_seeds"
+    },
+    {
+      "item": "minecraft:melon_seeds"
+    },
+    {
+      "item": "minecraft:beetroot_seeds"
+    },
+    {
+      "item": "minecraft:torchflower_seeds"
+    },
+    {
+      "item": "minecraft:pitcher_pod"
+    }
+  ]
+}

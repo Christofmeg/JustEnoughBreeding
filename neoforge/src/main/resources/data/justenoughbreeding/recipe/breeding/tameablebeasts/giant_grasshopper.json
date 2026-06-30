@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tameablebeasts"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "tameablebeasts",
+  "input_entity": "tameablebeasts:giant_grasshopper",
+  "inputs": [
+    {
+      "tag": "tameablebeasts:grasshopper_food"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "tameablebeasts:grasshopper_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "tameablebeasts:giant_grasshopper_spawn_egg"
+    }
+  ],
+  "tamed": true
+}

@@ -1,0 +1,30 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["naturalist"]
+    }
+  ],
+  "type": "justenoughbreeding:transformation",
+  "mod": "naturalist",
+  "inputs": [
+    {
+        "item": "minecraft:shears"
+    }
+  ],
+  "input_entity": "naturalist:bear",
+  "input_spawn_eggs": [
+    {
+        "item": "naturalist:bear_spawn_egg"
+    }
+  ],
+  "output_entity": "naturalist:bear",
+  "output_entity_nbt": {
+    "Sheared": 1
+  },
+  "output_spawn_eggs": [
+    {
+        "item": "naturalist:bear_spawn_egg"
+    }
+  ]
+}

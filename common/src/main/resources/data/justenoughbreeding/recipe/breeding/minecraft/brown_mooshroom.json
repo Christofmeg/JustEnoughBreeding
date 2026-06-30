@@ -1,0 +1,12 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "minecraft",
+  "input_entity": "minecraft:mooshroom",
+  "inputs": [
+    "minecraft:lightning_rod",
+    "minecraft:apple"
+  ],
+  "input_entity_nbt": {
+    "Type": "brown"
+  }
+}

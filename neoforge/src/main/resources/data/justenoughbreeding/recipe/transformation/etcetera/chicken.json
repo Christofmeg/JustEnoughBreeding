@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "etcetera"
+    }
+  ],
+  "type": "justenoughbreeding:transformation",
+  "mod": "etcetera",
+  "inputs": [
+    {
+        "item": "minecraft:shears"
+    }
+  ],
+  "input_entity": "etcetera:chapple",
+  "input_spawn_eggs": [
+    {
+        "item": "etcetera:chapple_spawn_egg"
+    }
+  ],
+  "output_entity": "minecraft:chicken",
+  "output_spawn_eggs": [
+    {
+        "item": "minecraft:chicken_spawn_egg"
+    }
+  ]
+}

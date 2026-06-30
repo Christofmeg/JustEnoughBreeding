@@ -1,0 +1,21 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["species"]
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "species",
+  "input_entity": "species:stackatick",
+  "inputs": [
+    {
+      "item": "minecraft:honeycomb"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "species:stackatick_spawn_egg"
+    }
+  ]
+}

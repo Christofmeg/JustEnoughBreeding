@@ -1,0 +1,13 @@
+{
+  "type": "justenoughbreeding:temper",
+  "mod": "minecraft",
+  "input_entity": "minecraft:llama",
+  "inputs": [
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:hay_block"
+    }
+  ]
+}

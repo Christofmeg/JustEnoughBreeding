@@ -1,0 +1,29 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "unearthed_journey"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "unearthed_journey",
+  "input_entity": "unearthed_journey:thylacine",
+  "inputs": [
+    {
+      "item": "minecraft:chicken"
+    },
+    {
+      "item": "unearthed_journey:large_bone"
+    },
+    {
+      "item": "minecraft:porkchop"
+    },
+    {
+      "item": "minecraft:mutton"
+    },
+    {
+      "item": "minecraft:beef"
+    }
+  ],
+  "tamed": true
+}

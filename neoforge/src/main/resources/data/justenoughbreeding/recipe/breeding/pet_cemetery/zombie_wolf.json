@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "pet_cemetery"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "pet_cemetery",
+  "input_entity": "pet_cemetery:zombie_wolf",
+  "inputs": [
+    {
+      "meat": "true"
+    }
+  ]
+}

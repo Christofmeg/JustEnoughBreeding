@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tameablebeasts"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "tameablebeasts",
+  "input_entity": "tameablebeasts:argentavis",
+  "inputs": [
+    {
+      "tag": "tameablebeasts:argentavis_food"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "tameablebeasts:argentavis_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "tameablebeasts:argentavis_spawn_egg"
+    }
+  ],
+  "tamed": true
+}

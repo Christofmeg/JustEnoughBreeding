@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "brazilian_expansion"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "brazilian_expansion",
+  "input_entity": "brazilian_expansion:gaviao",
+  "inputs": [
+    {
+      "tag": "brazilian_expansion:food_tamable_gaviao"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "brazilian_expansion:gaviao_de_penacho_spawn_egg"
+    }
+  ]
+}

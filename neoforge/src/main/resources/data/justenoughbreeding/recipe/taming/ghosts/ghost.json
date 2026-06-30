@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ghosts"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "ghosts",
+  "input_entity": "ghosts:ghost",
+  "inputs": [
+    {
+      "item": "minecraft:glow_berries"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "ghosts:ghost_spawn_egg"
+    }
+  ]
+}

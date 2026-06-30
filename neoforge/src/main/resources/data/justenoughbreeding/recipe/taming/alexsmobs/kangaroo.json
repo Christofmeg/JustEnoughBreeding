@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "alexsmobs"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "alexsmobs",
+  "input_entity": "alexscaves:kangaroo",
+  "inputs": [
+    {
+      "tag": "alexsmobs:kangaroo_tameables"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_kangaroo"
+    }
+  ]
+}

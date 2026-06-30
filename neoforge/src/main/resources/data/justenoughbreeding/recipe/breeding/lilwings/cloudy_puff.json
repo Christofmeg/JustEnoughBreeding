@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "lilwings"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "lilwings",
+  "input_entity": "lilwings:cloudy_puff",
+  "inputs": [
+    {
+      "item": "minecraft:azure_bluet"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "lilwings:cloudy_puff_egg"
+    }
+  ]
+}

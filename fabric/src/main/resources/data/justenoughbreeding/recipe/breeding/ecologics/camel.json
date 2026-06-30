@@ -1,0 +1,16 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["ecologics"]
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "ecologics",
+  "input_entity": "ecologics:camel",
+  "inputs": [
+    {
+      "item": "ecologics:prickly_pear"
+    }
+  ]
+}

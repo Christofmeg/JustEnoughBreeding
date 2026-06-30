@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tameablebeasts"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "tameablebeasts",
+  "input_entity": "tameablebeasts:tameable_chikote",
+  "inputs": [
+    {
+      "tag": "tameablebeasts:chikote_food"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "tameablebeasts:chikote_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "tameablebeasts:chikote_spawn_egg"
+    }
+  ],
+  "tamed": true
+}

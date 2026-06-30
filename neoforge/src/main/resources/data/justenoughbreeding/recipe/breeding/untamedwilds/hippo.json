@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "untamedwilds"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "untamedwilds",
+  "input_entity": "untamedwilds:hippo",
+  "inputs": [
+    {
+      "item": "untamedwilds:flora_water_hyacinth_item"
+    }
+  ]
+}

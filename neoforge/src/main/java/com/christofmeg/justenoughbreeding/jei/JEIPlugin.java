@@ -4,10 +4,10 @@ import com.christofmeg.justenoughbreeding.CommonConstants;
 import me.shedaniel.rei.plugincompatibilities.api.REIPluginCompatIgnore;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
-import mezz.jei.api.helpers.IJeiHelpers;
+import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import org.jetbrains.annotations.NotNull;
 
@@ -17,26 +17,26 @@ import org.jetbrains.annotations.NotNull;
 public class JEIPlugin implements IModPlugin {
 
     @Override
-    public @NotNull Identifier getPluginUid() {
-        return Identifier.fromNamespaceAndPath(CommonConstants.MOD_ID, "jei_plugin");
+    public @NotNull ResourceLocation getPluginUid() {
+        return ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "jei_plugin");
     }
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registration) {
-        IJeiHelpers helper = registration.getJeiHelpers();
+        IGuiHelper helper = registration.getJeiHelpers().getGuiHelper();
         registration.addRecipeCategories(
-                new BreedingCategory(helper, Items.WHEAT)
-//                ,new TamingCategory(helper, Items.BONE),
-//                new TemperCategory(helper, Items.GOLDEN_CARROT),
-//                new TransformationCategory(helper, Items.GOLDEN_CARROT),
-//                new TrustingCategory(helper, Items.SWEET_BERRIES)
-
+                new AllayDuplicationCategory(helper, Items.AMETHYST_SHARD),
+                new BreedingCategory(helper, Items.WHEAT),
+                new TamingCategory(helper, Items.BONE),
+                new TemperCategory(helper, Items.GOLDEN_APPLE),
+                new TransformationCategory(helper, Items.GOLDEN_CARROT),
+                new TrustingCategory(helper, Items.SWEET_BERRIES)
         );
     }
 
     @Override
     public void registerRecipes(@NotNull IRecipeRegistration registration) {
-        JEIUtils.registerMobBreedingRecipes(registration);
+        JEIUtils.registerRecipes(registration);
     }
 
 }

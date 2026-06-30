@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "brazilian_expansion"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "brazilian_expansion",
+  "input_entity": "brazilian_expansion:garca_real",
+  "inputs": [
+    {
+      "item": "brazilian_expansion:apaiari_raw"
+    }
+  ]
+}

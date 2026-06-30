@@ -1,0 +1,17 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["biomemakeover"]
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "biomemakeover",
+  "input_entity": "biomemakeover:owl",
+  "inputs": [
+    {
+      "meat": "true"
+    }
+  ],
+  "tamed": true
+}

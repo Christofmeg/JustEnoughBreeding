@@ -1,0 +1,8 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "minecraft",
+  "input_entity": "minecraft:axolotl",
+  "inputs": [
+    "minecraft:emerald"
+  ]
+}

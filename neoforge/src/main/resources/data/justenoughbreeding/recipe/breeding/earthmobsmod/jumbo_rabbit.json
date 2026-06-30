@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "earthmobsmod"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "earthmobsmod",
+  "input_entity": "earthmobsmod:jumbo_rabbit",
+  "inputs": [
+    {
+      "item": "minecraft:dandelion"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:golden_carrot"
+    }
+  ]
+}

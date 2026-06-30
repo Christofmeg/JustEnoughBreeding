@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "lilwings"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "lilwings",
+  "input_entity": "lilwings:red_applefly",
+  "inputs": [
+    {
+      "item": "minecraft:apple"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "lilwings:red_applefly_egg"
+    }
+  ]
+}

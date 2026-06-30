@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "biomemakeover"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "biomemakeover",
+  "input_entity": "biomemakeover:toad",
+  "inputs": [
+    {
+      "item": "minecraft:slimball"
+    },
+    {
+      "item": "minecraft:spider_eye"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "theducksmod"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "theducksmod",
+  "input_entity": "theducksmod:mallard_duck",
+  "inputs": [
+    {
+      "item": "minecraft:seagrass"
+    }
+  ]
+}

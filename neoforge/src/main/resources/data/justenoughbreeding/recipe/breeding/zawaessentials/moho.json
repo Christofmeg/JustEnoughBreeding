@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "zawaessentials"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "zawaessentials",
+  "input_entity": "zawaessentials:moho",
+  "inputs": [
+    {
+      "item": "minecraft:allium"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["lilwings"]
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "lilwings",
+  "input_entity": "lilwings:aponi",
+  "inputs": [
+    {
+      "item": "minecraft:brown_mushroom"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "lilwings:aponi_egg"
+    }
+  ]
+}

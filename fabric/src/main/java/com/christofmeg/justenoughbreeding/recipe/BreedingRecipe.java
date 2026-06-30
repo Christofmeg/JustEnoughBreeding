@@ -1,65 +1,27 @@
 package com.christofmeg.justenoughbreeding.recipe;
 
-import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.client.Minecraft;
-import net.minecraft.world.entity.EntitySpawnReason;
+import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
 
-public class BreedingRecipe {
-    private LivingEntity currentLivingEntity = null;
-    private long lastEntityCreationTime = 0;
+import java.util.List;
 
-    public final EntityType<?> entityType;
-    public final Ingredient breedingCatalyst;
-    public final ItemStack spawnEgg;
-    @Nullable
-    public final Boolean needsToBeTamed;
-    public final Ingredient resultItemStack;
-    public final @Nullable Ingredient extraInputStack;
-    @Nullable
-    public final Boolean animalTrusting;
-    public static final int ENTITY_CREATION_INTERVAL = 3000;
+public record BreedingRecipe(EntityType<?> entityType, @NotNull Ingredient inputs, @NotNull Ingredient spawnEggs, @Nullable Boolean tamed, @Nullable Ingredient outputs, @Nullable Ingredient extraInputs, @Nullable Boolean trusting, String mod, String inputEntity, @Nullable CompoundTag inputEntityNbt) implements Recipe<CraftingInput> {
 
-    public BreedingRecipe(EntityType<?> entityType, Ingredient breedingCatalyst, ItemStack spawnEgg, @Nullable Boolean needsToBeTamed, @Nullable Ingredient resultItemStack, @Nullable Ingredient extraInputStack, @Nullable Boolean animalTrusting) {
-        this.entityType = entityType;
-        this.breedingCatalyst = breedingCatalyst;
-        this.spawnEgg = spawnEgg;
-        this.needsToBeTamed = needsToBeTamed;
-        this.resultItemStack = resultItemStack;
-        this.extraInputStack = extraInputStack;
-        this.animalTrusting = animalTrusting;
-    }
-
-    public LivingEntity doRendering() {
-        long currentTime = System.currentTimeMillis();
-        Level level = Minecraft.getInstance().level;
-
-        if (level != null) {
-            if (currentLivingEntity == null) {
-                currentLivingEntity = (LivingEntity) entityType.create(level, EntitySpawnReason.NATURAL);
-                lastEntityCreationTime = currentTime;
-            }
-            if (currentTime - lastEntityCreationTime >= ENTITY_CREATION_INTERVAL) {
-                if (!FabricLoader.getInstance().isModLoaded("entity_model_features") && !FabricLoader.getInstance().isModLoaded("optifine")) {
-                    currentLivingEntity = (LivingEntity) entityType.create(level, EntitySpawnReason.NATURAL);
-                    lastEntityCreationTime = currentTime;
-                }
-            }
-        }
-
-        if (currentLivingEntity != null) {
-            if (currentLivingEntity instanceof TamableAnimal tamableAnimal) {
-                tamableAnimal.setTame(true, true);
-            }
-        }
-
-        return currentLivingEntity;
-    }
+    @Override public boolean matches(@NotNull CraftingInput input, @NotNull Level level) { return false; }
+    @Override public @NotNull ItemStack assemble(@NotNull CraftingInput input, HolderLookup.@NotNull Provider registries) { return ItemStack.EMPTY; }
+    @Override public @NonNull RecipeSerializer<? extends Recipe<CraftingInput>> getSerializer() { return JustEnoughBreeding.BREEDING_PROVIDER_SERIALIZER; }
+    @Override public @NonNull RecipeType<? extends Recipe<CraftingInput>> getType() { return JustEnoughBreeding.BREEDING_PROVIDER_TYPE; }
+    @Override public @NonNull PlacementInfo placementInfo() { return PlacementInfo.NOT_PLACEABLE; }
+    @Override public @NonNull RecipeBookCategory recipeBookCategory() { return RecipeBookCategories.CRAFTING_MISC; }
+    @Override public boolean isSpecial() { return true; }
+    @Override public boolean showNotification() { return false; }
 
 }

@@ -1,0 +1,25 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["friendsandfoes"]
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "friendsandfoes",
+  "input_entity": "friendsandfoes:crab",
+  "inputs": [
+    {
+      "item": "minecraft:kelp"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "friendsandfoes:crab_egg",
+      "amount": {
+        "min": 1,
+        "max": 4
+      }
+    }
+  ]
+}

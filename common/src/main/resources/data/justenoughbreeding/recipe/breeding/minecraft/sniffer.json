@@ -1,0 +1,15 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "minecraft",
+  "input_entity": "minecraft:sniffer",
+  "inputs": [
+    {
+      "tag": "minecraft:sniffer_food"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "minecraft:sniffer_egg"
+    }
+  ]
+}

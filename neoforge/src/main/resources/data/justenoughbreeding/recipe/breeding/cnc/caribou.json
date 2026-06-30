@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "cnc"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "cnc",
+  "input_entity": "cnc:caribou",
+  "inputs": [
+    {
+      "item": "minecraft:red_mushroom"
+    }
+  ],
+  "tamed": true
+}

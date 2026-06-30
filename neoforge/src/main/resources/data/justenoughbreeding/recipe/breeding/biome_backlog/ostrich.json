@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "biome_backlog"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "biome_backlog",
+  "input_entity": "biome_backlog:ostrich",
+  "inputs": [
+    {
+      "item": "minecraft:wheat"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "biome_backlog:ostrich_egg"
+    }
+  ]
+}

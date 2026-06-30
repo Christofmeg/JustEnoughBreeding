@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ambientadditions"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "ambientadditions",
+  "input_entity": "ambientadditions:marten",
+  "inputs": [
+    {
+      "item": "minecraft:egg"
+    }
+  ]
+}

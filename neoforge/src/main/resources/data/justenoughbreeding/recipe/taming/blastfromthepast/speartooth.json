@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "blastfromthepast"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "blastfromthepast",
+  "input_entity": "blastfromthepast:speartooth",
+  "inputs": [
+    {
+      "item": "blastfromthepast:raw_beast_chops"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "blastfromthepast:speartooth_tiger_spawn_egg"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "autumnity"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "autumnity",
+  "input_entity": "autumnity:snail",
+  "inputs": [
+    {
+      "tag": "autumnity:snail_food"
+    }
+  ]
+}

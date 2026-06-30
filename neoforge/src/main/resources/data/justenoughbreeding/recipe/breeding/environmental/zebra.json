@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "environmental"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "environmental",
+  "input_entity": "environmental:zebra",
+  "inputs": [
+    {
+      "item": "minecraft:golden_apple"
+    },
+    {
+      "item": "minecraft:enchanted_golden_apple"
+    },
+    {
+      "item": "minecraft:golden_carrot"
+    }
+  ],
+  "tamed": true
+}

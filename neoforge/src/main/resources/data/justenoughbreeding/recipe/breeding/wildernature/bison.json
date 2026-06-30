@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "wildernature"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "wildernature",
+  "input_entity": "wildernature:bison",
+  "inputs": [
+    {
+      "item": "minecraft:wheat"
+    }
+  ]
+}

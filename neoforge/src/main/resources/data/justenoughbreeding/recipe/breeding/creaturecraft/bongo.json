@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "creaturecraft"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "creaturecraft",
+  "input_entity": "creaturecraft:bongo",
+  "inputs": [
+    {
+      "item": "creaturecraft:baobab_leaves"
+    },
+    {
+      "item": "creaturecraft:buff_grass"
+    },
+    {
+      "item": "creaturecraft:savannah_grass_short"
+    },
+    {
+      "item": "creaturecraft:savannah_grass_tall"
+    },
+    {
+      "item": "creaturecraft:savannah_bush_tall"
+    },
+    {
+      "item": "creaturecraft:savannah_bush_short"
+    },
+    {
+      "item": "creaturecraft:baobab_sapling"
+    },
+    {
+      "item": "creaturecraft:palm_leaves"
+    },
+    {
+      "item": "creaturecraft:palm_sapling"
+    }
+  ],
+  "tamed": true
+}

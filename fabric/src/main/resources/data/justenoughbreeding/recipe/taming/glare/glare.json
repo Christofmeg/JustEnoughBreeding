@@ -1,0 +1,16 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["glare"]
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "glare",
+  "input_entity": "glare:glare",
+  "inputs": [
+    {
+      "item": "minecraft:glow_berries"
+    }
+  ]
+}

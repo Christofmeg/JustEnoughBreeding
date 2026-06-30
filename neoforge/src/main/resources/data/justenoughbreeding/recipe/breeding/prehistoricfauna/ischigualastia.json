@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "input_entity": "prehistoricfauna:ischigualastia",
+  "inputs": [
+    {
+      "item": "prehistoricfauna:cladophlebis"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:ischigualastia_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:ischigualastia_spawn_egg"
+    }
+  ]
+}

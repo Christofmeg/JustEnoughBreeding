@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tameablebeasts"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "tameablebeasts",
+  "input_entity": "tameablebeasts:tameable_penguin",
+  "inputs": [
+    {
+      "tag": "tameablebeasts:penguin_food"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "tameablebeasts:penguin_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "tameablebeasts:penguin_spawn_egg"
+    }
+  ],
+  "tamed": true
+}

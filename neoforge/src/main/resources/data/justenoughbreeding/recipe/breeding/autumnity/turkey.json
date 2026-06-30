@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "autumnity"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "autumnity",
+  "input_entity": "autumnity:turkey",
+  "inputs": [
+    {
+      "tag": "autumnity:turkey_food"
+    }
+  ]
+}

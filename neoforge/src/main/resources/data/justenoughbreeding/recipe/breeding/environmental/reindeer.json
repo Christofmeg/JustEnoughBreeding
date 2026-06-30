@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "environmental"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "environmental",
+  "input_entity": "environmental:reindeer",
+  "inputs": [
+    {
+      "tag": "environmental:reindeer_food"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "brazilian_expansion"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "brazilian_expansion",
+  "input_entity": "brazilian_expansion:matamata",
+  "inputs": [
+    {
+      "item": "brazilian_expansion:piraputanga_raw"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "brazilian_expansion:matamata_egg"
+    }
+  ]
+}

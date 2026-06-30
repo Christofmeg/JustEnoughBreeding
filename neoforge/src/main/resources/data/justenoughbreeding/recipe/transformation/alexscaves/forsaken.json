@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "alexscaves"
+    }
+  ],
+  "type": "justenoughbreeding:transformation",
+  "mod": "alexscaves",
+  "inputs": [
+    {
+        "item": "alexscaves:spawn_egg_underzealot"
+    }
+  ],
+  "input_entity": "alexscaves:vesper",
+  "input_spawn_eggs": [
+    {
+        "item": "alexscaves:spawn_egg_vesper"
+    }
+  ],
+  "output_entity": "alexscaves:forsaken",
+  "output_spawn_eggs": [
+    {
+        "item": "alexscaves:spawn_egg_forsaken"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "blue_skies"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "blue_skies",
+  "input_entity": "blue_skies:shade_monitor",
+  "inputs": [
+    {
+      "tag": "minecraft:fishes"
+    }
+  ]
+}

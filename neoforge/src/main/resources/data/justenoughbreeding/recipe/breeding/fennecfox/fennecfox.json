@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "fennecfox"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "fennecfox",
+  "input_entity": "fennecfox:fennecfox",
+  "inputs": [
+    {
+      "item": "minecraft:glow_berries"
+    },
+    {
+      "item": "minecraft:rabbit_foot"
+    },
+    {
+      "item": "minecraft:sweet_berries"
+    }
+  ]
+}

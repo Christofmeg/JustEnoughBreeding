@@ -1,0 +1,16 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["naturalist"]
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "naturalist",
+  "input_entity": "naturalist:duck",
+  "inputs": [
+    {
+      "tag": "naturalist:duck_food_items"
+    }
+  ]
+}

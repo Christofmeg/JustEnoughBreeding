@@ -1,0 +1,49 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "creaturecraft"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "creaturecraft",
+  "input_entity": "creaturecraft:beaver",
+  "inputs": [
+    {
+      "item": "creaturecraft:baobab_sapling"
+    },
+    {
+      "item": "creaturecraft:palm_sapling"
+    },
+    {
+      "item": "creaturecraft:mopane_sapling"
+    },
+    {
+      "item": "minecraft:oak_sapling"
+    },
+    {
+      "item": "minecraft:spruce_sapling"
+    },
+    {
+      "item": "minecraft:birch_sapling"
+    },
+    {
+      "item": "minecraft:jungle_sapling"
+    },
+    {
+      "item": "minecraft:acacia_sapling"
+    },
+    {
+      "item": "minecraft:dark_oak_sapling"
+    },
+    {
+      "item": "minecraft:cherry_sapling"
+    },
+    {
+      "item": "minecraft:bamboo_sapling"
+    },
+    {
+      "item": "minecraft:stick"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "lilcritters"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "lilcritters",
+  "input_entity": "lilcritters:pumpkin_toadlet",
+  "inputs": [
+    {
+      "item": "zawa:leafcutter_ant"
+    }
+  ]
+}

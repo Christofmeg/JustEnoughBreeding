@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ambientadditions"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "ambientadditions",
+  "input_entity": "ambientadditions:aye_aye",
+  "inputs": [
+    {
+      "item": "ambientadditions:worm"
+    }
+  ]
+}

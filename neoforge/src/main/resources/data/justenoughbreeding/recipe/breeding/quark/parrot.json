@@ -1,0 +1,33 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "quark"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "quark",
+  "input_entity": "minecraft:parrot",
+  "inputs": [
+    {
+      "item": "minecraft:beetroot_seeds"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "quark:egg_parrot_red_blue"
+    },
+    {
+      "item": "quark:egg_parrot_blue"
+    },
+    {
+      "item": "quark:egg_parrot_green"
+    },
+    {
+      "item": "quark:egg_parrot_yellow_blue"
+    },
+    {
+      "item": "quark:egg_parrot_grey"
+    }
+  ]
+}

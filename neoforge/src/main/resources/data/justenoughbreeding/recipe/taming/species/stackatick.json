@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "species"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "species",
+  "input_entity": "species:stackatick",
+  "inputs": [
+    {
+      "item": "minecraft:honeycomb"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "species:stackatick_spawn_egg"
+    }
+  ]
+}

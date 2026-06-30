@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ydms_redpanda"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "ydms_redpanda",
+  "input_entity": "ydms_redpanda:redpanda",
+  "inputs": [
+    {
+      "item": "minecraft:sweet_berries"
+    }
+  ]
+}

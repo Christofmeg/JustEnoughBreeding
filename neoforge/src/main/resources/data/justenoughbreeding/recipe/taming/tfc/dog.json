@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tfc"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "tfc",
+  "input_entity": "tfc:dog",
+  "inputs": [
+    {
+      "tag": "tfc:dog_food"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "tfc:spawn_egg/dog"
+    }
+  ]
+}

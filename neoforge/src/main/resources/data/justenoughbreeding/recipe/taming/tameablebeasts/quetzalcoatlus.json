@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tameablebeasts"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "tameablebeasts",
+  "input_entity": "tameablebeasts:quetzalcoatlus",
+  "inputs": [
+    {
+      "item": "tameablebeasts:ptera_meal_arrow"
+    }
+  ],
+  "extra_inputs": [
+    {
+      "tag": "c:bows"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "tameablebeasts:quetzal_spawn_egg"
+    }
+  ]
+}

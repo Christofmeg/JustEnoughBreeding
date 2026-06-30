@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "waddles"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "waddles",
+  "input_entity": "waddles:adelie_penguin",
+  "inputs": [
+    {
+      "item": "minecraft:cod"
+    },
+    {
+      "item": "minecraft:salmon"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "input_entity": "prehistoricfauna:ceratosaurus",
+  "inputs": [
+    {
+      "item": "prehistoricfauna:raw_small_ornithischian_meat"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:ceratosaurus_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:ceratosaurus_spawn_egg"
+    }
+  ]
+}

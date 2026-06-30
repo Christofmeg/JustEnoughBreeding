@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "chileancraft"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "chileancraft",
+  "input_entity": "chileancraft:quiltro",
+  "inputs": [
+    {
+      "item": "chileancraft:empadana_de_pino"
+    }
+  ]
+}

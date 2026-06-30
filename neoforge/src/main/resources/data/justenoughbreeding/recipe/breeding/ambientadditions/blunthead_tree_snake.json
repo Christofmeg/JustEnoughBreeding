@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ambientadditions"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "ambientadditions",
+  "input_entity": "ambientadditions:blunthead_tree_snake",
+  "inputs": [
+    {
+      "item": "ambientadditions:pinocchio_anole_pot"
+    }
+  ]
+}

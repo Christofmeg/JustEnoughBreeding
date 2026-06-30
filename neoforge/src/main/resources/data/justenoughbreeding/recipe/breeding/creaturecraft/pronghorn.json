@@ -1,0 +1,35 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "creaturecraft"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "creaturecraft",
+  "input_entity": "creaturecraft:pronghorn",
+  "inputs": [
+    {
+      "item": "creaturecraft:buff_grass"
+    },
+    {
+      "item": "minecraft:grass"
+    },
+    {
+      "item": "minecraft:fern"
+    },
+    {
+      "item": "minecraft:tall_grass"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:wheat_seeds"
+    },
+    {
+      "item": "minecraft:wheat"
+    }
+  ],
+  "tamed": true
+}

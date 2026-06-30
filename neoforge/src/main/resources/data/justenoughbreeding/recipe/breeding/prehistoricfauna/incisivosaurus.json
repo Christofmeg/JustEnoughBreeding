@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "input_entity": "prehistoricfauna:incisivosaurus",
+  "inputs": [
+    {
+      "item": "prehistoricfauna:araucaria_nuts"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:incisivosaurus_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:incisivosaurus_spawn_egg"
+    }
+  ]
+}

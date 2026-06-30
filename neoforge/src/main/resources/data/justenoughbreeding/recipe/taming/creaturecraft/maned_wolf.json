@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "creaturecraft"
+    }
+  ],
+  "type": "justenoughbreeding:taming",
+  "mod": "creaturecraft",
+  "input_entity": "creaturecraft:maned_wolf",
+  "inputs": [
+    {
+      "item": "minecraft:melon_slice"
+    }
+  ]
+}

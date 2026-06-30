@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "alexsmobs"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "alexsmobs",
+  "input_entity": "alexsmobs:gorilla",
+  "inputs": [
+    {
+      "tag": "alexsmobs:gorilla_breedables"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "alexsmobs:spawn_egg_gorilla"
+    }
+  ],
+  "tamed": true
+}

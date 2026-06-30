@@ -1,0 +1,30 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["companions"]
+    }
+  ],
+  "type": "justenoughbreeding:transformation",
+  "mod": "companions",
+  "inputs": [
+    {
+        "item": "minecraft:shears"
+    }
+  ],
+  "input_entity": "companions:antlion",
+  "input_spawn_eggs": [
+    {
+        "item": "companions:wild_antlion_spawn_egg"
+    }
+  ],
+  "output_entity": "companions:antlion",
+  "output_entity_nbt": {
+    "HasFur": 0
+  },
+  "output_spawn_eggs": [
+    {
+        "item": "companions:wild_antlion_spawn_egg"
+    }
+  ]
+}

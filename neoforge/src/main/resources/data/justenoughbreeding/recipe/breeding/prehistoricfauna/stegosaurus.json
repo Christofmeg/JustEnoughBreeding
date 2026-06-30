@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "prehistoricfauna"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "prehistoricfauna",
+  "input_entity": "prehistoricfauna:stegosaurus",
+  "inputs": [
+    {
+      "item": "prehistoricfauna:zamites_leaves"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "prehistoricfauna:stegosaurus_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "prehistoricfauna:stegosaurus_spawn_egg"
+    }
+  ]
+}

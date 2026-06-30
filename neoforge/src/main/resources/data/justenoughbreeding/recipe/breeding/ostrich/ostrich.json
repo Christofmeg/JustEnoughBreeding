@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ostrich"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "ostrich",
+  "input_entity": "ostrich:ostrich",
+  "inputs": [
+    {
+      "item": "minecraft:apple"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "ostrich:ostrich_egg"
+    }
+  ],
+  "tamed": true
+}

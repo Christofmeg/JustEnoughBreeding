@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "cnc"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "cnc",
+  "input_entity": "cnc:cougar",
+  "inputs": [
+    {
+      "item": "cnc:raw_venison"
+    }
+  ],
+  "tamed": true
+}

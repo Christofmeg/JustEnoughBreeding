@@ -1,0 +1,38 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["crittersandcompanions"]
+    }
+  ],
+  "type": "justenoughbreeding:transformation",
+  "mod": "crittersandcompanions",
+  "inputs": [
+    {
+        "item": "crittersandcompanions:iron_dragonfly_armor"
+    }
+  ],
+  "input_entity": "crittersandcompanions:dragonfly",
+  "input_spawn_eggs": [
+    {
+        "item": "crittersandcompanions:dragonfly_spawn_egg"
+    }
+  ],
+  "output_entity": "crittersandcompanions:dragonfly",
+  "output_entity_nbt": {
+    "ArmorItems": [
+        {},
+        {},
+        {
+            "id": "crittersandcompanions:iron_dragonfly_armor",
+            "Count": 1
+        },
+        {}
+    ]
+  },
+  "output_spawn_eggs": [
+    {
+        "item": "crittersandcompanions:dragonfly_spawn_egg"
+    }
+  ]
+}

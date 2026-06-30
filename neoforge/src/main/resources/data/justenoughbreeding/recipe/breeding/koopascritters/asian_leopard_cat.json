@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "koopascritters"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "koopascritters",
+  "input_entity": "koopascritters:asian_leopard_cat",
+  "inputs": [
+    {
+      "item": "koopascritters:raw_wild_bird"
+    },
+    {
+      "item": "koopascritters:cooked_wild_bird"
+    },
+    {
+      "item": "minecraft:chicken"
+    },
+    {
+      "item": "minecraft:cooked_chicken"
+    }
+  ]
+}

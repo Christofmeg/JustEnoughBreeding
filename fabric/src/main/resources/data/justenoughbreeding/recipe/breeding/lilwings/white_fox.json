@@ -1,0 +1,21 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["lilwings"]
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "lilwings",
+  "input_entity": "lilwings:white_fox",
+  "inputs": [
+    {
+      "item": "minecraft:lily_of_the_valley"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "lilwings:white_fox_egg"
+    }
+  ]
+}

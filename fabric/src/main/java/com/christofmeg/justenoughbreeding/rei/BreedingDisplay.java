@@ -9,7 +9,6 @@ import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -17,15 +16,15 @@ import java.util.List;
 public class BreedingDisplay extends BasicDisplay {
 
     protected List<EntryIngredient> extraInputs;
-    public BreedingRecipe breedingRecipe;
+    public BreedingRecipe recipe;
 
     public BreedingDisplay(BreedingRecipe recipe) {
-        super(List.of(EntryIngredients.ofIngredient(recipe.breedingCatalyst), EntryIngredients.ofIngredient(Ingredient.of(recipe.spawnEgg.getItem()))),
-                List.of(recipe.resultItemStack == null ? EntryIngredient.of(EntryStacks.of(ItemStack.EMPTY)) : EntryIngredients.ofIngredient(recipe.resultItemStack), EntryIngredients.ofIngredient(Ingredient.of(recipe.spawnEgg.getItem())))
+        super(List.of(EntryIngredients.ofIngredient(recipe.inputs()), EntryIngredients.ofIngredient(recipe.spawnEggs())),
+                List.of(EntryIngredients.ofIngredient(recipe.outputs()), EntryIngredients.ofIngredient(recipe.spawnEggs()))
         );
-        breedingRecipe = recipe;
-        if (recipe.extraInputStack != null) {
-            extraInputs = List.of(EntryIngredients.ofIngredient(recipe.extraInputStack));
+        this.recipe = recipe;
+        if (!recipe.extraInputs().isEmpty()) {
+            extraInputs = List.of(EntryIngredients.ofIngredient(recipe.extraInputs()));
         } else {
             extraInputs = List.of(EntryIngredient.of(EntryStacks.of(ItemStack.EMPTY)));
         }

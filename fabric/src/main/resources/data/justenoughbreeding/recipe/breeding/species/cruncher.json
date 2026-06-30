@@ -1,0 +1,26 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["species"]
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "species",
+  "input_entity": "species:cruncher",
+  "inputs": [
+    {
+      "tag": "species:cruncher_eats"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "species:cruncher_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "species:cruncher_spawn_egg"
+    }
+  ]
+}

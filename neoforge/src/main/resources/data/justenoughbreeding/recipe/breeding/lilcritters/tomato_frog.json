@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "lilcritters"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "lilcritters",
+  "input_entity": "lilcritters:tomato_frog",
+  "inputs": [
+    {
+      "item": "zawa:brown_rat"
+    }
+  ]
+}

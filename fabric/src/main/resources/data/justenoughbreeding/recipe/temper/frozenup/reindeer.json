@@ -1,0 +1,37 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["frozenup"]
+    }
+  ],
+  "type": "justenoughbreeding:temper",
+  "mod": "frozenup",
+  "input_entity": "frozenup:reindeer",
+  "inputs": [
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "minecraft:golden_carrot"
+    },
+    {
+      "item": "minecraft:golden_apple"
+    },
+    {
+      "item": "minecraft:enchanted_golden_apple"
+    },
+    {
+      "item": "minecraft:glow_lichen"
+    }
+  ]
+}

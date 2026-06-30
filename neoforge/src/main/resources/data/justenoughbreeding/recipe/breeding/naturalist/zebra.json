@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "naturalist"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "naturalist",
+  "input_entity": "naturalist:zebra",
+  "inputs": [
+    {
+      "item": "minecraft:golden_apple"
+    },
+    {
+      "item": "minecraft:enchanted_golden_apple"
+    },
+    {
+      "item": "minecraft:golden_carrot"
+    }
+
+  ],
+  "tamed": true
+}

@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "frostrealm"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "frostrealm",
+  "input_entity": "frostrealm:crystal_fox",
+  "inputs": [
+    {
+      "item": "frostrealm:bearberry"
+    }
+  ]
+}

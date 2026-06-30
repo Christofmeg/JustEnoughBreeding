@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tameablebeasts"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "tameablebeasts",
+  "input_entity": "tameablebeasts:ground_beetle",
+  "inputs": [
+    {
+      "tag": "tameablebeasts:ground_beetle_tame_food"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "tameablebeasts:ground_beetle_egg"
+    }
+  ],
+  "spawn_eggs": [
+    {
+      "item": "tameablebeasts:ground_beetle_spawn_egg"
+    }
+  ],
+  "tamed": true
+}

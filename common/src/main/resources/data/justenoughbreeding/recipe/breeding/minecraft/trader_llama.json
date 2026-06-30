@@ -1,0 +1,11 @@
+{
+  "type": "justenoughbreeding:breeding",
+  "mod": "minecraft",
+  "input_entity": "minecraft:trader_llama",
+  "inputs": [
+    {
+      "tag": "minecraft:llama_food"
+    }
+  ],
+  "tamed": true
+}

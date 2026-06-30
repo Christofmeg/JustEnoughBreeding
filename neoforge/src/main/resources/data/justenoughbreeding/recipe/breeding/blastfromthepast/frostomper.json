@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "blastfromthepast"
+    }
+  ],
+  "type": "justenoughbreeding:breeding",
+  "mod": "blastfromthepast",
+  "input_entity": "blastfromthepast:frostomper",
+  "inputs": [
+    {
+      "item": "blastfromthepast:sap_ice_cream"
+    }
+  ],
+  "tamed": true
+}

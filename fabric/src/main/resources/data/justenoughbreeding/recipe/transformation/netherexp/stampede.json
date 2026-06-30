@@ -1,0 +1,27 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["netherexp"]
+    }
+  ],
+  "type": "justenoughbreeding:transformation",
+  "mod": "netherexp",
+  "inputs": [
+    {
+        "item": "netherexp:apparition_spawn_egg"
+    }
+  ],
+  "input_entity": "minecraft:strider",
+  "input_spawn_eggs": [
+    {
+        "item": "minecraft:strider_spawn_egg"
+    }
+  ],
+  "output_entity": "netherexp:stampede",
+  "output_spawn_eggs": [
+    {
+        "item": "netherexp:stampede_spawn_egg"
+    }
+  ]
+}
