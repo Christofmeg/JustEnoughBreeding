@@ -34,11 +34,9 @@ public class BreedingCategoryREI extends AbstractRecipeCategoryREI<BreedingDispl
         display.recipe.spawnEggs().items().forEach(stack -> spawnEggs.add(EntryStacks.ofItemHolder(stack)));
         widgets.add(Widgets.createSlot(new Point(bounds.x + 154, bounds.y + 6)).entries(spawnEggs));
 
-        boolean hasExtraInput = !display.getExtraInputEntries().isEmpty() &&
-                !display.getExtraInputEntries().getFirst().isEmpty() &&
-                !display.getExtraInputEntries().getFirst().getFirst().isEmpty();
+        boolean hasExtraInput = display.recipe.extraInputs() != null;
+        boolean hasOutput = display.recipe.outputs() != null;
 
-        boolean hasOutput = !display.getOutputEntries().getFirst().isEmpty();
         if (hasExtraInput && hasOutput) {
             widgets.add(Widgets.createSlot(new Point(bounds.getX() + 79, bounds.getCenterY() - 11)).entries(display.getInputEntries().getFirst()));
             widgets.add(Widgets.createSlot(new Point(bounds.getX() + 79, bounds.getCenterY() + 12)).entries(display.getExtraInputEntries().getFirst()));

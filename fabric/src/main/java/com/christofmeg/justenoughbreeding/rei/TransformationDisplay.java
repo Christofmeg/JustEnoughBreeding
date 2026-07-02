@@ -23,7 +23,7 @@ public class TransformationDisplay extends BasicDisplay {
                 List.of(EntryIngredients.ofIngredient(recipe.outputSpawnEggs()))
         );
         this.recipe = recipe;
-        if (!recipe.extraInputs().isEmpty()) {
+        if (recipe.extraInputs() != null) {
             extraInputs = List.of(EntryIngredients.ofIngredient(recipe.extraInputs()));
         } else {
             extraInputs = List.of(EntryIngredient.of(EntryStacks.of(ItemStack.EMPTY)));

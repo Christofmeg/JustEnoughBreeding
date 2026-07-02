@@ -23,7 +23,7 @@ public class TamingDisplay extends BasicDisplay {
                 List.of(EntryIngredients.ofIngredient(recipe.spawnEggs()))
         );
         this.recipe = recipe;
-        if (!recipe.extraInputs().isEmpty()) {
+        if (recipe.extraInputs() != null) {
             extraInputs = List.of(EntryIngredients.ofIngredient(recipe.extraInputs()));
         } else {
             extraInputs = List.of(EntryIngredient.of(EntryStacks.of(ItemStack.EMPTY)));

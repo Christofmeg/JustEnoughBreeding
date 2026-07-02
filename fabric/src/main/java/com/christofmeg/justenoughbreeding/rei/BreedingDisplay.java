@@ -20,10 +20,11 @@ public class BreedingDisplay extends BasicDisplay {
 
     public BreedingDisplay(BreedingRecipe recipe) {
         super(List.of(EntryIngredients.ofIngredient(recipe.inputs()), EntryIngredients.ofIngredient(recipe.spawnEggs())),
-                List.of(EntryIngredients.ofIngredient(recipe.outputs()), EntryIngredients.ofIngredient(recipe.spawnEggs()))
+                recipe.outputs() != null ? List.of(EntryIngredients.ofIngredient(recipe.outputs()), EntryIngredients.ofIngredient(recipe.spawnEggs())) :
+                        List.of(EntryIngredients.ofIngredient(recipe.spawnEggs()))
         );
         this.recipe = recipe;
-        if (!recipe.extraInputs().isEmpty()) {
+        if (recipe.extraInputs() != null) {
             extraInputs = List.of(EntryIngredients.ofIngredient(recipe.extraInputs()));
         } else {
             extraInputs = List.of(EntryIngredient.of(EntryStacks.of(ItemStack.EMPTY)));

@@ -36,7 +36,7 @@ public class JustEnoughBreeding implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        if (isModLoaded("jei")) {
+        if (isModLoaded("jei") || isModLoaded("roughlyenoughitems")) {
             RecipeSynchronization.synchronizeRecipeSerializer(JustEnoughBreeding.ALLAY_DUPLICATION_PROVIDER_SERIALIZER);
             RecipeSynchronization.synchronizeRecipeSerializer(JustEnoughBreeding.BREEDING_PROVIDER_SERIALIZER);
             RecipeSynchronization.synchronizeRecipeSerializer(JustEnoughBreeding.TAMING_PROVIDER_SERIALIZER);

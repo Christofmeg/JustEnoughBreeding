@@ -50,7 +50,7 @@ public class JEIUtils {
             breedingRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
             for (RecipeHolder<BreedingRecipe> recipeHold : breedingRecipes) {
                 BreedingRecipe recipe = recipeHold.value();
-                if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.entityType() != null /*&& !recipe.inputs().isEmpty()*/) {
+                if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.entityType() != null && !recipe.inputs().isEmpty()) {
                     registration.addRecipes(BreedingCategory.TYPE, Collections.singletonList(recipe));
                 }
             }
