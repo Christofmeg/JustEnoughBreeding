@@ -7,13 +7,13 @@ import net.minecraft.client.gui.navigation.ScreenPosition;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
 
-public class JeiToggleButtonWidget implements IRecipeWidget {
+public class JEIToggleButtonWidget implements IRecipeWidget {
 
     private final ScreenPosition pos;
     private final int w, h;
     private boolean toggled = false;
 
-    public JeiToggleButtonWidget(int x, int y, int w, int h) {
+    public JEIToggleButtonWidget(int x, int y, int w, int h) {
         this.pos = new ScreenPosition(x, y);
         this.w = w;
         this.h = h;

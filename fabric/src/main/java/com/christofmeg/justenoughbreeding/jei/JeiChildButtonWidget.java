@@ -11,10 +11,10 @@ public class JeiChildButtonWidget implements IRecipeWidget {
 
     private final ScreenPosition pos;
     private final int w, h;
-    private final JeiToggleButtonWidget parent;
+    private final JEIToggleButtonWidget parent;
     private final Component tooltip;
 
-    public JeiChildButtonWidget(int x, int y, int w, int h, JeiToggleButtonWidget parent, Component tooltip) {
+    public JeiChildButtonWidget(int x, int y, int w, int h, JEIToggleButtonWidget parent, Component tooltip) {
         this.pos = new ScreenPosition(x, y);
         this.w = w;
         this.h = h;

@@ -198,7 +198,7 @@ public class JEIUtils {
     }
 
     public static void addButton(IRecipeExtrasBuilder builder, EntityType<?> entityType, int xOffset) {
-        JeiToggleButtonWidget button = new JeiToggleButtonWidget(48 + xOffset, 13, 10, 10);
+        JEIToggleButtonWidget button = new JEIToggleButtonWidget(48 + xOffset, 13, 10, 10);
         builder.addWidget(button);
 
         builder.addInputHandler(new IJeiInputHandler() {

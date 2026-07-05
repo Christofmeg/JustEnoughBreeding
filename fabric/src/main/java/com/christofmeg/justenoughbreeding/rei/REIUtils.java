@@ -226,8 +226,19 @@ public class REIUtils {
             }
 
             @Override
+            public boolean containsMouse(double mouseX, double mouseY) {
+                if (!REIUtils.showChildButtons) return false;
+                return button_1.containsMouse(mouseX, mouseY) ||
+                        button_2.containsMouse(mouseX, mouseY) ||
+                        button_3.containsMouse(mouseX, mouseY) ||
+                        button_4.containsMouse(mouseX, mouseY) ||
+                        button_5.containsMouse(mouseX, mouseY) ||
+                        button_6.containsMouse(mouseX, mouseY);
+            }
+
+            @Override
             public @NotNull List<? extends GuiEventListener> children() {
-                return REIUtils.showChildButtons ? List.of(button_1, button_2, button_3, button_4, button_5, button_6) : List.of();
+                return List.of(button_1, button_2, button_3, button_4, button_5, button_6);
             }
 
             @Override
@@ -261,6 +272,7 @@ public class REIUtils {
                     Component.translatable("option.justenoughbreeding.show_options"));
         });
         widgets.add(toggleButton);
+
         return widgets;
     }
 
