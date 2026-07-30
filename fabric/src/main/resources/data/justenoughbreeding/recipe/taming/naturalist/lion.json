@@ -7,10 +7,13 @@
   ],
   "type": "justenoughbreeding:taming",
   "mod": "naturalist",
-  "input_entity": "naturalist:canary",
+  "input_entity": "naturalist:lion",
+  "input_entity_nbt": {
+    "Age": -24000
+  },
   "inputs": [
     {
-      "tag": "naturalist:bird_food_items"
+      "tag": "naturalist:lion_food_items"
     }
   ]
 }

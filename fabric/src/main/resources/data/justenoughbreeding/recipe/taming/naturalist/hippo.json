@@ -7,10 +7,13 @@
   ],
   "type": "justenoughbreeding:taming",
   "mod": "naturalist",
-  "input_entity": "naturalist:bluejay",
+  "input_entity": "naturalist:hippo",
+  "input_entity_nbt": {
+    "Age": -24000
+  },
   "inputs": [
     {
-      "tag": "naturalist:bird_food_items"
+      "item": "minecraft:melon"
     }
   ]
 }

@@ -1,0 +1,31 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["naturalist"]
+    }
+  ],
+  "type": "justenoughbreeding:transformation",
+  "mod": "naturalist",
+  "inputs": [
+    {
+        "item": "minecraft:saddle"
+    }
+  ],
+  "input_entity": "naturalist:ostrich",
+  "input_spawn_eggs": [
+    {
+        "item": "naturalist:ostrich_spawn_egg"
+    }
+  ],
+  "output_entity": "naturalist:ostrich",
+  "output_entity_nbt": {
+    "Saddled": true
+  },
+  "output_spawn_eggs": [
+    {
+        "item": "naturalist:ostrich_spawn_egg"
+    }
+  ],
+  "tamed": true
+}

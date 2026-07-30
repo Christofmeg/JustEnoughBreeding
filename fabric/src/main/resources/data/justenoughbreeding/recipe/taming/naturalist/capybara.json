@@ -5,12 +5,12 @@
       "values": ["naturalist"]
     }
   ],
-  "type": "justenoughbreeding:breeding",
+  "type": "justenoughbreeding:taming",
   "mod": "naturalist",
-  "input_entity": "naturalist:giraffe",
+  "input_entity": "naturalist:capybara",
   "inputs": [
     {
-      "tag": "naturalist:giraffe_food_items"
+      "tag": "naturalist:capybara_food_items"
     }
   ]
 }

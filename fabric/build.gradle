@@ -2,7 +2,7 @@ import net.darkhax.curseforgegradle.TaskPublishCurseForge
 
 plugins {
     id 'multiloader-loader'
-    id 'fabric-loom' version '1.13-SNAPSHOT'
+    id 'fabric-loom' version '1.17-SNAPSHOT'
     id 'net.darkhax.curseforgegradle' version '1.1.+'
     id 'com.modrinth.minotaur' version '2.+'
 }
@@ -54,6 +54,8 @@ dependencies {
     if (project.hasProperty('catalogue_version')) {
         modRuntimeOnly("curse.maven:catalogue-459701:${catalogue_version}")
     }
+
+    modRuntimeOnly "curse.maven:naturalist-627986:8528823"
 
 }
 
