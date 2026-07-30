@@ -7,10 +7,13 @@
   ],
   "type": "justenoughbreeding:taming",
   "mod": "naturalist",
-  "input_entity": "naturalist:finch",
+  "input_entity": "naturalist:ostrich",
+  "input_entity_nbt": {
+    "Age": -24000
+  },
   "inputs": [
     {
-      "tag": "naturalist:bird_food_items"
+      "tag": "naturalist:ostrich_food_items"
     }
   ]
 }

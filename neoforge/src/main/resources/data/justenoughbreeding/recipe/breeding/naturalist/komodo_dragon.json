@@ -5,12 +5,12 @@
       "modid": "naturalist"
     }
   ],
-  "type": "justenoughbreeding:taming",
+  "type": "justenoughbreeding:breeding",
   "mod": "naturalist",
-  "input_entity": "naturalist:cardinal",
+  "input_entity": "naturalist:komodo_dragon",
   "inputs": [
     {
-      "tag": "naturalist:bird_food_items"
+      "tag": "naturalist:komodo_dragon_food_items"
     }
   ]
 }

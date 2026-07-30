@@ -7,10 +7,15 @@
   ],
   "type": "justenoughbreeding:breeding",
   "mod": "naturalist",
-  "input_entity": "naturalist:giraffe",
+  "input_entity": "naturalist:ostrich",
   "inputs": [
     {
-      "tag": "naturalist:giraffe_food_items"
+      "tag": "naturalist:ostrich_food_items"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "naturalist:ostrich_egg"
     }
   ]
 }

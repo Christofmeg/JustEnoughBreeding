@@ -73,9 +73,13 @@ dependencies {
         runtimeOnly "curse.maven:catalogue-459701:${catalogue_version}"
     }
 
-    runtimeOnly "curse.maven:companions-mod-1300341:7558671"
-    runtimeOnly "curse.maven:geckolib-388172:7707149"
-    runtimeOnly "curse.maven:knight-lib-1105855:6942154"
+    implementation "curse.maven:naturalist-627986:8528824"
+    runtimeOnly "curse.maven:geckolib-388172:8350073"
+
+    runtimeOnly "curse.maven:field-guide-1470590:8536554"
+    runtimeOnly "curse.maven:immersive-overlays-1245453:8534185"
+    runtimeOnly "curse.maven:item-descriptions-1101501:8228839"
+
 }
 
 tasks.register('publishCurseForge', TaskPublishCurseForge) {
