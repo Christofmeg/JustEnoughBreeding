@@ -139,7 +139,6 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
     mainFile.addOptional("duckling")
     mainFile.addOptional("friends-and-foes-forge")
     mainFile.addOptional("ydms-red-panda")
-    mainFile.addOptional("naturalist")
     mainFile.addOptional("the-ulterlands")
     mainFile.addOptional("biome-backlog")
     mainFile.addOptional("marine-iguana")
@@ -241,7 +240,6 @@ modrinth {
         optional.project "duckling"
         optional.project "friends-and-foes-forge"
         optional.project "ydms-red-panda"
-        optional.project "naturalist"
         optional.project "ydms-ostrich"
         optional.project "ydms-fennec-fox"
         optional.project "earthmobs"
