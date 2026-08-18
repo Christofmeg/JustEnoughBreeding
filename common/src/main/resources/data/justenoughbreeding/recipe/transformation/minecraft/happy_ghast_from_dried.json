@@ -2,9 +2,9 @@
   "type": "justenoughbreeding:transformation",
   "mod": "minecraft",
   "inputs": "#c:buckets/water",
-  "input_entity": "",
+  "input_entity": "minecraft:area_effect_cloud",
   "input_spawn_eggs": "minecraft:dried_ghast",
-  "output_entity": "minecraft:happy_ghast_spawn_egg",
+  "output_entity": "minecraft:happy_ghast",
   "output_entity_nbt": {
     "Age": 0
   },

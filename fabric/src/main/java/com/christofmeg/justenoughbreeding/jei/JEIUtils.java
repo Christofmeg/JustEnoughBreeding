@@ -186,7 +186,7 @@ public class JEIUtils {
             }
             LivingEntity livingEntity = Utils.getLivingEntity(currentLivingEntity, input, recipe);
             if (livingEntity != null) {
-                final Rect rect = new Rect((CATEGORY_WIDTH - 59 - 10) / 2, 10, 59, 59);
+                final Rect rect = new Rect((CATEGORY_WIDTH - 59 - 10) / 2 + extraX, 10, 59, 59);
                 Utils.renderEntity(currentLivingEntity, rect, graphics, (int) mouseX);
             //    Utils.renderEntityInInventoryFollowsMouse(graphics, (float) mouseX, livingEntity, CommonUtils.getRect(input, CATEGORY_WIDTH), entityType);
             }
@@ -208,12 +208,10 @@ public class JEIUtils {
             }
             @Override
             public boolean handleInput(double mouseX, double mouseY, @NotNull IJeiUserInput input) {
-                if (input.isSimulate()) return false;
-                if (input.getKey().getValue() == InputConstants.MOUSE_BUTTON_LEFT && input.getKey().getValue() == InputConstants.RELEASE) {
-                    button.toggle();
-                    return true;
-                }
-                return false;
+                if (input.getKey().getValue() != InputConstants.MOUSE_BUTTON_LEFT) return false;
+                if (input.isSimulate()) return true;
+                button.toggle();
+                return true;
             }
         });
 
@@ -241,23 +239,24 @@ public class JEIUtils {
                 @Override
                 public boolean handleInput(double mouseX, double mouseY, @NotNull IJeiUserInput input) {
                     if (button.isToggled()) return false;
-                    if (input.isSimulate()) return false;
+                    int mouseButton = input.getKey().getValue();
+                    if (mouseButton != InputConstants.MOUSE_BUTTON_LEFT && mouseButton != InputConstants.MOUSE_BUTTON_RIGHT) return false;
+                    if (input.isSimulate()) return true;
                     Identifier entity = JustEnoughBreeding.getKeyLoaderRegistries(entityType);
-                    if (input.getKey().getValue() == InputConstants.MOUSE_BUTTON_LEFT) {
+                    if (mouseButton == InputConstants.MOUSE_BUTTON_LEFT) {
                         switch (finalI) {
                             case 0 -> MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale() + 0.5f, MobOffsetManager.get(entity).x(), MobOffsetManager.get(entity).y());
                             case 1 -> MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale() - 0.5f, MobOffsetManager.get(entity).x(), MobOffsetManager.get(entity).y());
                             case 2 -> MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), MobOffsetManager.get(entity).x() - 1, MobOffsetManager.get(entity).y());
-                            default -> MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), MobOffsetManager.get(entity).x() + 1, MobOffsetManager.get(entity).y());
+                            case 3 -> MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), MobOffsetManager.get(entity).x() + 1, MobOffsetManager.get(entity).y());
                         }
                         return true;
-                    } else if (input.getKey().getValue() == InputConstants.MOUSE_BUTTON_RIGHT) {
-                        switch (finalI) {
-                            case 0, 1 -> MobOffsetManager.updateOffset(entity, 0, MobOffsetManager.get(entity).x(), MobOffsetManager.get(entity).y());
-                            default -> MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), 0, MobOffsetManager.get(entity).y());
-                        }
                     }
-                    return false;
+                    switch (finalI) {
+                        case 0, 1 -> MobOffsetManager.updateOffset(entity, 0, MobOffsetManager.get(entity).x(), MobOffsetManager.get(entity).y());
+                        case 2, 3 -> MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), 0, MobOffsetManager.get(entity).y());
+                    }
+                    return true;
                 }
             });
         }
@@ -280,16 +279,18 @@ public class JEIUtils {
                 @Override
                 public boolean handleInput(double mouseX, double mouseY, @NotNull IJeiUserInput input) {
                     if (button.isToggled()) return false;
-                    if (input.isSimulate()) return false;
+                    int mouseButton = input.getKey().getValue();
+                    if (mouseButton != InputConstants.MOUSE_BUTTON_LEFT && mouseButton != InputConstants.MOUSE_BUTTON_RIGHT) return false;
+                    if (input.isSimulate()) return true;
                     Identifier entity = JustEnoughBreeding.getKeyLoaderRegistries(entityType);
-                    if (input.getKey().getValue() == InputConstants.MOUSE_BUTTON_LEFT) {
+                    if (mouseButton == InputConstants.MOUSE_BUTTON_LEFT) {
                         if (finalI == 0) {
                             MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), MobOffsetManager.get(entity).x(), MobOffsetManager.get(entity).y() - 1);
                         } else {
                             MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), MobOffsetManager.get(entity).x(), MobOffsetManager.get(entity).y() + 1);
                         }
                         return true;
-                    } else if (input.getKey().getValue() == InputConstants.MOUSE_BUTTON_RIGHT) {
+                    } else {
                         MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), MobOffsetManager.get(entity).x(), 0);
                     }
                     return false;

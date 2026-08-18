@@ -46,13 +46,11 @@ public class JustEnoughBreeding implements ModInitializer {
         }
     }
 
-    //TODO fix JEI buttons not working
     //TODO fix entity scaling
     //TODO entity shearing (saddle off)
     //TODO wolf armor, horse armor, nautilus armor, llama chests, pig saddle, horse saddle, llama saddle
     //TODO wolf dying + others?
     //TODO cycle through mob variants (cold, normal, warm chicken)
-    //TODO fix JEI transformation category rendering mobs on top of each other
 
     public static EntityType<?> getEntityFromLoaderRegistries(Identifier identifier) {
         return BuiltInRegistries.ENTITY_TYPE.getValue(identifier);

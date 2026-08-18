@@ -158,7 +158,7 @@ public class REIUtils {
             widgets.add(Widgets.withTranslate(Widgets.createDrawableWidget((graphics, mouseX, mouseY, v) -> {
                 LivingEntity livingEntity = Utils.getLivingEntity(currentLivingEntity, input, recipe);
                 if (livingEntity != null) {
-                    final Rect rect = new Rect((CATEGORY_WIDTH - 59 - 10) / 2, 10, 59, 59);
+                    final Rect rect = new Rect((CATEGORY_WIDTH - 59 - 10) / 2 + extraX, 10, 59, 59);
                     Utils.renderEntity(currentLivingEntity, rect, graphics, mouseX);
                  //   Utils.renderEntityInInventoryFollowsMouse(graphics, (float) mouseX, livingEntity, CommonUtils.getRect(input, CATEGORY_WIDTH, 5, 0), entityType);
                 }
