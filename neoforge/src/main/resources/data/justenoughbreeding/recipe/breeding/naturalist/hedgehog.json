@@ -7,10 +7,11 @@
   ],
   "type": "justenoughbreeding:breeding",
   "mod": "naturalist",
-  "input_entity": "naturalist:giraffe",
+  "input_entity": "naturalist:hedgehog",
   "inputs": [
     {
-      "tag": "naturalist:giraffe_food_items"
+      "tag": "naturalist:hedgehog_food_items"
     }
-  ]
+  ],
+  "tamed": true
 }

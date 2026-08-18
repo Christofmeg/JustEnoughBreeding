@@ -5,12 +5,12 @@
       "values": ["naturalist"]
     }
   ],
-  "type": "justenoughbreeding:taming",
+  "type": "justenoughbreeding:breeding",
   "mod": "naturalist",
-  "input_entity": "naturalist:sparrow",
+  "input_entity": "naturalist:black_bear",
   "inputs": [
     {
-      "tag": "naturalist:bird_food_items"
+      "tag": "naturalist:bear_tempt_items"
     }
   ]
 }

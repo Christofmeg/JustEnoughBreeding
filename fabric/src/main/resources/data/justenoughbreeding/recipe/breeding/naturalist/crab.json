@@ -5,12 +5,13 @@
       "values": ["naturalist"]
     }
   ],
-  "type": "justenoughbreeding:taming",
+  "type": "justenoughbreeding:breeding",
   "mod": "naturalist",
-  "input_entity": "naturalist:bluejay",
+  "input_entity": "naturalist:crab",
   "inputs": [
     {
-      "tag": "naturalist:bird_food_items"
+      "tag": "naturalist:crab_food"
     }
-  ]
+  ],
+  "tamed": true
 }

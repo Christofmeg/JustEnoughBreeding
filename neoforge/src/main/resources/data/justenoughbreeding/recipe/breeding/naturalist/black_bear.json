@@ -7,10 +7,10 @@
   ],
   "type": "justenoughbreeding:breeding",
   "mod": "naturalist",
-  "input_entity": "naturalist:giraffe",
+  "input_entity": "naturalist:black_bear",
   "inputs": [
     {
-      "tag": "naturalist:giraffe_food_items"
+      "tag": "naturalist:bear_tempt_items"
     }
   ]
 }

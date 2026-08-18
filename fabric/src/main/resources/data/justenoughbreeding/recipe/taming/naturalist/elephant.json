@@ -5,12 +5,15 @@
       "values": ["naturalist"]
     }
   ],
-  "type": "justenoughbreeding:breeding",
+  "type": "justenoughbreeding:taming",
   "mod": "naturalist",
-  "input_entity": "naturalist:giraffe",
+  "input_entity": "naturalist:elephant",
+  "input_entity_nbt": {
+    "Age": -24000
+  },
   "inputs": [
     {
-      "tag": "naturalist:giraffe_food_items"
+      "item": "minecraft:cake"
     }
   ]
 }

@@ -7,7 +7,7 @@
   ],
   "type": "justenoughbreeding:breeding",
   "mod": "naturalist",
-  "input_entity": "naturalist:naturalist",
+  "input_entity": "naturalist:snail",
   "inputs": [
     {
       "item": "minecraft:beetroot"
@@ -15,11 +15,7 @@
   ],
   "outputs": [
     {
-      "item": "naturalist:snail_eggs",
-      "amount": {
-        "min": 1,
-        "max": 1
-      }
+      "item": "naturalist:snail_eggs"
     }
   ]
 }

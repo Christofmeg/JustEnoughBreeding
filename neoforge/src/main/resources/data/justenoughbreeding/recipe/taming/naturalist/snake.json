@@ -5,12 +5,12 @@
       "modid": "naturalist"
     }
   ],
-  "type": "justenoughbreeding:breeding",
+  "type": "justenoughbreeding:taming",
   "mod": "naturalist",
-  "input_entity": "naturalist:giraffe",
+  "input_entity": "naturalist:snake",
   "inputs": [
     {
-      "tag": "naturalist:giraffe_food_items"
+      "tag": "naturalist:snake_tame_items"
     }
   ]
 }

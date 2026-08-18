@@ -7,10 +7,10 @@
   ],
   "type": "justenoughbreeding:taming",
   "mod": "naturalist",
-  "input_entity": "naturalist:cardinal",
+  "input_entity": "naturalist:capybara",
   "inputs": [
     {
-      "tag": "naturalist:bird_food_items"
+      "tag": "naturalist:capybara_food_items"
     }
   ]
 }
