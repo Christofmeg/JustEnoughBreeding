@@ -1,0 +1,17 @@
+{
+  "type": "justenoughbreeding:transformation",
+  "mod": "minecraft",
+  "inputs": "#c:tools/shears",
+  "input_entity": "minecraft:sheep",
+  "input_entity_nbt": {
+    "Color": 15
+  },
+  "input_spawn_eggs": "minecraft:sheep_spawn_egg",
+  "output_entity": "minecraft:sheep",
+  "output_entity_nbt": {
+    "Color": 15,
+    "Sheared": true
+  },
+  "output_spawn_eggs": "minecraft:sheep_spawn_egg",
+  "outputs": "minecraft:black_wool"
+}

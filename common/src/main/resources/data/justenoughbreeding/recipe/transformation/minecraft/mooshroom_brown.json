@@ -3,6 +3,9 @@
   "mod": "minecraft",
   "inputs": "minecraft:lightning_rod",
   "input_entity": "minecraft:mooshroom",
+  "input_entity_nbt": {
+    "Type": "red"
+  },
   "input_spawn_eggs": "minecraft:mooshroom_spawn_egg",
   "output_entity": "minecraft:mooshroom",
   "output_entity_nbt": {

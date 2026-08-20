@@ -1,0 +1,17 @@
+{
+  "type": "justenoughbreeding:transformation",
+  "mod": "minecraft",
+  "inputs": "minecraft:saddle",
+  "input_entity": "minecraft:nautilus",
+  "input_spawn_eggs": "minecraft:nautilus_spawn_egg",
+  "output_entity": "minecraft:nautilus",
+  "output_entity_nbt": {
+    "equipment":{
+      "saddle" :{
+        "id": "minecraft:saddle"
+      }
+    }
+  },
+  "output_spawn_eggs": "minecraft:nautilus_spawn_egg",
+  "tamed": true
+}

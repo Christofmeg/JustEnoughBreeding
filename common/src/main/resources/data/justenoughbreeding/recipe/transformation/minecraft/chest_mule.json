@@ -1,0 +1,12 @@
+{
+  "type": "justenoughbreeding:transformation",
+  "mod": "minecraft",
+  "inputs": "minecraft:chest",
+  "input_entity": "minecraft:mule",
+  "input_spawn_eggs": "minecraft:mule_spawn_egg",
+  "output_entity": "minecraft:mule",
+  "output_entity_nbt": {
+    "ChestedHorse": 1
+  },
+  "output_spawn_eggs": "minecraft:mule_spawn_egg"
+}

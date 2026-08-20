@@ -1,0 +1,6 @@
+{
+  "type": "justenoughbreeding:temper",
+  "mod": "minecraft",
+  "input_entity": "minecraft:zombie_horse",
+  "inputs": "#minecraft:zombie_horse_food"
+}

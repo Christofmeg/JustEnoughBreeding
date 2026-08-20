@@ -1,0 +1,17 @@
+{
+  "type": "justenoughbreeding:transformation",
+  "mod": "minecraft",
+  "inputs": "#c:tools/shears",
+  "input_entity": "minecraft:pig",
+  "input_entity_nbt": {
+    "equipment":{
+      "saddle" :{
+        "id": "minecraft:saddle"
+      }
+    }
+  },
+  "input_spawn_eggs": "minecraft:pig_spawn_egg",
+  "output_entity": "minecraft:pig",
+  "output_spawn_eggs": "minecraft:pig_spawn_egg",
+  "outputs": "minecraft:saddle"
+}

@@ -1,7 +1,7 @@
 {
   "type": "justenoughbreeding:transformation",
   "mod": "minecraft",
-  "inputs": "minecraft:shears",
+  "inputs": "#c:tools/shears",
   "input_entity": "minecraft:snow_golem",
   "input_entity_nbt": {
     "Pumpkin": true
@@ -11,5 +11,6 @@
   "output_entity_nbt": {
     "Pumpkin": false
   },
-  "output_spawn_eggs": "minecraft:snow_golem_spawn_egg"
+  "output_spawn_eggs": "minecraft:snow_golem_spawn_egg",
+  "outputs": "minecraft:carved_pumpkin"
 }

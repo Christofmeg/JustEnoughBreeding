@@ -1,0 +1,16 @@
+{
+  "type": "justenoughbreeding:transformation",
+  "mod": "minecraft",
+  "inputs": "minecraft:gray_harness",
+  "input_entity": "minecraft:happy_ghast",
+  "input_spawn_eggs": "minecraft:happy_ghast_spawn_egg",
+  "output_entity": "minecraft:happy_ghast",
+  "output_entity_nbt": {
+    "equipment": {
+      "body": {
+        "id": "minecraft:gray_harness"
+      }
+    }
+  },
+  "output_spawn_eggs": "minecraft:happy_ghast_spawn_egg"
+}

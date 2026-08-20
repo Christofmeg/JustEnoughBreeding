@@ -2,6 +2,9 @@
   "type": "justenoughbreeding:breeding",
   "mod": "minecraft",
   "input_entity": "minecraft:cat",
+  "input_entity_nbt": {
+    "Owner": [0, 0, 0, 0]
+  },
   "inputs": "#minecraft:cat_food",
   "tamed": true
 }

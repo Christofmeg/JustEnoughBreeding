@@ -1,0 +1,18 @@
+{
+  "type": "justenoughbreeding:transformation",
+  "mod": "minecraft",
+  "inputs": "#c:tools/shears",
+  "input_entity": "minecraft:mule",
+  "input_entity_nbt": {
+    "equipment":{
+      "saddle" :{
+        "id": "minecraft:saddle"
+      }
+    }
+  },
+  "input_spawn_eggs": "minecraft:mule_spawn_egg",
+  "output_entity": "minecraft:mule",
+  "output_spawn_eggs": "minecraft:mule_spawn_egg",
+  "outputs": "minecraft:saddle",
+  "tamed": true
+}

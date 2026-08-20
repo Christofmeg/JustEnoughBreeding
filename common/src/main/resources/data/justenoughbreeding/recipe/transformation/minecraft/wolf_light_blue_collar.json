@@ -1,0 +1,17 @@
+{
+  "type": "justenoughbreeding:transformation",
+  "mod": "minecraft",
+  "inputs": "#c:dyes/light_blue",
+  "input_entity": "minecraft:wolf",
+  "input_entity_nbt": {
+    "Owner": [0, 0, 0, 0]
+  },
+  "input_spawn_eggs": "minecraft:wolf_spawn_egg",
+  "output_entity": "minecraft:wolf",
+  "output_entity_nbt": {
+    "Owner": [0, 0, 0, 0],
+    "CollarColor": 3
+  },
+  "output_spawn_eggs": "minecraft:wolf_spawn_egg",
+  "tamed": true
+}

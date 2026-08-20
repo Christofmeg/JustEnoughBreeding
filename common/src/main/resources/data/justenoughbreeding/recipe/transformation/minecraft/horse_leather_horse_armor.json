@@ -1,0 +1,17 @@
+{
+  "type": "justenoughbreeding:transformation",
+  "mod": "minecraft",
+  "inputs": "minecraft:leather_horse_armor",
+  "input_entity": "minecraft:horse",
+  "input_spawn_eggs": "minecraft:horse_spawn_egg",
+  "output_entity": "minecraft:horse",
+  "output_entity_nbt": {
+    "equipment": {
+      "body": {
+        "id": "leather_horse_armor"
+      }
+    }
+  },
+  "output_spawn_eggs": "minecraft:horse_spawn_egg",
+  "tamed": true
+}
