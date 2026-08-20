@@ -48,6 +48,7 @@ public class JustEnoughBreeding implements ModInitializer {
     }
 
     //TODO fix entity scaling
+    //TODO fix dried to happy ghast recipe
 
     public static EntityType<?> getEntityFromLoaderRegistries(Identifier identifier) {
         return BuiltInRegistries.ENTITY_TYPE.getValue(identifier);

@@ -35,9 +35,12 @@ public class TransformationCategoryREI extends AbstractRecipeCategoryREI<Transfo
         display.recipe.inputSpawnEggs().items().forEach(stack -> inputSpawnEggs.add(EntryStacks.ofItemHolder(stack)));
         widgets.add(Widgets.createSlot(new Point(bounds.x + 70, bounds.y + 79)).entries(inputSpawnEggs));
 
-        Collection<EntryStack<?>> outputSpawnEggs = new ArrayList<>();
-        display.recipe.outputSpawnEggs().items().forEach(stack -> outputSpawnEggs.add(EntryStacks.ofItemHolder(stack)));
-        widgets.add(Widgets.createSlot(new Point(bounds.x + 90, bounds.y + 79)).entries(outputSpawnEggs));
+        Collection<EntryStack<?>> outputs = new ArrayList<>();
+        display.recipe.outputSpawnEggs().items().forEach(stack -> outputs.add(EntryStacks.ofItemHolder(stack)));
+        if(display.recipe.outputs() != null) {
+            display.recipe.outputs().items().forEach(stack -> outputs.add(EntryStacks.ofItemHolder(stack)));
+        }
+        widgets.add(Widgets.createSlot(new Point(bounds.x + 90, bounds.y + 79)).entries(outputs));
 
         boolean hasExtraInput = !display.getExtraInputEntries().isEmpty() &&
                 !display.getExtraInputEntries().getFirst().isEmpty() &&

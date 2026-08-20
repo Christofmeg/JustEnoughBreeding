@@ -20,7 +20,8 @@ public class TransformationDisplay extends BasicDisplay {
 
     public TransformationDisplay(TransformationRecipe recipe) {
         super(List.of(EntryIngredients.ofIngredient(recipe.inputs()), EntryIngredients.ofIngredient(recipe.inputSpawnEggs())),
-                List.of(EntryIngredients.ofIngredient(recipe.outputSpawnEggs()))
+                recipe.outputs() != null ? List.of(EntryIngredients.ofIngredient(recipe.outputs()), EntryIngredients.ofIngredient(recipe.outputSpawnEggs())) :
+                        List.of(EntryIngredients.ofIngredient(recipe.outputSpawnEggs()))
         );
         this.recipe = recipe;
         if (recipe.extraInputs() != null) {

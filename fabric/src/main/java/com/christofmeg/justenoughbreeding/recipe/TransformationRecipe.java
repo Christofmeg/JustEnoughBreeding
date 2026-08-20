@@ -23,13 +23,14 @@ public record TransformationRecipe(
         @Nullable CompoundTag inputEntityNbt,
         @NotNull String outputEntity,
         @Nullable CompoundTag outputEntityNbt,
+        @Nullable Ingredient outputs,
         @Nullable Boolean tamed
-) implements Recipe<CraftingInput> {
+) implements Recipe<@NotNull CraftingInput> {
 
     @Override public boolean matches(@NotNull CraftingInput input, @NotNull Level level) { return false; }
     @Override public @NotNull ItemStack assemble(@NotNull CraftingInput input, HolderLookup.@NotNull Provider registries) { return ItemStack.EMPTY; }
-    @Override public @NonNull RecipeSerializer<? extends Recipe<CraftingInput>> getSerializer() { return JustEnoughBreeding.TRANSFORMATION_PROVIDER_SERIALIZER; }
-    @Override public @NonNull RecipeType<? extends Recipe<CraftingInput>> getType() { return JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE; }
+    @Override public @NonNull RecipeSerializer<? extends @NotNull Recipe<@NotNull CraftingInput>> getSerializer() { return JustEnoughBreeding.TRANSFORMATION_PROVIDER_SERIALIZER; }
+    @Override public @NonNull RecipeType<? extends @NotNull Recipe<@NotNull CraftingInput>> getType() { return JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE; }
     @Override public @NonNull PlacementInfo placementInfo() { return PlacementInfo.NOT_PLACEABLE; }
     @Override public @NonNull RecipeBookCategory recipeBookCategory() { return RecipeBookCategories.CRAFTING_MISC; }
     @Override public boolean isSpecial() { return true; }
