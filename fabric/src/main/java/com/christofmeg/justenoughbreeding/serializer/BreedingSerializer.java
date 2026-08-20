@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 
-public class BreedingSerializer implements RecipeSerializer<BreedingRecipe> {
+public class BreedingSerializer implements RecipeSerializer<@NotNull BreedingRecipe> {
 
     @Override
     public @NotNull MapCodec<BreedingRecipe> codec() {

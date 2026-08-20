@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 
-public class TemperSerializer implements RecipeSerializer<TemperRecipe> {
+public class TemperSerializer implements RecipeSerializer<@NotNull TemperRecipe> {
 
     @Override
     public @NotNull MapCodec<TemperRecipe> codec() {

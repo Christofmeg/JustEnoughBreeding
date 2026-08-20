@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 
-public class TrustingSerializer implements RecipeSerializer<TrustingRecipe> {
+public class TrustingSerializer implements RecipeSerializer<@NotNull TrustingRecipe> {
 
     @Override
     public @NotNull MapCodec<TrustingRecipe> codec() {

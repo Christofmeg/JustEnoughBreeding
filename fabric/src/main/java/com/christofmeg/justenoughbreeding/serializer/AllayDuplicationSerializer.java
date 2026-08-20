@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 
-public class AllayDuplicationSerializer implements RecipeSerializer<AllayDuplicationRecipe> {
+public class AllayDuplicationSerializer implements RecipeSerializer<@NotNull AllayDuplicationRecipe> {
 
     @Override
     public @NotNull MapCodec<AllayDuplicationRecipe> codec() {

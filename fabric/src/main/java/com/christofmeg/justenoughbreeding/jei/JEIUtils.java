@@ -37,54 +37,54 @@ public class JEIUtils {
         if (Minecraft.getInstance().getConnection() != null) {
             SynchronizedRecipes recipes = Minecraft.getInstance().getConnection().recipes().getSynchronizedRecipes();
 
-            ArrayList<RecipeHolder<AllayDuplicationRecipe>> allayDuplicationRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.ALLAY_DUPLICATION_PROVIDER_TYPE));
+            ArrayList<RecipeHolder<@NotNull AllayDuplicationRecipe>> allayDuplicationRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.ALLAY_DUPLICATION_PROVIDER_TYPE));
             allayDuplicationRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
-            for (RecipeHolder<AllayDuplicationRecipe> recipeHold : allayDuplicationRecipes) {
+            for (RecipeHolder<@NotNull AllayDuplicationRecipe> recipeHold : allayDuplicationRecipes) {
                 AllayDuplicationRecipe recipe = recipeHold.value();
                 if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.entityType() != null && !recipe.inputs().isEmpty()) {
                     registration.addRecipes(AllayDuplicationCategory.TYPE, Collections.singletonList(recipe));
                 }
             }
 
-            ArrayList<RecipeHolder<BreedingRecipe>> breedingRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.BREEDING_PROVIDER_TYPE));
+            ArrayList<RecipeHolder<@NotNull BreedingRecipe>> breedingRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.BREEDING_PROVIDER_TYPE));
             breedingRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
-            for (RecipeHolder<BreedingRecipe> recipeHold : breedingRecipes) {
+            for (RecipeHolder<@NotNull BreedingRecipe> recipeHold : breedingRecipes) {
                 BreedingRecipe recipe = recipeHold.value();
                 if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.entityType() != null && !recipe.inputs().isEmpty()) {
                     registration.addRecipes(BreedingCategory.TYPE, Collections.singletonList(recipe));
                 }
             }
 
-            ArrayList<RecipeHolder<TamingRecipe>> tamingRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.TAMING_PROVIDER_TYPE));
+            ArrayList<RecipeHolder<@NotNull TamingRecipe>> tamingRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.TAMING_PROVIDER_TYPE));
             tamingRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
-            for (RecipeHolder<TamingRecipe> recipeHold : tamingRecipes) {
+            for (RecipeHolder<@NotNull TamingRecipe> recipeHold : tamingRecipes) {
                 TamingRecipe recipe = recipeHold.value();
                 if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.entityType() != null && !recipe.inputs().isEmpty()) {
                     registration.addRecipes(TamingCategory.TYPE, Collections.singletonList(recipe));
                 }
             }
 
-            ArrayList<RecipeHolder<TemperRecipe>> temperRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.TEMPER_PROVIDER_TYPE));
+            ArrayList<RecipeHolder<@NotNull TemperRecipe>> temperRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.TEMPER_PROVIDER_TYPE));
             temperRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
-            for (RecipeHolder<TemperRecipe> recipeHold : temperRecipes) {
+            for (RecipeHolder<@NotNull TemperRecipe> recipeHold : temperRecipes) {
                 TemperRecipe recipe = recipeHold.value();
                 if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.entityType() != null && !recipe.inputs().isEmpty()) {
                     registration.addRecipes(TemperCategory.TYPE, Collections.singletonList(recipe));
                 }
             }
 
-            ArrayList<RecipeHolder<TransformationRecipe>> transformationRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE));
+            ArrayList<RecipeHolder<@NotNull TransformationRecipe>> transformationRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE));
             transformationRecipes.sort(Comparator.comparing(r -> r.value().outputEntityType() == null ? "" : r.value().outputEntityType().toShortString()));
-            for (RecipeHolder<TransformationRecipe> recipeHold : transformationRecipes) {
+            for (RecipeHolder<@NotNull TransformationRecipe> recipeHold : transformationRecipes) {
                 TransformationRecipe recipe = recipeHold.value();
                 if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.inputEntityType() != null && recipe.outputEntityType() != null && !recipe.inputs().isEmpty()) {
                     registration.addRecipes(TransformationCategory.TYPE, Collections.singletonList(recipe));
                 }
             }
 
-            ArrayList<RecipeHolder<TrustingRecipe>> trustingRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.TRUSTING_PROVIDER_TYPE));
+            ArrayList<RecipeHolder<@NotNull TrustingRecipe>> trustingRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.TRUSTING_PROVIDER_TYPE));
             trustingRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
-            for (RecipeHolder<TrustingRecipe> recipeHold : trustingRecipes) {
+            for (RecipeHolder<@NotNull TrustingRecipe> recipeHold : trustingRecipes) {
                 TrustingRecipe recipe = recipeHold.value();
                 if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.entityType() != null && !recipe.inputs().isEmpty()) {
                     registration.addRecipes(TrustingCategory.TYPE, Collections.singletonList(recipe));
