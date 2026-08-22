@@ -80,7 +80,7 @@ public class REIUtils {
             transformationRecipes.sort(Comparator.comparing(r -> r.value().outputEntityType() == null ? "" : r.value().outputEntityType().toShortString()));
             for (RecipeHolder<@NotNull TransformationRecipe> recipeHold : transformationRecipes) {
                 TransformationRecipe recipe = recipeHold.value();
-                if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.inputEntityType() != null && recipe.outputEntityType() != null && !recipe.inputs().isEmpty()) {
+                if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.outputEntityType() != null && !recipe.inputs().isEmpty()) {
                     registration.add(new TransformationDisplay(recipe));
                 }
             }
@@ -147,7 +147,7 @@ public class REIUtils {
             LivingEntity currentLivingEntity;
             if (recipe instanceof TransformationRecipe transformationRecipe) {
                 if (input) {
-                    currentLivingEntity = ClientUtils.doRendering(transformationRecipe.inputEntityType(), transformationRecipe.inputEntityNbt(), true);
+                    currentLivingEntity = ClientUtils.doRendering(JustEnoughBreeding.getEntityFromLoaderRegistries(Identifier.tryParse(transformationRecipe.inputEntity())), transformationRecipe.inputEntityNbt(), true);
                 } else {
                     currentLivingEntity = ClientUtils.doRendering(transformationRecipe.outputEntityType(), transformationRecipe.outputEntityNbt(), false);
                 }
@@ -160,7 +160,6 @@ public class REIUtils {
                 if (livingEntity != null) {
                     final Rect rect = new Rect((CATEGORY_WIDTH - 59 - 10) / 2 + extraX, 10, 59, 59);
                     Utils.renderEntity(currentLivingEntity, rect, graphics, mouseX);
-                 //   Utils.renderEntityInInventoryFollowsMouse(graphics, (float) mouseX, livingEntity, CommonUtils.getRect(input, CATEGORY_WIDTH, 5, 0), entityType);
                 }
                     }
             ), bounds.x + 5, bounds.y + 5));

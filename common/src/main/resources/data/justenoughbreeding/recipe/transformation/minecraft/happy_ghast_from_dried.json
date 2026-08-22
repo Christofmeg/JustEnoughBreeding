@@ -5,8 +5,5 @@
   "input_entity": "",
   "input_spawn_eggs": "minecraft:dried_ghast",
   "output_entity": "minecraft:happy_ghast",
-  "output_entity_nbt": {
-    "Age": 0
-  },
   "output_spawn_eggs": "minecraft:happy_ghast_spawn_egg"
 }

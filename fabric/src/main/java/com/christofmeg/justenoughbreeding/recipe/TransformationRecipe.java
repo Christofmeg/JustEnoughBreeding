@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jspecify.annotations.NonNull;
 
 public record TransformationRecipe(
-        @Nullable EntityType<?> inputEntityType,
+        @Nullable String inputEntityType,
         @NotNull Ingredient inputs,
         @NotNull Ingredient inputSpawnEggs,
         @Nullable Ingredient extraInputs,

@@ -2,6 +2,7 @@
   "type": "justenoughbreeding:transformation",
   "mod": "minecraft",
   "inputs": "minecraft:lightning_rod",
+  "extra_inputs": "minecraft:gunpowder",
   "input_entity": "minecraft:creeper",
   "input_spawn_eggs": "minecraft:creeper_spawn_egg",
   "output_entity": "minecraft:creeper",
