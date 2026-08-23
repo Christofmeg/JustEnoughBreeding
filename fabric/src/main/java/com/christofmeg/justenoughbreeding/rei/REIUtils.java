@@ -165,7 +165,7 @@ public class REIUtils {
                     CommonClientUtils.renderEntity(currentLivingEntity, rect, graphics, mouseX, offset);
                 }
                     }
-            ), bounds.x + 5, bounds.y + 5));
+            ), bounds.x, bounds.y));
         }
     }
 
