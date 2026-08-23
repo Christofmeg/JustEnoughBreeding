@@ -46,8 +46,8 @@ public class JustEnoughBreeding implements ModInitializer {
             RecipeSynchronization.synchronizeRecipeSerializer(JustEnoughBreeding.TRUSTING_PROVIDER_SERIALIZER);
         }
     }
-
-    //TODO fix entity scaling
+    
+    //TODO add option to hide offset button in recipes.
 
     public static EntityType<?> getEntityFromLoaderRegistries(Identifier identifier) {
         return BuiltInRegistries.ENTITY_TYPE.getValue(identifier);

@@ -2,6 +2,7 @@ package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.client.ClientUtils;
+import com.christofmeg.justenoughbreeding.config.MobOffset;
 import com.christofmeg.justenoughbreeding.config.MobOffsetManager;
 import com.christofmeg.justenoughbreeding.recipe.*;
 import com.christofmeg.justenoughbreeding.utils.CommonClientUtils;
@@ -187,7 +188,8 @@ public class JEIUtils {
             LivingEntity livingEntity = Utils.getLivingEntity(currentLivingEntity, input, recipe);
             if (livingEntity != null) {
                 final Rect rect = new Rect((CATEGORY_WIDTH - 59 - 10) / 2 + extraX, 10, 59, 59);
-                Utils.renderEntity(currentLivingEntity, rect, graphics, (int) mouseX);
+                MobOffset offset = MobOffsetManager.get(JustEnoughBreeding.getKeyLoaderRegistries(currentLivingEntity.getType()));
+                CommonClientUtils.renderEntity(currentLivingEntity, rect, graphics, (int) mouseX, offset);
             }
         }
     }
