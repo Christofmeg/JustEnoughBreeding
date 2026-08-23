@@ -1,5 +1,6 @@
 package com.christofmeg.justenoughbreeding.rei;
 
+import com.christofmeg.justenoughbreeding.config.ModConfigManager;
 import com.christofmeg.justenoughbreeding.recipe.TemperRecipe;
 import me.shedaniel.math.Point;
 import me.shedaniel.math.Rectangle;
@@ -49,7 +50,9 @@ public class TemperCategoryREI extends AbstractRecipeCategoryREI<TemperDisplay> 
         REIUtils.drawMobSlot(widgets, bounds,0, 10);
         REIUtils.drawMobNameAndEntity(widgets, bounds, recipe.entityType(), recipe, getDisplayWidth(display));
 
-        REIUtils.addButton(bounds, recipe.entityType(), widgets);
+        if (ModConfigManager.areConfigButtonsEnabled()) {
+            REIUtils.addButton(bounds, recipe.entityType(), widgets);
+        }
 
         return widgets;
     }

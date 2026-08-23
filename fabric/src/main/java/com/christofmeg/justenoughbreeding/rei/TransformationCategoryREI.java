@@ -1,6 +1,7 @@
 package com.christofmeg.justenoughbreeding.rei;
 
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
+import com.christofmeg.justenoughbreeding.config.ModConfigManager;
 import com.christofmeg.justenoughbreeding.recipe.TransformationRecipe;
 import me.shedaniel.math.Point;
 import me.shedaniel.math.Rectangle;
@@ -58,7 +59,9 @@ public class TransformationCategoryREI extends AbstractRecipeCategoryREI<Transfo
             widgets.add(Widgets.createArrow(new Point(bounds.x + 76, bounds.getCenterY() + 3)));
             REIUtils.drawMobSlot(widgets, bounds,0, 10);
             REIUtils.drawMobNameAndEntity(widgets, bounds, JustEnoughBreeding.getEntityFromLoaderRegistries(Identifier.tryParse(recipe.inputEntity())), recipe, 99, 0, true, getDisplayWidth(display));
-            REIUtils.addButton(bounds, JustEnoughBreeding.getEntityFromLoaderRegistries(Identifier.tryParse(recipe.inputEntity())), widgets);
+            if (ModConfigManager.areConfigButtonsEnabled()) {
+                REIUtils.addButton(bounds, JustEnoughBreeding.getEntityFromLoaderRegistries(Identifier.tryParse(recipe.inputEntity())), widgets);
+            }
         } else {
             if (hasExtraInput) {
                 widgets.add(Widgets.createSlot(new Point(bounds.x + 9, bounds.y + 48)).entries(inputSpawnEggs));
@@ -73,7 +76,9 @@ public class TransformationCategoryREI extends AbstractRecipeCategoryREI<Transfo
 
         REIUtils.drawMobSlot(widgets, bounds,105, 10);
         REIUtils.drawMobNameAndEntity(widgets, bounds, recipe.outputEntityType(), recipe, 61, 105, false, getDisplayWidth(display));
-        REIUtils.addButton(bounds, recipe.outputEntityType(), widgets, 105);
+        if (ModConfigManager.areConfigButtonsEnabled()) {
+            REIUtils.addButton(bounds, recipe.outputEntityType(), widgets, 105);
+        }
 
         return widgets;
     }
