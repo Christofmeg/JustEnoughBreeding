@@ -15,6 +15,8 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import org.jetbrains.annotations.NotNull;
 
+import java.nio.file.Path;
+
 public class JustEnoughBreeding implements ModInitializer {
 
     public static final RecipeType<@NotNull AllayDuplicationRecipe> ALLAY_DUPLICATION_PROVIDER_TYPE = Registry.register(BuiltInRegistries.RECIPE_TYPE, Identifier.fromNamespaceAndPath(CommonConstants.MOD_ID, "allay_duplication"), Utils.simple(Identifier.fromNamespaceAndPath(CommonConstants.MOD_ID, "allay_duplication")));
@@ -47,8 +49,6 @@ public class JustEnoughBreeding implements ModInitializer {
         }
     }
 
-    //TODO add option to hide offset button in recipes.
-
     public static EntityType<?> getEntityFromLoaderRegistries(Identifier identifier) {
         return BuiltInRegistries.ENTITY_TYPE.getValue(identifier);
     }
@@ -63,6 +63,10 @@ public class JustEnoughBreeding implements ModInitializer {
 
     public static Boolean isModLoaded(String modID) {
         return FabricLoader.getInstance().isModLoaded(modID);
+    }
+
+    public static Path getConfigDir() {
+        return FabricLoader.getInstance().getConfigDir();
     }
 
 }

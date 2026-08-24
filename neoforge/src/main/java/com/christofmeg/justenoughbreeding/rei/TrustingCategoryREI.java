@@ -1,5 +1,6 @@
 package com.christofmeg.justenoughbreeding.rei;
 
+import com.christofmeg.justenoughbreeding.config.ModConfigManager;
 import com.christofmeg.justenoughbreeding.recipe.TrustingRecipe;
 import me.shedaniel.math.Point;
 import me.shedaniel.math.Rectangle;
@@ -9,13 +10,14 @@ import me.shedaniel.rei.api.common.category.CategoryIdentifier;
 import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
+@SuppressWarnings("deprecation")
 public class TrustingCategoryREI extends AbstractRecipeCategoryREI<TrustingDisplay> {
 
     public static final CategoryIdentifier<TrustingDisplay> TYPE = CategoryIdentifier.of("justenoughbreeding", "trusting");
@@ -29,11 +31,9 @@ public class TrustingCategoryREI extends AbstractRecipeCategoryREI<TrustingDispl
         List<Widget> widgets = new LinkedList<>();
         widgets.add(Widgets.createRecipeBase(bounds));
 
-        List<EntryStack<?>> entryStackList = new ArrayList<>();
-        for (ItemStack stack : display.recipe.spawnEggs().getItems()) {
-            entryStackList.add(EntryStacks.of(stack));
-        }
-        widgets.add(Widgets.createSlot(new Point(bounds.x + 154, bounds.y + 6)).entries(entryStackList));
+        Collection<EntryStack<?>> spawnEggs = new ArrayList<>();
+        display.recipe.spawnEggs().items().forEach(stack -> spawnEggs.add(EntryStacks.ofItemHolder(stack)));
+        widgets.add(Widgets.createSlot(new Point(bounds.x + 154, bounds.y + 6)).entries(spawnEggs));
 
         boolean hasExtraInput = !display.getExtraInputEntries().isEmpty() &&
                 !display.getExtraInputEntries().getFirst().isEmpty() &&
@@ -50,7 +50,9 @@ public class TrustingCategoryREI extends AbstractRecipeCategoryREI<TrustingDispl
         REIUtils.drawMobSlot(widgets, bounds,0, 10);
         REIUtils.drawMobNameAndEntity(widgets, bounds, recipe.entityType(), recipe, getDisplayWidth(display));
 
-        REIUtils.addButton(bounds, recipe.entityType(), widgets);
+        if (ModConfigManager.areConfigButtonsEnabled()) {
+            REIUtils.addButton(bounds, recipe.entityType(), widgets);
+        }
 
         return widgets;
     }

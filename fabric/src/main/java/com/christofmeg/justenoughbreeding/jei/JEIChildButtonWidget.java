@@ -7,14 +7,14 @@ import net.minecraft.client.gui.navigation.ScreenPosition;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
 
-public class JeiChildButtonWidget implements IRecipeWidget {
+public class JEIChildButtonWidget implements IRecipeWidget {
 
     private final ScreenPosition pos;
     private final int w, h;
-    private final JeiToggleButtonWidget parent;
+    private final JEIToggleButtonWidget parent;
     private final Component tooltip;
 
-    public JeiChildButtonWidget(int x, int y, int w, int h, JeiToggleButtonWidget parent, Component tooltip) {
+    public JEIChildButtonWidget(int x, int y, int w, int h, JEIToggleButtonWidget parent, Component tooltip) {
         this.pos = new ScreenPosition(x, y);
         this.w = w;
         this.h = h;

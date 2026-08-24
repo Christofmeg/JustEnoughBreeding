@@ -4,17 +4,18 @@ import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.util.ProblemReporter;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
+import net.minecraft.world.level.storage.TagValueInput;
+import net.minecraft.world.level.storage.TagValueOutput;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-@OnlyIn(Dist.CLIENT)
 public class ClientUtils {
 
     public static final int ENTITY_CREATION_INTERVAL = 3000;
@@ -30,9 +31,9 @@ public class ClientUtils {
 
         boolean nbtChanged = false;
         if (cachedEntity != null) {
-            CompoundTag cachedNbt = new CompoundTag();
-            cachedEntity.saveWithoutId(cachedNbt);
-
+            TagValueOutput output = TagValueOutput.createWithContext(ProblemReporter.DISCARDING, level.registryAccess());
+            cachedEntity.saveWithoutId(output);
+            CompoundTag cachedNbt = output.buildResult();
             if (nbt == null) {
                 nbtChanged = !cachedNbt.isEmpty();
             } else {
@@ -47,10 +48,14 @@ public class ClientUtils {
                 !JustEnoughBreeding.isModLoaded("optifine");
 
         if (cachedEntity == null || nbtChanged || (refreshAllowed && (currentTime - lastTime >= ENTITY_CREATION_INTERVAL))) {
-            cachedEntity = (LivingEntity) entityType.create(level);
+            cachedEntity = (LivingEntity) entityType.create(level, EntitySpawnReason.NATURAL);
             if (cachedEntity != null) {
                 if (nbt != null) {
-                    cachedEntity.load(nbt);
+                    cachedEntity.load(TagValueInput.create(
+                            ProblemReporter.DISCARDING,
+                            level.registryAccess(),
+                            nbt
+                    ));
                 }
                 cachedEntity.setUUID(UUID.randomUUID());
             }

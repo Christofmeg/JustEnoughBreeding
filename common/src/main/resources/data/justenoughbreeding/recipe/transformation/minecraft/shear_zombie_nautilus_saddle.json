@@ -1,7 +1,7 @@
 {
   "type": "justenoughbreeding:transformation",
   "mod": "minecraft",
-  "inputs": "#c:tools/shears",
+  "inputs": "#c:tools/shear",
   "input_entity": "minecraft:zombie_nautilus",
   "input_entity_nbt": {
     "equipment":{

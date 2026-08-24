@@ -7,7 +7,7 @@ import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Items;
 import org.jetbrains.annotations.NotNull;
 
@@ -17,8 +17,8 @@ import org.jetbrains.annotations.NotNull;
 public class JEIPlugin implements IModPlugin {
 
     @Override
-    public @NotNull ResourceLocation getPluginUid() {
-        return ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "jei_plugin");
+    public @NotNull Identifier getPluginUid() {
+        return Identifier.fromNamespaceAndPath(CommonConstants.MOD_ID, "jei_plugin");
     }
 
     @Override

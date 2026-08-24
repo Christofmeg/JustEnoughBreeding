@@ -27,75 +27,66 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeType;
 import org.jetbrains.annotations.NotNull;
 import org.jspecify.annotations.NonNull;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class REIUtils {
 
     public static boolean showChildButtons = false;
 
-    public static void registerRecipes(DisplayRegistry registration) {
+    public static void registerRecipes(DisplayRegistry registry) {
         if (Minecraft.getInstance().getConnection() != null) {
             SynchronizedRecipes recipes = Minecraft.getInstance().getConnection().recipes().getSynchronizedRecipes();
-            
-            ArrayList<RecipeHolder<@NotNull AllayDuplicationRecipe>> allayDuplicationRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.ALLAY_DUPLICATION_PROVIDER_TYPE));
-            allayDuplicationRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
-            for (RecipeHolder<@NotNull AllayDuplicationRecipe> recipeHold : allayDuplicationRecipes) {
-                AllayDuplicationRecipe recipe = recipeHold.value();
-                if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.entityType() != null && !recipe.inputs().isEmpty()) {
-                    registration.add(new AllayDuplicationDisplay(recipe));
-                }
-            }
 
-            ArrayList<RecipeHolder<@NotNull BreedingRecipe>> breedingRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.BREEDING_PROVIDER_TYPE));
-            breedingRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
-            for (RecipeHolder<@NotNull BreedingRecipe> recipeHold : breedingRecipes) {
-                BreedingRecipe recipe = recipeHold.value();
-                if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.entityType() != null && !recipe.inputs().isEmpty()) {
-                    registration.add(new BreedingDisplay(recipe));
-                }
-            }
+            List<?> allayDuplicationRecipes = registerCategoryRecipes(recipes, JustEnoughBreeding.ALLAY_DUPLICATION_PROVIDER_TYPE, AllayDuplicationRecipe.class, AllayDuplicationRecipe::mod, AllayDuplicationRecipe::entityType, r -> !r.inputs().isEmpty());
+            allayDuplicationRecipes.forEach(recipe -> registry.add(new AllayDuplicationDisplay((AllayDuplicationRecipe) recipe)));
 
-            ArrayList<RecipeHolder<@NotNull TamingRecipe>> tamingRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.TAMING_PROVIDER_TYPE));
-            tamingRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
-            for (RecipeHolder<@NotNull TamingRecipe> recipeHold : tamingRecipes) {
-                TamingRecipe recipe = recipeHold.value();
-                if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.entityType() != null && !recipe.inputs().isEmpty()) {
-                    registration.add(new TamingDisplay(recipe));
-                }
-            }
+            List<?> breedingRecipes = registerCategoryRecipes(recipes, JustEnoughBreeding.BREEDING_PROVIDER_TYPE, BreedingRecipe.class, BreedingRecipe::mod, BreedingRecipe::entityType, r -> !r.inputs().isEmpty());
+            breedingRecipes.forEach(recipe -> registry.add(new BreedingDisplay((BreedingRecipe) recipe)));
 
-            ArrayList<RecipeHolder<@NotNull TemperRecipe>> temperRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.TEMPER_PROVIDER_TYPE));
-            temperRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
-            for (RecipeHolder<@NotNull TemperRecipe> recipeHold : temperRecipes) {
-                TemperRecipe recipe = recipeHold.value();
-                if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.entityType() != null && !recipe.inputs().isEmpty()) {
-                    registration.add(new TemperDisplay(recipe));
-                }
-            }
+            List<?> tamingnRecipes = registerCategoryRecipes(recipes, JustEnoughBreeding.TAMING_PROVIDER_TYPE, TamingRecipe.class, TamingRecipe::mod, TamingRecipe::entityType, r -> !r.inputs().isEmpty());
+            tamingnRecipes.forEach(recipe -> registry.add(new TamingDisplay((TamingRecipe) recipe)));
 
-            ArrayList<RecipeHolder<@NotNull TransformationRecipe>> transformationRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE));
-            transformationRecipes.sort(Comparator.comparing(r -> r.value().outputEntityType() == null ? "" : r.value().outputEntityType().toShortString()));
-            for (RecipeHolder<@NotNull TransformationRecipe> recipeHold : transformationRecipes) {
-                TransformationRecipe recipe = recipeHold.value();
-                if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.outputEntityType() != null && !recipe.inputs().isEmpty()) {
-                    registration.add(new TransformationDisplay(recipe));
-                }
-            }
+            List<?> temperRecipes = registerCategoryRecipes(recipes, JustEnoughBreeding.TEMPER_PROVIDER_TYPE, TemperRecipe.class, TemperRecipe::mod, TemperRecipe::entityType, r -> !r.inputs().isEmpty());
+            temperRecipes.forEach(recipe -> registry.add(new TemperDisplay((TemperRecipe) recipe)));
 
-            ArrayList<RecipeHolder<@NotNull TrustingRecipe>>trustingRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.TRUSTING_PROVIDER_TYPE));
-            trustingRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
-            for (RecipeHolder<@NotNull TrustingRecipe> recipeHold : trustingRecipes) {
-                TrustingRecipe recipe = recipeHold.value();
-                if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.entityType() != null && !recipe.inputs().isEmpty()) {
-                    registration.add(new TrustingDisplay(recipe));
-                }
-            }
+            List<?> transformationRecipes = registerCategoryRecipes(recipes, JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE, TransformationRecipe.class, TransformationRecipe::mod, TransformationRecipe::outputEntityType, r -> !r.inputs().isEmpty());
+            transformationRecipes.forEach(recipe -> registry.add(new TransformationDisplay((TransformationRecipe) recipe)));
+
+            List<?> trustingRecipes = registerCategoryRecipes(recipes, JustEnoughBreeding.TRUSTING_PROVIDER_TYPE, TrustingRecipe.class, TrustingRecipe::mod, TrustingRecipe::entityType, r -> !r.inputs().isEmpty());
+            trustingRecipes.forEach(recipe -> registry.add(new TrustingDisplay((TrustingRecipe) recipe)));
         }
+    }
+
+    private static <T extends Recipe<?>> List<T> registerCategoryRecipes(
+            SynchronizedRecipes recipes,
+            RecipeType<?> targetType,
+            Class<T> recipeClass,
+            Function<T, String> modExtractor,
+            Function<T, EntityType<?>> entityTypeExtractor,
+            Predicate<T> validInputsCheck) {
+        return recipes.recipes().stream()
+                .map(RecipeHolder::value)
+                .filter(recipe -> recipe.getType() == targetType)
+                .filter(recipeClass::isInstance)
+                .map(recipeClass::cast)
+                .filter(recipe -> {
+                    EntityType<?> type = entityTypeExtractor.apply(recipe);
+                    return type != null
+                            && JustEnoughBreeding.isModLoaded(modExtractor.apply(recipe))
+                            && validInputsCheck.test(recipe);
+                })
+                .sorted(Comparator.comparing(r -> {
+                    EntityType<?> type = entityTypeExtractor.apply(r);
+                    return type == null ? "" : type.toShortString();
+                }))
+                .toList();
     }
 
     public static void drawMobSlot(List<Widget> widgets, Rectangle bounds, int mobSlotX, int mobSlotY) {

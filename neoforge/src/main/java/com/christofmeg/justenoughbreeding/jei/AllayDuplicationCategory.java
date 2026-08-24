@@ -1,6 +1,7 @@
 package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
+import com.christofmeg.justenoughbreeding.config.ModConfigManager;
 import com.christofmeg.justenoughbreeding.recipe.AllayDuplicationRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -10,11 +11,12 @@ import mezz.jei.api.gui.widgets.IRecipeExtrasBuilder;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
-import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.AbstractRecipeCategory;
+import mezz.jei.api.recipe.types.IRecipeType;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -24,7 +26,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class AllayDuplicationCategory extends AbstractRecipeCategory<AllayDuplicationRecipe> {
 
-    public static final RecipeType<AllayDuplicationRecipe> TYPE = new RecipeType<>(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "allay_duplication"), AllayDuplicationRecipe.class);
+    public static final IRecipeType<AllayDuplicationRecipe> TYPE = IRecipeType.create(Identifier.fromNamespaceAndPath(CommonConstants.MOD_ID, "allay_duplication"), AllayDuplicationRecipe.class);
     private final IDrawableStatic bigSlot;
     private final int CATEGORY_WIDTH;
 
@@ -36,16 +38,18 @@ public class AllayDuplicationCategory extends AbstractRecipeCategory<AllayDuplic
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, AllayDuplicationRecipe recipe, @NotNull IFocusGroup focuses) {
-        builder.addInputSlot(149, 1).setStandardSlotBackground().addIngredients(recipe.spawnEggs());
-        builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).addIngredients(recipe.spawnEggs());
-        builder.addInputSlot(107, 32).setStandardSlotBackground().addIngredients(recipe.inputs());
-        builder.addInputSlot(97, 52).setStandardSlotBackground().addIngredients(Ingredient.of(ItemTags.CREEPER_DROP_MUSIC_DISCS));
-        builder.addInputSlot(117, 52).setStandardSlotBackground().addIngredients(Ingredient.of(Items.JUKEBOX));
+        builder.addInputSlot(149, 1).setStandardSlotBackground().add(recipe.spawnEggs());
+        builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).add(recipe.spawnEggs());
+        builder.addInputSlot(107, 32).setStandardSlotBackground().add(recipe.inputs());
+        BuiltInRegistries.ITEM.get(ItemTags.CREEPER_DROP_MUSIC_DISCS).ifPresent(stack -> builder.addInputSlot(97, 52).setStandardSlotBackground().add(Ingredient.of(stack)));
+        builder.addInputSlot(117, 52).setStandardSlotBackground().add(Ingredient.of(Items.JUKEBOX));
     }
 
     @Override
     public void createRecipeExtras(@NotNull IRecipeExtrasBuilder builder, @NotNull AllayDuplicationRecipe recipe, @NotNull IFocusGroup focuses) {
-        JEIUtils.addButton(builder, recipe.entityType());
+        if (ModConfigManager.areConfigButtonsEnabled()) {
+            JEIUtils.addButton(builder, recipe.entityType());
+        }
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.christofmeg.justenoughbreeding.jei;
 
+import com.christofmeg.justenoughbreeding.CommonConstants;
+import com.christofmeg.justenoughbreeding.config.ModConfigManager;
 import com.christofmeg.justenoughbreeding.recipe.TamingRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -11,18 +13,18 @@ import mezz.jei.api.gui.widgets.IRecipeExtrasBuilder;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
-import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.AbstractRecipeCategory;
+import mezz.jei.api.recipe.types.IRecipeType;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
 public class TamingCategory extends AbstractRecipeCategory<TamingRecipe> {
 
-    public static final RecipeType<TamingRecipe> TYPE = new RecipeType<>(ResourceLocation.fromNamespaceAndPath("justenoughbreeding", "taming"), TamingRecipe.class);
+    public static final IRecipeType<TamingRecipe> TYPE = IRecipeType.create(Identifier.fromNamespaceAndPath(CommonConstants.MOD_ID, "taming"), TamingRecipe.class);
     private final IDrawableStatic bigSlot;
     private final int CATEGORY_WIDTH;
 
@@ -34,18 +36,20 @@ public class TamingCategory extends AbstractRecipeCategory<TamingRecipe> {
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, TamingRecipe recipe, @NotNull IFocusGroup focuses) {
-        builder.addInputSlot(149, 1).setStandardSlotBackground().addIngredients(recipe.spawnEggs());
-        builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).addIngredients(recipe.spawnEggs());
-        builder.addInputSlot(69, 58).setStandardSlotBackground().addIngredients(recipe.inputs()).setPosition(63, 20, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
-        boolean hasExtraInput = !recipe.extraInputs().isEmpty();
+        builder.addInputSlot(149, 1).setStandardSlotBackground().add(recipe.spawnEggs());
+        builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).add(recipe.spawnEggs());
+        builder.addInputSlot(69, 58).setStandardSlotBackground().add(recipe.inputs()).setPosition(63, 20, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
+        boolean hasExtraInput = recipe.extraInputs()!= null && !recipe.extraInputs().isEmpty();
         if (hasExtraInput) {
-            builder.addInputSlot(69, 33).setStandardSlotBackground().addIngredients(recipe.extraInputs()).setPosition(63, 29, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
+            builder.addInputSlot(69, 33).setStandardSlotBackground().add(recipe.extraInputs()).setPosition(63, 29, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
         }
     }
 
     @Override
     public void createRecipeExtras(@NotNull IRecipeExtrasBuilder builder, @NotNull TamingRecipe recipe, @NotNull IFocusGroup focuses) {
-        JEIUtils.addButton(builder, recipe.entityType());
+        if (ModConfigManager.areConfigButtonsEnabled()) {
+            JEIUtils.addButton(builder, recipe.entityType());
+        }
     }
 
     @Override

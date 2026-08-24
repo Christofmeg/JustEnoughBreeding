@@ -1,10 +1,10 @@
 package com.christofmeg.justenoughbreeding.config;
 
+import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import net.minecraft.resources.ResourceLocation;
-import net.neoforged.fml.loading.FMLPaths;
+import net.minecraft.resources.Identifier;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -16,13 +16,13 @@ public class MobOffsetManager {
     private static final Gson GSON = new GsonBuilder()
             .setPrettyPrinting()
             .enableComplexMapKeySerialization()
-            .registerTypeAdapter(ResourceLocation.class, new ResourceLocation.Serializer())
+            .registerTypeAdapter(Identifier.class, new IdentifierAdapter())
             .create();
-    private static final Map<ResourceLocation, MobOffset> CACHE = new HashMap<>();
+    private static final Map<Identifier, MobOffset> CACHE = new HashMap<>();
     private static File configFile;
 
     public static void init() {
-        configFile = FMLPaths.CONFIGDIR.get().resolve("justenoughbreeding-offsets.json").toFile();
+        configFile = JustEnoughBreeding.getConfigDir().resolve("justenoughbreeding-offsets.json").toFile();
         loadFromResources();
         if (configFile.exists()) {
             loadFromConfig();
@@ -45,12 +45,12 @@ public class MobOffsetManager {
         }
     }
 
-    public static void updateOffset(ResourceLocation entityId, float scale, float x, float y) {
+    public static void updateOffset(Identifier entityId, float scale, float x, float y) {
         CACHE.put(entityId, new MobOffset(scale, x, y));
         save();
     }
 
-    public static MobOffset get(ResourceLocation entityId) {
+    public static MobOffset get(Identifier entityId) {
         return CACHE.getOrDefault(entityId, new MobOffset(1.0f, 0, 0));
     }
 
@@ -66,7 +66,7 @@ public class MobOffsetManager {
             }
 
             Map<String, MobOffset> toSave = new HashMap<>();
-            for (Map.Entry<ResourceLocation, MobOffset> entry : CACHE.entrySet()) {
+            for (Map.Entry<Identifier, MobOffset> entry : CACHE.entrySet()) {
                 toSave.put(entry.getKey().toString(), entry.getValue());
             }
 
@@ -91,7 +91,7 @@ public class MobOffsetManager {
                 Map<String, MobOffset> defaults = GSON.fromJson(reader, type);
 
                 if (defaults != null) {
-                    defaults.forEach((key, value) -> CACHE.put(ResourceLocation.parse(key), value));
+                    defaults.forEach((key, value) -> CACHE.put(Identifier.parse(key), value));
                 }
             }
         } catch (Exception e) {
@@ -111,7 +111,7 @@ public class MobOffsetManager {
 
             if (userOverrides != null) {
                 for (Map.Entry<String, MobOffset> entry : userOverrides.entrySet()) {
-                    CACHE.put(ResourceLocation.parse(entry.getKey()), entry.getValue());
+                    CACHE.put(Identifier.parse(entry.getKey()), entry.getValue());
                 }
             }
 

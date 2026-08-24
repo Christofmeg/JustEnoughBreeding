@@ -2,11 +2,14 @@ package com.christofmeg.justenoughbreeding.rei;
 
 import com.christofmeg.justenoughbreeding.recipe.TrustingRecipe;
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;
+import me.shedaniel.rei.api.common.display.Display;
+import me.shedaniel.rei.api.common.display.DisplaySerializer;
 import me.shedaniel.rei.api.common.display.basic.BasicDisplay;
 import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -20,7 +23,7 @@ public class TrustingDisplay extends BasicDisplay {
                 List.of(EntryIngredients.ofIngredient(recipe.spawnEggs()))
         );
         this.recipe = recipe;
-        if (!recipe.extraInputs().isEmpty()) {
+        if (recipe.extraInputs() != null) {
             extraInputs = List.of(EntryIngredients.ofIngredient(recipe.extraInputs()));
         } else {
             extraInputs = List.of(EntryIngredient.of(EntryStacks.of(ItemStack.EMPTY)));
@@ -30,6 +33,11 @@ public class TrustingDisplay extends BasicDisplay {
     @Override
     public CategoryIdentifier<?> getCategoryIdentifier() {
         return TrustingCategoryREI.TYPE;
+    }
+
+    @Override
+    public @Nullable DisplaySerializer<? extends Display> getSerializer() {
+        return null;
     }
 
     public List<EntryIngredient> getExtraInputEntries() {

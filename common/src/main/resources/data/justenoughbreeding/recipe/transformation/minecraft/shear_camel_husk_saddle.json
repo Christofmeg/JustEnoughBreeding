@@ -1,7 +1,7 @@
 {
   "type": "justenoughbreeding:transformation",
   "mod": "minecraft",
-  "inputs": "#c:tools/shears",
+  "inputs": "#c:tools/shear",
   "input_entity": "minecraft:camel_husk",
   "input_entity_nbt": {
     "equipment":{

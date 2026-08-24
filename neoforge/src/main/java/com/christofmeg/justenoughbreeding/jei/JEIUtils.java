@@ -1,92 +1,78 @@
 package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
+import com.christofmeg.justenoughbreeding.client.ClientRecipeCache;
 import com.christofmeg.justenoughbreeding.client.ClientUtils;
+import com.christofmeg.justenoughbreeding.config.MobOffset;
 import com.christofmeg.justenoughbreeding.config.MobOffsetManager;
 import com.christofmeg.justenoughbreeding.recipe.*;
 import com.christofmeg.justenoughbreeding.utils.CommonClientUtils;
-import com.christofmeg.justenoughbreeding.utils.CommonUtils;
+import com.christofmeg.justenoughbreeding.utils.Rect;
 import com.christofmeg.justenoughbreeding.utils.Utils;
 import com.mojang.blaze3d.platform.InputConstants;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.gui.inputs.IJeiInputHandler;
 import mezz.jei.api.gui.inputs.IJeiUserInput;
 import mezz.jei.api.gui.widgets.IRecipeExtrasBuilder;
+import mezz.jei.api.recipe.types.IRecipeType;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeType;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class JEIUtils {
 
     public static void registerRecipes(IRecipeRegistration registration) {
-        ClientLevel clientLevel = Minecraft.getInstance().level;
-        if (clientLevel != null) {
-            ArrayList<RecipeHolder<AllayDuplicationRecipe>> allayDuplicationRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.ALLAY_DUPLICATION_PROVIDER_TYPE.get()));
-            allayDuplicationRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
-            for (RecipeHolder<AllayDuplicationRecipe> recipeHold : allayDuplicationRecipes) {
-                AllayDuplicationRecipe recipe = recipeHold.value();
-                if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.entityType() != null && !recipe.inputs().isEmpty()) {
-                    registration.addRecipes(AllayDuplicationCategory.TYPE, Collections.singletonList(recipe));
-                }
-            }
+        registerCategoryRecipes(registration, JustEnoughBreeding.ALLAY_DUPLICATION_PROVIDER_TYPE.get(), AllayDuplicationCategory.TYPE, AllayDuplicationRecipe.class, AllayDuplicationRecipe::mod, AllayDuplicationRecipe::entityType, r -> !r.inputs().isEmpty());
+        registerCategoryRecipes(registration, JustEnoughBreeding.BREEDING_PROVIDER_TYPE.get(), BreedingCategory.TYPE, BreedingRecipe.class, BreedingRecipe::mod, BreedingRecipe::entityType, r -> !r.inputs().isEmpty());
+        registerCategoryRecipes(registration, JustEnoughBreeding.TAMING_PROVIDER_TYPE.get(), TamingCategory.TYPE, TamingRecipe.class, TamingRecipe::mod, TamingRecipe::entityType, r -> !r.inputs().isEmpty());
+        registerCategoryRecipes(registration, JustEnoughBreeding.TEMPER_PROVIDER_TYPE.get(), TemperCategory.TYPE, TemperRecipe.class, TemperRecipe::mod, TemperRecipe::entityType, r -> !r.inputs().isEmpty());
+        registerCategoryRecipes(registration, JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE.get(), TransformationCategory.TYPE, TransformationRecipe.class, TransformationRecipe::mod, TransformationRecipe::outputEntityType, r -> !r.inputs().isEmpty());
+        registerCategoryRecipes(registration, JustEnoughBreeding.TRUSTING_PROVIDER_TYPE.get(), TrustingCategory.TYPE, TrustingRecipe.class, TrustingRecipe::mod, TrustingRecipe::entityType, r -> !r.inputs().isEmpty());
+    }
 
-            ArrayList<RecipeHolder<BreedingRecipe>> breedingRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.BREEDING_PROVIDER_TYPE.get()));
-            breedingRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
-            for (RecipeHolder<BreedingRecipe> recipeHold : breedingRecipes) {
-                BreedingRecipe recipe = recipeHold.value();
-                if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.entityType() != null && !recipe.inputs().isEmpty()) {
-                    registration.addRecipes(BreedingCategory.TYPE, Collections.singletonList(recipe));
-                }
-            }
+    private static <T extends Recipe<?>> void registerCategoryRecipes(
+            IRecipeRegistration registration,
+            RecipeType<?> targetType,
+            IRecipeType<@NotNull T> categoryType,
+            Class<T> recipeClass,
+            Function<T, String> modExtractor,
+            Function<T, EntityType<?>> entityTypeExtractor,
+            Predicate<T> validInputsCheck) {
 
-            ArrayList<RecipeHolder<TamingRecipe>> tamingRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TAMING_PROVIDER_TYPE.get()));
-            tamingRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
-            for (RecipeHolder<TamingRecipe> recipeHold : tamingRecipes) {
-                TamingRecipe recipe = recipeHold.value();
-                if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.entityType() != null && !recipe.inputs().isEmpty()) {
-                    registration.addRecipes(TamingCategory.TYPE, Collections.singletonList(recipe));
-                }
-            }
+        List<T> validRecipes = ClientRecipeCache.getRecipes().stream()
+                .map(RecipeHolder::value)
+                .filter(recipe -> recipe.getType() == targetType)
+                .filter(recipeClass::isInstance)
+                .map(recipeClass::cast)
+                .filter(recipe -> {
+                    EntityType<?> type = entityTypeExtractor.apply(recipe);
+                    return type != null
+                            && JustEnoughBreeding.isModLoaded(modExtractor.apply(recipe))
+                            && validInputsCheck.test(recipe);
+                })
+                .sorted(Comparator.comparing(r -> {
+                    EntityType<?> type = entityTypeExtractor.apply(r);
+                    return type == null ? "" : type.toShortString();
+                }))
+                .toList();
 
-            ArrayList<RecipeHolder<TemperRecipe>> temperRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TEMPER_PROVIDER_TYPE.get()));
-            temperRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
-            for (RecipeHolder<TemperRecipe> recipeHold : temperRecipes) {
-                TemperRecipe recipe = recipeHold.value();
-                if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.entityType() != null && !recipe.inputs().isEmpty()) {
-                    registration.addRecipes(TemperCategory.TYPE, Collections.singletonList(recipe));
-                }
-            }
-
-            ArrayList<RecipeHolder<TransformationRecipe>> transformationRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE.get()));
-            transformationRecipes.sort(Comparator.comparing(r -> r.value().outputEntityType() == null ? "" : r.value().outputEntityType().toShortString()));
-            for (RecipeHolder<TransformationRecipe> recipeHold : transformationRecipes) {
-                TransformationRecipe recipe = recipeHold.value();
-                if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.inputEntityType() != null && recipe.outputEntityType() != null && !recipe.inputs().isEmpty()) {
-                    registration.addRecipes(TransformationCategory.TYPE, Collections.singletonList(recipe));
-                }
-            }
-
-            ArrayList<RecipeHolder<TrustingRecipe>> trustingRecipes = new ArrayList<>(clientLevel.getRecipeManager().getAllRecipesFor(JustEnoughBreeding.TRUSTING_PROVIDER_TYPE.get()));
-            trustingRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
-            for (RecipeHolder<TrustingRecipe> recipeHold : trustingRecipes) {
-                TrustingRecipe recipe = recipeHold.value();
-                if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.entityType() != null && !recipe.inputs().isEmpty()) {
-                    registration.addRecipes(TrustingCategory.TYPE, Collections.singletonList(recipe));
-                }
-            }
+        if (!validRecipes.isEmpty()) {
+            registration.addRecipes(categoryType, validRecipes);
         }
     }
 
@@ -113,7 +99,7 @@ public class JEIUtils {
         draw(bigSlot, graphics, mobSlotX + 24, mobSlotY + 55, bigSlot.getHeight(), 1, 25, 24, 1);
         draw(bigSlot, graphics, mobSlotX + 35, mobSlotY + 55, bigSlot.getHeight(), 14, 25, 11, 1);
 
-        int color = CommonClientUtils.getPixelColor(ResourceLocation.fromNamespaceAndPath("jei", "textures/jei/atlas/gui/output_slot.png"), 13 ,13);
+        int color = CommonClientUtils.getPixelColor(Identifier.fromNamespaceAndPath("jei", "textures/jei/atlas/gui/output_slot.png"), 13 ,13);
         int startX = mobSlotX + 1;
         int startY = mobSlotY + 1;
         int width  = 59;
@@ -174,7 +160,7 @@ public class JEIUtils {
             LivingEntity currentLivingEntity;
             if (recipe instanceof TransformationRecipe transformationRecipe) {
                 if (input) {
-                    currentLivingEntity = ClientUtils.doRendering(transformationRecipe.inputEntityType(), transformationRecipe.inputEntityNbt(), true);
+                    currentLivingEntity = ClientUtils.doRendering(JustEnoughBreeding.getEntityFromLoaderRegistries(Identifier.tryParse(transformationRecipe.inputEntity())), transformationRecipe.inputEntityNbt(), true);
                 } else {
                     currentLivingEntity = ClientUtils.doRendering(transformationRecipe.outputEntityType(), transformationRecipe.outputEntityNbt(), false);
                 }
@@ -183,7 +169,9 @@ public class JEIUtils {
             }
             LivingEntity livingEntity = Utils.getLivingEntity(currentLivingEntity, input, recipe);
             if (livingEntity != null) {
-                Utils.renderEntityInInventoryFollowsMouse(graphics, (float) mouseX, livingEntity, CommonUtils.getRect(input, CATEGORY_WIDTH), entityType);
+                final Rect rect = new Rect((CATEGORY_WIDTH - 59 - 10) / 2 + extraX, 10, 59, 59);
+                MobOffset offset = MobOffsetManager.get(JustEnoughBreeding.getKeyLoaderRegistries(currentLivingEntity.getType()));
+                CommonClientUtils.renderEntity(currentLivingEntity, rect, graphics, (int) mouseX, offset);
             }
         }
     }
@@ -193,7 +181,7 @@ public class JEIUtils {
     }
 
     public static void addButton(IRecipeExtrasBuilder builder, EntityType<?> entityType, int xOffset) {
-        JeiToggleButtonWidget button = new JeiToggleButtonWidget(48 + xOffset, 13, 10, 10);
+        JEIToggleButtonWidget button = new JEIToggleButtonWidget(48 + xOffset, 13, 10, 10);
         builder.addWidget(button);
 
         builder.addInputHandler(new IJeiInputHandler() {
@@ -203,12 +191,10 @@ public class JEIUtils {
             }
             @Override
             public boolean handleInput(double mouseX, double mouseY, @NotNull IJeiUserInput input) {
-                if (input.isSimulate()) return false;
-                if (input.getKey().getValue() == InputConstants.MOUSE_BUTTON_LEFT && input.getKey().getValue() == InputConstants.RELEASE) {
-                    button.toggle();
-                    return true;
-                }
-                return false;
+                if (input.getKey().getValue() != InputConstants.MOUSE_BUTTON_LEFT) return false;
+                if (input.isSimulate()) return true;
+                button.toggle();
+                return true;
             }
         });
 
@@ -223,7 +209,7 @@ public class JEIUtils {
                 default -> Component.translatable("option.justenoughbreeding.move_right");
             };
 
-            JeiChildButtonWidget child = new JeiChildButtonWidget(x + xOffset, y, 10, 10, button, component);
+            JEIChildButtonWidget child = new JEIChildButtonWidget(x + xOffset, y, 10, 10, button, component);
             builder.addWidget(child);
 
             int finalI = i;
@@ -236,23 +222,24 @@ public class JEIUtils {
                 @Override
                 public boolean handleInput(double mouseX, double mouseY, @NotNull IJeiUserInput input) {
                     if (button.isToggled()) return false;
-                    if (input.isSimulate()) return false;
-                    ResourceLocation entity = JustEnoughBreeding.getKeyLoaderRegistries(entityType);
-                    if (input.getKey().getValue() == InputConstants.MOUSE_BUTTON_LEFT) {
+                    int mouseButton = input.getKey().getValue();
+                    if (mouseButton != InputConstants.MOUSE_BUTTON_LEFT && mouseButton != InputConstants.MOUSE_BUTTON_RIGHT) return false;
+                    if (input.isSimulate()) return true;
+                    Identifier entity = JustEnoughBreeding.getKeyLoaderRegistries(entityType);
+                    if (mouseButton == InputConstants.MOUSE_BUTTON_LEFT) {
                         switch (finalI) {
                             case 0 -> MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale() + 0.5f, MobOffsetManager.get(entity).x(), MobOffsetManager.get(entity).y());
                             case 1 -> MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale() - 0.5f, MobOffsetManager.get(entity).x(), MobOffsetManager.get(entity).y());
                             case 2 -> MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), MobOffsetManager.get(entity).x() - 1, MobOffsetManager.get(entity).y());
-                            default -> MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), MobOffsetManager.get(entity).x() + 1, MobOffsetManager.get(entity).y());
+                            case 3 -> MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), MobOffsetManager.get(entity).x() + 1, MobOffsetManager.get(entity).y());
                         }
                         return true;
-                    } else if (input.getKey().getValue() == InputConstants.MOUSE_BUTTON_RIGHT) {
-                        switch (finalI) {
-                            case 0, 1 -> MobOffsetManager.updateOffset(entity, 0, MobOffsetManager.get(entity).x(), MobOffsetManager.get(entity).y());
-                            default -> MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), 0, MobOffsetManager.get(entity).y());
-                        }
                     }
-                    return false;
+                    switch (finalI) {
+                        case 0, 1 -> MobOffsetManager.updateOffset(entity, 0, MobOffsetManager.get(entity).x(), MobOffsetManager.get(entity).y());
+                        case 2, 3 -> MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), 0, MobOffsetManager.get(entity).y());
+                    }
+                    return true;
                 }
             });
         }
@@ -262,7 +249,7 @@ public class JEIUtils {
             int y = 13 + 12 + (i * 11);
 
             Component component = i == 0 ? Component.translatable("option.justenoughbreeding.move_up") : Component.translatable("option.justenoughbreeding.move_down");
-            JeiChildButtonWidget child = new JeiChildButtonWidget(x + xOffset, y, 10, 10, button, component);
+            JEIChildButtonWidget child = new JEIChildButtonWidget(x + xOffset, y, 10, 10, button, component);
             builder.addWidget(child);
 
             int finalI = i;
@@ -275,16 +262,18 @@ public class JEIUtils {
                 @Override
                 public boolean handleInput(double mouseX, double mouseY, @NotNull IJeiUserInput input) {
                     if (button.isToggled()) return false;
-                    if (input.isSimulate()) return false;
-                    ResourceLocation entity = JustEnoughBreeding.getKeyLoaderRegistries(entityType);
-                    if (input.getKey().getValue() == InputConstants.MOUSE_BUTTON_LEFT) {
+                    int mouseButton = input.getKey().getValue();
+                    if (mouseButton != InputConstants.MOUSE_BUTTON_LEFT && mouseButton != InputConstants.MOUSE_BUTTON_RIGHT) return false;
+                    if (input.isSimulate()) return true;
+                    Identifier entity = JustEnoughBreeding.getKeyLoaderRegistries(entityType);
+                    if (mouseButton == InputConstants.MOUSE_BUTTON_LEFT) {
                         if (finalI == 0) {
                             MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), MobOffsetManager.get(entity).x(), MobOffsetManager.get(entity).y() - 1);
                         } else {
                             MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), MobOffsetManager.get(entity).x(), MobOffsetManager.get(entity).y() + 1);
                         }
                         return true;
-                    } else if (input.getKey().getValue() == InputConstants.MOUSE_BUTTON_RIGHT) {
+                    } else {
                         MobOffsetManager.updateOffset(entity, MobOffsetManager.get(entity).scale(), MobOffsetManager.get(entity).x(), 0);
                     }
                     return false;

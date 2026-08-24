@@ -7,19 +7,16 @@ import net.minecraft.client.gui.navigation.ScreenPosition;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
 
-public class JeiChildButtonWidget implements IRecipeWidget {
+public class JEIToggleButtonWidget implements IRecipeWidget {
 
     private final ScreenPosition pos;
     private final int w, h;
-    private final JEIToggleButtonWidget parent;
-    private final Component tooltip;
+    private boolean toggled = false;
 
-    public JeiChildButtonWidget(int x, int y, int w, int h, JEIToggleButtonWidget parent, Component tooltip) {
+    public JEIToggleButtonWidget(int x, int y, int w, int h) {
         this.pos = new ScreenPosition(x, y);
         this.w = w;
         this.h = h;
-        this.parent = parent;
-        this.tooltip = tooltip;
     }
 
     @Override
@@ -27,24 +24,35 @@ public class JeiChildButtonWidget implements IRecipeWidget {
         return pos;
     }
 
-    public boolean isVisible() {
-        return parent.isToggled();
+    public void toggle() {
+        toggled = !toggled;
+    }
+
+    public boolean isToggled() {
+        return !toggled;
     }
 
     @Override
     public void drawWidget(@NotNull GuiGraphics graphics, double mouseX, double mouseY) {
-        if (isVisible()) return;
-
         boolean hovered = mouseX >= 0 && mouseX < w && mouseY >= 0 && mouseY < h;
-        graphics.fill(0, 0, w, h, hovered ? 0x80FFFFFF : 0x40FFFFFF);
+
+        int color;
+        if (toggled) {
+            color = 0x8080D580;
+        } else {
+            color = hovered ? 0x80FFFFFF : 0x40FFFFFF;
+        }
+
+        graphics.fill(0, 0, w, h, color);
     }
 
     @Override
-    public void getTooltip(@NotNull ITooltipBuilder tooltipBuilder, double mouseX, double mouseY) {
-        if (isVisible()) return;
-
+    public void getTooltip(@NotNull ITooltipBuilder tooltip, double mouseX, double mouseY) {
         if (mouseX >= 0 && mouseX < w && mouseY >= 0 && mouseY < h) {
-            tooltipBuilder.add(tooltip);
+            tooltip.add(Component.translatable(
+                    toggled ? "option.justenoughbreeding.hide_options" : "option.justenoughbreeding.show_options"
+            ));
         }
     }
 }
+

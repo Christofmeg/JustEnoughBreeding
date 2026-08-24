@@ -9,14 +9,31 @@ import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
 
-public record TransformationRecipe(EntityType<?> inputEntityType, @NotNull Ingredient inputs, @NotNull Ingredient inputSpawnEggs, @NotNull Ingredient extraInputs, EntityType<?> outputEntityType, @NotNull Ingredient outputSpawnEggs, String mod, String inputEntity, @Nullable CompoundTag inputEntityNbt, String outputEntity, @Nullable CompoundTag outputEntityNbt, @Nullable Boolean tamed) implements Recipe<CraftingInput> {
+public record TransformationRecipe(
+        @Nullable String inputEntityType,
+        @NotNull Ingredient inputs,
+        @NotNull Ingredient inputSpawnEggs,
+        @Nullable Ingredient extraInputs,
+        @Nullable EntityType<?> outputEntityType,
+        @NotNull Ingredient outputSpawnEggs,
+        @NotNull String mod,
+        @NotNull String inputEntity,
+        @Nullable CompoundTag inputEntityNbt,
+        @NotNull String outputEntity,
+        @Nullable CompoundTag outputEntityNbt,
+        @Nullable Ingredient outputs,
+        @Nullable Boolean tamed
+) implements Recipe<@NotNull CraftingInput> {
 
     @Override public boolean matches(@NotNull CraftingInput input, @NotNull Level level) { return false; }
     @Override public @NotNull ItemStack assemble(@NotNull CraftingInput input, HolderLookup.@NotNull Provider registries) { return ItemStack.EMPTY; }
-    @Override public boolean canCraftInDimensions(int width, int height) { return false; }
-    @Override public @NotNull ItemStack getResultItem(HolderLookup.@NotNull Provider registries) { return ItemStack.EMPTY; }
-    @Override public @NotNull RecipeSerializer<?> getSerializer() { return JustEnoughBreeding.TRANSFORMATION_PROVIDER_SERIALIZER.get(); }
-    @Override public @NotNull RecipeType<?> getType() { return JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE.get(); }
+    @Override public @NonNull RecipeSerializer<? extends @NotNull Recipe<@NotNull CraftingInput>> getSerializer() { return JustEnoughBreeding.TRANSFORMATION_PROVIDER_SERIALIZER.get(); }
+    @Override public @NonNull RecipeType<? extends @NotNull Recipe<@NotNull CraftingInput>> getType() { return JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE.get(); }
+    @Override public @NonNull PlacementInfo placementInfo() { return PlacementInfo.NOT_PLACEABLE; }
+    @Override public @NonNull RecipeBookCategory recipeBookCategory() { return RecipeBookCategories.CRAFTING_MISC; }
+    @Override public boolean isSpecial() { return true; }
+    @Override public boolean showNotification() { return false; }
 
 }

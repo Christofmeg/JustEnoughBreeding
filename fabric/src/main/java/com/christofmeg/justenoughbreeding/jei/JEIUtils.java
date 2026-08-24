@@ -13,6 +13,7 @@ import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.gui.inputs.IJeiInputHandler;
 import mezz.jei.api.gui.inputs.IJeiUserInput;
 import mezz.jei.api.gui.widgets.IRecipeExtrasBuilder;
+import mezz.jei.api.recipe.types.IRecipeType;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.fabricmc.fabric.api.recipe.v1.sync.SynchronizedRecipes;
 import net.minecraft.client.Minecraft;
@@ -26,71 +27,55 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeType;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class JEIUtils {
 
     public static void registerRecipes(IRecipeRegistration registration) {
         if (Minecraft.getInstance().getConnection() != null) {
             SynchronizedRecipes recipes = Minecraft.getInstance().getConnection().recipes().getSynchronizedRecipes();
+            registerCategoryRecipes(registration, recipes, JustEnoughBreeding.ALLAY_DUPLICATION_PROVIDER_TYPE, AllayDuplicationCategory.TYPE, AllayDuplicationRecipe.class, AllayDuplicationRecipe::mod, AllayDuplicationRecipe::entityType, r -> !r.inputs().isEmpty());
+            registerCategoryRecipes(registration, recipes, JustEnoughBreeding.BREEDING_PROVIDER_TYPE, BreedingCategory.TYPE, BreedingRecipe.class, BreedingRecipe::mod, BreedingRecipe::entityType, r -> !r.inputs().isEmpty());
+            registerCategoryRecipes(registration, recipes, JustEnoughBreeding.TAMING_PROVIDER_TYPE, TamingCategory.TYPE, TamingRecipe.class, TamingRecipe::mod, TamingRecipe::entityType, r -> !r.inputs().isEmpty());
+            registerCategoryRecipes(registration, recipes, JustEnoughBreeding.TEMPER_PROVIDER_TYPE, TemperCategory.TYPE, TemperRecipe.class, TemperRecipe::mod, TemperRecipe::entityType, r -> !r.inputs().isEmpty());
+            registerCategoryRecipes(registration, recipes, JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE, TransformationCategory.TYPE, TransformationRecipe.class, TransformationRecipe::mod, TransformationRecipe::outputEntityType, r -> !r.inputs().isEmpty());
+            registerCategoryRecipes(registration, recipes, JustEnoughBreeding.TRUSTING_PROVIDER_TYPE, TrustingCategory.TYPE, TrustingRecipe.class, TrustingRecipe::mod, TrustingRecipe::entityType, r -> !r.inputs().isEmpty());
+        }
+    }
 
-            ArrayList<RecipeHolder<@NotNull AllayDuplicationRecipe>> allayDuplicationRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.ALLAY_DUPLICATION_PROVIDER_TYPE));
-            allayDuplicationRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
-            for (RecipeHolder<@NotNull AllayDuplicationRecipe> recipeHold : allayDuplicationRecipes) {
-                AllayDuplicationRecipe recipe = recipeHold.value();
-                if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.entityType() != null && !recipe.inputs().isEmpty()) {
-                    registration.addRecipes(AllayDuplicationCategory.TYPE, Collections.singletonList(recipe));
-                }
-            }
-
-            ArrayList<RecipeHolder<@NotNull BreedingRecipe>> breedingRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.BREEDING_PROVIDER_TYPE));
-            breedingRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
-            for (RecipeHolder<@NotNull BreedingRecipe> recipeHold : breedingRecipes) {
-                BreedingRecipe recipe = recipeHold.value();
-                if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.entityType() != null && !recipe.inputs().isEmpty()) {
-                    registration.addRecipes(BreedingCategory.TYPE, Collections.singletonList(recipe));
-                }
-            }
-
-            ArrayList<RecipeHolder<@NotNull TamingRecipe>> tamingRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.TAMING_PROVIDER_TYPE));
-            tamingRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
-            for (RecipeHolder<@NotNull TamingRecipe> recipeHold : tamingRecipes) {
-                TamingRecipe recipe = recipeHold.value();
-                if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.entityType() != null && !recipe.inputs().isEmpty()) {
-                    registration.addRecipes(TamingCategory.TYPE, Collections.singletonList(recipe));
-                }
-            }
-
-            ArrayList<RecipeHolder<@NotNull TemperRecipe>> temperRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.TEMPER_PROVIDER_TYPE));
-            temperRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
-            for (RecipeHolder<@NotNull TemperRecipe> recipeHold : temperRecipes) {
-                TemperRecipe recipe = recipeHold.value();
-                if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.entityType() != null && !recipe.inputs().isEmpty()) {
-                    registration.addRecipes(TemperCategory.TYPE, Collections.singletonList(recipe));
-                }
-            }
-
-            ArrayList<RecipeHolder<@NotNull TransformationRecipe>> transformationRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.TRANSFORMATION_PROVIDER_TYPE));
-            transformationRecipes.sort(Comparator.comparing(r -> r.value().outputEntityType() == null ? "" : r.value().outputEntityType().toShortString()));
-            for (RecipeHolder<@NotNull TransformationRecipe> recipeHold : transformationRecipes) {
-                TransformationRecipe recipe = recipeHold.value();
-                if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.outputEntityType() != null && !recipe.inputs().isEmpty()) {
-                    registration.addRecipes(TransformationCategory.TYPE, Collections.singletonList(recipe));
-                }
-            }
-
-            ArrayList<RecipeHolder<@NotNull TrustingRecipe>> trustingRecipes = new ArrayList<>(recipes.getAllOfType(JustEnoughBreeding.TRUSTING_PROVIDER_TYPE));
-            trustingRecipes.sort(Comparator.comparing(r -> r.value().entityType() == null ? "" : r.value().entityType().toShortString()));
-            for (RecipeHolder<@NotNull TrustingRecipe> recipeHold : trustingRecipes) {
-                TrustingRecipe recipe = recipeHold.value();
-                if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.entityType() != null && !recipe.inputs().isEmpty()) {
-                    registration.addRecipes(TrustingCategory.TYPE, Collections.singletonList(recipe));
-                }
-            }
+    private static <T extends Recipe<?>> void registerCategoryRecipes(
+            IRecipeRegistration registration,
+            SynchronizedRecipes recipes,
+            RecipeType<?> targetType,
+            IRecipeType<@NotNull T> categoryType,
+            Class<T> recipeClass,
+            Function<T, String> modExtractor,
+            Function<T, EntityType<?>> entityTypeExtractor,
+            Predicate<T> validInputsCheck) {
+        List<T> validRecipes = recipes.recipes().stream()
+                .map(RecipeHolder::value)
+                .filter(recipe -> recipe.getType() == targetType)
+                .filter(recipeClass::isInstance)
+                .map(recipeClass::cast)
+                .filter(recipe -> {
+                    EntityType<?> type = entityTypeExtractor.apply(recipe);
+                    return type != null
+                            && JustEnoughBreeding.isModLoaded(modExtractor.apply(recipe))
+                            && validInputsCheck.test(recipe);
+                })
+                .sorted(Comparator.comparing(r -> {
+                    EntityType<?> type = entityTypeExtractor.apply(r);
+                    return type == null ? "" : type.toShortString();
+                }))
+                .toList();
+        if (!validRecipes.isEmpty()) {
+            registration.addRecipes(categoryType, validRecipes);
         }
     }
 
@@ -227,7 +212,7 @@ public class JEIUtils {
                 default -> Component.translatable("option.justenoughbreeding.move_right");
             };
 
-            JeiChildButtonWidget child = new JeiChildButtonWidget(x + xOffset, y, 10, 10, button, component);
+            JEIChildButtonWidget child = new JEIChildButtonWidget(x + xOffset, y, 10, 10, button, component);
             builder.addWidget(child);
 
             int finalI = i;
@@ -267,7 +252,7 @@ public class JEIUtils {
             int y = 13 + 12 + (i * 11);
 
             Component component = i == 0 ? Component.translatable("option.justenoughbreeding.move_up") : Component.translatable("option.justenoughbreeding.move_down");
-            JeiChildButtonWidget child = new JeiChildButtonWidget(x + xOffset, y, 10, 10, button, component);
+            JEIChildButtonWidget child = new JEIChildButtonWidget(x + xOffset, y, 10, 10, button, component);
             builder.addWidget(child);
 
             int finalI = i;
