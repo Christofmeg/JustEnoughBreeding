@@ -1,3 +1,16 @@
-1.6.6:
-- Update REI integration to 21.11
-- Fix https://github.com/Christofmeg/JustEnoughBreeding/issues/56
+3.3.0:
+- Ported 21.1 changes to 21.11
+- Cat and wolf now display as tamed with owners in breeding category
+- Added zombie horse to temper category
+- Transformation recipes now accept empty input_entity
+- Added cat collar dying to transformation category
+- Added chested variants of donkey, llama and mule to transformation category
+- Added copper golem deoxidation to transformation category
+- Added shearing recipes to transformation category, along with outputs from shearing
+- Added armor and saddle equipping to transformation category
+- Added happy ghast creation to transformation category
+- Added happy ghast harness mounting to transformation category
+- Added wolf collar dying to transformation category
+- Adjusted mob scaling and movement with offset buttons
+- Fix [#70](https://github.com/Christofmeg/JustEnoughBreeding/issues/70) Offset buttons can now be toggled in the config file justenougbreeding.json, buttons are by default enabled
+- Updated MIT Licence to 2026
