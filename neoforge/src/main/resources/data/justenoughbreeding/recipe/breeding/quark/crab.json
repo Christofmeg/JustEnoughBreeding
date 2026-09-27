@@ -10,13 +10,7 @@
   "input_entity": "quark:crab",
   "inputs": [
     {
-      "item": "minecraft:wheat"
-    },
-    {
-      "item": "minecraft:chicken"
-    },
-    {
-      "tag": "minecraft:fishes"
+      "tag": "quark:crab_tempt_items"
     }
   ]
 }
