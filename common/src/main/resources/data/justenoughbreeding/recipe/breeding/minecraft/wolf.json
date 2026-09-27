@@ -2,9 +2,13 @@
   "type": "justenoughbreeding:breeding",
   "mod": "minecraft",
   "input_entity": "minecraft:wolf",
+  "input_entity_nbt": {
+    "Owner": [-629513142, 122110922, -2059482937, -1841686670]
+  },
   "inputs": [
     {
       "tag": "minecraft:wolf_food"
     }
-  ]
+  ],
+  "tamed": true
 }

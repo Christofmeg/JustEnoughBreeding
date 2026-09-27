@@ -1,0 +1,31 @@
+{
+  "type": "justenoughbreeding:transformation",
+  "mod": "minecraft",
+  "inputs": [
+    {
+      "item": "minecraft:wolf_armor"
+    }
+  ],
+  "input_entity": "minecraft:wolf",
+  "input_entity_nbt": {
+    "Owner": [-629513142, 122110922, -2059482937, -1841686670]
+  },
+  "input_spawn_eggs": [
+    {
+      "item": "minecraft:wolf_spawn_egg"
+    }
+  ],
+  "output_entity": "minecraft:wolf",
+  "output_entity_nbt": {
+    "Owner": [-629513142, 122110922, -2059482937, -1841686670],
+    "body_armor_item": {
+      "id": "minecraft:wolf_armor"
+    }
+  },
+  "output_spawn_eggs": [
+    {
+      "item": "minecraft:wolf_spawn_egg"
+    }
+  ],
+  "tamed": true
+}

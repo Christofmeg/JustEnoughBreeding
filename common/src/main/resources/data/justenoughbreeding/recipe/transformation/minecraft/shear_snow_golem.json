@@ -3,7 +3,7 @@
   "mod": "minecraft",
   "inputs": [
     {
-      "item": "minecraft:shears"
+      "tag": "c:tools/shear"
     }
   ],
   "input_entity": "minecraft:snow_golem",
@@ -22,6 +22,11 @@
   "output_spawn_eggs": [
     {
       "item": "minecraft:snow_golem_spawn_egg"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "minecraft:carved_pumpkin"
     }
   ]
 }

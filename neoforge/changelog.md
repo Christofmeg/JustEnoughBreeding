@@ -1,2 +1,9 @@
-3.2.1:
-- Fix two broken creaturecraft recipes [#63](https://github.com/Christofmeg/JustEnoughBreeding/pull/63) by [stonedDiscord](https://github.com/stonedDiscord)
+3.3.0:
+- Cat and wolf now display as tamed with owners in breeding category
+- Added cat collar dying to transformation category
+- Added chested variants of donkey, llama and mule to transformation category
+- Added shearing recipes to transformation category, along with outputs from shearing
+- Added armor and pig saddle equipping to transformation category
+- Added wolf collar dying to transformation category
+- Fix [#70](https://github.com/Christofmeg/JustEnoughBreeding/issues/70) Offset buttons can now be toggled in the config file justenougbreeding.json, buttons are by default enablednoughBreeding/pull/63) by [stonedDiscord](https://github.com/stonedDiscord)
+- Merge [#72](https://github.com/Christofmeg/JustEnoughBreeding/pull/72) by [BrunoGoldbergFerro](https://github.com/BrunoGoldbergFerro)

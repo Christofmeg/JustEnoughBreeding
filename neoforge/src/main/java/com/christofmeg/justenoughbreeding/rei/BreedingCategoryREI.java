@@ -1,5 +1,6 @@
 package com.christofmeg.justenoughbreeding.rei;
 
+import com.christofmeg.justenoughbreeding.config.ModConfigManager;
 import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
 import me.shedaniel.math.Point;
 import me.shedaniel.math.Rectangle;
@@ -9,12 +10,9 @@ import me.shedaniel.rei.api.common.category.CategoryIdentifier;
 import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class BreedingCategoryREI extends AbstractRecipeCategoryREI<BreedingDisplay> {
 
@@ -29,17 +27,13 @@ public class BreedingCategoryREI extends AbstractRecipeCategoryREI<BreedingDispl
         List<Widget> widgets = new LinkedList<>();
         widgets.add(Widgets.createRecipeBase(bounds));
 
-        List<EntryStack<?>> entryStackList = new ArrayList<>();
-        for (ItemStack stack : display.recipe.spawnEggs().getItems()) {
-            entryStackList.add(EntryStacks.of(stack));
-        }
-        widgets.add(Widgets.createSlot(new Point(bounds.x + 154, bounds.y + 6)).entries(entryStackList));
+        Collection<EntryStack<?>> spawnEggs = new ArrayList<>();
+        Arrays.stream(display.recipe.spawnEggs().getItems()).forEach(stack -> spawnEggs.add(EntryStacks.of(stack)));
+        widgets.add(Widgets.createSlot(new Point(bounds.x + 154, bounds.y + 6)).entries(spawnEggs));
 
-        boolean hasExtraInput = !display.getExtraInputEntries().isEmpty() &&
-                !display.getExtraInputEntries().getFirst().isEmpty() &&
-                !display.getExtraInputEntries().getFirst().getFirst().isEmpty();
+        boolean hasExtraInput = !display.recipe.extraInputs().isEmpty();
+        boolean hasOutput = !display.recipe.outputs().isEmpty();
 
-        boolean hasOutput = !display.getOutputEntries().getFirst().isEmpty();
         if (hasExtraInput && hasOutput) {
             widgets.add(Widgets.createSlot(new Point(bounds.getX() + 79, bounds.getCenterY() - 11)).entries(display.getInputEntries().getFirst()));
             widgets.add(Widgets.createSlot(new Point(bounds.getX() + 79, bounds.getCenterY() + 12)).entries(display.getExtraInputEntries().getFirst()));
@@ -61,7 +55,9 @@ public class BreedingCategoryREI extends AbstractRecipeCategoryREI<BreedingDispl
         REIUtils.drawMobSlot(widgets, bounds,0, 10);
         REIUtils.drawMobNameAndEntity(widgets, bounds, recipe.entityType(), recipe, getDisplayWidth(display));
 
-        REIUtils.addButton(bounds, recipe.entityType(), widgets);
+        if (ModConfigManager.areConfigButtonsEnabled()) {
+            REIUtils.addButton(bounds, recipe.entityType(), widgets);
+        }
 
         return widgets;
     }

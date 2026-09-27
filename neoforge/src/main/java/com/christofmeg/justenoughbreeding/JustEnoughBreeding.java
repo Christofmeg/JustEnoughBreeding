@@ -12,9 +12,12 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.loading.FMLPaths;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.nio.file.Path;
 
 @Mod(CommonConstants.MOD_ID)
 public class JustEnoughBreeding {
@@ -61,6 +64,10 @@ public class JustEnoughBreeding {
 
     public static Boolean isModLoaded(String modID) {
         return ModList.get().isLoaded(modID);
+    }
+
+    public static Path getConfigDir() {
+        return FMLPaths.CONFIGDIR.get();
     }
 
 }

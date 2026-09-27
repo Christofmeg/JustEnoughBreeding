@@ -3,12 +3,12 @@
   "mod": "minecraft",
   "inputs": [
     {
-      "item": "minecraft:shears"
+      "tag": "c:tools/shear"
     }
   ],
   "input_entity": "minecraft:mooshroom",
   "input_entity_nbt": {
-    "Type": "brown"
+    "Type": "red"
   },
   "input_spawn_eggs": [
     {
@@ -19,6 +19,11 @@
   "output_spawn_eggs": [
     {
       "item": "minecraft:cow_spawn_egg"
+    }
+  ],
+  "outputs": [
+    {
+      "item": "minecraft:red_mushroom"
     }
   ]
 }

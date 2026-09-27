@@ -16,6 +16,9 @@
     }
   ],
   "output_entity": "minecraft:mooshroom",
+  "output_entity_nbt": {
+    "Type": "red"
+  },
   "output_spawn_eggs": [
     {
       "item": "minecraft:mooshroom_spawn_egg"
