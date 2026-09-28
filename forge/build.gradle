@@ -46,35 +46,8 @@ dependencies {
     // Hack fix for now, force jopt-simple to be exactly 5.0.4 because Mojang ships that version, but some transitive dependencies request 6.0+
     implementation('net.sf.jopt-simple:jopt-simple:5.0.4') { version { strictly '5.0.4' } }
 
-    // JEI
-    if (project.hasProperty('jei_version')) {
-        compileOnly "mezz.jei:jei-${forge_minecraft_version}-common-api:${jei_version}"
-        compileOnly "mezz.jei:jei-${forge_minecraft_version}-forge-api:${jei_version}"
-        if (project.hasProperty('enable_jei') && project.enable_jei.toBoolean()) {
-            runtimeOnly "mezz.jei:jei-${forge_minecraft_version}-forge:${jei_version}"
-        }
-    }
-
-    // REI
-    if (project.hasProperty('rei_version') && project.hasProperty('cloth_config_version') && project.hasProperty('architectury_version')) {
-        compileOnly "me.shedaniel:RoughlyEnoughItems-api-forge:${rei_version}"
-        compileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-forge:${rei_version}"
-        compileOnly "me.shedaniel.cloth:cloth-config-forge:${cloth_config_version}"
-        compileOnly "dev.architectury:architectury-forge:${architectury_version}"
-        if (project.hasProperty('enable_rei') && project.enable_rei.toBoolean()) {
-            runtimeOnly "me.shedaniel:RoughlyEnoughItems-forge:${rei_version}"
-            runtimeOnly "me.shedaniel.cloth:cloth-config-forge:${cloth_config_version}"
-            runtimeOnly "dev.architectury:architectury-forge:${architectury_version}"
-        }
-    }
-
-    // EMI
-    if (project.hasProperty('emi_version')) {
-        compileOnly "curse.maven:emi-580555:${emi_version}"
-        if (project.hasProperty('enable_emi') && project.enable_emi.toBoolean()) {
-            runtimeOnly "curse.maven:emi-580555:${emi_version}"
-        }
-    }
+    implementation "maven.modrinth:u6dRKJwZ:xlsF1oJX" // https://modrinth.com/mod/jei/versions?g=1.21.1&l=forge
+    implementation "maven.modrinth:7tEfOcA7:DZ2xEE5K" // https://modrinth.com/mod/mezzconfig/versions?g=1.21.1&l=forge
 
     // JADE
     if (project.hasProperty('jade_version')) {

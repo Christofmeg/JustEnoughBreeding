@@ -10,7 +10,7 @@
   "input_entity": "pet_cemetery:skeleton_wolf",
   "inputs": [
     {
-      "meat": "true"
+      "tag": "minecraft:meat"
     }
   ]
 }

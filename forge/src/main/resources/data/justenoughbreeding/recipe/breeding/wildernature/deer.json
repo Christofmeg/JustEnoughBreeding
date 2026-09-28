@@ -1,16 +1,21 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "wildernature"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "wildernature"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "wildernature",
-  "input_entity": "wildernature:deer",
-  "inputs": [
-    {
-      "item": "minecraft:grass"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "wildernature",
+        "input_entity": "wildernature:deer",
+        "inputs": [
+          {
+            "item": "minecraft:grass"
+          }
+        ]
+      }
     }
   ]
 }

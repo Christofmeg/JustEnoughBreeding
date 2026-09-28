@@ -1,6 +1,7 @@
 package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
+import com.christofmeg.justenoughbreeding.config.ModConfigManager;
 import com.christofmeg.justenoughbreeding.recipe.TransformationRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -33,27 +34,49 @@ public class TransformationCategory extends AbstractRecipeCategory<Transformatio
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, TransformationRecipe recipe, @NotNull IFocusGroup focuses) {
-        builder.addInputSlot(65, 74).setStandardSlotBackground().addIngredients(recipe.inputSpawnEggs());
-        builder.addOutputSlot(85, 74).setStandardSlotBackground().addIngredients(recipe.outputSpawnEggs());
+        IRecipeSlotBuilder inputSpawnEggs = builder.addInputSlot(65, 74).setStandardSlotBackground().addIngredients(recipe.inputSpawnEggs());
+        builder.addOutputSlot(85, 74).setStandardSlotBackground().addIngredients(recipe.outputs()).addIngredients(recipe.outputSpawnEggs());
+
         IRecipeSlotBuilder inputStack = builder.addInputSlot(75, 22).setStandardSlotBackground().addIngredients(recipe.inputs());
         boolean hasExtraInput = !recipe.extraInputs().isEmpty();
-        if (hasExtraInput) {
-            inputStack.setPosition(65, 22);
-            builder.addInputSlot(69, 33).setStandardSlotBackground().addIngredients(recipe.extraInputs()).setPosition(85, 22);
+        if (recipe.inputEntityType() != null) {
+            if (hasExtraInput) {
+                inputStack.setPosition(65, 22);
+                builder.addInputSlot(85, 22).setStandardSlotBackground().addIngredients(recipe.extraInputs());
+            }
+        } else {
+            if (hasExtraInput) {
+                inputSpawnEggs.setPosition(4, 43);
+                inputStack.setPosition(24, 43);
+                builder.addInputSlot(44, 43).setStandardSlotBackground().addIngredients(recipe.extraInputs());
+            } else {
+                inputSpawnEggs.setPosition(24, 43);
+                inputStack.setPosition(44, 43);
+            }
         }
     }
 
     @Override
     public void createRecipeExtras(@NotNull IRecipeExtrasBuilder builder, @NotNull TransformationRecipe recipe, @NotNull IFocusGroup focuses) {
-        builder.addRecipeArrow().setPosition(72, 48);
-        JEIUtils.addButton(builder, recipe.inputEntityType());
-        JEIUtils.addButton(builder, recipe.outputEntityType(), 105);
+        if (recipe.inputEntityType() != null) {
+            builder.addRecipeArrowWidget().setPosition(72, 48);
+            if (ModConfigManager.areConfigButtonsEnabled()) {
+                JEIUtils.addButton(builder, recipe.inputEntityType());
+            }
+        } else {
+            builder.addRecipeArrowWidget().setPosition(72, 43);
+        }
+        if (ModConfigManager.areConfigButtonsEnabled()) {
+            JEIUtils.addButton(builder, recipe.outputEntityType(), 105);
+        }
     }
 
     @Override
     public void draw(@NotNull TransformationRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics stack, double mouseX, double mouseY) {
-        JEIUtils.drawMobSlot(0, 10, bigSlot, stack);
-        JEIUtils.drawMobNameAndEntity(recipe.inputEntityType(), stack, mouseX, recipe, 99, 0, true, CATEGORY_WIDTH);
+        if (recipe.inputEntityType() != null) {
+            JEIUtils.drawMobSlot(0, 10, bigSlot, stack);
+            JEIUtils.drawMobNameAndEntity(recipe.inputEntityType(), stack, mouseX, recipe, 99, 0, true, CATEGORY_WIDTH);
+        }
         JEIUtils.drawMobSlot(105, 10, bigSlot, stack);
         JEIUtils.drawMobNameAndEntity(recipe.outputEntityType(), stack, mouseX, recipe, 61, 105, false, CATEGORY_WIDTH);
     }

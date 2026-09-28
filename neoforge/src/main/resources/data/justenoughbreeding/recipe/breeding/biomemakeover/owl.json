@@ -10,7 +10,7 @@
   "input_entity": "biomemakeover:owl",
   "inputs": [
     {
-      "meat": "true"
+      "tag": "minecraft:meat"
     }
   ],
   "tamed": true

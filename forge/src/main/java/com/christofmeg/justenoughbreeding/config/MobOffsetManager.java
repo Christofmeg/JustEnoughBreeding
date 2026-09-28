@@ -1,10 +1,10 @@
 package com.christofmeg.justenoughbreeding.config;
 
+import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.fml.loading.FMLPaths;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -22,7 +22,7 @@ public class MobOffsetManager {
     private static File configFile;
 
     public static void init() {
-        configFile = FMLPaths.CONFIGDIR.get().resolve("justenoughbreeding-offsets.json").toFile();
+        configFile = JustEnoughBreeding.getConfigDir().resolve("justenoughbreeding-offsets.json").toFile();
         loadFromResources();
         if (configFile.exists()) {
             loadFromConfig();

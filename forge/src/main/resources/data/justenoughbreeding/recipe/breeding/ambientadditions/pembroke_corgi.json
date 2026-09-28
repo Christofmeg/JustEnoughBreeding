@@ -10,7 +10,7 @@
   "input_entity": "ambientadditions:pembroke_corgi",
   "inputs": [
     {
-      "meat": "true"
+      "tag": "minecraft:meat"
     }
   ]
 }

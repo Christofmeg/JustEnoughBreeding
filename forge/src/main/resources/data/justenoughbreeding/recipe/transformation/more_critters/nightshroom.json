@@ -19,7 +19,6 @@
     }
   ],
   "output_entity": "more_critters:nightshroom",
-  "output_entity_nbt": [],
   "output_spawn_eggs": [
     {
       "item": "more_critters:nighthroom_spawn_egg"

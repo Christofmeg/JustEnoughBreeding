@@ -19,7 +19,6 @@
     }
   ],
   "output_entity": "more_critters:mightshroom",
-  "output_entity_nbt": [],
   "output_spawn_eggs": [
     {
       "item": "more_critters:mightshroom_spawn_egg"

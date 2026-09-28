@@ -10,7 +10,7 @@
   "input_entity": "wildernature:owl",
   "inputs": [
     {
-      "meat": "true"
+      "tag": "minecraft:meat"
     }
   ]
 }
