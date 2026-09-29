@@ -1,21 +1,26 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "tfc"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "tfc"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "tfc",
-  "input_entity": "tfc:musk_ox",
-  "inputs": [
-    {
-      "tag": "tfc:musk_ox_food"
-    }
-  ],
-  "spawn_eggs": [
-    {
-      "item": "tfc:spawn_egg/musk_ox"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "tfc",
+        "input_entity": "tfc:musk_ox",
+        "inputs": [
+          {
+            "tag": "tfc:musk_ox_food"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "tfc:spawn_egg/musk_ox"
+          }
+        ]
+      }
     }
   ]
 }

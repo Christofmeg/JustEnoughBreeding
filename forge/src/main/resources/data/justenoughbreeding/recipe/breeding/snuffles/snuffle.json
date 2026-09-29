@@ -1,19 +1,24 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "snuffles"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "snuffles"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "snuffles",
-  "input_entity": "snuffles:snuffle",
-  "inputs": [
-    {
-      "item": "minecraft:baked_potato"
-    },
-    {
-      "item": "minecraft:potato"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "snuffles",
+        "input_entity": "snuffles:snuffle",
+        "inputs": [
+          {
+            "item": "minecraft:baked_potato"
+          },
+          {
+            "item": "minecraft:potato"
+          }
+        ]
+      }
     }
   ]
 }

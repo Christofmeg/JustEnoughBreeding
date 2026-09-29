@@ -1,16 +1,21 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "frostrealm"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "frostrealm"
-    }
-  ],
-  "type": "justenoughbreeding:taming",
-  "mod": "frostrealm",
-  "input_entity": "frostrealm:frost_wolf",
-  "inputs": [
-    {
-      "tag": "minecraft:meat"
+      "recipe": {
+        "type": "justenoughbreeding:taming",
+        "mod": "frostrealm",
+        "input_entity": "frostrealm:frost_wolf",
+        "inputs": [
+          {
+            "tag": "minecraft:meat"
+          }
+        ]
+      }
     }
   ]
 }

@@ -1,22 +1,27 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "windswept"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "windswept"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "windswept",
+        "input_entity": "windswept:frostbiter",
+        "inputs": [
+          {
+            "item": "windswept:holly_berries"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "windswept:frostbiter_spawn_egg"
+          }
+        ],
+        "tamed": true
+      }
     }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "windswept",
-  "input_entity": "windswept:frostbiter",
-  "inputs": [
-    {
-      "item": "windswept:holly_berries"
-    }
-  ],
-  "spawn_eggs": [
-    {
-      "item": "windswept:frostbiter_spawn_egg"
-    }
-  ],
-  "tamed": true
+  ]
 }

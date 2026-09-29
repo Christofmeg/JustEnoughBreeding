@@ -1,16 +1,21 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "biomemakeover"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "biomemakeover"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "biomemakeover",
-  "input_entity": "biomemakeover:scuttler",
-  "inputs": [
-    {
-      "tag": "biomemakeover:scuttler_food"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "biomemakeover",
+        "input_entity": "biomemakeover:scuttler",
+        "inputs": [
+          {
+            "tag": "biomemakeover:scuttler_food"
+          }
+        ]
+      }
     }
   ]
 }

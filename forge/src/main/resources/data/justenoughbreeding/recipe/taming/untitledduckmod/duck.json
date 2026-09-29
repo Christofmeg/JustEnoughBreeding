@@ -1,16 +1,21 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "untitledduckmod"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "untitledduckmod"
-    }
-  ],
-  "type": "justenoughbreeding:taming",
-  "mod": "untitledduckmod",
-  "input_entity": "untitledduckmod:duck",
-  "inputs": [
-    {
-      "tag": "untitledduckmod:duck_taming_food"
+      "recipe": {
+        "type": "justenoughbreeding:taming",
+        "mod": "untitledduckmod",
+        "input_entity": "untitledduckmod:duck",
+        "inputs": [
+          {
+            "tag": "untitledduckmod:duck_taming_food"
+          }
+        ]
+      }
     }
   ]
 }

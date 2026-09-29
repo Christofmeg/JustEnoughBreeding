@@ -1,26 +1,31 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "alexsmobs"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "alexsmobs"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "alexsmobs",
-  "input_entity": "alexsmobs:froststalker",
-  "inputs": [
-    {
-      "tag": "alexsmobs:froststalker_breedables"
-    }
-  ],
-  "extra_inputs": [
-    {
-      "item": "alexsmobs:froststalker_helmet"
-    }
-  ],
-  "spawn_eggs": [
-    {
-      "item": "alexsmobs:spawn_egg_froststalker"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "alexsmobs",
+        "input_entity": "alexsmobs:froststalker",
+        "inputs": [
+          {
+            "tag": "alexsmobs:froststalker_breedables"
+          }
+        ],
+        "extra_inputs": [
+          {
+            "item": "alexsmobs:froststalker_helmet"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_froststalker"
+          }
+        ]
+      }
     }
   ]
 }

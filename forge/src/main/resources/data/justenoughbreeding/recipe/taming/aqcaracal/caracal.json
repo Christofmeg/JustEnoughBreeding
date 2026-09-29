@@ -1,25 +1,30 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "aqcaracal"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "aqcaracal"
-    }
-  ],
-  "type": "justenoughbreeding:taming",
-  "mod": "aqcaracal",
-  "input_entity": "aqcaracal:caracal",
-  "inputs": [
-    {
-      "item": "minecraft:chicken"
-    },
-    {
-      "item": "minecraft:cod"
-    },
-    {
-      "item": "minecraft:rabbit"
-    },
-    {
-      "item": "minecraft:salmon"
+      "recipe": {
+        "type": "justenoughbreeding:taming",
+        "mod": "aqcaracal",
+        "input_entity": "aqcaracal:caracal",
+        "inputs": [
+          {
+            "item": "minecraft:chicken"
+          },
+          {
+            "item": "minecraft:cod"
+          },
+          {
+            "item": "minecraft:rabbit"
+          },
+          {
+            "item": "minecraft:salmon"
+          }
+        ]
+      }
     }
   ]
 }

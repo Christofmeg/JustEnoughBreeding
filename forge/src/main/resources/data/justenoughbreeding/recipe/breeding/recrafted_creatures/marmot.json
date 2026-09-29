@@ -1,25 +1,30 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "recrafted_creatures"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "recrafted_creatures"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "recrafted_creatures",
-  "input_entity": "recrafted_creatures:marmot",
-  "inputs": [
-    {
-      "item": "minecraft:tall_grass"
-    },
-    {
-      "tag": "minecraft:flowers"
-    },
-    {
-      "item": "minecraft:egg"
-    },
-    {
-      "item": "minecraft:cookie"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "recrafted_creatures",
+        "input_entity": "recrafted_creatures:marmot",
+        "inputs": [
+          {
+            "item": "minecraft:tall_grass"
+          },
+          {
+            "tag": "minecraft:flowers"
+          },
+          {
+            "item": "minecraft:egg"
+          },
+          {
+            "item": "minecraft:cookie"
+          }
+        ]
+      }
     }
   ]
 }

@@ -1,19 +1,24 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "untamedwilds"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "untamedwilds"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "untamedwilds",
-  "input_entity": "untamedwilds:manatee",
-  "inputs": [
-    {
-      "item": "minecraft:sea_grass"
-    },
-    {
-      "item": "minecraft:kelp"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "untamedwilds",
+        "input_entity": "untamedwilds:manatee",
+        "inputs": [
+          {
+            "item": "minecraft:sea_grass"
+          },
+          {
+            "item": "minecraft:kelp"
+          }
+        ]
+      }
     }
   ]
 }

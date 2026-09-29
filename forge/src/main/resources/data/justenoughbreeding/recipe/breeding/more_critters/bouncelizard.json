@@ -1,21 +1,26 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "more_critters"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "more_critters"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "more_critters",
-  "input_entity": "more_critters:bouncelizard",
-  "inputs": [
-    {
-      "item": "minecraft:spider_eye"
-    }
-  ],
-  "outputs": [
-    {
-      "item": "more_critters:bouncelizard_egg"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "more_critters",
+        "input_entity": "more_critters:bouncelizard",
+        "inputs": [
+          {
+            "item": "minecraft:spider_eye"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "more_critters:bouncelizard_egg"
+          }
+        ]
+      }
     }
   ]
 }

@@ -1,22 +1,27 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "ostrich"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "ostrich"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "ostrich",
+        "input_entity": "ostrich:ostrich",
+        "inputs": [
+          {
+            "item": "minecraft:apple"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "ostrich:ostrich_egg"
+          }
+        ],
+        "tamed": true
+      }
     }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "ostrich",
-  "input_entity": "ostrich:ostrich",
-  "inputs": [
-    {
-      "item": "minecraft:apple"
-    }
-  ],
-  "outputs": [
-    {
-      "item": "ostrich:ostrich_egg"
-    }
-  ],
-  "tamed": true
+  ]
 }

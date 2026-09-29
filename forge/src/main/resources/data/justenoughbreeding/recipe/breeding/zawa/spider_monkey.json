@@ -1,16 +1,21 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "zawa"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "zawa"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "zawa",
-  "input_entity": "zawa:spider_monkey",
-  "inputs": [
-    {
-      "item": "minecraft:melon"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "zawa",
+        "input_entity": "zawa:spider_monkey",
+        "inputs": [
+          {
+            "item": "minecraft:melon"
+          }
+        ]
+      }
     }
   ]
 }

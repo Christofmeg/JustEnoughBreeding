@@ -1,16 +1,21 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "kiwiboi"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "kiwiboi"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "kiwiboi",
-  "input_entity": "kiwiboi:kiwi",
-  "inputs": [
-    {
-      "item": "kiwiboi:kiwicake"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "kiwiboi",
+        "input_entity": "kiwiboi:kiwi",
+        "inputs": [
+          {
+            "item": "kiwiboi:kiwicake"
+          }
+        ]
+      }
     }
   ]
 }

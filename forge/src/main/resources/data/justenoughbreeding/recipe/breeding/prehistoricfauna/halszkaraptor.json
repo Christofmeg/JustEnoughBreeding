@@ -1,26 +1,31 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "prehistoricfauna"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "prehistoricfauna"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "prehistoricfauna",
-  "input_entity": "prehistoricfauna:halszkaraptor",
-  "inputs": [
-    {
-      "item": "prehistoricfauna:raw_harenaichthys"
-    }
-  ],
-  "outputs": [
-    {
-      "item": "prehistoricfauna:halszkaraptor_egg"
-    }
-  ],
-  "spawn_eggs": [
-    {
-      "item": "prehistoricfauna:halszkaraptor_spawn_egg"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "prehistoricfauna",
+        "input_entity": "prehistoricfauna:halszkaraptor",
+        "inputs": [
+          {
+            "item": "prehistoricfauna:raw_harenaichthys"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "prehistoricfauna:halszkaraptor_egg"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "prehistoricfauna:halszkaraptor_spawn_egg"
+          }
+        ]
+      }
     }
   ]
 }

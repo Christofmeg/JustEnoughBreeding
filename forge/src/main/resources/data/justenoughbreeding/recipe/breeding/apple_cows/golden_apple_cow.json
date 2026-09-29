@@ -1,16 +1,21 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "apple_cows"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "apple_cows"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "apple_cows",
-  "input_entity": "apple_cows:golden_apple_cow",
-  "inputs": [
-    {
-      "item": "apple_cows:golden_wheat"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "apple_cows",
+        "input_entity": "apple_cows:golden_apple_cow",
+        "inputs": [
+          {
+            "item": "apple_cows:golden_wheat"
+          }
+        ]
+      }
     }
   ]
 }

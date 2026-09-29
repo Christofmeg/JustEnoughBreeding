@@ -1,16 +1,21 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "aether_redux"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "aether_redux"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "aether_redux",
-  "input_entity": "aether_redux:mykapod",
-  "inputs": [
-    {
-      "tag": "aether_redux:mykapod_temptation_items"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "aether_redux",
+        "input_entity": "aether_redux:mykapod",
+        "inputs": [
+          {
+            "tag": "aether_redux:mykapod_temptation_items"
+          }
+        ]
+      }
     }
   ]
 }

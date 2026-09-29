@@ -1,37 +1,42 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "untamedwilds"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "untamedwilds"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "untamedwilds",
-  "input_entity": "untamedwilds:bear",
-  "inputs": [
-    {
-      "item": "minecraft:sweet_berries"
-    },
-    {
-      "item": "minecraft:beef"
-    },
-    {
-      "item": "minecraft:salmon"
-    },
-    {
-      "item": "minecraft:potato"
-    },
-    {
-      "item": "minecraft:bamboo"
-    },
-    {
-      "item": "untamedwilds:material_blubber"
-    },
-    {
-      "item": "minecraft:apple"
-    },
-    {
-      "item": "minecraft:honeycomb"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "untamedwilds",
+        "input_entity": "untamedwilds:bear",
+        "inputs": [
+          {
+            "item": "minecraft:sweet_berries"
+          },
+          {
+            "item": "minecraft:beef"
+          },
+          {
+            "item": "minecraft:salmon"
+          },
+          {
+            "item": "minecraft:potato"
+          },
+          {
+            "item": "minecraft:bamboo"
+          },
+          {
+            "item": "untamedwilds:material_blubber"
+          },
+          {
+            "item": "minecraft:apple"
+          },
+          {
+            "item": "minecraft:honeycomb"
+          }
+        ]
+      }
     }
   ]
 }

@@ -1,20 +1,25 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "earthmobsmod"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "earthmobsmod"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "earthmobsmod",
+        "input_entity": "earthmobsmod:jolly_llama",
+        "inputs": [
+          {
+            "item": "minecraft:wheat"
+          },
+          {
+            "item": "minecraft:hay_block"
+          }
+        ],
+        "tamed": true
+      }
     }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "earthmobsmod",
-  "input_entity": "earthmobsmod:jolly_llama",
-  "inputs": [
-    {
-      "item": "minecraft:wheat"
-    },
-    {
-      "item": "minecraft:hay_block"
-    }
-  ],
-  "tamed": true
+  ]
 }

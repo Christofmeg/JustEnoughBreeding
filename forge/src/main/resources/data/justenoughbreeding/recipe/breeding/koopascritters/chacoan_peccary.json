@@ -1,22 +1,27 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "koopascritters"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "koopascritters"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "koopascritters",
-  "input_entity": "koopascritters:chacoan_peccary",
-  "inputs": [
-    {
-      "item": "minecraft:cactus"
-    },
-    {
-      "item": "minecraft:sweet_berries"
-    },
-    {
-      "item": "minecraft:glow_berries"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "koopascritters",
+        "input_entity": "koopascritters:chacoan_peccary",
+        "inputs": [
+          {
+            "item": "minecraft:cactus"
+          },
+          {
+            "item": "minecraft:sweet_berries"
+          },
+          {
+            "item": "minecraft:glow_berries"
+          }
+        ]
+      }
     }
   ]
 }

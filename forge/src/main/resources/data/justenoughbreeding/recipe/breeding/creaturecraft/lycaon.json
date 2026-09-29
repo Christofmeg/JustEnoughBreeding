@@ -1,17 +1,22 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "creaturecraft"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "creaturecraft"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "creaturecraft",
+        "input_entity": "creaturecraft:lycaon",
+        "inputs": [
+          {
+            "item": "minecraft:beef"
+          }
+        ],
+        "tamed": true
+      }
     }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "creaturecraft",
-  "input_entity": "creaturecraft:lycaon",
-  "inputs": [
-    {
-      "item": "minecraft:beef"
-    }
-  ],
-  "tamed": true
+  ]
 }

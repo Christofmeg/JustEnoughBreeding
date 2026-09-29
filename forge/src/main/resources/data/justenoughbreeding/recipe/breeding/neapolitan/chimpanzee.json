@@ -1,16 +1,21 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "neapolitan"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "neapolitan"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "neapolitan",
-  "input_entity": "neapolitan:chimpanzee",
-  "inputs": [
-    {
-      "tag": "neapolitan:chimpanzee_food"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "neapolitan",
+        "input_entity": "neapolitan:chimpanzee",
+        "inputs": [
+          {
+            "tag": "neapolitan:chimpanzee_food"
+          }
+        ]
+      }
     }
   ]
 }

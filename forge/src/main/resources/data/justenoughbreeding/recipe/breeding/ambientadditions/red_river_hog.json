@@ -1,16 +1,21 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "ambientadditions"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "ambientadditions"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "ambientadditions",
-  "input_entity": "ambientadditions:red_river_hog",
-  "inputs": [
-    {
-      "item": "minecraft:apple"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "ambientadditions",
+        "input_entity": "ambientadditions:red_river_hog",
+        "inputs": [
+          {
+            "item": "minecraft:apple"
+          }
+        ]
+      }
     }
   ]
 }

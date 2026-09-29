@@ -1,16 +1,21 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "lilcritters"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "lilcritters"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "lilcritters",
-  "input_entity": "lilcritters:capybara",
-  "inputs": [
-    {
-      "item": "minecraft:melon_slice"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "lilcritters",
+        "input_entity": "lilcritters:capybara",
+        "inputs": [
+          {
+            "item": "minecraft:melon_slice"
+          }
+        ]
+      }
     }
   ]
 }

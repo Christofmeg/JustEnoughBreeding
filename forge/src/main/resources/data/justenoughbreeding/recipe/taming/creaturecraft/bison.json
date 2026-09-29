@@ -1,19 +1,24 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "creaturecraft"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "creaturecraft"
-    }
-  ],
-  "type": "justenoughbreeding:taming",
-  "mod": "creaturecraft",
-  "input_entity": "creaturecraft:bison",
-  "inputs": [
-    {
-      "item": "minecraft:wheat_seeds"
-    },
-    {
-      "item": "minecraft:wheat"
+      "recipe": {
+        "type": "justenoughbreeding:taming",
+        "mod": "creaturecraft",
+        "input_entity": "creaturecraft:bison",
+        "inputs": [
+          {
+            "item": "minecraft:wheat_seeds"
+          },
+          {
+            "item": "minecraft:wheat"
+          }
+        ]
+      }
     }
   ]
 }

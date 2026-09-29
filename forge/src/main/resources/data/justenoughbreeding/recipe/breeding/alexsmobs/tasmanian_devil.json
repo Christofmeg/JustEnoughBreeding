@@ -1,21 +1,26 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "alexsmobs"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "alexsmobs"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "alexsmobs",
-  "input_entity": "alexsmobs:tasmanian_devil",
-  "inputs": [
-    {
-      "meat": false
-    }
-  ],
-  "spawn_eggs": [
-    {
-      "item": "alexsmobs:spawn_egg_tasmanian_devil"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "alexsmobs",
+        "input_entity": "alexsmobs:tasmanian_devil",
+        "inputs": [
+          {
+            "meat": false
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_tasmanian_devil"
+          }
+        ]
+      }
     }
   ]
 }

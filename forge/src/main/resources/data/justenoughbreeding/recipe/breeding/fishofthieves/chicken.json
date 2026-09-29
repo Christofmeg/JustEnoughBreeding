@@ -1,16 +1,21 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "fishofthieves"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "fishofthieves"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "fishofthieves",
-  "input_entity": "minecraft:chicken",
-  "inputs": [
-    {
-      "tag": "fishofthieves:worms"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "fishofthieves",
+        "input_entity": "minecraft:chicken",
+        "inputs": [
+          {
+            "tag": "fishofthieves:worms"
+          }
+        ]
+      }
     }
   ]
 }

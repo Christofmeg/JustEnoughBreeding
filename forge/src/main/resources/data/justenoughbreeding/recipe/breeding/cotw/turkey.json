@@ -1,25 +1,30 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "cotw"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "cotw"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "cotw",
-  "input_entity": "cotw:turkey",
-  "inputs": [
-    {
-      "item": "minecraft:wheat_seeds"
-    },
-    {
-      "item": "minecraft:pumpkin_seeds"
-    },
-    {
-      "item": "minecraft:melon_seeds"
-    },
-    {
-      "item": "minecraft:beetroot_seeds"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "cotw",
+        "input_entity": "cotw:turkey",
+        "inputs": [
+          {
+            "item": "minecraft:wheat_seeds"
+          },
+          {
+            "item": "minecraft:pumpkin_seeds"
+          },
+          {
+            "item": "minecraft:melon_seeds"
+          },
+          {
+            "item": "minecraft:beetroot_seeds"
+          }
+        ]
+      }
     }
   ]
 }

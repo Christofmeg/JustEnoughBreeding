@@ -1,21 +1,26 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "tfc"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "tfc"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "tfc",
-  "input_entity": "tfc:alpaca",
-  "inputs": [
-    {
-      "tag": "tfc:alpaca_food"
-    }
-  ],
-  "spawn_eggs": [
-    {
-      "item": "tfc:spawn_egg/alpaca"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "tfc",
+        "input_entity": "tfc:alpaca",
+        "inputs": [
+          {
+            "tag": "tfc:alpaca_food"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "tfc:spawn_egg/alpaca"
+          }
+        ]
+      }
     }
   ]
 }

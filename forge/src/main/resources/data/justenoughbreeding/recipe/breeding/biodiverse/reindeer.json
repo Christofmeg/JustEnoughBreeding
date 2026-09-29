@@ -1,19 +1,24 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "biodiverse"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "biodiverse"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "biodiverse",
-  "input_entity": "biodiverse:reindeer",
-  "inputs": [
-    {
-      "item": "minecraft:wheat_seeds"
-    },
-    {
-      "item": "minecraft:wheat"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "biodiverse",
+        "input_entity": "biodiverse:reindeer",
+        "inputs": [
+          {
+            "item": "minecraft:wheat_seeds"
+          },
+          {
+            "item": "minecraft:wheat"
+          }
+        ]
+      }
     }
   ]
 }

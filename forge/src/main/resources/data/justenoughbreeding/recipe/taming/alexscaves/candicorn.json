@@ -1,21 +1,26 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "alexscaves"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "alexscaves"
-    }
-  ],
-  "type": "justenoughbreeding:taming",
-  "mod": "alexscaves",
-  "input_entity": "alexscaves:candicorn",
-  "inputs": [
-    {
-      "item": "alexscaves:caramel_apple"
-    }
-  ],
-  "spawn_eggs": [
-    {
-      "item": "alexscaves:spawn_egg_candicorn"
+      "recipe": {
+        "type": "justenoughbreeding:taming",
+        "mod": "alexscaves",
+        "input_entity": "alexscaves:candicorn",
+        "inputs": [
+          {
+            "item": "alexscaves:caramel_apple"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexscaves:spawn_egg_candicorn"
+          }
+        ]
+      }
     }
   ]
 }

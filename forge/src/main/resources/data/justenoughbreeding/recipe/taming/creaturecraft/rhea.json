@@ -1,25 +1,30 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "creaturecraft"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "creaturecraft"
-    }
-  ],
-  "type": "justenoughbreeding:taming",
-  "mod": "creaturecraft",
-  "input_entity": "creaturecraft:rhea",
-  "inputs": [
-    {
-      "item": "minecraft:wheat_seeds"
-    },
-    {
-      "item": "minecraft:pumpkin_seeds"
-    },
-    {
-      "item": "minecraft:melon_seeds"
-    },
-    {
-      "item": "minecraft:beetroot_seeds"
+      "recipe": {
+        "type": "justenoughbreeding:taming",
+        "mod": "creaturecraft",
+        "input_entity": "creaturecraft:rhea",
+        "inputs": [
+          {
+            "item": "minecraft:wheat_seeds"
+          },
+          {
+            "item": "minecraft:pumpkin_seeds"
+          },
+          {
+            "item": "minecraft:melon_seeds"
+          },
+          {
+            "item": "minecraft:beetroot_seeds"
+          }
+        ]
+      }
     }
   ]
 }

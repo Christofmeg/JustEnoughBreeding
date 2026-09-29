@@ -1,19 +1,24 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "koopascritters"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "koopascritters"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "koopascritters",
-  "input_entity": "koopascritters:mexican_rosy_boa",
-  "inputs": [
-    {
-      "item": "minecraft:rabbit"
-    },
-    {
-      "item": "minecraft:cooked_rabbit"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "koopascritters",
+        "input_entity": "koopascritters:mexican_rosy_boa",
+        "inputs": [
+          {
+            "item": "minecraft:rabbit"
+          },
+          {
+            "item": "minecraft:cooked_rabbit"
+          }
+        ]
+      }
     }
   ]
 }

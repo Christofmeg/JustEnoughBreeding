@@ -1,22 +1,27 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "earthmobsmod"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "earthmobsmod"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "earthmobsmod",
-  "input_entity": "earthmobsmod:teacup_pig",
-  "inputs": [
-    {
-      "item": "minecraft:carrot"
-    },
-    {
-      "item": "minecraft:potato"
-    },
-    {
-      "item": "minecraft:beetroot"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "earthmobsmod",
+        "input_entity": "earthmobsmod:teacup_pig",
+        "inputs": [
+          {
+            "item": "minecraft:carrot"
+          },
+          {
+            "item": "minecraft:potato"
+          },
+          {
+            "item": "minecraft:beetroot"
+          }
+        ]
+      }
     }
   ]
 }

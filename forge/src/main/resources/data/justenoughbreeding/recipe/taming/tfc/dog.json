@@ -1,21 +1,26 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "tfc"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "tfc"
-    }
-  ],
-  "type": "justenoughbreeding:taming",
-  "mod": "tfc",
-  "input_entity": "tfc:dog",
-  "inputs": [
-    {
-      "tag": "tfc:dog_food"
-    }
-  ],
-  "spawn_eggs": [
-    {
-      "item": "tfc:spawn_egg/dog"
+      "recipe": {
+        "type": "justenoughbreeding:taming",
+        "mod": "tfc",
+        "input_entity": "tfc:dog",
+        "inputs": [
+          {
+            "tag": "tfc:dog_food"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "tfc:spawn_egg/dog"
+          }
+        ]
+      }
     }
   ]
 }

@@ -1,21 +1,26 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "alexsmobs"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "alexsmobs"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "alexsmobs",
-  "input_entity": "alexsmobs:orca",
-  "inputs": [
-    {
-      "tag": "alexsmobs:orca_breedables"
-    }
-  ],
-  "spawn_eggs": [
-    {
-      "item": "alexsmobs:spawn_egg_orca"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "alexsmobs",
+        "input_entity": "alexsmobs:orca",
+        "inputs": [
+          {
+            "tag": "alexsmobs:orca_breedables"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_orca"
+          }
+        ]
+      }
     }
   ]
 }

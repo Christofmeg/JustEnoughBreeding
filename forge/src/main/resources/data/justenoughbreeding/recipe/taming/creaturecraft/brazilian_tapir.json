@@ -1,37 +1,42 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "creaturecraft"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "creaturecraft"
-    }
-  ],
-  "type": "justenoughbreeding:taming",
-  "mod": "creaturecraft",
-  "input_entity": "creaturecraft:brazilian_tapir",
-  "inputs": [
-    {
-      "item": "creaturecraft:buff_grass"
-    },
-    {
-      "item": "creaturecraft:sav_grass_short"
-    },
-    {
-      "item": "minecraft:wheat"
-    },
-    {
-      "item": "minecraft:seagrass"
-    },
-    {
-      "item": "minecraft:apple"
-    },
-    {
-      "item": "minecraft:golden_apple"
-    },
-    {
-      "item": "minecraft:carrot"
-    },
-    {
-      "item": "minecraft:sugar_cane"
+      "recipe": {
+        "type": "justenoughbreeding:taming",
+        "mod": "creaturecraft",
+        "input_entity": "creaturecraft:brazilian_tapir",
+        "inputs": [
+          {
+            "item": "creaturecraft:buff_grass"
+          },
+          {
+            "item": "creaturecraft:sav_grass_short"
+          },
+          {
+            "item": "minecraft:wheat"
+          },
+          {
+            "item": "minecraft:seagrass"
+          },
+          {
+            "item": "minecraft:apple"
+          },
+          {
+            "item": "minecraft:golden_apple"
+          },
+          {
+            "item": "minecraft:carrot"
+          },
+          {
+            "item": "minecraft:sugar_cane"
+          }
+        ]
+      }
     }
   ]
 }

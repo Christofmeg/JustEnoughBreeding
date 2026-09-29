@@ -1,16 +1,21 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "cnb"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "cnb"
-    }
-  ],
-  "type": "justenoughbreeding:taming",
-  "mod": "cnb",
-  "input_entity": "cnb:yeti",
-  "inputs": [
-    {
-      "item": "minecraft:melon_slice"
+      "recipe": {
+        "type": "justenoughbreeding:taming",
+        "mod": "cnb",
+        "input_entity": "cnb:yeti",
+        "inputs": [
+          {
+            "item": "minecraft:melon_slice"
+          }
+        ]
+      }
     }
   ]
 }

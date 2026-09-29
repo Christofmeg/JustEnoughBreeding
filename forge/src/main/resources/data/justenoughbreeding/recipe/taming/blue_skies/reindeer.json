@@ -1,16 +1,21 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "blue_skies"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "blue_skies"
-    }
-  ],
-  "type": "justenoughbreeding:taming",
-  "mod": "blue_skies",
-  "input_entity": "blue_skies:reindeer",
-  "inputs": [
-    {
-      "item": "blue_skies:pine_fruit"
+      "recipe": {
+        "type": "justenoughbreeding:taming",
+        "mod": "blue_skies",
+        "input_entity": "blue_skies:reindeer",
+        "inputs": [
+          {
+            "item": "blue_skies:pine_fruit"
+          }
+        ]
+      }
     }
   ]
 }

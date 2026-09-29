@@ -1,16 +1,21 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "environmental"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "environmental"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "environmental",
-  "input_entity": "environmental:slabfish",
-  "inputs": [
-    {
-      "tag": "environmental:slabfish_food"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "environmental",
+        "input_entity": "environmental:slabfish",
+        "inputs": [
+          {
+            "tag": "environmental:slabfish_food"
+          }
+        ]
+      }
     }
   ]
 }

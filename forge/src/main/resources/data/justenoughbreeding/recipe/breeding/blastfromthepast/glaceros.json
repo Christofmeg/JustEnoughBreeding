@@ -1,16 +1,21 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "blastfromthepast"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "blastfromthepast"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "blastfromthepast",
-  "input_entity": "blastfromthepast:glaceros",
-  "inputs": [
-    {
-      "item": "blastfromthepast:shiver_larkspur"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "blastfromthepast",
+        "input_entity": "blastfromthepast:glaceros",
+        "inputs": [
+          {
+            "item": "blastfromthepast:shiver_larkspur"
+          }
+        ]
+      }
     }
   ]
 }

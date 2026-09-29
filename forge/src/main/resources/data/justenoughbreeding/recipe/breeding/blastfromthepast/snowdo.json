@@ -1,21 +1,26 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "blastfromthepast"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "blastfromthepast"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "blastfromthepast",
-  "input_entity": "blastfromthepast:snowdo",
-  "inputs": [
-    {
-      "item": "blastfromthepast:melon_ice_cream"
-    }
-  ],
-  "outputs": [
-    {
-      "item": "blastfromthepast:snowdo_egg"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "blastfromthepast",
+        "input_entity": "blastfromthepast:snowdo",
+        "inputs": [
+          {
+            "item": "blastfromthepast:melon_ice_cream"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "blastfromthepast:snowdo_egg"
+          }
+        ]
+      }
     }
   ]
 }

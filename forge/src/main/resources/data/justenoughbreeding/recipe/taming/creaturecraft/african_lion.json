@@ -1,25 +1,30 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "creaturecraft"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "creaturecraft"
-    }
-  ],
-  "type": "justenoughbreeding:taming",
-  "mod": "creaturecraft",
-  "input_entity": "creaturecraft:african_lion",
-  "inputs": [
-    {
-      "item": "minecraft:beef"
-    },
-    {
-      "item": "minecraft:mutton"
-    },
-    {
-      "item": "minecraft:porkchop"
-    },
-    {
-      "item": "minecraft:chicken"
+      "recipe": {
+        "type": "justenoughbreeding:taming",
+        "mod": "creaturecraft",
+        "input_entity": "creaturecraft:african_lion",
+        "inputs": [
+          {
+            "item": "minecraft:beef"
+          },
+          {
+            "item": "minecraft:mutton"
+          },
+          {
+            "item": "minecraft:porkchop"
+          },
+          {
+            "item": "minecraft:chicken"
+          }
+        ]
+      }
     }
   ]
 }

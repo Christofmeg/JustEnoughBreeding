@@ -1,16 +1,21 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "wildernature"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "wildernature"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "wildernature",
-  "input_entity": "wildernature:squirrel",
-  "inputs": [
-    {
-      "item": "wildernature:hazelnut"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "wildernature",
+        "input_entity": "wildernature:squirrel",
+        "inputs": [
+          {
+            "item": "wildernature:hazelnut"
+          }
+        ]
+      }
     }
   ]
 }

@@ -1,25 +1,30 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "koopascritters"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "koopascritters"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "koopascritters",
-  "input_entity": "koopascritters:pallas_cat",
-  "inputs": [
-    {
-      "item": "minecraft:chicken"
-    },
-    {
-      "item": "minecraft:cooked_chicken"
-    },
-    {
-      "item": "koopascritters:raw_wild_bird"
-    },
-    {
-      "item": "koopascritters:cooked_wild_bird"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "koopascritters",
+        "input_entity": "koopascritters:pallas_cat",
+        "inputs": [
+          {
+            "item": "minecraft:chicken"
+          },
+          {
+            "item": "minecraft:cooked_chicken"
+          },
+          {
+            "item": "koopascritters:raw_wild_bird"
+          },
+          {
+            "item": "koopascritters:cooked_wild_bird"
+          }
+        ]
+      }
     }
   ]
 }

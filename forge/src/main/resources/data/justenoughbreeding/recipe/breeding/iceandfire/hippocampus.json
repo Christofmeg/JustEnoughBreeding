@@ -1,22 +1,27 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "iceandfire"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "iceandfire"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "iceandfire",
+        "input_entity": "iceandfire:hippocampus",
+        "inputs": [
+          {
+            "item": "minecraft:prismarine_crystals"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "iceandfire:spawn_egg_hippocampus"
+          }
+        ],
+        "tamed": true
+      }
     }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "iceandfire",
-  "input_entity": "iceandfire:hippocampus",
-  "inputs": [
-    {
-      "item": "minecraft:prismarine_crystals"
-    }
-  ],
-  "spawn_eggs": [
-    {
-      "item": "iceandfire:spawn_egg_hippocampus"
-    }
-  ],
-  "tamed": true
+  ]
 }

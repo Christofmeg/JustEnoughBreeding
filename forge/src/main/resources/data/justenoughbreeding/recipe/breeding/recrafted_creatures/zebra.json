@@ -1,23 +1,28 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "recrafted_creatures"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "recrafted_creatures"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "recrafted_creatures",
+        "input_entity": "recrafted_creatures:zebra",
+        "inputs": [
+          {
+            "item": "minecraft:golden_apple"
+          },
+          {
+            "item": "minecraft:enchanted_golden_apple"
+          },
+          {
+            "item": "minecraft:golden_carrot"
+          }
+        ],
+        "tamed": true
+      }
     }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "recrafted_creatures",
-  "input_entity": "recrafted_creatures:zebra",
-  "inputs": [
-    {
-      "item": "minecraft:golden_apple"
-    },
-    {
-      "item": "minecraft:enchanted_golden_apple"
-    },
-    {
-      "item": "minecraft:golden_carrot"
-    }
-  ],
-  "tamed": true
+  ]
 }

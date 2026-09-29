@@ -1,27 +1,32 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "alexsmobs"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "alexsmobs"
-    }
-  ],
-  "type": "justenoughbreeding:transformation",
-  "mod": "alexsmobs",
-  "inputs": [
-    {
-      "item": "alexsmobs:mungal_spores"
-    }
-  ],
-  "input_entity": "minecraft:rabbit",
-  "input_spawn_eggs": [
-    {
-      "item": "minecraft:rabbit_spawn_egg"
-    }
-  ],
-  "output_entity": "alexsmobs:bunfungus",
-  "output_spawn_eggs": [
-    {
-      "item": "alexsmobs:spawn_egg_bunfungus"
+      "recipe": {
+        "type": "justenoughbreeding:transformation",
+        "mod": "alexsmobs",
+        "inputs": [
+          {
+            "item": "alexsmobs:mungal_spores"
+          }
+        ],
+        "input_entity": "minecraft:rabbit",
+        "input_spawn_eggs": [
+          {
+            "item": "minecraft:rabbit_spawn_egg"
+          }
+        ],
+        "output_entity": "alexsmobs:bunfungus",
+        "output_spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_bunfungus"
+          }
+        ]
+      }
     }
   ]
 }

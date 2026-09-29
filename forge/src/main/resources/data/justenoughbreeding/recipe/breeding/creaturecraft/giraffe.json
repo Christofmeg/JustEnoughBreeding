@@ -1,29 +1,34 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "creaturecraft"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "creaturecraft"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "creaturecraft",
+        "input_entity": "creaturecraft:giraffe",
+        "inputs": [
+          {
+            "item": "creaturecraft:baobab_leaves"
+          },
+          {
+            "item": "creaturecraft:savannah_bush_tall"
+          },
+          {
+            "item": "creaturecraft:savannah_bush_short"
+          },
+          {
+            "item": "minecraft:acacia_sapling"
+          },
+          {
+            "item": "minecraft:acacia_leaves"
+          }
+        ],
+        "tamed": true
+      }
     }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "creaturecraft",
-  "input_entity": "creaturecraft:giraffe",
-  "inputs": [
-    {
-      "item": "creaturecraft:baobab_leaves"
-    },
-    {
-      "item": "creaturecraft:savannah_bush_tall"
-    },
-    {
-      "item": "creaturecraft:savannah_bush_short"
-    },
-    {
-      "item": "minecraft:acacia_sapling"
-    },
-    {
-      "item": "minecraft:acacia_leaves"
-    }
-  ],
-  "tamed": true
+  ]
 }

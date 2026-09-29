@@ -1,29 +1,34 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "recrafted_creatures"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "recrafted_creatures"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "recrafted_creatures",
+        "input_entity": "recrafted_creatures:giraffe",
+        "inputs": [
+          {
+            "item": "minecraft:wheat"
+          },
+          {
+            "item": "minecraft:hay_block"
+          },
+          {
+            "item": "minecraft:carrot"
+          },
+          {
+            "item": "minecraft:golden_carrot"
+          },
+          {
+            "tag": "minecraft:leaves"
+          }
+        ],
+        "tamed": true
+      }
     }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "recrafted_creatures",
-  "input_entity": "recrafted_creatures:giraffe",
-  "inputs": [
-    {
-      "item": "minecraft:wheat"
-    },
-    {
-      "item": "minecraft:hay_block"
-    },
-    {
-      "item": "minecraft:carrot"
-    },
-    {
-      "item": "minecraft:golden_carrot"
-    },
-    {
-      "tag": "minecraft:leaves"
-    }
-  ],
-  "tamed": true
+  ]
 }

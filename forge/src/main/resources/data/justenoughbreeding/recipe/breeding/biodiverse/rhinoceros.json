@@ -1,17 +1,22 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "biodiverse"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "biodiverse"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "biodiverse",
+        "input_entity": "biodiverse:rhinoceros",
+        "inputs": [
+          {
+            "item": "minecraft:wheat"
+          }
+        ],
+        "tamed": true
+      }
     }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "biodiverse",
-  "input_entity": "biodiverse:rhinoceros",
-  "inputs": [
-    {
-      "item": "minecraft:wheat"
-    }
-  ],
-  "tamed": true
+  ]
 }

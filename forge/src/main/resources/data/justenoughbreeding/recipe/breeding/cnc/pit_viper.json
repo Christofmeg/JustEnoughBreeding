@@ -1,16 +1,21 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "cnc"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "cnc"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "cnc",
-  "input_entity": "cnc:pit_viper",
-  "inputs": [
-    {
-      "item": "minecraft:rabbit"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "cnc",
+        "input_entity": "cnc:pit_viper",
+        "inputs": [
+          {
+            "item": "minecraft:rabbit"
+          }
+        ]
+      }
     }
   ]
 }

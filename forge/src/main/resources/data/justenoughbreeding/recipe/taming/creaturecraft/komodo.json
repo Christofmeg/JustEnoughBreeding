@@ -1,22 +1,27 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "creaturecraft"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "creaturecraft"
-    }
-  ],
-  "type": "justenoughbreeding:taming",
-  "mod": "creaturecraft",
-  "input_entity": "creaturecraft:komodo",
-  "inputs": [
-    {
-      "item": "minecraft:apple"
-    },
-    {
-      "item": "minecraft:golden_apple"
-    },
-    {
-      "item": "minecraft:enchanted_golden_apple"
+      "recipe": {
+        "type": "justenoughbreeding:taming",
+        "mod": "creaturecraft",
+        "input_entity": "creaturecraft:komodo",
+        "inputs": [
+          {
+            "item": "minecraft:apple"
+          },
+          {
+            "item": "minecraft:golden_apple"
+          },
+          {
+            "item": "minecraft:enchanted_golden_apple"
+          }
+        ]
+      }
     }
   ]
 }

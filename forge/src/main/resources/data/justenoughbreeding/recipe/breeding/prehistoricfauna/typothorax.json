@@ -1,26 +1,31 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "prehistoricfauna"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "prehistoricfauna"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "prehistoricfauna",
-  "input_entity": "prehistoricfauna:typothorax",
-  "inputs": [
-    {
-      "item": "prehistoricfauna:horsetail"
-    }
-  ],
-  "outputs": [
-    {
-      "item": "prehistoricfauna:typothorax_egg"
-    }
-  ],
-  "spawn_eggs": [
-    {
-      "item": "prehistoricfauna:typothorax_spawn_egg"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "prehistoricfauna",
+        "input_entity": "prehistoricfauna:typothorax",
+        "inputs": [
+          {
+            "item": "prehistoricfauna:horsetail"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "prehistoricfauna:typothorax_egg"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "prehistoricfauna:typothorax_spawn_egg"
+          }
+        ]
+      }
     }
   ]
 }

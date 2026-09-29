@@ -1,16 +1,21 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "wildernature"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "wildernature"
-    }
-  ],
-  "type": "justenoughbreeding:taming",
-  "mod": "wildernature",
-  "input_entity": "wildernature:red_wolf",
-  "inputs": [
-    {
-      "meat": "minecraft:bone"
+      "recipe": {
+        "type": "justenoughbreeding:taming",
+        "mod": "wildernature",
+        "input_entity": "wildernature:red_wolf",
+        "inputs": [
+          {
+            "meat": "minecraft:bone"
+          }
+        ]
+      }
     }
   ]
 }

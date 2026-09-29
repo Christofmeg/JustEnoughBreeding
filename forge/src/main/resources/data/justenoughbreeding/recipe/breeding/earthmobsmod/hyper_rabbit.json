@@ -1,22 +1,27 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "earthmobsmod"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "earthmobsmod"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "earthmobsmod",
-  "input_entity": "earthmobsmod:hyper_rabbit",
-  "inputs": [
-    {
-      "item": "minecraft:dandelion"
-    },
-    {
-      "item": "minecraft:carrot"
-    },
-    {
-      "item": "minecraft:golden_carrot"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "earthmobsmod",
+        "input_entity": "earthmobsmod:hyper_rabbit",
+        "inputs": [
+          {
+            "item": "minecraft:dandelion"
+          },
+          {
+            "item": "minecraft:carrot"
+          },
+          {
+            "item": "minecraft:golden_carrot"
+          }
+        ]
+      }
     }
   ]
 }

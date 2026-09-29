@@ -1,16 +1,21 @@
 {
-  "neoforge:conditions": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "quark"
+  },
+  "recipes": [
     {
-      "type": "neoforge:mod_loaded",
-      "modid": "quark"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "quark",
-  "input_entity": "quark:crab",
-  "inputs": [
-    {
-      "tag": "quark:crab_tempt_items"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "quark",
+        "input_entity": "quark:crab",
+        "inputs": [
+          {
+            "tag": "quark:crab_tempt_items"
+          }
+        ]
+      }
     }
   ]
 }

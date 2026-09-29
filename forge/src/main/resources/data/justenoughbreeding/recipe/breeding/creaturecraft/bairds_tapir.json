@@ -1,20 +1,25 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "creaturecraft"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "creaturecraft"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "creaturecraft",
+        "input_entity": "creaturecraft:bairds_tapir",
+        "inputs": [
+          {
+            "item": "creaturecraft:buff_grass"
+          },
+          {
+            "item": "creaturecraft:sav_grass_short"
+          }
+        ],
+        "tamed": true
+      }
     }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "creaturecraft",
-  "input_entity": "creaturecraft:bairds_tapir",
-  "inputs": [
-    {
-      "item": "creaturecraft:buff_grass"
-    },
-    {
-      "item": "creaturecraft:sav_grass_short"
-    }
-  ],
-  "tamed": true
+  ]
 }

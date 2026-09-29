@@ -1,29 +1,34 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "alexscaves"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "alexscaves"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "alexscaves",
-  "input_entity": "alexscaves:tremorsaurus",
-  "inputs": [
-    {
-      "item": "alexscaves:cooked_dinosaur_chop"
-    },
-    {
-      "item": "alexscaves:dinosaur_chop"
-    }
-  ],
-  "outputs": [
-    {
-      "item": "alexscaves:tremorsaurus_egg"
-    }
-  ],
-  "spawn_eggs": [
-    {
-      "item": "alexscaves:spawn_egg_tremorsaurus"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "alexscaves",
+        "input_entity": "alexscaves:tremorsaurus",
+        "inputs": [
+          {
+            "item": "alexscaves:cooked_dinosaur_chop"
+          },
+          {
+            "item": "alexscaves:dinosaur_chop"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "alexscaves:tremorsaurus_egg"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexscaves:spawn_egg_tremorsaurus"
+          }
+        ]
+      }
     }
   ]
 }

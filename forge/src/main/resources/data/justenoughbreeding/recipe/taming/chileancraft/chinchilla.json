@@ -1,16 +1,21 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "chileancraft"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "chileancraft"
-    }
-  ],
-  "type": "justenoughbreeding:taming",
-  "mod": "chileancraft",
-  "input_entity": "chileancraft:chinchilla",
-  "inputs": [
-    {
-      "item": "minecraft:carrot"
+      "recipe": {
+        "type": "justenoughbreeding:taming",
+        "mod": "chileancraft",
+        "input_entity": "chileancraft:chinchilla",
+        "inputs": [
+          {
+            "item": "minecraft:carrot"
+          }
+        ]
+      }
     }
   ]
 }

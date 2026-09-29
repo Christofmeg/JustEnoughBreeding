@@ -1,17 +1,22 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "biomemakeover"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "biomemakeover"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "biomemakeover",
+        "input_entity": "biomemakeover:owl",
+        "inputs": [
+          {
+            "tag": "minecraft:meat"
+          }
+        ],
+        "tamed": true
+      }
     }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "biomemakeover",
-  "input_entity": "biomemakeover:owl",
-  "inputs": [
-    {
-      "tag": "minecraft:meat"
-    }
-  ],
-  "tamed": true
+  ]
 }

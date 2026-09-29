@@ -1,21 +1,26 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "tfc"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "tfc"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "tfc",
-  "input_entity": "tfc:horse",
-  "inputs": [
-    {
-      "tag": "tfc:horse_food"
-    }
-  ],
-  "spawn_eggs": [
-    {
-      "item": "tfc:spawn_egg/horse"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "tfc",
+        "input_entity": "tfc:horse",
+        "inputs": [
+          {
+            "tag": "tfc:horse_food"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "tfc:spawn_egg/horse"
+          }
+        ]
+      }
     }
   ]
 }

@@ -1,28 +1,33 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "creaturecraft"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "creaturecraft"
-    }
-  ],
-  "type": "justenoughbreeding:taming",
-  "mod": "creaturecraft",
-  "input_entity": "creaturecraft:sumatran_tiger",
-  "mobs": [
-    {
-      "sumatran_tiger": {
-        "inputs": [
+      "recipe": {
+        "type": "justenoughbreeding:taming",
+        "mod": "creaturecraft",
+        "input_entity": "creaturecraft:sumatran_tiger",
+        "mobs": [
           {
-            "item": "minecraft:beef"
-          },
-          {
-            "item": "minecraft:mutton"
-          },
-          {
-            "item": "minecraft:porkchop"
-          },
-          {
-            "item": "minecraft:chicken"
+            "sumatran_tiger": {
+              "inputs": [
+                {
+                  "item": "minecraft:beef"
+                },
+                {
+                  "item": "minecraft:mutton"
+                },
+                {
+                  "item": "minecraft:porkchop"
+                },
+                {
+                  "item": "minecraft:chicken"
+                }
+              ]
+            }
           }
         ]
       }

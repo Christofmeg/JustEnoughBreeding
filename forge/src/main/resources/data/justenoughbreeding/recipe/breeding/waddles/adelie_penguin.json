@@ -1,19 +1,24 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "waddles"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "waddles"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "waddles",
-  "input_entity": "waddles:adelie_penguin",
-  "inputs": [
-    {
-      "item": "minecraft:cod"
-    },
-    {
-      "item": "minecraft:salmon"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "waddles",
+        "input_entity": "waddles:adelie_penguin",
+        "inputs": [
+          {
+            "item": "minecraft:cod"
+          },
+          {
+            "item": "minecraft:salmon"
+          }
+        ]
+      }
     }
   ]
 }

@@ -1,21 +1,26 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "alexsmobs"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "alexsmobs"
-    }
-  ],
-  "type": "justenoughbreeding:taming",
-  "mod": "alexsmobs",
-  "input_entity": "alexscaves:capuchin_monkey",
-  "inputs": [
-    {
-      "tag": "alexsmobs:capuchin_monkey_tameables"
-    }
-  ],
-  "spawn_eggs": [
-    {
-      "item": "alexsmobs:spawn_egg_capuchin_monkey"
+      "recipe": {
+        "type": "justenoughbreeding:taming",
+        "mod": "alexsmobs",
+        "input_entity": "alexscaves:capuchin_monkey",
+        "inputs": [
+          {
+            "tag": "alexsmobs:capuchin_monkey_tameables"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_capuchin_monkey"
+          }
+        ]
+      }
     }
   ]
 }

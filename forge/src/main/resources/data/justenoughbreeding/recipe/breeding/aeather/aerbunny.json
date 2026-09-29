@@ -2,7 +2,7 @@
   "type": "forge:conditional",
   "forge:condition": {
     "type": "forge:mod_loaded",
-    "modid": "wildernature"
+    "modid": "aether"
   },
   "recipes": [
     {

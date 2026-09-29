@@ -1,16 +1,21 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "autumnity"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "autumnity"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "autumnity",
-  "input_entity": "autumnity:snail",
-  "inputs": [
-    {
-      "tag": "autumnity:snail_food"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "autumnity",
+        "input_entity": "autumnity:snail",
+        "inputs": [
+          {
+            "tag": "autumnity:snail_food"
+          }
+        ]
+      }
     }
   ]
 }

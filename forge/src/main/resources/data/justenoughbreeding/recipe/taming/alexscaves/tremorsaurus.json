@@ -1,26 +1,31 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "alexscaves"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "alexscaves"
-    }
-  ],
-  "type": "justenoughbreeding:taming",
-  "mod": "alexscaves",
-  "input_entity": "alexscaves:tremorsaurus",
-  "extra_inputs": [
-    {
-      "item": "alexscaves:primitive_club"
-    }
-  ],
-  "inputs": [
-    {
-      "item": "alexscaves:serene_salad"
-    }
-  ],
-  "spawn_eggs": [
-    {
-      "item": "alexscaves:spawn_egg_tremorsaurus"
+      "recipe": {
+        "type": "justenoughbreeding:taming",
+        "mod": "alexscaves",
+        "input_entity": "alexscaves:tremorsaurus",
+        "extra_inputs": [
+          {
+            "item": "alexscaves:primitive_club"
+          }
+        ],
+        "inputs": [
+          {
+            "item": "alexscaves:serene_salad"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexscaves:spawn_egg_tremorsaurus"
+          }
+        ]
+      }
     }
   ]
 }

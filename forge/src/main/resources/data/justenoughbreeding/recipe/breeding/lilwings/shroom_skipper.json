@@ -1,21 +1,26 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "lilwings"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "lilwings"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "lilwings",
-  "input_entity": "lilwings:shroom_skipper",
-  "inputs": [
-    {
-      "item": "minecraft:red_mushroom"
-    }
-  ],
-  "spawn_eggs": [
-    {
-      "item": "lilwings:shroom_skipper_egg"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "lilwings",
+        "input_entity": "lilwings:shroom_skipper",
+        "inputs": [
+          {
+            "item": "minecraft:red_mushroom"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "lilwings:shroom_skipper_egg"
+          }
+        ]
+      }
     }
   ]
 }

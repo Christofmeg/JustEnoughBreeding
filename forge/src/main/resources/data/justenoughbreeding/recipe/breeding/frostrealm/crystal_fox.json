@@ -1,16 +1,21 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "frostrealm"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "frostrealm"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "frostrealm",
-  "input_entity": "frostrealm:crystal_fox",
-  "inputs": [
-    {
-      "item": "frostrealm:bearberry"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "frostrealm",
+        "input_entity": "frostrealm:crystal_fox",
+        "inputs": [
+          {
+            "item": "frostrealm:bearberry"
+          }
+        ]
+      }
     }
   ]
 }

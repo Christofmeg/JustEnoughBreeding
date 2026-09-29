@@ -1,16 +1,21 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "blue_skies"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "blue_skies"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "blue_skies",
-  "input_entity": "blue_skies:crogre",
-  "inputs": [
-    {
-      "item": "blue_skies:bug_guts"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "blue_skies",
+        "input_entity": "blue_skies:crogre",
+        "inputs": [
+          {
+            "item": "blue_skies:bug_guts"
+          }
+        ]
+      }
     }
   ]
 }

@@ -8,7 +8,12 @@
   ],
   "input_entity": "minecraft:wolf",
   "input_entity_nbt": {
-    "Owner": [-629513142, 122110922, -2059482937, -1841686670]
+    "Owner": [
+      -629513142,
+      122110922,
+      -2059482937,
+      -1841686670
+    ]
   },
   "input_spawn_eggs": [
     {
@@ -17,7 +22,12 @@
   ],
   "output_entity": "minecraft:wolf",
   "output_entity_nbt": {
-    "Owner": [-629513142, 122110922, -2059482937, -1841686670],
+    "Owner": [
+      -629513142,
+      122110922,
+      -2059482937,
+      -1841686670
+    ],
     "CollarColor": 6
   },
   "output_spawn_eggs": [

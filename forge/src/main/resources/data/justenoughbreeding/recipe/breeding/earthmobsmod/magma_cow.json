@@ -1,16 +1,21 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "earthmobsmod"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "earthmobsmod"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "earthmobsmod",
-  "input_entity": "earthmobsmod:magma_cow",
-  "inputs": [
-    {
-      "item": "minecraft:magma_cream"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "earthmobsmod",
+        "input_entity": "earthmobsmod:magma_cow",
+        "inputs": [
+          {
+            "item": "minecraft:magma_cream"
+          }
+        ]
+      }
     }
   ]
 }

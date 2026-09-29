@@ -1,19 +1,24 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "crittersandcompanions"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "crittersandcompanions"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "crittersandcompanions",
-  "input_entity": "crittersandcompanions:otter",
-  "inputs": [
-    {
-      "tag": "minecraft:fishes"
-    },
-    {
-      "item": "crittersandcompanions:clam"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "crittersandcompanions",
+        "input_entity": "crittersandcompanions:otter",
+        "inputs": [
+          {
+            "tag": "minecraft:fishes"
+          },
+          {
+            "item": "crittersandcompanions:clam"
+          }
+        ]
+      }
     }
   ]
 }

@@ -1,26 +1,31 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "tfc"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "tfc"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "tfc",
-  "input_entity": "tfc:frog",
-  "inputs": [
-    {
-      "tag": "tfc:frog_food"
-    }
-  ],
-  "outputs": [
-    {
-      "item": "minecraft:frogspawn"
-    }
-  ],
-  "spawn_eggs": [
-    {
-      "item": "tfc:spawn_egg/frog"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "tfc",
+        "input_entity": "tfc:frog",
+        "inputs": [
+          {
+            "tag": "tfc:frog_food"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "minecraft:frogspawn"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "tfc:spawn_egg/frog"
+          }
+        ]
+      }
     }
   ]
 }

@@ -1,26 +1,31 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "prehistoricfauna"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "prehistoricfauna"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "prehistoricfauna",
-  "input_entity": "prehistoricfauna:trilophosaurus",
-  "inputs": [
-    {
-      "item": "prehistoricfauna:neocalamites"
-    }
-  ],
-  "outputs": [
-    {
-      "item": "prehistoricfauna:trilophosaurus_egg"
-    }
-  ],
-  "spawn_eggs": [
-    {
-      "item": "prehistoricfauna:trilophosaurus_spawn_egg"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "prehistoricfauna",
+        "input_entity": "prehistoricfauna:trilophosaurus",
+        "inputs": [
+          {
+            "item": "prehistoricfauna:neocalamites"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "prehistoricfauna:trilophosaurus_egg"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "prehistoricfauna:trilophosaurus_spawn_egg"
+          }
+        ]
+      }
     }
   ]
 }

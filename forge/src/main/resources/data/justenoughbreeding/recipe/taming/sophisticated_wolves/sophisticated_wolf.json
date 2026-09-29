@@ -1,21 +1,26 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "sophisticated_wolves"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "sophisticated_wolves"
-    }
-  ],
-  "type": "justenoughbreeding:taming",
-  "mod": "sophisticated_wolves",
-  "input_entity": "sophisticated_wolves:sophisticated_wolf",
-  "inputs": [
-    {
-      "item": "minecraft:bone"
-    }
-  ],
-  "spawn_eggs": [
-    {
-      "item": "sophisticated_wolves:dog_egg"
+      "recipe": {
+        "type": "justenoughbreeding:taming",
+        "mod": "sophisticated_wolves",
+        "input_entity": "sophisticated_wolves:sophisticated_wolf",
+        "inputs": [
+          {
+            "item": "minecraft:bone"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "sophisticated_wolves:dog_egg"
+          }
+        ]
+      }
     }
   ]
 }

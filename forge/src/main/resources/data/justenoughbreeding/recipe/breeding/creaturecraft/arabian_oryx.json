@@ -1,19 +1,24 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "creaturecraft"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "creaturecraft"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "creaturecraft",
-  "input_entity": "creaturecraft:arabian_oryx",
-  "inputs": [
-    {
-      "item": "creaturecraft:buff_grass"
-    },
-    {
-      "item": "creaturecraft:sav_grass_short"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "creaturecraft",
+        "input_entity": "creaturecraft:arabian_oryx",
+        "inputs": [
+          {
+            "item": "creaturecraft:buff_grass"
+          },
+          {
+            "item": "creaturecraft:sav_grass_short"
+          }
+        ]
+      }
     }
   ]
 }

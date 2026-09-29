@@ -1,21 +1,26 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "sullysmod"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "sullysmod"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "sullysmod",
-  "input_entity": "sullysmod:tortoise",
-  "inputs": [
-    {
-      "tag": "sullysmod:tortoise_food"
-    }
-  ],
-  "outputs": [
-    {
-      "item": "sullysmod:tortoise_egg"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "sullysmod",
+        "input_entity": "sullysmod:tortoise",
+        "inputs": [
+          {
+            "tag": "sullysmod:tortoise_food"
+          }
+        ],
+        "outputs": [
+          {
+            "item": "sullysmod:tortoise_egg"
+          }
+        ]
+      }
     }
   ]
 }

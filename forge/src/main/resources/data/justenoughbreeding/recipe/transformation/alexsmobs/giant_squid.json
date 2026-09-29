@@ -1,27 +1,32 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "alexsmobs"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "alexsmobs"
-    }
-  ],
-  "type": "justenoughbreeding:transformation",
-  "mod": "alexsmobs",
-  "inputs": [
-    {
-      "item": "minecraft:lightning_rod"
-    }
-  ],
-  "input_entity": "minecraft:squid",
-  "input_spawn_eggs": [
-    {
-      "item": "minecraft:squid_spawn_egg"
-    }
-  ],
-  "output_entity": "alexsmobs:giant_squid",
-  "output_spawn_eggs": [
-    {
-      "item": "alexsmobs:spawn_egg_giant_squid"
+      "recipe": {
+        "type": "justenoughbreeding:transformation",
+        "mod": "alexsmobs",
+        "inputs": [
+          {
+            "item": "minecraft:lightning_rod"
+          }
+        ],
+        "input_entity": "minecraft:squid",
+        "input_spawn_eggs": [
+          {
+            "item": "minecraft:squid_spawn_egg"
+          }
+        ],
+        "output_entity": "alexsmobs:giant_squid",
+        "output_spawn_eggs": [
+          {
+            "item": "alexsmobs:spawn_egg_giant_squid"
+          }
+        ]
+      }
     }
   ]
 }

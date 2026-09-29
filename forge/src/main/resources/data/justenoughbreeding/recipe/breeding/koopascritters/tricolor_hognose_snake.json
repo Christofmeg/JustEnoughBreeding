@@ -1,16 +1,21 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "koopascritters"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "koopascritters"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "koopascritters",
-  "input_entity": "koopascritters:tricolor_hognose_snake",
-  "inputs": [
-    {
-      "item": "minecraft:rabbit"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "koopascritters",
+        "input_entity": "koopascritters:tricolor_hognose_snake",
+        "inputs": [
+          {
+            "item": "minecraft:rabbit"
+          }
+        ]
+      }
     }
   ]
 }

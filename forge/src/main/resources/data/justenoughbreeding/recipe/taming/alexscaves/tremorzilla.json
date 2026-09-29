@@ -1,21 +1,26 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "alexscaves"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "alexscaves"
-    }
-  ],
-  "type": "justenoughbreeding:taming",
-  "mod": "alexscaves",
-  "input_entity": "alexscaves:tremorzilla",
-  "inputs": [
-    {
-      "item": "alexscaves:waste_drum"
-    }
-  ],
-  "spawn_eggs": [
-    {
-      "item": "alexscaves:spawn_egg_tremorzilla"
+      "recipe": {
+        "type": "justenoughbreeding:taming",
+        "mod": "alexscaves",
+        "input_entity": "alexscaves:tremorzilla",
+        "inputs": [
+          {
+            "item": "alexscaves:waste_drum"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "alexscaves:spawn_egg_tremorzilla"
+          }
+        ]
+      }
     }
   ]
 }

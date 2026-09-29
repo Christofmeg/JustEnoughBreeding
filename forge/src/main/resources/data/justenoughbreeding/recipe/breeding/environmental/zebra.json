@@ -1,23 +1,28 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "environmental"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "environmental"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "environmental",
+        "input_entity": "environmental:zebra",
+        "inputs": [
+          {
+            "item": "minecraft:golden_apple"
+          },
+          {
+            "item": "minecraft:enchanted_golden_apple"
+          },
+          {
+            "item": "minecraft:golden_carrot"
+          }
+        ],
+        "tamed": true
+      }
     }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "environmental",
-  "input_entity": "environmental:zebra",
-  "inputs": [
-    {
-      "item": "minecraft:golden_apple"
-    },
-    {
-      "item": "minecraft:enchanted_golden_apple"
-    },
-    {
-      "item": "minecraft:golden_carrot"
-    }
-  ],
-  "tamed": true
+  ]
 }

@@ -1,21 +1,26 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "tfc"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "tfc"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "tfc",
-  "input_entity": "tfc:rabbit",
-  "inputs": [
-    {
-      "tag": "tfc:rabbit_food"
-    }
-  ],
-  "spawn_eggs": [
-    {
-      "item": "tfc:spawn_egg/rabbit"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "tfc",
+        "input_entity": "tfc:rabbit",
+        "inputs": [
+          {
+            "tag": "tfc:rabbit_food"
+          }
+        ],
+        "spawn_eggs": [
+          {
+            "item": "tfc:spawn_egg/rabbit"
+          }
+        ]
+      }
     }
   ]
 }

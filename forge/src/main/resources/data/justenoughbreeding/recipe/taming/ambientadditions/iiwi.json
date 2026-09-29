@@ -1,16 +1,21 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "ambientadditions"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "ambientadditions"
-    }
-  ],
-  "type": "justenoughbreeding:taming",
-  "mod": "ambientadditions",
-  "input_entity": "ambientadditions:iiwi",
-  "inputs": [
-    {
-      "tag": "minecraft:flowers"
+      "recipe": {
+        "type": "justenoughbreeding:taming",
+        "mod": "ambientadditions",
+        "input_entity": "ambientadditions:iiwi",
+        "inputs": [
+          {
+            "tag": "minecraft:flowers"
+          }
+        ]
+      }
     }
   ]
 }

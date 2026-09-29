@@ -1,16 +1,21 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "biodiverse"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "biodiverse"
-    }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "biodiverse",
-  "input_entity": "biodiverse:chimpanzee",
-  "inputs": [
-    {
-      "item": "minecraft:melon_slice"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "biodiverse",
+        "input_entity": "biodiverse:chimpanzee",
+        "inputs": [
+          {
+            "item": "minecraft:melon_slice"
+          }
+        ]
+      }
     }
   ]
 }

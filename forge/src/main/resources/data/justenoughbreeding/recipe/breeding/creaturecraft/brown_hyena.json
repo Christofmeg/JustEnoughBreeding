@@ -1,35 +1,40 @@
 {
-  "forge:conditional": [
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "forge:mod_loaded",
+    "modid": "creaturecraft"
+  },
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "creaturecraft"
+      "recipe": {
+        "type": "justenoughbreeding:breeding",
+        "mod": "creaturecraft",
+        "input_entity": "creaturecraft:brown_hyena",
+        "inputs": [
+          {
+            "item": "minecraft:bone"
+          },
+          {
+            "item": "minecraft:porkchop"
+          },
+          {
+            "item": "minecraft:beef"
+          },
+          {
+            "item": "minecraft:chicken"
+          },
+          {
+            "item": "minecraft:rabbit"
+          },
+          {
+            "item": "minecraft:mutton"
+          },
+          {
+            "item": "minecraft:rotten_flesh"
+          }
+        ],
+        "tamed": true
+      }
     }
-  ],
-  "type": "justenoughbreeding:breeding",
-  "mod": "creaturecraft",
-  "input_entity": "creaturecraft:brown_hyena",
-  "inputs": [
-    {
-      "item": "minecraft:bone"
-    },
-    {
-      "item": "minecraft:porkchop"
-    },
-    {
-      "item": "minecraft:beef"
-    },
-    {
-      "item": "minecraft:chicken"
-    },
-    {
-      "item": "minecraft:rabbit"
-    },
-    {
-      "item": "minecraft:mutton"
-    },
-    {
-      "item": "minecraft:rotten_flesh"
-    }
-  ],
-  "tamed": true
+  ]
 }
