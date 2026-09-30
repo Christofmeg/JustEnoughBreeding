@@ -2,7 +2,7 @@ import net.darkhax.curseforgegradle.TaskPublishCurseForge
 
 plugins {
     id 'multiloader-loader'
-    id 'net.minecraftforge.gradle' version '[6.0.24,6.2)'
+    id 'net.minecraftforge.gradle' version '[7.0.3,8)'
     id 'net.darkhax.curseforgegradle' version '1.1.+'
     id 'com.modrinth.minotaur' version '2.+'
 }
@@ -13,14 +13,13 @@ base {
 
 minecraft {
     mappings channel: 'official', version: minecraft_version
-	reobf = false
-    copyIdeResources = true
 
     runs {
-		client {
-            workingDirectory file('runs/client')
-            ideaModule "${rootProject.name}.${project.name}.main"
-            taskName 'Client'
+        configureEach {
+            workingDir = layout.projectDirectory.dir('run')
+        }
+
+        register('client') {
             mods {
                 modClientRun {
                     source sourceSets.main
@@ -28,23 +27,26 @@ minecraft {
             }
         }
 
-        server {
-            workingDirectory file('runs/server')
-            ideaModule "${rootProject.name}.${project.name}.main"
-            taskName 'Server'
+        register('server') {
+            args '--nogui'
             mods {
                 modServerRun {
                     source sourceSets.main
                 }
-			}
+            }
         }
     }
 }
 
+repositories {
+    minecraft.mavenizer(it) // In Kotlin, it = this
+    maven fg.forgeMaven
+    maven fg.minecraftLibsMaven
+    mavenCentral()
+}
+
 dependencies {
-    minecraft "net.minecraftforge:forge:${forge_minecraft_version}-${forge_version}"
-    // Hack fix for now, force jopt-simple to be exactly 5.0.4 because Mojang ships that version, but some transitive dependencies request 6.0+
-    implementation('net.sf.jopt-simple:jopt-simple:5.0.4') { version { strictly '5.0.4' } }
+    implementation minecraft.dependency("net.minecraftforge:forge:${forge_minecraft_version}-${forge_version}")
 
     implementation "maven.modrinth:u6dRKJwZ:xlsF1oJX" // https://modrinth.com/mod/jei/versions?g=1.21.1&l=forge
     implementation "maven.modrinth:7tEfOcA7:DZ2xEE5K" // https://modrinth.com/mod/mezzconfig/versions?g=1.21.1&l=forge

@@ -2,7 +2,7 @@ import net.darkhax.curseforgegradle.TaskPublishCurseForge
 
 plugins {
     id 'multiloader-loader'
-    id 'fabric-loom' version '1.17-SNAPSHOT'
+    id 'fabric-loom' version '1.18.2'
     id 'net.darkhax.curseforgegradle' version '1.1.+'
     id 'com.modrinth.minotaur' version '2.+'
 }
