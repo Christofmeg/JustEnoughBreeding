@@ -1,3 +1,2 @@
-3.0.1:
-- Remove camel from ecologics integration
-- Fix [#58](https://github.com/Christofmeg/JustEnoughBreeding/issues/58)
+3.3.0:
+- Fix [#71](https://github.com/Christofmeg/JustEnoughBreeding/issues/71) Typo in parrot.json for quark
