@@ -1,10 +1,10 @@
 package com.christofmeg.justenoughbreeding.jei;
 
-import mezz.jei.api.gui.builder.ITooltipBuilder;
 import mezz.jei.api.gui.widgets.IRecipeWidget;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.navigation.ScreenPosition;
 import net.minecraft.network.chat.Component;
+import mezz.jei.api.gui.builder.ITooltipBuilder;
 import org.jetbrains.annotations.NotNull;
 
 public class JeiToggleButtonWidget implements IRecipeWidget {

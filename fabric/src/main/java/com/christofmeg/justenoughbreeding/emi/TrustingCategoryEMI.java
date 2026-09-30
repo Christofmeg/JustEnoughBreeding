@@ -1,6 +1,7 @@
 package com.christofmeg.justenoughbreeding.emi;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
+import com.christofmeg.justenoughbreeding.config.ModConfigManager;
 import com.christofmeg.justenoughbreeding.recipe.TrustingRecipe;
 import dev.emi.emi.api.recipe.EmiRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
@@ -19,8 +20,8 @@ public class TrustingCategoryEMI extends AbstractRecipeCategoryEMI {
 
     private final TrustingRecipe recipe;
     public static EmiRecipeCategory TYPE = new EmiRecipeCategory(
-        ResourceLocation.parse(CommonConstants.MOD_ID + ":" + "trusting"),
-        EmiStack.of(Items.SWEET_BERRIES), EMIPlugin.simplifiedRenderer(), EmiRecipeSorting.none());
+            ResourceLocation.parse(CommonConstants.MOD_ID + ":" + "trusting"),
+            EmiStack.of(Items.SWEET_BERRIES), EMIPlugin.simplifiedRenderer(), EmiRecipeSorting.none());
 
     protected TrustingCategoryEMI(Builder builder, TrustingRecipe trustingRecipe) {
         super(TYPE, 168, 93, builder.id);
@@ -67,7 +68,9 @@ public class TrustingCategoryEMI extends AbstractRecipeCategoryEMI {
         }
         EMIUtils.drawMobSlot(0, 10, widgets);
         EMIUtils.drawMobNameAndEntity(recipe.entityType(), widgets, recipe, getDisplayWidth());
-        EMIUtils.addButton(widgets, recipe.entityType());
+        if (ModConfigManager.areConfigButtonsEnabled()) {
+            EMIUtils.addButton(widgets, recipe.entityType());
+        }
     }
 
     public static class Builder {

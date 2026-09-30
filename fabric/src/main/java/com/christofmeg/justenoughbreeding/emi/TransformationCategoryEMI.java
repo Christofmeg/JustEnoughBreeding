@@ -1,6 +1,7 @@
 package com.christofmeg.justenoughbreeding.emi;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
+import com.christofmeg.justenoughbreeding.config.ModConfigManager;
 import com.christofmeg.justenoughbreeding.recipe.TransformationRecipe;
 import dev.emi.emi.api.recipe.EmiRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
@@ -48,6 +49,9 @@ public class TransformationCategoryEMI extends AbstractRecipeCategoryEMI {
     @Override
     public List<EmiStack> getOutputs() {
         List<EmiStack> list = new ArrayList<>();
+        for (ItemStack item : recipe.outputs().getItems()) {
+            list.add(EmiStack.of(item));
+        }
         for (ItemStack item : recipe.outputSpawnEggs().getItems()) {
             list.add(EmiStack.of(item));
         }
@@ -57,7 +61,7 @@ public class TransformationCategoryEMI extends AbstractRecipeCategoryEMI {
     @Override
     public void addWidgets(WidgetHolder widgets) {
         widgets.addSlot(EmiIngredient.of(recipe.inputSpawnEggs()), 65, 74);
-        widgets.addSlot(EmiIngredient.of(recipe.outputSpawnEggs()), 85, 74);
+        widgets.addSlot(EmiIngredient.of(List.of(EmiIngredient.of(recipe.outputs()), EmiIngredient.of(recipe.outputSpawnEggs()))), 85, 74);
         boolean hasExtraInput = !recipe.extraInputs().isEmpty();
         widgets.addSlot(EmiIngredient.of(recipe.inputs()), hasExtraInput ? 65 : 75, 22);
         if (hasExtraInput) {
@@ -68,8 +72,12 @@ public class TransformationCategoryEMI extends AbstractRecipeCategoryEMI {
         EMIUtils.drawMobNameAndEntity(recipe.inputEntityType(), widgets, recipe, 99, 0, true, getDisplayWidth());
         EMIUtils.drawMobSlot(105, 10, widgets);
         EMIUtils.drawMobNameAndEntity(recipe.outputEntityType(), widgets, recipe, 61, 105, false, getDisplayWidth());
-        EMIUtils.addButton(widgets, recipe.inputEntityType());
-        EMIUtils.addButton(widgets, recipe.outputEntityType(), 105);
+        if (ModConfigManager.areConfigButtonsEnabled()) {
+            if (recipe.inputEntityType() != null) {
+                EMIUtils.addButton(widgets, recipe.inputEntityType());
+            }
+            EMIUtils.addButton(widgets, recipe.outputEntityType(), 105);
+        }
     }
 
     public static class Builder {

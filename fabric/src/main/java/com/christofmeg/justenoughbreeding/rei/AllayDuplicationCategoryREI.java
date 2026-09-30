@@ -1,5 +1,6 @@
 package com.christofmeg.justenoughbreeding.rei;
 
+import com.christofmeg.justenoughbreeding.config.ModConfigManager;
 import com.christofmeg.justenoughbreeding.recipe.AllayDuplicationRecipe;
 import me.shedaniel.math.Point;
 import me.shedaniel.math.Rectangle;
@@ -12,13 +13,10 @@ import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class AllayDuplicationCategoryREI extends AbstractRecipeCategoryREI<AllayDuplicationDisplay> {
 
@@ -33,12 +31,13 @@ public class AllayDuplicationCategoryREI extends AbstractRecipeCategoryREI<Allay
         List<Widget> widgets = new LinkedList<>();
         widgets.add(Widgets.createRecipeBase(bounds));
 
-        List<EntryStack<?>> spawnEggs = new ArrayList<>();
-        for (ItemStack stack : display.recipe.spawnEggs().getItems()) {
-            spawnEggs.add(EntryStacks.of(stack));
-        }
+        Collection<EntryStack<?>> spawnEggs = new ArrayList<>();
+        Arrays.stream(display.recipe.spawnEggs().getItems()).forEach(stack -> spawnEggs.add(EntryStacks.of(stack)));
         widgets.add(Widgets.createSlot(new Point(bounds.x + 154, bounds.y + 6)).entries(spawnEggs));
-        widgets.add(Widgets.createSlot(new Point(bounds.x + 112, bounds.y + 37)).entries(display.getInputEntries().getFirst()));
+
+        Collection<EntryStack<?>> inputEntries = new ArrayList<>();
+        display.getInputEntries().forEach(inputEntries::addAll);
+        widgets.add(Widgets.createSlot(new Point(bounds.x + 112, bounds.y + 37)).entries(inputEntries));
 
         List<EntryIngredient> musicDiscs = new ArrayList<>();
         musicDiscs.add(EntryIngredients.ofIngredient(Ingredient.of(ItemTags.CREEPER_DROP_MUSIC_DISCS)));
@@ -49,7 +48,9 @@ public class AllayDuplicationCategoryREI extends AbstractRecipeCategoryREI<Allay
         REIUtils.drawMobSlot(widgets, bounds,0, 10);
         REIUtils.drawMobNameAndEntity(widgets, bounds, recipe.entityType(), recipe, getDisplayWidth(display));
 
-        REIUtils.addButton(bounds, recipe.entityType(), widgets);
+        if (ModConfigManager.areConfigButtonsEnabled()) {
+            REIUtils.addButton(bounds, recipe.entityType(), widgets);
+        }
 
         return widgets;
     }

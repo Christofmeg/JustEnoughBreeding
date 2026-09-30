@@ -27,11 +27,12 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                         Codec.STRING.fieldOf("input_entity").forGetter(TransformationRecipe::inputEntity),
                         CompoundTag.CODEC.optionalFieldOf("input_entity_nbt").forGetter(r -> Optional.ofNullable(r.inputEntityNbt())),
                         Codec.STRING.fieldOf("output_entity").forGetter(TransformationRecipe::outputEntity),
-                        CompoundTag.CODEC.optionalFieldOf("output_entity_nbt").forGetter(r -> Optional.ofNullable(r.inputEntityNbt())),
-                        Ingredient.CODEC.fieldOf("inputs").forGetter(TransformationRecipe::inputs),
+                        CompoundTag.CODEC.optionalFieldOf("output_entity_nbt").forGetter(r -> Optional.ofNullable(r.outputEntityNbt())),
+                        Ingredient.CODEC.optionalFieldOf("inputs").forGetter(r -> Optional.of(r.inputs())),
                         Ingredient.CODEC.optionalFieldOf("extra_inputs").forGetter(r -> Optional.of(r.extraInputs())),
                         Ingredient.CODEC.optionalFieldOf("input_spawn_eggs").forGetter(r -> Optional.of(r.inputSpawnEggs())),
                         Ingredient.CODEC.optionalFieldOf("output_spawn_eggs").forGetter(r -> Optional.of(r.outputSpawnEggs())),
+                        Ingredient.CODEC.optionalFieldOf("outputs").forGetter(r -> Optional.of(r.outputs())),
                         Codec.BOOL.optionalFieldOf("tamed").forGetter(r -> Optional.ofNullable(r.tamed()))
                 ).apply(instance, (
                         mod,
@@ -43,15 +44,16 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                         extra_inputs,
                         input_spawn_eggs,
                         output_spawn_eggs,
+                        outputs,
                         tamed
                 ) -> {
-                    EntityType<?> inputEntityType = JustEnoughBreeding.getEntityFromLoaderRegistries(ResourceLocation.parse(input_entity));
+                    EntityType<?> inputEntityType = JustEnoughBreeding.getEntityFromLoaderRegistries(ResourceLocation.tryParse(input_entity));
                     EntityType<?> outputEntityType = JustEnoughBreeding.getEntityFromLoaderRegistries(ResourceLocation.parse(output_entity));
                     return new TransformationRecipe(
                             inputEntityType,
-                            CommonUtils.safe(inputs),
+                            CommonUtils.safe(inputs.orElse(Ingredient.EMPTY)),
                             CommonUtils.safe(input_spawn_eggs.orElse(CommonUtils.safe(JustEnoughBreeding.getSpawnEggItem(inputEntityType)))),
-                            extra_inputs.orElse(Ingredient.EMPTY),
+                            CommonUtils.safe(extra_inputs.orElse(Ingredient.EMPTY)),
                             outputEntityType,
                             CommonUtils.safe(output_spawn_eggs.orElse(CommonUtils.safe(JustEnoughBreeding.getSpawnEggItem(outputEntityType)))),
                             mod,
@@ -59,6 +61,7 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                             input_entity_nbt.orElse(null),
                             JustEnoughBreeding.getKeyLoaderRegistries(outputEntityType).getNamespace(),
                             output_entity_nbt.orElse(null),
+                            CommonUtils.safe(outputs.orElse(Ingredient.EMPTY)),
                             tamed.orElse(null)
                     );
                 })
@@ -81,6 +84,7 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                 CompoundTag inputEntityNbt = ByteBufCodecs.optional(ByteBufCodecs.COMPOUND_TAG).decode(buf).orElse(null);
                 String outputEntity = ByteBufCodecs.STRING_UTF8.decode(buf);
                 CompoundTag outputEntityNbt = ByteBufCodecs.optional(ByteBufCodecs.COMPOUND_TAG).decode(buf).orElse(null);
+                Ingredient outputs = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
                 Boolean needsToBeTamed = ByteBufCodecs.optional(ByteBufCodecs.BOOL).decode(buf).orElse(null);
                 return new TransformationRecipe(
                         JustEnoughBreeding.getEntityFromLoaderRegistries(inputEntityRL),
@@ -94,6 +98,7 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                         inputEntityNbt,
                         outputEntity,
                         outputEntityNbt,
+                        CommonUtils.safe(outputs),
                         needsToBeTamed
                 );
             }
@@ -111,6 +116,7 @@ public class TransformationSerializer implements RecipeSerializer<Transformation
                 ByteBufCodecs.optional(ByteBufCodecs.COMPOUND_TAG).encode(buf, Optional.ofNullable(recipe.inputEntityNbt()));
                 ByteBufCodecs.STRING_UTF8.encode(buf, recipe.outputEntity());
                 ByteBufCodecs.optional(ByteBufCodecs.COMPOUND_TAG).encode(buf, Optional.ofNullable(recipe.outputEntityNbt()));
+                Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.outputs());
                 ByteBufCodecs.optional(ByteBufCodecs.BOOL).encode(buf, Optional.ofNullable(recipe.tamed()));
             }
         };

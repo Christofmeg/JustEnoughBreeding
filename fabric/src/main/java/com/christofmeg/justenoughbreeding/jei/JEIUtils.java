@@ -2,6 +2,7 @@ package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.client.ClientUtils;
+import com.christofmeg.justenoughbreeding.config.MobOffset;
 import com.christofmeg.justenoughbreeding.config.MobOffsetManager;
 import com.christofmeg.justenoughbreeding.recipe.*;
 import com.christofmeg.justenoughbreeding.utils.CommonClientUtils;
@@ -27,9 +28,7 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.*;
 
 public class JEIUtils {
 
@@ -76,7 +75,7 @@ public class JEIUtils {
             transformationRecipes.sort(Comparator.comparing(r -> r.value().outputEntityType() == null ? "" : r.value().outputEntityType().toShortString()));
             for (RecipeHolder<TransformationRecipe> recipeHold : transformationRecipes) {
                 TransformationRecipe recipe = recipeHold.value();
-                if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.inputEntityType() != null && recipe.outputEntityType() != null && !recipe.inputs().isEmpty()) {
+                if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.outputEntityType() != null && !recipe.inputs().isEmpty()) {
                     registration.addRecipes(TransformationCategory.TYPE, Collections.singletonList(recipe));
                 }
             }
@@ -185,7 +184,8 @@ public class JEIUtils {
             }
             LivingEntity livingEntity = Utils.getLivingEntity(currentLivingEntity, input, recipe);
             if (livingEntity != null) {
-                Utils.renderEntityInInventoryFollowsMouse(graphics, (float) mouseX, livingEntity, CommonUtils.getRect(input, CATEGORY_WIDTH), entityType);
+                MobOffset mobOffset = MobOffsetManager.get(JustEnoughBreeding.getKeyLoaderRegistries(entityType));
+                CommonUtils.renderEntityInInventoryFollowsMouse(graphics, (float) mouseX, livingEntity, CommonUtils.getRect(input, CATEGORY_WIDTH), mobOffset);
             }
         }
     }

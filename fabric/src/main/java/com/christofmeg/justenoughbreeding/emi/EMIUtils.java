@@ -3,6 +3,7 @@ package com.christofmeg.justenoughbreeding.emi;
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.client.ClientUtils;
+import com.christofmeg.justenoughbreeding.config.MobOffset;
 import com.christofmeg.justenoughbreeding.config.MobOffsetManager;
 import com.christofmeg.justenoughbreeding.recipe.*;
 import com.christofmeg.justenoughbreeding.utils.CommonClientUtils;
@@ -97,7 +98,7 @@ public class EMIUtils {
         transformationRecipes.sort(Comparator.comparing(r -> r.value().outputEntityType() == null ? "" : r.value().outputEntityType().toShortString()));
         for (RecipeHolder<TransformationRecipe> recipeHold : transformationRecipes) {
             TransformationRecipe recipe = recipeHold.value();
-            if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.inputEntityType() != null && recipe.outputEntityType() != null && !recipe.inputs().isEmpty()) {
+            if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.outputEntityType() != null && !recipe.inputs().isEmpty()) {
                 registration.addRecipe(
                         TransformationCategoryEMI.builder()
                                 .id(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "/" + recipeHold.id().getPath()))
@@ -221,7 +222,8 @@ public class EMIUtils {
                     }
                     LivingEntity livingEntity = Utils.getLivingEntity(currentLivingEntity, input, recipe);
                     if (livingEntity != null) {
-                        Utils.renderEntityInInventoryFollowsMouse(graphics, (float) mouseX, livingEntity, CommonUtils.getRect(input, CATEGORY_WIDTH, 0, 1), entityType);
+                        MobOffset mobOffset = MobOffsetManager.get(JustEnoughBreeding.getKeyLoaderRegistries(entityType));
+                        CommonUtils.renderEntityInInventoryFollowsMouse(graphics, (float) mouseX, livingEntity, CommonUtils.getRect(input, CATEGORY_WIDTH, 0, 1), mobOffset);
                     }
                 }
             });

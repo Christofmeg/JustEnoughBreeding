@@ -2,6 +2,7 @@ package com.christofmeg.justenoughbreeding.rei;
 
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.client.ClientUtils;
+import com.christofmeg.justenoughbreeding.config.MobOffset;
 import com.christofmeg.justenoughbreeding.config.MobOffsetManager;
 import com.christofmeg.justenoughbreeding.recipe.*;
 import com.christofmeg.justenoughbreeding.utils.CommonUtils;
@@ -75,7 +76,7 @@ public class REIUtils {
         transformationRecipes.sort(Comparator.comparing(r -> r.value().outputEntityType() == null ? "" : r.value().outputEntityType().toShortString()));
         for (RecipeHolder<TransformationRecipe> recipeHold : transformationRecipes) {
             TransformationRecipe recipe = recipeHold.value();
-            if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.inputEntityType() != null && recipe.outputEntityType() != null && !recipe.inputs().isEmpty()) {
+            if (JustEnoughBreeding.isModLoaded(recipe.mod()) && recipe.outputEntityType() != null && !recipe.inputs().isEmpty()) {
                 registration.add(new TransformationDisplay(recipe));
             }
         }
@@ -150,10 +151,11 @@ public class REIUtils {
             }
 
             widgets.add(Widgets.withTranslate(Widgets.createDrawableWidget((graphics, mouseX, mouseY, v) -> {
-                LivingEntity livingEntity = Utils.getLivingEntity(currentLivingEntity, input, recipe);
-                if (livingEntity != null) {
-                    Utils.renderEntityInInventoryFollowsMouse(graphics, (float) mouseX, livingEntity, CommonUtils.getRect(input, CATEGORY_WIDTH, 5, 0), entityType);
-                }
+                        LivingEntity livingEntity = Utils.getLivingEntity(currentLivingEntity, input, recipe);
+                        if (livingEntity != null) {
+                            MobOffset mobOffset = MobOffsetManager.get(JustEnoughBreeding.getKeyLoaderRegistries(entityType));
+                            CommonUtils.renderEntityInInventoryFollowsMouse(graphics, (float) mouseX, livingEntity, CommonUtils.getRect(input, CATEGORY_WIDTH, 5, 0), mobOffset);
+                        }
                     }
             ), bounds.x + 5, bounds.y + 5, 0));
         }

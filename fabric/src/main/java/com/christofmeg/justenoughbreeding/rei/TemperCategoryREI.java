@@ -1,5 +1,6 @@
 package com.christofmeg.justenoughbreeding.rei;
 
+import com.christofmeg.justenoughbreeding.config.ModConfigManager;
 import com.christofmeg.justenoughbreeding.recipe.TemperRecipe;
 import me.shedaniel.math.Point;
 import me.shedaniel.math.Rectangle;
@@ -9,12 +10,9 @@ import me.shedaniel.rei.api.common.category.CategoryIdentifier;
 import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class TemperCategoryREI extends AbstractRecipeCategoryREI<TemperDisplay> {
 
@@ -29,11 +27,9 @@ public class TemperCategoryREI extends AbstractRecipeCategoryREI<TemperDisplay> 
         List<Widget> widgets = new LinkedList<>();
         widgets.add(Widgets.createRecipeBase(bounds));
 
-        List<EntryStack<?>> entryStackList = new ArrayList<>();
-        for (ItemStack stack : display.recipe.spawnEggs().getItems()) {
-            entryStackList.add(EntryStacks.of(stack));
-        }
-        widgets.add(Widgets.createSlot(new Point(bounds.x + 154, bounds.y + 6)).entries(entryStackList));
+        Collection<EntryStack<?>> spawnEggs = new ArrayList<>();
+        Arrays.stream(display.recipe.spawnEggs().getItems()).forEach(stack -> spawnEggs.add(EntryStacks.of(stack)));
+        widgets.add(Widgets.createSlot(new Point(bounds.x + 154, bounds.y + 6)).entries(spawnEggs));
 
         boolean hasExtraInput = !display.getExtraInputEntries().isEmpty() &&
                 !display.getExtraInputEntries().getFirst().isEmpty() &&
@@ -50,7 +46,9 @@ public class TemperCategoryREI extends AbstractRecipeCategoryREI<TemperDisplay> 
         REIUtils.drawMobSlot(widgets, bounds,0, 10);
         REIUtils.drawMobNameAndEntity(widgets, bounds, recipe.entityType(), recipe, getDisplayWidth(display));
 
-        REIUtils.addButton(bounds, recipe.entityType(), widgets);
+        if (ModConfigManager.areConfigButtonsEnabled()) {
+            REIUtils.addButton(bounds, recipe.entityType(), widgets);
+        }
 
         return widgets;
     }

@@ -13,6 +13,8 @@ import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 
+import java.nio.file.Path;
+
 public class JustEnoughBreeding implements ModInitializer {
 
     public static final RecipeType<AllayDuplicationRecipe> ALLAY_DUPLICATION_PROVIDER_TYPE = Registry.register(BuiltInRegistries.RECIPE_TYPE, ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "allay_duplication"), Utils.simple(ResourceLocation.fromNamespaceAndPath(CommonConstants.MOD_ID, "allay_duplication")));
@@ -52,4 +54,7 @@ public class JustEnoughBreeding implements ModInitializer {
         return FabricLoader.getInstance().isModLoaded(modID);
     }
 
+    public static Path getConfigDir() {
+        return FabricLoader.getInstance().getConfigDir();
+    }
 }
