@@ -7,6 +7,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -20,10 +21,10 @@ public class EMIToggleButtonWidget extends ButtonWidget {
         this.component = component;
     }
 
-    @Override
-    public void render(GuiGraphics draw, int mouseX, int mouseY, float delta) {
+    @Override //render
+    public void m_88315_(@NotNull GuiGraphics draw, int mouseX, int mouseY, float delta) {
         if (!showChildButtons) return;
-        super.render(draw, mouseX, mouseY, delta);
+        super.m_88315_(draw, mouseX, mouseY, delta);
     }
     @Override
     public boolean mouseClicked(int mouseX, int mouseY, int button) {

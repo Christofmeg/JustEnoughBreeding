@@ -1,11 +1,10 @@
 import net.darkhax.curseforgegradle.TaskPublishCurseForge
 
 plugins {
-    id 'net.minecraftforge.gradle' version '6.+'
+    id 'net.minecraftforge.gradle' version '[7.0.3,8)'
     id 'idea'
     id 'net.darkhax.curseforgegradle' version '1.1.+'
     id 'com.modrinth.minotaur' version '2.+'
-    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
 
 base {
@@ -13,87 +12,85 @@ base {
 }
 
 minecraft {
- //   mappings channel: 'official', version: forge_minecraft_version
-    mappings channel: 'parchment', version: '2023.09.03-1.20.1'
+    mappings channel: 'official', version: minecraft_version
 
     runs {
-        client {
-            workingDirectory project.file('run')
-            ideaModule "${rootProject.name}.${project.name}.main"
-            taskName 'Client'
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+        configureEach {
+            workingDir = layout.projectDirectory.dir('run')
+        }
+
+        register('client') {
             mods {
                 modClientRun {
                     source sourceSets.main
-                    source project(":common").sourceSets.main
                 }
             }
         }
 
-        server {
-            workingDirectory project.file('run')
-            ideaModule "${rootProject.name}.${project.name}.main"
-            taskName 'Server'
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+        register('server') {
+            args '--nogui'
             mods {
                 modServerRun {
                     source sourceSets.main
-                    source project(":common").sourceSets.main
                 }
             }
         }
-
     }
 }
 
+repositories {
+    minecraft.mavenizer(it) // In Kotlin, it = this
+    maven fg.forgeMaven
+    maven fg.minecraftLibsMaven
+    mavenCentral()
+}
+
 dependencies {
-    minecraft "net.minecraftforge:forge:${forge_minecraft_version}-${forge_version}"
+    implementation minecraft.dependency("net.minecraftforge:forge:${forge_minecraft_version}-${forge_version}")
     compileOnly project(":common")
 
     // JEI
     if (project.hasProperty('jei_version')) {
-        compileOnly(fg.deobf("mezz.jei:jei-${forge_minecraft_version}-forge:${jei_version}"))
-        compileOnly fg.deobf("me.shedaniel:REIPluginCompatibilities-forge-annotations:${rei_plugin_comp_version}")
+        compileOnly("mezz.jei:jei-${forge_minecraft_version}-forge:${jei_version}")
+        compileOnly "me.shedaniel:REIPluginCompatibilities-forge-annotations:${rei_plugin_comp_version}"
         if (project.hasProperty('enable_jei') && project.enable_jei.toBoolean()) {
-            runtimeOnly(fg.deobf("mezz.jei:jei-${forge_minecraft_version}-forge:${jei_version}"))
+            runtimeOnly("mezz.jei:jei-${forge_minecraft_version}-forge:${jei_version}")
         }
     }
 
     // REI
     if (project.hasProperty('rei_version') && project.hasProperty('cloth_config_version') && project.hasProperty('architectury_version')) {
-        compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-api-forge:${rei_version}")
-        compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-default-plugin-forge:${rei_version}")
-        compileOnly fg.deobf("me.shedaniel.cloth:cloth-config-forge:${cloth_config_version}")
-        compileOnly fg.deobf("dev.architectury:architectury-forge:${architectury_version}")
+        compileOnly "me.shedaniel:RoughlyEnoughItems-api-forge:${rei_version}"
+        compileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-forge:${rei_version}"
+        compileOnly "me.shedaniel.cloth:cloth-config-forge:${cloth_config_version}"
+        compileOnly "dev.architectury:architectury-forge:${architectury_version}"
         if (project.hasProperty('enable_rei') && project.enable_rei.toBoolean()) {
-            runtimeOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-forge:${rei_version}")
-            runtimeOnly fg.deobf("me.shedaniel.cloth:cloth-config-forge:${cloth_config_version}")
-            runtimeOnly fg.deobf("dev.architectury:architectury-forge:${architectury_version}")
+            runtimeOnly "me.shedaniel:RoughlyEnoughItems-forge:${rei_version}"
+            runtimeOnly "me.shedaniel.cloth:cloth-config-forge:${cloth_config_version}"
+            runtimeOnly "dev.architectury:architectury-forge:${architectury_version}"
         }
     }
 
     // EMI
     if (project.hasProperty('emi_version')) {
-        compileOnly fg.deobf("curse.maven:emi-580555:${emi_version}")
+        compileOnly "curse.maven:emi-580555:${emi_version}"
         if (project.hasProperty('enable_emi') && project.enable_emi.toBoolean()) {
-            runtimeOnly fg.deobf("curse.maven:emi-580555:${emi_version}")
+            runtimeOnly "curse.maven:emi-580555:${emi_version}"
         }
     }
 
     // JADE
     if (project.hasProperty('jade_version')) {
-        runtimeOnly fg.deobf("curse.maven:jade-324717:${jade_version}")
+        runtimeOnly "curse.maven:jade-324717:${jade_version}"
     }
 
     // CATALOGUE
     if (project.hasProperty('catalogue_version')) {
-        runtimeOnly fg.deobf("curse.maven:catalogue-459701:${catalogue_version}")
+        runtimeOnly "curse.maven:catalogue-459701:${catalogue_version}"
     }
 
-//    runtimeOnly fg.deobf("maven.modrinth:tag-tooltips:a0H0FGkF")
-//    runtimeOnly fg.deobf("curse.maven:item-nbt-viewer-514135:4578522")
+//    runtimeOnly "maven.modrinth:tag-tooltips:a0H0FGkF")
+//    runtimeOnly "curse.maven:item-nbt-viewer-514135:4578522")
 
 }
 
@@ -131,7 +128,7 @@ jar.finalizedBy('reobfJar')
 tasks.register('publishCurseForge', TaskPublishCurseForge) {
     apiToken = file('../../API Tokens/justenoughbreeding.md')
     def projectId = "${cf_id}".toString()
-    def mainFile = upload(projectId, file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")) as Object
+    def mainFile = upload(projectId, layout.buildDirectory.file("libs/${base.archivesName.get()}-${version}.jar").get().asFile) as Object
     mainFile.changelogType = 'markdown'
     mainFile.changelog = file('changelog.md')
     mainFile.addGameVersion('Client', 'Server')
@@ -249,7 +246,7 @@ modrinth {
     versionName = "${mod_id}-forge-${forge_supported_versions}" + "-" + getVersion()
     versionType = "${release_type}"
     changelog = file('changelog.md').text
-    uploadFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")
+    uploadFile = layout.buildDirectory.file("libs/${base.archivesName.get()}-${version}.jar").get().asFile
     gameVersions = "${forge_release_versions}".split(",") as List<String>
     loaders = ["forge","neoforge"]
     dependencies {
