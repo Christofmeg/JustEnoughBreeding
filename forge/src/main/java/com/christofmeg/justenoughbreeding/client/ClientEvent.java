@@ -2,6 +2,7 @@ package com.christofmeg.justenoughbreeding.client;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.config.MobOffsetManager;
+import com.christofmeg.justenoughbreeding.config.ModConfigManager;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -13,6 +14,7 @@ public class ClientEvent {
     @SubscribeEvent
     public static void clientEvents(FMLClientSetupEvent event) {
         MobOffsetManager.init();
+        ModConfigManager.init();
     }
 
 }

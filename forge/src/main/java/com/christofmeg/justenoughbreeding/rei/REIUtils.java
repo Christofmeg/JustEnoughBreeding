@@ -22,6 +22,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -229,6 +230,26 @@ public class REIUtils {
                     }
                 });
                 return super.mouseClicked(pMouseX, pMouseY, pButton);
+            }
+
+            @Override
+            public boolean isDragging() {
+                return false;
+            }
+
+            @Override
+            public void setDragging(boolean b) {
+
+            }
+
+            @Override
+            public @Nullable GuiEventListener getFocused() {
+                return null;
+            }
+
+            @Override
+            public void setFocused(@Nullable GuiEventListener guiEventListener) {
+
             }
         });
 

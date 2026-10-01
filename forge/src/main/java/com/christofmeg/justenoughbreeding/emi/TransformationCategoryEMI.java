@@ -1,6 +1,7 @@
 package com.christofmeg.justenoughbreeding.emi;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
+import com.christofmeg.justenoughbreeding.config.ModConfigManager;
 import com.christofmeg.justenoughbreeding.recipe.TransformationRecipe;
 import dev.emi.emi.api.recipe.EmiRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
@@ -69,8 +70,10 @@ public class TransformationCategoryEMI extends AbstractRecipeCategoryEMI {
         EMIUtils.drawMobNameAndEntity(recipe.inputEntityType, widgets, recipe, 99, 0, true, getDisplayWidth());
         EMIUtils.drawMobSlot(105, 10, widgets);
         EMIUtils.drawMobNameAndEntity(recipe.outputEntityType, widgets, recipe, 61, 105, false, getDisplayWidth());
-        EMIUtils.addButton(widgets, recipe.inputEntityType);
-        EMIUtils.addButton(widgets, recipe.outputEntityType, 105);
+        if (ModConfigManager.areConfigButtonsEnabled()) {
+            EMIUtils.addButton(widgets, recipe.inputEntityType);
+            EMIUtils.addButton(widgets, recipe.outputEntityType, 105);
+        }
     }
 
     public static class Builder {

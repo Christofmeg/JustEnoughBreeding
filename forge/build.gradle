@@ -1,10 +1,11 @@
 import net.darkhax.curseforgegradle.TaskPublishCurseForge
 
 plugins {
-    id 'net.minecraftforge.gradle' version '[7.0.3,8)'
+    id 'net.minecraftforge.gradle' version '6.+'
     id 'idea'
     id 'net.darkhax.curseforgegradle' version '1.1.+'
     id 'com.modrinth.minotaur' version '2.+'
+    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
 
 base {
@@ -12,41 +13,43 @@ base {
 }
 
 minecraft {
-    mappings channel: 'official', version: minecraft_version
+    //   mappings channel: 'official', version: forge_minecraft_version
+    mappings channel: 'parchment', version: '2023.09.03-1.20.1'
 
     runs {
-        configureEach {
-            workingDir = layout.projectDirectory.dir('run')
-        }
-
-        register('client') {
+        client {
+            workingDirectory project.file('run')
+            ideaModule "${rootProject.name}.${project.name}.main"
+            taskName 'Client'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
             mods {
                 modClientRun {
                     source sourceSets.main
+                    source project(":common").sourceSets.main
                 }
             }
         }
 
-        register('server') {
-            args '--nogui'
+        server {
+            workingDirectory project.file('run')
+            ideaModule "${rootProject.name}.${project.name}.main"
+            taskName 'Server'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
             mods {
                 modServerRun {
                     source sourceSets.main
+                    source project(":common").sourceSets.main
                 }
             }
         }
+
     }
 }
 
-repositories {
-    minecraft.mavenizer(it) // In Kotlin, it = this
-    maven fg.forgeMaven
-    maven fg.minecraftLibsMaven
-    mavenCentral()
-}
-
 dependencies {
-    implementation minecraft.dependency("net.minecraftforge:forge:${forge_minecraft_version}-${forge_version}")
+    minecraft "net.minecraftforge:forge:${forge_minecraft_version}-${forge_version}"
     compileOnly project(":common")
 
     // JEI
