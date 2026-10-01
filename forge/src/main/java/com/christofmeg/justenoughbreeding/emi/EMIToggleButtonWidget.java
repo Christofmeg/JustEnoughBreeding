@@ -21,10 +21,10 @@ public class EMIToggleButtonWidget extends ButtonWidget {
         this.component = component;
     }
 
-    @Override //render
-    public void m_88315_(@NotNull GuiGraphics draw, int mouseX, int mouseY, float delta) {
+    @Override
+    public void render(@NotNull GuiGraphics draw, int mouseX, int mouseY, float delta) {
         if (!showChildButtons) return;
-        super.m_88315_(draw, mouseX, mouseY, delta);
+        super.render(draw, mouseX, mouseY, delta);
     }
     @Override
     public boolean mouseClicked(int mouseX, int mouseY, int button) {

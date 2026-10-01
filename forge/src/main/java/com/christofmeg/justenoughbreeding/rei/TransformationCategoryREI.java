@@ -1,6 +1,7 @@
 package com.christofmeg.justenoughbreeding.rei;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
+import com.christofmeg.justenoughbreeding.config.ModConfigManager;
 import com.christofmeg.justenoughbreeding.recipe.TransformationRecipe;
 import me.shedaniel.math.Point;
 import me.shedaniel.math.Rectangle;
@@ -61,8 +62,10 @@ public class TransformationCategoryREI extends AbstractRecipeCategoryREI<Transfo
         REIUtils.drawMobSlot(widgets, bounds,105, 10);
         REIUtils.drawMobNameAndEntity(widgets, bounds, recipe.outputEntityType, recipe, 61, 105, false, getDisplayWidth(display));
 
-        REIUtils.addButton(bounds, recipe.inputEntityType, widgets);
-        REIUtils.addButton(bounds, recipe.outputEntityType, widgets, 105);
+        if (ModConfigManager.areConfigButtonsEnabled()) {
+            REIUtils.addButton(bounds, recipe.inputEntityType, widgets);
+            REIUtils.addButton(bounds, recipe.outputEntityType, widgets, 105);
+        }
 
         return widgets;
     }

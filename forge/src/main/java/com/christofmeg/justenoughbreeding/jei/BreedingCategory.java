@@ -1,5 +1,7 @@
 package com.christofmeg.justenoughbreeding.jei;
 
+import com.christofmeg.justenoughbreeding.config.ModConfigManager;
+import com.christofmeg.justenoughbreeding.emi.EMIUtils;
 import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -60,7 +62,9 @@ public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> {
         if (hasOutput) {
             builder.addRecipeArrow().setPosition(70, 37, 78, 35, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
         }
-        JEIUtils.addButton(builder, recipe.entityType);
+        if (ModConfigManager.areConfigButtonsEnabled()) {
+            JEIUtils.addButton(builder, recipe.entityType);
+        }
     }
 
     @Override

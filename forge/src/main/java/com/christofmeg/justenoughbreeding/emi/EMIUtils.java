@@ -196,8 +196,11 @@ public class EMIUtils {
             }
 
             widgets.add(new Widget() {
+                 @Override
+                public Bounds getBounds() { return new Bounds(100, 0, 60, 80); }
+
                 @Override
-                public void m_88315_(GuiGraphics graphics, int mouseX, int mouseY, float delta) {
+                public void render(@NotNull GuiGraphics graphics, int mouseX, int mouseY, float delta) {
                     LivingEntity currentLivingEntity;
                     if (recipe instanceof TransformationRecipe transformationRecipe) {
                         if (input) {
@@ -212,14 +215,6 @@ public class EMIUtils {
                     if (livingEntity != null) {
                         Utils.renderEntityInInventoryFollowsMouse(graphics, 0, 0, (float) mouseX, livingEntity, CommonUtils.getRect(input, CATEGORY_WIDTH, 0, 1), entityType);
                     }
-                }
-
-                @Override
-                public Bounds getBounds() { return new Bounds(100, 0, 60, 80); }
-
-                @Override
-                public void render(@NotNull GuiGraphics graphics, int mouseX, int mouseY, float delta) {
-
                 }
             });
         }
