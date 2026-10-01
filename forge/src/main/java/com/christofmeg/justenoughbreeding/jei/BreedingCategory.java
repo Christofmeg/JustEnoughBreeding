@@ -1,7 +1,6 @@
 package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.config.ModConfigManager;
-import com.christofmeg.justenoughbreeding.emi.EMIUtils;
 import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
