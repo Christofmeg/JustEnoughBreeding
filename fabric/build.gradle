@@ -109,6 +109,10 @@ processResources {
     inputs.properties(expandProps)
 }
 
+tasks.withType(Test).configureEach {
+    failOnNoDiscoveredTests = false
+}
+
 tasks.register('publishCurseForge', TaskPublishCurseForge) {
     apiToken = file('../../API Tokens/justenoughbreeding.md')
     def projectId = "${cf_id}".toString()
