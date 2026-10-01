@@ -1,5 +1,6 @@
 package com.christofmeg.justenoughbreeding.jei;
 
+import com.christofmeg.justenoughbreeding.config.ModConfigManager;
 import com.christofmeg.justenoughbreeding.recipe.TamingRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -45,7 +46,9 @@ public class TamingCategory extends AbstractRecipeCategory<TamingRecipe> {
 
     @Override
     public void createRecipeExtras(@NotNull IRecipeExtrasBuilder builder, @NotNull TamingRecipe recipe, @NotNull IFocusGroup focuses) {
-        JEIUtils.addButton(builder, recipe.entityType);
+        if (ModConfigManager.areConfigButtonsEnabled()) {
+            JEIUtils.addButton(builder, recipe.entityType);
+        }
     }
 
     @Override

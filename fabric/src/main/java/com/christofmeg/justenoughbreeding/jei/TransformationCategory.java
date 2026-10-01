@@ -1,6 +1,7 @@
 package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
+import com.christofmeg.justenoughbreeding.config.ModConfigManager;
 import com.christofmeg.justenoughbreeding.recipe.TransformationRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -19,6 +20,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
+@SuppressWarnings("removal")
 public class TransformationCategory extends AbstractRecipeCategory<TransformationRecipe> {
 
     public static final RecipeType<TransformationRecipe> TYPE = new RecipeType<>(new ResourceLocation(CommonConstants.MOD_ID, "transformation"), TransformationRecipe.class);
@@ -46,8 +48,10 @@ public class TransformationCategory extends AbstractRecipeCategory<Transformatio
     @Override
     public void createRecipeExtras(@NotNull IRecipeExtrasBuilder builder, @NotNull TransformationRecipe recipe, @NotNull IFocusGroup focuses) {
         builder.addRecipeArrow().setPosition(72, 48);
-        JEIUtils.addButton(builder, recipe.inputEntityType);
-        JEIUtils.addButton(builder, recipe.outputEntityType, 105);
+        if (ModConfigManager.areConfigButtonsEnabled()) {
+            JEIUtils.addButton(builder, recipe.inputEntityType);
+            JEIUtils.addButton(builder, recipe.outputEntityType, 105);
+        }
     }
 
     @Override

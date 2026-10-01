@@ -1,6 +1,7 @@
 package com.christofmeg.justenoughbreeding.emi;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
+import com.christofmeg.justenoughbreeding.config.ModConfigManager;
 import com.christofmeg.justenoughbreeding.recipe.TamingRecipe;
 import dev.emi.emi.api.recipe.EmiRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
@@ -19,8 +20,8 @@ public class TamingCategoryEMI extends AbstractRecipeCategoryEMI {
 
     private final TamingRecipe recipe;
     public static EmiRecipeCategory TYPE = new EmiRecipeCategory(
-        new ResourceLocation(CommonConstants.MOD_ID + ":" + "taming"),
-        EmiStack.of(Items.BONE), EMIPlugin.simplifiedRenderer(), EmiRecipeSorting.none());
+            new ResourceLocation(CommonConstants.MOD_ID + ":" + "taming"),
+            EmiStack.of(Items.BONE), EMIPlugin.simplifiedRenderer(), EmiRecipeSorting.none());
 
     protected TamingCategoryEMI(Builder builder, TamingRecipe tamingRecipe) {
         super(TYPE, 168, 93, builder.id);
@@ -67,7 +68,9 @@ public class TamingCategoryEMI extends AbstractRecipeCategoryEMI {
         }
         EMIUtils.drawMobSlot(0, 10, widgets);
         EMIUtils.drawMobNameAndEntity(recipe.entityType, widgets, recipe, getDisplayWidth());
-        EMIUtils.addButton(widgets, recipe.entityType);
+        if (ModConfigManager.areConfigButtonsEnabled()) {
+            EMIUtils.addButton(widgets, recipe.entityType);
+        }
     }
 
     public static class Builder {

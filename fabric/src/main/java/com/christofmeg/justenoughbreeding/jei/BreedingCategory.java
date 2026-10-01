@@ -1,5 +1,6 @@
 package com.christofmeg.justenoughbreeding.jei;
 
+import com.christofmeg.justenoughbreeding.config.ModConfigManager;
 import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -21,6 +22,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
+@SuppressWarnings("removal")
 public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> {
 
     public static final RecipeType<BreedingRecipe> TYPE = new RecipeType<>(new ResourceLocation("justenoughbreeding", "breeding"), BreedingRecipe.class);
@@ -59,13 +61,15 @@ public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> {
         if (hasOutput) {
             builder.addRecipeArrow().setPosition(70, 37, 78, 35, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
         }
-        JEIUtils.addButton(builder, recipe.entityType);
+        if (ModConfigManager.areConfigButtonsEnabled()) {
+            JEIUtils.addButton(builder, recipe.entityType);
+        }
     }
 
     @Override
-    public void draw(@NotNull BreedingRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics stack, double mouseX, double mouseY) {
-        JEIUtils.drawMobSlot(0, 10, bigSlot, stack);
-        JEIUtils.drawMobNameAndEntity(recipe.entityType, stack, mouseX, recipe, CATEGORY_WIDTH);
+    public void draw(@NotNull BreedingRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics graphics, double mouseX, double mouseY) {
+        JEIUtils.drawMobSlot(0, 10, bigSlot, graphics);
+        JEIUtils.drawMobNameAndEntity(recipe.entityType, graphics, mouseX, recipe, CATEGORY_WIDTH);
     }
 
 }

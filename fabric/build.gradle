@@ -26,6 +26,7 @@ dependencies {
         modCompileOnly("mezz.jei:jei-${fabric_minecraft_version}-fabric:${jei_version}")
         if (project.hasProperty('enable_jei') && project.enable_jei.toBoolean()) {
             modRuntimeOnly("mezz.jei:jei-${fabric_minecraft_version}-fabric:${jei_version}")
+            modRuntimeOnly "curse.maven:mezzconfig-1689768:9019054"
         }
     }
 

@@ -14,6 +14,7 @@ import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,4 +89,7 @@ public class JustEnoughBreeding implements ModInitializer {
         return FabricLoader.getInstance().isModLoaded(modID);
     }
 
+    public static Path getConfigDir() {
+        return FabricLoader.getInstance().getConfigDir();
+    }
 }

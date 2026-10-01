@@ -1,6 +1,7 @@
 package com.christofmeg.justenoughbreeding.emi;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
+import com.christofmeg.justenoughbreeding.config.ModConfigManager;
 import com.christofmeg.justenoughbreeding.recipe.TemperRecipe;
 import dev.emi.emi.api.recipe.EmiRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
@@ -19,8 +20,8 @@ public class TemperCategoryEMI extends AbstractRecipeCategoryEMI {
 
     private final TemperRecipe recipe;
     public static EmiRecipeCategory TYPE = new EmiRecipeCategory(
-        new ResourceLocation(CommonConstants.MOD_ID + ":" + "temper"),
-        EmiStack.of(Items.GOLDEN_APPLE), EMIPlugin.simplifiedRenderer(), EmiRecipeSorting.none());
+            new ResourceLocation(CommonConstants.MOD_ID + ":" + "temper"),
+            EmiStack.of(Items.GOLDEN_APPLE), EMIPlugin.simplifiedRenderer(), EmiRecipeSorting.none());
 
     protected TemperCategoryEMI(Builder builder, TemperRecipe temperRecipe) {
         super(TYPE, 168, 93, builder.id);
@@ -67,7 +68,9 @@ public class TemperCategoryEMI extends AbstractRecipeCategoryEMI {
         }
         EMIUtils.drawMobSlot(0, 10, widgets);
         EMIUtils.drawMobNameAndEntity(recipe.entityType, widgets, recipe, getDisplayWidth());
-        EMIUtils.addButton(widgets, recipe.entityType);
+        if (ModConfigManager.areConfigButtonsEnabled()) {
+            EMIUtils.addButton(widgets, recipe.entityType);
+        }
     }
 
     public static class Builder {

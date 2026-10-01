@@ -1,6 +1,7 @@
 package com.christofmeg.justenoughbreeding.emi;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
+import com.christofmeg.justenoughbreeding.config.ModConfigManager;
 import com.christofmeg.justenoughbreeding.recipe.AllayDuplicationRecipe;
 import dev.emi.emi.api.recipe.EmiRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
@@ -62,7 +63,9 @@ public class AllayDuplicationCategoryEMI extends AbstractRecipeCategoryEMI {
         widgets.addSlot(EmiIngredient.of(Ingredient.of(Items.JUKEBOX)), 117, 52);
         EMIUtils.drawMobSlot(0, 10, widgets);
         EMIUtils.drawMobNameAndEntity(recipe.entityType, widgets, recipe, getDisplayWidth());
-        EMIUtils.addButton(widgets, recipe.entityType);
+        if (ModConfigManager.areConfigButtonsEnabled()) {
+            EMIUtils.addButton(widgets, recipe.entityType);
+        }
     }
 
     public static class Builder {
