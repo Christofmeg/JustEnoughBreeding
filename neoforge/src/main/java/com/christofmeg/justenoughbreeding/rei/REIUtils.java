@@ -155,8 +155,8 @@ public class REIUtils {
         }
     }
 
-    public static List<Widget> addButton(Rectangle bounds, EntityType<?> entityType, List<Widget> widgets) {
-        return addButton(bounds, entityType, widgets, 0);
+    public static void addButton(Rectangle bounds, EntityType<?> entityType, List<Widget> widgets) {
+        addButton(bounds, entityType, widgets, 0);
     }
 
     public static List<Widget> addButton(Rectangle bounds, EntityType<?> entityType, List<Widget> widgets, int xOffset) {

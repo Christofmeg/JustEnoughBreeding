@@ -15,8 +15,8 @@ import java.util.List;
 
 public class TamingDisplay extends BasicDisplay {
 
-    protected List<EntryIngredient> extraInputs;
-    public TamingRecipe recipe;
+    protected final List<EntryIngredient> extraInputs;
+    public final TamingRecipe recipe;
 
     public TamingDisplay(TamingRecipe recipe) {
         super(List.of(EntryIngredients.ofIngredient(recipe.inputs()), EntryIngredients.ofIngredient(recipe.spawnEggs())),

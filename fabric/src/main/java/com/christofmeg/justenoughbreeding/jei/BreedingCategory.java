@@ -59,7 +59,7 @@ public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> {
     public void createRecipeExtras(@NotNull IRecipeExtrasBuilder builder, @NotNull BreedingRecipe recipe, @NotNull IFocusGroup focuses) {
         boolean hasOutput = recipe.outputs()!= null && !recipe.outputs().isEmpty();
         if (hasOutput) {
-            builder.addRecipeArrow().setPosition(70, 37, 78, 35, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
+            builder.addRecipeArrowWidget().setPosition(70, 37, 78, 35, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
         }
         if (ModConfigManager.areConfigButtonsEnabled()) {
             JEIUtils.addButton(builder, recipe.entityType());

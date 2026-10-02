@@ -15,8 +15,8 @@ import java.util.List;
 
 public class BreedingDisplay extends BasicDisplay {
 
-    protected List<EntryIngredient> extraInputs;
-    public BreedingRecipe recipe;
+    protected final List<EntryIngredient> extraInputs;
+    public final BreedingRecipe recipe;
 
     public BreedingDisplay(BreedingRecipe recipe) {
         super(List.of(EntryIngredients.ofIngredient(recipe.inputs()), EntryIngredients.ofIngredient(recipe.spawnEggs())),

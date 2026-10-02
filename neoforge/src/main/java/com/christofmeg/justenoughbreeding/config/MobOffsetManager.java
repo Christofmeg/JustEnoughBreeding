@@ -1,5 +1,6 @@
 package com.christofmeg.justenoughbreeding.config;
 
+import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -74,7 +75,7 @@ public class MobOffsetManager {
                 GSON.toJson(toSave, writer);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            CommonConstants.LOGGER.info(e);
         }
     }
 
@@ -95,7 +96,7 @@ public class MobOffsetManager {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            CommonConstants.LOGGER.info(e);
         }
     }
 
@@ -116,7 +117,7 @@ public class MobOffsetManager {
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            CommonConstants.LOGGER.info(e);
         }
     }
 

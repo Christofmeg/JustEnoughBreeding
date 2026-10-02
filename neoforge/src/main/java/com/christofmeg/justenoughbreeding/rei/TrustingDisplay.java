@@ -15,8 +15,8 @@ import java.util.List;
 
 public class TrustingDisplay extends BasicDisplay {
 
-    protected List<EntryIngredient> extraInputs;
-    public TrustingRecipe recipe;
+    protected final List<EntryIngredient> extraInputs;
+    public final TrustingRecipe recipe;
 
     public TrustingDisplay(TrustingRecipe recipe) {
         super(List.of(EntryIngredients.ofIngredient(recipe.inputs()), EntryIngredients.ofIngredient(recipe.spawnEggs())),

@@ -15,8 +15,8 @@ import java.util.List;
 
 public class TransformationDisplay extends BasicDisplay {
 
-    protected List<EntryIngredient> extraInputs;
-    public TransformationRecipe recipe;
+    protected final List<EntryIngredient> extraInputs;
+    public final TransformationRecipe recipe;
 
     public TransformationDisplay(TransformationRecipe recipe) {
         super(List.of(EntryIngredients.ofIngredient(recipe.inputs()), EntryIngredients.ofIngredient(recipe.inputSpawnEggs())),

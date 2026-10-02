@@ -15,8 +15,8 @@ import java.util.List;
 
 public class TemperDisplay extends BasicDisplay {
 
-    protected List<EntryIngredient> extraInputs;
-    public TemperRecipe recipe;
+    protected final List<EntryIngredient> extraInputs;
+    public final TemperRecipe recipe;
 
     public TemperDisplay(TemperRecipe recipe) {
         super(List.of(EntryIngredients.ofIngredient(recipe.inputs()), EntryIngredients.ofIngredient(recipe.spawnEggs())),

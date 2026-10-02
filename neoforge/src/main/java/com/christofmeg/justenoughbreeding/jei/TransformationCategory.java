@@ -35,7 +35,11 @@ public class TransformationCategory extends AbstractRecipeCategory<Transformatio
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, TransformationRecipe recipe, @NotNull IFocusGroup focuses) {
         IRecipeSlotBuilder inputSpawnEggs = builder.addInputSlot(65, 74).setStandardSlotBackground().add(recipe.inputSpawnEggs());
-        builder.addOutputSlot(85, 74).setStandardSlotBackground().add(recipe.outputSpawnEggs());
+        if (recipe.outputs() != null && !recipe.outputs().isEmpty()) {
+            builder.addOutputSlot(85, 74).setStandardSlotBackground().add(recipe.outputs()).add(recipe.outputSpawnEggs());
+        } else {
+            builder.addOutputSlot(85, 74).setStandardSlotBackground().add(recipe.outputSpawnEggs());
+        }
         IRecipeSlotBuilder inputStack = builder.addInputSlot(75, 22).setStandardSlotBackground().add(recipe.inputs());
         boolean hasExtraInput = recipe.extraInputs()!= null && !recipe.extraInputs().isEmpty();
         if (recipe.inputEntityType() != null) {
@@ -58,12 +62,12 @@ public class TransformationCategory extends AbstractRecipeCategory<Transformatio
     @Override
     public void createRecipeExtras(@NotNull IRecipeExtrasBuilder builder, @NotNull TransformationRecipe recipe, @NotNull IFocusGroup focuses) {
         if (recipe.inputEntityType() != null) {
-            builder.addRecipeArrow().setPosition(72, 48);
+            builder.addRecipeArrowWidget().setPosition(72, 48);
             if (ModConfigManager.areConfigButtonsEnabled()) {
                 JEIUtils.addButton(builder, JustEnoughBreeding.getEntityFromLoaderRegistries(Identifier.tryParse(recipe.inputEntity())));
             }
         } else {
-            builder.addRecipeArrow().setPosition(72, 43);
+            builder.addRecipeArrowWidget().setPosition(72, 43);
         }
         if (ModConfigManager.areConfigButtonsEnabled()) {
             JEIUtils.addButton(builder, recipe.outputEntityType(), 105);

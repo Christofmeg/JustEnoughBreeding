@@ -1,5 +1,6 @@
 package com.christofmeg.justenoughbreeding.config;
 
+import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -48,7 +49,7 @@ public class ModConfigManager {
                     : new ModConfig();
 
         } catch (IOException e) {
-            e.printStackTrace();
+            CommonConstants.LOGGER.info(e);
             config = new ModConfig();
         }
     }
@@ -66,7 +67,7 @@ public class ModConfigManager {
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            CommonConstants.LOGGER.info(e);
         }
     }
 

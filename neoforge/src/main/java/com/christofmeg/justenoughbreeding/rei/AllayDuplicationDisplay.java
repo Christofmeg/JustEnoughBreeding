@@ -14,7 +14,7 @@ import java.util.List;
 
 public class AllayDuplicationDisplay extends BasicDisplay {
 
-    public AllayDuplicationRecipe recipe;
+    public final AllayDuplicationRecipe recipe;
 
     public AllayDuplicationDisplay(AllayDuplicationRecipe recipe) {
         super(List.of(EntryIngredients.ofIngredient(recipe.inputs()), EntryIngredients.ofIngredient(recipe.spawnEggs()), EntryIngredients.ofItemTag(ItemTags.CREEPER_DROP_MUSIC_DISCS), EntryIngredients.of(Items.JUKEBOX)),
