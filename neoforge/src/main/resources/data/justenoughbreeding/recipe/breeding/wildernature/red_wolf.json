@@ -15,7 +15,7 @@
   ],
   "extra_inputs": [
     {
-      "meat": "true"
+      "tag": "minecraft:meat"
     }
   ]
 }

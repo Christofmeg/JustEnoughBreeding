@@ -10,7 +10,7 @@
   "input_entity": "quark:shiba",
   "inputs": [
     {
-      "meat": "true"
+      "tag": "minecraft:meat"
     }
   ],
   "tamed": true
