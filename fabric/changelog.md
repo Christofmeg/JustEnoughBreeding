@@ -1,3 +1,2 @@
-3.4.0:
-- Change from "meat": true to "tag": "minecraft:meat" in recipes
-- Code cleanup
+3.4.1:
+- Update ru_ru.json by [#73](https://github.com/Christofmeg/JustEnoughBreeding/pull/73) by [mpustovoi](https://github.com/mpustovoi)
