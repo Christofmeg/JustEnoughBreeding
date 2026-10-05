@@ -13,12 +13,12 @@
   "translation.justenoughbreeding.temper": "Усмирение",
   "translation.justenoughbreeding.trusting": "Завоевание доверия",
   "translation.justenoughbreeding.transformation": "Превращение",
-  "option.justenoughbreeding.hide_options": "Hide options",
-  "option.justenoughbreeding.show_options": "Show options",
-  "option.justenoughbreeding.move_left": "Move left",
-  "option.justenoughbreeding.move_right": "Move right",
-  "option.justenoughbreeding.move_up": "Move up",
-  "option.justenoughbreeding.move_down": "Move down",
-  "option.justenoughbreeding.increase_scale": "Increase scale",
-  "option.justenoughbreeding.decrease_scale": "Decrease scale"
+  "option.justenoughbreeding.hide_options": "Скрыть настройки",
+  "option.justenoughbreeding.show_options": "Показать настройки",
+  "option.justenoughbreeding.move_left": "Переместить влево",
+  "option.justenoughbreeding.move_right": "Переместить вправо",
+  "option.justenoughbreeding.move_up": "Переместить вверх",
+  "option.justenoughbreeding.move_down": "Переместить вниз",
+  "option.justenoughbreeding.increase_scale": "Увеличить масштаб",
+  "option.justenoughbreeding.decrease_scale": "Уменьшить масштаб"
 }

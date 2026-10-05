@@ -1,2 +1,2 @@
-3.1.1:
-- Fix buttons not hiding in jei/rei integration
+3.1.2:
+- Update ru_ru.json by [#73](https://github.com/Christofmeg/JustEnoughBreeding/pull/73) by [mpustovoi](https://github.com/mpustovoi)
