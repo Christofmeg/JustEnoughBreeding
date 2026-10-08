@@ -2,7 +2,7 @@ package com.christofmeg.justenoughbreeding.jei;
 
 import mezz.jei.api.gui.builder.ITooltipBuilder;
 import mezz.jei.api.gui.widgets.IRecipeWidget;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.navigation.ScreenPosition;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
@@ -33,7 +33,7 @@ public class JEIToggleButtonWidget implements IRecipeWidget {
     }
 
     @Override
-    public void drawWidget(@NotNull GuiGraphics graphics, double mouseX, double mouseY) {
+    public void drawWidget(@NotNull GuiGraphicsExtractor graphics, double mouseX, double mouseY) {
         boolean hovered = mouseX >= 0 && mouseX < w && mouseY >= 0 && mouseY < h;
 
         int color;

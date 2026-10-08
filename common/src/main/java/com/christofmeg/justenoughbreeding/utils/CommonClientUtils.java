@@ -3,7 +3,7 @@ package com.christofmeg.justenoughbreeding.utils;
 import com.christofmeg.justenoughbreeding.config.MobOffset;
 import com.mojang.blaze3d.platform.NativeImage;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.resources.Resource;
@@ -43,11 +43,11 @@ public class CommonClientUtils {
         return -7631989; // fallback
     }
 
-    public static void fillSolidColor(GuiGraphics guiGraphics, int x, int y, int width, int height, int color) {
+    public static void fillSolidColor(GuiGraphicsExtractor guiGraphics, int x, int y, int width, int height, int color) {
         guiGraphics.fill(x, y, x + width, y + height, color);
     }
 
-    public static void renderEntity(Entity entity, Rect bounds, GuiGraphics guiGraphics, int mouseX, MobOffset offset) {
+    public static void renderEntity(Entity entity, Rect bounds, GuiGraphicsExtractor guiGraphics, int mouseX, MobOffset offset) {
         if (entity instanceof LivingEntity livingEntity) {
             int left = bounds.x() - 47;
             int top = bounds.y() + 1;
@@ -77,7 +77,7 @@ public class CommonClientUtils {
         }
     }
 
-    public static void renderEntityInInventoryFollowsMouse(GuiGraphics guiGraphics, int left, int top, int right, int bottom, float size, float mouseX, LivingEntity entity) {
+    public static void renderEntityInInventoryFollowsMouse(GuiGraphicsExtractor guiGraphics, int left, int top, int right, int bottom, float size, float mouseX, LivingEntity entity) {
         int x = (int) guiGraphics.pose().m20();
         int y = (int) guiGraphics.pose().m21();
         int renderLeft   = left + x;
@@ -92,7 +92,7 @@ public class CommonClientUtils {
         float mouseDelta = mouseX - screenCenterX;
         float renderCenterX = (renderLeft + renderRight) / 2.0F;
         float adjustedMouseX = renderCenterX + mouseDelta;
-        InventoryScreen.renderEntityInInventoryFollowsMouse(guiGraphics, renderLeft, renderTop, renderRight, renderBottom, (int) renderScale, yOffset, adjustedMouseX, centerY, entity);
+        InventoryScreen.extractEntityInInventoryFollowsMouse(guiGraphics, renderLeft, renderTop, renderRight, renderBottom, (int) renderScale, yOffset, adjustedMouseX, centerY, entity);
     }
 
 }

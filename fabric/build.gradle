@@ -2,87 +2,43 @@ import net.darkhax.curseforgegradle.TaskPublishCurseForge
 
 plugins {
     id 'multiloader-loader'
-    id 'fabric-loom'
+    // see https://fabricmc.net/develop/ for new versions
+    id 'net.fabricmc.fabric-loom' version '1.17-SNAPSHOT'
     id 'net.darkhax.curseforgegradle' version '1.+'
     id 'com.modrinth.minotaur' version '2.+'
 }
 
 base {
-    archivesName = "${mod_id}-fabric-${neoforge_supported_versions}"
+    archivesName = "${mod_id}-fabric-${fabric_supported_versions}"
 }
 
 dependencies {
-    minecraft "com.mojang:minecraft:${minecraft_version}"
-    mappings loom.layered {
-        officialMojangMappings()
-    }
-    modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
+    minecraft "com.mojang:minecraft:${project.fabric_minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${project.fabric_loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
     // JEI
     if (project.hasProperty('jei_version')) {
-        modCompileOnly("mezz.jei:jei-${fabric_minecraft_version}-common-api:${jei_version}")
-        modCompileOnly("mezz.jei:jei-${fabric_minecraft_version}-fabric-api:${jei_version}")
+        compileOnly ("mezz.jei:jei-${fabric_minecraft_version}-fabric-api:${jei_version}")
         if (project.hasProperty('enable_jei') && project.enable_jei.toBoolean()) {
-            modRuntimeOnly("mezz.jei:jei-${fabric_minecraft_version}-fabric:${jei_version}")
+            localRuntime("mezz.jei:jei-${fabric_minecraft_version}-fabric:${jei_version}")
         }
     }
 
     // REI
     if (project.hasProperty('rei_version') && project.hasProperty('cloth_config_version') && project.hasProperty('architectury_version')) {
-        modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${rei_version}"
-        modCompileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:${rei_version}"
-        modApi "me.shedaniel.cloth:cloth-config-fabric:${cloth_config_version}"
-        modApi "dev.architectury:architectury-fabric:${architectury_version}"
+        compileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${rei_version}"
+        compileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:${rei_version}"
+        api "me.shedaniel.cloth:cloth-config-fabric:${cloth_config_version}"
+        api "dev.architectury:architectury-fabric:${architectury_version}"
         if (project.hasProperty('enable_rei') && project.enable_rei.toBoolean()) {
-            modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${rei_version}"
+            localRuntime "me.shedaniel:RoughlyEnoughItems-fabric:${rei_version}"
         }
-    }
-
-    // EMI
-    if (project.hasProperty('emi_version')) {
-        modCompileOnly "dev.emi:emi-fabric:${emi_version}+${fabric_minecraft_version}"
-        if (project.hasProperty('enable_emi') && project.enable_emi.toBoolean()) {
-            modLocalRuntime "dev.emi:emi-fabric:${emi_version}+${fabric_minecraft_version}"
-        }
-    }
-
-    // JADE
-    if (project.hasProperty('jade_version')) {
-        modRuntimeOnly "curse.maven:jade-324717:${jade_version}"
-    }
-
-    // CATALOGUE
-    if (project.hasProperty('catalogue_version')) {
-        modRuntimeOnly("curse.maven:catalogue-459701:${catalogue_version}")
     }
 
 }
 
-loom {
-    def aw = project(":common").file("src/main/resources/${mod_id}.accesswidener")
-    if (aw.exists()) {
-        accessWidenerPath.set(aw)
-    }
-    mixin {
-        defaultRefmapName.set("${mod_id}.refmap.json")
-    }
-    runs {
-        client {
-            client()
-            setConfigName("Fabric Client")
-            ideConfigGenerated(true)
-            runDir("runs/client")
-        }
-        server {
-            server()
-            setConfigName("Fabric Server")
-            ideConfigGenerated(true)
-            runDir("runs/server")
-        }
-    }
-}
-
+/*
 tasks.register('publishCurseForge', TaskPublishCurseForge) {
     apiToken = file('../../API Tokens/justenoughbreeding.md')
     def projectId = "${cf_id}".toString()
@@ -175,3 +131,5 @@ modrinth {
         optional.project "promenade"
     }
 }
+
+ */

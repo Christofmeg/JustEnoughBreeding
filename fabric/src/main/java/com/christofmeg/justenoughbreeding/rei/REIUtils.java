@@ -11,6 +11,7 @@ import com.christofmeg.justenoughbreeding.utils.Utils;
 import com.mojang.blaze3d.platform.InputConstants;
 import me.shedaniel.math.Point;
 import me.shedaniel.math.Rectangle;
+import me.shedaniel.rei.api.client.gui.compat.GuiGraphics;
 import me.shedaniel.rei.api.client.gui.widgets.Button;
 import me.shedaniel.rei.api.client.gui.widgets.Widget;
 import me.shedaniel.rei.api.client.gui.widgets.Widgets;
@@ -18,7 +19,6 @@ import me.shedaniel.rei.api.client.registry.display.DisplayRegistry;
 import net.fabricmc.fabric.api.recipe.v1.sync.SynchronizedRecipes;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.network.chat.Component;
@@ -37,6 +37,10 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class REIUtils {
+
+    //TODO inject spawnEgg Ingredient after recipe is loaded.
+    //Ingredient finalSpawnEggs = spawnEggs.orElseGet(() -> JustEnoughBreeding.getSpawnEggItem(entityType).map(item -> Ingredient.of(item.value())).orElse(Ingredient.of(ItemStack.EMPTY.getItem())));
+
 
     public static boolean showChildButtons = false;
 
@@ -164,7 +168,7 @@ public class REIUtils {
         addButton(bounds, entityType, widgets, 0);
     }
 
-    public static List<Widget> addButton(Rectangle bounds, EntityType<?> entityType, List<Widget> widgets, int xOffset) {
+    public static void addButton(Rectangle bounds, EntityType<?> entityType, List<Widget> widgets, int xOffset) {
         Rectangle buttonRect = bounds.clone();
         buttonRect.setSize(10, 10);
         buttonRect.move(bounds.getLocation().x + 53 + xOffset, bounds.getLocation().y + 18);
@@ -266,7 +270,6 @@ public class REIUtils {
         });
         widgets.add(toggleButton);
 
-        return widgets;
     }
 
 }

@@ -14,11 +14,6 @@ base {
 neoForge {
     version = neoforge_version
 
-    parchment {
-        mappingsVersion = parchment_version
-        minecraftVersion = parchment_mc
-    }
-
     runs {
         client {
             client()

@@ -1,6 +1,7 @@
 package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
+import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.config.ModConfigManager;
 import com.christofmeg.justenoughbreeding.recipe.BreedingRecipe;
 import mezz.jei.api.constants.VanillaTypes;
@@ -16,10 +17,11 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.AbstractRecipeCategory;
 import mezz.jei.api.recipe.types.IRecipeType;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
@@ -37,8 +39,9 @@ public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> {
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, BreedingRecipe recipe, @NotNull IFocusGroup focuses) {
-        builder.addInputSlot(149, 1).setStandardSlotBackground().add(recipe.spawnEggs());
-        builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).add(recipe.spawnEggs());
+        Ingredient spawnEggs = recipe.spawnEggs() == null ? (JustEnoughBreeding.getSpawnEggItem(recipe.entityType()).isPresent() ? Ingredient.of(JustEnoughBreeding.getSpawnEggItem(recipe.entityType()).get().value()) : null): recipe.spawnEggs();
+        builder.addInputSlot(149, 1).setStandardSlotBackground().add(spawnEggs);
+        builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).add(spawnEggs);
         IRecipeSlotBuilder inputSlot = builder.addInputSlot(69, 58).setStandardSlotBackground().add(recipe.inputs()).setPosition(63, 20, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
         boolean hasExtraInput = recipe.extraInputs()!= null && !recipe.extraInputs().isEmpty();
         boolean hasOutput = recipe.outputs()!= null && !recipe.outputs().isEmpty();
@@ -67,7 +70,7 @@ public class BreedingCategory extends AbstractRecipeCategory<BreedingRecipe> {
     }
 
     @Override
-    public void draw(@NotNull BreedingRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics graphics, double mouseX, double mouseY) {
+    public void draw(@NotNull BreedingRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphicsExtractor graphics, double mouseX, double mouseY) {
         JEIUtils.drawMobSlot(0, 10, bigSlot, graphics);
         JEIUtils.drawMobNameAndEntity(recipe.entityType(), graphics, mouseX, recipe, CATEGORY_WIDTH);
     }

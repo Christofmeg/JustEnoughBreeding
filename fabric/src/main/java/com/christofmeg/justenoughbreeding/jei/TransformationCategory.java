@@ -13,10 +13,12 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.category.AbstractRecipeCategory;
 import mezz.jei.api.recipe.types.IRecipeType;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
@@ -33,12 +35,12 @@ public class TransformationCategory extends AbstractRecipeCategory<Transformatio
     }
 
     @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, TransformationRecipe recipe, @NotNull IFocusGroup focuses) {
-        IRecipeSlotBuilder inputSpawnEggs = builder.addInputSlot(65, 74).setStandardSlotBackground().add(recipe.inputSpawnEggs());
+    public void setRecipe(@NotNull IRecipeLayoutBuilder builder, TransformationRecipe recipe, @NotNull IFocusGroup focuses) {
+        Ingredient outputSpawnEggs = recipe.outputSpawnEggs() == null ? (JustEnoughBreeding.getSpawnEggItem(recipe.outputEntityType()).isPresent() ? Ingredient.of(JustEnoughBreeding.getSpawnEggItem(recipe.outputEntityType()).get().value()) : null): recipe.outputSpawnEggs();
         if (recipe.outputs() != null && !recipe.outputs().isEmpty()) {
-            builder.addOutputSlot(85, 74).setStandardSlotBackground().add(recipe.outputs()).add(recipe.outputSpawnEggs());
+            builder.addOutputSlot(85, 74).setStandardSlotBackground().add(recipe.outputs()).add(outputSpawnEggs);
         } else {
-            builder.addOutputSlot(85, 74).setStandardSlotBackground().add(recipe.outputSpawnEggs());
+            builder.addOutputSlot(85, 74).setStandardSlotBackground().add(outputSpawnEggs);
         }
         IRecipeSlotBuilder inputStack = builder.addInputSlot(75, 22).setStandardSlotBackground().add(recipe.inputs());
         boolean hasExtraInput = recipe.extraInputs()!= null && !recipe.extraInputs().isEmpty();
@@ -48,12 +50,15 @@ public class TransformationCategory extends AbstractRecipeCategory<Transformatio
                 builder.addInputSlot(85, 22).setStandardSlotBackground().add(recipe.extraInputs());
             }
         } else {
+            EntityType<?> inputEntityType = JustEnoughBreeding.getEntityFromLoaderRegistries(Identifier.parse(recipe.inputEntity()));
+            Ingredient inputSpawnEggs = recipe.inputSpawnEggs() == null ? (JustEnoughBreeding.getSpawnEggItem(inputEntityType).isPresent() ? Ingredient.of(JustEnoughBreeding.getSpawnEggItem(inputEntityType).get().value()) : null): recipe.inputSpawnEggs();
+            IRecipeSlotBuilder inputSpawnEggsSlot = builder.addInputSlot(65, 74).setStandardSlotBackground().add(inputSpawnEggs);
             if (hasExtraInput) {
-                inputSpawnEggs.setPosition(4, 43);
+                inputSpawnEggsSlot.setPosition(4, 43);
                 inputStack.setPosition(24, 43);
                 builder.addInputSlot(44, 43).setStandardSlotBackground().add(recipe.extraInputs());
             } else {
-                inputSpawnEggs.setPosition(24, 43);
+                inputSpawnEggsSlot.setPosition(24, 43);
                 inputStack.setPosition(44, 43);
             }
         }
@@ -75,7 +80,7 @@ public class TransformationCategory extends AbstractRecipeCategory<Transformatio
     }
 
     @Override
-    public void draw(@NotNull TransformationRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics stack, double mouseX, double mouseY) {
+    public void draw(@NotNull TransformationRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphicsExtractor stack, double mouseX, double mouseY) {
         if (recipe.inputEntityType() != null) {
             JEIUtils.drawMobSlot(0, 10, bigSlot, stack);
             JEIUtils.drawMobNameAndEntity(JustEnoughBreeding.getEntityFromLoaderRegistries(Identifier.tryParse(recipe.inputEntity())), stack, mouseX, recipe, 99, 0, true, CATEGORY_WIDTH);
