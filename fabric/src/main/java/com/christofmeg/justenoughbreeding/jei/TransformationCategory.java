@@ -43,6 +43,11 @@ public class TransformationCategory extends AbstractRecipeCategory<Transformatio
         if (outputSpawnEggs != null && !outputSpawnEggs.isEmpty()) outputSlot.add(outputSpawnEggs);
 
         IRecipeSlotBuilder inputStack = builder.addInputSlot(75, 22).setStandardSlotBackground().add(recipe.inputs());
+        EntityType<?> inputEntityType = JustEnoughBreeding.getEntityFromLoaderRegistries(Identifier.parse(recipe.inputEntity()));
+        Ingredient inputSpawnEggs = recipe.inputSpawnEggs() == null ? (JustEnoughBreeding.getSpawnEggItem(inputEntityType).isPresent() ? Ingredient.of(JustEnoughBreeding.getSpawnEggItem(inputEntityType).get().value()) : null): recipe.inputSpawnEggs();
+        IRecipeSlotBuilder inputSpawnEggsSlot = builder.addInputSlot(65, 74).setStandardSlotBackground();
+        if (inputSpawnEggs != null && !inputSpawnEggs.isEmpty()) inputSpawnEggsSlot.add(inputSpawnEggs);
+
         boolean hasExtraInput = recipe.extraInputs()!= null && !recipe.extraInputs().isEmpty();
         if (recipe.inputEntityType() != null) {
             if (hasExtraInput) {
@@ -50,10 +55,6 @@ public class TransformationCategory extends AbstractRecipeCategory<Transformatio
                 builder.addInputSlot(85, 22).setStandardSlotBackground().add(recipe.extraInputs());
             }
         } else {
-            EntityType<?> inputEntityType = JustEnoughBreeding.getEntityFromLoaderRegistries(Identifier.parse(recipe.inputEntity()));
-            Ingredient inputSpawnEggs = recipe.inputSpawnEggs() == null ? (JustEnoughBreeding.getSpawnEggItem(inputEntityType).isPresent() ? Ingredient.of(JustEnoughBreeding.getSpawnEggItem(inputEntityType).get().value()) : null): recipe.inputSpawnEggs();
-            IRecipeSlotBuilder inputSpawnEggsSlot = builder.addInputSlot(65, 74).setStandardSlotBackground();
-            if (inputSpawnEggs != null && !inputSpawnEggs.isEmpty()) inputSpawnEggsSlot.add(inputSpawnEggs);
             if (hasExtraInput) {
                 inputSpawnEggsSlot.setPosition(4, 43);
                 inputStack.setPosition(24, 43);

@@ -18,7 +18,7 @@ import mezz.jei.api.recipe.types.IRecipeType;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.navigation.ScreenRectangle;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
@@ -76,7 +76,7 @@ public class JEIUtils {
         }
     }
 
-    public static void drawMobSlot(int mobSlotX, int mobSlotY, IDrawableStatic bigSlot, GuiGraphics graphics) {
+    public static void drawMobSlot(int mobSlotX, int mobSlotY, IDrawableStatic bigSlot, GuiGraphicsExtractor graphics) {
         // Left
         draw(bigSlot, graphics, mobSlotX, mobSlotY, bigSlot.getHeight(), 0, 0, 1, 25);
         draw(bigSlot, graphics, mobSlotX, mobSlotY + 25, bigSlot.getHeight(), 0, 0, 1, 25);
@@ -107,21 +107,21 @@ public class JEIUtils {
         CommonClientUtils.fillSolidColor(graphics, startX, startY, width, height, color);
     }
 
-    private static void draw(IDrawableStatic slot, GuiGraphics graphics, int mobSlotX, int mobSlotY, int textureSize, int removeFromLeft, int removeFromTop, int selectionX, int selectionY) {
+    private static void draw(IDrawableStatic slot, GuiGraphicsExtractor graphics, int mobSlotX, int mobSlotY, int textureSize, int removeFromLeft, int removeFromTop, int selectionX, int selectionY) {
         int removeFromBottom = textureSize - (removeFromTop + selectionY);
         int removeFromRight = textureSize - (removeFromLeft + selectionX);
         slot.draw(graphics, mobSlotX, mobSlotY, removeFromTop, removeFromBottom, removeFromLeft, removeFromRight);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics graphics, double mouseX, Recipe<?> recipe, int CATEGORY_WIDTH) {
+    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphicsExtractor graphics, double mouseX, Recipe<?> recipe, int CATEGORY_WIDTH) {
         drawMobNameAndEntity(entityType, graphics, mouseX, recipe, 148, 0, CATEGORY_WIDTH);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics graphics, double mouseX, Recipe<?> recipe, int availableWidth, int extraX, int CATEGORY_WIDTH) {
+    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphicsExtractor graphics, double mouseX, Recipe<?> recipe, int availableWidth, int extraX, int CATEGORY_WIDTH) {
         drawMobNameAndEntity(entityType, graphics, mouseX, recipe, availableWidth, extraX, true, CATEGORY_WIDTH);
     }
 
-    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphics graphics, double mouseX, Recipe<?> recipe, int availableWidth, int extraX, boolean input, int CATEGORY_WIDTH) {
+    public static void drawMobNameAndEntity(EntityType<?> entityType, GuiGraphicsExtractor graphics, double mouseX, Recipe<?> recipe, int availableWidth, int extraX, boolean input, int CATEGORY_WIDTH) {
         if (entityType != null) {
             Font font = Minecraft.getInstance().font;
             Component entityName = Component.translatable(entityType.getDescriptionId());
@@ -154,7 +154,7 @@ public class JEIUtils {
 
             if (!entityNameString.isEmpty()) {
                 Component abbreviatedEntityName = Component.nullToEmpty(entityNameString);
-                graphics.drawString(font, abbreviatedEntityName, extraX, 0, DyeColor.BLACK.getTextColor(), false);
+                graphics.text(font, abbreviatedEntityName, extraX, 0, DyeColor.BLACK.getTextColor(), false);
             }
 
             LivingEntity currentLivingEntity;

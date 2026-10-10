@@ -1,6 +1,7 @@
 package com.christofmeg.justenoughbreeding.jei;
 
 import com.christofmeg.justenoughbreeding.CommonConstants;
+import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.config.ModConfigManager;
 import com.christofmeg.justenoughbreeding.recipe.TemperRecipe;
 import mezz.jei.api.constants.VanillaTypes;
@@ -15,10 +16,11 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.AbstractRecipeCategory;
 import mezz.jei.api.recipe.types.IRecipeType;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
@@ -35,9 +37,10 @@ public class TemperCategory extends AbstractRecipeCategory<TemperRecipe> {
     }
 
     @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, TemperRecipe recipe, @NotNull IFocusGroup focuses) {
-        builder.addInputSlot(149, 1).setStandardSlotBackground().add(recipe.spawnEggs());
-        builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).add(recipe.spawnEggs());
+    public void setRecipe(@NotNull IRecipeLayoutBuilder builder, TemperRecipe recipe, @NotNull IFocusGroup focuses) {
+        Ingredient spawnEggs = recipe.spawnEggs() == null ? (JustEnoughBreeding.getSpawnEggItem(recipe.entityType()).isPresent() ? Ingredient.of(JustEnoughBreeding.getSpawnEggItem(recipe.entityType()).get().value()) : null): recipe.spawnEggs();
+        if (spawnEggs != null && !spawnEggs.isEmpty()) builder.addInputSlot(149, 1).setStandardSlotBackground().add(spawnEggs); else builder.addInputSlot(149, 1).setStandardSlotBackground();
+        if (spawnEggs != null && !spawnEggs.isEmpty()) builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).add(spawnEggs);
         builder.addInputSlot(69, 58).setStandardSlotBackground().add(recipe.inputs()).setPosition(63, 20, 103, 71, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
         boolean hasExtraInput = recipe.extraInputs()!= null && !recipe.extraInputs().isEmpty();
         if (hasExtraInput) {
@@ -53,7 +56,7 @@ public class TemperCategory extends AbstractRecipeCategory<TemperRecipe> {
     }
 
     @Override
-    public void draw(@NotNull TemperRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics stack, double mouseX, double mouseY) {
+    public void draw(@NotNull TemperRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphicsExtractor stack, double mouseX, double mouseY) {
         JEIUtils.drawMobSlot(0, 10, bigSlot, stack);
         JEIUtils.drawMobNameAndEntity(recipe.entityType(), stack, mouseX, recipe, CATEGORY_WIDTH);
     }
