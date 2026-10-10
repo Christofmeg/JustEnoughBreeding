@@ -15,12 +15,14 @@ import net.minecraft.world.level.storage.TagValueOutput;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ClientUtils {
 
     public static final int ENTITY_CREATION_INTERVAL = 3000;
     private static final Map<String, LivingEntity> ENTITY_CACHE = new HashMap<>();
     private static final Map<String, Long> CREATION_TIMES = new HashMap<>();
+    private static final AtomicInteger PREVIEW_ENTITY_IDS = new AtomicInteger(-1);
 
     public static LivingEntity doRendering(EntityType<?> entityType, CompoundTag nbt, boolean input) {
         Level level = Minecraft.getInstance().level;
@@ -50,6 +52,7 @@ public class ClientUtils {
         if (cachedEntity == null || nbtChanged || (refreshAllowed && (currentTime - lastTime >= ENTITY_CREATION_INTERVAL))) {
             cachedEntity = (LivingEntity) entityType.create(level, EntitySpawnReason.NATURAL);
             if (cachedEntity != null) {
+                cachedEntity.setId(PREVIEW_ENTITY_IDS.getAndDecrement());
                 if (nbt != null) {
                     cachedEntity.load(TagValueInput.create(
                             ProblemReporter.DISCARDING,
