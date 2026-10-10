@@ -1,5 +1,6 @@
 package com.christofmeg.justenoughbreeding.rei;
 
+import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.recipe.TemperRecipe;
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;
 import me.shedaniel.rei.api.common.display.Display;
@@ -9,6 +10,7 @@ import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -19,8 +21,8 @@ public class TemperDisplay extends BasicDisplay {
     public final TemperRecipe recipe;
 
     public TemperDisplay(TemperRecipe recipe) {
-        super(List.of(EntryIngredients.ofIngredient(recipe.inputs()), EntryIngredients.ofIngredient(recipe.spawnEggs())),
-                List.of(EntryIngredients.ofIngredient(recipe.spawnEggs()))
+        super(List.of(EntryIngredients.ofIngredient(recipe.inputs()), EntryIngredients.ofIngredient(recipe.spawnEggs() == null ? (JustEnoughBreeding.getSpawnEggItem(recipe.entityType()).isPresent() ? Ingredient.of(JustEnoughBreeding.getSpawnEggItem(recipe.entityType()).get().value()) : null): recipe.spawnEggs())),
+                List.of(EntryIngredients.ofIngredient(recipe.spawnEggs() == null ? (JustEnoughBreeding.getSpawnEggItem(recipe.entityType()).isPresent() ? Ingredient.of(JustEnoughBreeding.getSpawnEggItem(recipe.entityType()).get().value()) : null): recipe.spawnEggs()))
         );
         this.recipe = recipe;
         if (recipe.extraInputs() != null) {

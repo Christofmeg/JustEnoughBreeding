@@ -1,5 +1,7 @@
 package com.christofmeg.justenoughbreeding.rei;
 
+import com.christofmeg.justenoughbreeding.CommonConstants;
+import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.config.ModConfigManager;
 import com.christofmeg.justenoughbreeding.recipe.AllayDuplicationRecipe;
 import me.shedaniel.math.Point;
@@ -8,19 +10,20 @@ import me.shedaniel.rei.api.client.gui.widgets.Widget;
 import me.shedaniel.rei.api.client.gui.widgets.Widgets;
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;
 import me.shedaniel.rei.api.common.entry.EntryStack;
+import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.*;
 
-@SuppressWarnings("deprecation")
 public class AllayDuplicationCategoryREI extends AbstractRecipeCategoryREI<AllayDuplicationDisplay> {
 
-    public static final CategoryIdentifier<AllayDuplicationDisplay> TYPE = CategoryIdentifier.of("justenoughbreeding", "allay_duplication");
+    public static final CategoryIdentifier<AllayDuplicationDisplay> TYPE = CategoryIdentifier.of(CommonConstants.MOD_ID, "allay_duplication");
 
     public AllayDuplicationCategoryREI() {
         super(TYPE, Component.translatable("translation.justenoughbreeding.allay_duplication"), EntryStacks.of(Items.AMETHYST_SHARD), 176, 101);
@@ -31,9 +34,8 @@ public class AllayDuplicationCategoryREI extends AbstractRecipeCategoryREI<Allay
         List<Widget> widgets = new LinkedList<>();
         widgets.add(Widgets.createRecipeBase(bounds));
 
-        Collection<EntryStack<?>> spawnEggs = new ArrayList<>();
-        display.recipe.spawnEggs().items().forEach(stack -> spawnEggs.add(EntryStacks.ofItemHolder(stack)));
-        widgets.add(Widgets.createSlot(new Point(bounds.x + 154, bounds.y + 6)).entries(spawnEggs));
+        Ingredient spawnEggs = display.recipe.spawnEggs() == null ? (JustEnoughBreeding.getSpawnEggItem(display.recipe.entityType()).isPresent() ? Ingredient.of(JustEnoughBreeding.getSpawnEggItem(display.recipe.entityType()).get().value()) : null): display.recipe.spawnEggs();
+        if (spawnEggs != null && !spawnEggs.isEmpty()) widgets.add(Widgets.createSlot(new Point(bounds.x + 154, bounds.y + 6)).entries(EntryIngredients.ofIngredient(spawnEggs))); else widgets.add(Widgets.createSlot(new Point(bounds.x + 154, bounds.y + 6)));
 
         Collection<EntryStack<?>> inputEntries = new ArrayList<>();
         display.getInputEntries().forEach(inputEntries::addAll);

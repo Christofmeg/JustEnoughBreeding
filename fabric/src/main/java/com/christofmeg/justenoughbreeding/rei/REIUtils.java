@@ -38,10 +38,6 @@ import java.util.function.Predicate;
 
 public class REIUtils {
 
-    //TODO inject spawnEgg Ingredient after recipe is loaded.
-    //Ingredient finalSpawnEggs = spawnEggs.orElseGet(() -> JustEnoughBreeding.getSpawnEggItem(entityType).map(item -> Ingredient.of(item.value())).orElse(Ingredient.of(ItemStack.EMPTY.getItem())));
-
-
     public static boolean showChildButtons = false;
 
     public static void registerRecipes(DisplayRegistry registry) {
@@ -54,8 +50,8 @@ public class REIUtils {
             List<?> breedingRecipes = registerCategoryRecipes(recipes, JustEnoughBreeding.BREEDING_PROVIDER_TYPE, BreedingRecipe.class, BreedingRecipe::mod, BreedingRecipe::entityType, r -> !r.inputs().isEmpty());
             breedingRecipes.forEach(recipe -> registry.add(new BreedingDisplay((BreedingRecipe) recipe)));
 
-            List<?> tamingnRecipes = registerCategoryRecipes(recipes, JustEnoughBreeding.TAMING_PROVIDER_TYPE, TamingRecipe.class, TamingRecipe::mod, TamingRecipe::entityType, r -> !r.inputs().isEmpty());
-            tamingnRecipes.forEach(recipe -> registry.add(new TamingDisplay((TamingRecipe) recipe)));
+            List<?> tamingRecipes = registerCategoryRecipes(recipes, JustEnoughBreeding.TAMING_PROVIDER_TYPE, TamingRecipe.class, TamingRecipe::mod, TamingRecipe::entityType, r -> !r.inputs().isEmpty());
+            tamingRecipes.forEach(recipe -> registry.add(new TamingDisplay((TamingRecipe) recipe)));
 
             List<?> temperRecipes = registerCategoryRecipes(recipes, JustEnoughBreeding.TEMPER_PROVIDER_TYPE, TemperRecipe.class, TemperRecipe::mod, TemperRecipe::entityType, r -> !r.inputs().isEmpty());
             temperRecipes.forEach(recipe -> registry.add(new TemperDisplay((TemperRecipe) recipe)));

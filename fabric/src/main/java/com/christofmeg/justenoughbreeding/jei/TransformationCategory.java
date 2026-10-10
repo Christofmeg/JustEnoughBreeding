@@ -1,5 +1,6 @@
 package com.christofmeg.justenoughbreeding.jei;
 
+import com.christofmeg.justenoughbreeding.CommonConstants;
 import com.christofmeg.justenoughbreeding.JustEnoughBreeding;
 import com.christofmeg.justenoughbreeding.config.ModConfigManager;
 import com.christofmeg.justenoughbreeding.recipe.TransformationRecipe;
@@ -24,7 +25,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class TransformationCategory extends AbstractRecipeCategory<TransformationRecipe> {
 
-    public static final IRecipeType<TransformationRecipe> TYPE = IRecipeType.create(Identifier.fromNamespaceAndPath("justenoughbreeding", "transformation"), TransformationRecipe.class);
+    public static final IRecipeType<TransformationRecipe> TYPE = IRecipeType.create(Identifier.fromNamespaceAndPath(CommonConstants.MOD_ID, "transformation"), TransformationRecipe.class);
     private final IDrawableStatic bigSlot;
     private final int CATEGORY_WIDTH;
 
@@ -37,11 +38,10 @@ public class TransformationCategory extends AbstractRecipeCategory<Transformatio
     @Override
     public void setRecipe(@NotNull IRecipeLayoutBuilder builder, TransformationRecipe recipe, @NotNull IFocusGroup focuses) {
         Ingredient outputSpawnEggs = recipe.outputSpawnEggs() == null ? (JustEnoughBreeding.getSpawnEggItem(recipe.outputEntityType()).isPresent() ? Ingredient.of(JustEnoughBreeding.getSpawnEggItem(recipe.outputEntityType()).get().value()) : null): recipe.outputSpawnEggs();
-        if (recipe.outputs() != null && !recipe.outputs().isEmpty()) {
-            builder.addOutputSlot(85, 74).setStandardSlotBackground().add(recipe.outputs()).add(outputSpawnEggs);
-        } else {
-            builder.addOutputSlot(85, 74).setStandardSlotBackground().add(outputSpawnEggs);
-        }
+        IRecipeSlotBuilder outputSlot = builder.addOutputSlot(85, 74).setStandardSlotBackground();
+        if (recipe.outputs() != null && !recipe.outputs().isEmpty()) outputSlot.add(recipe.outputs());
+        if (outputSpawnEggs != null && !outputSpawnEggs.isEmpty()) outputSlot.add(outputSpawnEggs);
+
         IRecipeSlotBuilder inputStack = builder.addInputSlot(75, 22).setStandardSlotBackground().add(recipe.inputs());
         boolean hasExtraInput = recipe.extraInputs()!= null && !recipe.extraInputs().isEmpty();
         if (recipe.inputEntityType() != null) {
@@ -52,7 +52,8 @@ public class TransformationCategory extends AbstractRecipeCategory<Transformatio
         } else {
             EntityType<?> inputEntityType = JustEnoughBreeding.getEntityFromLoaderRegistries(Identifier.parse(recipe.inputEntity()));
             Ingredient inputSpawnEggs = recipe.inputSpawnEggs() == null ? (JustEnoughBreeding.getSpawnEggItem(inputEntityType).isPresent() ? Ingredient.of(JustEnoughBreeding.getSpawnEggItem(inputEntityType).get().value()) : null): recipe.inputSpawnEggs();
-            IRecipeSlotBuilder inputSpawnEggsSlot = builder.addInputSlot(65, 74).setStandardSlotBackground().add(inputSpawnEggs);
+            IRecipeSlotBuilder inputSpawnEggsSlot = builder.addInputSlot(65, 74).setStandardSlotBackground();
+            if (inputSpawnEggs != null && !inputSpawnEggs.isEmpty()) inputSpawnEggsSlot.add(inputSpawnEggs);
             if (hasExtraInput) {
                 inputSpawnEggsSlot.setPosition(4, 43);
                 inputStack.setPosition(24, 43);
