@@ -180,6 +180,7 @@ modrinth {
     uploadFile = tasks.named("jar").flatMap { it.archiveFile }
     gameVersions = "${neoforge_release_versions}".split(",") as List<String>
     loaders = ["${project.name}"]
+	environment = "client_and_server"
     dependencies {
         if (project.hasProperty('jei_version')) {
             optional.project "jei"
