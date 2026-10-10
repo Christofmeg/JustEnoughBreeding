@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.ProblemReporter;
 import net.minecraft.world.entity.EntitySpawnReason;
+import net.minecraft.world.entity.EntitySpawnRequest;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
@@ -50,7 +51,7 @@ public class ClientUtils {
                 !JustEnoughBreeding.isModLoaded("optifine");
 
         if (cachedEntity == null || nbtChanged || (refreshAllowed && (currentTime - lastTime >= ENTITY_CREATION_INTERVAL))) {
-            cachedEntity = (LivingEntity) entityType.create(level, EntitySpawnReason.NATURAL);
+            cachedEntity = (LivingEntity) entityType.create(level, new EntitySpawnRequest(EntitySpawnReason.NATURAL, true));
             if (cachedEntity != null) {
                 cachedEntity.setId(PREVIEW_ENTITY_IDS.getAndDecrement());
                 if (nbt != null) {
