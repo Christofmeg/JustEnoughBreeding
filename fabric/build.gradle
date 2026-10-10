@@ -38,11 +38,10 @@ dependencies {
 
 }
 
-/*
 tasks.register('publishCurseForge', TaskPublishCurseForge) {
     apiToken = file('../../API Tokens/justenoughbreeding.md')
     def projectId = "${cf_id}".toString()
-    def mainFile = upload(projectId, tasks.named("remapJar").flatMap { it.archiveFile })
+    def mainFile = upload(projectId, tasks.named("jar").flatMap { it.archiveFile })
     mainFile.changelogType = 'markdown'
     mainFile.changelog = file('changelog.md')
     mainFile.addGameVersion('Client', 'Server')
@@ -96,9 +95,10 @@ modrinth {
     versionName = "${mod_id}-fabric-${fabric_supported_versions}" + "-" + getVersion()
     versionType = "${release_type}"
     changelog = file('changelog.md').text
-    uploadFile = tasks.named("remapJar").flatMap { it.archiveFile }
+    uploadFile = tasks.named('jar').flatMap { it.archiveFile }
     gameVersions = "${fabric_release_versions}".split(",") as List<String>
     loaders = ["${project.name}"]
+    environment = "client_and_server"
     dependencies {
         if (project.hasProperty('jei_version')) {
             optional.project "jei"
@@ -131,5 +131,3 @@ modrinth {
         optional.project "promenade"
     }
 }
-
- */
