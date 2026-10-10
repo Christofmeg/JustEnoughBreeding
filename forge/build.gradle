@@ -192,6 +192,7 @@ modrinth {
     uploadFile = layout.buildDirectory.file("libs/${base.archivesName.get()}-${version}.jar").get().asFile
     gameVersions = "${forge_release_versions}".split(",") as List<String>
     loaders = ["${project.name}"]
+    environment = "client_and_server"
     dependencies {
         if (project.hasProperty('jei_version')) {
             optional.project "jei"
