@@ -7,7 +7,7 @@ license="${license}"
     version="${version}"
     displayName="${mod_name}"
     displayURL="https://github.com/Christofmeg/JustEnoughBreeding"
-    logoFile="icon.png"
+    iconFile="icon.png"
     authors="${mod_author}"
     description="${description}"
 [[dependencies.${mod_id}]]
